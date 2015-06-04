@@ -1,0 +1,82 @@
+/*******************************
+        Global Overrides
+*******************************/
+
+/*Import Fonts*/
+@import url("@{fontPath}/wsj-fonts.css"); 
+
+/*Headers*/
+h1 {
+  font-weight:@text-light;
+  line-height:8rem;
+  margin:2rem 1rem 1.5rem 1rem; 
+  letter-spacing:-0.8px;
+  text-indent:-0.1em;
+  padding:0;
+}
+
+h2 {
+  font-weight:@text-semibold;
+  line-height:5rem;
+  margin:2rem 1rem 1.5rem 1rem; 
+  letter-spacing:-0.1px;
+  text-indent:-0.07em;
+  padding:0;
+}
+
+h3 {
+  font-weight:@text-bold;
+  line-height:3rem;
+  margin:2rem 1rem 1rem 1rem; 
+  text-indent:-0.06em;
+  padding:0;
+}
+
+h4 {
+  font-weight:@text-medium;
+  line-height:2.5rem;
+  margin:1.5rem 1rem 0rem 1rem; 
+  text-indent:-0.05em;
+  padding:0;
+}
+
+h5 {
+  font-weight:@text-bold;
+  line-height:2rem;
+  margin:1.5rem 1rem 0rem 1rem; 
+  text-indent:-0.06em;
+  padding:0;
+}
+
+h6 {
+  font-size:0.91667rem; /*11px*/
+  font-weight:@text-bold;
+  line-height:1.5rem;
+  margin:1.5rem 1rem 0rem 1rem;
+  letter-spacing:0.1px;
+  text-indent:-0.06em;
+  padding:0;
+}
+
+p {
+  font-weight: @text-regular; 
+}
+
+p.small.text {
+  margin:.5rem 1rem 0rem 1rem; 
+}
+
+small, .small.text {
+  font-weight:@text-regular;
+  font-size:0.91667rem;
+  line-height:1.5rem;
+
+  b, strong {
+    font-weight:@text-semibold;  
+  }
+}
+
+b, strong {
+  font-weight:@text-bold;  
+}
+
