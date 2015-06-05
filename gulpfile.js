@@ -1,28 +1,37 @@
 var gulp         = require('gulp');
+// var watch         = require('gulp-watch');
 
-var SUI_watch    = require("./SUI/tasks/watch");
-var SUI_build    = require("./SUI/tasks/build");
 ///////////////////////////////////////////////////////////////////////////////
 
 gulp.task("default", ["watch"]);
 gulp.task("copy", copy);
-gulp.task("watch", ["copy"] watch);
+gulp.task("copyTheme", copyTheme);
+gulp.task("watch", ["copy"], watch);
+// gulp.task("build", ["copy"], build);
 
 ///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
 ///////////////////////////////////////////////////////////////////////////////
 
 function copy(){
 
-  gulp.src('./bonaparte')
-    .pipe(gulp.dest('./SUI/src/themes')); 
+  gulp.src('./bonaparte/**/*')
+    .pipe(gulp.dest('./SUI/src/themes/bonaparte')); 
    
-  gulp.src('./examples')
+  gulp.src('./examples/**/*')
     .pipe(gulp.dest('./SUI/examples')); 
+}
+
+function copyTheme(){
+  gulp.src('./theme.config')
+    .pipe(gulp.dest('./SUI/src')); 
    
 }
 
+///////////////////////////////////////////////////////////////////////////////
+
 function watch(){
   gulp.watch(["./examples/**/*", "./bonaparte/**/*"], ["copy"]);
-
-  gulp.start(SUI_watch);
+  gulp.watch([ "/theme.config"], ["copyTheme"]);
 };

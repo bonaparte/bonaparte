@@ -9,8 +9,7 @@ body.grid {
   background-image:url("@{assetsPath}/site/images/grid.png"); 
 }
 
-body {
-  
+body { 
 }
 
 /*Headers*/
@@ -19,7 +18,7 @@ h1, .h1 {
   line-height:8rem;
   margin:2rem 1rem 1.5rem 1rem; 
   letter-spacing:-0.8px;
-  text-indent:-0.1em;
+  text-indent:-0.1em; 
   padding:0;
 }
 
