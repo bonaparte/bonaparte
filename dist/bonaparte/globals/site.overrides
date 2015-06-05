@@ -9,9 +9,6 @@ body.grid {
   background-image:url("@{assetsPath}/site/images/grid.png"); 
 }
 
-body { 
-}
-
 /*Headers*/
 h1, .h1 {
   font-weight:@text-light; 
