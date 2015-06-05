@@ -2,7 +2,7 @@
   "name": "bonaparte",
   
   "devDependencies": {
-    "gulp-watch": "*",
+    "gulp": "*"
   },
 
   "engines": {

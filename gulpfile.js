@@ -4,34 +4,42 @@ var gulp         = require('gulp');
 ///////////////////////////////////////////////////////////////////////////////
 
 gulp.task("default", ["watch"]);
-gulp.task("copy", copy);
-gulp.task("copyTheme", copyTheme);
-gulp.task("watch", ["copy"], watch);
+gulp.task("install", install);
+gulp.task("watch", ["save"], watch);
+gulp.task("save", save);
 // gulp.task("build", ["copy"], build);
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-///////////////////////////////////////////////////////////////////////////////
-
-function copy(){
+function install(){
 
   gulp.src('./bonaparte/**/*')
     .pipe(gulp.dest('./SUI/src/themes/bonaparte')); 
    
   gulp.src('./examples/**/*')
     .pipe(gulp.dest('./SUI/examples')); 
-}
 
-function copyTheme(){
   gulp.src('./theme.config')
     .pipe(gulp.dest('./SUI/src')); 
+
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+function save(){
+  gulp.src("./SUI/src/themes/bonaparte/**/*")
+    .pipe(gulp.dest('./bonaparte')); 
    
+  gulp.src('./SUI/examples/**/*')
+    .pipe(gulp.dest('./examples')); 
+
+  gulp.src('./SUI/src/theme.config')
+    .pipe(gulp.dest('./')); 
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 
 function watch(){
-  gulp.watch(["./examples/**/*", "./bonaparte/**/*"], ["copy"]);
-  gulp.watch([ "/theme.config"], ["copyTheme"]);
+  gulp.watch(["./SUI/src/themes/bonaparte/**/*",'./SUI/examples/**/*', './SUI/src/theme.config'], ["save"]);
 };
