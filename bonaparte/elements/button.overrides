@@ -1,0 +1,29 @@
+/*******************************
+         Theme Overrides
+*******************************/
+
+
+button.ui,
+.ui.buttons .button, .ui.buttons .or, .ui.button {
+  font-size:@fontSize;
+  line-height:@lineHeight;
+  border:0px;
+  outline:0px;
+  min-width:4rem;
+}
+
+.ui.right.labeled.icon.button  {
+  padding-right:5rem !important;
+  padding-left:1rem !important;
+}
+
+.ui.labeled.icon.button  {
+  padding-left:5rem !important;
+  padding-right:1rem !important;
+}
+
+
+/* no compact button in bonaparte */
+.ui.compact.button {
+  padding:1rem;  
+}
