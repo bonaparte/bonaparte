@@ -10,7 +10,7 @@
 
 /* Devices */
 @mobileWidth: auto;
-@mobileGutter: 1em;
+@mobileGutter: 1rem;
 @largestMobileScreen: 780px;
 
 @tabletWidth: 752px;
@@ -26,7 +26,7 @@
 @largeMonitorGutter: auto;
 
 /* Coupling (Add Negative Margin to container size) */
-@gridGutterWidth: 2em;
+@gridGutterWidth: 2rem;
 @mobileGridWidth: @mobileWidth;
 @tabletGridWidth: ~"calc("@tabletWidth~" + "@gridGutterWidth~")";
 @smallMonitorGridWidth: ~"calc("@smallMonitorWidth~" + "@gridGutterWidth~")";
@@ -39,5 +39,5 @@
 /* Text */
 @textWidth: 700px;
 @textFontFamily: @pageFont;
-@textLineHeight: 1.5;
-@textSize: @large;
+@textLineHeight: @lineHeight;
+@textSize: @fontSize;

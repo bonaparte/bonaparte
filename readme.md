@@ -8,4 +8,4 @@ __DON`T WORK IN `dist/` DIRECTLY.__
 
 - Use `gulp watch` to watch SUI and keep `dist/` uptodate.
 
-- Use `gulp install` to copy `dist/` to `SUI/` (after reinstalling/updating SUI)
+- Use `gulp install` to integrate `dist/` back into `SUI/` (after reinstalling/updating SUI)
