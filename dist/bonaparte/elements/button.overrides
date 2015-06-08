@@ -3,14 +3,71 @@
 *******************************/
 
 
+
 button.ui,
-.ui.buttons .button, .ui.buttons .or, .ui.button {
+/*.ui.buttons .or,*/
+.ui.buttons .button,
+.ui.button{
   font-size:@fontSize;
   line-height:@lineHeight;
   border:0px;
   outline:0px;
   min-width:4rem;
 }
+
+.ui.buttons .or {
+  height:4rem;
+}
+
+.ui.buttons .or:before {
+  font-size: @h6;
+}
+
+.ui.mini.buttons .button, 
+/*.ui.mini.buttons .or,*/
+.ui.mini.button {
+  line-height:@h6Lineheight;
+  padding:0.25rem 1rem;
+  min-width:2rem;
+}
+
+.ui.tiny.buttons .button, 
+/*.ui.tiny.buttons .or,*/
+.ui.tiny.button,
+.ui.small.buttons .button, 
+/*.ui.small.buttons .or,*/
+.ui.small.button {
+  line-height:@h5Lineheight;
+  padding:0.5rem 1rem;
+  min-width:3rem;
+}
+
+.ui.large.buttons .button, 
+/*.ui.large.buttons .or,*/
+.ui.large.button,
+.ui.big.buttons .button, 
+/*.ui.big.buttons .or,*/
+.ui.big.button {
+  font-size:@fontSize;
+  line-height:@lineHeight;
+  padding:1.5rem 1rem;
+
+}
+
+
+.ui.huge.buttons .button, 
+/*.ui.huge.buttons .or,*/
+.ui.huge.button,
+.ui.massive.buttons .button, 
+/*.ui.massive.buttons .or,*/
+.ui.massive.button {
+  line-height:@h2Lineheight;
+  padding:0rem 1rem;
+  min-width:
+}
+
+
+
 
 .ui.right.labeled.icon.button  {
   padding-right:5rem !important;
@@ -25,5 +82,5 @@ button.ui,
 
 /* no compact button in bonaparte */
 .ui.compact.button {
-  padding:1rem;  
-}
+  padding:1rem; 
+} 
