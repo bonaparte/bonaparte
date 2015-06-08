@@ -113,6 +113,13 @@
 @h5               : 1.33333rem; /*16px*/
 @h6               : 0.91667rem; /*11px*/
 
+@h1Lineheight     : 8rem;
+@h2Lineheight     : 5rem;
+@h3Lineheight     : 3rem;
+@h4Lineheight     : 2.5rem;
+@h5Lineheight     : 2rem;
+@h6Lineheight     : 1.5rem;
+
 /*-------------------
         Sizes
 --------------------*/
@@ -123,14 +130,14 @@
   to the base em size
 */
 
-@miniSize        : (10 / 14);
-@tinySize        : (12 / 14);
-@smallSize       : (13 / 14);
-@mediumSize      : (14 / 14);
-@largeSize       : (16 / 14);
-@bigSize         : (18 / 14);
-@hugeSize        : (20 / 14);
-@massiveSize     : (24 / 14);
+@miniSize        : @h6;
+@tinySize        : @h5;
+@smallSize       : @h5;
+@mediumSize      : @h5;
+@largeSize       : @h4;
+@bigSize         : @h4;
+@hugeSize        : @h3;
+@massiveSize     : @h3;
 
 /*-------------------
         Page
@@ -146,7 +153,7 @@
       Paragraph
 --------------------*/
 
-@paragraphMargin     : 0.5rem 1rem 0.5rem 1rem;
+@paragraphMargin     : 0.5rem 1rem 1rem 1rem;
 @paragraphLineHeight : @lineHeight;
 
 /*-------------------

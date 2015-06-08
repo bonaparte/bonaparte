@@ -12,54 +12,54 @@ body.grid {
 /*Headers*/
 h1, .h1 {
   font-weight:@text-light; 
-  line-height:8rem;
-  margin:2rem 1rem 1.5rem 1rem; 
+  line-height:@h1Lineheight;
+  margin:0.5rem 1rem 1.5rem 1rem; 
+  padding:1.5rem 0 0 0;
   letter-spacing:-0.8px;
   text-indent:-0.1em; 
-  padding:0;
 }
 
 h2, .h2 {
   font-weight:@text-semibold;
-  line-height:5rem;
-  margin:2rem 1rem 1.5rem 1rem; 
+  line-height:@h2Lineheight;
+  margin:0rem 1rem 1.5rem 1rem; 
+  padding:2.166667rem 0 0.33333rem 0;
   letter-spacing:-0.1px;
   text-indent:-0.07em;
-  padding:0;
 }
 
 h3, .h3 {
   font-weight:@text-bold;
-  line-height:3rem;
-  margin:2rem 1rem 1rem 1rem; 
+  line-height:@h3Lineheight;
+  margin:0rem 1rem 1rem 1rem; 
   text-indent:-0.06em;
-  padding:0;
+  padding:2.166667rem 0 0.33333rem 0;
 }
 
 h4, .h4 {
   font-weight:@text-medium;
-  line-height:2.5rem;
-  margin:1.5rem 1rem 0rem 1rem; 
+  line-height:@h4Lineheight;
+  margin:0rem 1rem 0rem 1rem; 
   text-indent:-0.05em;
-  padding:0;
+  padding:1.5833333rem 0 0.41666667rem 0;
 }
 
 h5, .h5 {
   font-weight:@text-bold;
-  line-height:2rem;
-  margin:1.5rem 1rem 0rem 1rem; 
+  line-height:@h5Lineheight;
+  margin:0rem 1rem 0rem 1rem; 
   text-indent:-0.06em;
-  padding:0;
+  padding:1.5rem 0 0 0;
 }
 
 h6, .h6 {
   font-size:@h6;
   font-weight:@text-bold;
-  line-height:1.5rem;
-  margin:1.5rem 1rem 0rem 1rem;
+  line-height:@h6Lineheight;
+  margin:0rem 1rem 0rem 1rem;
   letter-spacing:0.1px;
   text-indent:-0.06em;
-  padding:0;
+  padding:1.3333333333rem 0 0.1666666667rem 0;
 }
 
 .subheader {
@@ -69,7 +69,7 @@ h6, .h6 {
 .h1.subheader,
 .h1 .subheader  {
   font-weight:@text-bold;
-  font-size:@h2;
+  font-size:@h3;
   line-height:3rem;
   margin:-0.5rem 1rem 1.5rem 1rem;
   letter-spacing:0.1px;
@@ -79,7 +79,7 @@ h6, .h6 {
 .h2.subheader,
 .h2 .subheader  {
   font-weight:@text-light;
-  font-size:@h2;
+  font-size:@h3;
   line-height:3rem;
   margin:-1rem 1rem 1.5rem 1rem;
   letter-spacing:0px;
@@ -121,6 +121,7 @@ h6, .h6 {
 
 p {
   font-weight: @text-book; 
+  padding-top:0.5rem;
 }
 
 p.small.text {
@@ -131,6 +132,7 @@ small, .small.text {
   font-weight:@text-book;
   font-size:0.91667rem;
   line-height:1.5rem;
+  padding:0.3333333rem 0 0.1666667rem 0;
 }
 
 b, strong {
