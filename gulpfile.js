@@ -26,6 +26,15 @@ function install(){
   gulp.src('./dist/theme.config')
     .pipe(gulp.dest('./ui/src')); 
 
+ 
+  // cd to ui and spawn watcher
+  process.chdir("./ui/");
+
+  spawn('gulp', ["build"]).stdout.on('data', function(data) {
+    if (data) {
+        console.log(data.toString())
+    }
+  });
 }
 
 ///////////////////////////////////////////////////////////////////////////////
