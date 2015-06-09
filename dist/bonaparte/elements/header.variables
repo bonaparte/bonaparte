@@ -69,11 +69,12 @@
 --------------------*/
 
 /* Sizing */
-@huge   : unit(@h1, em);
-@large  : unit(@h2, em);
-@medium : unit(@h3, em);
-@small  : unit(@h4, em);
-@tiny   : unit(@h5, em);
+@huge   : @h1;
+@large  : @h2;
+@medium : @h3;
+@small  : @h4;
+@tiny   : @h5;
+@mini   : @h6;
 
 /* Sub Header */
 @h1SubHeaderFontSize: 1.1428rem;
