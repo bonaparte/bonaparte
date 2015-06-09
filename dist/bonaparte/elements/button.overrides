@@ -7,7 +7,7 @@
 button.ui,
 /*.ui.buttons .or,*/
 .ui.buttons .button,
-.ui.button{
+.ui.button {
   font-size:@fontSize;
   line-height:@lineHeight;
   border:0px;
@@ -51,6 +51,7 @@ button.ui,
   font-size:@fontSize;
   line-height:@lineHeight;
   padding:1.5rem 1rem;
+  min-width:4rem;
 
 }
 
@@ -63,7 +64,7 @@ button.ui,
 .ui.massive.button {
   line-height:@h2Lineheight;
   padding:0rem 1rem;
-  min-width:
+  min-width:5rem;
 }
 
 
