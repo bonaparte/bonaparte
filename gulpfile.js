@@ -18,26 +18,26 @@ gulp.task("extract", extract);
 function install(){
 
   gulp.src('./dist/bonaparte/**/*')
-    .pipe(gulp.dest('./SUI/src/themes/bonaparte')); 
+    .pipe(gulp.dest('./ui/src/themes/bonaparte')); 
    
   gulp.src('./dist/examples/**/*')
-    .pipe(gulp.dest('./SUI/examples')); 
+    .pipe(gulp.dest('./ui/examples')); 
 
   gulp.src('./dist/theme.config')
-    .pipe(gulp.dest('./SUI/src')); 
+    .pipe(gulp.dest('./ui/src')); 
 
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 
 function extract(){
-  gulp.src("./SUI/src/themes/bonaparte/**/*")
+  gulp.src("./ui/src/themes/bonaparte/**/*")
     .pipe(gulp.dest('./dist/bonaparte')); 
    
-  gulp.src('./SUI/examples/**/*')
+  gulp.src('./ui/examples/**/*')
     .pipe(gulp.dest('./dist/examples')); 
 
-  gulp.src('./SUI/src/theme.config')
+  gulp.src('./ui/src/theme.config')
     .pipe(gulp.dest('./dist/')); 
 }
 
@@ -53,8 +53,8 @@ function watch(){
   });
   
 
-  // cd to SUI and spawn watcher
-  process.chdir("./SUI/");
+  // cd to ui and spawn watcher
+  process.chdir("./ui/");
 
   spawn('gulp', ["watch"]).stdout.on('data', function(data) {
     if (data) {
@@ -69,6 +69,6 @@ function watch(){
 
 function watchBP(){
 
-  gulp.watch(["./SUI/src/themes/bonaparte/**/*",'./SUI/examples/**/*', './SUI/src/theme.config'], ["extract"]);
+  gulp.watch(["./ui/src/themes/bonaparte/**/*",'./ui/examples/**/*', './ui/src/theme.config'], ["extract"]);
 
 }
