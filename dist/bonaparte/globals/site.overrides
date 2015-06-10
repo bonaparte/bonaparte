@@ -1,8 +1,4 @@
 
-body.grid, #nothing {
-  background-image:url("@{assetsPath}/site/images/grid.png"); 
-}
-
 /*******************************
         Global Overrides
 *******************************/
