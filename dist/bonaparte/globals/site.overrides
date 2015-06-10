@@ -1,22 +1,23 @@
+
+body.grid, #nothing {
+  background-image:url("@{assetsPath}/site/images/grid.png"); 
+}
+
 /*******************************
         Global Overrides
 *******************************/
 
 /*Import Fonts*/
-/*@import url("@{assetsPath}/site/fonts/wsj-fonts.css"); 
-*/
-body.grid {
-  background-image:url("@{assetsPath}/site/images/grid.png"); 
-}
+@import url("@{assetsPath}/site/fonts/wsj-fonts.css"); 
 
 p {
-  font-weight: @text-book; 
+  font-weight: @text-book;    
   padding:0 0 0.5rem 0;
 }
 
 p.small.text {
   margin:0rem 1rem 0rem 0.9166667rem; 
-}
+} 
 
 small, .small.text {
   font-weight:@text-book;
@@ -28,4 +29,4 @@ small, .small.text {
 b, strong {
   font-weight:@text-bold;  
 }
-
+ 

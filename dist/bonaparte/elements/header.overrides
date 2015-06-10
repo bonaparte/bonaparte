@@ -3,7 +3,8 @@
 *******************************/
 
 /*Headers*/
-h1, .h1 {
+h1, .h1,
+h1.ui.header {
   font-size : @h1;
   font-weight:@text-light; 
   line-height:@h1Lineheight;
@@ -12,7 +13,8 @@ h1, .h1 {
   letter-spacing:-0.8px;
 }
 
-h2, .h2 {
+h2, .h2,
+h2.ui.header  {
   font-size : @h2;
   font-weight:@text-semibold;
   line-height:@h2Lineheight;
@@ -21,7 +23,8 @@ h2, .h2 {
   letter-spacing:-0.1px;
 }
 
-h3, .h3 {
+h3, .h3,
+h3.ui.header  {
   font-size : @h3;
   font-weight:@text-bold;
   line-height:@h3Lineheight;
@@ -29,7 +32,8 @@ h3, .h3 {
   margin:2rem 1rem 0 0.833333rem;
 }
 
-h4, .h4 {
+h4, .h4,
+h4.ui.header  {
   font-size : @h4;
   font-weight:@text-medium;
   line-height:@h4Lineheight;
@@ -37,7 +41,8 @@ h4, .h4 {
   margin:1.5rem 1rem -0.08333333rem 0.833333rem;
 }
 
-h5, .h5 {
+h5, .h5,
+h5.ui.header  {
   font-size : @h5;
   font-weight:@text-bold;
   line-height:@h5Lineheight;
@@ -45,7 +50,8 @@ h5, .h5 {
   margin:1.5rem 1rem 0 0.91666667rem;
 }
 
-h6, .h6 {
+h6, .h6,
+h6.ui.header  {
   font-size:@h6;
   font-weight:@text-bold;
   line-height:@h6Lineheight;
