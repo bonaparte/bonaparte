@@ -134,7 +134,7 @@
 /* Or */
 @orText: 'or';
 
-@orGap: 0.5em;
+@orGap: 0.5rem;
 @orHeight: (@verticalPadding * 2) + 1em;
 @orZIndex: 3;
 

@@ -5,81 +5,241 @@
 
 
 button.ui,
-/*.ui.buttons .or,*/
-.ui.buttons .button,
+.ui.buttons,
+.ui.compact.button,
 .ui.button {
+  position:relative;
   font-size:@fontSize;
   line-height:@lineHeight;
-  border:0px;
+ /* border:0px;
   outline:0px;
-  min-width:4rem;
+  overflow:hidden;*/
+  min-width:4rem;  
+  min-height:4rem;  
+  box-shadow: 0px 0px 0px 0px rgba(34, 36, 38, 0.15), 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
+  margin-top:0.5rem;
+  vertical-align: middle; /* "baseline" does not align with line grid */  
+
+  > .icon {
+    height:auto;
+    /*width:@lineHeight - 2rem;*/
+    margin:0 1rem 0 0;
+  }  
+  > .icon.right {
+    margin:0 0 0 1rem;
+  }
 }
 
-.ui.buttons .or {
-  height:4rem;
+
+/*STANDARD*/
+
+button.ui,
+button.ui.compact,
+.ui.buttons .button,
+.ui.compact.button,
+.ui.button {
+  padding:1.0833333rem 1rem 0.9188888rem 1rem;
 }
 
-.ui.buttons .or:before {
-  font-size: @h6;
+.ui.labeled.icon.buttons .button,
+.ui.labeled.icon.buttons button,
+.ui.labeled.icon.button {
+  padding-left:5rem !important;
+
+  > .icon {
+
+  }
 }
 
+/*.ui.buttons .or {
+  
+
+}*/
+
+
+/*MINI & TINY*/
+
+button.ui.mini,
+button.ui.mini.compact,
 .ui.mini.buttons .button, 
-/*.ui.mini.buttons .or,*/
-.ui.mini.button {
+.ui.mini.compact.button,
+.ui.mini.button,
+button.ui.tiny,
+button.ui.tiny.compact,
+.ui.tiny.buttons .button, 
+.ui.tiny.compact.button,
+.ui.tiny.button {
   line-height:@h6Lineheight;
   padding:0.25rem 1rem;
-  min-width:2rem;
+  min-width:2rem;  
+  min-height:2rem;
+
+  > .icon {/*
+    width:2rem;*/
+  }  
 }
 
-.ui.tiny.buttons .button, 
-/*.ui.tiny.buttons .or,*/
-.ui.tiny.button,
+.ui.labeled.icon.mini.buttons .button,
+.ui.labeled.icon.buttons .mini.button,
+.ui.labeled.icon.mini.buttons button,
+.ui.labeled.icon.mini.button,
+.ui.labeled.icon.tiny.buttons .button,
+.ui.labeled.icon.buttons .tiny.button,
+.ui.labeled.icon.tiny.buttons button,
+.ui.labeled.icon.tiny.button  {
+  padding-left:3rem !important;
+
+  > .icon {
+    width:2rem;
+  }
+}
+/*.ui.mini.buttons .or,
+.ui.tiny.buttons .or {
+  
+} */
+
+
+/*SMALL*/
+
+button.ui.small,
+button.ui.small.compact,
 .ui.small.buttons .button, 
-/*.ui.small.buttons .or,*/
+.ui.small.compact.button,
 .ui.small.button {
   line-height:@h5Lineheight;
   padding:0.5rem 1rem;
-  min-width:3rem;
+  min-width:3rem;  
+  min-height:3rem;
+
+  > .icon {
+    /*width:3rem - 2rem;*/
+  }  
 }
 
+.ui.labeled.icon.small.buttons .button,
+.ui.labeled.icon.buttons .small.button,
+.ui.labeled.icon.small.buttons button,
+.ui.labeled.icon.small.button {
+  padding-left:4rem !important;
+
+  > .icon {
+    width:3rem;
+  }
+}
+/*.ui.small.buttons .or {
+  
+} */
+
+
+/*LARGE & BIG*/
+
+button.ui.large,
+button.ui.large.compact,
 .ui.large.buttons .button, 
-/*.ui.large.buttons .or,*/
+.ui.large.compact.button,
 .ui.large.button,
+button.ui.big,
+button.ui.big.compact,
 .ui.big.buttons .button, 
-/*.ui.big.buttons .or,*/
+.ui.big.compact.button,
 .ui.big.button {
   font-size:@fontSize;
   line-height:@lineHeight;
   padding:1.5rem 1rem;
   min-width:4rem;
+  min-height:4rem;
 
+  > .icon {
+    /*width:4rem - 2rem;*/
+  }  
 }
 
 
+.ui.labeled.icon.large.buttons .button,
+.ui.labeled.icon.buttons .large.button,
+.ui.labeled.icon.large.buttons button,
+.ui.labeled.icon.large.button,
+.ui.labeled.icon.big.buttons .button,
+.ui.labeled.icon.buttons .big.button,
+.ui.labeled.icon.big.buttons button,
+.ui.labeled.icon.big.button  {
+  padding-left:6rem !important;
+
+  > .icon {
+    width:5rem;
+  }
+}
+
+/*.ui.big.buttons .or,
+.ui.large.buttons .or {
+  
+} */
+
+
+
+/*HUGE & MASSIVE*/
+
+button.ui.huge,
+button.ui.huge.compact,
 .ui.huge.buttons .button, 
-/*.ui.huge.buttons .or,*/
+.ui.huge.compact.button,
 .ui.huge.button,
+button.ui.massive,
+button.ui.massive.compact,
 .ui.massive.buttons .button, 
-/*.ui.massive.buttons .or,*/
+.ui.massive.compact.button,
 .ui.massive.button {
   line-height:@h2Lineheight;
   padding:0rem 1rem;
   min-width:5rem;
+  min-height:5rem;
+
+  > .icon {
+    /*width:5rem - 2rem;*/
+  }  
 }
 
 
 
+.ui.labeled.icon.huge.buttons .button,
+.ui.labeled.icon.buttons .huge.button,
+.ui.labeled.icon.huge.buttons button,
+.ui.labeled.icon.huge.button,
+.ui.labeled.icon.massive.buttons .button,
+.ui.labeled.icon.buttons .massive.button,
+.ui.labeled.icon.massive.buttons button,
+.ui.labeled.icon.massive.button  {
+  padding-left:6rem !important;
 
-.ui.right.labeled.icon.button  {
-  padding-right:5rem !important;
-  padding-left:1rem !important;
+  > .icon {
+    width:5rem;
+  }
 }
 
+/*.ui.huge.buttons .or,
+.ui.massive.buttons .or {
+  
+} */
+
+
+/*
 .ui.labeled.icon.button  {
   padding-left:5rem !important;
   padding-right:1rem !important;
 }
-
+*/
+/* Right Labeled */
+/*.ui[class*="right labeled"].icon.button {
+  padding-right:5rem !important;
+  padding-left:1rem !important;
+}
+.ui[class*="right labeled"].icon.button > .icon {
+  left: auto;
+  right: 0em;
+  border-radius: 0em @borderRadius @borderRadius 0em;
+  box-shadow: @labeledIconRightShadow;
+}
+*/
 
 /* no compact button in bonaparte */
 .ui.compact.button {
