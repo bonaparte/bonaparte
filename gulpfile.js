@@ -30,7 +30,7 @@ function install(){
   // cd to ui and spawn watcher
   process.chdir("./ui/");
 
-  spawn('gulp', ["build-docs"]).stdout.on('data', function(data) {
+  spawn('gulp', ["build"]).stdout.on('data', function(data) {
     if (data) {
         console.log(data.toString())
     }
