@@ -197,7 +197,7 @@
      Transitions
 --------------------*/
 
-@defaultDuration : 300ms;
+@defaultDuration : 50ms;
 @defaultEasing   : ease-out;
 
 /*-------------------
