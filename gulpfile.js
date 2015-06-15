@@ -48,6 +48,12 @@ function extract(){
 
   gulp.src('./ui/src/theme.config')
     .pipe(gulp.dest('./dist/')); 
+
+  gulp.src('./ui/dist/**/*')
+    .pipe(gulp.dest('./examples/dist')); 
+    
+  gulp.src('./ui/examples/**/*')
+    .pipe(gulp.dest('./examples/examples')); 
 }
 
 ///////////////////////////////////////////////////////////////////////////////
