@@ -24,6 +24,7 @@ button.ui,
     height:auto;
     /*width:@lineHeight - 2rem;*/
     margin:0 1rem 0 0;
+    opacity:0.9;
   }  
   > .icon.right {
     margin:0 0 0 1rem;
@@ -143,7 +144,6 @@ button.ui.big.compact,
 .ui.big.buttons .button, 
 .ui.big.compact.button,
 .ui.big.button {
-  font-size:@fontSize;
   line-height:@lineHeight;
   padding:1.5rem 1rem;
   min-width:4rem;
@@ -190,7 +190,7 @@ button.ui.massive.compact,
 .ui.massive.compact.button,
 .ui.massive.button {
   line-height:@h2Lineheight;
-  padding:0rem 1rem;
+  padding:0.5rem 1rem;
   min-width:5rem;
   min-height:5rem;
 
@@ -209,10 +209,10 @@ button.ui.massive.compact,
 .ui.labeled.icon.buttons .massive.button,
 .ui.labeled.icon.massive.buttons button,
 .ui.labeled.icon.massive.button  {
-  padding-left:6rem !important;
+  padding-left:7rem !important;
 
   > .icon {
-    width:5rem;
+    width:6rem;
   }
 }
 

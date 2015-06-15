@@ -131,8 +131,8 @@
 */
 
 @miniSize        : @h6;
-@tinySize        : @h5;
-@smallSize       : @h5;
+@tinySize        : @h6;
+@smallSize       : 1.1666666667rem;
 @mediumSize      : @h5;
 @largeSize       : @h4;
 @bigSize         : @h4;

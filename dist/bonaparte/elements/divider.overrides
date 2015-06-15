@@ -2,19 +2,33 @@
          Theme Overrides
 *******************************/
 
+.ui.divider,
+.ui.horizontal.divider {
+  font-size:@h6;
+  line-height:@h6Lineheight;
+   > .icon {
+    vertical-align:top;
+  }
+}
+
+.ui.grid > .ui.vertical.divider,
+.ui.vertical.divider {
+  font-size: @h6;
+  
+}
+
 .ui.divider:not(.vertical):not(.horizontal),
 .ui.divider {
   padding:@margin;
   margin:0px;
   border:0; 
   position:relative;
-
+  font-size:@h6;
 }
 
-
-.ui.divider > .icon {
-  vertical-align:top;
-} 
+/*
+.ui.divider
+} */
 
 .ui.hidden.divider:not(.vertical):not(.horizontal),
 .ui.hidden.divider {
@@ -39,26 +53,15 @@
   height:1rem;
 }
 
-h1.ui.horizontal.divider {
-  line-height:@h1Lineheight;
-}
-
-h2.ui.horizontal.divider {
-  line-height:@h2Lineheight;
-}
-h3.ui.horizontal.divider {
-  line-height:@h3Lineheight;
-}
-h4.ui.horizontal.divider {
-  line-height:@h4Lineheight;
-}
-h5.ui.horizontal.divider {
-  line-height:@h5Lineheight;
-}
+h1.ui.horizontal.divider,
+h2.ui.horizontal.divider,
+h3.ui.horizontal.divider,
+h4.ui.horizontal.divider,
+h5.ui.horizontal.divider,
 h6.ui.horizontal.divider {
-  line-height:@h6Lineheight;
+  margin-left:0px !important;
+  margin-right:0px !important;
 }
-
 
 @media only screen and (max-width : (@tabletBreakpoint - 1px)) {
   .ui.stackable.grid .ui.vertical.divider:before,
