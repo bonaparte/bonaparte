@@ -7,7 +7,7 @@
 --------------------*/
 
 @spritePath: "@{imagePath}/flags.png";
-@width: 16px;
-@height: 11px;
+@width: 18px;
+@height: 12px;
 @verticalAlign: baseline;
-@margin: 0.5em;
+@margin: 0.5rem;

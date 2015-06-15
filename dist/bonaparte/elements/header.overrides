@@ -6,10 +6,11 @@
 h1, .h1,
 h1.ui.header,
 h1.ui.dividing.header,
+h1.ui.horizontal.divider,
 h1.ui.header:first-child {
   position:relative;
   font-size : @h1;
-  font-weight:@text-light; 
+  font-weight:@text-light;
   line-height:@h1Lineheight;
   margin:2rem 1rem 0rem 0.25rem; 
   padding:0.5rem 0 1rem 0;
@@ -21,6 +22,7 @@ h1.ui.header:first-child {
 h2, .h2,
 h2.ui.header,
 h2.ui.dividing.header,
+h2.ui.horizontal.divider,
 h2.ui.header:first-child {  
   position:relative;
   font-size : @h2;
@@ -35,6 +37,7 @@ h2.ui.header:first-child {
 h3, .h3,
 h3.ui.header,
 h3.ui.dividing.header,
+h3.ui.horizontal.divider,
 h3.ui.header:first-child {
   position:relative;
   font-size : @h3;
@@ -48,6 +51,7 @@ h3.ui.header:first-child {
 h4, .h4,
 h4.ui.header,
 h4.ui.dividing.header,
+h4.ui.horizontal.divider,
 h4.ui.header:first-child {
   position:relative;
   font-size : @h4;
@@ -61,6 +65,7 @@ h4.ui.header:first-child {
 h5, .h5,
 h5.ui.header,
 h5.ui.dividing.header,
+h5.ui.horizontal.divider,
 h5.ui.header:first-child {
   position:relative;
   font-size : @h5;
@@ -74,6 +79,7 @@ h5.ui.header:first-child {
 h6, .h6,
 h6.ui.header,
 h6.ui.dividing.header,
+h6.ui.horizontal.divider,
 h6.ui.header:first-child {
   position:relative;
   font-size:@h6;
