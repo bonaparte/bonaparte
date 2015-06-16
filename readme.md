@@ -4,7 +4,7 @@
 
 ## SUI Theme
 
-#### Install
+#### Install / Use
 
 - Copy `dist/Bonaparte/` to `your/path/to/SUI/src/themes/`
 - Copy `dist/theme.config` to `your/path/to/SUI/src/`
@@ -17,8 +17,9 @@
 
 ## Development
 
-__DON'T WORK IN `dist/` DIRECTLY.__
+> __One doesn't simply work in `dist/` directly.__ <br>
+> _- Wise Man_
 
 - Work in `ui/` (but don't commit _dirty_ submodules - set to _Assume Unchanged_)
-- Use `gulp watch` to watch `ui/` and keep `dist/` up to date.
 - Use `gulp install` to integrate `dist/` back into `ui/` (after reinstalling/updating ui/)
+- Use `gulp watch` to watch `ui/` and keep `dist/` up to date.
