@@ -7,7 +7,7 @@
 --------------------*/
 
 @verticalMargin: 0rem;
-@horizontalMargin: 1rem;
+@horizontalMargin: 0rem;
 
 /* Style */
 @backgroundColor: @color-light-4;

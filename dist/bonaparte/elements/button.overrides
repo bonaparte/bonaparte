@@ -3,22 +3,51 @@
 *******************************/
 
 
+/*STANDARD*/
 
 button.ui,
-.ui.buttons,
+button.ui.compact,
 .ui.compact.button,
 .ui.button {
-  position:relative;
-  font-size:@fontSize;
-  line-height:@lineHeight;
- /* border:0px;
-  outline:0px;
-  overflow:hidden;*/
-  min-width:4rem;  
-  min-height:4rem;  
+  &, .hidden.content {
+    position:relative;
+    font-size:@fontSize;
+    line-height:@lineHeight;
+
+    margin:0.5rem 0rem;
+
+    vertical-align: middle; /* "baseline" does not align with line grid */  
+
+    padding:1.0833333rem 1rem 0.9188888rem 1rem;
+    min-width:4rem;  
+    min-height:4rem;
+  }
+
   box-shadow: 0px 0px 0px 0px rgba(34, 36, 38, 0.15), 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
-  margin-top:0.5rem;
-  vertical-align: middle; /* "baseline" does not align with line grid */  
+
+
+  + button.ui,
+  + .ui.compact.button,
+  + .ui.button {
+    margin-left:1rem;
+  }
+
+  &.fluid {
+    + button.ui.fluid,
+    + .ui.fluid.buttons,
+    + .ui.fluid.compact.button,
+    + .ui.fluid.button {
+      margin:0.5rem 0;
+
+    }
+  }
+
+  &.animated {
+   .hidden.content {
+     height:4rem;
+     margin-top:-2rem;
+   }
+  }
 
   > .icon {
     height:auto;
@@ -31,16 +60,25 @@ button.ui,
   }
 }
 
+.ui.buttons {
+  padding:0;
 
-/*STANDARD*/
+  box-shadow: 0px 0px 0px 0px rgba(34, 36, 38, 0.15), 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
+  margin:0.5rem 0rem;
 
-button.ui,
-button.ui.compact,
-.ui.buttons .button,
-.ui.compact.button,
-.ui.button {
-  padding:1.0833333rem 1rem 0.9188888rem 1rem;
+  vertical-align: middle; /* "baseline" does not align with line grid */  
+
+  + .ui.buttons {
+    margin-left:1rem;
+  }
+
+  > .ui.button,
+  > button.ui {
+    margin:0 !important;
+
+  }
 }
+
 
 .ui.labeled.icon.buttons .button,
 .ui.labeled.icon.buttons button,
@@ -52,11 +90,37 @@ button.ui.compact,
   }
 }
 
-/*.ui.buttons .or {
+.ui.conditional.buttons {
+
+  .button:first-child,
+  button:first-child {
+    padding-right:2rem;
+  }
+
+  button:not(:first-child):not(:last-child),
+  .button:not(:first-child):not(:last-child) {
+    padding-left:2rem;
+    padding-right:2rem;
+  }
   
+  button:last-child,
+  .button:last-child {
+    padding-left:2rem;
+  }
 
-}*/
-
+  .or {
+    height:4rem;
+    font-size:1.16666667rem;
+  }
+  .or:before {
+    height:3rem;
+    width:3rem;
+    margin-left:-1.5rem;
+    margin-top:-1.5rem;
+    line-height:3rem;
+    font-size:@h5;
+  }
+}
 
 /*MINI & TINY*/
 
@@ -70,11 +134,21 @@ button.ui.tiny.compact,
 .ui.tiny.buttons .button, 
 .ui.tiny.compact.button,
 .ui.tiny.button {
-  line-height:@h6Lineheight;
-  padding:0.25rem 1rem;
-  min-width:2rem;  
-  min-height:2rem;
+  &, .hidden.content {
 
+    line-height:@h6Lineheight;
+    padding:0.25rem 1rem;
+    min-width:2rem;  
+    min-height:2rem;
+  }
+
+  &.animated {
+   .hidden.content {
+     font-size:1em;
+     height:2rem;
+     margin-top:-1rem;
+   }
+  }
   > .icon {/*
     width:2rem;*/
   }  
@@ -94,10 +168,38 @@ button.ui.tiny.compact,
     width:2rem;
   }
 }
-/*.ui.mini.buttons .or,
-.ui.tiny.buttons .or {
+
+.ui.mini.conditional.buttons,
+.ui.tiny.conditional.buttons {
+
+  .button:first-child,
+  button:first-child {
+    padding-right:1.5rem;
+  }
+
+  button:not(:first-child):not(:last-child),
+  .button:not(:first-child):not(:last-child) {
+    padding-left:1.5rem;
+    padding-right:1.5rem;
+  }
   
-} */
+  button:last-child,
+  .button:last-child {
+    padding-left:1.5rem;
+  }
+
+  .or {
+    height:2rem;
+  }
+  .or:before {
+    height:1.5rem;
+    width:1.5rem;
+    margin-left:-0.75rem;
+    margin-top:-0.75rem;
+    line-height:1.5rem;
+    font-size:@h6;
+  }
+} 
 
 
 /*SMALL*/
@@ -107,10 +209,21 @@ button.ui.small.compact,
 .ui.small.buttons .button, 
 .ui.small.compact.button,
 .ui.small.button {
-  line-height:@h5Lineheight;
-  padding:0.5rem 1rem;
-  min-width:3rem;  
-  min-height:3rem;
+  &, .hidden.content {
+
+    line-height:@h5Lineheight;
+    padding:0.5rem 1rem;
+    min-width:3rem;  
+    min-height:3rem;
+  }
+
+  &.animated {
+   .hidden.content {
+     font-size:1em;
+     height:3rem;
+     margin-top:-1.5rem;
+   }
+  }
 
   > .icon {
     /*width:3rem - 2rem;*/
@@ -127,10 +240,36 @@ button.ui.small.compact,
     width:3rem;
   }
 }
-/*.ui.small.buttons .or {
-  
-} */
+.ui.small.conditional.buttons {
 
+  .button:first-child,
+  button:first-child {
+    padding-right:1.5rem;
+  }
+
+  button:not(:first-child):not(:last-child),
+  .button:not(:first-child):not(:last-child) {
+    padding-left:1.5rem;
+    padding-right:1.5rem;
+  }
+  
+  button:last-child,
+  .button:last-child {
+    padding-left:1.5rem;
+  }
+
+  .or {
+    height:3rem;
+  }
+  .or:before {
+    height:2rem;
+    width:2rem;
+    margin-left:-1rem;
+    margin-top:-1rem;
+    line-height:2rem;
+    font-size:1.1666667rem;
+  }
+}
 
 /*LARGE & BIG*/
 
@@ -144,10 +283,20 @@ button.ui.big.compact,
 .ui.big.buttons .button, 
 .ui.big.compact.button,
 .ui.big.button {
-  line-height:@lineHeight;
-  padding:1.5rem 1rem;
-  min-width:4rem;
-  min-height:4rem;
+  &, .hidden.content {
+    line-height:@lineHeight;
+    padding:1.5rem 1rem;
+    min-width:5rem;
+    min-height:5rem;
+  }
+
+  &.animated {
+   .hidden.content {
+     font-size:1em;
+     height:5rem;
+     margin-top:-2.5rem;
+   }
+  }
 
   > .icon {
     /*width:4rem - 2rem;*/
@@ -170,12 +319,37 @@ button.ui.big.compact,
   }
 }
 
-/*.ui.big.buttons .or,
-.ui.large.buttons .or {
+.ui.big.conditional.buttons,
+.ui.large.conditional.buttons {
+
+  .button:first-child,
+  button:first-child {
+    padding-right:2.5rem;
+  }
+
+  button:not(:first-child):not(:last-child),
+  .button:not(:first-child):not(:last-child) {
+    padding-left:2.5rem;
+    padding-right:2.5rem;
+  }
   
-} */
+  button:last-child,
+  .button:last-child {
+    padding-left:2.5rem;
+  }
 
-
+  .or {
+    height:5rem;
+  }
+  .or:before {
+    height:3.5rem;
+    width:3.5rem;
+    margin-left:-1.75rem;
+    margin-top:-1.75rem;
+    line-height:3.5rem;
+    font-size:@h4;
+  }
+}
 
 /*HUGE & MASSIVE*/
 
@@ -189,17 +363,25 @@ button.ui.massive.compact,
 .ui.massive.buttons .button, 
 .ui.massive.compact.button,
 .ui.massive.button {
-  line-height:@h2Lineheight;
-  padding:0.5rem 1rem;
-  min-width:5rem;
-  min-height:5rem;
+  &, .hidden.content {
+    line-height:@h2Lineheight;
+    padding:0.5rem 1rem;
+    min-width:6rem;
+    min-height:6rem;
+  }
+
+  &.animated {
+   .hidden.content {
+     font-size:1em;
+     height:6rem;
+     margin-top:-3rem;
+   }
+  }
 
   > .icon {
     /*width:5rem - 2rem;*/
   }  
 }
-
-
 
 .ui.labeled.icon.huge.buttons .button,
 .ui.labeled.icon.buttons .huge.button,
@@ -216,32 +398,35 @@ button.ui.massive.compact,
   }
 }
 
-/*.ui.huge.buttons .or,
-.ui.massive.buttons .or {
+.ui.huge.conditional.buttons,
+.ui.massive.conditional.buttons {
+
+  .button:first-child,
+  button:first-child {
+    padding-right:3rem;
+  }
+
+  button:not(:first-child):not(:last-child),
+  .button:not(:first-child):not(:last-child) {
+    padding-left:3rem;
+    padding-right:3rem;
+  }
   
-} */
+  button:last-child,
+  .button:last-child {
+    padding-left:3rem;
+  }
 
+  .or {
+    height:6rem;
+  }
+  .or:before {
+    height:4rem;
+    width:4rem;
+    margin-left:-2rem;
+    margin-top:-2rem;
+    line-height:4rem;
+    font-size:@h3;
+  }
+}
 
-/*
-.ui.labeled.icon.button  {
-  padding-left:5rem !important;
-  padding-right:1rem !important;
-}
-*/
-/* Right Labeled */
-/*.ui[class*="right labeled"].icon.button {
-  padding-right:5rem !important;
-  padding-left:1rem !important;
-}
-.ui[class*="right labeled"].icon.button > .icon {
-  left: auto;
-  right: 0em;
-  border-radius: 0em @borderRadius @borderRadius 0em;
-  box-shadow: @labeledIconRightShadow;
-}
-*/
-
-/* no compact button in bonaparte */
-.ui.compact.button {
-  padding:1rem; 
-} 

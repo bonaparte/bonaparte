@@ -924,7 +924,7 @@ strong {
   background-color: #ebebeb;
   color: #1a1a1a;
   font-family: 'Whitney SSm', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  margin: 0em 1rem 0rem 0em;
+  margin: 0em 0rem 0rem 0em;
   padding: 1rem 1rem 1rem;
   text-transform: none;
   text-shadow: none;
@@ -4514,7 +4514,7 @@ strong {
   flex-direction: row;
   font-size: 0em;
   vertical-align: baseline;
-  margin: 0rem 1rem 0em 0em;
+  margin: 0rem 0rem 0em 0em;
 }
 
 .ui.buttons > .button:hover,
@@ -4611,26 +4611,78 @@ strong {
          Theme Overrides
 *******************************/
 
+/*STANDARD*/
+
 button.ui,
-.ui.buttons,
+button.ui.compact,
 .ui.compact.button,
 .ui.button {
+  box-shadow: 0px 0px 0px 0px rgba(34, 36, 38, 0.15), 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
+}
+
+button.ui,
+button.ui.compact,
+.ui.compact.button,
+.ui.button,
+button.ui .hidden.content,
+button.ui.compact .hidden.content,
+.ui.compact.button .hidden.content,
+.ui.button .hidden.content {
   position: relative;
   font-size: 1.333333rem;
   line-height: 2rem;
-  /* border:0px;
-  outline:0px;
-  overflow:hidden;*/
-  min-width: 4rem;
-  min-height: 4rem;
-  box-shadow: 0px 0px 0px 0px rgba(34, 36, 38, 0.15), 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
-  margin-top: 0.5rem;
+  margin: 0.5rem 0rem;
   vertical-align: middle;
   /* "baseline" does not align with line grid */
+  padding: 1.0833333rem 1rem 0.9188888rem 1rem;
+  min-width: 4rem;
+  min-height: 4rem;
+}
+
+button.ui + button.ui,
+button.ui.compact + button.ui,
+.ui.compact.button + button.ui,
+.ui.button + button.ui,
+button.ui + .ui.compact.button,
+button.ui.compact + .ui.compact.button,
+.ui.compact.button + .ui.compact.button,
+.ui.button + .ui.compact.button,
+button.ui + .ui.button,
+button.ui.compact + .ui.button,
+.ui.compact.button + .ui.button,
+.ui.button + .ui.button {
+  margin-left: 1rem;
+}
+
+button.ui.fluid + button.ui.fluid,
+button.ui.compact.fluid + button.ui.fluid,
+.ui.compact.button.fluid + button.ui.fluid,
+.ui.button.fluid + button.ui.fluid,
+button.ui.fluid + .ui.fluid.buttons,
+button.ui.compact.fluid + .ui.fluid.buttons,
+.ui.compact.button.fluid + .ui.fluid.buttons,
+.ui.button.fluid + .ui.fluid.buttons,
+button.ui.fluid + .ui.fluid.compact.button,
+button.ui.compact.fluid + .ui.fluid.compact.button,
+.ui.compact.button.fluid + .ui.fluid.compact.button,
+.ui.button.fluid + .ui.fluid.compact.button,
+button.ui.fluid + .ui.fluid.button,
+button.ui.compact.fluid + .ui.fluid.button,
+.ui.compact.button.fluid + .ui.fluid.button,
+.ui.button.fluid + .ui.fluid.button {
+  margin: 0.5rem 0;
+}
+
+button.ui.animated .hidden.content,
+button.ui.compact.animated .hidden.content,
+.ui.compact.button.animated .hidden.content,
+.ui.button.animated .hidden.content {
+  height: 4rem;
+  margin-top: -2rem;
 }
 
 button.ui > .icon,
-.ui.buttons > .icon,
+button.ui.compact > .icon,
 .ui.compact.button > .icon,
 .ui.button > .icon {
   height: auto;
@@ -4640,20 +4692,27 @@ button.ui > .icon,
 }
 
 button.ui > .icon.right,
-.ui.buttons > .icon.right,
+button.ui.compact > .icon.right,
 .ui.compact.button > .icon.right,
 .ui.button > .icon.right {
   margin: 0 0 0 1rem;
 }
 
-/*STANDARD*/
+.ui.buttons {
+  padding: 0;
+  box-shadow: 0px 0px 0px 0px rgba(34, 36, 38, 0.15), 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
+  margin: 0.5rem 0rem;
+  vertical-align: middle;
+  /* "baseline" does not align with line grid */
+}
 
-button.ui,
-button.ui.compact,
-.ui.buttons .button,
-.ui.compact.button,
-.ui.button {
-  padding: 1.0833333rem 1rem 0.9188888rem 1rem;
+.ui.buttons + .ui.buttons {
+  margin-left: 1rem;
+}
+
+.ui.buttons > .ui.button,
+.ui.buttons > button.ui {
+  margin: 0 !important;
 }
 
 .ui.labeled.icon.buttons .button,
@@ -4662,10 +4721,35 @@ button.ui.compact,
   padding-left: 5rem !important;
 }
 
-/*.ui.buttons .or {
-  
+.ui.conditional.buttons .button:first-child,
+.ui.conditional.buttons button:first-child {
+  padding-right: 2rem;
+}
 
-}*/
+.ui.conditional.buttons button:not(:first-child):not(:last-child),
+.ui.conditional.buttons .button:not(:first-child):not(:last-child) {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.ui.conditional.buttons button:last-child,
+.ui.conditional.buttons .button:last-child {
+  padding-left: 2rem;
+}
+
+.ui.conditional.buttons .or {
+  height: 4rem;
+  font-size: 1.16666667rem;
+}
+
+.ui.conditional.buttons .or:before {
+  height: 3rem;
+  width: 3rem;
+  margin-left: -1.5rem;
+  margin-top: -1.5rem;
+  line-height: 3rem;
+  font-size: 1.33333rem;
+}
 
 /*MINI & TINY*/
 
@@ -4678,11 +4762,35 @@ button.ui.tiny,
 button.ui.tiny.compact,
 .ui.tiny.buttons .button,
 .ui.tiny.compact.button,
-.ui.tiny.button {
+.ui.tiny.button,
+button.ui.mini .hidden.content,
+button.ui.mini.compact .hidden.content,
+.ui.mini.buttons .button .hidden.content,
+.ui.mini.compact.button .hidden.content,
+.ui.mini.button .hidden.content,
+button.ui.tiny .hidden.content,
+button.ui.tiny.compact .hidden.content,
+.ui.tiny.buttons .button .hidden.content,
+.ui.tiny.compact.button .hidden.content,
+.ui.tiny.button .hidden.content {
   line-height: 1.5rem;
   padding: 0.25rem 1rem;
   min-width: 2rem;
   min-height: 2rem;
+}
+
+button.ui.mini.animated .hidden.content,
+button.ui.mini.compact.animated .hidden.content,
+.ui.mini.buttons .button.animated .hidden.content,
+.ui.mini.compact.button.animated .hidden.content,
+.ui.mini.button.animated .hidden.content,
+button.ui.tiny.animated .hidden.content,
+button.ui.tiny.compact.animated .hidden.content,
+.ui.tiny.buttons .button.animated .hidden.content,
+.ui.tiny.compact.button.animated .hidden.content,
+.ui.tiny.button.animated .hidden.content {
+  height: 2rem;
+  margin-top: -1rem;
 }
 
 button.ui.mini > .icon,
@@ -4721,10 +4829,42 @@ button.ui.tiny.compact > .icon,
   width: 2rem;
 }
 
-/*.ui.mini.buttons .or,
-.ui.tiny.buttons .or {
-  
-} */
+.ui.mini.conditional.buttons .button:first-child,
+.ui.tiny.conditional.buttons .button:first-child,
+.ui.mini.conditional.buttons button:first-child,
+.ui.tiny.conditional.buttons button:first-child {
+  padding-right: 1.5rem;
+}
+
+.ui.mini.conditional.buttons button:not(:first-child):not(:last-child),
+.ui.tiny.conditional.buttons button:not(:first-child):not(:last-child),
+.ui.mini.conditional.buttons .button:not(:first-child):not(:last-child),
+.ui.tiny.conditional.buttons .button:not(:first-child):not(:last-child) {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.ui.mini.conditional.buttons button:last-child,
+.ui.tiny.conditional.buttons button:last-child,
+.ui.mini.conditional.buttons .button:last-child,
+.ui.tiny.conditional.buttons .button:last-child {
+  padding-left: 1.5rem;
+}
+
+.ui.mini.conditional.buttons .or,
+.ui.tiny.conditional.buttons .or {
+  height: 2rem;
+}
+
+.ui.mini.conditional.buttons .or:before,
+.ui.tiny.conditional.buttons .or:before {
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-left: -0.75rem;
+  margin-top: -0.75rem;
+  line-height: 1.5rem;
+  font-size: 0.91667rem;
+}
 
 /*SMALL*/
 
@@ -4732,11 +4872,25 @@ button.ui.small,
 button.ui.small.compact,
 .ui.small.buttons .button,
 .ui.small.compact.button,
-.ui.small.button {
+.ui.small.button,
+button.ui.small .hidden.content,
+button.ui.small.compact .hidden.content,
+.ui.small.buttons .button .hidden.content,
+.ui.small.compact.button .hidden.content,
+.ui.small.button .hidden.content {
   line-height: 2rem;
   padding: 0.5rem 1rem;
   min-width: 3rem;
   min-height: 3rem;
+}
+
+button.ui.small.animated .hidden.content,
+button.ui.small.compact.animated .hidden.content,
+.ui.small.buttons .button.animated .hidden.content,
+.ui.small.compact.button.animated .hidden.content,
+.ui.small.button.animated .hidden.content {
+  height: 3rem;
+  margin-top: -1.5rem;
 }
 
 button.ui.small > .icon,
@@ -4761,9 +4915,34 @@ button.ui.small.compact > .icon,
   width: 3rem;
 }
 
-/*.ui.small.buttons .or {
-  
-} */
+.ui.small.conditional.buttons .button:first-child,
+.ui.small.conditional.buttons button:first-child {
+  padding-right: 1.5rem;
+}
+
+.ui.small.conditional.buttons button:not(:first-child):not(:last-child),
+.ui.small.conditional.buttons .button:not(:first-child):not(:last-child) {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.ui.small.conditional.buttons button:last-child,
+.ui.small.conditional.buttons .button:last-child {
+  padding-left: 1.5rem;
+}
+
+.ui.small.conditional.buttons .or {
+  height: 3rem;
+}
+
+.ui.small.conditional.buttons .or:before {
+  height: 2rem;
+  width: 2rem;
+  margin-left: -1rem;
+  margin-top: -1rem;
+  line-height: 2rem;
+  font-size: 1.1666667rem;
+}
 
 /*LARGE & BIG*/
 
@@ -4776,11 +4955,36 @@ button.ui.big,
 button.ui.big.compact,
 .ui.big.buttons .button,
 .ui.big.compact.button,
-.ui.big.button {
+.ui.big.button,
+button.ui.large .hidden.content,
+button.ui.large.compact .hidden.content,
+.ui.large.buttons .button .hidden.content,
+.ui.large.compact.button .hidden.content,
+.ui.large.button .hidden.content,
+button.ui.big .hidden.content,
+button.ui.big.compact .hidden.content,
+.ui.big.buttons .button .hidden.content,
+.ui.big.compact.button .hidden.content,
+.ui.big.button .hidden.content {
   line-height: 2rem;
   padding: 1.5rem 1rem;
-  min-width: 4rem;
-  min-height: 4rem;
+  min-width: 5rem;
+  min-height: 5rem;
+}
+
+button.ui.large.animated .hidden.content,
+button.ui.large.compact.animated .hidden.content,
+.ui.large.buttons .button.animated .hidden.content,
+.ui.large.compact.button.animated .hidden.content,
+.ui.large.button.animated .hidden.content,
+button.ui.big.animated .hidden.content,
+button.ui.big.compact.animated .hidden.content,
+.ui.big.buttons .button.animated .hidden.content,
+.ui.big.compact.button.animated .hidden.content,
+.ui.big.button.animated .hidden.content {
+  font-size: 1em;
+  height: 5rem;
+  margin-top: -2.5rem;
 }
 
 button.ui.large > .icon,
@@ -4818,10 +5022,42 @@ button.ui.big.compact > .icon,
   width: 5rem;
 }
 
-/*.ui.big.buttons .or,
-.ui.large.buttons .or {
-  
-} */
+.ui.big.conditional.buttons .button:first-child,
+.ui.large.conditional.buttons .button:first-child,
+.ui.big.conditional.buttons button:first-child,
+.ui.large.conditional.buttons button:first-child {
+  padding-right: 2.5rem;
+}
+
+.ui.big.conditional.buttons button:not(:first-child):not(:last-child),
+.ui.large.conditional.buttons button:not(:first-child):not(:last-child),
+.ui.big.conditional.buttons .button:not(:first-child):not(:last-child),
+.ui.large.conditional.buttons .button:not(:first-child):not(:last-child) {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+.ui.big.conditional.buttons button:last-child,
+.ui.large.conditional.buttons button:last-child,
+.ui.big.conditional.buttons .button:last-child,
+.ui.large.conditional.buttons .button:last-child {
+  padding-left: 2.5rem;
+}
+
+.ui.big.conditional.buttons .or,
+.ui.large.conditional.buttons .or {
+  height: 5rem;
+}
+
+.ui.big.conditional.buttons .or:before,
+.ui.large.conditional.buttons .or:before {
+  height: 3.5rem;
+  width: 3.5rem;
+  margin-left: -1.75rem;
+  margin-top: -1.75rem;
+  line-height: 3.5rem;
+  font-size: 1.75rem;
+}
 
 /*HUGE & MASSIVE*/
 
@@ -4834,11 +5070,36 @@ button.ui.massive,
 button.ui.massive.compact,
 .ui.massive.buttons .button,
 .ui.massive.compact.button,
-.ui.massive.button {
+.ui.massive.button,
+button.ui.huge .hidden.content,
+button.ui.huge.compact .hidden.content,
+.ui.huge.buttons .button .hidden.content,
+.ui.huge.compact.button .hidden.content,
+.ui.huge.button .hidden.content,
+button.ui.massive .hidden.content,
+button.ui.massive.compact .hidden.content,
+.ui.massive.buttons .button .hidden.content,
+.ui.massive.compact.button .hidden.content,
+.ui.massive.button .hidden.content {
   line-height: 5rem;
   padding: 0.5rem 1rem;
-  min-width: 5rem;
-  min-height: 5rem;
+  min-width: 6rem;
+  min-height: 6rem;
+}
+
+button.ui.huge.animated .hidden.content,
+button.ui.huge.compact.animated .hidden.content,
+.ui.huge.buttons .button.animated .hidden.content,
+.ui.huge.compact.button.animated .hidden.content,
+.ui.huge.button.animated .hidden.content,
+button.ui.massive.animated .hidden.content,
+button.ui.massive.compact.animated .hidden.content,
+.ui.massive.buttons .button.animated .hidden.content,
+.ui.massive.compact.button.animated .hidden.content,
+.ui.massive.button.animated .hidden.content {
+  font-size: 1em;
+  height: 6rem;
+  margin-top: -3rem;
 }
 
 button.ui.huge > .icon,
@@ -4876,36 +5137,41 @@ button.ui.massive.compact > .icon,
   width: 6rem;
 }
 
-/*.ui.huge.buttons .or,
-.ui.massive.buttons .or {
-  
-} */
-
-/*
-.ui.labeled.icon.button  {
-  padding-left:5rem !important;
-  padding-right:1rem !important;
+.ui.huge.conditional.buttons .button:first-child,
+.ui.massive.conditional.buttons .button:first-child,
+.ui.huge.conditional.buttons button:first-child,
+.ui.massive.conditional.buttons button:first-child {
+  padding-right: 3rem;
 }
-*/
 
-/* Right Labeled */
-
-/*.ui[class*="right labeled"].icon.button {
-  padding-right:5rem !important;
-  padding-left:1rem !important;
+.ui.huge.conditional.buttons button:not(:first-child):not(:last-child),
+.ui.massive.conditional.buttons button:not(:first-child):not(:last-child),
+.ui.huge.conditional.buttons .button:not(:first-child):not(:last-child),
+.ui.massive.conditional.buttons .button:not(:first-child):not(:last-child) {
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
-.ui[class*="right labeled"].icon.button > .icon {
-  left: auto;
-  right: 0em;
-  border-radius: 0em @borderRadius @borderRadius 0em;
-  box-shadow: @labeledIconRightShadow;
+
+.ui.huge.conditional.buttons button:last-child,
+.ui.massive.conditional.buttons button:last-child,
+.ui.huge.conditional.buttons .button:last-child,
+.ui.massive.conditional.buttons .button:last-child {
+  padding-left: 3rem;
 }
-*/
 
-/* no compact button in bonaparte */
+.ui.huge.conditional.buttons .or,
+.ui.massive.conditional.buttons .or {
+  height: 6rem;
+}
 
-.ui.compact.button {
-  padding: 1rem;
+.ui.huge.conditional.buttons .or:before,
+.ui.massive.conditional.buttons .or:before {
+  height: 4rem;
+  width: 4rem;
+  margin-left: -2rem;
+  margin-top: -2rem;
+  line-height: 4rem;
+  font-size: 2.16667rem;
 }
 
 /*******************************
