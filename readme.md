@@ -10,6 +10,11 @@
 - Copy `dist/theme.config` to `your/path/to/SUI/src/`
 - Build SUI.
 
+#### Build Docs 
+
+- Run `gulp install`
+- Follow Instructions: https://github.com/Semantic-Org/Semantic-UI-Docs
+
 ## Development
 
 __DON'T WORK IN `dist/` DIRECTLY.__
