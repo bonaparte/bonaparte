@@ -1,11 +1,11 @@
 [submodule "ui"]
    path = ui
-   url = git://github.com/Semantic-Org/Semantic-UI.git
+   url = https://github.com/Semantic-Org/Semantic-UI.git
    ignore = dirty
    branch = next
 
 [submodule "docs"]
    path = docs
-   url = git://github.com/Semantic-Org/Semantic-UI-Docs.git
+   url = https://github.com/Semantic-Org/Semantic-UI-Docs.git
    ignore = dirty
    branch = next
