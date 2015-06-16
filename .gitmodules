@@ -1,0 +1,9 @@
+[submodule "ui"]
+   path = ui
+   url = git://github.com/Semantic-Org/Semantic-UI.git#next
+   ignore = dirty
+
+[submodule "docs"]
+   path = docs
+   url = git://github.com/Semantic-Org/Semantic-UI-Docs.git#next
+   ignore = dirty
