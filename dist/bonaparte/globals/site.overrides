@@ -15,7 +15,7 @@ p.small.text {
   margin:0rem 1rem 0rem 0.9166667rem; 
 } 
 
-small, .small.text {
+small, .small.text { 
   font-weight:@text-book;
   font-size:0.91667rem;
   line-height:1.5rem;

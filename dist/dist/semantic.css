@@ -4616,6 +4616,13 @@ strong {
 button.ui,
 button.ui.compact,
 .ui.compact.button,
+.ui.button {
+  box-shadow: 0px 0px 0px 0px rgba(34, 36, 38, 0.15), 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
+}
+
+button.ui,
+button.ui.compact,
+.ui.compact.button,
 .ui.button,
 button.ui .hidden.content,
 button.ui.compact .hidden.content,
@@ -4627,7 +4634,6 @@ button.ui.compact .hidden.content,
   margin: 0.5rem 0rem;
   vertical-align: middle;
   /* "baseline" does not align with line grid */
-  box-shadow: 0px 0px 0px 0px rgba(34, 36, 38, 0.15), 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
   padding: 1.0833333rem 1rem 0.9188888rem 1rem;
   min-width: 4rem;
   min-height: 4rem;
@@ -4707,6 +4713,7 @@ button.ui.compact > .icon.right,
 .ui.buttons > .ui.button,
 .ui.buttons > button.ui {
   margin: 0 !important;
+  box-shadow: 0px 0px 0px 0px rgba(34, 36, 38, 0.15), 0px 0px 0px 0 rgba(34, 36, 38, 0.15);
 }
 
 .ui.labeled.icon.buttons .button,
