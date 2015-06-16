@@ -4,6 +4,10 @@
 
 .grid .ui.container {
   background-image:url("@{assetsPath}/site/images/grid.png"); 
-  padding:0 1rem;
+
+}
+.ui.container {
+  padding:0px 1rem;
+
 }
 

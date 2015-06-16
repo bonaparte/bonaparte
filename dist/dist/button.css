@@ -3399,6 +3399,7 @@ button.ui.tiny.compact.animated .hidden.content,
 .ui.tiny.buttons .button.animated .hidden.content,
 .ui.tiny.compact.button.animated .hidden.content,
 .ui.tiny.button.animated .hidden.content {
+  font-size: 1em;
   height: 2rem;
   margin-top: -1rem;
 }
@@ -3488,6 +3489,7 @@ button.ui.small.compact.animated .hidden.content,
 .ui.small.buttons .button.animated .hidden.content,
 .ui.small.compact.button.animated .hidden.content,
 .ui.small.button.animated .hidden.content {
+  font-size: 1em;
   height: 3rem;
   margin-top: -1.5rem;
 }

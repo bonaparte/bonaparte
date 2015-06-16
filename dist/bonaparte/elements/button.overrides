@@ -348,7 +348,7 @@ button.ui.big.compact,
     margin-top:-1.75rem;
     line-height:3.5rem;
     font-size:@h4;
-  }
+  } 
 }
 
 /*HUGE & MASSIVE*/
