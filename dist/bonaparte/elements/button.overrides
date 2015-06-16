@@ -75,6 +75,7 @@ button.ui.compact,
   > .ui.button,
   > button.ui {
     margin:0 !important;
+    box-shadow: 0px 0px 0px 0px rgba(34, 36, 38, 0.15), 0px 0px 0px 0 rgba(34, 36, 38, 0.15);
 
   }
 }
