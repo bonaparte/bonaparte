@@ -17,7 +17,8 @@
 
 ## Development
 
-__DON'T WORK IN `dist/` DIRECTLY.__
+> __One doesn't simply work in `dist/` directly.__ <br>
+> _- Wise Man_
 
 - Work in `ui/` (but don't commit _dirty_ submodules - set to _Assume Unchanged_)
 - Use `gulp install` to integrate `dist/` back into `ui/` (after reinstalling/updating ui/)
