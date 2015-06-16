@@ -1,10 +1,7 @@
-theme
 
 node_modules/
 
 .DS_Store
 
-Semantic-UI-next/dist
-SUI
 ui
 docs
