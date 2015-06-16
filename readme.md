@@ -4,7 +4,7 @@
 
 ## SUI Theme
 
-#### Install
+#### Install / Use
 
 - Copy `dist/Bonaparte/` to `your/path/to/SUI/src/themes/`
 - Copy `dist/theme.config` to `your/path/to/SUI/src/`
