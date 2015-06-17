@@ -1,0 +1,56 @@
+
+.swatch {
+  position:absolute;
+  width:100px;
+  height:100px;
+
+}
+.a {  
+  top:20px;
+  left:20px;
+}
+.b { 
+  top:120px;
+  left:20px;
+} 
+
+.one{
+  left:20px;
+}
+.two{
+  left:120px;
+}
+.three{
+  left:220px;
+}
+.four{
+  left:320px;
+}
+.five{
+  left:420px;
+}
+.six{
+  left:520px;
+}
+
+.dark0 {
+  background-color:#000000;
+}
+
+
+.generateLighter(@steps, @minO, @maxO, @i: 1) when (@i =< @steps) {
+  @step : (@maxO - @minO) / @steps;
+  
+  @thisOpacity : @step*@i;
+
+  .lighter-@{i} {
+    background-color:#ffffff;
+    opacity:@minO + @thisOpacity; 
+
+    .generateLighter((@steps - 1), @minO + @thisOpacity, @maxO);
+  }
+  .generateLighter(@steps, @minO, @maxO, (@i + 1));
+}
+
+
+.generateLighter(6, 0, 0.3);
