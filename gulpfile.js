@@ -26,6 +26,9 @@ function install(){
   gulp.src('./dist/theme.config')
     .pipe(gulp.dest('./ui/src')); 
 
+  gulp.src('./dist/semantic.json')
+    .pipe(gulp.dest('./ui')); 
+
  
   // cd to ui and spawn watcher
   process.chdir("./ui/");
@@ -38,7 +41,7 @@ function install(){
   });
 
   build.on("close", function(){
-    gulp.start("extract");
+    gulp.start("extract");x
   });
 }
 
@@ -54,6 +57,9 @@ function extract(){
   gulp.src('./ui/src/theme.config')
     .pipe(gulp.dest('./dist/')); 
 
+  gulp.src('./ui/semantic.json')
+    .pipe(gulp.dest('./dist')); 
+
   gulp.src('./ui/dist/**/*')
     .pipe(gulp.dest('./dist/dist'));
 }
@@ -65,14 +71,7 @@ function watch(){
   // spawn watcher
   spawn('gulp', ["watchBP"]).stdout.on('data', function(data) {
     if (data) {
-        console.log(data.toString())
-    }
-  });
 
-  // cd to ui and spawn watcher
-  process.chdir("./ui/");
-
-  spawn('gulp', ["watch"]).stdout.on('data', function(data) {
     if (data) {
         console.log(data.toString())
     }
