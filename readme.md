@@ -6,13 +6,18 @@
 
 #### Install / Use
 
-- Copy `dist/Bonaparte/` to `your/path/to/SUI/src/themes/`
-- Copy `dist/theme.config` to `your/path/to/SUI/src/`
-- Build SUI.
+- Download / Clone Repository
+- Use files in `dist/dist/` in your project.
+
+#### Build
+
+- Run `npm install`
+- Or if Installed : `gulp build` 
 
 #### Build Docs 
 
-- Run `gulp install`
+- Build Bonaparte.
+- Run `npm install` in `docs/`
 - Follow Instructions: https://github.com/Semantic-Org/Semantic-UI-Docs
 
 ## Development
@@ -20,6 +25,6 @@
 > __One doesn't simply work in `dist/` directly.__ <br>
 > _- Wise Man_
 
-- Work in `ui/` (but don't commit _dirty_ submodules - set to _Assume Unchanged_)
-- Use `gulp install` to integrate `dist/` back into `ui/` (after reinstalling/updating ui/)
-- Use `gulp watch` to watch `ui/` and keep `dist/` up to date.
+- Build Bonaparte 
+- Work in `ui/`
+- Run `gulp watch` to watch `ui/` and keep `dist/` up to date.
