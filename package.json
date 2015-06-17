@@ -5,6 +5,10 @@
     "gulp": "*"
   },
 
+  "scripts": {
+    "install" : "cd ui/ ; npm install; cd .. ; gulp build ;"
+  },
+
   "engines": {
     "node": ">=0.12.x"
   }

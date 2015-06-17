@@ -6,7 +6,7 @@ var spawn = require('child_process').spawn;
 ///////////////////////////////////////////////////////////////////////////////
 
 gulp.task("default", ["watch"]);
-gulp.task("install", install);
+gulp.task("build", build);
 gulp.task("watch", ["extract"], watch);
 gulp.task("watchBP", watchBP);
 gulp.task("extract", extract);
@@ -15,7 +15,7 @@ gulp.task("extract", extract);
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-function install(){
+function build(){
 
   gulp.src('./dist/bonaparte/**/*')
     .pipe(gulp.dest('./ui/src/themes/bonaparte')); 
