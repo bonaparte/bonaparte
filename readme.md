@@ -10,7 +10,7 @@
 ### Build
 
 - Run `npm install` (select _No_ for all options for fastest result)
-- Or if Installed : `gulp build` 
+- If already Installed: Run `gulp build` 
 
 ### Build Docs 
 
