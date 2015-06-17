@@ -30,10 +30,15 @@ function install(){
   // cd to ui and spawn watcher
   process.chdir("./ui/");
 
-  spawn('gulp', ["build"]).stdout.on('data', function(data) {
+  var build = spawn('gulp', ["build"]);
+  build.stdout.on('data', function(data) {
     if (data) {
         console.log(data.toString())
     }
+  });
+
+  build.on("close", function(){
+    gulp.start("extract");
   });
 }
 
@@ -63,7 +68,6 @@ function watch(){
         console.log(data.toString())
     }
   });
-  
 
   // cd to ui and spawn watcher
   process.chdir("./ui/");
@@ -78,9 +82,11 @@ function watch(){
 
 ///////////////////////////////////////////////////////////////////////////////
 
-
 function watchBP(){
 
   gulp.watch(["./ui/src/themes/bonaparte/**/*",'./ui/examples/**/*', './ui/src/theme.config'], ["extract"]);
 
 }
+
+
+
