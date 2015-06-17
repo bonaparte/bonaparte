@@ -2,27 +2,27 @@
 
 [DEMO Kitchen-Sink](https://github.dowjones.net/pages/adrianp/bonaparte/dist/examples/kitchen-sink)
 
-### Install / Use
+### Use
 
-- Download / Clone Repository
+- Download / Clone Repository.
 - Use files in `dist/dist/` in your project.
 
-### Build
+### Install / Build
 
-- Run `npm install` (select _No_ for all options for fastest result)
-- If already Installed: Run `gulp build` 
+- Run `npm install`. (select _No_ for all options for fastest result)
+- If already Installed: Run `gulp build`.
 
 ### Build Docs 
 
-- Build Bonaparte.
-- Run `npm install` in `docs/`
-- Follow Instructions: https://github.com/Semantic-Org/Semantic-UI-Docs
+- Install / Build Bonaparte.
+- Run `npm install` in `docs/`.
+- Follow Instructions: https://github.com/Semantic-Org/Semantic-UI-Docs.
 
 ### Development
 
 > __One doesn't simply work in `dist/` directly.__ <br>
 > _- Wise Man_
 
-- Build Bonaparte 
-- Work in `ui/`
+- Install / Build Bonaparte.
 - Run `gulp watch` to watch `ui/` and keep `dist/` up to date.
+- Work in `ui/`. (`./ui/src/themes/bonaparte/`)
