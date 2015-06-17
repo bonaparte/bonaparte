@@ -41,7 +41,7 @@ function install(){
   });
 
   build.on("close", function(){
-    gulp.start("extract");x
+    gulp.start("extract");
   });
 }
 
