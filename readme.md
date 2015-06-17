@@ -25,4 +25,4 @@
 
 - Install / Build Bonaparte.
 - Run `gulp watch` to watch `ui/` and keep `dist/` up to date.
-- Work in `ui/`. (`./ui/src/themes/bonaparte/`)
+- Work in `ui/`. _( Theme: `./ui/src/themes/bonaparte/` Examples: `.ui/examples/` )_
