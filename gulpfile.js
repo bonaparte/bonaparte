@@ -70,7 +70,6 @@ function watch(){
 
   // spawn watcher
   spawn('gulp', ["watchBP"]).stdout.on('data', function(data) {
-    if (data) {
 
     if (data) {
         console.log(data.toString())
