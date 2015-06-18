@@ -3,7 +3,7 @@ toolbar-bonaparte {
   position:relative;
   display:block;
   background-color:red;
-  height:50%;
+  height:100%;
 
   overflow:hidden; 
   _overflow:visible; 
@@ -12,12 +12,24 @@ toolbar-bonaparte {
 
 
 
+content-bonaparte {
+  position:relative;
+  display:block;
+
+  overflow:hidden; 
+  _overflow:visible; 
+  zoom:1;
+
+  background-color:yellow;
+}
+
+/*SIDEBAR*/
+
 sidebar-bonaparte {
   position:relative;
   display:block;
   background-color:teal;
 }
-
 
 sidebar-bonaparte,
 toolbar-bonaparte[sidebar="left"] sidebar-bonaparte {
@@ -45,6 +57,7 @@ toolbar-bonaparte[sidebar="top"] {
     top:0rem;
   }
 }
+
 toolbar-bonaparte[sidebar="bottom"] {
   padding:0 0 4rem 0;
 
@@ -56,14 +69,103 @@ toolbar-bonaparte[sidebar="bottom"] {
     bottom:0rem;
   }
 }
-content-bonaparte {
-  position:relative;
+
+
+/*CORNERSTONE*/
+
+cornerstone-bonaparte {  
+  position:absolute;
   display:block;
-  height:100%;
+  background-color:purple;
+  width:4rem;
+  height:4rem;
+  top:0px;
+  left:0px;
+  z-index:5
+}
+
+toolbar-bonaparte[cornerstone~="bottom"] {
+  cornerstone-bonaparte {
+    bottom:0px;
+    top:auto;
+  }
+}
+
+
+toolbar-bonaparte[cornerstone~="top"] {
+  cornerstone-bonaparte {
+    top:0px;
+    bottom:auto;
+  }
+}
+
+toolbar-bonaparte[cornerstone~="left"] {
+  cornerstone-bonaparte {
+    left:0px;
+    right:auto;
+  }
+}
+
+toolbar-bonaparte[cornerstone~="right"] {
+  cornerstone-bonaparte {
+    right:0px;
+    left:auto;
+  }
+}
+
+
+/*PANEL*/
+
+panel-bonaparte {
+  display:block;
+  position:relative;
+  background-color:#ffffff;
+
 
   overflow:hidden; 
   _overflow:visible; 
   zoom:1;
-
-  background-color:yellow;
 }
+
+
+panel-bonaparte[position="left"]{
+  float:left;
+  height:100%;
+  width:200px;
+  opacity:0.70;
+}
+
+panel-bonaparte[position="right"]{
+  float:right;
+  height:100%;
+  width:200px;
+  opacity:0.70;
+}
+
+
+panel-bonaparte[position="top"]{
+  height:100%;
+  width:auto;
+  height:200px;
+  opacity:0.30;
+}
+
+
+panel-bonaparte[position="bottom"]{
+  position:absolute;
+  height:100%;
+  width:auto;
+  height:200px;
+  opacity:0.30;
+  bottom:0px;
+
+}
+
+
+
+
+
+
+
+
+
