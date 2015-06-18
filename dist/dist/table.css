@@ -44,8 +44,8 @@
 /* Table Content */
 .ui.table th,
 .ui.table td {
-  -webkit-transition: background 300ms ease-out, border-color 300ms ease-out, color 300ms ease-out;
-          transition: background 300ms ease-out, border-color 300ms ease-out, color 300ms ease-out;
+  -webkit-transition: background 50ms ease-out, border-color 50ms ease-out, color 50ms ease-out;
+          transition: background 50ms ease-out, border-color 50ms ease-out, color 50ms ease-out;
 }
 
 /* Headers */
@@ -57,7 +57,7 @@
   background: #f9fafb;
   text-align: inherit;
   color: #1a1a1a;
-  padding: 1.33333333em 0.91666667em;
+  padding: 1.16666667em 0.91666667em;
   vertical-align: inherit;
   font-style: none;
   font-weight: bold;

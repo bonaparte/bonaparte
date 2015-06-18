@@ -22,8 +22,8 @@
   padding: 1em 1.5em;
   line-height: 2rem;
   color: #1a1a1a;
-  -webkit-transition: opacity 300ms ease-out, color 300ms ease-out, background 300ms ease-out, box-shadow 300ms ease-out;
-          transition: opacity 300ms ease-out, color 300ms ease-out, background 300ms ease-out, box-shadow 300ms ease-out;
+  -webkit-transition: opacity 50ms ease-out, color 50ms ease-out, background 50ms ease-out, box-shadow 50ms ease-out;
+          transition: opacity 50ms ease-out, color 50ms ease-out, background 50ms ease-out, box-shadow 50ms ease-out;
   border-radius: 0em;
   box-shadow: 0px 0px 0px 1px rgba(34, 36, 38, 0.22) inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
 }
@@ -111,8 +111,8 @@
   top: 0.5em;
   right: 0.5em;
   opacity: 0.7;
-  -webkit-transition: opacity 300ms ease-out;
-          transition: opacity 300ms ease-out;
+  -webkit-transition: opacity 50ms ease-out;
+          transition: opacity 50ms ease-out;
 }
 .ui.message > .close.icon:hover {
   opacity: 1;
@@ -436,7 +436,7 @@
 ---------------*/
 
 .ui.small.message {
-  font-size: 1.33333333em;
+  font-size: 1.16666667em;
 }
 .ui.message {
   font-size: 1.33333333em;

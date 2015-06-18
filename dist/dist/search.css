@@ -32,8 +32,8 @@
   border: 1px solid rgba(34, 36, 38, 0.15);
   color: #1a1a1a;
   box-shadow: 0em 0em 0em 0em transparent inset;
-  -webkit-transition: background-color 300ms ease-out, color 300ms ease-out, box-shadow 300ms ease-out, border-color 300ms ease-out;
-          transition: background-color 300ms ease-out, color 300ms ease-out, box-shadow 300ms ease-out, border-color 300ms ease-out;
+  -webkit-transition: background-color 50ms ease-out, color 50ms ease-out, box-shadow 50ms ease-out, border-color 50ms ease-out;
+          transition: background-color 50ms ease-out, color 50ms ease-out, box-shadow 50ms ease-out, border-color 50ms ease-out;
 }
 .ui.search .prompt {
   border-radius: 500rem;
@@ -63,8 +63,15 @@
   margin-top: 0.5em;
   width: 18em;
   border-radius: 0em;
-  box-shadow: 0px 1px 3px 1px rgba(34, 36, 38, 0.15);
+  box-shadow: 0px 2px 4px 0px rgba(34, 36, 38, 0.1), 0px 0px 10px 0px rgba(34, 36, 38, 0.05);
+  border: 1px solid #d4d4d5;
   z-index: 998;
+}
+.ui.search > .results > :first-child {
+  border-radius: 0em 0em 0em 0em;
+}
+.ui.search > .results > :last-child {
+  border-radius: 0em 0em 0em 0em;
 }
 
 /*--------------
@@ -82,7 +89,7 @@
   border-bottom: 1px solid rgba(34, 36, 38, 0.1);
 }
 .ui.search > .results .result:last-child {
-  border-bottom: none;
+  border-bottom: none !important;
 }
 
 /* Image */
@@ -116,7 +123,7 @@
 }
 .ui.search > .results .result .description {
   margin-top: 0;
-  font-size: 1.33333333em;
+  font-size: 1.16666667em;
   color: rgba(0, 0, 0, 0.4);
 }
 .ui.search > .results .result .price {
@@ -133,7 +140,7 @@
 }
 .ui.search > .results > .message .header {
   font-family: 'Whitney SSm', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  font-size: 1em;
+  font-size: 1.33333333rem;
   font-weight: bold;
   color: #1a1a1a;
 }
@@ -148,7 +155,7 @@
   display: block;
   border-top: none;
   background: #f3f4f5;
-  padding: 1.33333333em 1.33333333em;
+  padding: 1.16666667em 1.33333333em;
   color: #1a1a1a;
   font-weight: bold;
   text-align: center;
@@ -159,6 +166,16 @@
             States
 *******************************/
 
+
+/*--------------------
+       Focus
+---------------------*/
+
+.ui.search > .prompt:focus {
+  border-color: rgba(34, 36, 38, 0.3);
+  background: #ffffff;
+  color: rgba(0, 0, 0, 0.95);
+}
 
 /*--------------------
        Loading
@@ -210,16 +227,16 @@
       Active
 ---------------*/
 
-.ui.search > .results .category.active {
+.ui.category.search > .results .category.active {
   background: #f3f4f5;
 }
-.ui.search > .results .category.active > .name {
+.ui.category.search > .results .category.active > .name {
   color: #1a1a1a;
 }
 .ui.search > .results .result.active,
 .ui.category.search > .results .category .result.active {
   position: relative;
-  border-left-color: transparent;
+  border-left-color: rgba(34, 36, 38, 0.1);
   background: #f3f4f5;
   box-shadow: none;
 }
@@ -248,12 +265,22 @@
 .ui.category.search > .results .category {
   background: #f3f4f5;
   box-shadow: none;
-  border-bottom: 1px solid rgba(34, 36, 38, 0.15);
-  -webkit-transition: background 0.2s ease, border-color 0.2s ease;
-          transition: background 0.2s ease, border-color 0.2s ease;
+  border-bottom: 1px solid rgba(34, 36, 38, 0.1);
+  -webkit-transition: background 50ms ease-out, border-color 50ms ease-out;
+          transition: background 50ms ease-out, border-color 50ms ease-out;
 }
+
+/* Last Category */
 .ui.category.search > .results .category:last-child {
   border-bottom: none;
+}
+
+/* First / Last */
+.ui.category.search > .results .category:first-child .name + .result {
+  border-radius: 0em 0em 0em 0em;
+}
+.ui.category.search > .results .category:last-child .result:last-child {
+  border-radius: 0em 0em 0em 0em;
 }
 
 /* Category Result */
@@ -262,18 +289,18 @@
   margin-left: 100px;
   border-left: 1px solid rgba(34, 36, 38, 0.15);
   border-bottom: 1px solid rgba(34, 36, 38, 0.1);
-  -webkit-transition: background 0.2s ease, border-color 0.2s ease;
-          transition: background 0.2s ease, border-color 0.2s ease;
+  -webkit-transition: background 50ms ease-out, border-color 50ms ease-out;
+          transition: background 50ms ease-out, border-color 50ms ease-out;
   padding: 0.91666667em 1.75em;
 }
-.ui.category.search > .results .category .result:last-child {
+.ui.category.search > .results .category:last-child .result:last-child {
   border-bottom: none;
 }
 
 /* Category Result Name */
 .ui.category.search > .results .category > .name {
   width: 100px;
-  background: #f3f4f5;
+  background: transparent;
   font-family: 'Whitney SSm', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-size: 1em;
   float: 1em;
@@ -315,10 +342,10 @@
 ---------------*/
 
 .ui.search {
-  font-size: 1em;
+  font-size: 1.33333333rem;
 }
 .ui.large.search {
-  font-size: 1.1em;
+  font-size: 1.75rem;
 }
 
 

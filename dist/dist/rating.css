@@ -48,8 +48,8 @@
   cursor: pointer;
   width: 1.25em;
   height: auto;
-  -webkit-transition: opacity 300ms ease-out, background 300ms ease-out, text-shadow 300ms ease-out, color 300ms ease-out;
-          transition: opacity 300ms ease-out, background 300ms ease-out, text-shadow 300ms ease-out, color 300ms ease-out;
+  -webkit-transition: opacity 50ms ease-out, background 50ms ease-out, text-shadow 50ms ease-out, color 50ms ease-out;
+          transition: opacity 50ms ease-out, background 50ms ease-out, text-shadow 50ms ease-out, color 50ms ease-out;
 }
 
 
@@ -177,10 +177,10 @@
   font-size: 0.91666667rem;
 }
 .ui.tiny.rating .icon {
-  font-size: 1.33333333rem;
+  font-size: 0.91666667rem;
 }
 .ui.small.rating .icon {
-  font-size: 1.33333333rem;
+  font-size: 1.16666667rem;
 }
 .ui.rating .icon {
   font-size: 1.33333333rem;

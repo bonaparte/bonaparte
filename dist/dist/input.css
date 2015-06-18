@@ -44,8 +44,8 @@
   border: 1px solid rgba(34, 36, 38, 0.15);
   color: #1a1a1a;
   border-radius: 0em;
-  -webkit-transition: background-color 300ms ease-out, box-shadow 300ms ease-out, border-color 300ms ease-out;
-          transition: background-color 300ms ease-out, box-shadow 300ms ease-out, border-color 300ms ease-out;
+  -webkit-transition: background-color 50ms ease-out, box-shadow 50ms ease-out, border-color 50ms ease-out;
+          transition: background-color 50ms ease-out, box-shadow 50ms ease-out, border-color 50ms ease-out;
   box-shadow: none;
 }
 
@@ -453,7 +453,7 @@
   font-size: 0.91666667em;
 }
 .ui.small.input {
-  font-size: 1.33333333em;
+  font-size: 1.16666667em;
 }
 .ui.input {
   font-size: 1.33333333em;

@@ -136,6 +136,8 @@ body.pushable {
 body.pushable > .pusher {
   background: #fafafa;
 }
+
+/* Pusher should inherit background from context */
 .pushable > .pusher {
   background: inherit;
 }

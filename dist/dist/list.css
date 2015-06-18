@@ -92,8 +92,8 @@ ol.ui.list ol,
   padding-top: 0.375em;
   padding-right: 0.285714em;
   vertical-align: top;
-  -webkit-transition: color 300ms ease-out;
-          transition: color 300ms ease-out;
+  -webkit-transition: color 50ms ease-out;
+          transition: color 50ms ease-out;
 }
 .ui.list .list > .item > i.icon:only-child,
 .ui.list > .item > i.icon:only-child {
@@ -381,8 +381,8 @@ ol.ui.list ol,
 .ui.link.list a.item,
 .ui.link.list .item a:not(.ui) {
   color: rgba(0, 0, 0, 0.4);
-  -webkit-transition: 300ms color ease-out;
-          transition: 300ms color ease-out;
+  -webkit-transition: 50ms color ease-out;
+          transition: 50ms color ease-out;
 }
 .ui.link.list a.item:hover,
 .ui.link.list .item a:not(.ui):hover {
@@ -428,8 +428,8 @@ ol.ui.list ol,
   margin: 0em;
   color: rgba(0, 0, 0, 0.4);
   border-radius: 0.5em;
-  -webkit-transition: 300ms color ease-out, 300ms padding-left ease-out, 300ms background-color ease-out;
-          transition: 300ms color ease-out, 300ms padding-left ease-out, 300ms background-color ease-out;
+  -webkit-transition: 50ms color ease-out, 50ms padding-left ease-out, 50ms background-color ease-out;
+          transition: 50ms color ease-out, 50ms padding-left ease-out, 50ms background-color ease-out;
 }
 .ui.selection.list .list > .item:last-child,
 .ui.selection.list > .item:last-child {
@@ -486,8 +486,8 @@ ol.ui.list ol,
 --------------------*/
 
 .ui.animated.list > .item {
-  -webkit-transition: 300ms color ease-out, 300ms padding-left ease-out, 300ms background-color ease-out;
-          transition: 300ms color ease-out, 300ms padding-left ease-out, 300ms background-color ease-out;
+  -webkit-transition: 50ms color ease-out, 50ms padding-left ease-out, 50ms background-color ease-out;
+          transition: 50ms color ease-out, 50ms padding-left ease-out, 50ms background-color ease-out;
 }
 .ui.animated.list:not(.horizontal) > .item:hover {
   padding-left: 1em;
@@ -555,6 +555,10 @@ ul.ui.horizontal.bulleted.list li,
 ul.ui.horizontal.bulleted.list li:first-child,
 .ui.horizontal.bulleted.list > .item:first-child {
   margin-left: 0em;
+}
+ul.ui.horizontal.bulleted.list li::before,
+.ui.horizontal.bulleted.list > .item::before {
+  color: #1a1a1a;
 }
 ul.ui.horizontal.bulleted.list li:first-child::before,
 .ui.horizontal.bulleted.list > .item:first-child::before {
@@ -828,10 +832,10 @@ ol.ui.horizontal.list li:before,
   font-size: 0.91666667em;
 }
 .ui.tiny.list {
-  font-size: 1.33333333em;
+  font-size: 0.91666667em;
 }
 .ui.small.list {
-  font-size: 1.33333333em;
+  font-size: 1.16666667em;
 }
 .ui.list {
   font-size: 1.33333333em;
@@ -854,11 +858,11 @@ ol.ui.horizontal.list li:before,
 }
 .ui.tiny.horizontal.list .list > .item,
 .ui.tiny.horizontal.list > .item {
-  font-size: 1.33333333rem;
+  font-size: 0.91666667rem;
 }
 .ui.small.horizontal.list .list > .item,
 .ui.small.horizontal.list > .item {
-  font-size: 1.33333333rem;
+  font-size: 1.16666667rem;
 }
 .ui.horizontal.list .list > .item,
 .ui.horizontal.list > .item {

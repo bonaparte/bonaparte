@@ -17,7 +17,7 @@ gulp.task("extract", extract);
 
 function build(){
 
-  gulp.src('./dist/bonaparte/**/*')
+  gulp.src('./dist/theme/bonaparte/**/*')
     .pipe(gulp.dest('./ui/src/themes/bonaparte')); 
    
   gulp.src('./dist/examples/**/*')
@@ -30,7 +30,6 @@ function build(){
     .pipe(gulp.dest('./ui')); 
 
  
-  // cd to ui and spawn watcher
   process.chdir("./ui/");
 
   var build = spawn('gulp', ["build"]);
@@ -40,16 +39,16 @@ function build(){
     }
   });
 
-  build.on("close", function(){
-    gulp.start("extract");
-  });
+  // build.on("close", function(){
+  //   gulp.start("extract");
+  // });
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 
 function extract(){
   gulp.src("./ui/src/themes/bonaparte/**/*")
-    .pipe(gulp.dest('./dist/bonaparte')); 
+    .pipe(gulp.dest('./dist/theme/bonaparte')); 
    
   gulp.src('./ui/examples/**/*')
     .pipe(gulp.dest('./dist/examples')); 
@@ -76,13 +75,25 @@ function watch(){
     }
   });
 
+ 
+  // cd to ui and spawn watcher
+  process.chdir("./ui/");
+
+  var build = spawn('gulp', ["watch"]);
+  build.stdout.on('data', function(data) {
+    if (data) {
+        console.log(data.toString())
+    }
+  });
+
 };
 
 ///////////////////////////////////////////////////////////////////////////////
 
 function watchBP(){
 
-  gulp.watch(["./ui/src/themes/bonaparte/**/*",'./ui/examples/**/*', './ui/src/theme.config'], ["extract"]);
+  // gulp.watch(["./ui/src/themes/bonaparte/**/*",'./ui/examples/**/*', './ui/src/theme.config'], ["extract"]);
+  gulp.watch(["./ui/dist/semantic.min.css"], ["extract"]);
 
 }
 

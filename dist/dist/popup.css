@@ -25,7 +25,8 @@
   min-width: -moz-min-content;
   min-width: min-content;
   z-index: 1900;
-  border: 1px solid #cccccc;
+  border: 1px solid #d4d4d5;
+  line-height: 2rem;
   max-width: 250px;
   background-color: #ffffff;
   padding: 0.833em 1em;
@@ -55,7 +56,7 @@
       -ms-transform: rotate(45deg);
           transform: rotate(45deg);
   z-index: 2;
-  box-shadow: 1px 1px 0px 0px #b3b3b3;
+  box-shadow: 1px 1px 0px 0px #bababc;
 }
 
 
@@ -139,7 +140,7 @@
   left: 50%;
   right: auto;
   bottom: auto;
-  box-shadow: -1px -1px 0px 0px #b3b3b3;
+  box-shadow: -1px -1px 0px 0px #bababc;
 }
 .ui.bottom.left.popup {
   margin-left: 0em;
@@ -150,7 +151,7 @@
   right: auto;
   bottom: auto;
   margin-left: 0em;
-  box-shadow: -1px -1px 0px 0px #b3b3b3;
+  box-shadow: -1px -1px 0px 0px #bababc;
 }
 .ui.bottom.right.popup {
   margin-right: 0em;
@@ -161,7 +162,7 @@
   bottom: auto;
   left: auto;
   margin-left: 0em;
-  box-shadow: -1px -1px 0px 0px #b3b3b3;
+  box-shadow: -1px -1px 0px 0px #bababc;
 }
 
 /*--- Above ---*/
@@ -202,7 +203,7 @@
   bottom: auto;
   left: auto;
   margin-top: -0.325em;
-  box-shadow: 1px -1px 0px 0px #b3b3b3;
+  box-shadow: 1px -1px 0px 0px #bababc;
 }
 
 /*--- Right Center  ---*/
@@ -213,7 +214,7 @@
   bottom: auto;
   right: auto;
   margin-top: -0.325em;
-  box-shadow: -1px 1px 0px 0px #b3b3b3;
+  box-shadow: -1px 1px 0px 0px #bababc;
 }
 
 
@@ -320,10 +321,10 @@
   font-size: 0.91666667rem;
 }
 .ui.tiny.popup {
-  font-size: 1.33333333rem;
+  font-size: 0.91666667rem;
 }
 .ui.small.popup {
-  font-size: 1.33333333rem;
+  font-size: 1.16666667rem;
 }
 .ui.popup {
   font-size: 1.33333333rem;

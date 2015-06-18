@@ -64,8 +64,8 @@
   margin: 0em 0.25rem 0em 0rem;
   padding: 0em;
   font-size: 1em;
-  -webkit-transition: -webkit-transform 300ms ease-out, opacity 300ms ease-out;
-          transition: transform 300ms ease-out, opacity 300ms ease-out;
+  -webkit-transition: -webkit-transform 50ms ease-out, opacity 50ms ease-out;
+          transition: transform 50ms ease-out, opacity 50ms ease-out;
   vertical-align: baseline;
   -webkit-transform: none;
       -ms-transform: none;
@@ -139,8 +139,8 @@
   color: rgba(0, 0, 0, 0.4);
   font-weight: bold;
   border-top: 1px solid rgba(34, 36, 38, 0.15);
-  -webkit-transition: background 300ms ease-out, color 300ms ease-out;
-          transition: background 300ms ease-out, color 300ms ease-out;
+  -webkit-transition: background 50ms ease-out, color 50ms ease-out;
+          transition: background 50ms ease-out, color 50ms ease-out;
 }
 .ui.styled.accordion > .title:first-child,
 .ui.styled.accordion .accordion .title:first-child {
