@@ -1,0 +1,69 @@
+
+toolbar-bonaparte {
+  position:relative;
+  display:block;
+  background-color:red;
+  height:50%;
+
+  overflow:hidden; 
+  _overflow:visible; 
+  zoom:1;
+}
+
+
+
+sidebar-bonaparte {
+  position:relative;
+  display:block;
+  background-color:teal;
+}
+
+
+sidebar-bonaparte,
+toolbar-bonaparte[sidebar="left"] sidebar-bonaparte {
+  float:left;
+  height:100%;
+  width:4rem;
+
+}
+
+
+toolbar-bonaparte[sidebar="right"] sidebar-bonaparte {
+  float:right;
+  height:100%;
+  width:4rem;
+}
+
+toolbar-bonaparte[sidebar="top"] {
+  padding:4rem 0 0 0;
+
+  sidebar-bonaparte {
+    float:none;
+    position:absolute;
+    height:4rem;
+    width:100%;
+    top:0rem;
+  }
+}
+toolbar-bonaparte[sidebar="bottom"] {
+  padding:0 0 4rem 0;
+
+  sidebar-bonaparte {
+    float:none;
+    position:absolute;
+    height:4rem;
+    width:100%;
+    bottom:0rem;
+  }
+}
+content-bonaparte {
+  position:relative;
+  display:block;
+  height:100%;
+
+  overflow:hidden; 
+  _overflow:visible; 
+  zoom:1;
+
+  background-color:yellow;
+}
