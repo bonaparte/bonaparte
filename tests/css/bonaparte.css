@@ -1,56 +1,96 @@
 toolbar-bonaparte {
   position: relative;
-  display: block;
   background-color: red;
-  height: 100%;
-  overflow: hidden;
-  _overflow: visible;
-  zoom: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -webkit-align-content: stretch;
+      -ms-flex-line-pack: stretch;
+          align-content: stretch;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
 }
+/*
+toolbar-bonaparte[display="cover"] {
+  height:100%;
+}
+*/
 content-bonaparte {
-  position: relative;
   display: block;
-  overflow: hidden;
-  _overflow: visible;
-  zoom: 1;
   background-color: yellow;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 100%;
+      -ms-flex: 1 100%;
+          flex: 1 100%;
+  -webkit-box-ordinal-group: 5;
+  -webkit-order: 4;
+      -ms-flex-order: 4;
+          order: 4;
+  padding: 1rem;
 }
 /*SIDEBAR*/
 sidebar-bonaparte {
-  position: relative;
   display: block;
   background-color: teal;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 100%;
+      -ms-flex: 1 100%;
+          flex: 1 100%;
+  -webkit-box-ordinal-group: 3;
+  -webkit-order: 2;
+      -ms-flex-order: 2;
+          order: 2;
 }
-sidebar-bonaparte,
+toolbar-bonaparte[sidebar="left"] {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
 toolbar-bonaparte[sidebar="left"] sidebar-bonaparte {
-  float: left;
-  height: 100%;
   width: 4rem;
 }
+toolbar-bonaparte[sidebar="right"] {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: row-reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
 toolbar-bonaparte[sidebar="right"] sidebar-bonaparte {
-  float: right;
-  height: 100%;
   width: 4rem;
 }
 toolbar-bonaparte[sidebar="top"] {
-  padding: 4rem 0 0 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 toolbar-bonaparte[sidebar="top"] sidebar-bonaparte {
-  float: none;
-  position: absolute;
   height: 4rem;
-  width: 100%;
-  top: 0rem;
 }
 toolbar-bonaparte[sidebar="bottom"] {
-  padding: 0 0 4rem 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: column-reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
 }
 toolbar-bonaparte[sidebar="bottom"] sidebar-bonaparte {
-  float: none;
-  position: absolute;
   height: 4rem;
-  width: 100%;
-  bottom: 0rem;
 }
 /*CORNERSTONE*/
 cornerstone-bonaparte {
@@ -61,7 +101,7 @@ cornerstone-bonaparte {
   height: 4rem;
   top: 0px;
   left: 0px;
-  z-index: 5;
+  z-index: 99;
 }
 toolbar-bonaparte[cornerstone~="bottom"] cornerstone-bonaparte {
   bottom: 0px;
@@ -80,37 +120,36 @@ toolbar-bonaparte[cornerstone~="right"] cornerstone-bonaparte {
   left: auto;
 }
 /*PANEL*/
-panel-bonaparte {
-  display: block;
-  position: relative;
-  background-color: #ffffff;
-  overflow: hidden;
-  _overflow: visible;
-  zoom: 1;
-}
+panel-bonaparte,
 panel-bonaparte[position="left"] {
-  float: left;
-  height: 100%;
+  display: block;
+  background-color: #ffffff;
+  -webkit-box-ordinal-group: 4;
+  -webkit-order: 3;
+      -ms-flex-order: 3;
+          order: 3;
   width: 200px;
   opacity: 0.70;
 }
 panel-bonaparte[position="right"] {
-  float: right;
-  height: 100%;
   width: 200px;
   opacity: 0.70;
+  -webkit-box-ordinal-group: 6;
+  -webkit-order: 5;
+      -ms-flex-order: 5;
+          order: 5;
 }
 panel-bonaparte[position="top"] {
-  height: 100%;
-  width: auto;
-  height: 200px;
-  opacity: 0.30;
+  -webkit-box-ordinal-group: 2;
+  -webkit-order: 1;
+      -ms-flex-order: 1;
+          order: 1;
+  width: 100%;
 }
-panel-bonaparte[position="bottom"] {
-  position: absolute;
-  height: 100%;
-  width: auto;
-  height: 200px;
-  opacity: 0.30;
-  bottom: 0px;
+panel-bonaparte[position="top"] {
+  -webkit-box-ordinal-group: 7;
+  -webkit-order: 6;
+      -ms-flex-order: 6;
+          order: 6;
+  width: 100%;
 }

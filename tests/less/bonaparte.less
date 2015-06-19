@@ -1,74 +1,72 @@
 
 toolbar-bonaparte {
   position:relative;
-  display:block;
   background-color:red;
-  height:100%;
 
-  overflow:hidden; 
-  _overflow:visible; 
-  zoom:1;
+
+  display: flex;
+  flex-direction: row;
+  align-items:stretch; 
+  align-content:stretch;
+  flex-flow: row wrap;
+
 }
-
-
+/*
+toolbar-bonaparte[display="cover"] {
+  height:100%;
+}
+*/
 
 content-bonaparte {
-  position:relative;
   display:block;
-
-  overflow:hidden; 
-  _overflow:visible; 
-  zoom:1;
-
   background-color:yellow;
+  flex: 1 100%;
+  order:4;
+  padding:1rem;
 }
 
 /*SIDEBAR*/
 
+
 sidebar-bonaparte {
-  position:relative;
-  display:block;
+  display: block;
   background-color:teal;
+  flex: 1 100%;
+  order:2;
 }
 
-sidebar-bonaparte,
-toolbar-bonaparte[sidebar="left"] sidebar-bonaparte {
-  float:left;
-  height:100%;
-  width:4rem;
+toolbar-bonaparte[sidebar="left"] {
+  flex-direction: row;
 
+  sidebar-bonaparte {
+    width:4rem;
+  }
 }
 
+toolbar-bonaparte[sidebar="right"] {
+  flex-direction: row-reverse;
 
-toolbar-bonaparte[sidebar="right"] sidebar-bonaparte {
-  float:right;
-  height:100%;
-  width:4rem;
+  sidebar-bonaparte {
+    width:4rem;
+  }
 }
 
 toolbar-bonaparte[sidebar="top"] {
-  padding:4rem 0 0 0;
+  flex-direction: column;
 
   sidebar-bonaparte {
-    float:none;
-    position:absolute;
     height:4rem;
-    width:100%;
-    top:0rem;
   }
 }
 
 toolbar-bonaparte[sidebar="bottom"] {
-  padding:0 0 4rem 0;
+  flex-direction: column-reverse;
 
   sidebar-bonaparte {
-    float:none;
-    position:absolute;
     height:4rem;
-    width:100%;
-    bottom:0rem;
   }
 }
+
 
 
 /*CORNERSTONE*/
@@ -81,7 +79,8 @@ cornerstone-bonaparte {
   height:4rem;
   top:0px;
   left:0px;
-  z-index:5
+  z-index:99;
+
 }
 
 toolbar-bonaparte[cornerstone~="bottom"] {
@@ -116,49 +115,34 @@ toolbar-bonaparte[cornerstone~="right"] {
 
 /*PANEL*/
 
-panel-bonaparte {
+panel-bonaparte,
+panel-bonaparte[position="left"] {
   display:block;
-  position:relative;
   background-color:#ffffff;
+  order:3;
 
-
-  overflow:hidden; 
-  _overflow:visible; 
-  zoom:1;
-}
-
-
-panel-bonaparte[position="left"]{
-  float:left;
-  height:100%;
   width:200px;
   opacity:0.70;
 }
 
 panel-bonaparte[position="right"]{
-  float:right;
-  height:100%;
+
   width:200px;
   opacity:0.70;
+
+  order:5;
 }
 
 
 panel-bonaparte[position="top"]{
-  height:100%;
-  width:auto;
-  height:200px;
-  opacity:0.30;
+  order:1;
+  width:100%;
 }
 
 
-panel-bonaparte[position="bottom"]{
-  position:absolute;
-  height:100%;
-  width:auto;
-  height:200px;
-  opacity:0.30;
-  bottom:0px;
-
+panel-bonaparte[position="top"]{
+  order:6;
+  width:100%;
 }
 
 

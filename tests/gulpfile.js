@@ -1,5 +1,7 @@
 var gulp         = require('gulp');
 var less         = require("gulp-less");
+var autoprefixer = require("gulp-autoprefixer");
+
 ///////////////////////////////////////////////////////////////////////////////
 
 gulp.task("default", ["watch"]);
@@ -12,6 +14,7 @@ gulp.task("watch", ["less"], watch);
 function css(){
   return gulp.src('./less/**/*.less')
     .pipe(less())
+    .pipe(autoprefixer())
     .pipe(gulp.dest('./css/')); 
 }
 
