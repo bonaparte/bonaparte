@@ -2,7 +2,8 @@
   "name": "bonaparte",
   
   "devDependencies": {
-    "gulp": "*"
+    "gulp": "*",
+    "gulp-autoprefixer": "2.3.1"
   },
 
   "scripts": {
