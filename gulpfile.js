@@ -8,7 +8,7 @@ require("./gulp/SUI.js");
 
 ///////////////////////////////////////////////////////////////////////////////
 
-gulp.task("default", ["watch"]);
+gulp.task("default", ["BPA-watch"]);
 gulp.task("BPA-build", ["SUI-extract", "less", "js"]);
 gulp.task("less", css);
 gulp.task("js", js);
