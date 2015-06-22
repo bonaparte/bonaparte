@@ -6,29 +6,18 @@ var spawn = require('child_process').spawn;
 
 ///////////////////////////////////////////////////////////////////////////////
 
-gulp.task("SUI-build", build);
+gulp.task("SUI-build", ["SUI-install"], build);
 gulp.task("SUI-watch", ["SUI-extract"], watch);
 gulp.task("SUI-extractor", extractor);
 gulp.task("SUI-extract", extract);
+gulp.task("SUI-install", install);
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
 function build(){
 
-  gulp.src('./SUI/custom/theme/bonaparte/**/*')
-    .pipe(gulp.dest('./SUI/ui/src/themes/bonaparte')); 
-   
-  gulp.src('./SUI/custom/examples/**/*')
-    .pipe(gulp.dest('./SUI/ui/examples')); 
 
-  gulp.src('./SUI/custom/theme.config')
-    .pipe(gulp.dest('./SUI/ui/src')); 
-
-  gulp.src('./SUI/custom/semantic.json')
-    .pipe(gulp.dest('./SUI/ui')); 
-
- 
   process.chdir("./SUI/ui/");
 
   var build = spawn('gulp', ["build"]);
@@ -41,6 +30,22 @@ function build(){
   // build.on("close", function(){
   //   gulp.start("extract");
   // });
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+function install(){
+  gulp.src('./SUI/custom/theme/bonaparte/**/*')
+    .pipe(gulp.dest('./SUI/ui/src/themes/bonaparte')); 
+   
+  gulp.src('./SUI/custom/examples/**/*')
+    .pipe(gulp.dest('./SUI/ui/examples')); 
+
+  gulp.src('./SUI/custom/theme.config')
+    .pipe(gulp.dest('./SUI/ui/src')); 
+
+  gulp.src('./SUI/custom/semantic.json')
+    .pipe(gulp.dest('./SUI/ui')); 
 }
 
 ///////////////////////////////////////////////////////////////////////////////

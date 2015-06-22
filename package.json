@@ -4,11 +4,12 @@
   "devDependencies": {
     "gulp": "*",
     "gulp-autoprefixer": "2.3.1",
-    "gulp-less" : "^3.0.3"
+    "gulp-less" : "^3.0.3",
+    "gulp-shell" : "^0.4.2"
   },
 
   "scripts": {
-    "_install" : "cd ui/ ; npm install; cd .. ; gulp build ;"
+    "install" : "gulp SUI-install ; cd SUI/ui ; npm install;"
   },
 
   "engines": {
