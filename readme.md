@@ -49,5 +49,5 @@
 > __One doesn't simply work in `dist/` directly.__ <br>
 > _- Wise Man_
 
-- Run `gulp watch` to watch `./src/` and keep `./dist/` up to date.
+- Run `gulp BPA-watch` to watch `./src/` and keep `./dist/` up to date.
 
