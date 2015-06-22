@@ -19,6 +19,10 @@ document.registerElement('content-bonaparte', {
     prototype: testPrototype()
 });
 
+document.registerElement('container-bonaparte', {
+    prototype: testPrototype()
+});
+
 
 
 function testPrototype() {

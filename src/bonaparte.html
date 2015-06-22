@@ -1,7 +1,7 @@
 <!DOCTYPE html><html>
   <head>
     <link rel="stylesheet" type="text/css" href="../dist/dist/semantic.min.css">
-    <link rel="stylesheet" type="text/css" href="css/bonaparte.css">
+    <link rel="stylesheet" type="text/css" href="../dist/bonaparte.css">
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/document-register-element/0.4.3/document-register-element.js"
     >/* W3C Custom Elements */</script>
@@ -32,32 +32,35 @@
 
 
         
-    <toolbar-bonaparte display="block" sidebar="left" cornerstone="bottom right">  
-
+    <toolbar-bonaparte display="" sidebar="right" cornerstone="bottom right">  
 
       <cornerstone-bonaparte></cornerstone-bonaparte>
-<!-- 
-      <panel-bonaparte></panel-bonaparte>
-       -->
-
       <sidebar-bonaparte></sidebar-bonaparte>
 
-      <panel-bonaparte position="top"></panel-bonaparte>
- <!--      <panel-bonaparte position="left"></panel-bonaparte>
+      <container-bonaparte>
+ 
+        <panel-bonaparte position="left push"></panel-bonaparte>
 
-      <panel-bonaparte position="top"></panel-bonaparte> -->
+        <panel-bonaparte position="top push"></panel-bonaparte>
+
+    
+        <panel-bonaparte position="right push"></panel-bonaparte>
+
+        <panel-bonaparte position="bottom push"></panel-bonaparte> 
+
       
+        <content-bonaparte>
 
-      <content-bonaparte>
+          <h1> Content </h1>
+          <h2> Content </h2>
+          <h3> Content </h3>
+          <h4> Content </h4>
+          <h5> Content </h5>
+          <h6> Content </h6>
+        
+        </content-bonaparte>
 
-        <h1> Content </h1>
-        <h2> Content </h2>
-        <h3> Content </h3>
-        <h4> Content </h4>
-        <h5> Content </h5>
-        <h6> Content </h6>
-      </content-bonaparte>
-
+      </container-bonaparte>
     
     </toolbar-bonaparte>
 

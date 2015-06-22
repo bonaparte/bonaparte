@@ -7,7 +7,7 @@
   },
 
   "scripts": {
-    "install" : "cd ui/ ; npm install; cd .. ; gulp build ;"
+    "_install" : "cd ui/ ; npm install; cd .. ; gulp build ;"
   },
 
   "engines": {

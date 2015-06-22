@@ -1,0 +1,205 @@
+
+toolbar-bonaparte {
+  position:relative;
+  background-color:red;
+
+  display: flex;  
+  flex-flow: row;
+
+}
+
+
+toolbar-bonaparte[display="cover"] {
+  min-height:100%;
+
+  sidebar-bonaparte {
+    position:fixed;
+    height:4rem;
+    bottom:0px;
+    width:100%;
+    z-index:3;
+  }
+
+  container-bonaparte {
+    margin-bottom:4rem;
+  }
+
+  cornerstone-bonaparte {
+    position:fixed;
+  }
+
+}
+
+
+/*SIDEBAR*/
+
+
+sidebar-bonaparte {
+  display: block;
+  background-color:teal;
+  flex:0 0;
+  flex-basis:4rem;
+}
+
+toolbar-bonaparte[sidebar="left"] {
+  flex-direction: row;
+}
+
+toolbar-bonaparte[sidebar="right"] {
+  flex-direction: row-reverse;
+}
+
+toolbar-bonaparte[sidebar="top"] {
+  flex-direction: column;
+}
+
+toolbar-bonaparte[sidebar="bottom"] {
+  flex-direction: column-reverse;
+}
+
+
+
+container-bonaparte {
+  position:relative;
+  background-color:yellow;
+  flex:1 100%;
+
+  display: flex;
+  flex-flow: row wrap;
+
+/*  overflow-y:scroll;
+*/
+}
+
+/*PANEL*/
+
+
+content-bonaparte {
+  background-color:tomato;
+  display:block;
+  flex:1 auto;
+  order:3;
+}
+
+panel-bonaparte {
+  display: block;
+
+  background-color:#ffffff;
+  opacity:0.70;
+}
+
+panel-bonaparte,
+panel-bonaparte[position~="left"] {
+  position:absolute;
+  height:100%;
+  width:200px;
+  top:0px; 
+  left:0px;
+  right:auto;
+
+  &[position~="push"] {
+    position:static;
+    order:2;
+    flex:0 0;
+    flex-basis:200px;
+    height:auto;
+
+  }
+}
+
+panel-bonaparte[position~="right"]{
+  position:absolute;
+  height:100%;
+  width:200px;
+  top:0px; 
+  bottom:auto;
+  right:0px;
+  left:auto;
+
+  &[position~="push"] {
+    position:static;
+    order:4;  
+    flex:0 0;
+    flex-basis:200px;
+    height:auto;
+  }
+}
+
+
+panel-bonaparte[position~="top"]{
+  position:absolute;
+  height:200px;
+  width:100%;
+  top:0px;
+  bottom:auto;
+
+  &[position~="push"] {
+    position:static;
+    flex:1 100%;
+    order:1;
+    height:200px;
+  }
+}
+
+
+panel-bonaparte[position~="bottom"]{
+  position:absolute;
+  height:200px;
+  width:100%;
+  bottom:0px;
+  top:auto;
+
+  &[position~="push"] {
+    height:200px;
+    position:static;
+    flex:1 100% !important;
+    order:5;
+  }
+}
+
+/*CORNERSTONE*/
+
+cornerstone-bonaparte {  
+  position:absolute;
+  display:block;
+  background-color:purple;
+  width:4rem;
+  height:4rem;
+  top:0px;
+  left:0px;
+  z-index:99;
+
+}
+
+toolbar-bonaparte[cornerstone~="bottom"] {
+  cornerstone-bonaparte {
+    bottom:0px;
+    top:auto;
+  }
+}
+
+
+toolbar-bonaparte[cornerstone~="top"] {
+  cornerstone-bonaparte {
+    top:0px;
+    bottom:auto;
+  }
+}
+
+toolbar-bonaparte[cornerstone~="left"] {
+  cornerstone-bonaparte {
+    left:0px;
+    right:auto;
+  }
+}
+
+toolbar-bonaparte[cornerstone~="right"] {
+  cornerstone-bonaparte {
+    right:0px;
+    left:auto;
+  }
+}
+
+
+
+
