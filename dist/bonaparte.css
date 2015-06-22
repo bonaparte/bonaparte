@@ -12,19 +12,6 @@ toolbar-bonaparte {
 toolbar-bonaparte[display="cover"] {
   min-height: 100%;
 }
-toolbar-bonaparte[display="cover"] sidebar-bonaparte {
-  position: fixed;
-  height: 4rem;
-  bottom: 0px;
-  width: 100%;
-  z-index: 3;
-}
-toolbar-bonaparte[display="cover"] container-bonaparte {
-  margin-bottom: 4rem;
-}
-toolbar-bonaparte[display="cover"] cornerstone-bonaparte {
-  position: fixed;
-}
 /*SIDEBAR*/
 sidebar-bonaparte {
   display: block;
@@ -36,6 +23,28 @@ sidebar-bonaparte {
   -webkit-flex-basis: 4rem;
       -ms-flex-preferred-size: 4rem;
           flex-basis: 4rem;
+  z-index: 3;
+  overflow: hidden;
+}
+toolbar-bonaparte[display="cover"][sidebar="left"] sidebar-bonaparte,
+toolbar-bonaparte[display="cover"][sidebar="right"] sidebar-bonaparte {
+  position: fixed;
+  width: 4rem;
+  height: 100%;
+  top: 0px;
+  bottom: auto;
+  left: auto;
+  right: auto;
+}
+toolbar-bonaparte[display="cover"][sidebar="top"] sidebar-bonaparte,
+toolbar-bonaparte[display="cover"][sidebar="bottom"] sidebar-bonaparte {
+  position: fixed;
+  height: 4rem;
+  width: 100%;
+  top: auto;
+  bottom: auto;
+  left: 0px;
+  right: auto;
 }
 toolbar-bonaparte[sidebar="left"] {
   -webkit-box-orient: horizontal;
@@ -44,12 +53,28 @@ toolbar-bonaparte[sidebar="left"] {
       -ms-flex-direction: row;
           flex-direction: row;
 }
+toolbar-bonaparte[sidebar="left"][display="cover"] sidebar-bonaparte {
+  left: 0px;
+  right: auto;
+}
+toolbar-bonaparte[sidebar="left"][display="cover"] > container-bonaparte,
+toolbar-bonaparte[sidebar="left"][display="cover"] > content-bonaparte {
+  margin-left: 4rem;
+}
 toolbar-bonaparte[sidebar="right"] {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;
   -webkit-flex-direction: row-reverse;
       -ms-flex-direction: row-reverse;
           flex-direction: row-reverse;
+}
+toolbar-bonaparte[sidebar="right"][display="cover"] sidebar-bonaparte {
+  right: 0px;
+  left: auto;
+}
+toolbar-bonaparte[sidebar="right"][display="cover"] > container-bonaparte,
+toolbar-bonaparte[sidebar="right"][display="cover"] > content-bonaparte {
+  margin-right: 4rem;
 }
 toolbar-bonaparte[sidebar="top"] {
   -webkit-box-orient: vertical;
@@ -58,12 +83,28 @@ toolbar-bonaparte[sidebar="top"] {
       -ms-flex-direction: column;
           flex-direction: column;
 }
+toolbar-bonaparte[sidebar="top"][display="cover"] sidebar-bonaparte {
+  top: 0px;
+  bottom: auto;
+}
+toolbar-bonaparte[sidebar="top"][display="cover"] > container-bonaparte,
+toolbar-bonaparte[sidebar="top"][display="cover"] > content-bonaparte {
+  margin-top: 4rem;
+}
 toolbar-bonaparte[sidebar="bottom"] {
   -webkit-box-orient: vertical;
   -webkit-box-direction: reverse;
   -webkit-flex-direction: column-reverse;
       -ms-flex-direction: column-reverse;
           flex-direction: column-reverse;
+}
+toolbar-bonaparte[sidebar="bottom"][display="cover"] sidebar-bonaparte {
+  bottom: 0px;
+  top: auto;
+}
+toolbar-bonaparte[sidebar="bottom"][display="cover"] > container-bonaparte,
+toolbar-bonaparte[sidebar="bottom"][display="cover"] > content-bonaparte {
+  margin-bottom: 4rem;
 }
 container-bonaparte {
   position: relative;
@@ -94,11 +135,13 @@ content-bonaparte {
   -webkit-order: 3;
       -ms-flex-order: 3;
           order: 3;
+  z-index: 0;
 }
 panel-bonaparte {
   display: block;
   background-color: #ffffff;
   opacity: 0.70;
+  z-index: 1;
 }
 panel-bonaparte,
 panel-bonaparte[position~="left"] {
@@ -197,6 +240,9 @@ cornerstone-bonaparte {
   top: 0px;
   left: 0px;
   z-index: 99;
+}
+toolbar-bonaparte[display="cover"] cornerstone-bonaparte {
+  position: fixed;
 }
 toolbar-bonaparte[cornerstone~="bottom"] cornerstone-bonaparte {
   bottom: 0px;
