@@ -1,3 +1,6 @@
+/*-------------------
+       Colors
+--------------------*/
 toolbar-bonaparte {
   position: relative;
   background-color: red;
@@ -138,21 +141,21 @@ content-bonaparte {
   z-index: 0;
 }
 panel-bonaparte {
-  display: block;
+  display: none;
   background-color: #ffffff;
-  opacity: 0.70;
   z-index: 1;
 }
-panel-bonaparte,
 panel-bonaparte[position~="left"] {
+  display: block;
   position: absolute;
   height: 100%;
   width: 200px;
   top: 0px;
   left: 0px;
   right: auto;
+  border: 0;
+  border-right: 0.5rem solid #425cbd;
 }
-panel-bonaparte[position~="push"],
 panel-bonaparte[position~="left"][position~="push"] {
   position: static;
   -webkit-box-ordinal-group: 3;
@@ -169,6 +172,7 @@ panel-bonaparte[position~="left"][position~="push"] {
   height: auto;
 }
 panel-bonaparte[position~="right"] {
+  display: block;
   position: absolute;
   height: 100%;
   width: 200px;
@@ -176,6 +180,8 @@ panel-bonaparte[position~="right"] {
   bottom: auto;
   right: 0px;
   left: auto;
+  border: 0;
+  border-left: 0.5rem solid #425cbd;
 }
 panel-bonaparte[position~="right"][position~="push"] {
   position: static;
@@ -193,18 +199,24 @@ panel-bonaparte[position~="right"][position~="push"] {
   height: auto;
 }
 panel-bonaparte[position~="top"] {
+  display: block;
   position: absolute;
   height: 200px;
   width: 100%;
   top: 0px;
   bottom: auto;
+  left: 0px;
+  right: auto;
+  /*  border:0;
+  border-bottom:@panel-bonaparte-borderWidth solid @color-active;
+*/
 }
 panel-bonaparte[position~="top"][position~="push"] {
   position: static;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1 100%;
-      -ms-flex: 1 100%;
-          flex: 1 100%;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 100% 200px;
+      -ms-flex: 0 100% 200px;
+          flex: 0 100% 200px;
   -webkit-box-ordinal-group: 2;
   -webkit-order: 1;
       -ms-flex-order: 1;
@@ -212,11 +224,16 @@ panel-bonaparte[position~="top"][position~="push"] {
   height: 200px;
 }
 panel-bonaparte[position~="bottom"] {
+  display: block;
   position: absolute;
   height: 200px;
   width: 100%;
   bottom: 0px;
   top: auto;
+  left: 0px;
+  right: auto;
+  border: 0;
+  border-top: 0.5rem solid #425cbd;
 }
 panel-bonaparte[position~="bottom"][position~="push"] {
   height: 200px;
