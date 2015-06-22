@@ -11,23 +11,6 @@ toolbar-bonaparte {
 
 toolbar-bonaparte[display="cover"] {
   min-height:100%;
-
-  sidebar-bonaparte {
-    position:fixed;
-    height:4rem;
-    bottom:0px;
-    width:100%;
-    z-index:3;
-  }
-
-  container-bonaparte {
-    margin-bottom:4rem;
-  }
-
-  cornerstone-bonaparte {
-    position:fixed;
-  }
-
 }
 
 
@@ -39,22 +22,106 @@ sidebar-bonaparte {
   background-color:teal;
   flex:0 0;
   flex-basis:4rem;
+  z-index:3;
+  overflow:hidden;
+}
+
+toolbar-bonaparte[display="cover"][sidebar="left"],
+toolbar-bonaparte[display="cover"][sidebar="right"] {
+  sidebar-bonaparte {
+      position:fixed;
+      width:4rem;
+      height:100%;
+      top:0px;
+      bottom:auto;
+      left:auto;
+      right:auto;
+    }
+}
+
+toolbar-bonaparte[display="cover"][sidebar="top"],
+toolbar-bonaparte[display="cover"][sidebar="bottom"] {
+  sidebar-bonaparte {
+      position:fixed;
+      height:4rem;
+      width:100%;
+      top:auto;
+      bottom:auto;
+      left:0px;
+      right:auto;
+    }
 }
 
 toolbar-bonaparte[sidebar="left"] {
   flex-direction: row;
+
+  &[display="cover"] {
+    
+   sidebar-bonaparte {
+      left:0px;
+      right:auto;
+    }
+
+    & > container-bonaparte,
+    & > content-bonaparte {
+      margin-left:4rem;
+    }
+
+  }
 }
 
 toolbar-bonaparte[sidebar="right"] {
   flex-direction: row-reverse;
+
+  &[display="cover"] {
+    
+    sidebar-bonaparte {
+      right:0px;
+      left:auto;
+    }
+
+    & > container-bonaparte,
+    & > content-bonaparte {
+      margin-right:4rem;
+    }
+
+  }
 }
 
 toolbar-bonaparte[sidebar="top"] {
   flex-direction: column;
+
+  &[display="cover"] {
+    
+    sidebar-bonaparte {
+      top:0px;
+      bottom:auto;
+    }
+
+    & > container-bonaparte,
+    & > content-bonaparte {
+      margin-top:4rem;
+    }
+
+  }
 }
 
 toolbar-bonaparte[sidebar="bottom"] {
   flex-direction: column-reverse;
+
+  &[display="cover"] {
+    
+    sidebar-bonaparte {
+      bottom:0px;
+      top:auto;
+    }
+
+    & > container-bonaparte,
+    & > content-bonaparte {
+      margin-bottom:4rem;
+    }
+
+  }
 }
 
 
@@ -79,6 +146,7 @@ content-bonaparte {
   display:block;
   flex:1 auto;
   order:3;
+  z-index:0;
 }
 
 panel-bonaparte {
@@ -86,6 +154,7 @@ panel-bonaparte {
 
   background-color:#ffffff;
   opacity:0.70;
+  z-index:1;
 }
 
 panel-bonaparte,
@@ -170,6 +239,16 @@ cornerstone-bonaparte {
   z-index:99;
 
 }
+
+
+
+toolbar-bonaparte[display="cover"] {
+  cornerstone-bonaparte {
+    position:fixed;
+  }
+
+}
+
 
 toolbar-bonaparte[cornerstone~="bottom"] {
   cornerstone-bonaparte {
