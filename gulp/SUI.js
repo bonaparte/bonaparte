@@ -6,10 +6,10 @@ var spawn = require('child_process').spawn;
 
 ///////////////////////////////////////////////////////////////////////////////
 
-gulp.task("_SUI-build", build);
-gulp.task("_SUI-watch", ["_SUI-extract"], watch);
-gulp.task("_SUI-extractor", extractor);
-gulp.task("_SUI-extract", extract);
+gulp.task("SUI-build", build);
+gulp.task("SUI-watch", ["SUI-extract"], watch);
+gulp.task("SUI-extractor", extractor);
+gulp.task("SUI-extract", extract);
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -68,7 +68,7 @@ function extract(){
   // Move distribution files to dist/
 
   gulp.src('./SUI/ui/dist/semantic.*')
-    .pipe(gulp.dest('./dist/SUI'));
+    .pipe(gulp.dest('./dist'));
   
   gulp.src('./SUI/ui/dist/themes/**/*')
     .pipe(gulp.dest('./dist/SUI/themes'));
@@ -81,7 +81,7 @@ function extract(){
 function extractor(){
 
   // gulp.watch(["./ui/src/themes/bonaparte/**/*",'./ui/examples/**/*', './ui/src/theme.config'], ["extract"]);
-  gulp.watch(["./SUI/ui/dist/semantic.min.css"], ["_SUI-extract"]);
+  gulp.watch(["./SUI/ui/dist/semantic.min.css"], ["SUI-extract"]);
 
 }
 
@@ -90,7 +90,7 @@ function extractor(){
 function watch(){
 
   // spawn watcher
-  spawn('gulp', ["_SUI-extractor"]).stdout.on('data', function(data) {
+  spawn('gulp', ["SUI-extractor"]).stdout.on('data', function(data) {
 
     if (data) {
         console.log(data.toString())

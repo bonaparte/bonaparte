@@ -9,12 +9,19 @@ require("./gulp/SUI.js");
 ///////////////////////////////////////////////////////////////////////////////
 
 gulp.task("default", ["watch"]);
-gulp.task("build", ["_SUI-extract", "less"]);
+gulp.task("BPA-build", ["SUI-extract", "less", "js"]);
 gulp.task("less", css);
-gulp.task("watch-BPA", ["less"], watch);
-gulp.task("watch-SUI", ["_SUI-watch"]);
+gulp.task("js", js);
+gulp.task("BPA-watch", ["less"], watch);
 
 ///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+function js(){
+    gulp.src('./src/js/**/*.js')
+    .pipe(gulp.dest('./dist')); 
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 
 function css(){
@@ -28,6 +35,7 @@ function css(){
 
 function watch(){
   gulp.watch(["./src/less/**/*.less"], ["less"]);
+  gulp.watch(["./src/js/**/*.js"], ["js"]);
 };
 
 
