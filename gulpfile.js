@@ -4,12 +4,12 @@ var autoprefixer = require("gulp-autoprefixer");
 
 ///////////////////////////////////////////////////////////////////////////////
 
-require("gulp/SUI.js");
+require("./gulp/SUI.js");
 
 ///////////////////////////////////////////////////////////////////////////////
 
 gulp.task("default", ["watch"]);
-gulp.task("build", ["_SUI-extract"]);
+gulp.task("build", ["_SUI-extract", "less"]);
 gulp.task("less", css);
 gulp.task("watch-BPA", ["less"], watch);
 gulp.task("watch-SUI", ["_SUI-watch"]);

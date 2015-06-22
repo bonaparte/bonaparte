@@ -52,8 +52,8 @@ function extract(){
   gulp.src("./SUI/ui/src/themes/bonaparte/**/*")
     .pipe(gulp.dest('./SUI/custom/theme/bonaparte')); 
    
-  gulp.src('./SUI/ui/examples/**/*')
-    .pipe(gulp.dest('./SUI/custom/examples')); 
+  // gulp.src('./SUI/ui/examples/**/*')
+  //   .pipe(gulp.dest('./SUI/custom/examples')); 
 
   gulp.src('./SUI/ui/src/theme.config')
     .pipe(gulp.dest('./SUI/custom/')); 
@@ -61,17 +61,17 @@ function extract(){
   gulp.src('./SUI/ui/semantic.json')
     .pipe(gulp.dest('./SUI/custom')); 
 
-  gulp.src('./SUI/ui/dist/**/*')
-    .pipe(gulp.dest('./SUI/custom/dist'));
+  // gulp.src('./SUI/ui/dist/**/*')
+  //   .pipe(gulp.dest('./SUI/custom/dist'));
 
 
   // Move distribution files to dist/
 
   gulp.src('./SUI/ui/dist/semantic.*')
-    .pipe(gulp.dest('./SUI/custom/dist'));
+    .pipe(gulp.dest('./dist/SUI'));
   
   gulp.src('./SUI/ui/dist/themes/**/*')
-    .pipe(gulp.dest('./SUI/custom/dist/themes'));
+    .pipe(gulp.dest('./dist/SUI/themes'));
 
 }
 

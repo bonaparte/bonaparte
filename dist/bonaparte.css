@@ -1,0 +1,216 @@
+toolbar-bonaparte {
+  position: relative;
+  background-color: red;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row;
+      -ms-flex-flow: row;
+          flex-flow: row;
+}
+toolbar-bonaparte[display="cover"] {
+  min-height: 100%;
+}
+toolbar-bonaparte[display="cover"] sidebar-bonaparte {
+  position: fixed;
+  height: 4rem;
+  bottom: 0px;
+  width: 100%;
+  z-index: 3;
+}
+toolbar-bonaparte[display="cover"] container-bonaparte {
+  margin-bottom: 4rem;
+}
+toolbar-bonaparte[display="cover"] cornerstone-bonaparte {
+  position: fixed;
+}
+/*SIDEBAR*/
+sidebar-bonaparte {
+  display: block;
+  background-color: teal;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0;
+      -ms-flex: 0 0;
+          flex: 0 0;
+  -webkit-flex-basis: 4rem;
+      -ms-flex-preferred-size: 4rem;
+          flex-basis: 4rem;
+}
+toolbar-bonaparte[sidebar="left"] {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+toolbar-bonaparte[sidebar="right"] {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: row-reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+toolbar-bonaparte[sidebar="top"] {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+toolbar-bonaparte[sidebar="bottom"] {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: column-reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+}
+container-bonaparte {
+  position: relative;
+  background-color: yellow;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 100%;
+      -ms-flex: 1 100%;
+          flex: 1 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  /*  overflow-y:scroll;
+*/
+}
+/*PANEL*/
+content-bonaparte {
+  background-color: tomato;
+  display: block;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 auto;
+      -ms-flex: 1 auto;
+          flex: 1 auto;
+  -webkit-box-ordinal-group: 4;
+  -webkit-order: 3;
+      -ms-flex-order: 3;
+          order: 3;
+}
+panel-bonaparte {
+  display: block;
+  background-color: #ffffff;
+  opacity: 0.70;
+}
+panel-bonaparte,
+panel-bonaparte[position~="left"] {
+  position: absolute;
+  height: 100%;
+  width: 200px;
+  top: 0px;
+  left: 0px;
+  right: auto;
+}
+panel-bonaparte[position~="push"],
+panel-bonaparte[position~="left"][position~="push"] {
+  position: static;
+  -webkit-box-ordinal-group: 3;
+  -webkit-order: 2;
+      -ms-flex-order: 2;
+          order: 2;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0;
+      -ms-flex: 0 0;
+          flex: 0 0;
+  -webkit-flex-basis: 200px;
+      -ms-flex-preferred-size: 200px;
+          flex-basis: 200px;
+  height: auto;
+}
+panel-bonaparte[position~="right"] {
+  position: absolute;
+  height: 100%;
+  width: 200px;
+  top: 0px;
+  bottom: auto;
+  right: 0px;
+  left: auto;
+}
+panel-bonaparte[position~="right"][position~="push"] {
+  position: static;
+  -webkit-box-ordinal-group: 5;
+  -webkit-order: 4;
+      -ms-flex-order: 4;
+          order: 4;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0;
+      -ms-flex: 0 0;
+          flex: 0 0;
+  -webkit-flex-basis: 200px;
+      -ms-flex-preferred-size: 200px;
+          flex-basis: 200px;
+  height: auto;
+}
+panel-bonaparte[position~="top"] {
+  position: absolute;
+  height: 200px;
+  width: 100%;
+  top: 0px;
+  bottom: auto;
+}
+panel-bonaparte[position~="top"][position~="push"] {
+  position: static;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 100%;
+      -ms-flex: 1 100%;
+          flex: 1 100%;
+  -webkit-box-ordinal-group: 2;
+  -webkit-order: 1;
+      -ms-flex-order: 1;
+          order: 1;
+  height: 200px;
+}
+panel-bonaparte[position~="bottom"] {
+  position: absolute;
+  height: 200px;
+  width: 100%;
+  bottom: 0px;
+  top: auto;
+}
+panel-bonaparte[position~="bottom"][position~="push"] {
+  height: 200px;
+  position: static;
+  -webkit-box-flex: 1 !important;
+  -webkit-flex: 1 100% !important;
+      -ms-flex: 1 100% !important;
+          flex: 1 100% !important;
+  -webkit-box-ordinal-group: 6;
+  -webkit-order: 5;
+      -ms-flex-order: 5;
+          order: 5;
+}
+/*CORNERSTONE*/
+cornerstone-bonaparte {
+  position: absolute;
+  display: block;
+  background-color: purple;
+  width: 4rem;
+  height: 4rem;
+  top: 0px;
+  left: 0px;
+  z-index: 99;
+}
+toolbar-bonaparte[cornerstone~="bottom"] cornerstone-bonaparte {
+  bottom: 0px;
+  top: auto;
+}
+toolbar-bonaparte[cornerstone~="top"] cornerstone-bonaparte {
+  top: 0px;
+  bottom: auto;
+}
+toolbar-bonaparte[cornerstone~="left"] cornerstone-bonaparte {
+  left: 0px;
+  right: auto;
+}
+toolbar-bonaparte[cornerstone~="right"] cornerstone-bonaparte {
+  right: 0px;
+  left: auto;
+}
