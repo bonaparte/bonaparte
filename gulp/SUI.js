@@ -67,11 +67,8 @@ function extract(){
 
   // Move distribution files to dist/
 
-  gulp.src('./SUI/ui/dist/semantic.*')
-    .pipe(gulp.dest('./dist'));
-  
-  gulp.src('./SUI/ui/dist/themes/**/*')
-    .pipe(gulp.dest('./dist/SUI/themes'));
+  gulp.src('./SUI/ui/dist/**/*')
+    .pipe(gulp.dest('./dist/SUI'));
 
 }
 
