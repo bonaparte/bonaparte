@@ -1,55 +1,86 @@
 
-<toolbar-bonaparte>  
+<toolbar>
+
+  <sidebar>
+
+  <content>
+
+</toolbar>
+
+////
+
+<cornerstone>
+  <button>
+  <content>
+</cornerstone>
 
 
-	<cornerstone-bonaparte />
+////
 
-	<panel-bonaparte />
-	
+<panel>
 
-	<sidebar-bonaparte />
+////
 
-  <panel-bonaparte />  
+<toolbar> <!-- extends container -->
 
-  <panel-bonaparte />
+  <div>  <!-- sidebar -->
+
+  <cornerstone>
+    <button>
+    <content>
+  </cornerstone>
+
+  <div> <!-- content -->
   
+    <panel>
+    <panel>
+      
+  </div>
 
-	<content-bonaparte />
+</toolbar>
 
-</toolbar-bonaparte>
 
 
 ///////////////////////////////
 
 
-<bonaparte-toolbar>  
+<toolbar>
+  <xy :first-child> <!-- sidebar -->
+  <xy :nth-child(2)> <!-- content -->
 
-  <bonaparte-cornerstone />
+  <!-- ... --> 
+</toolbar>
 
-  <bonaparte-panel />
-  
-  <bonaparte-sidebar />
+////
 
-  <bonaparte-panel />
+<panel></panel>
 
-  <bonaparte-content />
+////
 
-</bonaparte-toolbar>
+<cornerstone>
+  <xy :first-child> <!-- button -->
+  <xy :last-child> <!-- content -->
+</cornerstone>
+
+////
+
+<loader>
+
+<toolbar>
+  <div> <!-- sidebar -->
+
+  <content> <!-- content -->
+     <panel>
+     <panel>
+  </content>
+
+  <cornerstone>
+    <button> <!-- button -->
+    <div> <!-- content -->
+  </cornerstone>
+
+  <loader>
+
+</toolbar>
 
 
-///////////////////////////////
-
-
-<bpart-toolbar>  
-
-  <bpart-cornerstone />
-
-  <bpart-panel />
-  
-  <bpart-sidebar />
-
-  <bpart-panel />
-
-  <bpart-content />
-
-</bpart-toolbar>

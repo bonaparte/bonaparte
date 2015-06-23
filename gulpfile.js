@@ -28,7 +28,7 @@ function js(){
 ///////////////////////////////////////////////////////////////////////////////
 
 function css(){
-  return gulp.src('./src/less/**/*.less')
+  return gulp.src('./src/less/bonaparte.less')
     .pipe(less())
     .pipe(autoprefixer())
     .pipe(gulp.dest('./dist/')); 

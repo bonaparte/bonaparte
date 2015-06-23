@@ -1,0 +1,60 @@
+@panel-bonaparte-borderWidth : 0.5rem;
+
+panel-bonaparte {
+  display: none;
+  position:absolute;
+  border:0;
+
+  background-color:#ffffff;
+  z-index:1;
+}
+
+panel-bonaparte[position~="left"] {
+  display:block;
+  position:absolute;
+  height:100%;
+  width:200px;
+  top:0px; 
+  left:0px;
+  right:auto;
+  border:0;
+  border-right:@panel-bonaparte-borderWidth solid @color-active;
+
+}
+
+panel-bonaparte[position~="right"]{
+  display:block;
+  height:100%;
+  width:200px;
+  top:0px; 
+  bottom:auto;
+  right:0px;
+  left:auto;
+  border-left:@panel-bonaparte-borderWidth solid @color-active;
+}
+
+
+panel-bonaparte[position~="top"]{
+  display:block;
+  height:200px;
+  width:100%;
+  top:0px;
+  bottom:auto;
+  left:0px;
+  right:auto;
+  border-bottom:@panel-bonaparte-borderWidth solid @color-active;
+
+}
+
+
+panel-bonaparte[position~="bottom"]{
+  display:block;
+  height:200px;
+  width:100%;
+  bottom:0px;
+  top:auto;
+  left:0px;
+  right:auto;
+  border-top:@panel-bonaparte-borderWidth solid @color-active;
+
+}
