@@ -2,7 +2,7 @@
 toolbar-bonaparte {
   position:relative;
   background-color:red;
-
+  overflow:hidden;
   display: flex;  
   flex-flow: row;
 }
@@ -83,79 +83,4 @@ toolbar-bonaparte[display="cover"] {
   height:100%;
 }
 
-toolbar-bonaparte[display="cover"] cornerstone-bonaparte {
-  position:fixed;
-}
-
-toolbar-bonaparte[display="cover"][sidebar="left"] > *:first-child ,
-toolbar-bonaparte[display="cover"][sidebar="right"] > *:first-child  {
-  position:fixed;
-  width:4rem;
-  height:100%;
-  top:0px;
-  bottom:auto;
-  left:auto;
-  right:auto;
-}
-
-toolbar-bonaparte[display="cover"][sidebar="top"] > *:first-child ,
-toolbar-bonaparte[display="cover"][sidebar="bottom"] > *:first-child  {
-  position:fixed;
-  height:4rem;
-  width:100%;
-  top:auto;
-  bottom:auto;
-  left:0px;
-  right:auto;
-}
-
-
-toolbar-bonaparte[display="cover"][sidebar="left"]{
-    
-  & > *:nth-child(1){
-    left:0px;
-    right:auto;
-  }
-
-  & > *:nth-child(2){
-    margin-left:4rem;
-  }
-}
-
-toolbar-bonaparte[display="cover"][sidebar="right"]{
-
-  & > *:nth-child(1){
-    right:0px;
-    left:auto;
-  }
-  & > *:nth-child(2) {
-    margin-right:4rem;
-  }
-
-}
-
-toolbar-bonaparte[display="cover"][sidebar="top"]{
-    
-  & > *:nth-child(1){
-    top:0px;
-    bottom:auto;
-  }
-
-  & > *:nth-child(2){
-    margin-top:4rem;
-  }
-}
-
-toolbar-bonaparte[display="cover"][sidebar="bottom"]{
-    
-  & > *:nth-child(1){
-    bottom:0px;
-    top:auto;
-  }
-
-  & > *:nth-child(2){
-    margin-bottom:4rem;
-  }
-
-}
 

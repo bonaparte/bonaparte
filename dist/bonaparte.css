@@ -61,6 +61,7 @@
 toolbar-bonaparte {
   position: relative;
   background-color: red;
+  overflow: hidden;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -155,57 +156,6 @@ toolbar-bonaparte[cornerstone~="right"] cornerstone-bonaparte {
 toolbar-bonaparte[display="cover"] {
   height: 100%;
 }
-toolbar-bonaparte[display="cover"] cornerstone-bonaparte {
-  position: fixed;
-}
-toolbar-bonaparte[display="cover"][sidebar="left"] > *:first-child,
-toolbar-bonaparte[display="cover"][sidebar="right"] > *:first-child {
-  position: fixed;
-  width: 4rem;
-  height: 100%;
-  top: 0px;
-  bottom: auto;
-  left: auto;
-  right: auto;
-}
-toolbar-bonaparte[display="cover"][sidebar="top"] > *:first-child,
-toolbar-bonaparte[display="cover"][sidebar="bottom"] > *:first-child {
-  position: fixed;
-  height: 4rem;
-  width: 100%;
-  top: auto;
-  bottom: auto;
-  left: 0px;
-  right: auto;
-}
-toolbar-bonaparte[display="cover"][sidebar="left"] > *:nth-child(1) {
-  left: 0px;
-  right: auto;
-}
-toolbar-bonaparte[display="cover"][sidebar="left"] > *:nth-child(2) {
-  margin-left: 4rem;
-}
-toolbar-bonaparte[display="cover"][sidebar="right"] > *:nth-child(1) {
-  right: 0px;
-  left: auto;
-}
-toolbar-bonaparte[display="cover"][sidebar="right"] > *:nth-child(2) {
-  margin-right: 4rem;
-}
-toolbar-bonaparte[display="cover"][sidebar="top"] > *:nth-child(1) {
-  top: 0px;
-  bottom: auto;
-}
-toolbar-bonaparte[display="cover"][sidebar="top"] > *:nth-child(2) {
-  margin-top: 4rem;
-}
-toolbar-bonaparte[display="cover"][sidebar="bottom"] > *:nth-child(1) {
-  bottom: 0px;
-  top: auto;
-}
-toolbar-bonaparte[display="cover"][sidebar="bottom"] > *:nth-child(2) {
-  margin-bottom: 4rem;
-}
 panel-bonaparte {
   display: none;
   position: absolute;
@@ -253,6 +203,85 @@ panel-bonaparte[position~="bottom"] {
   left: 0px;
   right: auto;
   border-top: 0.5rem solid #425cbd;
+}
+scroll-bonaparte {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+/** initial setup **/
+scroll-bonaparte,
+.nano {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+scroll-bonaparte > *:nth-child(1),
+.nano > *:nth-child(1),
+scroll-bonaparte > .nano-content,
+.nano > .nano-content {
+  position: absolute;
+  overflow: scroll;
+  overflow-x: hidden;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+scroll-bonaparte > *:nth-child(1):focus,
+.nano > *:nth-child(1):focus,
+scroll-bonaparte > .nano-content:focus,
+.nano > .nano-content:focus {
+  outline: thin dotted;
+}
+scroll-bonaparte > *:nth-child(1)::-webkit-scrollbar,
+.nano > *:nth-child(1)::-webkit-scrollbar,
+scroll-bonaparte > .nano-content::-webkit-scrollbar,
+.nano > .nano-content::-webkit-scrollbar {
+  display: none;
+}
+scroll-bonaparte > .nano-pane,
+.nano > .nano-pane {
+  background: rgba(0, 0, 0, 0.25);
+  position: absolute;
+  width: 10px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  /* Target only IE7 and IE8 with this hack */
+  visibility: hidden\9;
+  opacity: .01;
+  -webkit-transition: .2s;
+  transition: .2s;
+  border-radius: 5px;
+}
+scroll-bonaparte > .nano-pane > .nano-slider,
+.nano > .nano-pane > .nano-slider {
+  background: #444;
+  background: rgba(0, 0, 0, 0.5);
+  position: relative;
+  margin: 0 1px;
+  border-radius: 3px;
+}
+.nano:hover > .nano-pane,
+scroll-bonaparte:hover > .nano-pane,
+.nano:hover > *:nth-child(1),
+scroll-bonaparte:hover > *:nth-child(1),
+.nano.active,
+scroll-bonaparte.active,
+.nano.flashed,
+scroll-bonaparte.flashed {
+  /* Target only IE7 and IE8 with this hack */
+  visibility: visible\9;
+  opacity: 0.99;
+}
+.has-scrollbar > .nano-content::-webkit-scrollbar,
+.has-scrollbar > *:nth-child(1)::-webkit-scrollbar {
+  display: block;
+}
+content-bonaparte {
+  overflow: auto;
 }
 /*container-bonaparte {
   position:relative;

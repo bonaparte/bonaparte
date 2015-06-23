@@ -1,8 +1,7 @@
-container-bonaparte {
-  @extend .nano; 
-
+scroll-bonaparte {
   position:relative;
   height:100%;  
+  overflow:hidden;
 }
 
 //
@@ -15,14 +14,14 @@ container-bonaparte {
 @sliderClass: ~'nano-slider';
 @contentClass: ~'nano-content';
 
-container-bonaparte,
+scroll-bonaparte,
 .@{nanoClass} {
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
 
-  > content-bonaparte,
+  > *:nth-child(1),
   > .@{contentClass} {
   position: absolute;
   overflow: scroll;
@@ -68,8 +67,9 @@ container-bonaparte,
 }
 
 .@{nanoClass},
-container-bonaparte {
+scroll-bonaparte {
   &:hover > .@{paneClass},
+  &:hover > *:nth-child(1),
   &.active,
   &.flashed {
     /* Target only IE7 and IE8 with this hack */
@@ -79,6 +79,6 @@ container-bonaparte {
 }
 
 .has-scrollbar > .@{contentClass}::-webkit-scrollbar,
-.has-scrollbar > content-bonaparte::-webkit-scrollbar {
+.has-scrollbar > *:nth-child(1)::-webkit-scrollbar {
   display: block;
 }
