@@ -1,25 +1,26 @@
+var objct = require("objct");
 
 document.registerElement('toolbar-bonaparte', {
-    prototype: require("./defaultPrototype")()
+    prototype: new objct.extend( Object.create( HTMLElement.prototype ), require("./test") )
 });
 
 document.registerElement('cornerstone-bonaparte', {
-    prototype: require("./defaultPrototype")()
+    prototype: new objct.extend( Object.create( HTMLElement.prototype ), require("./test") )
 });
 
 document.registerElement('panel-bonaparte', {
-    prototype: require("./defaultPrototype")()
+    prototype: new objct.extend( Object.create( HTMLElement.prototype ), require("./panel") )
 });
 
 document.registerElement('sidebar-bonaparte', {
-    prototype: require("./defaultPrototype")()
+    prototype: new objct.extend( Object.create( HTMLElement.prototype ), require("./test") )
 });
 
 document.registerElement('content-bonaparte', {
-    prototype:require("./defaultPrototype")()
+    prototype: new objct.extend( Object.create( HTMLElement.prototype ), require("./test") )
 });
 
-document.registerElement('container-bonaparte', {
-    prototype: require("./defaultPrototype")()
+document.registerElement('scroll-bonaparte', {
+    prototype: new objct.extend( Object.create( HTMLElement.prototype ), require("./test") )
 });
 

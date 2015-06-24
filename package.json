@@ -1,5 +1,9 @@
 {
   "name": "bonaparte",
+
+  "dependencies" : {
+    "objct": "^2.0.3"
+  },
   
   "devDependencies": {
     "gulp": "*",
