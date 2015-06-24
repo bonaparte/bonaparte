@@ -322,7 +322,8 @@ $.fn.modal = function(parameters) {
             module.set.type();
             module.set.clickaway();
 
-            if( !settings.allowMultiple && module.others.active() ) {
+            if( !settings.allowMultiple && $otherModals.filter('.' + className.active).length > 0) {
+              module.debug('Other modals visible, queueing show animation');
               module.hideOthers(module.showModal);
             }
             else {
@@ -376,7 +377,7 @@ $.fn.modal = function(parameters) {
                   duration    : settings.duration,
                   useFailSafe : true,
                   onStart     : function() {
-                    if(!module.others.active() && !keepDimmed) {
+                    if(!module.othersActive() && !keepDimmed) {
                       module.hideDimmer();
                     }
                     module.remove.keyboardShortcuts();
@@ -422,7 +423,7 @@ $.fn.modal = function(parameters) {
 
         hideAll: function(callback) {
           var
-            $visibleModals = $allModals.filter('.' + className.active + ', .' + className.animating)
+            $visibleModals = $allModals.filter(':visible')
           ;
           callback = $.isFunction(callback)
             ? callback
@@ -439,7 +440,7 @@ $.fn.modal = function(parameters) {
 
         hideOthers: function(callback) {
           var
-            $visibleModals = $otherModals.filter('.' + className.active + ', .' + className.animating)
+            $visibleModals = $otherModals.filter(':visible')
           ;
           callback = $.isFunction(callback)
             ? callback
@@ -453,15 +454,9 @@ $.fn.modal = function(parameters) {
           }
         },
 
-        others: {
-          active: function() {
-            return ($otherModals.filter('.' + className.active).length > 0);
-          },
-          animating: function() {
-            return ($otherModals.filter('.' + className.animating).length > 0);
-          }
+        othersActive: function() {
+          return ($otherModals.filter('.' + className.active + ', .' + className.animating).length > 0);
         },
-
 
         add: {
           keyboardShortcuts: function() {
@@ -601,7 +596,7 @@ $.fn.modal = function(parameters) {
           type: function() {
             if(module.can.fit()) {
               module.verbose('Modal fits on screen');
-              if(!module.others.active() && !module.others.animating()) {
+              if(!module.othersActive()) {
                 module.remove.scrolling();
               }
             }

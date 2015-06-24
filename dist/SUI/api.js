@@ -76,6 +76,7 @@ $.api = $.fn.api = function(parameters) {
 
         initialize: function() {
           if(!methodInvoked) {
+            module.create.cache();
             module.bind.events();
           }
           module.instantiate();
@@ -120,39 +121,28 @@ $.api = $.fn.api = function(parameters) {
             var
               response
             ;
-            if(window.Storage === undefined) {
-              module.error(error.noStorage);
-              return;
+            if(!module.cache) {
+              module.create.cache();
             }
-            response = sessionStorage.getItem(url);
+            response = (module.cache.response[url] !== undefined)
+              ? module.cache.response[url]
+              : false
+            ;
             module.debug('Using cached response', url, response);
-            if(response !== undefined) {
-              try {
-               response = JSON.parse(response);
-              }
-              catch(e) {
-                // didnt store object
-              }
-              return response;
-            }
-            return false;
+            return response;
           }
         },
         write: {
           cachedResponse: function(url, response) {
+            if(!module.cache) {
+              module.create.cache();
+            }
             if(response && response === '') {
               module.debug('Response empty, not caching', response);
               return;
             }
-            if(window.Storage === undefined) {
-              module.error(error.noStorage);
-              return;
-            }
-            if( $.isPlainObject(response) ) {
-              response = JSON.stringify(response);
-            }
-            sessionStorage.setItem(url, response);
             module.verbose('Storing cached response for url', url, response);
+            module.cache.response[url] = response;
           }
         },
 
@@ -202,19 +192,27 @@ $.api = $.fn.api = function(parameters) {
             module.cancelled = false;
           }
 
-          // get url
-          url = module.get.templatedURL();
-          if(!url && !module.is.mocked()) {
-            module.error(error.missingURL);
-            return;
+          if(settings.url) {
+            // override with url if specified
+            module.debug('Using specified url', url);
+            url = module.add.urlData( settings.url );
+          }
+          else {
+            // otherwise find url from api endpoints
+            url = module.add.urlData( module.get.templateURL() );
+            module.debug('Added URL Data to url', url);
           }
 
-          // replace variables
-          url = module.add.urlData( url );
-
-          // missing url parameters
+          // exit conditions reached, missing url parameters
           if( !url && !module.is.mocked()) {
-            return;
+            if( module.is.form() ) {
+              url = $module.attr('action') || '';
+              module.debug('No url or action specified, defaulting to form action', url);
+            }
+            else {
+              module.error(error.missingURL, settings.action);
+              return;
+            }
           }
 
 
@@ -476,7 +474,6 @@ $.api = $.fn.api = function(parameters) {
                 errorMessage = (settings.error[status] !== undefined)
                   ? settings.error[status]
                   : httpMessage,
-                abortedRequest = false,
                 response
               ;
 
@@ -485,10 +482,10 @@ $.api = $.fn.api = function(parameters) {
                 module.debug('Request Aborted (Most likely caused by page navigation or CORS Policy)', status, httpMessage);
                 module.reset();
                 settings.onAbort.call(context, status, $module);
-                abortedRequest = true;
+                return;
               }
 
-              if(xhr !== undefined && !abortedRequest) {
+              if(xhr !== undefined) {
                 // if http status code returned and json returned error, look for it
                 if( xhr.status != 200 && httpMessage !== undefined && httpMessage !== '') {
                   module.error(error.statusMessage + httpMessage, ajaxSettings.url);
@@ -512,16 +509,21 @@ $.api = $.fn.api = function(parameters) {
                   module.set.error();
                   setTimeout(module.remove.error, settings.errorDuration);
                 }
-                module.debug('API Request errored', errorMessage);
+                module.debug('API Request error:', errorMessage);
                 settings.onError.call(context, errorMessage, $module);
               }
-              settings.onFailure.call(context, response, $module);
             }
           }
         },
 
         create: {
 
+          cache: function() {
+            module.verbose('Creating local response cache');
+            module.cache = {
+              response: {}
+            };
+          },
 
           // api promise
           request: function() {
@@ -550,12 +552,7 @@ $.api = $.fn.api = function(parameters) {
               else if( $.isFunction(settings.mockResponseAsync) ) {
                 callback = function(response) {
                   module.verbose('Async callback returned response', response);
-                  if(response) {
-                    module.request.resolveWith(context, [response]);
-                  }
-                  else {
-                    module.request.rejectWith(context, [true]);
-                  }
+                  module.request.resolveWith(context, [response]);
                 };
                 module.debug('Using async mocked response', settings.mockResponseAsync);
                 settings.mockResponseAsync.call(context, settings, callback);
@@ -687,24 +684,20 @@ $.api = $.fn.api = function(parameters) {
             module.debug('Retrieved form data', formData);
             return formData;
           },
-          templatedURL: function(action) {
+          templateURL: function(action) {
+            var
+              url
+            ;
             action = action || $module.data(metadata.action) || settings.action || false;
-            url    = $module.data(metadata.url) || settings.url || false;
-            if(url) {
-              module.debug('Using specified url', url);
-              return url;
-            }
             if(action) {
               module.debug('Looking up url for action', action, settings.api);
-              if(settings.api[action] === undefined && !module.is.mocked()) {
-                module.error(error.missingAction, settings.action, settings.api);
-                return;
+              if(settings.api[action] !== undefined) {
+                url = settings.api[action];
+                module.debug('Found template url', url);
               }
-              url = settings.api[action];
-            }
-            else if( module.is.form() ) {
-              url = $module.attr('action') || false;
-              module.debug('No url or action specified, defaulting to form action', url);
+              else if( !module.is.form() && !module.is.mocked() ) {
+                module.error(error.missingAction, settings.action, settings.api);
+              }
             }
             return url;
           }
@@ -912,9 +905,6 @@ $.api.settings = {
   verbose           : false,
   performance       : true,
 
-  // api endpoints
-  api               : {},
-
   // cache
   cache             : true,
   interruptRequests : true,
@@ -978,7 +968,6 @@ $.api.settings = {
     missingSerialize  : 'Required dependency jquery-serialize-object missing, using basic serialize',
     missingURL        : 'No URL specified for api event',
     noReturnedValue   : 'The beforeSend callback must return a settings object, beforeSend ignored.',
-    noStorage         : 'Caching respopnses locally requires session storage',
     parseError        : 'There was an error parsing your request',
     requiredParameter : 'Missing a required URL parameter: ',
     statusMessage     : 'Server gave an error: ',
@@ -1000,11 +989,12 @@ $.api.settings = {
   },
 
   metadata: {
-    action  : 'action',
-    url     : 'url'
+    action  : 'action'
   }
 };
 
+
+$.api.settings.api = {};
 
 
 })( jQuery, window , document );

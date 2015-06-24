@@ -442,7 +442,6 @@ $.site.settings = {
     'checkbox',
     'dimmer',
     'dropdown',
-    'embed',
     'form',
     'modal',
     'nag',
@@ -454,6 +453,7 @@ $.site.settings = {
     'sticky',
     'tab',
     'transition',
+    'video',
     'visit',
     'visibility'
   ],
