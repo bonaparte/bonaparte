@@ -1,55 +1,71 @@
-@panel-bonaparte-borderWidth : 0.5rem;
-
 panel-bonaparte {
   display: none;
   position:absolute;
   border:0;
+  overflow:hidden;
 
   background-color:#ffffff;
   z-index:1;
+
+  transition:width 500ms, height 500ms, top 500ms, right 500ms, bottom 500ms, left 500ms;
+  transition-timing-function:cubic-bezier(0.12, 0.38, 0.4, 0.98);
 }
 
 panel-bonaparte[position~="left"] {
   display:block;
-  position:absolute;
   height:100%;
-  width:200px;
   top:0px; 
-  left:0px;
   right:auto;
   border:0;
   border-right:@panel-bonaparte-borderWidth solid @color-active;
 
+  width:0px;
+  left:-10px;
+
+  &[open="true"] {
+    width:200px;
+    left:0px;
+  }
 }
 
 panel-bonaparte[position~="right"]{
   display:block;
   height:100%;
-  width:200px;
   top:0px; 
   bottom:auto;
-  right:0px;
   left:auto;
   border-left:@panel-bonaparte-borderWidth solid @color-active;
+
+  width:0px;
+  right:-10px;
+
+  &[open="true"] {
+    width:200px;
+    right:0px;
+  }
 }
 
 
 panel-bonaparte[position~="top"]{
   display:block;
-  height:200px;
   width:100%;
-  top:0px;
   bottom:auto;
   left:0px;
   right:auto;
   border-bottom:@panel-bonaparte-borderWidth solid @color-active;
 
+  height:0px;
+  top:-10px;
+
+  &[open="true"] {
+    height:200px;
+    top:0px;
+  }
 }
 
 
 panel-bonaparte[position~="bottom"]{
   display:block;
-  height:200px;
   width:100%;
   bottom:0px;
   top:auto;
@@ -57,4 +73,11 @@ panel-bonaparte[position~="bottom"]{
   right:auto;
   border-top:@panel-bonaparte-borderWidth solid @color-active;
 
+  height:0px;
+  bottom:-10px;
+
+  &[open="true"] {
+    height:200px;
+    bottom:0px;
+  }
 }
