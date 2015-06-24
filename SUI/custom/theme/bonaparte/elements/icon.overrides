@@ -822,7 +822,7 @@ i.icon.wallpaper:before { content: "\e1bc"; }
 i.icon.warning:before { content: "\e002"; }
 i.icon.watch:before { content: "\e334"; }
 i.icon.wb-auto:before { content: "\e42c"; }
-i.icon.wb-cloudy:before { content: "\e42d"; }"
+i.icon.wb-cloudy:before { content: "\e42d"; }
 i.icon.wb-incandescent:before { content: "\e42e"; }
 i.icon.wb-iridescent:before { content: "\e436"; }
 i.icon.wb-sunny:before { content: "\e430"; }
