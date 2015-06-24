@@ -71,7 +71,6 @@ toolbar-bonaparte {
           flex-flow: row;
 }
 toolbar-bonaparte > *:nth-child(1) {
-  display: block;
   background-color: teal;
   -webkit-box-flex: 0;
   -webkit-flex: 0 0;
@@ -85,7 +84,6 @@ toolbar-bonaparte > *:nth-child(1) {
 }
 toolbar-bonaparte > *:nth-child(2) {
   background-color: tomato;
-  display: block;
   -webkit-box-flex: 1;
   -webkit-flex: 1 auto;
       -ms-flex: 1 auto;
