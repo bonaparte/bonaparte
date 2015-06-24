@@ -6,7 +6,7 @@ module.exports = {
   attachedCallback: function() {
     console.log(this.nodeName+': live on DOM ;-) ', this, arguments);
   },
-  detachedCallbackfunction() {
+  detachedCallback: function() {
     console.log(this.nodeName+': leaving the DOM :-( )', this, arguments);
   },
   attributeChangedCallback : function( name, previousValue, value ) {
