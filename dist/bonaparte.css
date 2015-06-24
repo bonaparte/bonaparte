@@ -204,11 +204,6 @@ panel-bonaparte[position~="bottom"] {
   right: auto;
   border-top: 0.5rem solid #425cbd;
 }
-scroll-bonaparte {
-  position: relative;
-  height: 100%;
-  overflow: hidden;
-}
 /** initial setup **/
 scroll-bonaparte,
 .nano {
