@@ -6,22 +6,14 @@
    Icon Variables
 --------------------*/
 
-@fontName: 'MaterialIcons-Regular';
+@fontName: 'icons';
 @fallbackSRC: url("@{fontPath}/@{fontName}.eot");
 @src:
   url("@{fontPath}/@{fontName}.eot?#iefix") format('embedded-opentype'),
   url("@{fontPath}/@{fontName}.woff2") format('woff2'),
   url("@{fontPath}/@{fontName}.woff") format('woff'),
-  url("@{fontPath}/@{fontName}.ttf") format('truetype')
-;
-
-@socFontName: 'socicon';
-@socFallbackSRC: url("@{fontPath}/@{socFontName}.eot");
-@socSrc:
-  url("@{fontPath}/@{socFontName}.eot?#iefix") format('embedded-opentype'),
-  url("@{fontPath}/@{socFontName}.woff2") format('woff2'),
-  url("@{fontPath}/@{socFontName}.woff") format('woff'),
-  url("@{fontPath}/@{socFontName}.ttf") format('truetype')
+  url("@{fontPath}/@{fontName}.ttf") format('truetype'),
+  url("@{fontPath}/@{fontName}.svg#icons") format('svg')
 ;
 
 @opacity: 1;
