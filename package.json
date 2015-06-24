@@ -5,7 +5,11 @@
     "gulp": "*",
     "gulp-autoprefixer": "2.3.1",
     "gulp-less" : "^3.0.3",
-    "gulp-shell" : "^0.4.2"
+    "gulp-shell" : "^0.4.2",
+
+    "browserify": "^10.2.4",
+    "vinyl-source-stream": "^1.1.0",
+    "vinyl-buffer": "^1.0.0"
   },
 
   "scripts": {

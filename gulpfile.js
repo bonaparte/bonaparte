@@ -1,7 +1,10 @@
 var gulp         = require('gulp');
 var less         = require("gulp-less");
 var autoprefixer = require("gulp-autoprefixer");
-var spawn = require('child_process').spawn;
+var spawn        = require('child_process').spawn;
+var browserify   = require("browserify");
+var source       = require('vinyl-source-stream');
+var buffer       = require('vinyl-buffer');
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -21,8 +24,15 @@ gulp.task("BPA-watch", ["BPA-build"], watch);
 ///////////////////////////////////////////////////////////////////////////////
 
 function js(){
-    gulp.src('./src/js/**/*.js')
-    .pipe(gulp.dest('./dist')); 
+
+  browserify({
+    // debug: true,
+    entries: ['./src/js/bonaparte.js']
+  })
+  .bundle()
+  .pipe(source('bonaparte.js'))
+  .pipe(buffer())
+  .pipe(gulp.dest('./dist'));
 }
 
 ///////////////////////////////////////////////////////////////////////////////
