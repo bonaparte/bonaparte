@@ -9,7 +9,7 @@
   },
 
   "scripts": {
-    "install" : "gulp SUI-install ; cd SUI/ui ; npm install;"
+    "install" : "gulp SUI-install; cd SUI/ui ; npm install; gulp build; cd ../..; gulp BPA-build"
   },
 
   "engines": {
