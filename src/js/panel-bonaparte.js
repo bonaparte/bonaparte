@@ -1,4 +1,5 @@
 var objct = require("objct");
+var util = require("./utility");
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -15,27 +16,39 @@ panel.prototype = {
   close : close
 };
 
-///////////////////////////////////////////////////////////////////////////////
-
 function panel(){
-  var that = this;
-  
-  this.addListener("attributeChangedCallback", createdCallback);
-  this.global.addListener(this.NodeName+"-opened", globalPanelOpened);
+  var tag = this;
+
+  this.addListener("attributeChangedCallback", attributeChangedCallback);
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
-  
-}
 
-function createdCallback(data){
-  console.log("PANEL CREATED", data);
-}
+
+  function attributeChangedCallback(data){
+    switch(data.name) {
+
+      case "open": 
+        setTimeout(function(){ 
+          if(data.newValue === "true") 
+            tag.global.addListener("click", clickHandler);
+          else
+            tag.global.removeListener("click", clickHandler);
+        },0); // wait for end of current process > let event finish bubbling up.
+      break;
+
+    } 
+  }
 
 ///////////////////////////////////////////////////////////////////////////////
 
-function globalPanelOpened(){
-  
+  function clickHandler(e){
+    if(e.target === tag || util.nodeContains(e.target, tag)) return;
+    tag.close();
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
 }
 ///////////////////////////////////////////////////////////////////////////////
 

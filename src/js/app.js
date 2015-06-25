@@ -31,11 +31,11 @@ function createPrototype(element){
 
   function createdCallback() {
 
+    if(!objct.isObjct(element)) return;
+
     // Create and mixin tag instance
     new objct.extend(this, element);
-
-    if(!objct.isObjct(element)) return;
-    
+        
     var data = {
       element : this
     };

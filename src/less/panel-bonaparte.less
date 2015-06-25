@@ -11,6 +11,11 @@ panel-bonaparte {
   transition-timing-function:cubic-bezier(0.12, 0.38, 0.4, 0.98);
 }
 
+panel-bonaparte[data-open="true"],
+panel-bonaparte[open="true"] {
+  z-index:99;
+}
+
 panel-bonaparte[data-position~="left"],
 panel-bonaparte[position~="left"] {
   display:block;

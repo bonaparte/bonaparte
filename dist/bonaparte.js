@@ -71,14 +71,14 @@ var build = function(modules, data){
 			modules[i].obj;
 
 		if(typeof obj === strFunction) { 
-			mixinObject(instance, obj.prototype);
-			obj.apply(instance, data.a);
+			mixinObject(data.i, obj.prototype);
+			obj.apply(data.i, data.a);
 		}
 		else {
-			mixinObject(instance, obj); 
+			mixinObject(data.i, obj); 
 		}
 	}
-	return instance;
+	return data.i;
 };
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -205,11 +205,11 @@ function createPrototype(element){
 
   function createdCallback() {
 
+    if(!objct.isObjct(element)) return;
+
     // Create and mixin tag instance
     new objct.extend(this, element);
-
-    if(!objct.isObjct(element)) return;
-    
+        
     var data = {
       element : this
     };
@@ -269,7 +269,7 @@ function createPrototype(element){
 ///////////////////////////////////////////////////////////////////////////////
 
 }
-},{"./panel-bonaparte":4,"objct":1}],3:[function(require,module,exports){
+},{"./panel-bonaparte":5,"objct":1}],3:[function(require,module,exports){
 module.exports = function(){
 
   this.addListener     = addListener;
@@ -329,6 +329,42 @@ var objct = require("objct");
 
 ///////////////////////////////////////////////////////////////////////////////
 
+module.exports = globals;
+
+///////////////////////////////////////////////////////////////////////////////
+
+window.addEventListener("click", eventHandler);
+
+///////////////////////////////////////////////////////////////////////////////
+
+globals.global = new objct(require("./events"));
+
+globals.prototype = {
+  global : globals.global,
+};
+
+///////////////////////////////////////////////////////////////////////////////
+
+function globals(){
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+function eventHandler(e){
+
+  globals.global.trigger(e.type, e); 
+
+}
+},{"./events":3,"objct":1}],5:[function(require,module,exports){
+var objct = require("objct");
+var util = require("./utility");
+
+///////////////////////////////////////////////////////////////////////////////
+
 module.exports = objct(
   require("./tag"), 
   require("./toggle"),
@@ -342,27 +378,39 @@ panel.prototype = {
   close : close
 };
 
-///////////////////////////////////////////////////////////////////////////////
-
 function panel(){
-  var that = this;
-  
-  this.addListener("attributeChangedCallback", createdCallback);
-  this.global.addListener(this.NodeName+"-opened", globalPanelOpened);
+  var tag = this;
+
+  this.addListener("attributeChangedCallback", attributeChangedCallback);
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
-  
-}
 
-function createdCallback(data){
-  console.log("PANEL CREATED", data);
-}
+
+  function attributeChangedCallback(data){
+    switch(data.name) {
+
+      case "open": 
+        setTimeout(function(){ 
+          if(data.newValue === "true") 
+            tag.global.addListener("click", clickHandler);
+          else
+            tag.global.removeListener("click", clickHandler);
+        },0); // wait for end of current process > let event finish bubbling up.
+      break;
+
+    } 
+  }
 
 ///////////////////////////////////////////////////////////////////////////////
 
-function globalPanelOpened(){
-  
+  function clickHandler(e){
+    if(e.target === tag || util.nodeContains(e.target, tag)) return;
+    tag.close();
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
 }
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -378,27 +426,51 @@ function open() {
   this.trigger(this.NodeName+"-opened", {element:this});
   this.global.trigger(this.NodeName+"-opened", {element:this});
 }
-},{"./tag":5,"./toggle":6,"objct":1}],5:[function(require,module,exports){
+},{"./tag":6,"./toggle":7,"./utility":8,"objct":1}],6:[function(require,module,exports){
 var objct = require("objct");
 
 ///////////////////////////////////////////////////////////////////////////////
 
-var globals = {
-  global : new objct(require("./events")),
-
-};
-
-///////////////////////////////////////////////////////////////////////////////
-
 module.exports = objct(
+  require("./globals"),
   require("./events"),
-  globals
+  tag
 );
 
 ///////////////////////////////////////////////////////////////////////////////
+
+function tag(){
+
+  this.state = initalState(this);
+  this.addListener("attributeChangedCallback", attributeChangedCallback)
+  
+///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-},{"./events":3,"objct":1}],6:[function(require,module,exports){
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+function initalState(element){
+  var state = {};
+  var length = element.attributes.length;
+  var i = -1;
+
+  while(++i < length) {
+    state[element.attributes[i].name] = element.attributes[i].value;
+  }
+
+  return state;
+}  
+
+///////////////////////////////////////////////////////////////////////////////
+
+function attributeChangedCallback(data){
+
+  data.element.state[data.name] = data.newValue;
+
+}
+},{"./events":3,"./globals":4,"objct":1}],7:[function(require,module,exports){
 module.exports = {
   toggle : toggle
 };
@@ -415,4 +487,13 @@ function toggle(attribute){
 }
 
 
+},{}],8:[function(require,module,exports){
+module.exports = utility = {};
+
+///////////////////////////////////////////////////////////////////////////////
+
+utility.nodeContains = function nodeContains(parent, child) {
+  while((child=child.parentNode)&&child!==parent); 
+  return !!child; 
+};
 },{}]},{},[2]);
