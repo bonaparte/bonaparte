@@ -1,0 +1,125 @@
+<!DOCTYPE html><html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="../dist/SUI/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="../dist/bonaparte.css">
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/document-register-element/0.4.3/document-register-element.js"
+    >/* W3C Custom Elements */</script>
+    <script src="../dist/bonaparte.js"></script>
+  
+
+
+    <style>  
+      body, html {
+        position:relative;
+        margin:0;
+        padding:0;
+        height:100%;
+        background-color: blue;
+      }
+
+    </style>
+
+  </head>
+  <body>
+
+    <toolbar-bonaparte display="cover" data-sidebar="top" cornerstone="top left">  
+
+      <aside>
+        <p>Section <select><option>TOP_NEWS</option></select></p>
+        <div class="right">
+          <h4>LOCALWSJ/US/WEB/NOW</h4>
+          <h6>v0.4.1</h6>
+        </div>
+      </aside>
+
+      
+      <toolbar-bonaparte display="cover" data-sidebar="left">  
+        <aside>
+          <div class="ui buttons vertical">
+            <div class="ui icon button" onclick="document.getElementById('panel').toggle('open')">
+              <i class="view-quilt icon left"></i></div>
+            <div class="ui icon button">
+              <i class="screen-rotation icon left"></i></div>
+            <div class="ui icon button">
+              <i class="border-clear icon left"></i></div>
+            <div class="ui icon button">
+              <i class="lock icon left"></i></div>
+          </div>
+        </aside>
+        
+
+        <toolbar-bonaparte display="cover" data-sidebar="right">  
+
+          <aside>
+            <div class="ui buttons vertical">
+              <div class="ui icon button" onclick="document.getElementById('list').toggle('open')">
+                <i class="list icon left"></i></div>
+            </div>
+            <div class="ui buttons vertical">
+              <div class="ui icon button" onclick="document.getElementById('right').toggle('open')">
+                <i class="icon left">B1</i></div>
+              <div class="ui icon button" onclick="document.getElementById('right').toggle('open')">
+                <i class="icon left">B2</i></div>
+              <div class="ui icon button" onclick="document.getElementById('right').toggle('open')">
+                <i class="icon left">B3</i></div>
+              <div class="ui icon button" onclick="document.getElementById('right').toggle('open')">
+                <i class="icon left">B4</i></div>
+            </div>
+          </aside>
+          <scroll-bonaparte>
+
+            <content-bonaparte>
+              <h1> Content </h1>
+              <h2> Content </h2>
+              <h3> Content </h3>
+              <h4> Content </h4>
+              <h5> Content </h5>
+              <h6> Content </h6>
+            </content-bonaparte> 
+
+           
+            <panel-bonaparte id="list" position="right">
+            </panel-bonaparte>
+            
+            <panel-bonaparte id="right" position="right">
+              <h1 class="ui dividing header">
+                Elements 
+
+                <div class="ui right button"><i class="replay icon left"></i>Reset</div>
+              </h1>
+              <div id="panel-right-1" class="ui segment"><p>content 1</p></div>
+              <div class="dividing"></div>
+              <div id="panel-right-2" class="ui segment"><p>content 2</p></div>
+
+              <div class="ui primary button"><i class="edit icon left"></i>Edit full article </div>
+
+            </panel-bonaparte>
+          </scroll-bonaparte>
+        <panel-bonaparte id="panel" position="left">
+           <scroll-bonaparte>
+
+            <content-bonaparte>
+              <h1> Content </h1>
+              <h2> Content </h2>
+              <h3> Content </h3>
+              <h4> Content </h4>
+              <h5> Content </h5>
+              <h6> Content </h6>
+            </content-bonaparte> 
+            
+          </scroll-bonaparte>
+        </panel-bonaparte>
+        </toolbar-bonaparte>
+      </toolbar-bonaparte>  
+      <cornerstone-bonaparte>
+            <div class="ui icon">
+              <i class="lock icon left"></i>
+          </div>
+      </cornerstone-bonaparte>
+    </toolbar-bonaparte>
+
+
+
+  </body>
+</html> 
