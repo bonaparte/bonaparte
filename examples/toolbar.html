@@ -14,13 +14,6 @@
         position:relative;
         margin:0;
         padding:0;
-      }
-
-      html {
-        height:100%;
-      }
-
-      body {
         height:100%;
         background-color: blue;
       }
@@ -51,11 +44,11 @@
 
         <aside>
           <div class="ui buttons vertical">
-            <div class="ui icon button" onclick="document.getElementById('left').toggle()"><i class="shop icon left"></i></div>
-            <div class="ui icon button" onclick="document.getElementById('right').toggle()"><i class="shop icon left"></i></div>
-            <div class="ui icon button" onclick="document.getElementById('bottom').toggle()"><i class="shop icon left"></i></div>
-            <div class="ui icon button" onclick="document.getElementById('top').toggle()"><i class="shop icon left"></i></div>
-            <div class="ui icon button" onclick="document.getElementById('right').toggle()"><i class="shop icon left"></i></div>
+            <div class="ui icon button" onclick="document.getElementById('left').toggle('open')"><i class="shop icon left"></i></div>
+            <div class="ui icon button" onclick="document.getElementById('right').toggle('open')"><i class="shop icon left"></i></div>
+            <div class="ui icon button" onclick="document.getElementById('bottom').toggle('open')"><i class="shop icon left"></i></div>
+            <div class="ui icon button" onclick="document.getElementById('top').toggle('open')"><i class="shop icon left"></i></div>
+            <div class="ui icon button" onclick="document.getElementById('right').toggle('open')"><i class="shop icon left"></i></div>
           </div>
         </aside>
 
@@ -96,7 +89,7 @@
 
      
       </toolbar-bonaparte>     
-        <cornerstone-bonaparte onclick="document.getElementById('top').toggle()"></cornerstone-bonaparte>
+        <cornerstone-bonaparte onclick="document.getElementById('top').toggle('open')"></cornerstone-bonaparte>
     </toolbar-bonaparte>
 
 

@@ -174,97 +174,236 @@ commonJSmodule.exports = factory;
 },{}],2:[function(require,module,exports){
 var objct = require("objct");
 
-document.registerElement('toolbar-bonaparte', {
-    prototype: new objct.extend( Object.create( HTMLElement.prototype ), require("./test") )
-});
+///////////////////////////////////////////////////////////////////////////////
 
-document.registerElement('cornerstone-bonaparte', {
-    prototype: new objct.extend( Object.create( HTMLElement.prototype ), require("./test") )
-});
+document.registerElement('toolbar-bonaparte', { prototype: createPrototype() });
 
-document.registerElement('panel-bonaparte', {
-    prototype: new objct.extend( Object.create( HTMLElement.prototype ), require("./panel") )
-});
+document.registerElement('cornerstone-bonaparte', { prototype: createPrototype() });
 
-document.registerElement('sidebar-bonaparte', {
-    prototype: new objct.extend( Object.create( HTMLElement.prototype ), require("./test") )
-});
+document.registerElement('panel-bonaparte', { prototype: createPrototype( require("./panel-bonaparte") ) });
 
-document.registerElement('content-bonaparte', {
-    prototype: new objct.extend( Object.create( HTMLElement.prototype ), require("./test") )
-});
+document.registerElement('sidebar-bonaparte', { prototype: createPrototype() });
 
-document.registerElement('scroll-bonaparte', {
-    prototype: new objct.extend( Object.create( HTMLElement.prototype ), require("./test") )
-});
+document.registerElement('content-bonaparte', { prototype: createPrototype() });
+
+document.registerElement('scroll-bonaparte', { prototype: createPrototype() });
+
+///////////////////////////////////////////////////////////////////////////////
+
+function createPrototype(element){
+  element = element || {};
+
+  return new objct.extend ( Object.create( HTMLElement.prototype ), {
+    createdCallback : createdCallback,
+    attachedCallback : attachedCallback,
+    detachedCallback : detachedCallback,
+    attributeChangedCallback : attributeChangedCallback
+  });
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+  function createdCallback() {
+
+    // Create and mixin tag instance
+    new objct.extend(this, element);
+
+    if(!objct.isObjct(element)) return;
+    
+    var data = {
+      element : this
+    };
+
+    this.triggerEvent("createdCallback", data);
+    this.global.triggerEvent("createdCallback", data);
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
+  function attachedCallback() {
+    
+    if(!objct.isObjct(element)) return;
+
+    var data = {
+      element : this
+    };
+    
+    this.triggerEvent("attachedCallback", data);
+    this.global.triggerEvent("attachedCallback", data);
+
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
+  function detachedCallback() {
+
+    if(!objct.isObjct(element)) return;
+
+    var data = {
+      element : this
+    };
+    
+    this.triggerEvent("detachedCallback", data);
+    this.global.triggerEvent("detachedCallback", data);
+    
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
+  function attributeChangedCallback( name, previousValue, newValue ) {
+
+    if(!objct.isObjct(element)) return;
+
+    var data = {
+      element : this,
+      name : name,
+      previousValue : previousValue,
+      newValue : newValue
+    };
+
+    this.triggerEvent("attributeChangedCallback", data);
+    this.global.triggerEvent("attributeChangedCallback", data);
+
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
+}
+},{"./panel-bonaparte":4,"objct":1}],3:[function(require,module,exports){
+module.exports = function(){
+
+  this.addEventListener     = addEventListener;
+  this.removeEventListener  = removeEventListener;
+  this.triggerEvent         = triggerEvent;
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+  var eventHandlers = {};
+
+///////////////////////////////////////////////////////////////////////////////
+
+  function triggerEvent(event, data){
+    if(typeof eventHandlers[event] !== "object" ) return;
+   
+    var length = eventHandlers[event].length;
+    var i = -1;
+    while(++i < length) {
+      eventHandlers[event][i](data);
+    }
+  }
+
+//////////////////////////////////////////////////////////////////////////////
+
+  function addEventListener(event, handler){
+    if( typeof handler !== "function" ) throw "Unexpected type of "+(typeof handler)+"! Expected function.";
+
+    eventHandlers[event] = eventHandlers[event] || [];
+
+    // if already registered
+    if( eventHandlers[event].indexOf(handler) >= 0 ) return;
+
+    eventHandlers[event].push(handler);    
+
+  }
+
+//////////////////////////////////////////////////////////////////////////////
+
+  function removeEventListener(event, handler){
+    if(typeof eventHandlers[event] !== "object") return;
+
+    var index = eventHandlers[event].indexOf(handler);
+
+    if( index >= 0 ) {
+      eventHandlers[event].splice(index, 1);
+    }
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
+}
 
 
-},{"./panel":4,"./test":5,"objct":1}],3:[function(require,module,exports){
-module.exports = {
-  globals : {}
-};
 },{}],4:[function(require,module,exports){
 var objct = require("objct");
 
 ///////////////////////////////////////////////////////////////////////////////
 
-var panel = {
+module.exports = objct(
+  require("./tag"), 
+  require("./toggle"),
+  panel
+);
 
-  toggle : toggle
+///////////////////////////////////////////////////////////////////////////////
+
+panel.prototype = {
+  open : open,
+  close : close
+};
+
+///////////////////////////////////////////////////////////////////////////////
+
+function panel(){
+
+  this.addEventListener("attributeChangedCallback", createdCallback);
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+  
+  function createdCallback(data){
+    console.log("PANEL CREATED", data);
+  }
+
+
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+function close() {
+  this.setAttribute("open", "false");
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+function open() {
+  this.setAttribute("open", "true");
+}
+},{"./tag":5,"./toggle":6,"objct":1}],5:[function(require,module,exports){
+var objct = require("objct");
+
+///////////////////////////////////////////////////////////////////////////////
+
+var globals = {
+  global : new objct(require("./events")),
 
 };
 
 ///////////////////////////////////////////////////////////////////////////////
 
-module.exports = objct(require("./globals"), panel);
+module.exports = objct(
+  require("./events"),
+  globals
+);
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-function toggle(){
+},{"./events":3,"objct":1}],6:[function(require,module,exports){
+module.exports = {
+  toggle : toggle
+};
 
-  var panel = this;
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 
-  if(panel.getAttribute('open') === "true") {
-    panel.setAttribute("open", "false");
-  }
-  else {
-    panel.setAttribute("open", "true");
-  }
+function toggle(attribute){
+
+  var tag = this;
+  var newValue = tag.getAttribute(attribute) === "true" ? "false" : "true";
+  tag.setAttribute(attribute, newValue);
 
 }
 
 
-},{"./globals":3,"objct":1}],5:[function(require,module,exports){
-module.exports = { 
-  createdCallback: function() {
-    console.log(this.nodeName+': here I am ^_^ ', this, arguments);
-    // console.log('with content: ', this.textContent);
-  },
-  attachedCallback: function() {
-    console.log(this.nodeName+': live on DOM ;-) ', this, arguments);
-  },
-  detachedCallback: function() {
-    console.log(this.nodeName+': leaving the DOM :-( )', this, arguments);
-  },
-  attributeChangedCallback : function( name, previousValue, value ) {
-    if (previousValue == null) {
-      console.log(
-        this.nodeName+': got a new attribute ', name,
-        ' with value ', value
-      );
-    } else if (value == null) {
-      console.log(
-        this.nodeName+': somebody removed ', name,
-        ' its value was ', previousValue
-      );
-    } else {
-      console.log(
-        this.nodeName+': '+name,
-        ' changed from ', previousValue,
-        ' to ', value
-      );
-    }
-  }
-};
 },{}]},{},[2]);

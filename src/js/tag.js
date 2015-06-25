@@ -2,29 +2,17 @@ var objct = require("objct");
 
 ///////////////////////////////////////////////////////////////////////////////
 
-var panel = {
-
-  toggle : toggle
+var globals = {
+  global : new objct(require("./events")),
 
 };
 
 ///////////////////////////////////////////////////////////////////////////////
 
-module.exports = objct(require("./globals"), panel);
+module.exports = objct(
+  require("./events"),
+  globals
+);
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
-
-function toggle(){
-
-  var panel = this;
-
-  if(panel.getAttribute('open') === "true") {
-    panel.setAttribute("open", "false");
-  }
-  else {
-    panel.setAttribute("open", "true");
-  }
-
-}
-
