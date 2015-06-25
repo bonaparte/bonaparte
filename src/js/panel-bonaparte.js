@@ -18,27 +18,36 @@ panel.prototype = {
 ///////////////////////////////////////////////////////////////////////////////
 
 function panel(){
-
-  this.addEventListener("attributeChangedCallback", createdCallback);
+  var that = this;
+  
+  this.addListener("attributeChangedCallback", createdCallback);
+  this.global.addListener(this.NodeName+"-opened", globalPanelOpened);
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
   
-  function createdCallback(data){
-    console.log("PANEL CREATED", data);
-  }
+}
 
-
+function createdCallback(data){
+  console.log("PANEL CREATED", data);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 
+function globalPanelOpened(){
+  
+}
+///////////////////////////////////////////////////////////////////////////////
+
 function close() {
   this.setAttribute("open", "false");
+  this.trigger(this.NodeName+"-closed", {element:this});
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 
 function open() {
   this.setAttribute("open", "true");
+  this.trigger(this.NodeName+"-opened", {element:this});
+  this.global.trigger(this.NodeName+"-opened", {element:this});
 }

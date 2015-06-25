@@ -1,29 +1,17 @@
 module.exports = function(){
 
-  this.addEventListener     = addEventListener;
-  this.removeEventListener  = removeEventListener;
-  this.triggerEvent         = triggerEvent;
+  this.addListener     = addListener;
+  this.removeListener  = removeListener;
+  this.trigger         = trigger;
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
   var eventHandlers = {};
 
-///////////////////////////////////////////////////////////////////////////////
-
-  function triggerEvent(event, data){
-    if(typeof eventHandlers[event] !== "object" ) return;
-   
-    var length = eventHandlers[event].length;
-    var i = -1;
-    while(++i < length) {
-      eventHandlers[event][i](data);
-    }
-  }
-
 //////////////////////////////////////////////////////////////////////////////
 
-  function addEventListener(event, handler){
+  function addListener(event, handler){
     if( typeof handler !== "function" ) throw "Unexpected type of "+(typeof handler)+"! Expected function.";
 
     eventHandlers[event] = eventHandlers[event] || [];
@@ -37,13 +25,25 @@ module.exports = function(){
 
 //////////////////////////////////////////////////////////////////////////////
 
-  function removeEventListener(event, handler){
+  function removeListener(event, handler){
     if(typeof eventHandlers[event] !== "object") return;
 
     var index = eventHandlers[event].indexOf(handler);
 
     if( index >= 0 ) {
       eventHandlers[event].splice(index, 1);
+    }
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
+  function trigger(event, data){
+    if(typeof eventHandlers[event] !== "object" ) return;
+   
+    var length = eventHandlers[event].length;
+    var i = -1;
+    while(++i < length) {
+      eventHandlers[event][i](data);
     }
   }
 

@@ -40,8 +40,8 @@ function createPrototype(element){
       element : this
     };
 
-    this.triggerEvent("createdCallback", data);
-    this.global.triggerEvent("createdCallback", data);
+    this.trigger("createdCallback", data);
+    this.global.trigger("createdCallback", data);
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -54,8 +54,8 @@ function createPrototype(element){
       element : this
     };
     
-    this.triggerEvent("attachedCallback", data);
-    this.global.triggerEvent("attachedCallback", data);
+    this.trigger("attachedCallback", data);
+    this.global.trigger("attachedCallback", data);
 
   }
 
@@ -69,8 +69,8 @@ function createPrototype(element){
       element : this
     };
     
-    this.triggerEvent("detachedCallback", data);
-    this.global.triggerEvent("detachedCallback", data);
+    this.trigger("detachedCallback", data);
+    this.global.trigger("detachedCallback", data);
     
   }
 
@@ -87,8 +87,8 @@ function createPrototype(element){
       newValue : newValue
     };
 
-    this.triggerEvent("attributeChangedCallback", data);
-    this.global.triggerEvent("attributeChangedCallback", data);
+    this.trigger("attributeChangedCallback", data);
+    this.global.trigger("attributeChangedCallback", data);
 
   }
 
