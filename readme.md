@@ -19,7 +19,7 @@
 
 ### Install / Build
 
-- Run `npm install` in `./`. _(Select __NO__ for all options for fastes result)_
+- Run `npm install` in `./`. _(Select **NO** for all options for fastes result)_
 
 ### Development
 
