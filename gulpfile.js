@@ -5,6 +5,7 @@ var spawn        = require('child_process').spawn;
 var browserify   = require("browserify");
 var source       = require('vinyl-source-stream');
 var buffer       = require('vinyl-buffer');
+var rename       = require('gulp-rename');
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -27,7 +28,7 @@ function js(){
 
   browserify({
     // debug: true,
-    entries: ['./src/js/bonaparte.js']
+    entries: ['./src/js/app.js']
   })
   .bundle()
   .pipe(source('bonaparte.js'))
@@ -38,9 +39,10 @@ function js(){
 ///////////////////////////////////////////////////////////////////////////////
 
 function css(){
-  return gulp.src('./src/less/bonaparte.less')
+  return gulp.src('./src/less/app.less')
     .pipe(less())
     .pipe(autoprefixer())
+    .pipe(rename("bonaparte.css"))
     .pipe(gulp.dest('./dist/')); 
 }
 
