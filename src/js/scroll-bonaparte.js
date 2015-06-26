@@ -15,8 +15,9 @@ module.exports = objct(
 
 function scroll(){
   var tag = this;
+  var slider, scrollbar;
 
-  // setupScroller();
+  setupScroller();
 
   this.firstElementChild.addEventListener("scroll", scrolling);
 
@@ -24,18 +25,32 @@ function scroll(){
 ///////////////////////////////////////////////////////////////////////////////
   
   function scrolling(){
-    console.log(this);
-    console.log("scrolling");
-    console.log(this.scrollHeight);
+    var scrollHeight = this.scrollHeight;
+    var containerHeight = tag.offsetHeight;
+
 
   }
 
 ///////////////////////////////////////////////////////////////////////////////
 
   function setupScroller(){
-    // Remove Scrollbar
+    // Remove/Hide native Scrollbar
     scrollBarWidth = scrollBarWidth || getScrollBarWidth();
-    tag.style.marginRight = -scrollBarWidth+"px";
+    tag.firstElementChild.style.marginRight = -scrollBarWidth+"px";
+  
+
+    slider = document.createElement("div")
+    slider.setAttribute("class", "slider");
+
+    scrollbar = document.createElement("div")
+    scrollbar.setAttribute("class", "scrollbar");
+    scrollbar.appendChild(slider);
+
+    tag.appendChild(scrollbar);
+
+
+
+
   }
 
 ///////////////////////////////////////////////////////////////////////////////

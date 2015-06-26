@@ -5,8 +5,8 @@
 
 /** initial setup **/
 
-@paneClass: ~'nano-pane';
-@sliderClass: ~'nano-slider';
+@paneClass: ~'slider';
+@sliderClass: ~'scrollbar';
 
 scroll-bonaparte {
   display:block;
@@ -14,61 +14,66 @@ scroll-bonaparte {
   width: 100%;
   height: 100%;
   overflow: hidden;
+}
 
-  > *:nth-child(1) {
-    position: absolute;
-    overflow: scroll;
-    overflow-x: hidden;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    &:focus {
-      outline: thin dotted;
-    }
-    &::-webkit-scrollbar {
-      display: none;
-    }
+
+scroll-bonaparte > *:nth-child(1) {
+  position: absolute;
+  overflow: scroll;
+  overflow-x: hidden;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  &:focus {
+    outline: thin dotted;
   }
-  > .@{paneClass} {
-    background: rgba(0,0,0,.25);
-    position:absolute;
-    width:10px;
-    right:0;
-    top:0;
-    bottom:0;
-    /* Target only IE7 and IE8 with this hack */
-    visibility:hidden\9;
-    opacity: .01;
-    -webkit-transition: .2s;
-    -moz-transition: .2s;
-    -o-transition: .2s;
-    transition: .2s;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    > .@{sliderClass} {
-      background: #444;
-      background: rgba(0,0,0,.5);
-      position: relative;
-      margin : 0 1px;
-      -moz-border-radius: 3px;
-      -webkit-border-radius: 3px;
-      border-radius: 3px;
-    }
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
 
-scroll-bonaparte {
-  &:hover > *:nth-child(1),
-  &.active,
-  &.flashed {
-    /* Target only IE7 and IE8 with this hack */
-    visibility: visible\9;
-    opacity: 0.99;
-  }   
+scroll-bonaparte > .scrollbar {
+  background: rgba(0,0,0,.25);
+  position:absolute;
+  width:10px;
+  right:0;
+  top:0;
+  bottom:0;
+  opacity: .01;
+  z-index:999;
+  transition: .2s;
+  border-radius: 5px;
+
+  > .slider {
+    background: #444;
+    background: rgba(0,0,0,.5);
+    position: relative;
+    margin : 0 1px;
+    border-radius: 3px;
+  }
 }
 
 scroll-bonaparte *:nth-child(1)::-webkit-scrollbar {
   display: block; 
+}
+
+scroll-bonaparte:hover > .scrollbar,
+scroll-bonaparte[scrollbar~="hover"]:hover > .scrollbar,
+scroll-bonaparte[data-scrollbar~="hover"]:hover > .scrollbar,
+scroll-bonaparte:focus > .scrollbar,
+scroll-bonaparte[scrollbar~="hover"]:focus > .scrollbar,
+scroll-bonaparte[data-scrollbar~="hover"]:focus > .scrollbar {
+  opacity: 0.99;
+}
+
+
+scroll-bonaparte[scrollbar~="hidden"] > .scrollbar,
+scroll-bonaparte[data-scrollbar~="hidden"] > .scrollbar {
+  opacity:0;
+}
+
+scroll-bonaparte[scrollbar~="visible"] > .scrollbar,
+scroll-bonaparte[data-scrollbar~="visible"] > .scrollbar {
+  opacity:0.99;
 }
