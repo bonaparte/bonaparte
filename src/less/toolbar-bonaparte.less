@@ -54,12 +54,12 @@ cornerstone-bonaparte {
   height:4rem;
   top:0px;
   left:0px;
-  z-index:99;
+  z-index:20;
 
 }
 
-toolbar-bonaparte[data-cornerstone~="bottom"],
-toolbar-bonaparte[cornerstone~="bottom"] {
+toolbar-bonaparte[data-cornerstone*="bottom"],
+toolbar-bonaparte[cornerstone*="bottom"] {
 
   cornerstone-bonaparte {
     bottom:0px;
@@ -67,8 +67,8 @@ toolbar-bonaparte[cornerstone~="bottom"] {
   }
 }
 
-toolbar-bonaparte[data-cornerstone~="top"],
-toolbar-bonaparte[cornerstone~="top"] {
+toolbar-bonaparte[data-cornerstone*="top"],
+toolbar-bonaparte[cornerstone*="top"] {
 
   cornerstone-bonaparte {
     top:0px;
@@ -76,8 +76,8 @@ toolbar-bonaparte[cornerstone~="top"] {
   }
 }
 
-toolbar-bonaparte[data-cornerstone~="left"],
-toolbar-bonaparte[cornerstone~="left"] {
+toolbar-bonaparte[data-cornerstone*="left"],
+toolbar-bonaparte[cornerstone*="left"] {
 
   cornerstone-bonaparte {
     left:0px;
@@ -85,8 +85,8 @@ toolbar-bonaparte[cornerstone~="left"] {
   }
 }
 
-toolbar-bonaparte[data-cornerstone~="right"],
-toolbar-bonaparte[cornerstone~="right"] {
+toolbar-bonaparte[data-cornerstone*="right"],
+toolbar-bonaparte[cornerstone*="right"] {
 
   cornerstone-bonaparte {
     right:0px;
@@ -94,11 +94,41 @@ toolbar-bonaparte[cornerstone~="right"] {
   }
 }
 
-/*DISPLAY:COVER */
+/*CORNERSTONE OUTSIDE*/
 
-toolbar-bonaparte[data-display="cover"],
-toolbar-bonaparte[display="cover"] {
-  height:100%;
+
+toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone^="right"],
+toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone~="right"][data-cornerstone$="top"],
+toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone~="right"][data-cornerstone$="bottom"],
+toolbar-bonaparte[cornerstone~="outside"][cornerstone^="right"],  
+toolbar-bonaparte[cornerstone~="outside"][cornerstone~="right"][cornerstone$="top"],
+toolbar-bonaparte[cornerstone~="outside"][cornerstone~="right"][cornerstone$="bottom"]{
+  padding-right:4rem;
 }
 
+toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone^="left"],
+toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone~="left"][data-cornerstone$="top"],
+toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone~="left"][data-cornerstone$="bottom"],
+toolbar-bonaparte[cornerstone~="outside"][cornerstone^="left"],  
+toolbar-bonaparte[cornerstone~="outside"][cornerstone~="left"][cornerstone$="top"],
+toolbar-bonaparte[cornerstone~="outside"][cornerstone~="left"][cornerstone$="bottom"]{
+  padding-left:4rem;
+}
 
+toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone^="top"],
+toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone~="top"][data-cornerstone$="left"],
+toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone~="top"][data-cornerstone$="right"],
+toolbar-bonaparte[cornerstone~="outside"][cornerstone^="top"],  
+toolbar-bonaparte[cornerstone~="outside"][cornerstone~="top"][cornerstone$="left"],
+toolbar-bonaparte[cornerstone~="outside"][cornerstone~="top"][cornerstone$="right"]{
+  padding-top:4rem;
+}
+
+toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone^="bottom"],
+toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone~="bottom"][data-cornerstone$="left"],
+toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone~="bottom"][data-cornerstone$="right"],
+toolbar-bonaparte[cornerstone~="outside"][cornerstone^="bottom"],  
+toolbar-bonaparte[cornerstone~="outside"][cornerstone~="bottom"][cornerstone$="left"],
+toolbar-bonaparte[cornerstone~="outside"][cornerstone~="bottom"][cornerstone$="right"]{
+  padding-bottom:4rem;
+}

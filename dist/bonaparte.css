@@ -135,32 +135,60 @@ cornerstone-bonaparte {
   height: 4rem;
   top: 0px;
   left: 0px;
-  z-index: 99;
+  z-index: 20;
 }
-toolbar-bonaparte[data-cornerstone~="bottom"] cornerstone-bonaparte,
-toolbar-bonaparte[cornerstone~="bottom"] cornerstone-bonaparte {
+toolbar-bonaparte[data-cornerstone*="bottom"] cornerstone-bonaparte,
+toolbar-bonaparte[cornerstone*="bottom"] cornerstone-bonaparte {
   bottom: 0px;
   top: auto;
 }
-toolbar-bonaparte[data-cornerstone~="top"] cornerstone-bonaparte,
-toolbar-bonaparte[cornerstone~="top"] cornerstone-bonaparte {
+toolbar-bonaparte[data-cornerstone*="top"] cornerstone-bonaparte,
+toolbar-bonaparte[cornerstone*="top"] cornerstone-bonaparte {
   top: 0px;
   bottom: auto;
 }
-toolbar-bonaparte[data-cornerstone~="left"] cornerstone-bonaparte,
-toolbar-bonaparte[cornerstone~="left"] cornerstone-bonaparte {
+toolbar-bonaparte[data-cornerstone*="left"] cornerstone-bonaparte,
+toolbar-bonaparte[cornerstone*="left"] cornerstone-bonaparte {
   left: 0px;
   right: auto;
 }
-toolbar-bonaparte[data-cornerstone~="right"] cornerstone-bonaparte,
-toolbar-bonaparte[cornerstone~="right"] cornerstone-bonaparte {
+toolbar-bonaparte[data-cornerstone*="right"] cornerstone-bonaparte,
+toolbar-bonaparte[cornerstone*="right"] cornerstone-bonaparte {
   right: 0px;
   left: auto;
 }
-/*DISPLAY:COVER */
-toolbar-bonaparte[data-display="cover"],
-toolbar-bonaparte[display="cover"] {
-  height: 100%;
+/*CORNERSTONE OUTSIDE*/
+toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone^="right"],
+toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone~="right"][data-cornerstone$="top"],
+toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone~="right"][data-cornerstone$="bottom"],
+toolbar-bonaparte[cornerstone~="outside"][cornerstone^="right"],
+toolbar-bonaparte[cornerstone~="outside"][cornerstone~="right"][cornerstone$="top"],
+toolbar-bonaparte[cornerstone~="outside"][cornerstone~="right"][cornerstone$="bottom"] {
+  padding-right: 4rem;
+}
+toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone^="left"],
+toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone~="left"][data-cornerstone$="top"],
+toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone~="left"][data-cornerstone$="bottom"],
+toolbar-bonaparte[cornerstone~="outside"][cornerstone^="left"],
+toolbar-bonaparte[cornerstone~="outside"][cornerstone~="left"][cornerstone$="top"],
+toolbar-bonaparte[cornerstone~="outside"][cornerstone~="left"][cornerstone$="bottom"] {
+  padding-left: 4rem;
+}
+toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone^="top"],
+toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone~="top"][data-cornerstone$="left"],
+toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone~="top"][data-cornerstone$="right"],
+toolbar-bonaparte[cornerstone~="outside"][cornerstone^="top"],
+toolbar-bonaparte[cornerstone~="outside"][cornerstone~="top"][cornerstone$="left"],
+toolbar-bonaparte[cornerstone~="outside"][cornerstone~="top"][cornerstone$="right"] {
+  padding-top: 4rem;
+}
+toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone^="bottom"],
+toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone~="bottom"][data-cornerstone$="left"],
+toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone~="bottom"][data-cornerstone$="right"],
+toolbar-bonaparte[cornerstone~="outside"][cornerstone^="bottom"],
+toolbar-bonaparte[cornerstone~="outside"][cornerstone~="bottom"][cornerstone$="left"],
+toolbar-bonaparte[cornerstone~="outside"][cornerstone~="bottom"][cornerstone$="right"] {
+  padding-bottom: 4rem;
 }
 panel-bonaparte {
   display: none;
@@ -169,10 +197,8 @@ panel-bonaparte {
   overflow: hidden;
   background-color: #ffffff;
   z-index: 10;
-  -webkit-transition: -webkit-transform 500ms;
-          transition: transform 500ms;
-  -webkit-transition-timing-function: cubic-bezier(0.12, 0.38, 0.4, 0.98);
-          transition-timing-function: cubic-bezier(0.12, 0.38, 0.4, 0.98);
+  -webkit-transition: -webkit-transform 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
+          transition: transform 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
 }
 panel-bonaparte[data-open="true"],
 panel-bonaparte[open="true"] {
@@ -183,7 +209,6 @@ panel-bonaparte[position~="left"] {
   display: block;
   height: 100%;
   top: 0px;
-  right: auto;
   border: 0;
   border-right: 0.5rem solid #425cbd;
   width: 200px;
@@ -202,8 +227,6 @@ panel-bonaparte[position~="right"] {
   display: block;
   height: 100%;
   top: 0px;
-  bottom: auto;
-  left: auto;
   border-left: 0.5rem solid #425cbd;
   width: 200px;
   left: 100%;
@@ -220,9 +243,7 @@ panel-bonaparte[data-position~="top"],
 panel-bonaparte[position~="top"] {
   display: block;
   width: 100%;
-  bottom: auto;
   left: 0px;
-  right: auto;
   border-bottom: 0.5rem solid #425cbd;
   height: 200px;
   bottom: 100%;
@@ -240,9 +261,7 @@ panel-bonaparte[position~="bottom"] {
   display: block;
   width: 100%;
   bottom: 0px;
-  top: auto;
   left: 0px;
-  right: auto;
   border-top: 0.5rem solid #425cbd;
   height: 200px;
   top: 100%;
