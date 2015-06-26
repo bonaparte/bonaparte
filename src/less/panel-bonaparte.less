@@ -5,15 +5,15 @@ panel-bonaparte {
   overflow:hidden;
 
   background-color:#ffffff;
-  z-index:1;
+  z-index:10;
 
-  transition:width 500ms, height 500ms, top 500ms, right 500ms, bottom 500ms, left 500ms;
+  transition:transform 500ms;
   transition-timing-function:cubic-bezier(0.12, 0.38, 0.4, 0.98);
 }
 
 panel-bonaparte[data-open="true"],
 panel-bonaparte[open="true"] {
-  z-index:99;
+  z-index:11;
 }
 
 panel-bonaparte[data-position~="left"],
@@ -25,13 +25,13 @@ panel-bonaparte[position~="left"] {
   border:0;
   border-right:@panel-bonaparte-borderWidth solid @color-active;
 
-  width:0px;
-  left:-10px;
+  width:200px;
+  right:100%;
 
   &[data-open="true"],
   &[open="true"] {
-    width:200px;
-    left:0px;
+      transform:translateX(100%);
+
   }
 }
 
@@ -44,13 +44,12 @@ panel-bonaparte[position~="right"]{
   left:auto;
   border-left:@panel-bonaparte-borderWidth solid @color-active;
 
-  width:0px;
-  right:-10px;
+  width:200px;
+  left:100%;
 
   &[data-open="true"],
   &[open="true"] {
-    width:200px;
-    right:0px;
+    transform:translateX(-100%);
   }
 }
 
@@ -64,13 +63,13 @@ panel-bonaparte[position~="top"]{
   right:auto;
   border-bottom:@panel-bonaparte-borderWidth solid @color-active;
 
-  height:0px;
-  top:-10px;
+  height:200px;
+  bottom:100%;
 
   &[data-open="true"],
   &[open="true"] {
-    height:200px;
-    top:0px;
+    transform:translateY(100%);
+
   }
 }
 
@@ -85,12 +84,11 @@ panel-bonaparte[position~="bottom"]{
   right:auto;
   border-top:@panel-bonaparte-borderWidth solid @color-active;
 
-  height:0px;
-  bottom:-10px;
+  height:200px;
+  top:100%;
 
   &[data-open="true"],
   &[open="true"] {
-    height:200px;
-    bottom:0px;
+    transform:translateY(-100%);
   }
 }
