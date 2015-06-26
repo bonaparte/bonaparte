@@ -1,9 +1,7 @@
-scroll-bonaparte {
-  display:block;
-}
-//
-// nanoScrollerJS
-// --------------------------------------------------
+/* 
+  Inspired by: nanoScrollerJS
+  https://github.com/jamesflorentino/nanoScrollerJS
+*/
 
 /** initial setup **/
 @nanoClass: ~'nano';
@@ -11,22 +9,21 @@ scroll-bonaparte {
 @sliderClass: ~'nano-slider';
 @contentClass: ~'nano-content';
 
-scroll-bonaparte,
-.@{nanoClass} {
+scroll-bonaparte {
+  display:block;
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
 
-  > *:nth-child(1),
-  > .@{contentClass} {
-  position: absolute;
-  overflow: scroll;
-  overflow-x: hidden;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  > *:nth-child(1) {
+    position: absolute;
+    overflow: scroll;
+    overflow-x: hidden;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     &:focus {
       outline: thin dotted;
     }
@@ -63,9 +60,7 @@ scroll-bonaparte,
   }
 }
 
-.@{nanoClass},
 scroll-bonaparte {
-  &:hover > .@{paneClass},
   &:hover > *:nth-child(1),
   &.active,
   &.flashed {
@@ -75,7 +70,7 @@ scroll-bonaparte {
   }   
 }
 
-.has-scrollbar > .@{contentClass}::-webkit-scrollbar,
-.has-scrollbar > *:nth-child(1)::-webkit-scrollbar {
-  display: block;
+scroll-bonaparte *:nth-child(1)::-webkit-scrollbar {
+  display: block; 
+  /*width:16px;*/
 }

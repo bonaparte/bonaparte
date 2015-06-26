@@ -469,6 +469,7 @@ function open() {
 },{"./tag":8,"./toggle":9,"./utility":10,"objct":1}],7:[function(require,module,exports){
 var objct = require("objct");
 
+
 ///////////////////////////////////////////////////////////////////////////////
 
 module.exports = objct(
@@ -479,19 +480,45 @@ module.exports = objct(
 ///////////////////////////////////////////////////////////////////////////////
 
 function scroll(){
+  var tag = this;
+  scrollBarWidth = scrollBarWidth || getScrollBarWidth();
 
-  console.log(this.firstElementChild);
-   this.firstElementChild.addEventListener("scroll", function(){
+  console.log(scrollBarWidth);
+  // this.firstElementChild.addEventListener("scroll", function(){
 
-     console.log("scrolling");
+    
 
-   });
+  // });
+
+  tag.addListener("createdCallback", createdCallback)
 
 
 ///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+  
+  var scrollBarWidth = false;
+
+///////////////////////////////////////////////////////////////////////////////
+
+  function createdCallback(){
+
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
+  function getScrollBarWidth(){
+    var width = document.body.clientWidth;
+    var overflow = document.documentElement.style.overflow;
+    document.documentElement.style.overflow = "scroll";
+    width -= document.body.clientWidth;
+    document.documentElement.style.overflow = overflow;
+    return width;
+  }
+
 ///////////////////////////////////////////////////////////////////////////////
 
 }
+
 },{"./tag":8,"objct":1}],8:[function(require,module,exports){
 var objct = require("objct");
 
