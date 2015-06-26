@@ -12,32 +12,7 @@ module.exports = objct(
 
 function tag(){
 
-  this.state = initalState(this);
-  this.addListener("attributeChangedCallback", attributeChangedCallback)
-  
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
-
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
-function initalState(element){
-  var state = {};
-  var length = element.attributes.length;
-  var i = -1;
-
-  while(++i < length) {
-    state[element.attributes[i].name] = element.attributes[i].value;
-  }
-
-  return state;
-}  
-
-///////////////////////////////////////////////////////////////////////////////
-
-function attributeChangedCallback(data){
-
-  data.element.state[data.name] = data.newValue;
 
 }
