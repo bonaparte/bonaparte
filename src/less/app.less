@@ -1,3 +1,8 @@
+/*PREVENT REDRAW BUG*/
+html *:not(svg) {
+  transform: translate3d(0, 0, 0);
+}
+
 @import "variables.less";
 @import "toolbar-bonaparte.less";
 @import "panel-bonaparte.less";

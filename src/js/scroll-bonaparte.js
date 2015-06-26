@@ -1,4 +1,5 @@
-var objct = require("objct");
+var objct  = require("objct");
+var util   = require("./utility");
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -15,18 +16,49 @@ module.exports = objct(
 
 function scroll(){
   var tag = this;
-  var slider, scrollbar;
+  var content =  this.firstElementChild;
+
+  if(util.getAttribute(tag, "resize") === "true") {
+    tag.global.addListener("resize", update);
+  }
+  content.addEventListener("scroll", updatePosition);
+
+  this.update = update;
 
   setupScroller();
 
-  this.firstElementChild.addEventListener("scroll", scrolling);
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+  var slider, scrollbar;
+  var scrollBarVisible;
+
+  function update(){
+    // VISIBILITY
+    if(content.scrollHeight <= tag.offsetHeight) {
+      if(scrollBarVisible !== false) {
+        scrollbar.style.opacity = 0.01;
+        scrollBarVisible = false;
+      }
+    }
+    else {
+      if(scrollBarVisible !== true) {
+        scrollbar.style.opacity = "";
+        scrollBarVisible = true;
+      }
+    } 
+
+    // SLIDER SIZE
+
+
+    // SLIDER POSITION
+    updatePosition();
+
+  }
 
 ///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-  
-  function scrolling(){
-    var scrollHeight = this.scrollHeight;
-    var containerHeight = tag.offsetHeight;
+
+  function updatePosition(){
 
 
   }
@@ -36,7 +68,7 @@ function scroll(){
   function setupScroller(){
     // Remove/Hide native Scrollbar
     scrollBarWidth = scrollBarWidth || getScrollBarWidth();
-    tag.firstElementChild.style.marginRight = -scrollBarWidth+"px";
+    content.style.marginRight = -scrollBarWidth+"px";
   
 
     slider = document.createElement("div")
@@ -46,24 +78,24 @@ function scroll(){
     scrollbar.setAttribute("class", "scrollbar");
     scrollbar.appendChild(slider);
 
+    update();
+
     tag.appendChild(scrollbar);
 
-
-
-
   }
+
 
 ///////////////////////////////////////////////////////////////////////////////
 
-  function getScrollBarWidth(){
-    var width = document.body.clientWidth;
-    var overflow = document.documentElement.style.overflow;
-    document.documentElement.style.overflow = "scroll";
-    width -= document.body.clientWidth;
-    document.documentElement.style.overflow = overflow;
-    return width;
-  }
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 
+function getScrollBarWidth(){
+  var width = document.body.clientWidth;
+  var overflow = document.documentElement.style.overflow;
+  document.documentElement.style.overflow = "scroll";
+  width -= document.body.clientWidth;
+  document.documentElement.style.overflow = overflow;
+  return width;
 }

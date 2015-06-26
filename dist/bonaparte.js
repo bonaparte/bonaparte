@@ -336,6 +336,7 @@ module.exports = globals;
 ///////////////////////////////////////////////////////////////////////////////
 
 window.addEventListener("click", eventHandler);
+window.addEventListener("resize", eventHandler);
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -467,7 +468,8 @@ function open() {
   this.global.trigger(this.NodeName+"-opened", {element:this});
 }
 },{"./tag":8,"./toggle":9,"./utility":10,"objct":1}],7:[function(require,module,exports){
-var objct = require("objct");
+var objct  = require("objct");
+var util   = require("./utility");
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -484,18 +486,49 @@ module.exports = objct(
 
 function scroll(){
   var tag = this;
-  var slider, scrollbar;
+  var content =  this.firstElementChild;
+
+  if(util.getAttribute(tag, "resize") === "true") {
+    tag.global.addListener("resize", update);
+  }
+  content.addEventListener("scroll", updatePosition);
+
+  this.update = update;
 
   setupScroller();
 
-  this.firstElementChild.addEventListener("scroll", scrolling);
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+  var slider, scrollbar;
+  var scrollBarVisible;
+
+  function update(){
+    // VISIBILITY
+    if(content.scrollHeight <= tag.offsetHeight) {
+      if(scrollBarVisible !== false) {
+        scrollbar.style.opacity = 0.01;
+        scrollBarVisible = false;
+      }
+    }
+    else {
+      if(scrollBarVisible !== true) {
+        scrollbar.style.opacity = "";
+        scrollBarVisible = true;
+      }
+    } 
+
+    // SLIDER SIZE
+
+
+    // SLIDER POSITION
+    updatePosition();
+
+  }
 
 ///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-  
-  function scrolling(){
-    var scrollHeight = this.scrollHeight;
-    var containerHeight = tag.offsetHeight;
+
+  function updatePosition(){
 
 
   }
@@ -505,7 +538,7 @@ function scroll(){
   function setupScroller(){
     // Remove/Hide native Scrollbar
     scrollBarWidth = scrollBarWidth || getScrollBarWidth();
-    tag.firstElementChild.style.marginRight = -scrollBarWidth+"px";
+    content.style.marginRight = -scrollBarWidth+"px";
   
 
     slider = document.createElement("div")
@@ -515,29 +548,28 @@ function scroll(){
     scrollbar.setAttribute("class", "scrollbar");
     scrollbar.appendChild(slider);
 
+    update();
+
     tag.appendChild(scrollbar);
 
-
-
-
   }
 
-///////////////////////////////////////////////////////////////////////////////
-
-  function getScrollBarWidth(){
-    var width = document.body.clientWidth;
-    var overflow = document.documentElement.style.overflow;
-    document.documentElement.style.overflow = "scroll";
-    width -= document.body.clientWidth;
-    document.documentElement.style.overflow = overflow;
-    return width;
-  }
 
 ///////////////////////////////////////////////////////////////////////////////
 
 }
 
-},{"./tag":8,"objct":1}],8:[function(require,module,exports){
+///////////////////////////////////////////////////////////////////////////////
+
+function getScrollBarWidth(){
+  var width = document.body.clientWidth;
+  var overflow = document.documentElement.style.overflow;
+  document.documentElement.style.overflow = "scroll";
+  width -= document.body.clientWidth;
+  document.documentElement.style.overflow = overflow;
+  return width;
+}
+},{"./tag":8,"./utility":10,"objct":1}],8:[function(require,module,exports){
 var objct = require("objct");
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -575,8 +607,15 @@ module.exports = utility = {};
 
 ///////////////////////////////////////////////////////////////////////////////
 
-utility.nodeContains = function nodeContains(parent, child) {
+utility.nodeContains = function(parent, child) {
   while((child=child.parentNode)&&child!==parent); 
   return !!child; 
 };
+
+///////////////////////////////////////////////////////////////////////////////
+
+utility.getAttribute = function(tag, name){
+  var attribute = tag.attributes[name] || tag.attributes["data-"+name];
+  return attribute ? attribute.value : undefined; 
+}
 },{}]},{},[2]);
