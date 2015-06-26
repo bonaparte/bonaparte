@@ -2,29 +2,31 @@ var objct = require("objct");
 
 ///////////////////////////////////////////////////////////////////////////////
 
-document.registerElement('toolbar-bonaparte', { prototype: createPrototype() });
+document.registerElement('toolbar-bonaparte');
 
-document.registerElement('cornerstone-bonaparte', { prototype: createPrototype() });
+document.registerElement('cornerstone-bonaparte');
 
-document.registerElement('panel-bonaparte', { prototype: createPrototype( require("./panel-bonaparte") ) });
+document.registerElement('panel-bonaparte', createPrototype(require("./panel-bonaparte")));
 
-document.registerElement('sidebar-bonaparte', { prototype: createPrototype() });
+document.registerElement('sidebar-bonaparte');
 
-document.registerElement('content-bonaparte', { prototype: createPrototype() });
+document.registerElement('content-bonaparte');
 
-document.registerElement('scroll-bonaparte', { prototype: createPrototype() });
+document.registerElement('scroll-bonaparte');
 
 ///////////////////////////////////////////////////////////////////////////////
 
 function createPrototype(element){
   element = element || {};
 
-  return new objct.extend ( Object.create( HTMLElement.prototype ), {
-    createdCallback : createdCallback,
-    attachedCallback : attachedCallback,
-    detachedCallback : detachedCallback,
-    attributeChangedCallback : attributeChangedCallback
-  });
+  return {
+    prototype : new objct.extend ( Object.create( HTMLElement.prototype ), {
+      createdCallback : createdCallback,
+      attachedCallback : attachedCallback,
+      detachedCallback : detachedCallback,
+      attributeChangedCallback : attributeChangedCallback
+    })
+  };
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
