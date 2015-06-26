@@ -6,10 +6,7 @@ module.exports = {
 ///////////////////////////////////////////////////////////////////////////////
 
 function toggle(attribute){
-
-  var tag = this;
-  var newValue = tag.getAttribute(attribute) === "true" ? "false" : "true";
-  tag.setAttribute(attribute, newValue);
-
+  var newValue = this.attributes[attribute] === "true" ? "false" : "true";
+  this.setAttribute(attribute, newValue);
 }
 
