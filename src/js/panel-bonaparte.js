@@ -43,7 +43,7 @@ function panel(){
 ///////////////////////////////////////////////////////////////////////////////
 
   function clickHandler(e){
-    if(e.target === tag || util.nodeContains(e.target, tag)) return;
+    if(e.target === tag || util.nodeContains(tag, e.target)) return;
     tag.close();
   }
 
