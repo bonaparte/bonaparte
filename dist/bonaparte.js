@@ -186,7 +186,7 @@ document.registerElement('sidebar-bonaparte');
 
 document.registerElement('content-bonaparte');
 
-document.registerElement('scroll-bonaparte');
+document.registerElement('scroll-bonaparte', createPrototype(require("./scroll-bonaparte")));
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -271,7 +271,7 @@ function createPrototype(element){
 ///////////////////////////////////////////////////////////////////////////////
 
 }
-},{"./mixins":5,"./panel-bonaparte":6,"objct":1}],3:[function(require,module,exports){
+},{"./mixins":5,"./panel-bonaparte":6,"./scroll-bonaparte":7,"objct":1}],3:[function(require,module,exports){
 module.exports = function(){
 
   this.addListener     = addListener;
@@ -395,6 +395,9 @@ function mixins(){
     new objct.extend(tag, mixin);
 
   }
+
+///////////////////////////////////////////////////////////////////////////////
+
 }
 },{"objct":1}],6:[function(require,module,exports){
 var objct = require("objct");
@@ -463,7 +466,33 @@ function open() {
   this.trigger(this.NodeName+"-opened", {element:this});
   this.global.trigger(this.NodeName+"-opened", {element:this});
 }
-},{"./tag":7,"./toggle":8,"./utility":9,"objct":1}],7:[function(require,module,exports){
+},{"./tag":8,"./toggle":9,"./utility":10,"objct":1}],7:[function(require,module,exports){
+var objct = require("objct");
+
+///////////////////////////////////////////////////////////////////////////////
+
+module.exports = objct(
+  require("./tag"),
+  scroll
+);
+
+///////////////////////////////////////////////////////////////////////////////
+
+function scroll(){
+
+  console.log(this.firstElementChild);
+   this.firstElementChild.addEventListener("scroll", function(){
+
+     console.log("scrolling");
+
+   });
+
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+}
+},{"./tag":8,"objct":1}],8:[function(require,module,exports){
 var objct = require("objct");
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -482,7 +511,7 @@ function tag(){
 ///////////////////////////////////////////////////////////////////////////////
 
 }
-},{"./events":3,"./globals":4,"objct":1}],8:[function(require,module,exports){
+},{"./events":3,"./globals":4,"objct":1}],9:[function(require,module,exports){
 module.exports = {
   toggle : toggle
 };
@@ -496,7 +525,7 @@ function toggle(attribute){
 }
 
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 module.exports = utility = {};
 
 ///////////////////////////////////////////////////////////////////////////////

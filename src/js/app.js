@@ -12,7 +12,7 @@ document.registerElement('sidebar-bonaparte');
 
 document.registerElement('content-bonaparte');
 
-document.registerElement('scroll-bonaparte');
+document.registerElement('scroll-bonaparte', createPrototype(require("./scroll-bonaparte")));
 
 ///////////////////////////////////////////////////////////////////////////////
 
