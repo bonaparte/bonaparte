@@ -80,6 +80,8 @@ toolbar-bonaparte > *:nth-child(1) {
       -ms-flex-preferred-size: 4rem;
           flex-basis: 4rem;
   z-index: 20;
+  height: auto;
+  width: auto;
 }
 toolbar-bonaparte > *:nth-child(2) {
   background-color: tomato;
@@ -92,6 +94,8 @@ toolbar-bonaparte > *:nth-child(2) {
       -ms-flex-order: 3;
           order: 3;
   z-index: 0;
+  height: auto;
+  width: auto;
 }
 /*SIDEBAR*/
 toolbar-bonaparte[data-sidebar="left"],
