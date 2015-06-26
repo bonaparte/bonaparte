@@ -335,7 +335,6 @@ scroll-bonaparte.flashed {
 }
 scroll-bonaparte *:nth-child(1)::-webkit-scrollbar {
   display: block;
-  /*width:16px;*/
 }
 content-bonaparte {
   overflow: hidden;

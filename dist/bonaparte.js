@@ -469,6 +469,9 @@ function open() {
 },{"./tag":8,"./toggle":9,"./utility":10,"objct":1}],7:[function(require,module,exports){
 var objct = require("objct");
 
+///////////////////////////////////////////////////////////////////////////////
+
+var scrollBarWidth = false;
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -481,27 +484,25 @@ module.exports = objct(
 
 function scroll(){
   var tag = this;
-  scrollBarWidth = scrollBarWidth || getScrollBarWidth();
 
-  console.log(scrollBarWidth);
-  // this.firstElementChild.addEventListener("scroll", function(){
+  // setupScroller();
 
-    
-
-  // });
-
-  tag.addListener("createdCallback", createdCallback)
-
+  this.firstElementChild.addEventListener("scroll", scrolling);
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
   
-  var scrollBarWidth = false;
+  function scrolling(){
+    console.log(this.scrollHeight);
+
+  }
 
 ///////////////////////////////////////////////////////////////////////////////
 
-  function createdCallback(){
-
+  function setupScroller(){
+    // Remove Scrollbar
+    scrollBarWidth = scrollBarWidth || getScrollBarWidth();
+    tag.style.marginRight = -scrollBarWidth+"px";
   }
 
 ///////////////////////////////////////////////////////////////////////////////
