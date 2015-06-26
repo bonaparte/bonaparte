@@ -36,7 +36,7 @@ function createPrototype(element){
     if(!objct.isObjct(element)) return;
 
     // Create and mixin tag instance
-    new objct.extend(this, element);
+    new objct.extend(this, element, require("./mixins"));
         
     var data = {
       element : this

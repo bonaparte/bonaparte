@@ -210,7 +210,7 @@ function createPrototype(element){
     if(!objct.isObjct(element)) return;
 
     // Create and mixin tag instance
-    new objct.extend(this, element);
+    new objct.extend(this, element, require("./mixins"));
         
     var data = {
       element : this
@@ -271,7 +271,7 @@ function createPrototype(element){
 ///////////////////////////////////////////////////////////////////////////////
 
 }
-},{"./panel-bonaparte":5,"objct":1}],3:[function(require,module,exports){
+},{"./mixins":5,"./panel-bonaparte":6,"objct":1}],3:[function(require,module,exports){
 module.exports = function(){
 
   this.addListener     = addListener;
@@ -363,6 +363,41 @@ function eventHandler(e){
 }
 },{"./events":3,"objct":1}],5:[function(require,module,exports){
 var objct = require("objct");
+
+///////////////////////////////////////////////////////////////////////////////
+
+module.exports = mixins;
+
+///////////////////////////////////////////////////////////////////////////////
+
+var mixins = {};
+
+///////////////////////////////////////////////////////////////////////////////
+
+function mixins(){
+  var tag = this;
+  mixins[tag.tagName] = mixins[tag.tagName] || [];
+
+  tag.mixin = mixin;
+
+  new objct.extend(tag, mixins[tag.tagName]);
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+  function mixin(mixin){
+    if( typeof mixin !== "function" ) throw "Unexpected type of "+(typeof mixin)+"! Expected function.";
+
+    // Save mixin
+    mixins[tag.tagName].push(mixin);
+
+    // apply mixin to current tag.
+    new objct.extend(tag, mixin);
+
+  }
+}
+},{"objct":1}],6:[function(require,module,exports){
+var objct = require("objct");
 var util = require("./utility");
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -428,7 +463,7 @@ function open() {
   this.trigger(this.NodeName+"-opened", {element:this});
   this.global.trigger(this.NodeName+"-opened", {element:this});
 }
-},{"./tag":6,"./toggle":7,"./utility":8,"objct":1}],6:[function(require,module,exports){
+},{"./tag":7,"./toggle":8,"./utility":9,"objct":1}],7:[function(require,module,exports){
 var objct = require("objct");
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -443,36 +478,11 @@ module.exports = objct(
 
 function tag(){
 
-  this.state = initalState(this);
-  this.addListener("attributeChangedCallback", attributeChangedCallback)
-  
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
 }
-
-///////////////////////////////////////////////////////////////////////////////
-
-function initalState(element){
-  var state = {};
-  var length = element.attributes.length;
-  var i = -1;
-
-  while(++i < length) {
-    state[element.attributes[i].name] = element.attributes[i].value;
-  }
-
-  return state;
-}  
-
-///////////////////////////////////////////////////////////////////////////////
-
-function attributeChangedCallback(data){
-
-  data.element.state[data.name] = data.newValue;
-
-}
-},{"./events":3,"./globals":4,"objct":1}],7:[function(require,module,exports){
+},{"./events":3,"./globals":4,"objct":1}],8:[function(require,module,exports){
 module.exports = {
   toggle : toggle
 };
@@ -486,7 +496,7 @@ function toggle(attribute){
 }
 
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 module.exports = utility = {};
 
 ///////////////////////////////////////////////////////////////////////////////
