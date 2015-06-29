@@ -1,3 +1,7 @@
+var util = require("./utility");
+
+///////////////////////////////////////////////////////////////////////////////
+
 module.exports = {
   toggle : toggle
 };
@@ -6,7 +10,7 @@ module.exports = {
 ///////////////////////////////////////////////////////////////////////////////
 
 function toggle(attribute){
-  var newValue = this.attributes[attribute] === "true" ? "false" : "true";
+  var newValue = util.getAttribute(this, attribute) === "true" ? "false" : "true";
   this.setAttribute(attribute, newValue);
 }
 
