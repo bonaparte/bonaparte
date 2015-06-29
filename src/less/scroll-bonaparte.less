@@ -14,6 +14,9 @@ scroll-bonaparte {
   height: 100%;
   overflow: hidden;
   display:block;
+
+
+
 }
 
 
@@ -26,15 +29,16 @@ scroll-bonaparte > *:nth-child(1) {
   bottom: 0;
   left: 0;
 
-  /*CHROME PREVENT REDRAW BUG*/
-  transform: translate3d(0, 0, 0);
-
   &:focus {
     outline: thin dotted;
   }
-/*  &::-webkit-scrollbar {
-    display: none;
-  }*/
+}
+
+/* CHROME PREVENT REDRAW BUG (but not Safari!)*/
+@supports (-webkit-appearance:none) {
+  scroll-bonaparte > *:nth-child(1) {
+    -webkit-transform: translateZ(0);
+  }
 }
 
 scroll-bonaparte > .scrollbar {
@@ -55,10 +59,15 @@ scroll-bonaparte > .scrollbar {
     position: relative;
     margin : 0 1px;
     border-radius: 3px;
+
   }
 }
 
 scroll-bonaparte *:nth-child(1)::-webkit-scrollbar {
+  display: none; 
+}
+
+scroll-bonaparte[scrollbar~="native"] *:nth-child(1)::-webkit-scrollbar {
   display: block; 
 }
 
@@ -70,7 +79,6 @@ scroll-bonaparte[scrollbar~="hover"]:focus > .scrollbar,
 scroll-bonaparte[data-scrollbar~="hover"]:focus > .scrollbar {
   opacity: 0.99;
 }
-
 
 scroll-bonaparte[scrollbar~="hidden"] > .scrollbar,
 scroll-bonaparte[data-scrollbar~="hidden"] > .scrollbar {
