@@ -55,10 +55,10 @@
 
 ### <toolbar-bonaparte>
 
-```javascript
+```html
 <toolbar
-  sidebar = [top|right|bottom|left]
-  cornerstone = [top|bottom][right|left][outside]?
+  sidebar=[top|right|bottom|left]
+  cornerstone=[top|bottom][right|left][outside]?
 >
   <!-- Required -->
   <sidebar :nth-child(1) />
@@ -74,7 +74,7 @@
 ```html
   
 <cornerstone-bonaparte
-  open = [true|false]
+  open=[true|false]
 >
 </cornerstone-bonaparte>
 ```
