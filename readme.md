@@ -55,14 +55,14 @@
 
 ### <toolbar-bonaparte>
 
-```html
+```javascript
 <toolbar
   sidebar = [top|right|bottom|left]
-  cornerstone = [top|bottom] [right|left] [outside]?
+  cornerstone = [top|bottom][right|left][outside]?
 >
   <!-- Required -->
-  <sidebar:nth-child(1) />
-  <content:nth-child(2) /> 
+  <sidebar :nth-child(1) />
+  <content :nth-child(2) /> 
 
   <!-- Optional -->
   <cornerstone-bonaparte />
