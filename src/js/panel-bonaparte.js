@@ -28,7 +28,9 @@ function panel(){
   function attributeChangedCallback(data){
     switch(data.name) {
       case "open": 
-        if(util.getAttribute(tag, "stayOpen") === "true") break;
+        
+        // if(util.getAttribute(tag, "stayOpen") === "true") break;
+
         setTimeout(function(){ 
           if(data.newValue === "true") 
             tag.global.addListener("click", clickHandler);
@@ -49,15 +51,17 @@ function panel(){
 
 ///////////////////////////////////////////////////////////////////////////////
 
+  function close() {
+    tag.global.removeListener("click", clickHandler);
+    tag.setAttribute("open", "false");
+  }
+
+  ///////////////////////////////////////////////////////////////////////////////
+
+  function open() {
+    tag.global.removeListener("click", clickHandler);
+    tag.setAttribute("open", "true");
+  }
+///////////////////////////////////////////////////////////////////////////////
 }
 ///////////////////////////////////////////////////////////////////////////////
-
-function close() {
-  this.setAttribute("open", "false");
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
-function open() {
-  this.setAttribute("open", "true");
-}
