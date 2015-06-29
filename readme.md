@@ -55,8 +55,7 @@
 
 ### <toolbar-bonaparte>
 
-´´´html
-
+```html
 <toolbar
   sidebar = [top|right|bottom|left]
   cornerstone = [top|bottom] [right|left] [outside]?
@@ -69,12 +68,13 @@
   <cornerstone-bonaparte />
 
 </toolbar-bonaparte>
-´´´
 
-´´´html
+```
+
+```html
   
 <cornerstone-bonaparte
   open = [true|false]
 >
 </cornerstone-bonaparte>
-´´´
+```
