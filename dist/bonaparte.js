@@ -335,8 +335,8 @@ module.exports = globals;
 
 ///////////////////////////////////////////////////////////////////////////////
 
-window.addEventListener("click", eventHandler);
-window.addEventListener("resize", eventHandler);
+window.addEventListener("click", forwardEvent);
+window.addEventListener("resize", forwardEvent);
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -357,7 +357,7 @@ function globals(){
 
 ///////////////////////////////////////////////////////////////////////////////
 
-function eventHandler(e){
+function forwardEvent(e){
 
   globals.global.trigger(e.type, e); 
 
@@ -414,56 +414,64 @@ module.exports = objct(
 
 ///////////////////////////////////////////////////////////////////////////////
 
-panel.prototype = {
-  open : open,
-  close : close
-};
-
 function panel(){
-  var tag = this;
 
+  this.global.addListener("click", clickHandler);
+  this.global.addListener("closePanels", closePanels);
   this.addListener("attributeChangedCallback", attributeChangedCallback);
+  this.open = open;
+  this.close = close;
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
-
-
-  function attributeChangedCallback(data){
-    switch(data.name) {
-      case "open": 
-        if(util.getAttribute(tag, "stayOpen") === "true") break;
-        setTimeout(function(){ 
-          if(data.newValue === "true") 
-            tag.global.addListener("click", clickHandler);
-          else
-            tag.global.removeListener("click", clickHandler);
-        },0); // wait for end of current process > let event finish bubbling up.
-      break;
-
-    } 
-  }
+  var tag = this;
+  var locked = false;
 
 ///////////////////////////////////////////////////////////////////////////////
 
   function clickHandler(e){
-    if(e.target === tag || util.nodeContains(tag, e.target)) return;
+    if(e.target === tag || util.nodeContains(tag, e.target)) 
+      lock();
+    tag.global.trigger("closePanels");
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
+  function attributeChangedCallback(data){
+    if(data.name === "open" && data.newValue == "true") {
+      lock();
+      tag.global.trigger("closePanels");
+    };    
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
+  function closePanels(){
+    if(locked) return;
     tag.close();
   }
 
 ///////////////////////////////////////////////////////////////////////////////
 
-}
-///////////////////////////////////////////////////////////////////////////////
-
-function close() {
-  this.setAttribute("open", "false");
-}
+  function close() {
+    tag.setAttribute("open", "false");
+  }
 
 ///////////////////////////////////////////////////////////////////////////////
 
-function open() {
-  this.setAttribute("open", "true");
+  function open(e) {    
+    lock();
+    tag.setAttribute("open", "true");
+  }
+///////////////////////////////////////////////////////////////////////////////
+
+  function lock(){
+    locked=true;
+    setTimeout(function(){ locked=false; },0);
+  }
 }
+
+///////////////////////////////////////////////////////////////////////////////
 },{"./tag":8,"./toggle":9,"./utility":10,"objct":1}],7:[function(require,module,exports){
 var objct  = require("objct");
 var util   = require("./utility");

@@ -6,8 +6,8 @@ module.exports = globals;
 
 ///////////////////////////////////////////////////////////////////////////////
 
-window.addEventListener("click", eventHandler);
-window.addEventListener("resize", eventHandler);
+window.addEventListener("click", forwardEvent);
+window.addEventListener("resize", forwardEvent);
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -28,7 +28,7 @@ function globals(){
 
 ///////////////////////////////////////////////////////////////////////////////
 
-function eventHandler(e){
+function forwardEvent(e){
 
   globals.global.trigger(e.type, e); 
 
