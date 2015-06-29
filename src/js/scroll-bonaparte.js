@@ -34,8 +34,11 @@ function scroll(){
   var scrollBarVisible;
 
   function update(){
+    var containerHeight = tag.offsetHeight;
+    var scrollHeight = content.scrollHeight;
+
     // VISIBILITY
-    if(content.scrollHeight <= tag.offsetHeight) {
+    if(scrollHeight <= containerHeight) {
       if(scrollBarVisible !== false) {
         scrollbar.style.opacity = 0.01;
         scrollBarVisible = false;
@@ -48,10 +51,7 @@ function scroll(){
       }
     } 
 
-    // SLIDER SIZE
-
-
-    // SLIDER POSITION
+    // SLIDER SIZE / POSITION
     updatePosition();
 
   }
@@ -59,8 +59,16 @@ function scroll(){
 ///////////////////////////////////////////////////////////////////////////////
 
   function updatePosition(){
+    var containerHeight = tag.offsetHeight;
+    var scrollHeight = content.scrollHeight;
 
+    var sliderSize = Math.min(1, Math.max( 0.05, util.map(scrollHeight/containerHeight, 1, 5, 1, 0.05)));
 
+    var position = scrollHeight-containerHeight > 0 ? content.scrollTop / (scrollHeight-containerHeight) : 0;
+    var top = util.map(position, 0, 1, 0, containerHeight-(containerHeight*sliderSize));
+
+    slider.style.height=(100*sliderSize)+"%";
+    slider.style.top=top+"px";
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -83,7 +91,6 @@ function scroll(){
     tag.appendChild(scrollbar);
 
   }
-
 
 ///////////////////////////////////////////////////////////////////////////////
 
