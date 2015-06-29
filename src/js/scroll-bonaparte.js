@@ -18,6 +18,8 @@ function scroll(){
   var tag = this;
   var content =  this.firstElementChild;
 
+  if(util.getAttribute(tag, "scrollbar") === "native") return;
+
   if(util.getAttribute(tag, "resize") === "true") {
     tag.global.addListener("resize", update);
   }
