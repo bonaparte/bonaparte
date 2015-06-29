@@ -54,13 +54,10 @@ function panel(){
 
 function close() {
   this.setAttribute("open", "false");
-  this.trigger(this.NodeName+"-closed", {element:this});
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 
 function open() {
   this.setAttribute("open", "true");
-  this.trigger(this.NodeName+"-opened", {element:this});
-  this.global.trigger(this.NodeName+"-opened", {element:this});
 }
