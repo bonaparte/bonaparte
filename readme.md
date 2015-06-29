@@ -53,28 +53,36 @@
 
 ## Tags
 
-### <toolbar-bonaparte>
-
-´´´html
-
+```html
 <toolbar
-  sidebar = [top|right|bottom|left]
-  cornerstone = [top|bottom] [right|left] [outside]?
+  sidebar=[top|right|bottom|left]
+  cornerstone=[top|bottom][right|left][outside]?
 >
+
   <!-- Required -->
-  <sidebar:nth-child(1) />
-  <content:nth-child(2) /> 
+  <nth-child-1 sidebar />
+  <nth-child-2 content /> 
 
   <!-- Optional -->
   <cornerstone-bonaparte />
 
 </toolbar-bonaparte>
-´´´
+```
 
-´´´html
-  
+```html
+<!-- only as direct child of <toolbar-bonaparte> -->
 <cornerstone-bonaparte
-  open = [true|false]
+  open=[true|false]
 >
 </cornerstone-bonaparte>
-´´´
+```
+
+```html
+<!-- parent element must not be position:static -->
+<panel-bonaparte
+  position=[top|right|bottom|left]
+  open=[true|false]
+  <!-- stayOpen=[true|false] -->
+>
+</panel-bonaparte>
+```
