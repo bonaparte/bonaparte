@@ -50,3 +50,31 @@
 
 - Run `gulp BPA-watch` to watch `./src/` and keep `./dist/` up to date.
 
+
+## Tags
+
+### <toolbar-bonaparte>
+
+´´´html
+
+<toolbar
+  sidebar = [top|right|bottom|left]
+  cornerstone = [top|bottom] [right|left] [outside]?
+>
+  <!-- Required -->
+  <sidebar:nth-child(1) />
+  <content:nth-child(2) /> 
+
+  <!-- Optional -->
+  <cornerstone-bonaparte />
+
+</toolbar-bonaparte>
+´´´
+
+´´´html
+  
+<cornerstone-bonaparte
+  open = [true|false]
+>
+</cornerstone-bonaparte>
+´´´
