@@ -67,7 +67,6 @@
   <cornerstone-bonaparte />
 
 </toolbar-bonaparte>
-
 ```
 
 ```html
