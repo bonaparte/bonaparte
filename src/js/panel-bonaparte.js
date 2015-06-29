@@ -27,9 +27,8 @@ function panel(){
 ///////////////////////////////////////////////////////////////////////////////
 
   function clickHandler(e){
-    if(e.target === tag || util.nodeContains(tag, e.target)) 
-      lock();
-    tag.global.trigger("closePanels");
+    if(e.target === tag || util.nodeContains(tag, e.target)) return;
+    closePanels();
   }
 
 ///////////////////////////////////////////////////////////////////////////////
