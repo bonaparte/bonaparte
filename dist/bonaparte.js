@@ -430,8 +430,8 @@ function panel(){
 
   function attributeChangedCallback(data){
     switch(data.name) {
-
       case "open": 
+        if(util.getAttribute(tag, "stayOpen") === "true") break;
         setTimeout(function(){ 
           if(data.newValue === "true") 
             tag.global.addListener("click", clickHandler);
@@ -595,6 +595,10 @@ function tag(){
 
 }
 },{"./events":3,"./globals":4,"objct":1}],9:[function(require,module,exports){
+var util = require("./utility");
+
+///////////////////////////////////////////////////////////////////////////////
+
 module.exports = {
   toggle : toggle
 };
@@ -603,12 +607,12 @@ module.exports = {
 ///////////////////////////////////////////////////////////////////////////////
 
 function toggle(attribute){
-  var newValue = this.attributes[attribute] === "true" ? "false" : "true";
+  var newValue = util.getAttribute(this, attribute) === "true" ? "false" : "true";
   this.setAttribute(attribute, newValue);
 }
 
 
-},{}],10:[function(require,module,exports){
+},{"./utility":10}],10:[function(require,module,exports){
 module.exports = utility = {};
 
 ///////////////////////////////////////////////////////////////////////////////

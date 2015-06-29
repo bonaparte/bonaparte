@@ -17,6 +17,11 @@ panel-bonaparte[open="true"] {
   -webkit-transform: translate3d(0, 0, 0);
 }
 
+panel-bonaparte[data-stayOpen="true"],
+panel-bonaparte[stayOpen="true"] {
+  z-index:8;
+}
+
 panel-bonaparte[data-position~="left"],
 panel-bonaparte[position~="left"] {
   display:block;

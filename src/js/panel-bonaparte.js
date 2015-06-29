@@ -27,8 +27,8 @@ function panel(){
 
   function attributeChangedCallback(data){
     switch(data.name) {
-
       case "open": 
+        if(util.getAttribute(tag, "stayOpen") === "true") break;
         setTimeout(function(){ 
           if(data.newValue === "true") 
             tag.global.addListener("click", clickHandler);
