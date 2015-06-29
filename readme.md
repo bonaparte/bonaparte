@@ -58,6 +58,7 @@
   sidebar=[top|right|bottom|left]
   cornerstone=[top|bottom][right|left][outside]?
 >
+
   <!-- Required -->
   <nth-child-1 sidebar />
   <nth-child-2 content /> 
