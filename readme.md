@@ -70,7 +70,7 @@
 ```
 
 ```html
-<!-- only direct as direct child of <toolbar-bonaparte> -->
+<!-- only as direct child of <toolbar-bonaparte> -->
 <cornerstone-bonaparte
   open=[true|false]
 >
