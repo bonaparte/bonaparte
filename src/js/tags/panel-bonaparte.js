@@ -2,6 +2,7 @@ var objct = require("objct");
 var util = require("../core/utility");
 
 ///////////////////////////////////////////////////////////////////////////////
+// Public
 
 module.exports = objct(
   require("../core/tag"), 
