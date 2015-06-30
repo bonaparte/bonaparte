@@ -82,7 +82,6 @@
 <panel-bonaparte
   position=[top|right|bottom|left]
   open=[true|false]
-  <!-- stayOpen=[true|false] -->
 >
 </panel-bonaparte>
 ```
