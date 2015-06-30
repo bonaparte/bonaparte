@@ -1,9 +1,13 @@
 {
   "name": "bonaparte",
-
+  "version": "0.0.1",
+  
   "dependencies" : {
-    "objct": "^2.0.3"
+    "objct": "^2.0.4",
+    "bonaparte": "file:./"
   },
+  
+  "main":"./src/app.js",
   
   "devDependencies": {
     "gulp": "*",
@@ -18,7 +22,7 @@
   },
 
   "scripts": {
-    "install" : "gulp SUI-install; cd SUI/ui ; npm install; gulp build; cd ../..; gulp BPA-build"
+    "_install" : "gulp SUI-install; cd SUI/ui ; npm install; gulp build; cd ../..; gulp BPA-build"
   },
 
   "engines": {

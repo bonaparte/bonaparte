@@ -55,8 +55,8 @@
 
 ```html
 <toolbar
-  sidebar=[top|right|bottom|left]
-  cornerstone=[top|bottom][right|left][outside]?
+  sidebar=[left|top|right|bottom]
+  cornerstone=[top|bottom][left|right][outside]?
 >
 
   <!-- Required -->
@@ -72,7 +72,7 @@
 ```html
 <!-- only as direct child of <toolbar-bonaparte> -->
 <cornerstone-bonaparte
-  open=[true|false]
+  open=[false|true]
 >
 </cornerstone-bonaparte>
 ```
@@ -80,9 +80,20 @@
 ```html
 <!-- parent element must not be position:static -->
 <panel-bonaparte
-  position=[top|right|bottom|left]
-  open=[true|false]
-  <!-- stayOpen=[true|false] -->
+  position=[left|top|right|bottom]
+  open=[false|true]
 >
 </panel-bonaparte>
+```
+
+```html
+<!-- parent element must not be position:static -->
+<scroll-bonaparte
+  scrollBar=[hover|visible|hidden|native]
+>
+
+  <!-- Required -->
+  <nth-child-1 content />
+
+</scroll-bonaparte>
 ```

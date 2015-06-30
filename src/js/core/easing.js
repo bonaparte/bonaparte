@@ -1,8 +1,4 @@
-module.exports = utility = {};
-
-///////////////////////////////////////////////////////////////////////////////
-
-var easing = {
+module.exports = {
   // t: current time, b: begInnIng value, c: change In value, d: duration
   easeNot: function (t, b, c, d) {
     return b+c*(t/=d);
@@ -132,32 +128,3 @@ var easing = {
     return easing.easeOutBounce (t*2-d, 0, c, d) * .5 + c*.5 + b;
   }
 }
-
-///////////////////////////////////////////////////////////////////////////////
-
-utility.nodeContains = function(parent, child) {
-  while((child=child.parentNode)&&child!==parent); 
-  return !!child; 
-};
-
-///////////////////////////////////////////////////////////////////////////////
-
-utility.getAttribute = function(tag, name){
-  var attribute = tag.attributes[name] || tag.attributes["data-"+name];
-  return attribute ? attribute.value : undefined; 
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// x: current Value, 
-// cMin: current range min, 
-// cMax: current range max, 
-// tMin: target range min, 
-// tMax: target range max, 
-// easingFunction: easingFunction (string)
-utility.map = function(x, cMin, cMax, tMin, tMax, easingFunction) {
-  easingFunction = easing[easingFunction] !== undefined ? easingFunction : "easeNot";
-  if(x===0) return tMin;
-  return easing[easingFunction](x-cMin, tMin, tMax-tMin, cMax-cMin);  
-};
-
-///////////////////////////////////////////////////////////////////////////////

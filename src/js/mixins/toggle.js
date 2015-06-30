@@ -1,6 +1,7 @@
-var util = require("./utility");
+var util = require("../core/utility");
 
 ///////////////////////////////////////////////////////////////////////////////
+// Public 
 
 module.exports = {
   toggle : toggle

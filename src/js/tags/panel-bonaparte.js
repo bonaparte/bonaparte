@@ -1,29 +1,34 @@
-var objct = require("objct");
-var util = require("./utility");
+var util = require("../core/utility");
+var registerTag = require("../core/tag");
 
 ///////////////////////////////////////////////////////////////////////////////
+// Public
 
-module.exports = objct(
-  require("./tag"), 
-  require("./toggle"),
+module.exports = registerTag("panel", [
+  require("../mixins/toggle"),
   panel
-);
+]);
 
 ///////////////////////////////////////////////////////////////////////////////
-
 function panel(){
 
-  this.global.addListener("click", clickHandler);
-  this.global.addListener("closePanels", closePanels);
-  this.addListener("attributeChangedCallback", attributeChangedCallback);
+  var tag = this;
+  var locked = false;
+
+///////////////////////////////////////////////////////////////////////////////
+// Public 
+
   this.open = open;
   this.close = close;
 
 ///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-  var tag = this;
-  var locked = false;
+// Eventlisteners
 
+  this.global.addListener("click", clickHandler);
+  this.global.addListener("closePanels", closePanels);
+  this.addListener("attributeChangedCallback", attributeChangedCallback);
+
+///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
   function clickHandler(e){

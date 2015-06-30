@@ -1,22 +1,23 @@
 var objct = require("objct");
 
+var registeredMixins = {};
+
 ///////////////////////////////////////////////////////////////////////////////
+// Public
 
 module.exports = mixins;
 
 ///////////////////////////////////////////////////////////////////////////////
+function mixins(){
 
-var mixins = {};
+  var tag = this;
+  registeredMixins[tag.tagName] = registeredMixins[tag.tagName] || [];
+  new objct.extend(tag, registeredMixins[tag.tagName]);
 
 ///////////////////////////////////////////////////////////////////////////////
+// Public
 
-function mixins(){
-  var tag = this;
-  mixins[tag.tagName] = mixins[tag.tagName] || [];
-
-  tag.mixin = mixin;
-
-  new objct.extend(tag, mixins[tag.tagName]);
+  this.mixin = mixin;
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -25,7 +26,7 @@ function mixins(){
     if( typeof mixin !== "function" ) throw "Unexpected type of "+(typeof mixin)+"! Expected function.";
 
     // Save mixin
-    mixins[tag.tagName].push(mixin);
+    registeredMixins[tag.tagName].push(mixin);
 
     // apply mixin to current tag.
     new objct.extend(tag, mixin);

@@ -1,39 +1,41 @@
-var objct  = require("objct");
-var util   = require("./utility");
-
-///////////////////////////////////////////////////////////////////////////////
+var util   = require("../core/utility");
+var registerTag = require("../core/tag");
 
 var scrollBarWidth = false;
 
 ///////////////////////////////////////////////////////////////////////////////
+// Public
 
-module.exports = objct(
-  require("./tag"),
+module.exports = registerTag("scroll", [
   scroll
-);
+]);
 
 ///////////////////////////////////////////////////////////////////////////////
-
 function scroll(){
+
   var tag = this;
   var content =  this.firstElementChild;
+  var slider, scrollbar, scrollBarVisible;
 
-  if(util.getAttribute(tag, "scrollbar") === "native") return;
-
-  if(util.getAttribute(tag, "resize") === "true") {
-    tag.global.addListener("resize", update);
-  }
-  content.addEventListener("scroll", updatePosition);
-
-  this.update = update;
+  if(util.getAttribute(this, "scrollbar") === "native") return;
 
   setupScroller();
 
 ///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
+// Public 
+ 
+  this.update = update;
 
-  var slider, scrollbar;
-  var scrollBarVisible;
+///////////////////////////////////////////////////////////////////////////////
+// Eventlisteners
+
+  if(util.getAttribute(this, "resize") === "true")
+    this.global.addListener("resize", update);
+  
+  content.addEventListener("scroll", updatePosition);
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 
   function update(){
     var containerHeight = tag.offsetHeight;
