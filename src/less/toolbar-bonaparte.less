@@ -48,6 +48,61 @@ toolbar-bonaparte[sidebar="bottom"] {
   flex-direction: column-reverse;
 }
 
+toolbar-bonaparte[data-cornerstone*="top"][data-cornerstone*="left"],
+toolbar-bonaparte[cornerstone*="top"][cornerstone*="left"] {
+  
+  &[data-sidebar="left"] > *:nth-child(1),
+  &[sidebar="left"] > *:nth-child(1) {
+    padding-top:4rem;
+  }  
+
+  &[data-sidebar="top"] > *:nth-child(1),
+  &[sidebar="top"] > *:nth-child(1) {
+    padding-left:4rem;
+  }
+}
+
+toolbar-bonaparte[data-cornerstone*="top"][data-cornerstone*="right"],
+toolbar-bonaparte[cornerstone*="top"][cornerstone*="right"] {
+  
+  &[data-sidebar="right"] > *:nth-child(1),
+  &[sidebar="right"] > *:nth-child(1) {
+    padding-top:4rem;
+  }  
+
+  &[data-sidebar="top"] > *:nth-child(1),
+  &[sidebar="top"] > *:nth-child(1) {
+    padding-right:4rem;
+  }
+}
+
+toolbar-bonaparte[data-cornerstone*="bottom"][data-cornerstone*="right"],
+toolbar-bonaparte[cornerstone*="bottom"][cornerstone*="right"] {
+  
+  &[data-sidebar="right"] > *:nth-child(1),
+  &[sidebar="right"] > *:nth-child(1) {
+    padding-bottom:4rem;
+  }  
+
+  &[data-sidebar="bottom"] > *:nth-child(1),
+  &[sidebar="bottom"] > *:nth-child(1) {
+    padding-right:4rem;
+  }
+}
+
+toolbar-bonaparte[data-cornerstone*="bottom"][data-cornerstone*="left"],
+toolbar-bonaparte[cornerstone*="bottom"][cornerstone*="left"] {
+  
+  &[data-sidebar="left"] > *:nth-child(1),
+  &[sidebar="left"] > *:nth-child(1) {
+    padding-bottom:4rem;
+  }  
+
+  &[data-sidebar="bottom"] > *:nth-child(1),
+  &[sidebar="bottom"] > *:nth-child(1) {
+    padding-left:4rem;
+  }
+}
 
 /*CORNERSTONE*/
 
@@ -98,6 +153,7 @@ toolbar-bonaparte[cornerstone*="right"] {
     left:auto;
   }
 }
+
 
 /*CORNERSTONE OUTSIDE*/
 
