@@ -27,6 +27,9 @@ function build(){
     }
   });
 
+  process.chdir("../../");
+
+
   // build.on("close", function(){
   //   gulp.start("extract");
   // });
