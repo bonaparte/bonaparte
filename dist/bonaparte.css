@@ -288,7 +288,6 @@ panel-bonaparte[position~="bottom"][open="true"] {
   Inspired by: nanoScrollerJS
   https://github.com/jamesflorentino/nanoScrollerJS
 */
-/** initial setup **/
 scroll-bonaparte {
   position: relative;
   width: 100%;

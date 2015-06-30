@@ -13,9 +13,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 var Objct = function(){};
 var NewObj = function(){return {};};
-var objctHash = "jmuMMRs6AUUG29";
-var hash = objctHash+"3HXcs8Z0ofQlkG0hqiNAJlZq2hHYakBQmyfnRuCsh2yf+c6m";
-var testExecutable = new RegExp("\\b"+objctHash+"\\b");
+var hash = "jmuMMRs6AUUG293HXcs8Z0ofQlkG0hqiNAJlZq2hHYakBQmyfnRuCsh2yf-d7n";
+var testExecutable = new RegExp("\\b"+hash+"\\b");
 var strFunction = "function";
 var strObject = "object";
 var strArray = Array.toString();
@@ -32,52 +31,108 @@ var instantiateFunction = function(fn, args){
 	Objct.prototype = null;
 	var r = fn.apply(f, args);
 	if(checkType(r)) return r;
-	return f;	
+	return f;		
 };
 ////////////////////////////////////////////////////////////////////////////////
-var mixinObject = function(target, source) {
-	var k =-1;
-	var keys = objectKeys(source);
+var decoratedProperty = function(target, source, k, data) {
+	target[k] = typeof source[k] === strFunction && source[k].hash === hash?
+		source[k].call(data.i, {
+			args:data.a, 
+			modules:data.m, 
+			target:target,
+			key:k
+		}):
+		source[k];
+};
+////////////////////////////////////////////////////////////////////////////////
+var decoratedModule = function(module, data, instance) {
+	return typeof module === strFunction && module.hash === hash ?
+		module.call(instance, {
+			args:data.a, 
+			modules:data.m, 
+		}):
+		module;
+}
+////////////////////////////////////////////////////////////////////////////////
+var mixinObject = function(target, source, data, keys) {
+	var k = -1, length;
+	keys = keys || objectKeys(source);
 	if(typeof keys === strObject) {
-		var length = keys.length;
-
-		while(++k < length) {
-			target[keys[k]]=source[keys[k]];
-		}
+		length = keys.length;	
+		if(data.d) 
+			while(++k < length) 
+				decoratedProperty(target, source, keys[k], data);
+		else 
+			while(++k < length) 
+				target[keys[k]]=source[keys[k]];
 	}
 	else {
-		for(k in source) {
-			target[k]=source[k];
-		}
+		if(data.d) 
+			for(k in source) 
+				decoratedProperty(target, source, k, data);
+		else 
+			for(k in source) 
+				target[k]=source[k];
 	}
+};
+////////////////////////////////////////////////////////////////////////////////
+var mixinFunction = function(target, fn, data){
+	var proto = fn.prototype;
+	var instance, keys;
+
+	mixinObject(target, proto, data);
+
+	if(!data.d) {
+		fn.apply(target, data.a);
+		return;
+	}
+
+	fn.prototype = target;
+	instance = instantiateFunction(fn, data.a);
+	fn.prototype = proto;
+
+	keys = typeof Object.getOwnPropertyNames === strFunction ?
+		Object.getOwnPropertyNames(instance):
+		undefined;
+	
+	mixinObject(target, instance, data, keys);
 };
 ////////////////////////////////////////////////////////////////////////////////
 var build = function(modules, data){
-	var isFunction, obj, value, i=0, length = modules.length;
+	var isFunction, i=-1;
+	var instance, obj, length = modules.length;
 
-	//First Module
-	var instance = modules[0].obj === NewObj ? 
-		NewObj():
-		typeof modules[0].obj === strFunction ?
-			instantiateFunction(modules[0].obj, data.a):
-			modules[0].obj;
-
-	data.i = data.i || instance;
-
-	//mixin all other modules
-	while(++i < length) {
-		obj = modules[i].isFactory ?
-			modules[i].obj.call({hash:hash}, modules[i], data):
+	while(++i<length) {
+		obj = data.d ?
+			decoratedModule(modules[i].obj, data, data.i):
 			modules[i].obj;
 
-		if(typeof obj === strFunction) { 
-			mixinObject(data.i, obj.prototype);
-			obj.apply(data.i, data.a);
-		}
-		else {
-			mixinObject(data.i, obj); 
-		}
+		// first Module
+		if(i === 0) {
+			// very first module
+			if(data.i === null) {
+				data.i = obj === NewObj ? 
+					NewObj():
+					typeof obj === strFunction ?
+						instantiateFunction(obj, data.a):
+						obj;
+				// call first modules decorators
+				data.d && mixinObject(data.i, data.i, data);
+				continue;
+			}
+			else if(obj === NewObj) continue;
+		} 
+
+		//module is factory? -> call it
+		modules[i].isFactory ?
+			obj.call({hash:hash}, modules[i], data):
+			// module is function?
+			typeof obj === strFunction ?
+				mixinFunction(data.i, obj, data):
+				// module is object
+				mixinObject(data.i, obj, data);
 	}
+
 	return data.i;
 };
 //////////////////////////////////////////////////////////////////////////////
@@ -85,7 +140,28 @@ var build = function(modules, data){
 var factory = function(){
 	Array.prototype.unshift.call(arguments, NewObj);
 	return factory.extend.call({
+		hash:hash,
 		i : this instanceof factory,
+		d : false,
+		arguments : arguments
+	});
+};
+//////////////////////////////////////////////////////////////////////////////
+factory.e = function(){
+	Array.prototype.unshift.call(arguments, NewObj);
+	return factory.extend.call({
+		hash:hash,
+		i : this instanceof factory.e,
+		d : true,
+		arguments : arguments
+	});
+};
+//////////////////////////////////////////////////////////////////////////////
+factory.e.extend = function(){
+	return factory.extend.call({
+		hash:hash,
+		i : this instanceof factory.e.extend,
+		d : true,
 		arguments : arguments
 	});
 };
@@ -93,43 +169,38 @@ var factory = function(){
 factory.extend = function(){
 	////////////////////////////////////////////////////////////////////////
 	var Executable = function Executable(module, data){
-		"jmuMMRs6AUUG29";
+		"jmuMMRs6AUUG293HXcs8Z0ofQlkG0hqiNAJlZq2hHYakBQmyfnRuCsh2yf-d7n";
+		var that = this || {};
+
 		//////////////////////////
 		// Continue building process
 		//////////////////////////
-		if(this && typeof this.hash === "string" && this.hash.search(objctHash) >= 0) {
+		if(that && typeof that.hash === "string" && that.hash === hash) {
 			// pass up modules
 			module.m = thisData.m;
-			if(this.hash === hash) {
-				return build(thisData.m, data);
-			}
-			else {
-				thisData.a = data.a;
-			}
+			return build(thisData.m, data);
 		}
 		//////////////////////////
 		// Start building process
 		//////////////////////////
-		else {
-			thisData.a = arguments;
-		}
-
-		var instance = build(thisData.m, thisData);
-
-		return instance;
+		
+		thisData.a = arguments;
+		return build(thisData.m, thisData);
 	};
 	////////////////////////////////////////////////////////////////////////
 	var that = this || {};
 	var thisData = {
 		a : [], // args
 		m : [], // modules
-		i : false, // instance
+		i : null, // instance
+		d : that.hash === hash ? that.d : false, // decorated
 	};
 	var type;
 	var args = arguments.length > 0 ? arguments : that.arguments;
 	var instant = this instanceof factory.extend || that.i;
-	var i=-1;
+
 	//setup modules
+	var i=-1;
 	while(++i < args.length) {
 		type = typeof args[i];
 		if(!checkType(args[i])) {
@@ -148,10 +219,25 @@ factory.extend = function(){
 			isFactory : type === strFunction && testExecutable.test(args[i])
 		});
 
-		if(!instant && type === strFunction)
+		// if module is a function and not a decorator, copy static properties to Executable
+		if(!instant && type === strFunction && args[i].hash !== hash)
 			mixinObject(Executable, args[i], thisData);
 	}	
 	return instant ? new Executable() : Executable;
+};
+////////////////////////////////////////////////////////////////////////////////
+factory.e.decorator = function(fn){
+	var type = typeof fn;
+	if(type !== strFunction) 
+		throw("objct.decorator: Unexpected '"+type+"'! Objct.decorator only takes one function as argument.");
+	return function(){
+		var args = Array.prototype.slice.call(arguments);
+		var f = function(decoratorData){
+			return fn.apply(this, [decoratorData].concat(args));
+		};
+		f.hash=hash;
+		return f;
+	};
 };
 ////////////////////////////////////////////////////////////////////////////////
 factory.isObjct = function(obj){
@@ -180,13 +266,13 @@ document.registerElement('toolbar-bonaparte');
 
 document.registerElement('cornerstone-bonaparte');
 
-document.registerElement('panel-bonaparte', createPrototype(require("./panel-bonaparte")));
+document.registerElement('panel-bonaparte', createPrototype(require("./tags/panel-bonaparte")));
 
 document.registerElement('sidebar-bonaparte');
 
 document.registerElement('content-bonaparte');
 
-document.registerElement('scroll-bonaparte', createPrototype(require("./scroll-bonaparte")));
+document.registerElement('scroll-bonaparte', createPrototype(require("./tags/scroll-bonaparte")));
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -209,8 +295,11 @@ function createPrototype(element){
 
     if(!objct.isObjct(element)) return;
 
+    // Create bonaparte namespace
+    this.bonaparte = this.bonaparte || {};
+
     // Create and mixin tag instance
-    new objct.extend(this, element, require("./mixins"));
+    new objct.extend(this, element, require("./core/mixins"));
         
     var data = {
       element : this
@@ -271,7 +360,7 @@ function createPrototype(element){
 ///////////////////////////////////////////////////////////////////////////////
 
 }
-},{"./mixins":5,"./panel-bonaparte":6,"./scroll-bonaparte":7,"objct":1}],3:[function(require,module,exports){
+},{"./core/mixins":5,"./tags/panel-bonaparte":9,"./tags/scroll-bonaparte":10,"objct":1}],3:[function(require,module,exports){
 module.exports = function(){
 
   this.addListener     = addListener;
@@ -402,188 +491,6 @@ function mixins(){
 }
 },{"objct":1}],6:[function(require,module,exports){
 var objct = require("objct");
-var util = require("./utility");
-
-///////////////////////////////////////////////////////////////////////////////
-
-module.exports = objct(
-  require("./tag"), 
-  require("./toggle"),
-  panel
-);
-
-///////////////////////////////////////////////////////////////////////////////
-
-function panel(){
-
-  this.global.addListener("click", clickHandler);
-  this.global.addListener("closePanels", closePanels);
-  this.addListener("attributeChangedCallback", attributeChangedCallback);
-  this.open = open;
-  this.close = close;
-
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-  var tag = this;
-  var locked = false;
-
-///////////////////////////////////////////////////////////////////////////////
-
-  function clickHandler(e){
-    if(e.target === tag || util.nodeContains(tag, e.target)) return;
-    closePanels();
-  }
-
-///////////////////////////////////////////////////////////////////////////////
-
-  function attributeChangedCallback(data){
-    if(data.name === "open" && data.newValue == "true") {
-      lock();
-      tag.global.trigger("closePanels");
-    };    
-  }
-
-///////////////////////////////////////////////////////////////////////////////
-
-  function closePanels(){
-    if(locked) return;
-    tag.close();
-  }
-
-///////////////////////////////////////////////////////////////////////////////
-
-  function close() {
-    tag.setAttribute("open", "false");
-  }
-
-///////////////////////////////////////////////////////////////////////////////
-
-  function open(e) {    
-    lock();
-    tag.setAttribute("open", "true");
-  }
-///////////////////////////////////////////////////////////////////////////////
-
-  function lock(){
-    locked=true;
-    setTimeout(function(){ locked=false; },0);
-  }
-}
-
-///////////////////////////////////////////////////////////////////////////////
-},{"./tag":8,"./toggle":9,"./utility":10,"objct":1}],7:[function(require,module,exports){
-var objct  = require("objct");
-var util   = require("./utility");
-
-///////////////////////////////////////////////////////////////////////////////
-
-var scrollBarWidth = false;
-
-///////////////////////////////////////////////////////////////////////////////
-
-module.exports = objct(
-  require("./tag"),
-  scroll
-);
-
-///////////////////////////////////////////////////////////////////////////////
-
-function scroll(){
-  var tag = this;
-  var content =  this.firstElementChild;
-
-  if(util.getAttribute(tag, "scrollbar") === "native") return;
-
-  if(util.getAttribute(tag, "resize") === "true") {
-    tag.global.addListener("resize", update);
-  }
-  content.addEventListener("scroll", updatePosition);
-
-  this.update = update;
-
-  setupScroller();
-
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-
-  var slider, scrollbar;
-  var scrollBarVisible;
-
-  function update(){
-    var containerHeight = tag.offsetHeight;
-    var scrollHeight = content.scrollHeight;
-
-    // VISIBILITY
-    if(scrollHeight <= containerHeight) {
-      if(scrollBarVisible !== false) {
-        scrollbar.style.opacity = 0.01;
-        scrollBarVisible = false;
-      }
-    }
-    else {
-      if(scrollBarVisible !== true) {
-        scrollbar.style.opacity = "";
-        scrollBarVisible = true;
-      }
-    } 
-
-    // SLIDER SIZE / POSITION
-    updatePosition();
-
-  }
-
-///////////////////////////////////////////////////////////////////////////////
-
-  function updatePosition(){
-    var containerHeight = tag.offsetHeight;
-    var scrollHeight = content.scrollHeight;
-
-    var sliderSize = Math.min(1, Math.max( 0.05, util.map(scrollHeight/containerHeight, 1, 5, 1, 0.05)));
-
-    var position = scrollHeight-containerHeight > 0 ? content.scrollTop / (scrollHeight-containerHeight) : 0;
-    var top = util.map(position, 0, 1, 0, containerHeight-(containerHeight*sliderSize));
-
-    slider.style.height=(100*sliderSize)+"%";
-    slider.style.top=top+"px";
-  }
-
-///////////////////////////////////////////////////////////////////////////////
-
-  function setupScroller(){
-    // Remove/Hide native Scrollbar
-    scrollBarWidth = scrollBarWidth || getScrollBarWidth();
-    content.style.marginRight = -scrollBarWidth+"px";
-  
-
-    slider = document.createElement("div")
-    slider.setAttribute("class", "slider");
-
-    scrollbar = document.createElement("div")
-    scrollbar.setAttribute("class", "scrollbar");
-    scrollbar.appendChild(slider);
-
-    update();
-
-    tag.appendChild(scrollbar);
-
-  }
-
-///////////////////////////////////////////////////////////////////////////////
-
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
-function getScrollBarWidth(){
-  var width = document.body.clientWidth;
-  var overflow = document.documentElement.style.overflow;
-  document.documentElement.style.overflow = "scroll";
-  width -= document.body.clientWidth;
-  document.documentElement.style.overflow = overflow;
-  return width;
-}
-},{"./tag":8,"./utility":10,"objct":1}],8:[function(require,module,exports){
-var objct = require("objct");
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -601,25 +508,7 @@ function tag(){
 ///////////////////////////////////////////////////////////////////////////////
 
 }
-},{"./events":3,"./globals":4,"objct":1}],9:[function(require,module,exports){
-var util = require("./utility");
-
-///////////////////////////////////////////////////////////////////////////////
-
-module.exports = {
-  toggle : toggle
-};
-
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-
-function toggle(attribute){
-  var newValue = util.getAttribute(this, attribute) === "true" ? "false" : "true";
-  this.setAttribute(attribute, newValue);
-}
-
-
-},{"./utility":10}],10:[function(require,module,exports){
+},{"./events":3,"./globals":4,"objct":1}],7:[function(require,module,exports){
 module.exports = utility = {};
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -784,4 +673,216 @@ utility.map = function(x, cMin, cMax, tMin, tMax, easingFunction) {
 
 ///////////////////////////////////////////////////////////////////////////////
 
-},{}]},{},[2]);
+},{}],8:[function(require,module,exports){
+var util = require("../core/utility");
+
+///////////////////////////////////////////////////////////////////////////////
+
+module.exports = {
+  toggle : toggle
+};
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+function toggle(attribute){
+  var newValue = util.getAttribute(this, attribute) === "true" ? "false" : "true";
+  this.setAttribute(attribute, newValue);
+}
+
+
+},{"../core/utility":7}],9:[function(require,module,exports){
+var objct = require("objct");
+var util = require("../core/utility");
+
+///////////////////////////////////////////////////////////////////////////////
+
+module.exports = objct(
+  require("../core/tag"), 
+  require("../mixins/toggle"),
+  panel
+);
+
+///////////////////////////////////////////////////////////////////////////////
+function panel(){
+///////////////////////////////////////////////////////////////////////////////
+// Setup 
+
+  var tag = this;
+  var locked = false;
+
+///////////////////////////////////////////////////////////////////////////////
+// Public 
+
+  this.open = open;
+  this.close = close;
+
+///////////////////////////////////////////////////////////////////////////////
+// Eventlisteners
+
+  this.global.addListener("click", clickHandler);
+  this.global.addListener("closePanels", closePanels);
+  this.addListener("attributeChangedCallback", attributeChangedCallback);
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+  function clickHandler(e){
+    if(e.target === tag || util.nodeContains(tag, e.target)) return;
+    closePanels();
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
+  function attributeChangedCallback(data){
+    if(data.name === "open" && data.newValue == "true") {
+      lock();
+      tag.global.trigger("closePanels");
+    };    
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
+  function closePanels(){
+    if(locked) return;
+    tag.close();
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
+  function close() {
+    tag.setAttribute("open", "false");
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
+  function open(e) {    
+    lock();
+    tag.setAttribute("open", "true");
+  }
+///////////////////////////////////////////////////////////////////////////////
+
+  function lock(){
+    locked=true;
+    setTimeout(function(){ locked=false; },0);
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+},{"../core/tag":6,"../core/utility":7,"../mixins/toggle":8,"objct":1}],10:[function(require,module,exports){
+var objct  = require("objct");
+var util   = require("../core/utility");
+
+///////////////////////////////////////////////////////////////////////////////
+
+var scrollBarWidth = false;
+
+///////////////////////////////////////////////////////////////////////////////
+
+module.exports = objct(
+  require("../core/tag"), 
+  scroll
+);
+
+///////////////////////////////////////////////////////////////////////////////
+function scroll(){
+///////////////////////////////////////////////////////////////////////////////
+// Setup 
+
+  var tag = this;
+  var content =  this.firstElementChild;
+  var slider, scrollbar, scrollBarVisible;
+
+  if(util.getAttribute(this, "scrollbar") === "native") return;
+  setupScroller();
+
+///////////////////////////////////////////////////////////////////////////////
+// Public 
+ 
+  this.update = update;
+
+///////////////////////////////////////////////////////////////////////////////
+// Eventlisteners
+
+  if(util.getAttribute(this, "resize") === "true")
+    this.global.addListener("resize", update);
+  
+  content.addEventListener("scroll", updatePosition);
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+  function update(){
+    var containerHeight = tag.offsetHeight;
+    var scrollHeight = content.scrollHeight;
+
+    // VISIBILITY
+    if(scrollHeight <= containerHeight) {
+      if(scrollBarVisible !== false) {
+        scrollbar.style.opacity = 0.01;
+        scrollBarVisible = false;
+      }
+    }
+    else {
+      if(scrollBarVisible !== true) {
+        scrollbar.style.opacity = "";
+        scrollBarVisible = true;
+      }
+    } 
+
+    // SLIDER SIZE / POSITION
+    updatePosition();
+
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
+  function updatePosition(){
+    var containerHeight = tag.offsetHeight;
+    var scrollHeight = content.scrollHeight;
+
+    var sliderSize = Math.min(1, Math.max( 0.05, util.map(scrollHeight/containerHeight, 1, 5, 1, 0.05)));
+
+    var position = scrollHeight-containerHeight > 0 ? content.scrollTop / (scrollHeight-containerHeight) : 0;
+    var top = util.map(position, 0, 1, 0, containerHeight-(containerHeight*sliderSize));
+
+    slider.style.height=(100*sliderSize)+"%";
+    slider.style.top=top+"px";
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
+  function setupScroller(){
+    // Remove/Hide native Scrollbar
+    scrollBarWidth = scrollBarWidth || getScrollBarWidth();
+    content.style.marginRight = -scrollBarWidth+"px";
+  
+
+    slider = document.createElement("div")
+    slider.setAttribute("class", "slider");
+
+    scrollbar = document.createElement("div")
+    scrollbar.setAttribute("class", "scrollbar");
+    scrollbar.appendChild(slider);
+
+    update();
+
+    tag.appendChild(scrollbar);
+
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+function getScrollBarWidth(){
+  var width = document.body.clientWidth;
+  var overflow = document.documentElement.style.overflow;
+  document.documentElement.style.overflow = "scroll";
+  width -= document.body.clientWidth;
+  document.documentElement.style.overflow = overflow;
+  return width;
+}
+},{"../core/tag":6,"../core/utility":7,"objct":1}]},{},[2]);

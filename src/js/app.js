@@ -6,13 +6,13 @@ document.registerElement('toolbar-bonaparte');
 
 document.registerElement('cornerstone-bonaparte');
 
-document.registerElement('panel-bonaparte', createPrototype(require("./panel-bonaparte")));
+document.registerElement('panel-bonaparte', createPrototype(require("./tags/panel-bonaparte")));
 
 document.registerElement('sidebar-bonaparte');
 
 document.registerElement('content-bonaparte');
 
-document.registerElement('scroll-bonaparte', createPrototype(require("./scroll-bonaparte")));
+document.registerElement('scroll-bonaparte', createPrototype(require("./tags/scroll-bonaparte")));
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -35,8 +35,11 @@ function createPrototype(element){
 
     if(!objct.isObjct(element)) return;
 
+    // Create bonaparte namespace
+    this.bonaparte = this.bonaparte || {};
+
     // Create and mixin tag instance
-    new objct.extend(this, element, require("./mixins"));
+    new objct.extend(this, element, require("./core/mixins"));
         
     var data = {
       element : this
