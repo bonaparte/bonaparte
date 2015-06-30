@@ -85,3 +85,15 @@
 >
 </panel-bonaparte>
 ```
+
+```html
+<!-- parent element must not be position:static -->
+<scroll-bonaparte
+  scrollBar=[hover|visible|hidden|native]
+>
+
+  <!-- Required -->
+  <nth-child-1 content />
+
+</scroll-bonaparte>
+```
