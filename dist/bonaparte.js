@@ -258,109 +258,16 @@ commonJSmodule.exports = factory;
 ////////////////////////////////////////////////////////////////////////////////
 })(typeof module === "undefined"? {} : module);
 },{}],2:[function(require,module,exports){
-var objct = require("objct");
-
-///////////////////////////////////////////////////////////////////////////////
+var panel = require("./tags/panel-bonaparte");
+var scroll = require("./tags/scroll-bonaparte");
 
 document.registerElement('toolbar-bonaparte');
-
 document.registerElement('cornerstone-bonaparte');
-
-document.registerElement('panel-bonaparte', createPrototype(require("./tags/panel-bonaparte")));
-
 document.registerElement('sidebar-bonaparte');
-
 document.registerElement('content-bonaparte');
 
-document.registerElement('scroll-bonaparte', createPrototype(require("./tags/scroll-bonaparte")));
 
-///////////////////////////////////////////////////////////////////////////////
-
-function createPrototype(element){
-  element = element || {};
-
-  return {
-    prototype : new objct.extend ( Object.create( HTMLElement.prototype ), {
-      createdCallback : createdCallback,
-      attachedCallback : attachedCallback,
-      detachedCallback : detachedCallback,
-      attributeChangedCallback : attributeChangedCallback
-    })
-  };
-
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-
-  function createdCallback() {
-
-    if(!objct.isObjct(element)) return;
-
-    // Create bonaparte namespace
-    this.bonaparte = this.bonaparte || {};
-
-    // Create and mixin tag instance
-    new objct.extend(this, element, require("./core/mixins"));
-        
-    var data = {
-      element : this
-    };
-
-    this.trigger("createdCallback", data);
-    this.global.trigger("createdCallback", data);
-  }
-
-///////////////////////////////////////////////////////////////////////////////
-
-  function attachedCallback() {
-    
-    if(!objct.isObjct(element)) return;
-
-    var data = {
-      element : this
-    };
-    
-    this.trigger("attachedCallback", data);
-    this.global.trigger("attachedCallback", data);
-
-  }
-
-///////////////////////////////////////////////////////////////////////////////
-
-  function detachedCallback() {
-
-    if(!objct.isObjct(element)) return;
-
-    var data = {
-      element : this
-    };
-    
-    this.trigger("detachedCallback", data);
-    this.global.trigger("detachedCallback", data);
-    
-  }
-
-///////////////////////////////////////////////////////////////////////////////
-
-  function attributeChangedCallback( name, previousValue, newValue ) {
-
-    if(!objct.isObjct(element)) return;
-
-    var data = {
-      element : this,
-      name : name,
-      previousValue : previousValue,
-      newValue : newValue
-    };
-
-    this.trigger("attributeChangedCallback", data);
-    this.global.trigger("attributeChangedCallback", data);
-
-  }
-
-///////////////////////////////////////////////////////////////////////////////
-
-}
-},{"./core/mixins":5,"./tags/panel-bonaparte":9,"./tags/scroll-bonaparte":10,"objct":1}],3:[function(require,module,exports){
+},{"./tags/panel-bonaparte":9,"./tags/scroll-bonaparte":10}],3:[function(require,module,exports){
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
@@ -368,8 +275,6 @@ module.exports = events;
 
 ///////////////////////////////////////////////////////////////////////////////
 function events(){
-//////////////////////////////////////////////////////////////////////////////
-// Setup
 
   var eventHandlers = {};
 
@@ -428,18 +333,11 @@ function events(){
 var objct = require("objct");
 
 ///////////////////////////////////////////////////////////////////////////////
-// Setup
-
-globals.global = new objct(require("./events"));
-
-globals.prototype = {
-  global : globals.global,
-};
-
-///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = globals;
+var globals = module.exports = {
+  global : new objct(require("./events"))
+};
 
 ///////////////////////////////////////////////////////////////////////////////
 // EventListeners
@@ -448,12 +346,6 @@ window.addEventListener("click", forwardEvent);
 window.addEventListener("resize", forwardEvent);
 
 ///////////////////////////////////////////////////////////////////////////////
-function globals(){
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-
-}
-
 ///////////////////////////////////////////////////////////////////////////////
 
 function forwardEvent(e){
@@ -464,9 +356,6 @@ function forwardEvent(e){
 },{"./events":3,"objct":1}],5:[function(require,module,exports){
 var objct = require("objct");
 
-///////////////////////////////////////////////////////////////////////////////
-// Setup
-
 var registeredMixins = {};
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -476,8 +365,6 @@ module.exports = mixins;
 
 ///////////////////////////////////////////////////////////////////////////////
 function mixins(){
-///////////////////////////////////////////////////////////////////////////////
-// Setup
 
   var tag = this;
   registeredMixins[tag.tagName] = registeredMixins[tag.tagName] || [];
@@ -508,23 +395,115 @@ function mixins(){
 },{"objct":1}],6:[function(require,module,exports){
 var objct = require("objct");
 
-///////////////////////////////////////////////////////////////////////////////
-
-module.exports = objct(
-  require("./globals"),
-  require("./events"),
-  tag
-);
+var registeredTags = {};
 
 ///////////////////////////////////////////////////////////////////////////////
+// Public 
 
-function tag(){
+module.exports = registerTag;
 
 ///////////////////////////////////////////////////////////////////////////////
+
+function registerTag(tagName, tagDefinition, nativeBaseElement){
+
+  nativeBaseElement = nativeBaseElement || HTMLElement;
+
+  var elements = [
+    require("./globals"),
+    require("./events"),
+    tagDefinition
+  ];
+
+  registeredTags[tagName+"-bonaparte"] = registeredTags[tagName+"-bonaparte"] !== undefined ?
+    registeredTags[tagName+"-bonaparte"]:
+    document.registerElement(tagName+"-bonaparte", getPrototype());
+
+///////////////////////////////////////////////////////////////////////////////
+// Public
+  
+  return registeredTags[tagName+"-bonaparte"];
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+  function getPrototype(){
+    return {
+      prototype : new objct.extend ( Object.create( nativeBaseElement.prototype ), {
+        createdCallback : createdCallback,
+        attachedCallback : attachedCallback,
+        detachedCallback : detachedCallback,
+        attributeChangedCallback : attributeChangedCallback
+      })
+    }
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
+  function createdCallback() {
+
+    // Create bonaparte namespace
+    this.bonaparte = this.bonaparte || {};
+
+    // Create and mixin tag instance
+    new objct.extend(this, elements, require("./mixins"));
+        
+    var data = {
+      element : this
+    };
+
+    this.trigger("createdCallback", data);
+    this.global.trigger("createdCallback", data);
+  }
+
 ///////////////////////////////////////////////////////////////////////////////
 
 }
-},{"./events":3,"./globals":4,"objct":1}],7:[function(require,module,exports){
+
+///////////////////////////////////////////////////////////////////////////////
+
+function attachedCallback() {
+  
+  var data = {
+    element : this
+  };
+  
+  this.trigger("attachedCallback", data);
+  this.global.trigger("attachedCallback", data);
+
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+function detachedCallback() {
+
+  var data = {
+    element : this
+  };
+  
+  this.trigger("detachedCallback", data);
+  this.global.trigger("detachedCallback", data);
+  
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+function attributeChangedCallback( name, previousValue, newValue ) {
+
+  var data = {
+    element : this,
+    name : name,
+    previousValue : previousValue,
+    newValue : newValue
+  };
+
+  this.trigger("attributeChangedCallback", data);
+  this.global.trigger("attributeChangedCallback", data);
+
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+},{"./events":3,"./globals":4,"./mixins":5,"objct":1}],7:[function(require,module,exports){
 // var easing = require("./easing");
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -588,22 +567,19 @@ function toggle(attribute){
 
 
 },{"../core/utility":7}],9:[function(require,module,exports){
-var objct = require("objct");
 var util = require("../core/utility");
+var registerTag = require("../core/tag");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = objct(
-  require("../core/tag"), 
+module.exports = registerTag("panel", [
   require("../mixins/toggle"),
   panel
-);
+]);
 
 ///////////////////////////////////////////////////////////////////////////////
 function panel(){
-///////////////////////////////////////////////////////////////////////////////
-// Setup 
 
   var tag = this;
   var locked = false;
@@ -666,33 +642,28 @@ function panel(){
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"../core/tag":6,"../core/utility":7,"../mixins/toggle":8,"objct":1}],10:[function(require,module,exports){
-var objct  = require("objct");
+},{"../core/tag":6,"../core/utility":7,"../mixins/toggle":8}],10:[function(require,module,exports){
 var util   = require("../core/utility");
-
-///////////////////////////////////////////////////////////////////////////////
-// Setup
+var registerTag = require("../core/tag");
 
 var scrollBarWidth = false;
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = objct(
-  require("../core/tag"), 
+module.exports = registerTag("scroll", [
   scroll
-);
+]);
 
 ///////////////////////////////////////////////////////////////////////////////
 function scroll(){
-///////////////////////////////////////////////////////////////////////////////
-// Setup 
 
   var tag = this;
   var content =  this.firstElementChild;
   var slider, scrollbar, scrollBarVisible;
 
   if(util.getAttribute(this, "scrollbar") === "native") return;
+
   setupScroller();
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -784,4 +755,4 @@ function getScrollBarWidth(){
   document.documentElement.style.overflow = overflow;
   return width;
 }
-},{"../core/tag":6,"../core/utility":7,"objct":1}]},{},[2]);
+},{"../core/tag":6,"../core/utility":7}]},{},[2]);

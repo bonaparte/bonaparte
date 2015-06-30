@@ -1,19 +1,16 @@
-var objct = require("objct");
 var util = require("../core/utility");
+var registerTag = require("../core/tag");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = objct(
-  require("../core/tag"), 
+module.exports = registerTag("panel", [
   require("../mixins/toggle"),
   panel
-);
+]);
 
 ///////////////////////////////////////////////////////////////////////////////
 function panel(){
-///////////////////////////////////////////////////////////////////////////////
-// Setup 
 
   var tag = this;
   var locked = false;
