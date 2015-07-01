@@ -1,3 +1,6 @@
+/*============================
+       Global Variables
+==============================*/
 /*-------------------
        Colors
 --------------------*/
@@ -58,7 +61,12 @@
 
 .generateLighter(6, 0, 0.3);
 */
+/*===================
+       Modules
+====================*/
+/*SIZES*/
 toolbar-bonaparte {
+  /*DEFINITION*/
   position: relative;
   background-color: red;
   overflow: hidden;
@@ -69,8 +77,12 @@ toolbar-bonaparte {
   -webkit-flex-flow: row;
       -ms-flex-flow: row;
           flex-flow: row;
+  /*SIDEBAR*/
+  /*CORNERSTONE SIDEBAR*/
+  /*CORNERSTONE*/
+  /*CORNERSTONE OUTSIDE*/
 }
-toolbar-bonaparte > *:nth-child(1) {
+toolbar-bonaparte > :nth-child(1) {
   background-color: teal;
   -webkit-box-flex: 0;
   -webkit-flex: 0 0;
@@ -83,7 +95,7 @@ toolbar-bonaparte > *:nth-child(1) {
   height: auto;
   width: auto;
 }
-toolbar-bonaparte > *:nth-child(2) {
+toolbar-bonaparte > :nth-child(2) {
   background-color: tomato;
   -webkit-box-flex: 1;
   -webkit-flex: 1 auto;
@@ -97,7 +109,6 @@ toolbar-bonaparte > *:nth-child(2) {
   height: auto;
   width: auto;
 }
-/*SIDEBAR*/
 toolbar-bonaparte[data-sidebar="left"],
 toolbar-bonaparte[sidebar="left"] {
   -webkit-box-orient: horizontal;
@@ -107,7 +118,7 @@ toolbar-bonaparte[sidebar="left"] {
           flex-direction: row;
 }
 toolbar-bonaparte[data-sidebar="right"],
-toolbar-bonaparte[sidebar="right"] {
+toolbar-bonaparte toolbar-bonaparte[sidebar="right"] {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;
   -webkit-flex-direction: row-reverse;
@@ -178,8 +189,7 @@ toolbar-bonaparte[data-cornerstone*="bottom"][data-cornerstone*="left"][sidebar=
 toolbar-bonaparte[cornerstone*="bottom"][cornerstone*="left"][sidebar="bottom"] > *:nth-child(1) {
   padding-left: 4rem;
 }
-/*CORNERSTONE*/
-cornerstone-bonaparte {
+toolbar-bonaparte > cornerstone-bonaparte {
   position: absolute;
   display: block;
   background-color: purple;
@@ -189,27 +199,26 @@ cornerstone-bonaparte {
   left: 0px;
   z-index: 20;
 }
-toolbar-bonaparte[data-cornerstone*="bottom"] cornerstone-bonaparte,
-toolbar-bonaparte[cornerstone*="bottom"] cornerstone-bonaparte {
+toolbar-bonaparte[data-cornerstone*="bottom"] > cornerstone-bonaparte,
+toolbar-bonaparte[cornerstone*="bottom"] > cornerstone-bonaparte {
   bottom: 0px;
   top: auto;
 }
-toolbar-bonaparte[data-cornerstone*="top"] cornerstone-bonaparte,
-toolbar-bonaparte[cornerstone*="top"] cornerstone-bonaparte {
+toolbar-bonaparte[data-cornerstone*="top"] > cornerstone-bonaparte,
+toolbar-bonaparte[cornerstone*="top"] > cornerstone-bonaparte {
   top: 0px;
   bottom: auto;
 }
-toolbar-bonaparte[data-cornerstone*="left"] cornerstone-bonaparte,
-toolbar-bonaparte[cornerstone*="left"] cornerstone-bonaparte {
+toolbar-bonaparte[data-cornerstone*="left"] > cornerstone-bonaparte,
+toolbar-bonaparte[cornerstone*="left"] > cornerstone-bonaparte {
   left: 0px;
   right: auto;
 }
-toolbar-bonaparte[data-cornerstone*="right"] cornerstone-bonaparte,
-toolbar-bonaparte[cornerstone*="right"] cornerstone-bonaparte {
+toolbar-bonaparte[data-cornerstone*="right"] > cornerstone-bonaparte,
+toolbar-bonaparte[cornerstone*="right"] > cornerstone-bonaparte {
   right: 0px;
   left: auto;
 }
-/*CORNERSTONE OUTSIDE*/
 toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone^="right"],
 toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone~="right"][data-cornerstone$="top"],
 toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone~="right"][data-cornerstone$="bottom"],
@@ -242,15 +251,201 @@ toolbar-bonaparte[cornerstone~="outside"][cornerstone~="bottom"][cornerstone$="l
 toolbar-bonaparte[cornerstone~="outside"][cornerstone~="bottom"][cornerstone$="right"] {
   padding-bottom: 4rem;
 }
+toolbar-bonaparte.massive {
+  /*DEFINITION*/
+  position: relative;
+  background-color: red;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  /*SIDEBAR*/
+  /*CORNERSTONE SIDEBAR*/
+  /*CORNERSTONE*/
+  /*CORNERSTONE OUTSIDE*/
+}
+toolbar-bonaparte.massive > :nth-child(1) {
+  background-color: teal;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0;
+      -ms-flex: 0 0;
+          flex: 0 0;
+  -webkit-flex-basis: 6rem;
+      -ms-flex-preferred-size: 6rem;
+          flex-basis: 6rem;
+  z-index: 20;
+  height: auto;
+  width: auto;
+}
+toolbar-bonaparte.massive > :nth-child(2) {
+  background-color: tomato;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 auto;
+      -ms-flex: 1 auto;
+          flex: 1 auto;
+  -webkit-box-ordinal-group: 4;
+  -webkit-order: 3;
+      -ms-flex-order: 3;
+          order: 3;
+  z-index: 0;
+  height: auto;
+  width: auto;
+}
+toolbar-bonaparte.massive[data-sidebar="left"],
+toolbar-bonaparte.massive[sidebar="left"] {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+toolbar-bonaparte.massive[data-sidebar="right"],
+toolbar-bonaparte.massive toolbar-bonaparte[sidebar="right"] {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: row-reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+toolbar-bonaparte.massive[data-sidebar="top"],
+toolbar-bonaparte.massive[sidebar="top"] {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+toolbar-bonaparte.massive[data-sidebar="bottom"],
+toolbar-bonaparte.massive[sidebar="bottom"] {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: column-reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+}
+toolbar-bonaparte.massive[data-cornerstone*="top"][data-cornerstone*="left"][data-sidebar="left"] > *:nth-child(1),
+toolbar-bonaparte.massive[cornerstone*="top"][cornerstone*="left"][data-sidebar="left"] > *:nth-child(1),
+toolbar-bonaparte.massive[data-cornerstone*="top"][data-cornerstone*="left"][sidebar="left"] > *:nth-child(1),
+toolbar-bonaparte.massive[cornerstone*="top"][cornerstone*="left"][sidebar="left"] > *:nth-child(1) {
+  padding-top: 4rem;
+}
+toolbar-bonaparte.massive[data-cornerstone*="top"][data-cornerstone*="left"][data-sidebar="top"] > *:nth-child(1),
+toolbar-bonaparte.massive[cornerstone*="top"][cornerstone*="left"][data-sidebar="top"] > *:nth-child(1),
+toolbar-bonaparte.massive[data-cornerstone*="top"][data-cornerstone*="left"][sidebar="top"] > *:nth-child(1),
+toolbar-bonaparte.massive[cornerstone*="top"][cornerstone*="left"][sidebar="top"] > *:nth-child(1) {
+  padding-left: 4rem;
+}
+toolbar-bonaparte.massive[data-cornerstone*="top"][data-cornerstone*="right"][data-sidebar="right"] > *:nth-child(1),
+toolbar-bonaparte.massive[cornerstone*="top"][cornerstone*="right"][data-sidebar="right"] > *:nth-child(1),
+toolbar-bonaparte.massive[data-cornerstone*="top"][data-cornerstone*="right"][sidebar="right"] > *:nth-child(1),
+toolbar-bonaparte.massive[cornerstone*="top"][cornerstone*="right"][sidebar="right"] > *:nth-child(1) {
+  padding-top: 4rem;
+}
+toolbar-bonaparte.massive[data-cornerstone*="top"][data-cornerstone*="right"][data-sidebar="top"] > *:nth-child(1),
+toolbar-bonaparte.massive[cornerstone*="top"][cornerstone*="right"][data-sidebar="top"] > *:nth-child(1),
+toolbar-bonaparte.massive[data-cornerstone*="top"][data-cornerstone*="right"][sidebar="top"] > *:nth-child(1),
+toolbar-bonaparte.massive[cornerstone*="top"][cornerstone*="right"][sidebar="top"] > *:nth-child(1) {
+  padding-right: 4rem;
+}
+toolbar-bonaparte.massive[data-cornerstone*="bottom"][data-cornerstone*="right"][data-sidebar="right"] > *:nth-child(1),
+toolbar-bonaparte.massive[cornerstone*="bottom"][cornerstone*="right"][data-sidebar="right"] > *:nth-child(1),
+toolbar-bonaparte.massive[data-cornerstone*="bottom"][data-cornerstone*="right"][sidebar="right"] > *:nth-child(1),
+toolbar-bonaparte.massive[cornerstone*="bottom"][cornerstone*="right"][sidebar="right"] > *:nth-child(1) {
+  padding-bottom: 4rem;
+}
+toolbar-bonaparte.massive[data-cornerstone*="bottom"][data-cornerstone*="right"][data-sidebar="bottom"] > *:nth-child(1),
+toolbar-bonaparte.massive[cornerstone*="bottom"][cornerstone*="right"][data-sidebar="bottom"] > *:nth-child(1),
+toolbar-bonaparte.massive[data-cornerstone*="bottom"][data-cornerstone*="right"][sidebar="bottom"] > *:nth-child(1),
+toolbar-bonaparte.massive[cornerstone*="bottom"][cornerstone*="right"][sidebar="bottom"] > *:nth-child(1) {
+  padding-right: 4rem;
+}
+toolbar-bonaparte.massive[data-cornerstone*="bottom"][data-cornerstone*="left"][data-sidebar="left"] > *:nth-child(1),
+toolbar-bonaparte.massive[cornerstone*="bottom"][cornerstone*="left"][data-sidebar="left"] > *:nth-child(1),
+toolbar-bonaparte.massive[data-cornerstone*="bottom"][data-cornerstone*="left"][sidebar="left"] > *:nth-child(1),
+toolbar-bonaparte.massive[cornerstone*="bottom"][cornerstone*="left"][sidebar="left"] > *:nth-child(1) {
+  padding-bottom: 4rem;
+}
+toolbar-bonaparte.massive[data-cornerstone*="bottom"][data-cornerstone*="left"][data-sidebar="bottom"] > *:nth-child(1),
+toolbar-bonaparte.massive[cornerstone*="bottom"][cornerstone*="left"][data-sidebar="bottom"] > *:nth-child(1),
+toolbar-bonaparte.massive[data-cornerstone*="bottom"][data-cornerstone*="left"][sidebar="bottom"] > *:nth-child(1),
+toolbar-bonaparte.massive[cornerstone*="bottom"][cornerstone*="left"][sidebar="bottom"] > *:nth-child(1) {
+  padding-left: 4rem;
+}
+toolbar-bonaparte.massive > cornerstone-bonaparte {
+  position: absolute;
+  display: block;
+  background-color: purple;
+  width: 6rem;
+  height: 6rem;
+  top: 0px;
+  left: 0px;
+  z-index: 20;
+}
+toolbar-bonaparte.massive[data-cornerstone*="bottom"] > cornerstone-bonaparte,
+toolbar-bonaparte.massive[cornerstone*="bottom"] > cornerstone-bonaparte {
+  bottom: 0px;
+  top: auto;
+}
+toolbar-bonaparte.massive[data-cornerstone*="top"] > cornerstone-bonaparte,
+toolbar-bonaparte.massive[cornerstone*="top"] > cornerstone-bonaparte {
+  top: 0px;
+  bottom: auto;
+}
+toolbar-bonaparte.massive[data-cornerstone*="left"] > cornerstone-bonaparte,
+toolbar-bonaparte.massive[cornerstone*="left"] > cornerstone-bonaparte {
+  left: 0px;
+  right: auto;
+}
+toolbar-bonaparte.massive[data-cornerstone*="right"] > cornerstone-bonaparte,
+toolbar-bonaparte.massive[cornerstone*="right"] > cornerstone-bonaparte {
+  right: 0px;
+  left: auto;
+}
+toolbar-bonaparte.massive[data-cornerstone~="outside"][data-cornerstone^="right"],
+toolbar-bonaparte.massive[data-cornerstone~="outside"][data-cornerstone~="right"][data-cornerstone$="top"],
+toolbar-bonaparte.massive[data-cornerstone~="outside"][data-cornerstone~="right"][data-cornerstone$="bottom"],
+toolbar-bonaparte.massive[cornerstone~="outside"][cornerstone^="right"],
+toolbar-bonaparte.massive[cornerstone~="outside"][cornerstone~="right"][cornerstone$="top"],
+toolbar-bonaparte.massive[cornerstone~="outside"][cornerstone~="right"][cornerstone$="bottom"] {
+  padding-right: 6rem;
+}
+toolbar-bonaparte.massive[data-cornerstone~="outside"][data-cornerstone^="left"],
+toolbar-bonaparte.massive[data-cornerstone~="outside"][data-cornerstone~="left"][data-cornerstone$="top"],
+toolbar-bonaparte.massive[data-cornerstone~="outside"][data-cornerstone~="left"][data-cornerstone$="bottom"],
+toolbar-bonaparte.massive[cornerstone~="outside"][cornerstone^="left"],
+toolbar-bonaparte.massive[cornerstone~="outside"][cornerstone~="left"][cornerstone$="top"],
+toolbar-bonaparte.massive[cornerstone~="outside"][cornerstone~="left"][cornerstone$="bottom"] {
+  padding-left: 6rem;
+}
+toolbar-bonaparte.massive[data-cornerstone~="outside"][data-cornerstone^="top"],
+toolbar-bonaparte.massive[data-cornerstone~="outside"][data-cornerstone~="top"][data-cornerstone$="left"],
+toolbar-bonaparte.massive[data-cornerstone~="outside"][data-cornerstone~="top"][data-cornerstone$="right"],
+toolbar-bonaparte.massive[cornerstone~="outside"][cornerstone^="top"],
+toolbar-bonaparte.massive[cornerstone~="outside"][cornerstone~="top"][cornerstone$="left"],
+toolbar-bonaparte.massive[cornerstone~="outside"][cornerstone~="top"][cornerstone$="right"] {
+  padding-top: 6rem;
+}
+toolbar-bonaparte.massive[data-cornerstone~="outside"][data-cornerstone^="bottom"],
+toolbar-bonaparte.massive[data-cornerstone~="outside"][data-cornerstone~="bottom"][data-cornerstone$="left"],
+toolbar-bonaparte.massive[data-cornerstone~="outside"][data-cornerstone~="bottom"][data-cornerstone$="right"],
+toolbar-bonaparte.massive[cornerstone~="outside"][cornerstone^="bottom"],
+toolbar-bonaparte.massive[cornerstone~="outside"][cornerstone~="bottom"][cornerstone$="left"],
+toolbar-bonaparte.massive[cornerstone~="outside"][cornerstone~="bottom"][cornerstone$="right"] {
+  padding-bottom: 6rem;
+}
 panel-bonaparte {
   display: none;
   position: absolute;
   border: 0;
   overflow: hidden;
-  background-color: #ffffff;
   z-index: 10;
   -webkit-transition: -webkit-transform 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
           transition: transform 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
+  background-color: rgba(255, 255, 255, 0.9);
 }
 panel-bonaparte[data-open="true"],
 panel-bonaparte[open="true"] {
@@ -269,7 +464,7 @@ panel-bonaparte[position~="left"] {
   top: 0px;
   border: 0;
   border-right: 0.5rem solid #425cbd;
-  width: 200px;
+  width: 300px;
   right: 100%;
 }
 panel-bonaparte[data-position~="left"][data-open="true"],
@@ -286,7 +481,7 @@ panel-bonaparte[position~="right"] {
   height: 100%;
   top: 0px;
   border-left: 0.5rem solid #425cbd;
-  width: 200px;
+  width: 300px;
   left: 100%;
 }
 panel-bonaparte[data-position~="right"][data-open="true"],
@@ -303,7 +498,7 @@ panel-bonaparte[position~="top"] {
   width: 100%;
   left: 0px;
   border-bottom: 0.5rem solid #425cbd;
-  height: 200px;
+  height: 300px;
   bottom: 100%;
 }
 panel-bonaparte[data-position~="top"][data-open="true"],
@@ -321,7 +516,7 @@ panel-bonaparte[position~="bottom"] {
   bottom: 0px;
   left: 0px;
   border-top: 0.5rem solid #425cbd;
-  height: 200px;
+  height: 300px;
   top: 100%;
 }
 panel-bonaparte[data-position~="bottom"][data-open="true"],
@@ -332,18 +527,19 @@ panel-bonaparte[position~="bottom"][open="true"] {
       -ms-transform: translateY(-100%);
           transform: translateY(-100%);
 }
-/* 
-  Inspired by: nanoScrollerJS
-  https://github.com/jamesflorentino/nanoScrollerJS
-*/
 scroll-bonaparte {
+  /* 
+    Inspired by: nanoScrollerJS
+    https://github.com/jamesflorentino/nanoScrollerJS
+  */
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
   display: block;
+  /* PREVENT REDRAW BUG IN CHROME (but not Safari!)*/
 }
-scroll-bonaparte > *:nth-child(1) {
+scroll-bonaparte > :nth-child(1) {
   position: absolute;
   overflow: scroll;
   overflow-x: hidden;
@@ -352,12 +548,11 @@ scroll-bonaparte > *:nth-child(1) {
   bottom: 0;
   left: 0;
 }
-scroll-bonaparte > *:nth-child(1):focus {
+scroll-bonaparte > :nth-child(1):focus {
   outline: thin dotted;
 }
-/* CHROME PREVENT REDRAW BUG (but not Safari!)*/
 @supports (-webkit-appearance: none) {
-  scroll-bonaparte > *:nth-child(1) {
+  scroll-bonaparte > :nth-child(1) {
     -webkit-transform: translateZ(0);
   }
 }
@@ -374,17 +569,17 @@ scroll-bonaparte > .scrollbar {
           transition: .2s;
   border-radius: 5px;
 }
-scroll-bonaparte > .scrollbar > .slider {
+scroll-bonaparte > .scrollbar > :first-child {
   background: #444;
   background: rgba(0, 0, 0, 0.5);
   position: relative;
   margin: 0 1px;
   border-radius: 3px;
 }
-scroll-bonaparte *:nth-child(1)::-webkit-scrollbar {
+scroll-bonaparte > :nth-child(1)::-webkit-scrollbar {
   display: none;
 }
-scroll-bonaparte[scrollbar~="native"] *:nth-child(1)::-webkit-scrollbar {
+scroll-bonaparte[scrollbar~="native"] > :nth-child(1)::-webkit-scrollbar {
   display: block;
 }
 scroll-bonaparte:hover > .scrollbar,
@@ -404,7 +599,9 @@ scroll-bonaparte[data-scrollbar~="visible"] > .scrollbar {
   opacity: 0.99;
 }
 content-bonaparte {
-  overflow: hidden;
   padding: 1rem;
+}
+content-bonaparte {
+  overflow: hidden;
   position: relative;
 }

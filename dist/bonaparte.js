@@ -260,14 +260,14 @@ commonJSmodule.exports = factory;
 },{}],2:[function(require,module,exports){
 var panel = require("./tags/panel-bonaparte");
 var scroll = require("./tags/scroll-bonaparte");
+var toolbar = require("./tags/toolbar-bonaparte");
 
-document.registerElement('toolbar-bonaparte');
 document.registerElement('cornerstone-bonaparte');
 document.registerElement('sidebar-bonaparte');
 document.registerElement('content-bonaparte');
 
 
-},{"./tags/panel-bonaparte":9,"./tags/scroll-bonaparte":10}],3:[function(require,module,exports){
+},{"./tags/panel-bonaparte":9,"./tags/scroll-bonaparte":10,"./tags/toolbar-bonaparte":11}],3:[function(require,module,exports){
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
@@ -755,4 +755,30 @@ function getScrollBarWidth(){
   document.documentElement.style.overflow = overflow;
   return width;
 }
+},{"../core/tag":6,"../core/utility":7}],11:[function(require,module,exports){
+var util = require("../core/utility");
+var registerTag = require("../core/tag");
+
+///////////////////////////////////////////////////////////////////////////////
+// Public
+
+module.exports = registerTag("toolbar", [
+  toolbar
+]);
+
+///////////////////////////////////////////////////////////////////////////////
+function toolbar(){
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+}
+
+///////////////////////////////////////////////////////////////////////////////
 },{"../core/tag":6,"../core/utility":7}]},{},[2]);

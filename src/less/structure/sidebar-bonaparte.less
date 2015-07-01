@@ -1,0 +1,53 @@
+.sidebar-bonaparte(
+  @baseSize : 4rem  
+){
+  /*DEFINITION*/
+
+  & {
+    position:relative;
+    background-color:red;
+    overflow:hidden;
+    display: flex;  
+    flex-flow: row;
+  }
+
+  > :nth-child(1){
+    background-color:teal;
+    flex:0 0;
+    flex-basis:@baseSize;
+    z-index:20;
+    height:auto;
+    width:auto;
+  }
+
+  > :nth-child(2){
+    background-color:tomato;
+    flex:1 auto;
+    order:3;
+    z-index:0;
+    height:auto;
+    width:auto;
+  }
+
+  /*SIDEBAR*/
+
+  &[data-sidebar="left"],
+  &[sidebar="left"] {
+    flex-direction: row;
+  }
+
+  &[data-sidebar="right"],
+  toolbar-bonaparte[sidebar="right"] {
+    flex-direction: row-reverse;
+  }
+
+  &[data-sidebar="top"],
+  &[sidebar="top"] {
+    flex-direction: column;
+  }
+
+  &[data-sidebar="bottom"],
+  &[sidebar="bottom"] {
+    flex-direction: column-reverse;
+  }
+}

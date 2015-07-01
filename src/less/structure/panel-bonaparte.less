@@ -1,0 +1,100 @@
+.panel-bonaparte(
+  @border-width : 0.5rem,
+  @border-color : @color-active,
+  @transition-duration: 500ms,
+  @transition-easing: cubic-bezier(0.12, 0.38, 0.4, 0.98),
+  @default-size: 300px
+){
+
+  & {
+    display: none;
+    position:absolute;
+    border:0;
+    overflow:hidden;
+
+    z-index:10;
+
+    transition:transform @transition-duration @transition-easing;
+
+  }
+
+  &[data-open="true"],
+  &[open="true"] {
+    z-index:11;
+    transform: translateZ(0);
+  }
+
+  &[data-stayOpen="true"],
+  &[stayOpen="true"] {
+    z-index:8;
+  }
+
+  &[data-position~="left"],
+  &[position~="left"] {
+    display:block;
+    height:100%;
+    top:0px; 
+    border:0;
+    border-right:@border-width  solid @border-color;
+
+    width:@default-size;
+    right:100%;
+
+    &[data-open="true"],
+    &[open="true"] {
+      transform:translateX(100%);
+    }
+  }
+
+  &[data-position~="right"],
+  &[position~="right"]{
+    display:block;
+    height:100%;
+    top:0px; 
+    border-left:@border-width solid @border-color;
+    
+    width:@default-size;
+    left:100%;
+
+    &[data-open="true"],
+    &[open="true"] {
+      transform:translateX(-100%);
+    }
+  }
+
+
+  &[data-position~="top"],
+  &[position~="top"]{
+    display:block;
+    width:100%;
+    left:0px;
+    border-bottom:@border-width solid @border-color;
+
+    height:@default-size;
+    bottom:100%;
+
+    &[data-open="true"],
+    &[open="true"] {
+      transform:translateY(100%);
+
+    }
+  }
+
+
+  &[data-position~="bottom"],
+  &[position~="bottom"]{
+    display:block;
+    width:100%;
+    bottom:0px;
+    left:0px;
+    border-top:@border-width solid @border-color;
+
+    height:@default-size;
+    top:100%;
+
+    &[data-open="true"],
+    &[open="true"] {
+      transform:translateY(-100%);
+    }
+  }
+}

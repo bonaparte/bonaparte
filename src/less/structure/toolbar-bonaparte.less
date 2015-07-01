@@ -1,0 +1,155 @@
+@import "sidebar-bonaparte.less";
+
+.toolbar-bonaparte(
+  @baseSize : 4rem  
+){
+
+  .sidebar-bonaparte(@baseSize);
+  
+  /*CORNERSTONE SIDEBAR*/
+
+  &[data-cornerstone*="top"][data-cornerstone*="left"],
+  &[cornerstone*="top"][cornerstone*="left"] {
+    
+    &[data-sidebar="left"] > *:nth-child(1),
+    &[sidebar="left"] > *:nth-child(1) {
+      padding-top:4rem;
+    }  
+
+    &[data-sidebar="top"] > *:nth-child(1),
+    &[sidebar="top"] > *:nth-child(1) {
+      padding-left:4rem;
+    }
+  }
+
+  &[data-cornerstone*="top"][data-cornerstone*="right"],
+  &[cornerstone*="top"][cornerstone*="right"] {
+    
+    &[data-sidebar="right"] > *:nth-child(1),
+    &[sidebar="right"] > *:nth-child(1) {
+      padding-top:4rem;
+    }  
+
+    &[data-sidebar="top"] > *:nth-child(1),
+    &[sidebar="top"] > *:nth-child(1) {
+      padding-right:4rem;
+    }
+  }
+
+  &[data-cornerstone*="bottom"][data-cornerstone*="right"],
+  &[cornerstone*="bottom"][cornerstone*="right"] {
+    
+    &[data-sidebar="right"] > *:nth-child(1),
+    &[sidebar="right"] > *:nth-child(1) {
+      padding-bottom:4rem;
+    }  
+
+    &[data-sidebar="bottom"] > *:nth-child(1),
+    &[sidebar="bottom"] > *:nth-child(1) {
+      padding-right:4rem;
+    }
+  }
+
+  &[data-cornerstone*="bottom"][data-cornerstone*="left"],
+  &[cornerstone*="bottom"][cornerstone*="left"] {
+    
+    &[data-sidebar="left"] > *:nth-child(1),
+    &[sidebar="left"] > *:nth-child(1) {
+      padding-bottom:4rem;
+    }  
+
+    &[data-sidebar="bottom"] > *:nth-child(1),
+    &[sidebar="bottom"] > *:nth-child(1) {
+      padding-left:4rem;
+    }
+  }
+  
+  /*CORNERSTONE*/
+
+  > cornerstone-bonaparte {  
+    position:absolute;
+    display:block;
+    background-color:purple;
+    width:@baseSize;
+    height:@baseSize;
+    top:0px;
+    left:0px;
+    z-index:20;
+
+  }
+
+  &[data-cornerstone*="bottom"],
+  &[cornerstone*="bottom"] {
+
+    > cornerstone-bonaparte {
+      bottom:0px;
+      top:auto;
+    }
+  }
+
+  &[data-cornerstone*="top"],
+  &[cornerstone*="top"] {
+
+    > cornerstone-bonaparte {
+      top:0px;
+      bottom:auto;
+    }
+  }
+
+  &[data-cornerstone*="left"],
+  &[cornerstone*="left"] {
+
+    > cornerstone-bonaparte {
+      left:0px;
+      right:auto;
+    }
+  }
+
+  &[data-cornerstone*="right"],
+  &[cornerstone*="right"] {
+
+    > cornerstone-bonaparte {
+      right:0px;
+      left:auto;
+    }
+  }
+
+
+  /*CORNERSTONE OUTSIDE*/
+
+  &[data-cornerstone~="outside"][data-cornerstone^="right"],
+  &[data-cornerstone~="outside"][data-cornerstone~="right"][data-cornerstone$="top"],
+  &[data-cornerstone~="outside"][data-cornerstone~="right"][data-cornerstone$="bottom"],
+  &[cornerstone~="outside"][cornerstone^="right"],  
+  &[cornerstone~="outside"][cornerstone~="right"][cornerstone$="top"],
+  &[cornerstone~="outside"][cornerstone~="right"][cornerstone$="bottom"]{
+    padding-right:@baseSize;
+  }
+
+  &[data-cornerstone~="outside"][data-cornerstone^="left"],
+  &[data-cornerstone~="outside"][data-cornerstone~="left"][data-cornerstone$="top"],
+  &[data-cornerstone~="outside"][data-cornerstone~="left"][data-cornerstone$="bottom"],
+  &[cornerstone~="outside"][cornerstone^="left"],  
+  &[cornerstone~="outside"][cornerstone~="left"][cornerstone$="top"],
+  &[cornerstone~="outside"][cornerstone~="left"][cornerstone$="bottom"]{
+    padding-left:@baseSize;
+  }
+
+  &[data-cornerstone~="outside"][data-cornerstone^="top"],
+  &[data-cornerstone~="outside"][data-cornerstone~="top"][data-cornerstone$="left"],
+  &[data-cornerstone~="outside"][data-cornerstone~="top"][data-cornerstone$="right"],
+  &[cornerstone~="outside"][cornerstone^="top"],  
+  &[cornerstone~="outside"][cornerstone~="top"][cornerstone$="left"],
+  &[cornerstone~="outside"][cornerstone~="top"][cornerstone$="right"]{
+    padding-top:@baseSize;
+  }
+
+  &[data-cornerstone~="outside"][data-cornerstone^="bottom"],
+  &[data-cornerstone~="outside"][data-cornerstone~="bottom"][data-cornerstone$="left"],
+  &[data-cornerstone~="outside"][data-cornerstone~="bottom"][data-cornerstone$="right"],
+  &[cornerstone~="outside"][cornerstone^="bottom"],  
+  &[cornerstone~="outside"][cornerstone~="bottom"][cornerstone$="left"],
+  &[cornerstone~="outside"][cornerstone~="bottom"][cornerstone$="right"]{
+    padding-bottom:@baseSize;
+  }
+}

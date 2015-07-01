@@ -17,7 +17,9 @@
         height:100%;
         background-color: blue;
       }
-
+      body > toolbar-bonaparte {
+        height:100%;
+      }
     </style>
 
   </head>
@@ -34,7 +36,7 @@
       </aside>
 
       
-      <toolbar-bonaparte display="cover" data-sidebar="left">  
+      <toolbar-bonaparte data-sidebar="left">  
         <aside>
           <div class="ui buttons vertical">
             <div class="ui icon button" onclick="document.getElementById('panel').toggle('open')">
@@ -49,7 +51,7 @@
         </aside>
         
 
-        <toolbar-bonaparte display="cover" data-sidebar="right">  
+        <toolbar-bonaparte data-sidebar="right">  
 
           <aside>
             <div class="ui buttons vertical">
@@ -57,13 +59,13 @@
                 <i class="list icon left"></i></div>
             </div>
             <div class="ui buttons vertical">
-              <div class="ui icon button" onclick="document.getElementById('right').toggle('open')">
+              <div class="ui icon button" onclick="document.getElementById('right').open()">
                 <i class="icon left">B1</i></div>
-              <div class="ui icon button" onclick="document.getElementById('right').toggle('open')">
+              <div class="ui icon button" onclick="document.getElementById('right').open()">
                 <i class="icon left">B2</i></div>
-              <div class="ui icon button" onclick="document.getElementById('right').toggle('open')">
+              <div class="ui icon button" onclick="document.getElementById('right').open()">
                 <i class="icon left">B3</i></div>
-              <div class="ui icon button" onclick="document.getElementById('right').toggle('open')">
+              <div class="ui icon button" onclick="document.getElementById('right').open()">
                 <i class="icon left">B4</i></div>
             </div>
           </aside>
