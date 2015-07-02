@@ -55,8 +55,9 @@
 
 ```html
 <toolbar
-  sidebar=[left|top|right|bottom]
   cornerstone=[top|bottom][left|right][outside]?
+
+  [extends sidebar]
 >
 
   <!-- Required -->
@@ -67,6 +68,23 @@
   <cornerstone-bonaparte />
 
 </toolbar-bonaparte>
+```
+
+```html
+<sidebar
+  sidebar=[left|top|right|bottom]
+  size=[px|%|rem|em]
+  open=[true|false]
+>
+
+  <!-- Required -->
+  <nth-child-1 sidebar />
+  <nth-child-2 content /> 
+
+  <!-- Optional -->
+  <cornerstone-bonaparte />
+
+</sidebar-bonaparte>
 ```
 
 ```html
