@@ -1,10 +1,17 @@
 @import "../structure/panel-bonaparte.less";
 
 panel-bonaparte {  
+
+  .variableOverrides(){
+    @transition-duration: 500ms;
+    @default-size:300px;
+  }
+  .panel-bonaparte();
+
+/*////////////////////////////////////////////////////////////////////*/
+
   @border-width : 0.5rem;
   @border-color : @color-active;
-
-  .panel-bonaparte();
 
   background-color:rgba(255,255,255,0.9);
 

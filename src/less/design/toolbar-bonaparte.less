@@ -21,6 +21,11 @@ toolbar-bonaparte {
 
 }
 
-toolbar-bonaparte.massive {
-  .toolbar-bonaparte(6rem);
+toolbar-bonaparte.massive {  
+
+  .variableOverrides(){
+    @baseSize : 6rem;
+  } 
+  .toolbar-bonaparte();
+
 }

@@ -77,6 +77,7 @@ sidebar-bonaparte {
       -ms-flex-flow: row;
           flex-flow: row;
   /*SIDEBAR*/
+  /*////////////////////////////////////////////////////////////////////*/
   background-color: red;
 }
 sidebar-bonaparte > :nth-child(1) {
@@ -154,15 +155,16 @@ sidebar-bonaparte.massive {
       -ms-flex-flow: row;
           flex-flow: row;
   /*SIDEBAR*/
+  /*////////////////////////////////////////////////////////////////////*/
 }
 sidebar-bonaparte.massive > :nth-child(1) {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0;
       -ms-flex: 0 0;
           flex: 0 0;
-  -webkit-flex-basis: 6rem;
-      -ms-flex-preferred-size: 6rem;
-          flex-basis: 6rem;
+  -webkit-flex-basis: 4rem;
+      -ms-flex-preferred-size: 4rem;
+          flex-basis: 4rem;
   z-index: 20;
   height: auto;
   width: auto;
@@ -378,9 +380,9 @@ toolbar-bonaparte.massive > :nth-child(1) {
   -webkit-flex: 0 0;
       -ms-flex: 0 0;
           flex: 0 0;
-  -webkit-flex-basis: 6rem;
-      -ms-flex-preferred-size: 6rem;
-          flex-basis: 6rem;
+  -webkit-flex-basis: 4rem;
+      -ms-flex-preferred-size: 4rem;
+          flex-basis: 4rem;
   z-index: 20;
   height: auto;
   width: auto;
@@ -433,8 +435,8 @@ toolbar-bonaparte.massive[sidebar="bottom"] {
 toolbar-bonaparte.massive > cornerstone-bonaparte {
   position: absolute;
   display: block;
-  width: 6rem;
-  height: 6rem;
+  width: 4rem;
+  height: 4rem;
   top: 0px;
   left: 0px;
   z-index: 20;
@@ -465,7 +467,7 @@ toolbar-bonaparte.massive[data-cornerstone~="outside"][data-cornerstone~="right"
 toolbar-bonaparte.massive[cornerstone~="outside"][cornerstone^="right"],
 toolbar-bonaparte.massive[cornerstone~="outside"][cornerstone~="right"][cornerstone$="top"],
 toolbar-bonaparte.massive[cornerstone~="outside"][cornerstone~="right"][cornerstone$="bottom"] {
-  padding-right: 6rem;
+  padding-right: 4rem;
 }
 toolbar-bonaparte.massive[data-cornerstone~="outside"][data-cornerstone^="left"],
 toolbar-bonaparte.massive[data-cornerstone~="outside"][data-cornerstone~="left"][data-cornerstone$="top"],
@@ -473,7 +475,7 @@ toolbar-bonaparte.massive[data-cornerstone~="outside"][data-cornerstone~="left"]
 toolbar-bonaparte.massive[cornerstone~="outside"][cornerstone^="left"],
 toolbar-bonaparte.massive[cornerstone~="outside"][cornerstone~="left"][cornerstone$="top"],
 toolbar-bonaparte.massive[cornerstone~="outside"][cornerstone~="left"][cornerstone$="bottom"] {
-  padding-left: 6rem;
+  padding-left: 4rem;
 }
 toolbar-bonaparte.massive[data-cornerstone~="outside"][data-cornerstone^="top"],
 toolbar-bonaparte.massive[data-cornerstone~="outside"][data-cornerstone~="top"][data-cornerstone$="left"],
@@ -481,7 +483,7 @@ toolbar-bonaparte.massive[data-cornerstone~="outside"][data-cornerstone~="top"][
 toolbar-bonaparte.massive[cornerstone~="outside"][cornerstone^="top"],
 toolbar-bonaparte.massive[cornerstone~="outside"][cornerstone~="top"][cornerstone$="left"],
 toolbar-bonaparte.massive[cornerstone~="outside"][cornerstone~="top"][cornerstone$="right"] {
-  padding-top: 6rem;
+  padding-top: 4rem;
 }
 toolbar-bonaparte.massive[data-cornerstone~="outside"][data-cornerstone^="bottom"],
 toolbar-bonaparte.massive[data-cornerstone~="outside"][data-cornerstone~="bottom"][data-cornerstone$="left"],
@@ -489,7 +491,7 @@ toolbar-bonaparte.massive[data-cornerstone~="outside"][data-cornerstone~="bottom
 toolbar-bonaparte.massive[cornerstone~="outside"][cornerstone^="bottom"],
 toolbar-bonaparte.massive[cornerstone~="outside"][cornerstone~="bottom"][cornerstone$="left"],
 toolbar-bonaparte.massive[cornerstone~="outside"][cornerstone~="bottom"][cornerstone$="right"] {
-  padding-bottom: 6rem;
+  padding-bottom: 4rem;
 }
 panel-bonaparte {
   display: none;
@@ -499,6 +501,7 @@ panel-bonaparte {
   z-index: 10;
   -webkit-transition: -webkit-transform 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
           transition: transform 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
+  /*////////////////////////////////////////////////////////////////////*/
   background-color: rgba(255, 255, 255, 0.9);
   /*ACTIVE BORDER*/
 }
@@ -605,6 +608,7 @@ scroll-bonaparte {
   overflow: hidden;
   display: block;
   /* PREVENT REDRAW BUG IN CHROME (but not Safari!)*/
+  /*////////////////////////////////////////////////////////////////////*/
 }
 scroll-bonaparte > :nth-child(1) {
   position: absolute;

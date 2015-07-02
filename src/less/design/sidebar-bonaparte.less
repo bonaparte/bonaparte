@@ -4,6 +4,8 @@
 sidebar-bonaparte {
   .sidebar-bonaparte();
 
+/*////////////////////////////////////////////////////////////////////*/
+
   background-color:red;
 
   > :nth-child(1){
@@ -18,5 +20,13 @@ sidebar-bonaparte {
 }
 
 sidebar-bonaparte.massive {
-  .sidebar-bonaparte(6rem);
+
+  .variableOverrides(){
+    @baseSize : 6rem;
+  } 
+
+  .sidebar-bonaparte();
+
+/*////////////////////////////////////////////////////////////////////*/
+
 }
