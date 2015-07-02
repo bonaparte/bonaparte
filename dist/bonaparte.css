@@ -65,6 +65,154 @@
        Modules/Tags
 ========================*/
 /*SIZES*/
+sidebar-bonaparte {
+  /*DEFINITION*/
+  position: relative;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  /*SIDEBAR*/
+  background-color: red;
+}
+sidebar-bonaparte > :nth-child(1) {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0;
+      -ms-flex: 0 0;
+          flex: 0 0;
+  -webkit-flex-basis: 4rem;
+      -ms-flex-preferred-size: 4rem;
+          flex-basis: 4rem;
+  z-index: 20;
+  height: auto;
+  width: auto;
+}
+sidebar-bonaparte > :nth-child(2) {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 auto;
+      -ms-flex: 1 auto;
+          flex: 1 auto;
+  -webkit-box-ordinal-group: 4;
+  -webkit-order: 3;
+      -ms-flex-order: 3;
+          order: 3;
+  z-index: 0;
+  height: auto;
+  width: auto;
+}
+sidebar-bonaparte[data-sidebar="left"],
+sidebar-bonaparte[sidebar="left"] {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+sidebar-bonaparte[data-sidebar="right"],
+sidebar-bonaparte toolbar-bonaparte[sidebar="right"] {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: row-reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+sidebar-bonaparte[data-sidebar="top"],
+sidebar-bonaparte[sidebar="top"] {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+sidebar-bonaparte[data-sidebar="bottom"],
+sidebar-bonaparte[sidebar="bottom"] {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: column-reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+}
+sidebar-bonaparte > :nth-child(1) {
+  background-color: teal;
+}
+sidebar-bonaparte > :nth-child(2) {
+  background-color: tomato;
+}
+sidebar-bonaparte.massive {
+  /*DEFINITION*/
+  position: relative;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  /*SIDEBAR*/
+}
+sidebar-bonaparte.massive > :nth-child(1) {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0;
+      -ms-flex: 0 0;
+          flex: 0 0;
+  -webkit-flex-basis: 6rem;
+      -ms-flex-preferred-size: 6rem;
+          flex-basis: 6rem;
+  z-index: 20;
+  height: auto;
+  width: auto;
+}
+sidebar-bonaparte.massive > :nth-child(2) {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 auto;
+      -ms-flex: 1 auto;
+          flex: 1 auto;
+  -webkit-box-ordinal-group: 4;
+  -webkit-order: 3;
+      -ms-flex-order: 3;
+          order: 3;
+  z-index: 0;
+  height: auto;
+  width: auto;
+}
+sidebar-bonaparte.massive[data-sidebar="left"],
+sidebar-bonaparte.massive[sidebar="left"] {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+sidebar-bonaparte.massive[data-sidebar="right"],
+sidebar-bonaparte.massive toolbar-bonaparte[sidebar="right"] {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: row-reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+sidebar-bonaparte.massive[data-sidebar="top"],
+sidebar-bonaparte.massive[sidebar="top"] {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+sidebar-bonaparte.massive[data-sidebar="bottom"],
+sidebar-bonaparte.massive[sidebar="bottom"] {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: column-reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+}
+/*SIZES*/
 toolbar-bonaparte {
   /*Extend Sidebar*/
   /*DEFINITION*/
@@ -78,7 +226,6 @@ toolbar-bonaparte {
       -ms-flex-flow: row;
           flex-flow: row;
   /*SIDEBAR*/
-  /*CORNERSTONE SIDEBAR*/
   /*CORNERSTONE*/
   /*CORNERSTONE OUTSIDE*/
   background-color: red;
@@ -139,54 +286,6 @@ toolbar-bonaparte[sidebar="bottom"] {
   -webkit-flex-direction: column-reverse;
       -ms-flex-direction: column-reverse;
           flex-direction: column-reverse;
-}
-toolbar-bonaparte[data-cornerstone*="top"][data-cornerstone*="left"][data-sidebar="left"] > *:nth-child(1),
-toolbar-bonaparte[cornerstone*="top"][cornerstone*="left"][data-sidebar="left"] > *:nth-child(1),
-toolbar-bonaparte[data-cornerstone*="top"][data-cornerstone*="left"][sidebar="left"] > *:nth-child(1),
-toolbar-bonaparte[cornerstone*="top"][cornerstone*="left"][sidebar="left"] > *:nth-child(1) {
-  padding-top: 4rem;
-}
-toolbar-bonaparte[data-cornerstone*="top"][data-cornerstone*="left"][data-sidebar="top"] > *:nth-child(1),
-toolbar-bonaparte[cornerstone*="top"][cornerstone*="left"][data-sidebar="top"] > *:nth-child(1),
-toolbar-bonaparte[data-cornerstone*="top"][data-cornerstone*="left"][sidebar="top"] > *:nth-child(1),
-toolbar-bonaparte[cornerstone*="top"][cornerstone*="left"][sidebar="top"] > *:nth-child(1) {
-  padding-left: 4rem;
-}
-toolbar-bonaparte[data-cornerstone*="top"][data-cornerstone*="right"][data-sidebar="right"] > *:nth-child(1),
-toolbar-bonaparte[cornerstone*="top"][cornerstone*="right"][data-sidebar="right"] > *:nth-child(1),
-toolbar-bonaparte[data-cornerstone*="top"][data-cornerstone*="right"][sidebar="right"] > *:nth-child(1),
-toolbar-bonaparte[cornerstone*="top"][cornerstone*="right"][sidebar="right"] > *:nth-child(1) {
-  padding-top: 4rem;
-}
-toolbar-bonaparte[data-cornerstone*="top"][data-cornerstone*="right"][data-sidebar="top"] > *:nth-child(1),
-toolbar-bonaparte[cornerstone*="top"][cornerstone*="right"][data-sidebar="top"] > *:nth-child(1),
-toolbar-bonaparte[data-cornerstone*="top"][data-cornerstone*="right"][sidebar="top"] > *:nth-child(1),
-toolbar-bonaparte[cornerstone*="top"][cornerstone*="right"][sidebar="top"] > *:nth-child(1) {
-  padding-right: 4rem;
-}
-toolbar-bonaparte[data-cornerstone*="bottom"][data-cornerstone*="right"][data-sidebar="right"] > *:nth-child(1),
-toolbar-bonaparte[cornerstone*="bottom"][cornerstone*="right"][data-sidebar="right"] > *:nth-child(1),
-toolbar-bonaparte[data-cornerstone*="bottom"][data-cornerstone*="right"][sidebar="right"] > *:nth-child(1),
-toolbar-bonaparte[cornerstone*="bottom"][cornerstone*="right"][sidebar="right"] > *:nth-child(1) {
-  padding-bottom: 4rem;
-}
-toolbar-bonaparte[data-cornerstone*="bottom"][data-cornerstone*="right"][data-sidebar="bottom"] > *:nth-child(1),
-toolbar-bonaparte[cornerstone*="bottom"][cornerstone*="right"][data-sidebar="bottom"] > *:nth-child(1),
-toolbar-bonaparte[data-cornerstone*="bottom"][data-cornerstone*="right"][sidebar="bottom"] > *:nth-child(1),
-toolbar-bonaparte[cornerstone*="bottom"][cornerstone*="right"][sidebar="bottom"] > *:nth-child(1) {
-  padding-right: 4rem;
-}
-toolbar-bonaparte[data-cornerstone*="bottom"][data-cornerstone*="left"][data-sidebar="left"] > *:nth-child(1),
-toolbar-bonaparte[cornerstone*="bottom"][cornerstone*="left"][data-sidebar="left"] > *:nth-child(1),
-toolbar-bonaparte[data-cornerstone*="bottom"][data-cornerstone*="left"][sidebar="left"] > *:nth-child(1),
-toolbar-bonaparte[cornerstone*="bottom"][cornerstone*="left"][sidebar="left"] > *:nth-child(1) {
-  padding-bottom: 4rem;
-}
-toolbar-bonaparte[data-cornerstone*="bottom"][data-cornerstone*="left"][data-sidebar="bottom"] > *:nth-child(1),
-toolbar-bonaparte[cornerstone*="bottom"][cornerstone*="left"][data-sidebar="bottom"] > *:nth-child(1),
-toolbar-bonaparte[data-cornerstone*="bottom"][data-cornerstone*="left"][sidebar="bottom"] > *:nth-child(1),
-toolbar-bonaparte[cornerstone*="bottom"][cornerstone*="left"][sidebar="bottom"] > *:nth-child(1) {
-  padding-left: 4rem;
 }
 toolbar-bonaparte > cornerstone-bonaparte {
   position: absolute;
@@ -271,7 +370,6 @@ toolbar-bonaparte.massive {
       -ms-flex-flow: row;
           flex-flow: row;
   /*SIDEBAR*/
-  /*CORNERSTONE SIDEBAR*/
   /*CORNERSTONE*/
   /*CORNERSTONE OUTSIDE*/
 }
@@ -331,54 +429,6 @@ toolbar-bonaparte.massive[sidebar="bottom"] {
   -webkit-flex-direction: column-reverse;
       -ms-flex-direction: column-reverse;
           flex-direction: column-reverse;
-}
-toolbar-bonaparte.massive[data-cornerstone*="top"][data-cornerstone*="left"][data-sidebar="left"] > *:nth-child(1),
-toolbar-bonaparte.massive[cornerstone*="top"][cornerstone*="left"][data-sidebar="left"] > *:nth-child(1),
-toolbar-bonaparte.massive[data-cornerstone*="top"][data-cornerstone*="left"][sidebar="left"] > *:nth-child(1),
-toolbar-bonaparte.massive[cornerstone*="top"][cornerstone*="left"][sidebar="left"] > *:nth-child(1) {
-  padding-top: 4rem;
-}
-toolbar-bonaparte.massive[data-cornerstone*="top"][data-cornerstone*="left"][data-sidebar="top"] > *:nth-child(1),
-toolbar-bonaparte.massive[cornerstone*="top"][cornerstone*="left"][data-sidebar="top"] > *:nth-child(1),
-toolbar-bonaparte.massive[data-cornerstone*="top"][data-cornerstone*="left"][sidebar="top"] > *:nth-child(1),
-toolbar-bonaparte.massive[cornerstone*="top"][cornerstone*="left"][sidebar="top"] > *:nth-child(1) {
-  padding-left: 4rem;
-}
-toolbar-bonaparte.massive[data-cornerstone*="top"][data-cornerstone*="right"][data-sidebar="right"] > *:nth-child(1),
-toolbar-bonaparte.massive[cornerstone*="top"][cornerstone*="right"][data-sidebar="right"] > *:nth-child(1),
-toolbar-bonaparte.massive[data-cornerstone*="top"][data-cornerstone*="right"][sidebar="right"] > *:nth-child(1),
-toolbar-bonaparte.massive[cornerstone*="top"][cornerstone*="right"][sidebar="right"] > *:nth-child(1) {
-  padding-top: 4rem;
-}
-toolbar-bonaparte.massive[data-cornerstone*="top"][data-cornerstone*="right"][data-sidebar="top"] > *:nth-child(1),
-toolbar-bonaparte.massive[cornerstone*="top"][cornerstone*="right"][data-sidebar="top"] > *:nth-child(1),
-toolbar-bonaparte.massive[data-cornerstone*="top"][data-cornerstone*="right"][sidebar="top"] > *:nth-child(1),
-toolbar-bonaparte.massive[cornerstone*="top"][cornerstone*="right"][sidebar="top"] > *:nth-child(1) {
-  padding-right: 4rem;
-}
-toolbar-bonaparte.massive[data-cornerstone*="bottom"][data-cornerstone*="right"][data-sidebar="right"] > *:nth-child(1),
-toolbar-bonaparte.massive[cornerstone*="bottom"][cornerstone*="right"][data-sidebar="right"] > *:nth-child(1),
-toolbar-bonaparte.massive[data-cornerstone*="bottom"][data-cornerstone*="right"][sidebar="right"] > *:nth-child(1),
-toolbar-bonaparte.massive[cornerstone*="bottom"][cornerstone*="right"][sidebar="right"] > *:nth-child(1) {
-  padding-bottom: 4rem;
-}
-toolbar-bonaparte.massive[data-cornerstone*="bottom"][data-cornerstone*="right"][data-sidebar="bottom"] > *:nth-child(1),
-toolbar-bonaparte.massive[cornerstone*="bottom"][cornerstone*="right"][data-sidebar="bottom"] > *:nth-child(1),
-toolbar-bonaparte.massive[data-cornerstone*="bottom"][data-cornerstone*="right"][sidebar="bottom"] > *:nth-child(1),
-toolbar-bonaparte.massive[cornerstone*="bottom"][cornerstone*="right"][sidebar="bottom"] > *:nth-child(1) {
-  padding-right: 4rem;
-}
-toolbar-bonaparte.massive[data-cornerstone*="bottom"][data-cornerstone*="left"][data-sidebar="left"] > *:nth-child(1),
-toolbar-bonaparte.massive[cornerstone*="bottom"][cornerstone*="left"][data-sidebar="left"] > *:nth-child(1),
-toolbar-bonaparte.massive[data-cornerstone*="bottom"][data-cornerstone*="left"][sidebar="left"] > *:nth-child(1),
-toolbar-bonaparte.massive[cornerstone*="bottom"][cornerstone*="left"][sidebar="left"] > *:nth-child(1) {
-  padding-bottom: 4rem;
-}
-toolbar-bonaparte.massive[data-cornerstone*="bottom"][data-cornerstone*="left"][data-sidebar="bottom"] > *:nth-child(1),
-toolbar-bonaparte.massive[cornerstone*="bottom"][cornerstone*="left"][data-sidebar="bottom"] > *:nth-child(1),
-toolbar-bonaparte.massive[data-cornerstone*="bottom"][data-cornerstone*="left"][sidebar="bottom"] > *:nth-child(1),
-toolbar-bonaparte.massive[cornerstone*="bottom"][cornerstone*="left"][sidebar="bottom"] > *:nth-child(1) {
-  padding-left: 4rem;
 }
 toolbar-bonaparte.massive > cornerstone-bonaparte {
   position: absolute;
