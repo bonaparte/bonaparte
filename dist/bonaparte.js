@@ -220,8 +220,10 @@ factory.extend = function(){
 		});
 
 		// if module is a function and not a decorator, copy static properties to Executable
-		if(!instant && type === strFunction && args[i].hash !== hash)
+		if(!instant && type === strFunction && args[i].hash !== hash) {
 			mixinObject(Executable, args[i], thisData);
+		}
+
 	}	
 	return instant ? new Executable() : Executable;
 };
@@ -260,14 +262,26 @@ commonJSmodule.exports = factory;
 },{}],2:[function(require,module,exports){
 var panel = require("./tags/panel-bonaparte");
 var scroll = require("./tags/scroll-bonaparte");
+var sidebar = require("./tags/sidebar-bonaparte");
 var toolbar = require("./tags/toolbar-bonaparte");
+var cornerstone = require("./tags/cornerstone-bonaparte");
 
-document.registerElement('cornerstone-bonaparte');
-document.registerElement('sidebar-bonaparte');
+// toolbar.mixin({
+//   test:function(){
+//     alert("test")
+//   }
+// });
+
+panel.register();
+scroll.register();
+sidebar.register();
+cornerstone.register();
+toolbar.register();
+
 document.registerElement('content-bonaparte');
 
 
-},{"./tags/panel-bonaparte":9,"./tags/scroll-bonaparte":10,"./tags/toolbar-bonaparte":11}],3:[function(require,module,exports){
+},{"./tags/cornerstone-bonaparte":9,"./tags/panel-bonaparte":10,"./tags/scroll-bonaparte":11,"./tags/sidebar-bonaparte":12,"./tags/toolbar-bonaparte":13}],3:[function(require,module,exports){
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
@@ -314,13 +328,15 @@ function events(){
 
 ///////////////////////////////////////////////////////////////////////////////
 
-  function trigger(event, data){
+  function trigger(event, data, element){
     if(typeof eventHandlers[event] !== "object" ) return;
    
+    element = element || this;
+    var tagName = element.tagName || "";
     var length = eventHandlers[event].length;
     var i = -1;
     while(++i < length) {
-      eventHandlers[event][i](data);
+      eventHandlers[event][i](data, this, tagName.toLowerCase());
     }
   }
 
@@ -404,42 +420,58 @@ module.exports = registerTag;
 
 ///////////////////////////////////////////////////////////////////////////////
 
-function registerTag(tagName, tagDefinition, nativeBaseElement){
+function registerTag(name, definition, mixins, nativeBaseElement){
+  var definitionType = (objct.isArray(definition) && "array") || typeof definition;
+  if(definitionType !== "object" && definitionType !== "function")
+    throw "Bonaparte - registerTag: Unexpected "+definitionType+". Expected Function or Object."
 
   nativeBaseElement = nativeBaseElement || HTMLElement;
-
-  var elements = [
-    require("./globals"),
-    require("./events"),
-    tagDefinition
-  ];
-
-  registeredTags[tagName+"-bonaparte"] = registeredTags[tagName+"-bonaparte"] !== undefined ?
-    registeredTags[tagName+"-bonaparte"]:
-    document.registerElement(tagName+"-bonaparte", getPrototype());
-
+  mixins = mixins || [];
 ///////////////////////////////////////////////////////////////////////////////
 // Public
   
-  return registeredTags[tagName+"-bonaparte"];
+  function tagFactory(){};
+  tagFactory.register = register;
+  tagFactory.mixin = mixin;
+
+///////////////////////////////////////////////////////////////////////////////
+
+  definition = objct(tagFactory, definition);
+  return definition;
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-  function getPrototype(){
-    return {
-      prototype : new objct.extend ( Object.create( nativeBaseElement.prototype ), {
-        createdCallback : createdCallback,
-        attachedCallback : attachedCallback,
-        detachedCallback : detachedCallback,
-        attributeChangedCallback : attributeChangedCallback
-      })
-    }
+  function register(){ 
+    registeredTags[name+"-bonaparte"] = registeredTags[name+"-bonaparte"] !== undefined ?
+      registeredTags[name+"-bonaparte"]:
+      document.registerElement(name+"-bonaparte", {
+        prototype : Object.create( nativeBaseElement.prototype , {
+          createdCallback : { value: createdCallback },
+          attachedCallback : { value: attachedCallback },
+          detachedCallback : { value: detachedCallback },
+          attributeChangedCallback : { value: attributeChangedCallback }
+        })
+      });
+
+    return registeredTags[name+"-bonaparte"];
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
+  function mixin(mixin){
+    definition = objct(definition, mixin);
   }
 
 ///////////////////////////////////////////////////////////////////////////////
 
   function createdCallback() {
+    var elements = [
+      require("./globals"),
+      require("./events"),
+      mixins,
+      definition
+    ];
 
     // Create bonaparte namespace
     this.bonaparte = this.bonaparte || {};
@@ -447,12 +479,8 @@ function registerTag(tagName, tagDefinition, nativeBaseElement){
     // Create and mixin tag instance
     new objct.extend(this, elements, require("./mixins"));
         
-    var data = {
-      element : this
-    };
-
-    this.trigger("createdCallback", data);
-    this.global.trigger("createdCallback", data);
+    this.trigger("createdCallback");
+    this.global.trigger("createdCallback", null, this);
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -462,13 +490,9 @@ function registerTag(tagName, tagDefinition, nativeBaseElement){
 ///////////////////////////////////////////////////////////////////////////////
 
 function attachedCallback() {
-  
-  var data = {
-    element : this
-  };
-  
-  this.trigger("attachedCallback", data);
-  this.global.trigger("attachedCallback", data);
+
+  this.trigger("attachedCallback");
+  this.global.trigger("attachedCallback", null, this);
 
 }
 
@@ -476,12 +500,8 @@ function attachedCallback() {
 
 function detachedCallback() {
 
-  var data = {
-    element : this
-  };
-  
-  this.trigger("detachedCallback", data);
-  this.global.trigger("detachedCallback", data);
+  this.trigger("detachedCallback");
+  this.global.trigger("detachedCallback", null, this);
   
 }
 
@@ -490,14 +510,13 @@ function detachedCallback() {
 function attributeChangedCallback( name, previousValue, newValue ) {
 
   var data = {
-    element : this,
     name : name,
     previousValue : previousValue,
     newValue : newValue
   };
 
   this.trigger("attributeChangedCallback", data);
-  this.global.trigger("attributeChangedCallback", data);
+  this.global.trigger("attributeChangedCallback", data, this);
 
 }
 
@@ -512,6 +531,7 @@ function attributeChangedCallback( name, previousValue, newValue ) {
 module.exports = {
   nodeContains : nodeContains,
   getAttribute : getAttribute,
+  isAttribute : isAttribute,
   map : map
 };
 
@@ -528,6 +548,11 @@ function nodeContains(parent, child) {
 function getAttribute(tag, name){
   var attribute = tag.attributes[name] || tag.attributes["data-"+name];
   return attribute ? attribute.value : undefined; 
+}
+///////////////////////////////////////////////////////////////////////////////
+
+function isAttribute(name, attribute){
+  return name === attribute || name === "data-"+attribute;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -573,14 +598,65 @@ var registerTag = require("../core/tag");
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = registerTag("panel", [
-  require("../mixins/toggle"),
-  panel
+module.exports = registerTag("cornerstone", cornerstone);
+
+///////////////////////////////////////////////////////////////////////////////
+function cornerstone(){
+  var tag = this;
+  var toolbar = this.parentNode;
+
+  updateCornerstonePadding();
+///////////////////////////////////////////////////////////////////////////////
+  
+  this.addListener("attributeChangedCallback", updateCornerstonePadding);
+  toolbar.addListener("attributeChangedCallback", updateCornerstonePadding);
+  
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+  
+  function updateCornerstonePadding(){
+    var cornerStonePosition = util.getAttribute(toolbar, "cornerstone").match(/(\w+)/g);
+    var sidebarPosition = util.getAttribute(toolbar, "sidebar");
+    
+    toolbar.firstElementChild.style.padding="";
+    
+    if(cornerStonePosition.indexOf("outside") >= 0) return;
+
+    var sidebarPositionIndex = cornerStonePosition.indexOf(sidebarPosition);
+
+    if(sidebarPositionIndex < 0) return;
+    else cornerStonePosition.splice(sidebarPositionIndex,1);
+
+    var paddingSide = cornerStonePosition[0];
+
+    var paddingValue = paddingSide === "left" || paddingSide === "right"?
+      tag.offsetWidth:
+      tag.offsetHeight;
+
+    paddingSide=paddingSide.charAt(0).toUpperCase() + paddingSide.slice(1);
+
+    toolbar.firstElementChild.style["padding"+paddingSide]=paddingValue+"px";
+
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
+}
+
+///////////////////////////////////////////////////////////////////////////////
+},{"../core/tag":6,"../core/utility":7}],10:[function(require,module,exports){
+var util = require("../core/utility");
+var registerTag = require("../core/tag");
+
+///////////////////////////////////////////////////////////////////////////////
+// Public
+
+module.exports = registerTag("panel", panel, [
+  require("../mixins/toggle")
 ]);
 
 ///////////////////////////////////////////////////////////////////////////////
 function panel(){
-
   var tag = this;
   var locked = false;
 
@@ -608,7 +684,7 @@ function panel(){
 ///////////////////////////////////////////////////////////////////////////////
 
   function attributeChangedCallback(data){
-    if(data.name === "open" && data.newValue == "true") {
+    if(util.isAttribute("open", data.name) && data.newValue == "true") {
       lock();
       tag.global.trigger("closePanels");
     };    
@@ -642,7 +718,7 @@ function panel(){
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"../core/tag":6,"../core/utility":7,"../mixins/toggle":8}],10:[function(require,module,exports){
+},{"../core/tag":6,"../core/utility":7,"../mixins/toggle":8}],11:[function(require,module,exports){
 var util   = require("../core/utility");
 var registerTag = require("../core/tag");
 
@@ -651,13 +727,10 @@ var scrollBarWidth = false;
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = registerTag("scroll", [
-  scroll
-]);
+module.exports = registerTag("scroll", scroll);
 
 ///////////////////////////////////////////////////////////////////////////////
 function scroll(){
-
   var tag = this;
   var content =  this.firstElementChild;
   var slider, scrollbar, scrollBarVisible;
@@ -727,7 +800,6 @@ function scroll(){
     scrollBarWidth = scrollBarWidth || getScrollBarWidth();
     content.style.marginRight = -scrollBarWidth+"px";
   
-
     slider = document.createElement("div")
     slider.setAttribute("class", "slider");
 
@@ -755,25 +827,62 @@ function getScrollBarWidth(){
   document.documentElement.style.overflow = overflow;
   return width;
 }
-},{"../core/tag":6,"../core/utility":7}],11:[function(require,module,exports){
+},{"../core/tag":6,"../core/utility":7}],12:[function(require,module,exports){
 var util = require("../core/utility");
 var registerTag = require("../core/tag");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = registerTag("toolbar", [
-  toolbar
+module.exports = registerTag("sidebar", sidebar);
+
+///////////////////////////////////////////////////////////////////////////////
+function sidebar(){
+  var tag = this;
+  var sidebar = this.firstElementChild;
+  updateSize(util.getAttribute(this, "size"));
+
+///////////////////////////////////////////////////////////////////////////////
+
+  this.addListener("attributeChangedCallback", attributeChangedCallback);
+  
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+  function attributeChangedCallback(data){
+    if(util.isAttribute("size", data.name)) {
+      updateSize(data.newValue);
+    }
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
+  function updateSize(size) {
+    if(typeof size === "undefined") return;
+
+    sidebar.style["-webkit-flex-basis"] = size;
+    sidebar.style["-ms-flex-preferred-size"] = size;
+    sidebar.style["flex-basis"] = size;
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
+}
+
+///////////////////////////////////////////////////////////////////////////////
+},{"../core/tag":6,"../core/utility":7}],13:[function(require,module,exports){
+var util = require("../core/utility");
+var registerTag = require("../core/tag");
+
+///////////////////////////////////////////////////////////////////////////////
+// Public
+
+module.exports = registerTag("toolbar", toolbar, [
+  require("./sidebar-bonaparte.js")
 ]);
 
 ///////////////////////////////////////////////////////////////////////////////
 function toolbar(){
-
-
-
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -781,4 +890,4 @@ function toolbar(){
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"../core/tag":6,"../core/utility":7}]},{},[2]);
+},{"../core/tag":6,"../core/utility":7,"./sidebar-bonaparte.js":12}]},{},[2]);
