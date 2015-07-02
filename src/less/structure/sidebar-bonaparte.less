@@ -5,14 +5,12 @@
 
   & {
     position:relative;
-    background-color:red;
     overflow:hidden;
     display: flex;  
     flex-flow: row;
   }
 
   > :nth-child(1){
-    background-color:teal;
     flex:0 0;
     flex-basis:@baseSize;
     z-index:20;
@@ -21,7 +19,6 @@
   }
 
   > :nth-child(2){
-    background-color:tomato;
     flex:1 auto;
     order:3;
     z-index:0;
