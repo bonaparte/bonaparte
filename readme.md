@@ -80,10 +80,7 @@
   <!-- Required -->
   <nth-child-1 sidebar />
   <nth-child-2 content /> 
-
-  <!-- Optional -->
-  <cornerstone-bonaparte />
-
+  
 </sidebar-bonaparte>
 ```
 
