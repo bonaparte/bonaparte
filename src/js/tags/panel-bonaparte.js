@@ -4,14 +4,12 @@ var registerTag = require("../core/tag");
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = registerTag("panel", [
-  require("../mixins/toggle"),
-  panel
+module.exports = registerTag("panel", panel, [
+  require("../mixins/toggle")
 ]);
 
 ///////////////////////////////////////////////////////////////////////////////
 function panel(){
-
   var tag = this;
   var locked = false;
 
@@ -39,7 +37,7 @@ function panel(){
 ///////////////////////////////////////////////////////////////////////////////
 
   function attributeChangedCallback(data){
-    if(data.name === "open" && data.newValue == "true") {
+    if(util.isAttribute("open", data.name) && data.newValue == "true") {
       lock();
       tag.global.trigger("closePanels");
     };    

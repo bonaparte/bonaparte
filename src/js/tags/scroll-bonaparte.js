@@ -6,13 +6,10 @@ var scrollBarWidth = false;
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = registerTag("scroll", [
-  scroll
-]);
+module.exports = registerTag("scroll", scroll);
 
 ///////////////////////////////////////////////////////////////////////////////
 function scroll(){
-
   var tag = this;
   var content =  this.firstElementChild;
   var slider, scrollbar, scrollBarVisible;
@@ -82,7 +79,6 @@ function scroll(){
     scrollBarWidth = scrollBarWidth || getScrollBarWidth();
     content.style.marginRight = -scrollBarWidth+"px";
   
-
     slider = document.createElement("div")
     slider.setAttribute("class", "slider");
 

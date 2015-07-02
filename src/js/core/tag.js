@@ -9,42 +9,58 @@ module.exports = registerTag;
 
 ///////////////////////////////////////////////////////////////////////////////
 
-function registerTag(tagName, tagDefinition, nativeBaseElement){
+function registerTag(name, definition, mixins, nativeBaseElement){
+  var definitionType = (objct.isArray(definition) && "array") || typeof definition;
+  if(definitionType !== "object" && definitionType !== "function")
+    throw "Bonaparte - registerTag: Unexpected "+definitionType+". Expected Function or Object."
 
   nativeBaseElement = nativeBaseElement || HTMLElement;
-
-  var elements = [
-    require("./globals"),
-    require("./events"),
-    tagDefinition
-  ];
-
-  registeredTags[tagName+"-bonaparte"] = registeredTags[tagName+"-bonaparte"] !== undefined ?
-    registeredTags[tagName+"-bonaparte"]:
-    document.registerElement(tagName+"-bonaparte", getPrototype());
-
+  mixins = mixins || [];
 ///////////////////////////////////////////////////////////////////////////////
 // Public
   
-  return registeredTags[tagName+"-bonaparte"];
+  function tagFactory(){};
+  tagFactory.register = register;
+  tagFactory.mixin = mixin;
+
+///////////////////////////////////////////////////////////////////////////////
+
+  definition = objct(tagFactory, definition);
+  return definition;
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-  function getPrototype(){
-    return {
-      prototype : new objct.extend ( Object.create( nativeBaseElement.prototype ), {
-        createdCallback : createdCallback,
-        attachedCallback : attachedCallback,
-        detachedCallback : detachedCallback,
-        attributeChangedCallback : attributeChangedCallback
-      })
-    }
+  function register(){ 
+    registeredTags[name+"-bonaparte"] = registeredTags[name+"-bonaparte"] !== undefined ?
+      registeredTags[name+"-bonaparte"]:
+      document.registerElement(name+"-bonaparte", {
+        prototype : Object.create( nativeBaseElement.prototype , {
+          createdCallback : { value: createdCallback },
+          attachedCallback : { value: attachedCallback },
+          detachedCallback : { value: detachedCallback },
+          attributeChangedCallback : { value: attributeChangedCallback }
+        })
+      });
+
+    return registeredTags[name+"-bonaparte"];
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
+  function mixin(mixin){
+    definition = objct(definition, mixin);
   }
 
 ///////////////////////////////////////////////////////////////////////////////
 
   function createdCallback() {
+    var elements = [
+      require("./globals"),
+      require("./events"),
+      mixins,
+      definition
+    ];
 
     // Create bonaparte namespace
     this.bonaparte = this.bonaparte || {};
@@ -52,12 +68,8 @@ function registerTag(tagName, tagDefinition, nativeBaseElement){
     // Create and mixin tag instance
     new objct.extend(this, elements, require("./mixins"));
         
-    var data = {
-      element : this
-    };
-
-    this.trigger("createdCallback", data);
-    this.global.trigger("createdCallback", data);
+    this.trigger("createdCallback");
+    this.global.trigger("createdCallback", null, this);
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -67,13 +79,9 @@ function registerTag(tagName, tagDefinition, nativeBaseElement){
 ///////////////////////////////////////////////////////////////////////////////
 
 function attachedCallback() {
-  
-  var data = {
-    element : this
-  };
-  
-  this.trigger("attachedCallback", data);
-  this.global.trigger("attachedCallback", data);
+
+  this.trigger("attachedCallback");
+  this.global.trigger("attachedCallback", null, this);
 
 }
 
@@ -81,12 +89,8 @@ function attachedCallback() {
 
 function detachedCallback() {
 
-  var data = {
-    element : this
-  };
-  
-  this.trigger("detachedCallback", data);
-  this.global.trigger("detachedCallback", data);
+  this.trigger("detachedCallback");
+  this.global.trigger("detachedCallback", null, this);
   
 }
 
@@ -95,14 +99,13 @@ function detachedCallback() {
 function attributeChangedCallback( name, previousValue, newValue ) {
 
   var data = {
-    element : this,
     name : name,
     previousValue : previousValue,
     newValue : newValue
   };
 
   this.trigger("attributeChangedCallback", data);
-  this.global.trigger("attributeChangedCallback", data);
+  this.global.trigger("attributeChangedCallback", data, this);
 
 }
 
