@@ -44,13 +44,15 @@ function events(){
 
 ///////////////////////////////////////////////////////////////////////////////
 
-  function trigger(event, data){
+  function trigger(event, data, element){
     if(typeof eventHandlers[event] !== "object" ) return;
    
+    element = element || this;
+    var tagName = element.tagName || "";
     var length = eventHandlers[event].length;
     var i = -1;
     while(++i < length) {
-      eventHandlers[event][i](data);
+      eventHandlers[event][i](data, this, tagName.toLowerCase());
     }
   }
 
