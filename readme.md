@@ -57,7 +57,7 @@
 <toolbar
   cornerstone=[top|bottom][left|right][outside]?
 
-  [extends sidebar]
+  extends:sidebar
 >
 
   <!-- Required -->
