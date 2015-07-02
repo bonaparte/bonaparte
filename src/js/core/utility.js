@@ -6,6 +6,7 @@
 module.exports = {
   nodeContains : nodeContains,
   getAttribute : getAttribute,
+  isAttribute : isAttribute,
   map : map
 };
 
@@ -22,6 +23,11 @@ function nodeContains(parent, child) {
 function getAttribute(tag, name){
   var attribute = tag.attributes[name] || tag.attributes["data-"+name];
   return attribute ? attribute.value : undefined; 
+}
+///////////////////////////////////////////////////////////////////////////////
+
+function isAttribute(name, attribute){
+  return name === attribute || name === "data-"+attribute;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
