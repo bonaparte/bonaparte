@@ -1,10 +1,10 @@
 # Bonaparte - Backend UI Framework
 
-[Kitchen-Sink](https://github.dowjones.net/pages/adrianp/bonaparte/examples/kitchen-sink.html)
+[Kitchen-Sink](https://github.dowjones.net/pages/newsroomdevelopment/bonaparte/examples/kitchen-sink.html)
 <br>
-[Toolbar](https://github.dowjones.net/pages/adrianp/bonaparte/examples/toolbar.html)
+[Toolbar](https://github.dowjones.net/pages/newsroomdevelopment/bonaparte/examples/toolbar.html)
 <br>
-[Xavier](https://github.dowjones.net/pages/adrianp/bonaparte/examples/xavier.html)
+[Xavier](https://github.dowjones.net/pages/newsroomdevelopment/bonaparte/examples/Xavier.html)
 
 ### Use
 
