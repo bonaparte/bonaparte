@@ -1,5 +1,6 @@
 var gulp         = require('gulp');
 var less         = require("gulp-less");
+var cleancss     = new (require("less-plugin-clean-css"))({ advanced: true });
 var autoprefixer = require("gulp-autoprefixer");
 var spawn        = require('child_process').spawn;
 var browserify   = require("browserify");
@@ -40,7 +41,9 @@ function js(){
 
 function css(){
   return gulp.src('./src/less/app.less')
-    .pipe(less())
+    .pipe(less({
+      plugins : [cleancss]
+    }))
     .pipe(autoprefixer())
     .pipe(rename("bonaparte.css"))
     .pipe(gulp.dest('./dist/')); 
