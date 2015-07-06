@@ -1,13 +1,15 @@
 @import "sidebar-bonaparte.less";
-
 .toolbar-bonaparte(
+  @overrides:{.variables(){}},
   @baseSize : 4rem  
 ){
-  .variableOverrides();
-  /*Extend Sidebar*/
-  .sidebar-bonaparte(@baseSize);
-  
-    
+
+  @overrides();
+  .variables();
+
+  .sidebar-bonaparte(@overrides);   
+
+ 
   /*CORNERSTONE*/
 
   > cornerstone-bonaparte {  

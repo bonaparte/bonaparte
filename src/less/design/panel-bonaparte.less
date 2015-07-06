@@ -2,19 +2,22 @@
 
 panel-bonaparte {  
 
-  .variableOverrides(){
-    @transition-duration: 500ms;
-    @default-size:300px;
-  }
-  .panel-bonaparte();
+/*////////////////////////////////////////////////////////////////////*/
+
+  .panel-bonaparte({
+    .variables() {
+      @default-size:400px;
+    }
+  });
 
 /*////////////////////////////////////////////////////////////////////*/
 
   @border-width : 0.5rem;
   @border-color : @color-active;
 
-  background-color:rgba(255,255,255,0.9);
-
+  & {
+    background-color:rgba(255,255,255,0.9);
+  }
   /*ACTIVE BORDER*/
 
   &[data-position~="left"],

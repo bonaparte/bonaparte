@@ -37,7 +37,7 @@ function panel(){
 ///////////////////////////////////////////////////////////////////////////////
 
   function attributeChangedCallback(data){
-    if(util.isAttribute("open", data.name)) {
+    if(util.isAttribute("open", data.name)){
       if(data.newValue == "true") {
         lock();
         tag.global.trigger("bonaparte:closePanels");

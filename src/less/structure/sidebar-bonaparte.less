@@ -1,7 +1,10 @@
 .sidebar-bonaparte(
+  @overrides:{.variables(){}},
   @baseSize : 4rem  
 ){
-  .variableOverrides();
+
+  @overrides();
+  .variables();
 
   /*DEFINITION*/
 
@@ -36,7 +39,7 @@
   }
 
   &[data-sidebar="right"],
-  toolbar-bonaparte[sidebar="right"] {
+  &[sidebar="right"] {
     flex-direction: row-reverse;
   }
 

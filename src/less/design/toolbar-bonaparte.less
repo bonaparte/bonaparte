@@ -2,7 +2,12 @@
 
 /*SIZES*/
 toolbar-bonaparte {
+
+
+
+/*////////////////////////////////*/  
   .toolbar-bonaparte();
+/*////////////////////////////////*/  
 
   background-color:red;
 
@@ -23,9 +28,13 @@ toolbar-bonaparte {
 
 toolbar-bonaparte.massive {  
 
-  .variableOverrides(){
-    @baseSize : 6rem;
-  } 
-  .toolbar-bonaparte();
+
+/*////////////////////////////////*/  
+  .toolbar-bonaparte({
+    .variables(){
+      @baseSize : 6rem;
+    }
+  });
+/*////////////////////////////////*/  
 
 }
