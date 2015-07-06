@@ -37,9 +37,17 @@ function panel(){
 ///////////////////////////////////////////////////////////////////////////////
 
   function attributeChangedCallback(data){
-    if(util.isAttribute("open", data.name) && data.newValue == "true") {
-      lock();
-      tag.global.trigger("closePanels");
+    if(util.isAttribute("open", data.name)){
+      if(data.newValue == "true") {
+        lock();
+        tag.global.trigger("closePanels");
+        tag.global.trigger("panel:open");
+        tag.trigger("open");
+      }
+      else {
+        tag.global.trigger("panel:close");
+        tag.trigger("close");
+      }
     };    
   }
 
@@ -59,7 +67,7 @@ function panel(){
 ///////////////////////////////////////////////////////////////////////////////
 
   function open(e) {    
-    lock();
+    // lock();
     tag.setAttribute("open", "true");
   }
 ///////////////////////////////////////////////////////////////////////////////
