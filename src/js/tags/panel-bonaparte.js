@@ -23,7 +23,7 @@ function panel(){
 // Eventlisteners
 
   this.global.addListener("click", clickHandler);
-  this.global.addListener("closePanels", closePanels);
+  this.global.addListener("bonaparte:closePanels", closePanels);
   this.addListener("attributeChangedCallback", attributeChangedCallback);
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -40,7 +40,7 @@ function panel(){
     if(util.isAttribute("open", data.name)) {
       if(data.newValue == "true") {
         lock();
-        tag.global.trigger("closePanels");
+        tag.global.trigger("bonaparte:closePanels");
         tag.global.trigger("panel:open");
         tag.trigger("open");
       }
