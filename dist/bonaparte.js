@@ -684,7 +684,7 @@ function panel(){
 ///////////////////////////////////////////////////////////////////////////////
 
   function attributeChangedCallback(data){
-    if(util.isAttribute("open", data.name)){
+    if(util.isAttribute("open", data.name)) {
       if(data.newValue == "true") {
         lock();
         tag.global.trigger("closePanels");
@@ -714,7 +714,7 @@ function panel(){
 ///////////////////////////////////////////////////////////////////////////////
 
   function open(e) {    
-    // lock();
+    lock();
     tag.setAttribute("open", "true");
   }
 ///////////////////////////////////////////////////////////////////////////////
