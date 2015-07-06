@@ -26,7 +26,7 @@ function scroll(){
 ///////////////////////////////////////////////////////////////////////////////
 // Eventlisteners
 
-  if(util.getAttribute(this, "resize") === "true")
+  if(util.getAttribute(this, "resize") !== "false")
     this.global.addListener("resize", update);
   
   content.addEventListener("scroll", updatePosition);
@@ -78,6 +78,7 @@ function scroll(){
     // Remove/Hide native Scrollbar
     scrollBarWidth = scrollBarWidth || getScrollBarWidth();
     content.style.marginRight = -scrollBarWidth+"px";
+    content.style.paddingRight = scrollBarWidth+"px";
   
     slider = document.createElement("div")
     slider.setAttribute("class", "slider");
