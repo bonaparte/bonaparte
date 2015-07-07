@@ -9,6 +9,11 @@ button.ui,
 button.ui.compact,
 .ui.compact.button,
 .ui.button {
+
+  .button();
+}
+
+.button() {
   &, .hidden.content {
     position:relative;
     font-size:@fontSize;
@@ -27,7 +32,6 @@ button.ui.compact,
 
 
   + button.ui,
-  + .ui.compact.button,
   + .ui.button {
     margin-left:1rem;
   }
@@ -51,7 +55,6 @@ button.ui.compact,
 
   > .icon {
     height:auto;
-    /*width:@lineHeight - 2rem;*/
     margin:0 1rem 0 0;
     opacity:0.9;
   }  

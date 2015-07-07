@@ -3266,10 +3266,6 @@ button.ui + button.ui,
 button.ui.compact + button.ui,
 .ui.compact.button + button.ui,
 .ui.button + button.ui,
-button.ui + .ui.compact.button,
-button.ui.compact + .ui.compact.button,
-.ui.compact.button + .ui.compact.button,
-.ui.button + .ui.compact.button,
 button.ui + .ui.button,
 button.ui.compact + .ui.button,
 .ui.compact.button + .ui.button,
@@ -3306,7 +3302,6 @@ button.ui.compact > .icon,
 .ui.compact.button > .icon,
 .ui.button > .icon {
   height: auto;
-  /*width:@lineHeight - 2rem;*/
   margin: 0 1rem 0 0;
   opacity: 0.9;
 }
