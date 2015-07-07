@@ -3236,7 +3236,7 @@
          Theme Overrides
 *******************************/
 
-/*STANDARD*/
+/*////////////////////////////////////////////////////////////////////*/
 button.ui,
 button.ui.compact,
 .ui.compact.button,
@@ -3252,7 +3252,7 @@ button.ui.compact .hidden.content,
 .ui.compact.button .hidden.content,
 .ui.button .hidden.content {
   position: relative;
-  font-size: 1.333333rem;
+  font-size: 1.33333rem;
   line-height: 2rem;
   margin: 0.5rem 0rem;
   vertical-align: middle;
@@ -3263,39 +3263,69 @@ button.ui.compact .hidden.content,
   min-height: 4rem;
 }
 button.ui + button.ui,
-button.ui.compact + button.ui,
-.ui.compact.button + button.ui,
-.ui.button + button.ui,
+button.ui + button.ui.compact,
+button.ui + .ui.compact.button,
 button.ui + .ui.button,
+button.ui.compact + button.ui,
+button.ui.compact + button.ui.compact,
+button.ui.compact + .ui.compact.button,
 button.ui.compact + .ui.button,
+.ui.compact.button + button.ui,
+.ui.compact.button + button.ui.compact,
+.ui.compact.button + .ui.compact.button,
 .ui.compact.button + .ui.button,
+.ui.button + button.ui,
+.ui.button + button.ui.compact,
+.ui.button + .ui.compact.button,
 .ui.button + .ui.button {
   margin-left: 1rem;
 }
 button.ui.fluid + button.ui.fluid,
+button.ui.fluid + button.ui.compact.fluid,
+button.ui.fluid + .ui.compact.button.fluid,
+button.ui.fluid + .ui.button.fluid,
 button.ui.compact.fluid + button.ui.fluid,
+button.ui.compact.fluid + button.ui.compact.fluid,
+button.ui.compact.fluid + .ui.compact.button.fluid,
+button.ui.compact.fluid + .ui.button.fluid,
 .ui.compact.button.fluid + button.ui.fluid,
+.ui.compact.button.fluid + button.ui.compact.fluid,
+.ui.compact.button.fluid + .ui.compact.button.fluid,
+.ui.compact.button.fluid + .ui.button.fluid,
 .ui.button.fluid + button.ui.fluid,
-button.ui.fluid + .ui.fluid.buttons,
-button.ui.compact.fluid + .ui.fluid.buttons,
-.ui.compact.button.fluid + .ui.fluid.buttons,
-.ui.button.fluid + .ui.fluid.buttons,
-button.ui.fluid + .ui.fluid.compact.button,
-button.ui.compact.fluid + .ui.fluid.compact.button,
-.ui.compact.button.fluid + .ui.fluid.compact.button,
-.ui.button.fluid + .ui.fluid.compact.button,
-button.ui.fluid + .ui.fluid.button,
-button.ui.compact.fluid + .ui.fluid.button,
-.ui.compact.button.fluid + .ui.fluid.button,
-.ui.button.fluid + .ui.fluid.button {
+.ui.button.fluid + button.ui.compact.fluid,
+.ui.button.fluid + .ui.compact.button.fluid,
+.ui.button.fluid + .ui.button.fluid {
   margin: 0.5rem 0;
 }
 button.ui.animated .hidden.content,
 button.ui.compact.animated .hidden.content,
 .ui.compact.button.animated .hidden.content,
 .ui.button.animated .hidden.content {
+  position: absolute;
+  font-size: 1em;
   height: 4rem;
   margin-top: -2rem;
+}
+button.ui.labeled.icon,
+button.ui.compact.labeled.icon,
+.ui.compact.button.labeled.icon,
+.ui.button.labeled.icon {
+  padding-left: 5rem !important;
+  padding-right: 1rem !important;
+}
+button.ui.labeled.icon > .icon,
+button.ui.compact.labeled.icon > .icon,
+.ui.compact.button.labeled.icon > .icon,
+.ui.button.labeled.icon > .icon {
+  width: 4rem;
+}
+button.ui.right.labeled.icon,
+button.ui.compact.right.labeled.icon,
+.ui.compact.button.right.labeled.icon,
+.ui.button.right.labeled.icon {
+  padding-left: 1rem !important;
+  padding-right: 5rem !important;
 }
 button.ui > .icon,
 button.ui.compact > .icon,
@@ -3322,34 +3352,34 @@ button.ui.compact > .icon.right,
 .ui.buttons + .ui.buttons {
   margin-left: 1rem;
 }
-.ui.buttons > .ui.button,
-.ui.buttons > button.ui {
+.ui.buttons .ui.button,
+.ui.buttons button.ui {
   margin: 0 !important;
   box-shadow: 0px 0px 0px 0px rgba(34, 36, 38, 0.15), 0px 0px 0px 0 rgba(34, 36, 38, 0.15);
 }
-.ui.labeled.icon.buttons .button,
-.ui.labeled.icon.buttons button,
-.ui.labeled.icon.button {
-  padding-left: 5rem !important;
-}
-.ui.conditional.buttons .button:first-child,
-.ui.conditional.buttons button:first-child {
+.ui.buttons.conditional button.ui:first-child,
+.ui.buttons.conditional .ui.button:first-child,
+.ui.buttons.conditional button.ui:first-child,
+.ui.buttons.conditional .ui.button:first-child {
   padding-right: 2rem;
 }
-.ui.conditional.buttons button:not(:first-child):not(:last-child),
-.ui.conditional.buttons .button:not(:first-child):not(:last-child) {
+.ui.buttons.conditional button.ui:not(:first-child):not(:last-child),
+.ui.buttons.conditional .ui.button:not(:first-child):not(:last-child),
+.ui.buttons.conditional button.ui:not(:first-child):not(:last-child),
+.ui.buttons.conditional .ui.button:not(:first-child):not(:last-child) {
   padding-left: 2rem;
   padding-right: 2rem;
 }
-.ui.conditional.buttons button:last-child,
-.ui.conditional.buttons .button:last-child {
+.ui.buttons.conditional button.ui:last-child,
+.ui.buttons.conditional .ui.button:last-child,
+.ui.buttons.conditional button.ui:last-child,
+.ui.buttons.conditional .ui.button:last-child {
   padding-left: 2rem;
 }
-.ui.conditional.buttons .or {
+.ui.buttons.conditional .or {
   height: 4rem;
-  font-size: 1.16666667rem;
 }
-.ui.conditional.buttons .or:before {
+.ui.buttons.conditional .or:before {
   height: 3rem;
   width: 3rem;
   margin-left: -1.5rem;
@@ -3357,7 +3387,36 @@ button.ui.compact > .icon.right,
   line-height: 3rem;
   font-size: 1.33333rem;
 }
-/*MINI & TINY*/
+.ui.buttons.icon button.ui > .icon,
+.ui.buttons.icon .ui.button > .icon {
+  margin: 0px;
+}
+.ui.buttons.labeled.icon button.ui,
+.ui.buttons.labeled.icon .ui.button {
+  padding-left: 5rem !important;
+  padding-right: 1rem !important;
+}
+.ui.buttons.labeled.icon button.ui > .icon,
+.ui.buttons.labeled.icon .ui.button > .icon {
+  width: 4rem;
+}
+.ui.buttons.right.labeled.icon button.ui,
+.ui.buttons.right.labeled.icon .ui.button {
+  padding-right: 5rem !important;
+  padding-left: 1rem !important;
+}
+button.ui.mini,
+button.ui.mini.compact,
+.ui.mini.buttons .button,
+.ui.mini.compact.button,
+.ui.mini.button,
+button.ui.tiny,
+button.ui.tiny.compact,
+.ui.tiny.buttons .button,
+.ui.tiny.compact.button,
+.ui.tiny.button {
+  box-shadow: 0px 0px 0px 0px rgba(34, 36, 38, 0.15), 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
+}
 button.ui.mini,
 button.ui.mini.compact,
 .ui.mini.buttons .button,
@@ -3378,10 +3437,220 @@ button.ui.tiny.compact .hidden.content,
 .ui.tiny.buttons .button .hidden.content,
 .ui.tiny.compact.button .hidden.content,
 .ui.tiny.button .hidden.content {
+  position: relative;
+  font-size: 0.91667rem;
   line-height: 1.5rem;
+  margin: 0.5rem 0rem;
+  vertical-align: middle;
+  
+/* "baseline" does not align with line grid */
   padding: 0.25rem 1rem;
   min-width: 2rem;
   min-height: 2rem;
+}
+button.ui.mini + button.ui.mini,
+button.ui.mini + button.ui.mini.compact,
+button.ui.mini + .ui.mini.buttons .button,
+button.ui.mini + .ui.mini.compact.button,
+button.ui.mini + .ui.mini.button,
+button.ui.mini + button.ui.tiny,
+button.ui.mini + button.ui.tiny.compact,
+button.ui.mini + .ui.tiny.buttons .button,
+button.ui.mini + .ui.tiny.compact.button,
+button.ui.mini + .ui.tiny.button,
+button.ui.mini.compact + button.ui.mini,
+button.ui.mini.compact + button.ui.mini.compact,
+button.ui.mini.compact + .ui.mini.buttons .button,
+button.ui.mini.compact + .ui.mini.compact.button,
+button.ui.mini.compact + .ui.mini.button,
+button.ui.mini.compact + button.ui.tiny,
+button.ui.mini.compact + button.ui.tiny.compact,
+button.ui.mini.compact + .ui.tiny.buttons .button,
+button.ui.mini.compact + .ui.tiny.compact.button,
+button.ui.mini.compact + .ui.tiny.button,
+.ui.mini.buttons .button + button.ui.mini,
+.ui.mini.buttons .button + button.ui.mini.compact,
+.ui.mini.buttons .button + .ui.mini.buttons .button,
+.ui.mini.buttons .button + .ui.mini.compact.button,
+.ui.mini.buttons .button + .ui.mini.button,
+.ui.mini.buttons .button + button.ui.tiny,
+.ui.mini.buttons .button + button.ui.tiny.compact,
+.ui.mini.buttons .button + .ui.tiny.buttons .button,
+.ui.mini.buttons .button + .ui.tiny.compact.button,
+.ui.mini.buttons .button + .ui.tiny.button,
+.ui.mini.compact.button + button.ui.mini,
+.ui.mini.compact.button + button.ui.mini.compact,
+.ui.mini.compact.button + .ui.mini.buttons .button,
+.ui.mini.compact.button + .ui.mini.compact.button,
+.ui.mini.compact.button + .ui.mini.button,
+.ui.mini.compact.button + button.ui.tiny,
+.ui.mini.compact.button + button.ui.tiny.compact,
+.ui.mini.compact.button + .ui.tiny.buttons .button,
+.ui.mini.compact.button + .ui.tiny.compact.button,
+.ui.mini.compact.button + .ui.tiny.button,
+.ui.mini.button + button.ui.mini,
+.ui.mini.button + button.ui.mini.compact,
+.ui.mini.button + .ui.mini.buttons .button,
+.ui.mini.button + .ui.mini.compact.button,
+.ui.mini.button + .ui.mini.button,
+.ui.mini.button + button.ui.tiny,
+.ui.mini.button + button.ui.tiny.compact,
+.ui.mini.button + .ui.tiny.buttons .button,
+.ui.mini.button + .ui.tiny.compact.button,
+.ui.mini.button + .ui.tiny.button,
+button.ui.tiny + button.ui.mini,
+button.ui.tiny + button.ui.mini.compact,
+button.ui.tiny + .ui.mini.buttons .button,
+button.ui.tiny + .ui.mini.compact.button,
+button.ui.tiny + .ui.mini.button,
+button.ui.tiny + button.ui.tiny,
+button.ui.tiny + button.ui.tiny.compact,
+button.ui.tiny + .ui.tiny.buttons .button,
+button.ui.tiny + .ui.tiny.compact.button,
+button.ui.tiny + .ui.tiny.button,
+button.ui.tiny.compact + button.ui.mini,
+button.ui.tiny.compact + button.ui.mini.compact,
+button.ui.tiny.compact + .ui.mini.buttons .button,
+button.ui.tiny.compact + .ui.mini.compact.button,
+button.ui.tiny.compact + .ui.mini.button,
+button.ui.tiny.compact + button.ui.tiny,
+button.ui.tiny.compact + button.ui.tiny.compact,
+button.ui.tiny.compact + .ui.tiny.buttons .button,
+button.ui.tiny.compact + .ui.tiny.compact.button,
+button.ui.tiny.compact + .ui.tiny.button,
+.ui.tiny.buttons .button + button.ui.mini,
+.ui.tiny.buttons .button + button.ui.mini.compact,
+.ui.tiny.buttons .button + .ui.mini.buttons .button,
+.ui.tiny.buttons .button + .ui.mini.compact.button,
+.ui.tiny.buttons .button + .ui.mini.button,
+.ui.tiny.buttons .button + button.ui.tiny,
+.ui.tiny.buttons .button + button.ui.tiny.compact,
+.ui.tiny.buttons .button + .ui.tiny.buttons .button,
+.ui.tiny.buttons .button + .ui.tiny.compact.button,
+.ui.tiny.buttons .button + .ui.tiny.button,
+.ui.tiny.compact.button + button.ui.mini,
+.ui.tiny.compact.button + button.ui.mini.compact,
+.ui.tiny.compact.button + .ui.mini.buttons .button,
+.ui.tiny.compact.button + .ui.mini.compact.button,
+.ui.tiny.compact.button + .ui.mini.button,
+.ui.tiny.compact.button + button.ui.tiny,
+.ui.tiny.compact.button + button.ui.tiny.compact,
+.ui.tiny.compact.button + .ui.tiny.buttons .button,
+.ui.tiny.compact.button + .ui.tiny.compact.button,
+.ui.tiny.compact.button + .ui.tiny.button,
+.ui.tiny.button + button.ui.mini,
+.ui.tiny.button + button.ui.mini.compact,
+.ui.tiny.button + .ui.mini.buttons .button,
+.ui.tiny.button + .ui.mini.compact.button,
+.ui.tiny.button + .ui.mini.button,
+.ui.tiny.button + button.ui.tiny,
+.ui.tiny.button + button.ui.tiny.compact,
+.ui.tiny.button + .ui.tiny.buttons .button,
+.ui.tiny.button + .ui.tiny.compact.button,
+.ui.tiny.button + .ui.tiny.button {
+  margin-left: 1rem;
+}
+button.ui.mini.fluid + button.ui.mini.fluid,
+button.ui.mini.fluid + button.ui.mini.compact.fluid,
+button.ui.mini.fluid + .ui.mini.buttons .button.fluid,
+button.ui.mini.fluid + .ui.mini.compact.button.fluid,
+button.ui.mini.fluid + .ui.mini.button.fluid,
+button.ui.mini.fluid + button.ui.tiny.fluid,
+button.ui.mini.fluid + button.ui.tiny.compact.fluid,
+button.ui.mini.fluid + .ui.tiny.buttons .button.fluid,
+button.ui.mini.fluid + .ui.tiny.compact.button.fluid,
+button.ui.mini.fluid + .ui.tiny.button.fluid,
+button.ui.mini.compact.fluid + button.ui.mini.fluid,
+button.ui.mini.compact.fluid + button.ui.mini.compact.fluid,
+button.ui.mini.compact.fluid + .ui.mini.buttons .button.fluid,
+button.ui.mini.compact.fluid + .ui.mini.compact.button.fluid,
+button.ui.mini.compact.fluid + .ui.mini.button.fluid,
+button.ui.mini.compact.fluid + button.ui.tiny.fluid,
+button.ui.mini.compact.fluid + button.ui.tiny.compact.fluid,
+button.ui.mini.compact.fluid + .ui.tiny.buttons .button.fluid,
+button.ui.mini.compact.fluid + .ui.tiny.compact.button.fluid,
+button.ui.mini.compact.fluid + .ui.tiny.button.fluid,
+.ui.mini.buttons .button.fluid + button.ui.mini.fluid,
+.ui.mini.buttons .button.fluid + button.ui.mini.compact.fluid,
+.ui.mini.buttons .button.fluid + .ui.mini.buttons .button.fluid,
+.ui.mini.buttons .button.fluid + .ui.mini.compact.button.fluid,
+.ui.mini.buttons .button.fluid + .ui.mini.button.fluid,
+.ui.mini.buttons .button.fluid + button.ui.tiny.fluid,
+.ui.mini.buttons .button.fluid + button.ui.tiny.compact.fluid,
+.ui.mini.buttons .button.fluid + .ui.tiny.buttons .button.fluid,
+.ui.mini.buttons .button.fluid + .ui.tiny.compact.button.fluid,
+.ui.mini.buttons .button.fluid + .ui.tiny.button.fluid,
+.ui.mini.compact.button.fluid + button.ui.mini.fluid,
+.ui.mini.compact.button.fluid + button.ui.mini.compact.fluid,
+.ui.mini.compact.button.fluid + .ui.mini.buttons .button.fluid,
+.ui.mini.compact.button.fluid + .ui.mini.compact.button.fluid,
+.ui.mini.compact.button.fluid + .ui.mini.button.fluid,
+.ui.mini.compact.button.fluid + button.ui.tiny.fluid,
+.ui.mini.compact.button.fluid + button.ui.tiny.compact.fluid,
+.ui.mini.compact.button.fluid + .ui.tiny.buttons .button.fluid,
+.ui.mini.compact.button.fluid + .ui.tiny.compact.button.fluid,
+.ui.mini.compact.button.fluid + .ui.tiny.button.fluid,
+.ui.mini.button.fluid + button.ui.mini.fluid,
+.ui.mini.button.fluid + button.ui.mini.compact.fluid,
+.ui.mini.button.fluid + .ui.mini.buttons .button.fluid,
+.ui.mini.button.fluid + .ui.mini.compact.button.fluid,
+.ui.mini.button.fluid + .ui.mini.button.fluid,
+.ui.mini.button.fluid + button.ui.tiny.fluid,
+.ui.mini.button.fluid + button.ui.tiny.compact.fluid,
+.ui.mini.button.fluid + .ui.tiny.buttons .button.fluid,
+.ui.mini.button.fluid + .ui.tiny.compact.button.fluid,
+.ui.mini.button.fluid + .ui.tiny.button.fluid,
+button.ui.tiny.fluid + button.ui.mini.fluid,
+button.ui.tiny.fluid + button.ui.mini.compact.fluid,
+button.ui.tiny.fluid + .ui.mini.buttons .button.fluid,
+button.ui.tiny.fluid + .ui.mini.compact.button.fluid,
+button.ui.tiny.fluid + .ui.mini.button.fluid,
+button.ui.tiny.fluid + button.ui.tiny.fluid,
+button.ui.tiny.fluid + button.ui.tiny.compact.fluid,
+button.ui.tiny.fluid + .ui.tiny.buttons .button.fluid,
+button.ui.tiny.fluid + .ui.tiny.compact.button.fluid,
+button.ui.tiny.fluid + .ui.tiny.button.fluid,
+button.ui.tiny.compact.fluid + button.ui.mini.fluid,
+button.ui.tiny.compact.fluid + button.ui.mini.compact.fluid,
+button.ui.tiny.compact.fluid + .ui.mini.buttons .button.fluid,
+button.ui.tiny.compact.fluid + .ui.mini.compact.button.fluid,
+button.ui.tiny.compact.fluid + .ui.mini.button.fluid,
+button.ui.tiny.compact.fluid + button.ui.tiny.fluid,
+button.ui.tiny.compact.fluid + button.ui.tiny.compact.fluid,
+button.ui.tiny.compact.fluid + .ui.tiny.buttons .button.fluid,
+button.ui.tiny.compact.fluid + .ui.tiny.compact.button.fluid,
+button.ui.tiny.compact.fluid + .ui.tiny.button.fluid,
+.ui.tiny.buttons .button.fluid + button.ui.mini.fluid,
+.ui.tiny.buttons .button.fluid + button.ui.mini.compact.fluid,
+.ui.tiny.buttons .button.fluid + .ui.mini.buttons .button.fluid,
+.ui.tiny.buttons .button.fluid + .ui.mini.compact.button.fluid,
+.ui.tiny.buttons .button.fluid + .ui.mini.button.fluid,
+.ui.tiny.buttons .button.fluid + button.ui.tiny.fluid,
+.ui.tiny.buttons .button.fluid + button.ui.tiny.compact.fluid,
+.ui.tiny.buttons .button.fluid + .ui.tiny.buttons .button.fluid,
+.ui.tiny.buttons .button.fluid + .ui.tiny.compact.button.fluid,
+.ui.tiny.buttons .button.fluid + .ui.tiny.button.fluid,
+.ui.tiny.compact.button.fluid + button.ui.mini.fluid,
+.ui.tiny.compact.button.fluid + button.ui.mini.compact.fluid,
+.ui.tiny.compact.button.fluid + .ui.mini.buttons .button.fluid,
+.ui.tiny.compact.button.fluid + .ui.mini.compact.button.fluid,
+.ui.tiny.compact.button.fluid + .ui.mini.button.fluid,
+.ui.tiny.compact.button.fluid + button.ui.tiny.fluid,
+.ui.tiny.compact.button.fluid + button.ui.tiny.compact.fluid,
+.ui.tiny.compact.button.fluid + .ui.tiny.buttons .button.fluid,
+.ui.tiny.compact.button.fluid + .ui.tiny.compact.button.fluid,
+.ui.tiny.compact.button.fluid + .ui.tiny.button.fluid,
+.ui.tiny.button.fluid + button.ui.mini.fluid,
+.ui.tiny.button.fluid + button.ui.mini.compact.fluid,
+.ui.tiny.button.fluid + .ui.mini.buttons .button.fluid,
+.ui.tiny.button.fluid + .ui.mini.compact.button.fluid,
+.ui.tiny.button.fluid + .ui.mini.button.fluid,
+.ui.tiny.button.fluid + button.ui.tiny.fluid,
+.ui.tiny.button.fluid + button.ui.tiny.compact.fluid,
+.ui.tiny.button.fluid + .ui.tiny.buttons .button.fluid,
+.ui.tiny.button.fluid + .ui.tiny.compact.button.fluid,
+.ui.tiny.button.fluid + .ui.tiny.button.fluid {
+  margin: 0.5rem 0;
 }
 button.ui.mini.animated .hidden.content,
 button.ui.mini.compact.animated .hidden.content,
@@ -3393,9 +3662,48 @@ button.ui.tiny.compact.animated .hidden.content,
 .ui.tiny.buttons .button.animated .hidden.content,
 .ui.tiny.compact.button.animated .hidden.content,
 .ui.tiny.button.animated .hidden.content {
+  position: absolute;
   font-size: 1em;
   height: 2rem;
   margin-top: -1rem;
+}
+button.ui.mini.labeled.icon,
+button.ui.mini.compact.labeled.icon,
+.ui.mini.buttons .button.labeled.icon,
+.ui.mini.compact.button.labeled.icon,
+.ui.mini.button.labeled.icon,
+button.ui.tiny.labeled.icon,
+button.ui.tiny.compact.labeled.icon,
+.ui.tiny.buttons .button.labeled.icon,
+.ui.tiny.compact.button.labeled.icon,
+.ui.tiny.button.labeled.icon {
+  padding-left: 3rem !important;
+  padding-right: 1rem !important;
+}
+button.ui.mini.labeled.icon > .icon,
+button.ui.mini.compact.labeled.icon > .icon,
+.ui.mini.buttons .button.labeled.icon > .icon,
+.ui.mini.compact.button.labeled.icon > .icon,
+.ui.mini.button.labeled.icon > .icon,
+button.ui.tiny.labeled.icon > .icon,
+button.ui.tiny.compact.labeled.icon > .icon,
+.ui.tiny.buttons .button.labeled.icon > .icon,
+.ui.tiny.compact.button.labeled.icon > .icon,
+.ui.tiny.button.labeled.icon > .icon {
+  width: 2rem;
+}
+button.ui.mini.right.labeled.icon,
+button.ui.mini.compact.right.labeled.icon,
+.ui.mini.buttons .button.right.labeled.icon,
+.ui.mini.compact.button.right.labeled.icon,
+.ui.mini.button.right.labeled.icon,
+button.ui.tiny.right.labeled.icon,
+button.ui.tiny.compact.right.labeled.icon,
+.ui.tiny.buttons .button.right.labeled.icon,
+.ui.tiny.compact.button.right.labeled.icon,
+.ui.tiny.button.right.labeled.icon {
+  padding-left: 1rem !important;
+  padding-right: 3rem !important;
 }
 button.ui.mini > .icon,
 button.ui.mini.compact > .icon,
@@ -3407,54 +3715,81 @@ button.ui.tiny.compact > .icon,
 .ui.tiny.buttons .button > .icon,
 .ui.tiny.compact.button > .icon,
 .ui.tiny.button > .icon {
-  /*
-    width:2rem;*/
+  height: auto;
+  margin: 0 1rem 0 0;
+  opacity: 0.9;
 }
-.ui.labeled.icon.mini.buttons .button,
-.ui.labeled.icon.buttons .mini.button,
-.ui.labeled.icon.mini.buttons button,
-.ui.labeled.icon.mini.button,
-.ui.labeled.icon.tiny.buttons .button,
-.ui.labeled.icon.buttons .tiny.button,
-.ui.labeled.icon.tiny.buttons button,
-.ui.labeled.icon.tiny.button {
-  padding-left: 3rem !important;
+button.ui.mini > .icon.right,
+button.ui.mini.compact > .icon.right,
+.ui.mini.buttons .button > .icon.right,
+.ui.mini.compact.button > .icon.right,
+.ui.mini.button > .icon.right,
+button.ui.tiny > .icon.right,
+button.ui.tiny.compact > .icon.right,
+.ui.tiny.buttons .button > .icon.right,
+.ui.tiny.compact.button > .icon.right,
+.ui.tiny.button > .icon.right {
+  margin: 0 0 0 1rem;
 }
-.ui.labeled.icon.mini.buttons .button > .icon,
-.ui.labeled.icon.buttons .mini.button > .icon,
-.ui.labeled.icon.mini.buttons button > .icon,
-.ui.labeled.icon.mini.button > .icon,
-.ui.labeled.icon.tiny.buttons .button > .icon,
-.ui.labeled.icon.buttons .tiny.button > .icon,
-.ui.labeled.icon.tiny.buttons button > .icon,
-.ui.labeled.icon.tiny.button > .icon {
-  width: 2rem;
+.ui.tiny.buttons,
+.ui.mini.buttons {
+  padding: 0;
+  box-shadow: 0px 0px 0px 0px rgba(34, 36, 38, 0.15), 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
+  margin: 0.5rem 0rem;
+  vertical-align: middle;
+  
+/* "baseline" does not align with line grid */
 }
-.ui.mini.conditional.buttons .button:first-child,
-.ui.tiny.conditional.buttons .button:first-child,
-.ui.mini.conditional.buttons button:first-child,
-.ui.tiny.conditional.buttons button:first-child {
+.ui.tiny.buttons + .ui.tiny.buttons,
+.ui.tiny.buttons + .ui.mini.buttons,
+.ui.mini.buttons + .ui.tiny.buttons,
+.ui.mini.buttons + .ui.mini.buttons {
+  margin-left: 1rem;
+}
+.ui.tiny.buttons .ui.button,
+.ui.mini.buttons .ui.button,
+.ui.tiny.buttons button.ui,
+.ui.mini.buttons button.ui {
+  margin: 0 !important;
+  box-shadow: 0px 0px 0px 0px rgba(34, 36, 38, 0.15), 0px 0px 0px 0 rgba(34, 36, 38, 0.15);
+}
+.ui.tiny.buttons.conditional button.ui:first-child,
+.ui.mini.buttons.conditional button.ui:first-child,
+.ui.tiny.buttons.conditional .ui.button:first-child,
+.ui.mini.buttons.conditional .ui.button:first-child,
+.ui.tiny.buttons.conditional button.ui:first-child,
+.ui.mini.buttons.conditional button.ui:first-child,
+.ui.tiny.buttons.conditional .ui.button:first-child,
+.ui.mini.buttons.conditional .ui.button:first-child {
   padding-right: 1.5rem;
 }
-.ui.mini.conditional.buttons button:not(:first-child):not(:last-child),
-.ui.tiny.conditional.buttons button:not(:first-child):not(:last-child),
-.ui.mini.conditional.buttons .button:not(:first-child):not(:last-child),
-.ui.tiny.conditional.buttons .button:not(:first-child):not(:last-child) {
+.ui.tiny.buttons.conditional button.ui:not(:first-child):not(:last-child),
+.ui.mini.buttons.conditional button.ui:not(:first-child):not(:last-child),
+.ui.tiny.buttons.conditional .ui.button:not(:first-child):not(:last-child),
+.ui.mini.buttons.conditional .ui.button:not(:first-child):not(:last-child),
+.ui.tiny.buttons.conditional button.ui:not(:first-child):not(:last-child),
+.ui.mini.buttons.conditional button.ui:not(:first-child):not(:last-child),
+.ui.tiny.buttons.conditional .ui.button:not(:first-child):not(:last-child),
+.ui.mini.buttons.conditional .ui.button:not(:first-child):not(:last-child) {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
-.ui.mini.conditional.buttons button:last-child,
-.ui.tiny.conditional.buttons button:last-child,
-.ui.mini.conditional.buttons .button:last-child,
-.ui.tiny.conditional.buttons .button:last-child {
+.ui.tiny.buttons.conditional button.ui:last-child,
+.ui.mini.buttons.conditional button.ui:last-child,
+.ui.tiny.buttons.conditional .ui.button:last-child,
+.ui.mini.buttons.conditional .ui.button:last-child,
+.ui.tiny.buttons.conditional button.ui:last-child,
+.ui.mini.buttons.conditional button.ui:last-child,
+.ui.tiny.buttons.conditional .ui.button:last-child,
+.ui.mini.buttons.conditional .ui.button:last-child {
   padding-left: 1.5rem;
 }
-.ui.mini.conditional.buttons .or,
-.ui.tiny.conditional.buttons .or {
+.ui.tiny.buttons.conditional .or,
+.ui.mini.buttons.conditional .or {
   height: 2rem;
 }
-.ui.mini.conditional.buttons .or:before,
-.ui.tiny.conditional.buttons .or:before {
+.ui.tiny.buttons.conditional .or:before,
+.ui.mini.buttons.conditional .or:before {
   height: 1.5rem;
   width: 1.5rem;
   margin-left: -0.75rem;
@@ -3462,7 +3797,39 @@ button.ui.tiny.compact > .icon,
   line-height: 1.5rem;
   font-size: 0.91667rem;
 }
-/*SMALL*/
+.ui.tiny.buttons.icon button.ui > .icon,
+.ui.mini.buttons.icon button.ui > .icon,
+.ui.tiny.buttons.icon .ui.button > .icon,
+.ui.mini.buttons.icon .ui.button > .icon {
+  margin: 0px;
+}
+.ui.tiny.buttons.labeled.icon button.ui,
+.ui.mini.buttons.labeled.icon button.ui,
+.ui.tiny.buttons.labeled.icon .ui.button,
+.ui.mini.buttons.labeled.icon .ui.button {
+  padding-left: 3rem !important;
+  padding-right: 1rem !important;
+}
+.ui.tiny.buttons.labeled.icon button.ui > .icon,
+.ui.mini.buttons.labeled.icon button.ui > .icon,
+.ui.tiny.buttons.labeled.icon .ui.button > .icon,
+.ui.mini.buttons.labeled.icon .ui.button > .icon {
+  width: 2rem;
+}
+.ui.tiny.buttons.right.labeled.icon button.ui,
+.ui.mini.buttons.right.labeled.icon button.ui,
+.ui.tiny.buttons.right.labeled.icon .ui.button,
+.ui.mini.buttons.right.labeled.icon .ui.button {
+  padding-right: 3rem !important;
+  padding-left: 1rem !important;
+}
+button.ui.small,
+button.ui.small.compact,
+.ui.small.buttons .button,
+.ui.small.compact.button,
+.ui.small.button {
+  box-shadow: 0px 0px 0px 0px rgba(34, 36, 38, 0.15), 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
+}
 button.ui.small,
 button.ui.small.compact,
 .ui.small.buttons .button,
@@ -3473,64 +3840,196 @@ button.ui.small.compact .hidden.content,
 .ui.small.buttons .button .hidden.content,
 .ui.small.compact.button .hidden.content,
 .ui.small.button .hidden.content {
+  position: relative;
+  font-size: 1.16666667rem;
   line-height: 2rem;
+  margin: 0.5rem 0rem;
+  vertical-align: middle;
+  
+/* "baseline" does not align with line grid */
   padding: 0.5rem 1rem;
   min-width: 3rem;
   min-height: 3rem;
+}
+button.ui.small + button.ui.small,
+button.ui.small + button.ui.small.compact,
+button.ui.small + .ui.small.buttons .button,
+button.ui.small + .ui.small.compact.button,
+button.ui.small + .ui.small.button,
+button.ui.small.compact + button.ui.small,
+button.ui.small.compact + button.ui.small.compact,
+button.ui.small.compact + .ui.small.buttons .button,
+button.ui.small.compact + .ui.small.compact.button,
+button.ui.small.compact + .ui.small.button,
+.ui.small.buttons .button + button.ui.small,
+.ui.small.buttons .button + button.ui.small.compact,
+.ui.small.buttons .button + .ui.small.buttons .button,
+.ui.small.buttons .button + .ui.small.compact.button,
+.ui.small.buttons .button + .ui.small.button,
+.ui.small.compact.button + button.ui.small,
+.ui.small.compact.button + button.ui.small.compact,
+.ui.small.compact.button + .ui.small.buttons .button,
+.ui.small.compact.button + .ui.small.compact.button,
+.ui.small.compact.button + .ui.small.button,
+.ui.small.button + button.ui.small,
+.ui.small.button + button.ui.small.compact,
+.ui.small.button + .ui.small.buttons .button,
+.ui.small.button + .ui.small.compact.button,
+.ui.small.button + .ui.small.button {
+  margin-left: 1rem;
+}
+button.ui.small.fluid + button.ui.small.fluid,
+button.ui.small.fluid + button.ui.small.compact.fluid,
+button.ui.small.fluid + .ui.small.buttons .button.fluid,
+button.ui.small.fluid + .ui.small.compact.button.fluid,
+button.ui.small.fluid + .ui.small.button.fluid,
+button.ui.small.compact.fluid + button.ui.small.fluid,
+button.ui.small.compact.fluid + button.ui.small.compact.fluid,
+button.ui.small.compact.fluid + .ui.small.buttons .button.fluid,
+button.ui.small.compact.fluid + .ui.small.compact.button.fluid,
+button.ui.small.compact.fluid + .ui.small.button.fluid,
+.ui.small.buttons .button.fluid + button.ui.small.fluid,
+.ui.small.buttons .button.fluid + button.ui.small.compact.fluid,
+.ui.small.buttons .button.fluid + .ui.small.buttons .button.fluid,
+.ui.small.buttons .button.fluid + .ui.small.compact.button.fluid,
+.ui.small.buttons .button.fluid + .ui.small.button.fluid,
+.ui.small.compact.button.fluid + button.ui.small.fluid,
+.ui.small.compact.button.fluid + button.ui.small.compact.fluid,
+.ui.small.compact.button.fluid + .ui.small.buttons .button.fluid,
+.ui.small.compact.button.fluid + .ui.small.compact.button.fluid,
+.ui.small.compact.button.fluid + .ui.small.button.fluid,
+.ui.small.button.fluid + button.ui.small.fluid,
+.ui.small.button.fluid + button.ui.small.compact.fluid,
+.ui.small.button.fluid + .ui.small.buttons .button.fluid,
+.ui.small.button.fluid + .ui.small.compact.button.fluid,
+.ui.small.button.fluid + .ui.small.button.fluid {
+  margin: 0.5rem 0;
 }
 button.ui.small.animated .hidden.content,
 button.ui.small.compact.animated .hidden.content,
 .ui.small.buttons .button.animated .hidden.content,
 .ui.small.compact.button.animated .hidden.content,
 .ui.small.button.animated .hidden.content {
+  position: absolute;
   font-size: 1em;
   height: 3rem;
   margin-top: -1.5rem;
+}
+button.ui.small.labeled.icon,
+button.ui.small.compact.labeled.icon,
+.ui.small.buttons .button.labeled.icon,
+.ui.small.compact.button.labeled.icon,
+.ui.small.button.labeled.icon {
+  padding-left: 4rem !important;
+  padding-right: 1rem !important;
+}
+button.ui.small.labeled.icon > .icon,
+button.ui.small.compact.labeled.icon > .icon,
+.ui.small.buttons .button.labeled.icon > .icon,
+.ui.small.compact.button.labeled.icon > .icon,
+.ui.small.button.labeled.icon > .icon {
+  width: 3rem;
+}
+button.ui.small.right.labeled.icon,
+button.ui.small.compact.right.labeled.icon,
+.ui.small.buttons .button.right.labeled.icon,
+.ui.small.compact.button.right.labeled.icon,
+.ui.small.button.right.labeled.icon {
+  padding-left: 1rem !important;
+  padding-right: 4rem !important;
 }
 button.ui.small > .icon,
 button.ui.small.compact > .icon,
 .ui.small.buttons .button > .icon,
 .ui.small.compact.button > .icon,
 .ui.small.button > .icon {
-  /*width:3rem - 2rem;*/
+  height: auto;
+  margin: 0 1rem 0 0;
+  opacity: 0.9;
 }
-.ui.labeled.icon.small.buttons .button,
-.ui.labeled.icon.buttons .small.button,
-.ui.labeled.icon.small.buttons button,
-.ui.labeled.icon.small.button {
-  padding-left: 4rem !important;
+button.ui.small > .icon.right,
+button.ui.small.compact > .icon.right,
+.ui.small.buttons .button > .icon.right,
+.ui.small.compact.button > .icon.right,
+.ui.small.button > .icon.right {
+  margin: 0 0 0 1rem;
 }
-.ui.labeled.icon.small.buttons .button > .icon,
-.ui.labeled.icon.buttons .small.button > .icon,
-.ui.labeled.icon.small.buttons button > .icon,
-.ui.labeled.icon.small.button > .icon {
-  width: 3rem;
+.ui.small.buttons {
+  padding: 0;
+  box-shadow: 0px 0px 0px 0px rgba(34, 36, 38, 0.15), 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
+  margin: 0.5rem 0rem;
+  vertical-align: middle;
+  
+/* "baseline" does not align with line grid */
 }
-.ui.small.conditional.buttons .button:first-child,
-.ui.small.conditional.buttons button:first-child {
+.ui.small.buttons + .ui.small.buttons {
+  margin-left: 1rem;
+}
+.ui.small.buttons .ui.button,
+.ui.small.buttons button.ui {
+  margin: 0 !important;
+  box-shadow: 0px 0px 0px 0px rgba(34, 36, 38, 0.15), 0px 0px 0px 0 rgba(34, 36, 38, 0.15);
+}
+.ui.small.buttons.conditional button.ui:first-child,
+.ui.small.buttons.conditional .ui.button:first-child,
+.ui.small.buttons.conditional button.ui:first-child,
+.ui.small.buttons.conditional .ui.button:first-child {
   padding-right: 1.5rem;
 }
-.ui.small.conditional.buttons button:not(:first-child):not(:last-child),
-.ui.small.conditional.buttons .button:not(:first-child):not(:last-child) {
+.ui.small.buttons.conditional button.ui:not(:first-child):not(:last-child),
+.ui.small.buttons.conditional .ui.button:not(:first-child):not(:last-child),
+.ui.small.buttons.conditional button.ui:not(:first-child):not(:last-child),
+.ui.small.buttons.conditional .ui.button:not(:first-child):not(:last-child) {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
-.ui.small.conditional.buttons button:last-child,
-.ui.small.conditional.buttons .button:last-child {
+.ui.small.buttons.conditional button.ui:last-child,
+.ui.small.buttons.conditional .ui.button:last-child,
+.ui.small.buttons.conditional button.ui:last-child,
+.ui.small.buttons.conditional .ui.button:last-child {
   padding-left: 1.5rem;
 }
-.ui.small.conditional.buttons .or {
+.ui.small.buttons.conditional .or {
   height: 3rem;
 }
-.ui.small.conditional.buttons .or:before {
+.ui.small.buttons.conditional .or:before {
   height: 2rem;
   width: 2rem;
   margin-left: -1rem;
   margin-top: -1rem;
   line-height: 2rem;
-  font-size: 1.1666667rem;
+  font-size: 1.16666667rem;
 }
-/*LARGE & BIG*/
+.ui.small.buttons.icon button.ui > .icon,
+.ui.small.buttons.icon .ui.button > .icon {
+  margin: 0px;
+}
+.ui.small.buttons.labeled.icon button.ui,
+.ui.small.buttons.labeled.icon .ui.button {
+  padding-left: 4rem !important;
+  padding-right: 1rem !important;
+}
+.ui.small.buttons.labeled.icon button.ui > .icon,
+.ui.small.buttons.labeled.icon .ui.button > .icon {
+  width: 3rem;
+}
+.ui.small.buttons.right.labeled.icon button.ui,
+.ui.small.buttons.right.labeled.icon .ui.button {
+  padding-right: 4rem !important;
+  padding-left: 1rem !important;
+}
+button.ui.large,
+button.ui.large.compact,
+.ui.large.buttons .button,
+.ui.large.compact.button,
+.ui.large.button,
+button.ui.big,
+button.ui.big.compact,
+.ui.big.buttons .button,
+.ui.big.compact.button,
+.ui.big.button {
+  box-shadow: 0px 0px 0px 0px rgba(34, 36, 38, 0.15), 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
+}
 button.ui.large,
 button.ui.large.compact,
 .ui.large.buttons .button,
@@ -3551,10 +4050,220 @@ button.ui.big.compact .hidden.content,
 .ui.big.buttons .button .hidden.content,
 .ui.big.compact.button .hidden.content,
 .ui.big.button .hidden.content {
+  position: relative;
+  font-size: 1.75rem;
   line-height: 2rem;
+  margin: 0.5rem 0rem;
+  vertical-align: middle;
+  
+/* "baseline" does not align with line grid */
   padding: 1.5rem 1rem;
   min-width: 5rem;
   min-height: 5rem;
+}
+button.ui.large + button.ui.large,
+button.ui.large + button.ui.large.compact,
+button.ui.large + .ui.large.buttons .button,
+button.ui.large + .ui.large.compact.button,
+button.ui.large + .ui.large.button,
+button.ui.large + button.ui.big,
+button.ui.large + button.ui.big.compact,
+button.ui.large + .ui.big.buttons .button,
+button.ui.large + .ui.big.compact.button,
+button.ui.large + .ui.big.button,
+button.ui.large.compact + button.ui.large,
+button.ui.large.compact + button.ui.large.compact,
+button.ui.large.compact + .ui.large.buttons .button,
+button.ui.large.compact + .ui.large.compact.button,
+button.ui.large.compact + .ui.large.button,
+button.ui.large.compact + button.ui.big,
+button.ui.large.compact + button.ui.big.compact,
+button.ui.large.compact + .ui.big.buttons .button,
+button.ui.large.compact + .ui.big.compact.button,
+button.ui.large.compact + .ui.big.button,
+.ui.large.buttons .button + button.ui.large,
+.ui.large.buttons .button + button.ui.large.compact,
+.ui.large.buttons .button + .ui.large.buttons .button,
+.ui.large.buttons .button + .ui.large.compact.button,
+.ui.large.buttons .button + .ui.large.button,
+.ui.large.buttons .button + button.ui.big,
+.ui.large.buttons .button + button.ui.big.compact,
+.ui.large.buttons .button + .ui.big.buttons .button,
+.ui.large.buttons .button + .ui.big.compact.button,
+.ui.large.buttons .button + .ui.big.button,
+.ui.large.compact.button + button.ui.large,
+.ui.large.compact.button + button.ui.large.compact,
+.ui.large.compact.button + .ui.large.buttons .button,
+.ui.large.compact.button + .ui.large.compact.button,
+.ui.large.compact.button + .ui.large.button,
+.ui.large.compact.button + button.ui.big,
+.ui.large.compact.button + button.ui.big.compact,
+.ui.large.compact.button + .ui.big.buttons .button,
+.ui.large.compact.button + .ui.big.compact.button,
+.ui.large.compact.button + .ui.big.button,
+.ui.large.button + button.ui.large,
+.ui.large.button + button.ui.large.compact,
+.ui.large.button + .ui.large.buttons .button,
+.ui.large.button + .ui.large.compact.button,
+.ui.large.button + .ui.large.button,
+.ui.large.button + button.ui.big,
+.ui.large.button + button.ui.big.compact,
+.ui.large.button + .ui.big.buttons .button,
+.ui.large.button + .ui.big.compact.button,
+.ui.large.button + .ui.big.button,
+button.ui.big + button.ui.large,
+button.ui.big + button.ui.large.compact,
+button.ui.big + .ui.large.buttons .button,
+button.ui.big + .ui.large.compact.button,
+button.ui.big + .ui.large.button,
+button.ui.big + button.ui.big,
+button.ui.big + button.ui.big.compact,
+button.ui.big + .ui.big.buttons .button,
+button.ui.big + .ui.big.compact.button,
+button.ui.big + .ui.big.button,
+button.ui.big.compact + button.ui.large,
+button.ui.big.compact + button.ui.large.compact,
+button.ui.big.compact + .ui.large.buttons .button,
+button.ui.big.compact + .ui.large.compact.button,
+button.ui.big.compact + .ui.large.button,
+button.ui.big.compact + button.ui.big,
+button.ui.big.compact + button.ui.big.compact,
+button.ui.big.compact + .ui.big.buttons .button,
+button.ui.big.compact + .ui.big.compact.button,
+button.ui.big.compact + .ui.big.button,
+.ui.big.buttons .button + button.ui.large,
+.ui.big.buttons .button + button.ui.large.compact,
+.ui.big.buttons .button + .ui.large.buttons .button,
+.ui.big.buttons .button + .ui.large.compact.button,
+.ui.big.buttons .button + .ui.large.button,
+.ui.big.buttons .button + button.ui.big,
+.ui.big.buttons .button + button.ui.big.compact,
+.ui.big.buttons .button + .ui.big.buttons .button,
+.ui.big.buttons .button + .ui.big.compact.button,
+.ui.big.buttons .button + .ui.big.button,
+.ui.big.compact.button + button.ui.large,
+.ui.big.compact.button + button.ui.large.compact,
+.ui.big.compact.button + .ui.large.buttons .button,
+.ui.big.compact.button + .ui.large.compact.button,
+.ui.big.compact.button + .ui.large.button,
+.ui.big.compact.button + button.ui.big,
+.ui.big.compact.button + button.ui.big.compact,
+.ui.big.compact.button + .ui.big.buttons .button,
+.ui.big.compact.button + .ui.big.compact.button,
+.ui.big.compact.button + .ui.big.button,
+.ui.big.button + button.ui.large,
+.ui.big.button + button.ui.large.compact,
+.ui.big.button + .ui.large.buttons .button,
+.ui.big.button + .ui.large.compact.button,
+.ui.big.button + .ui.large.button,
+.ui.big.button + button.ui.big,
+.ui.big.button + button.ui.big.compact,
+.ui.big.button + .ui.big.buttons .button,
+.ui.big.button + .ui.big.compact.button,
+.ui.big.button + .ui.big.button {
+  margin-left: 1rem;
+}
+button.ui.large.fluid + button.ui.large.fluid,
+button.ui.large.fluid + button.ui.large.compact.fluid,
+button.ui.large.fluid + .ui.large.buttons .button.fluid,
+button.ui.large.fluid + .ui.large.compact.button.fluid,
+button.ui.large.fluid + .ui.large.button.fluid,
+button.ui.large.fluid + button.ui.big.fluid,
+button.ui.large.fluid + button.ui.big.compact.fluid,
+button.ui.large.fluid + .ui.big.buttons .button.fluid,
+button.ui.large.fluid + .ui.big.compact.button.fluid,
+button.ui.large.fluid + .ui.big.button.fluid,
+button.ui.large.compact.fluid + button.ui.large.fluid,
+button.ui.large.compact.fluid + button.ui.large.compact.fluid,
+button.ui.large.compact.fluid + .ui.large.buttons .button.fluid,
+button.ui.large.compact.fluid + .ui.large.compact.button.fluid,
+button.ui.large.compact.fluid + .ui.large.button.fluid,
+button.ui.large.compact.fluid + button.ui.big.fluid,
+button.ui.large.compact.fluid + button.ui.big.compact.fluid,
+button.ui.large.compact.fluid + .ui.big.buttons .button.fluid,
+button.ui.large.compact.fluid + .ui.big.compact.button.fluid,
+button.ui.large.compact.fluid + .ui.big.button.fluid,
+.ui.large.buttons .button.fluid + button.ui.large.fluid,
+.ui.large.buttons .button.fluid + button.ui.large.compact.fluid,
+.ui.large.buttons .button.fluid + .ui.large.buttons .button.fluid,
+.ui.large.buttons .button.fluid + .ui.large.compact.button.fluid,
+.ui.large.buttons .button.fluid + .ui.large.button.fluid,
+.ui.large.buttons .button.fluid + button.ui.big.fluid,
+.ui.large.buttons .button.fluid + button.ui.big.compact.fluid,
+.ui.large.buttons .button.fluid + .ui.big.buttons .button.fluid,
+.ui.large.buttons .button.fluid + .ui.big.compact.button.fluid,
+.ui.large.buttons .button.fluid + .ui.big.button.fluid,
+.ui.large.compact.button.fluid + button.ui.large.fluid,
+.ui.large.compact.button.fluid + button.ui.large.compact.fluid,
+.ui.large.compact.button.fluid + .ui.large.buttons .button.fluid,
+.ui.large.compact.button.fluid + .ui.large.compact.button.fluid,
+.ui.large.compact.button.fluid + .ui.large.button.fluid,
+.ui.large.compact.button.fluid + button.ui.big.fluid,
+.ui.large.compact.button.fluid + button.ui.big.compact.fluid,
+.ui.large.compact.button.fluid + .ui.big.buttons .button.fluid,
+.ui.large.compact.button.fluid + .ui.big.compact.button.fluid,
+.ui.large.compact.button.fluid + .ui.big.button.fluid,
+.ui.large.button.fluid + button.ui.large.fluid,
+.ui.large.button.fluid + button.ui.large.compact.fluid,
+.ui.large.button.fluid + .ui.large.buttons .button.fluid,
+.ui.large.button.fluid + .ui.large.compact.button.fluid,
+.ui.large.button.fluid + .ui.large.button.fluid,
+.ui.large.button.fluid + button.ui.big.fluid,
+.ui.large.button.fluid + button.ui.big.compact.fluid,
+.ui.large.button.fluid + .ui.big.buttons .button.fluid,
+.ui.large.button.fluid + .ui.big.compact.button.fluid,
+.ui.large.button.fluid + .ui.big.button.fluid,
+button.ui.big.fluid + button.ui.large.fluid,
+button.ui.big.fluid + button.ui.large.compact.fluid,
+button.ui.big.fluid + .ui.large.buttons .button.fluid,
+button.ui.big.fluid + .ui.large.compact.button.fluid,
+button.ui.big.fluid + .ui.large.button.fluid,
+button.ui.big.fluid + button.ui.big.fluid,
+button.ui.big.fluid + button.ui.big.compact.fluid,
+button.ui.big.fluid + .ui.big.buttons .button.fluid,
+button.ui.big.fluid + .ui.big.compact.button.fluid,
+button.ui.big.fluid + .ui.big.button.fluid,
+button.ui.big.compact.fluid + button.ui.large.fluid,
+button.ui.big.compact.fluid + button.ui.large.compact.fluid,
+button.ui.big.compact.fluid + .ui.large.buttons .button.fluid,
+button.ui.big.compact.fluid + .ui.large.compact.button.fluid,
+button.ui.big.compact.fluid + .ui.large.button.fluid,
+button.ui.big.compact.fluid + button.ui.big.fluid,
+button.ui.big.compact.fluid + button.ui.big.compact.fluid,
+button.ui.big.compact.fluid + .ui.big.buttons .button.fluid,
+button.ui.big.compact.fluid + .ui.big.compact.button.fluid,
+button.ui.big.compact.fluid + .ui.big.button.fluid,
+.ui.big.buttons .button.fluid + button.ui.large.fluid,
+.ui.big.buttons .button.fluid + button.ui.large.compact.fluid,
+.ui.big.buttons .button.fluid + .ui.large.buttons .button.fluid,
+.ui.big.buttons .button.fluid + .ui.large.compact.button.fluid,
+.ui.big.buttons .button.fluid + .ui.large.button.fluid,
+.ui.big.buttons .button.fluid + button.ui.big.fluid,
+.ui.big.buttons .button.fluid + button.ui.big.compact.fluid,
+.ui.big.buttons .button.fluid + .ui.big.buttons .button.fluid,
+.ui.big.buttons .button.fluid + .ui.big.compact.button.fluid,
+.ui.big.buttons .button.fluid + .ui.big.button.fluid,
+.ui.big.compact.button.fluid + button.ui.large.fluid,
+.ui.big.compact.button.fluid + button.ui.large.compact.fluid,
+.ui.big.compact.button.fluid + .ui.large.buttons .button.fluid,
+.ui.big.compact.button.fluid + .ui.large.compact.button.fluid,
+.ui.big.compact.button.fluid + .ui.large.button.fluid,
+.ui.big.compact.button.fluid + button.ui.big.fluid,
+.ui.big.compact.button.fluid + button.ui.big.compact.fluid,
+.ui.big.compact.button.fluid + .ui.big.buttons .button.fluid,
+.ui.big.compact.button.fluid + .ui.big.compact.button.fluid,
+.ui.big.compact.button.fluid + .ui.big.button.fluid,
+.ui.big.button.fluid + button.ui.large.fluid,
+.ui.big.button.fluid + button.ui.large.compact.fluid,
+.ui.big.button.fluid + .ui.large.buttons .button.fluid,
+.ui.big.button.fluid + .ui.large.compact.button.fluid,
+.ui.big.button.fluid + .ui.large.button.fluid,
+.ui.big.button.fluid + button.ui.big.fluid,
+.ui.big.button.fluid + button.ui.big.compact.fluid,
+.ui.big.button.fluid + .ui.big.buttons .button.fluid,
+.ui.big.button.fluid + .ui.big.compact.button.fluid,
+.ui.big.button.fluid + .ui.big.button.fluid {
+  margin: 0.5rem 0;
 }
 button.ui.large.animated .hidden.content,
 button.ui.large.compact.animated .hidden.content,
@@ -3566,9 +4275,48 @@ button.ui.big.compact.animated .hidden.content,
 .ui.big.buttons .button.animated .hidden.content,
 .ui.big.compact.button.animated .hidden.content,
 .ui.big.button.animated .hidden.content {
+  position: absolute;
   font-size: 1em;
   height: 5rem;
   margin-top: -2.5rem;
+}
+button.ui.large.labeled.icon,
+button.ui.large.compact.labeled.icon,
+.ui.large.buttons .button.labeled.icon,
+.ui.large.compact.button.labeled.icon,
+.ui.large.button.labeled.icon,
+button.ui.big.labeled.icon,
+button.ui.big.compact.labeled.icon,
+.ui.big.buttons .button.labeled.icon,
+.ui.big.compact.button.labeled.icon,
+.ui.big.button.labeled.icon {
+  padding-left: 6rem !important;
+  padding-right: 1rem !important;
+}
+button.ui.large.labeled.icon > .icon,
+button.ui.large.compact.labeled.icon > .icon,
+.ui.large.buttons .button.labeled.icon > .icon,
+.ui.large.compact.button.labeled.icon > .icon,
+.ui.large.button.labeled.icon > .icon,
+button.ui.big.labeled.icon > .icon,
+button.ui.big.compact.labeled.icon > .icon,
+.ui.big.buttons .button.labeled.icon > .icon,
+.ui.big.compact.button.labeled.icon > .icon,
+.ui.big.button.labeled.icon > .icon {
+  width: 5rem;
+}
+button.ui.large.right.labeled.icon,
+button.ui.large.compact.right.labeled.icon,
+.ui.large.buttons .button.right.labeled.icon,
+.ui.large.compact.button.right.labeled.icon,
+.ui.large.button.right.labeled.icon,
+button.ui.big.right.labeled.icon,
+button.ui.big.compact.right.labeled.icon,
+.ui.big.buttons .button.right.labeled.icon,
+.ui.big.compact.button.right.labeled.icon,
+.ui.big.button.right.labeled.icon {
+  padding-left: 1rem !important;
+  padding-right: 6rem !important;
 }
 button.ui.large > .icon,
 button.ui.large.compact > .icon,
@@ -3580,53 +4328,81 @@ button.ui.big.compact > .icon,
 .ui.big.buttons .button > .icon,
 .ui.big.compact.button > .icon,
 .ui.big.button > .icon {
-  /*width:4rem - 2rem;*/
+  height: auto;
+  margin: 0 1rem 0 0;
+  opacity: 0.9;
 }
-.ui.labeled.icon.large.buttons .button,
-.ui.labeled.icon.buttons .large.button,
-.ui.labeled.icon.large.buttons button,
-.ui.labeled.icon.large.button,
-.ui.labeled.icon.big.buttons .button,
-.ui.labeled.icon.buttons .big.button,
-.ui.labeled.icon.big.buttons button,
-.ui.labeled.icon.big.button {
-  padding-left: 6rem !important;
+button.ui.large > .icon.right,
+button.ui.large.compact > .icon.right,
+.ui.large.buttons .button > .icon.right,
+.ui.large.compact.button > .icon.right,
+.ui.large.button > .icon.right,
+button.ui.big > .icon.right,
+button.ui.big.compact > .icon.right,
+.ui.big.buttons .button > .icon.right,
+.ui.big.compact.button > .icon.right,
+.ui.big.button > .icon.right {
+  margin: 0 0 0 1rem;
 }
-.ui.labeled.icon.large.buttons .button > .icon,
-.ui.labeled.icon.buttons .large.button > .icon,
-.ui.labeled.icon.large.buttons button > .icon,
-.ui.labeled.icon.large.button > .icon,
-.ui.labeled.icon.big.buttons .button > .icon,
-.ui.labeled.icon.buttons .big.button > .icon,
-.ui.labeled.icon.big.buttons button > .icon,
-.ui.labeled.icon.big.button > .icon {
-  width: 5rem;
+.ui.large.buttons,
+.ui.big.buttons {
+  padding: 0;
+  box-shadow: 0px 0px 0px 0px rgba(34, 36, 38, 0.15), 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
+  margin: 0.5rem 0rem;
+  vertical-align: middle;
+  
+/* "baseline" does not align with line grid */
 }
-.ui.big.conditional.buttons .button:first-child,
-.ui.large.conditional.buttons .button:first-child,
-.ui.big.conditional.buttons button:first-child,
-.ui.large.conditional.buttons button:first-child {
+.ui.large.buttons + .ui.large.buttons,
+.ui.large.buttons + .ui.big.buttons,
+.ui.big.buttons + .ui.large.buttons,
+.ui.big.buttons + .ui.big.buttons {
+  margin-left: 1rem;
+}
+.ui.large.buttons .ui.button,
+.ui.big.buttons .ui.button,
+.ui.large.buttons button.ui,
+.ui.big.buttons button.ui {
+  margin: 0 !important;
+  box-shadow: 0px 0px 0px 0px rgba(34, 36, 38, 0.15), 0px 0px 0px 0 rgba(34, 36, 38, 0.15);
+}
+.ui.large.buttons.conditional button.ui:first-child,
+.ui.big.buttons.conditional button.ui:first-child,
+.ui.large.buttons.conditional .ui.button:first-child,
+.ui.big.buttons.conditional .ui.button:first-child,
+.ui.large.buttons.conditional button.ui:first-child,
+.ui.big.buttons.conditional button.ui:first-child,
+.ui.large.buttons.conditional .ui.button:first-child,
+.ui.big.buttons.conditional .ui.button:first-child {
   padding-right: 2.5rem;
 }
-.ui.big.conditional.buttons button:not(:first-child):not(:last-child),
-.ui.large.conditional.buttons button:not(:first-child):not(:last-child),
-.ui.big.conditional.buttons .button:not(:first-child):not(:last-child),
-.ui.large.conditional.buttons .button:not(:first-child):not(:last-child) {
+.ui.large.buttons.conditional button.ui:not(:first-child):not(:last-child),
+.ui.big.buttons.conditional button.ui:not(:first-child):not(:last-child),
+.ui.large.buttons.conditional .ui.button:not(:first-child):not(:last-child),
+.ui.big.buttons.conditional .ui.button:not(:first-child):not(:last-child),
+.ui.large.buttons.conditional button.ui:not(:first-child):not(:last-child),
+.ui.big.buttons.conditional button.ui:not(:first-child):not(:last-child),
+.ui.large.buttons.conditional .ui.button:not(:first-child):not(:last-child),
+.ui.big.buttons.conditional .ui.button:not(:first-child):not(:last-child) {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
 }
-.ui.big.conditional.buttons button:last-child,
-.ui.large.conditional.buttons button:last-child,
-.ui.big.conditional.buttons .button:last-child,
-.ui.large.conditional.buttons .button:last-child {
+.ui.large.buttons.conditional button.ui:last-child,
+.ui.big.buttons.conditional button.ui:last-child,
+.ui.large.buttons.conditional .ui.button:last-child,
+.ui.big.buttons.conditional .ui.button:last-child,
+.ui.large.buttons.conditional button.ui:last-child,
+.ui.big.buttons.conditional button.ui:last-child,
+.ui.large.buttons.conditional .ui.button:last-child,
+.ui.big.buttons.conditional .ui.button:last-child {
   padding-left: 2.5rem;
 }
-.ui.big.conditional.buttons .or,
-.ui.large.conditional.buttons .or {
+.ui.large.buttons.conditional .or,
+.ui.big.buttons.conditional .or {
   height: 5rem;
 }
-.ui.big.conditional.buttons .or:before,
-.ui.large.conditional.buttons .or:before {
+.ui.large.buttons.conditional .or:before,
+.ui.big.buttons.conditional .or:before {
   height: 3.5rem;
   width: 3.5rem;
   margin-left: -1.75rem;
@@ -3634,7 +4410,44 @@ button.ui.big.compact > .icon,
   line-height: 3.5rem;
   font-size: 1.75rem;
 }
-/*HUGE & MASSIVE*/
+.ui.large.buttons.icon button.ui > .icon,
+.ui.big.buttons.icon button.ui > .icon,
+.ui.large.buttons.icon .ui.button > .icon,
+.ui.big.buttons.icon .ui.button > .icon {
+  margin: 0px;
+}
+.ui.large.buttons.labeled.icon button.ui,
+.ui.big.buttons.labeled.icon button.ui,
+.ui.large.buttons.labeled.icon .ui.button,
+.ui.big.buttons.labeled.icon .ui.button {
+  padding-left: 6rem !important;
+  padding-right: 1rem !important;
+}
+.ui.large.buttons.labeled.icon button.ui > .icon,
+.ui.big.buttons.labeled.icon button.ui > .icon,
+.ui.large.buttons.labeled.icon .ui.button > .icon,
+.ui.big.buttons.labeled.icon .ui.button > .icon {
+  width: 5rem;
+}
+.ui.large.buttons.right.labeled.icon button.ui,
+.ui.big.buttons.right.labeled.icon button.ui,
+.ui.large.buttons.right.labeled.icon .ui.button,
+.ui.big.buttons.right.labeled.icon .ui.button {
+  padding-right: 6rem !important;
+  padding-left: 1rem !important;
+}
+button.ui.huge,
+button.ui.huge.compact,
+.ui.huge.buttons .button,
+.ui.huge.compact.button,
+.ui.huge.button,
+button.ui.massive,
+button.ui.massive.compact,
+.ui.massive.buttons .button,
+.ui.massive.compact.button,
+.ui.massive.button {
+  box-shadow: 0px 0px 0px 0px rgba(34, 36, 38, 0.15), 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
+}
 button.ui.huge,
 button.ui.huge.compact,
 .ui.huge.buttons .button,
@@ -3655,10 +4468,220 @@ button.ui.massive.compact .hidden.content,
 .ui.massive.buttons .button .hidden.content,
 .ui.massive.compact.button .hidden.content,
 .ui.massive.button .hidden.content {
+  position: relative;
+  font-size: 2.16667rem;
   line-height: 5rem;
+  margin: 0.5rem 0rem;
+  vertical-align: middle;
+  
+/* "baseline" does not align with line grid */
   padding: 0.5rem 1rem;
   min-width: 6rem;
   min-height: 6rem;
+}
+button.ui.huge + button.ui.huge,
+button.ui.huge + button.ui.huge.compact,
+button.ui.huge + .ui.huge.buttons .button,
+button.ui.huge + .ui.huge.compact.button,
+button.ui.huge + .ui.huge.button,
+button.ui.huge + button.ui.massive,
+button.ui.huge + button.ui.massive.compact,
+button.ui.huge + .ui.massive.buttons .button,
+button.ui.huge + .ui.massive.compact.button,
+button.ui.huge + .ui.massive.button,
+button.ui.huge.compact + button.ui.huge,
+button.ui.huge.compact + button.ui.huge.compact,
+button.ui.huge.compact + .ui.huge.buttons .button,
+button.ui.huge.compact + .ui.huge.compact.button,
+button.ui.huge.compact + .ui.huge.button,
+button.ui.huge.compact + button.ui.massive,
+button.ui.huge.compact + button.ui.massive.compact,
+button.ui.huge.compact + .ui.massive.buttons .button,
+button.ui.huge.compact + .ui.massive.compact.button,
+button.ui.huge.compact + .ui.massive.button,
+.ui.huge.buttons .button + button.ui.huge,
+.ui.huge.buttons .button + button.ui.huge.compact,
+.ui.huge.buttons .button + .ui.huge.buttons .button,
+.ui.huge.buttons .button + .ui.huge.compact.button,
+.ui.huge.buttons .button + .ui.huge.button,
+.ui.huge.buttons .button + button.ui.massive,
+.ui.huge.buttons .button + button.ui.massive.compact,
+.ui.huge.buttons .button + .ui.massive.buttons .button,
+.ui.huge.buttons .button + .ui.massive.compact.button,
+.ui.huge.buttons .button + .ui.massive.button,
+.ui.huge.compact.button + button.ui.huge,
+.ui.huge.compact.button + button.ui.huge.compact,
+.ui.huge.compact.button + .ui.huge.buttons .button,
+.ui.huge.compact.button + .ui.huge.compact.button,
+.ui.huge.compact.button + .ui.huge.button,
+.ui.huge.compact.button + button.ui.massive,
+.ui.huge.compact.button + button.ui.massive.compact,
+.ui.huge.compact.button + .ui.massive.buttons .button,
+.ui.huge.compact.button + .ui.massive.compact.button,
+.ui.huge.compact.button + .ui.massive.button,
+.ui.huge.button + button.ui.huge,
+.ui.huge.button + button.ui.huge.compact,
+.ui.huge.button + .ui.huge.buttons .button,
+.ui.huge.button + .ui.huge.compact.button,
+.ui.huge.button + .ui.huge.button,
+.ui.huge.button + button.ui.massive,
+.ui.huge.button + button.ui.massive.compact,
+.ui.huge.button + .ui.massive.buttons .button,
+.ui.huge.button + .ui.massive.compact.button,
+.ui.huge.button + .ui.massive.button,
+button.ui.massive + button.ui.huge,
+button.ui.massive + button.ui.huge.compact,
+button.ui.massive + .ui.huge.buttons .button,
+button.ui.massive + .ui.huge.compact.button,
+button.ui.massive + .ui.huge.button,
+button.ui.massive + button.ui.massive,
+button.ui.massive + button.ui.massive.compact,
+button.ui.massive + .ui.massive.buttons .button,
+button.ui.massive + .ui.massive.compact.button,
+button.ui.massive + .ui.massive.button,
+button.ui.massive.compact + button.ui.huge,
+button.ui.massive.compact + button.ui.huge.compact,
+button.ui.massive.compact + .ui.huge.buttons .button,
+button.ui.massive.compact + .ui.huge.compact.button,
+button.ui.massive.compact + .ui.huge.button,
+button.ui.massive.compact + button.ui.massive,
+button.ui.massive.compact + button.ui.massive.compact,
+button.ui.massive.compact + .ui.massive.buttons .button,
+button.ui.massive.compact + .ui.massive.compact.button,
+button.ui.massive.compact + .ui.massive.button,
+.ui.massive.buttons .button + button.ui.huge,
+.ui.massive.buttons .button + button.ui.huge.compact,
+.ui.massive.buttons .button + .ui.huge.buttons .button,
+.ui.massive.buttons .button + .ui.huge.compact.button,
+.ui.massive.buttons .button + .ui.huge.button,
+.ui.massive.buttons .button + button.ui.massive,
+.ui.massive.buttons .button + button.ui.massive.compact,
+.ui.massive.buttons .button + .ui.massive.buttons .button,
+.ui.massive.buttons .button + .ui.massive.compact.button,
+.ui.massive.buttons .button + .ui.massive.button,
+.ui.massive.compact.button + button.ui.huge,
+.ui.massive.compact.button + button.ui.huge.compact,
+.ui.massive.compact.button + .ui.huge.buttons .button,
+.ui.massive.compact.button + .ui.huge.compact.button,
+.ui.massive.compact.button + .ui.huge.button,
+.ui.massive.compact.button + button.ui.massive,
+.ui.massive.compact.button + button.ui.massive.compact,
+.ui.massive.compact.button + .ui.massive.buttons .button,
+.ui.massive.compact.button + .ui.massive.compact.button,
+.ui.massive.compact.button + .ui.massive.button,
+.ui.massive.button + button.ui.huge,
+.ui.massive.button + button.ui.huge.compact,
+.ui.massive.button + .ui.huge.buttons .button,
+.ui.massive.button + .ui.huge.compact.button,
+.ui.massive.button + .ui.huge.button,
+.ui.massive.button + button.ui.massive,
+.ui.massive.button + button.ui.massive.compact,
+.ui.massive.button + .ui.massive.buttons .button,
+.ui.massive.button + .ui.massive.compact.button,
+.ui.massive.button + .ui.massive.button {
+  margin-left: 1rem;
+}
+button.ui.huge.fluid + button.ui.huge.fluid,
+button.ui.huge.fluid + button.ui.huge.compact.fluid,
+button.ui.huge.fluid + .ui.huge.buttons .button.fluid,
+button.ui.huge.fluid + .ui.huge.compact.button.fluid,
+button.ui.huge.fluid + .ui.huge.button.fluid,
+button.ui.huge.fluid + button.ui.massive.fluid,
+button.ui.huge.fluid + button.ui.massive.compact.fluid,
+button.ui.huge.fluid + .ui.massive.buttons .button.fluid,
+button.ui.huge.fluid + .ui.massive.compact.button.fluid,
+button.ui.huge.fluid + .ui.massive.button.fluid,
+button.ui.huge.compact.fluid + button.ui.huge.fluid,
+button.ui.huge.compact.fluid + button.ui.huge.compact.fluid,
+button.ui.huge.compact.fluid + .ui.huge.buttons .button.fluid,
+button.ui.huge.compact.fluid + .ui.huge.compact.button.fluid,
+button.ui.huge.compact.fluid + .ui.huge.button.fluid,
+button.ui.huge.compact.fluid + button.ui.massive.fluid,
+button.ui.huge.compact.fluid + button.ui.massive.compact.fluid,
+button.ui.huge.compact.fluid + .ui.massive.buttons .button.fluid,
+button.ui.huge.compact.fluid + .ui.massive.compact.button.fluid,
+button.ui.huge.compact.fluid + .ui.massive.button.fluid,
+.ui.huge.buttons .button.fluid + button.ui.huge.fluid,
+.ui.huge.buttons .button.fluid + button.ui.huge.compact.fluid,
+.ui.huge.buttons .button.fluid + .ui.huge.buttons .button.fluid,
+.ui.huge.buttons .button.fluid + .ui.huge.compact.button.fluid,
+.ui.huge.buttons .button.fluid + .ui.huge.button.fluid,
+.ui.huge.buttons .button.fluid + button.ui.massive.fluid,
+.ui.huge.buttons .button.fluid + button.ui.massive.compact.fluid,
+.ui.huge.buttons .button.fluid + .ui.massive.buttons .button.fluid,
+.ui.huge.buttons .button.fluid + .ui.massive.compact.button.fluid,
+.ui.huge.buttons .button.fluid + .ui.massive.button.fluid,
+.ui.huge.compact.button.fluid + button.ui.huge.fluid,
+.ui.huge.compact.button.fluid + button.ui.huge.compact.fluid,
+.ui.huge.compact.button.fluid + .ui.huge.buttons .button.fluid,
+.ui.huge.compact.button.fluid + .ui.huge.compact.button.fluid,
+.ui.huge.compact.button.fluid + .ui.huge.button.fluid,
+.ui.huge.compact.button.fluid + button.ui.massive.fluid,
+.ui.huge.compact.button.fluid + button.ui.massive.compact.fluid,
+.ui.huge.compact.button.fluid + .ui.massive.buttons .button.fluid,
+.ui.huge.compact.button.fluid + .ui.massive.compact.button.fluid,
+.ui.huge.compact.button.fluid + .ui.massive.button.fluid,
+.ui.huge.button.fluid + button.ui.huge.fluid,
+.ui.huge.button.fluid + button.ui.huge.compact.fluid,
+.ui.huge.button.fluid + .ui.huge.buttons .button.fluid,
+.ui.huge.button.fluid + .ui.huge.compact.button.fluid,
+.ui.huge.button.fluid + .ui.huge.button.fluid,
+.ui.huge.button.fluid + button.ui.massive.fluid,
+.ui.huge.button.fluid + button.ui.massive.compact.fluid,
+.ui.huge.button.fluid + .ui.massive.buttons .button.fluid,
+.ui.huge.button.fluid + .ui.massive.compact.button.fluid,
+.ui.huge.button.fluid + .ui.massive.button.fluid,
+button.ui.massive.fluid + button.ui.huge.fluid,
+button.ui.massive.fluid + button.ui.huge.compact.fluid,
+button.ui.massive.fluid + .ui.huge.buttons .button.fluid,
+button.ui.massive.fluid + .ui.huge.compact.button.fluid,
+button.ui.massive.fluid + .ui.huge.button.fluid,
+button.ui.massive.fluid + button.ui.massive.fluid,
+button.ui.massive.fluid + button.ui.massive.compact.fluid,
+button.ui.massive.fluid + .ui.massive.buttons .button.fluid,
+button.ui.massive.fluid + .ui.massive.compact.button.fluid,
+button.ui.massive.fluid + .ui.massive.button.fluid,
+button.ui.massive.compact.fluid + button.ui.huge.fluid,
+button.ui.massive.compact.fluid + button.ui.huge.compact.fluid,
+button.ui.massive.compact.fluid + .ui.huge.buttons .button.fluid,
+button.ui.massive.compact.fluid + .ui.huge.compact.button.fluid,
+button.ui.massive.compact.fluid + .ui.huge.button.fluid,
+button.ui.massive.compact.fluid + button.ui.massive.fluid,
+button.ui.massive.compact.fluid + button.ui.massive.compact.fluid,
+button.ui.massive.compact.fluid + .ui.massive.buttons .button.fluid,
+button.ui.massive.compact.fluid + .ui.massive.compact.button.fluid,
+button.ui.massive.compact.fluid + .ui.massive.button.fluid,
+.ui.massive.buttons .button.fluid + button.ui.huge.fluid,
+.ui.massive.buttons .button.fluid + button.ui.huge.compact.fluid,
+.ui.massive.buttons .button.fluid + .ui.huge.buttons .button.fluid,
+.ui.massive.buttons .button.fluid + .ui.huge.compact.button.fluid,
+.ui.massive.buttons .button.fluid + .ui.huge.button.fluid,
+.ui.massive.buttons .button.fluid + button.ui.massive.fluid,
+.ui.massive.buttons .button.fluid + button.ui.massive.compact.fluid,
+.ui.massive.buttons .button.fluid + .ui.massive.buttons .button.fluid,
+.ui.massive.buttons .button.fluid + .ui.massive.compact.button.fluid,
+.ui.massive.buttons .button.fluid + .ui.massive.button.fluid,
+.ui.massive.compact.button.fluid + button.ui.huge.fluid,
+.ui.massive.compact.button.fluid + button.ui.huge.compact.fluid,
+.ui.massive.compact.button.fluid + .ui.huge.buttons .button.fluid,
+.ui.massive.compact.button.fluid + .ui.huge.compact.button.fluid,
+.ui.massive.compact.button.fluid + .ui.huge.button.fluid,
+.ui.massive.compact.button.fluid + button.ui.massive.fluid,
+.ui.massive.compact.button.fluid + button.ui.massive.compact.fluid,
+.ui.massive.compact.button.fluid + .ui.massive.buttons .button.fluid,
+.ui.massive.compact.button.fluid + .ui.massive.compact.button.fluid,
+.ui.massive.compact.button.fluid + .ui.massive.button.fluid,
+.ui.massive.button.fluid + button.ui.huge.fluid,
+.ui.massive.button.fluid + button.ui.huge.compact.fluid,
+.ui.massive.button.fluid + .ui.huge.buttons .button.fluid,
+.ui.massive.button.fluid + .ui.huge.compact.button.fluid,
+.ui.massive.button.fluid + .ui.huge.button.fluid,
+.ui.massive.button.fluid + button.ui.massive.fluid,
+.ui.massive.button.fluid + button.ui.massive.compact.fluid,
+.ui.massive.button.fluid + .ui.massive.buttons .button.fluid,
+.ui.massive.button.fluid + .ui.massive.compact.button.fluid,
+.ui.massive.button.fluid + .ui.massive.button.fluid {
+  margin: 0.5rem 0;
 }
 button.ui.huge.animated .hidden.content,
 button.ui.huge.compact.animated .hidden.content,
@@ -3670,9 +4693,48 @@ button.ui.massive.compact.animated .hidden.content,
 .ui.massive.buttons .button.animated .hidden.content,
 .ui.massive.compact.button.animated .hidden.content,
 .ui.massive.button.animated .hidden.content {
+  position: absolute;
   font-size: 1em;
   height: 6rem;
   margin-top: -3rem;
+}
+button.ui.huge.labeled.icon,
+button.ui.huge.compact.labeled.icon,
+.ui.huge.buttons .button.labeled.icon,
+.ui.huge.compact.button.labeled.icon,
+.ui.huge.button.labeled.icon,
+button.ui.massive.labeled.icon,
+button.ui.massive.compact.labeled.icon,
+.ui.massive.buttons .button.labeled.icon,
+.ui.massive.compact.button.labeled.icon,
+.ui.massive.button.labeled.icon {
+  padding-left: 7rem !important;
+  padding-right: 1rem !important;
+}
+button.ui.huge.labeled.icon > .icon,
+button.ui.huge.compact.labeled.icon > .icon,
+.ui.huge.buttons .button.labeled.icon > .icon,
+.ui.huge.compact.button.labeled.icon > .icon,
+.ui.huge.button.labeled.icon > .icon,
+button.ui.massive.labeled.icon > .icon,
+button.ui.massive.compact.labeled.icon > .icon,
+.ui.massive.buttons .button.labeled.icon > .icon,
+.ui.massive.compact.button.labeled.icon > .icon,
+.ui.massive.button.labeled.icon > .icon {
+  width: 6rem;
+}
+button.ui.huge.right.labeled.icon,
+button.ui.huge.compact.right.labeled.icon,
+.ui.huge.buttons .button.right.labeled.icon,
+.ui.huge.compact.button.right.labeled.icon,
+.ui.huge.button.right.labeled.icon,
+button.ui.massive.right.labeled.icon,
+button.ui.massive.compact.right.labeled.icon,
+.ui.massive.buttons .button.right.labeled.icon,
+.ui.massive.compact.button.right.labeled.icon,
+.ui.massive.button.right.labeled.icon {
+  padding-left: 1rem !important;
+  padding-right: 7rem !important;
 }
 button.ui.huge > .icon,
 button.ui.huge.compact > .icon,
@@ -3684,53 +4746,81 @@ button.ui.massive.compact > .icon,
 .ui.massive.buttons .button > .icon,
 .ui.massive.compact.button > .icon,
 .ui.massive.button > .icon {
-  /*width:5rem - 2rem;*/
+  height: auto;
+  margin: 0 1rem 0 0;
+  opacity: 0.9;
 }
-.ui.labeled.icon.huge.buttons .button,
-.ui.labeled.icon.buttons .huge.button,
-.ui.labeled.icon.huge.buttons button,
-.ui.labeled.icon.huge.button,
-.ui.labeled.icon.massive.buttons .button,
-.ui.labeled.icon.buttons .massive.button,
-.ui.labeled.icon.massive.buttons button,
-.ui.labeled.icon.massive.button {
-  padding-left: 7rem !important;
+button.ui.huge > .icon.right,
+button.ui.huge.compact > .icon.right,
+.ui.huge.buttons .button > .icon.right,
+.ui.huge.compact.button > .icon.right,
+.ui.huge.button > .icon.right,
+button.ui.massive > .icon.right,
+button.ui.massive.compact > .icon.right,
+.ui.massive.buttons .button > .icon.right,
+.ui.massive.compact.button > .icon.right,
+.ui.massive.button > .icon.right {
+  margin: 0 0 0 1rem;
 }
-.ui.labeled.icon.huge.buttons .button > .icon,
-.ui.labeled.icon.buttons .huge.button > .icon,
-.ui.labeled.icon.huge.buttons button > .icon,
-.ui.labeled.icon.huge.button > .icon,
-.ui.labeled.icon.massive.buttons .button > .icon,
-.ui.labeled.icon.buttons .massive.button > .icon,
-.ui.labeled.icon.massive.buttons button > .icon,
-.ui.labeled.icon.massive.button > .icon {
-  width: 6rem;
+.ui.huge.buttons,
+.ui.massive.buttons {
+  padding: 0;
+  box-shadow: 0px 0px 0px 0px rgba(34, 36, 38, 0.15), 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
+  margin: 0.5rem 0rem;
+  vertical-align: middle;
+  
+/* "baseline" does not align with line grid */
 }
-.ui.huge.conditional.buttons .button:first-child,
-.ui.massive.conditional.buttons .button:first-child,
-.ui.huge.conditional.buttons button:first-child,
-.ui.massive.conditional.buttons button:first-child {
+.ui.huge.buttons + .ui.huge.buttons,
+.ui.huge.buttons + .ui.massive.buttons,
+.ui.massive.buttons + .ui.huge.buttons,
+.ui.massive.buttons + .ui.massive.buttons {
+  margin-left: 1rem;
+}
+.ui.huge.buttons .ui.button,
+.ui.massive.buttons .ui.button,
+.ui.huge.buttons button.ui,
+.ui.massive.buttons button.ui {
+  margin: 0 !important;
+  box-shadow: 0px 0px 0px 0px rgba(34, 36, 38, 0.15), 0px 0px 0px 0 rgba(34, 36, 38, 0.15);
+}
+.ui.huge.buttons.conditional button.ui:first-child,
+.ui.massive.buttons.conditional button.ui:first-child,
+.ui.huge.buttons.conditional .ui.button:first-child,
+.ui.massive.buttons.conditional .ui.button:first-child,
+.ui.huge.buttons.conditional button.ui:first-child,
+.ui.massive.buttons.conditional button.ui:first-child,
+.ui.huge.buttons.conditional .ui.button:first-child,
+.ui.massive.buttons.conditional .ui.button:first-child {
   padding-right: 3rem;
 }
-.ui.huge.conditional.buttons button:not(:first-child):not(:last-child),
-.ui.massive.conditional.buttons button:not(:first-child):not(:last-child),
-.ui.huge.conditional.buttons .button:not(:first-child):not(:last-child),
-.ui.massive.conditional.buttons .button:not(:first-child):not(:last-child) {
+.ui.huge.buttons.conditional button.ui:not(:first-child):not(:last-child),
+.ui.massive.buttons.conditional button.ui:not(:first-child):not(:last-child),
+.ui.huge.buttons.conditional .ui.button:not(:first-child):not(:last-child),
+.ui.massive.buttons.conditional .ui.button:not(:first-child):not(:last-child),
+.ui.huge.buttons.conditional button.ui:not(:first-child):not(:last-child),
+.ui.massive.buttons.conditional button.ui:not(:first-child):not(:last-child),
+.ui.huge.buttons.conditional .ui.button:not(:first-child):not(:last-child),
+.ui.massive.buttons.conditional .ui.button:not(:first-child):not(:last-child) {
   padding-left: 3rem;
   padding-right: 3rem;
 }
-.ui.huge.conditional.buttons button:last-child,
-.ui.massive.conditional.buttons button:last-child,
-.ui.huge.conditional.buttons .button:last-child,
-.ui.massive.conditional.buttons .button:last-child {
+.ui.huge.buttons.conditional button.ui:last-child,
+.ui.massive.buttons.conditional button.ui:last-child,
+.ui.huge.buttons.conditional .ui.button:last-child,
+.ui.massive.buttons.conditional .ui.button:last-child,
+.ui.huge.buttons.conditional button.ui:last-child,
+.ui.massive.buttons.conditional button.ui:last-child,
+.ui.huge.buttons.conditional .ui.button:last-child,
+.ui.massive.buttons.conditional .ui.button:last-child {
   padding-left: 3rem;
 }
-.ui.huge.conditional.buttons .or,
-.ui.massive.conditional.buttons .or {
+.ui.huge.buttons.conditional .or,
+.ui.massive.buttons.conditional .or {
   height: 6rem;
 }
-.ui.huge.conditional.buttons .or:before,
-.ui.massive.conditional.buttons .or:before {
+.ui.huge.buttons.conditional .or:before,
+.ui.massive.buttons.conditional .or:before {
   height: 4rem;
   width: 4rem;
   margin-left: -2rem;
@@ -3738,6 +4828,36 @@ button.ui.massive.compact > .icon,
   line-height: 4rem;
   font-size: 2.16667rem;
 }
+.ui.huge.buttons.icon button.ui > .icon,
+.ui.massive.buttons.icon button.ui > .icon,
+.ui.huge.buttons.icon .ui.button > .icon,
+.ui.massive.buttons.icon .ui.button > .icon {
+  margin: 0px;
+}
+.ui.huge.buttons.labeled.icon button.ui,
+.ui.massive.buttons.labeled.icon button.ui,
+.ui.huge.buttons.labeled.icon .ui.button,
+.ui.massive.buttons.labeled.icon .ui.button {
+  padding-left: 7rem !important;
+  padding-right: 1rem !important;
+}
+.ui.huge.buttons.labeled.icon button.ui > .icon,
+.ui.massive.buttons.labeled.icon button.ui > .icon,
+.ui.huge.buttons.labeled.icon .ui.button > .icon,
+.ui.massive.buttons.labeled.icon .ui.button > .icon {
+  width: 6rem;
+}
+.ui.huge.buttons.right.labeled.icon button.ui,
+.ui.massive.buttons.right.labeled.icon button.ui,
+.ui.huge.buttons.right.labeled.icon .ui.button,
+.ui.massive.buttons.right.labeled.icon .ui.button {
+  padding-right: 7rem !important;
+  padding-left: 1rem !important;
+}
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
 
 
 /*******************************

@@ -3,7 +3,62 @@
 *******************************/
 
 
-/*STANDARD*/
+@miniVariables : {
+  .variables(){
+
+    @iconSize : 2rem;
+    @fontSize:  @h6;
+    @lineHeight: @h6Lineheight;
+    @padding : 0.25rem 1rem;
+    @orPadding : 1.5rem;
+    @orLineHeight : @h6Lineheight;
+
+  }
+};
+
+@smallVariables : {
+  .variables(){
+
+    @iconSize : 3rem;
+    @fontSize:  @smallSize;
+    @lineHeight: @h5Lineheight;
+    @padding : 0.5rem 1rem;
+    @orPadding : 1.5rem;
+    @orLineHeight : @h5Lineheight;
+
+  }
+};
+
+
+@largeVariables : {
+  .variables(){
+
+    @iconSize : 5rem;
+    @fontSize:  @largeSize;
+    @lineHeight: @h5Lineheight;
+    @padding : 1.5rem 1rem;
+    @orPadding : 2.5rem;
+    @orLineHeight : 3.5rem;
+
+  }
+};
+
+
+@hugeVariables : {
+  .variables(){
+
+    @iconSize : 6rem;
+    @fontSize:  @hugeSize;
+    @lineHeight: @h2Lineheight;
+    @padding : 0.5rem 1rem;
+    @orPadding : 3rem;
+    @orLineHeight : 4rem;
+
+  }
+};
+
+
+/*////////////////////////////////////////////////////////////////////*/
 
 button.ui,
 button.ui.compact,
@@ -13,7 +68,98 @@ button.ui.compact,
   .button();
 }
 
-.button() {
+.ui.buttons {
+  .buttons();
+}
+
+button.ui.mini,
+button.ui.mini.compact,
+.ui.mini.buttons .button, 
+.ui.mini.compact.button,
+.ui.mini.button,
+button.ui.tiny,
+button.ui.tiny.compact,
+.ui.tiny.buttons .button, 
+.ui.tiny.compact.button,
+.ui.tiny.button {
+  .button(@miniVariables);
+}
+
+.ui.tiny.buttons,
+.ui.mini.buttons {
+  .buttons(@miniVariables);
+}
+
+
+button.ui.small,
+button.ui.small.compact,
+.ui.small.buttons .button, 
+.ui.small.compact.button,
+.ui.small.button {
+
+  .button(@smallVariables);
+}
+
+.ui.small.buttons {
+  .buttons(@smallVariables);
+}
+
+
+button.ui.large,
+button.ui.large.compact,
+.ui.large.buttons .button, 
+.ui.large.compact.button,
+.ui.large.button,
+button.ui.big,
+button.ui.big.compact,
+.ui.big.buttons .button, 
+.ui.big.compact.button,
+.ui.big.button {
+
+  .button(@largeVariables);
+}
+
+.ui.large.buttons,
+.ui.big.buttons {
+  .buttons(@largeVariables);
+}
+
+
+
+button.ui.huge,
+button.ui.huge.compact,
+.ui.huge.buttons .button, 
+.ui.huge.compact.button,
+.ui.huge.button,
+button.ui.massive,
+button.ui.massive.compact,
+.ui.massive.buttons .button, 
+.ui.massive.compact.button,
+.ui.massive.button{
+
+  .button(@hugeVariables);
+}
+
+.ui.huge.buttons,
+.ui.massive.buttons {
+  .buttons(@hugeVariables);
+}
+
+
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+
+.button(
+  @overrides:{.variables(){}},
+  @fontSize:  @mediumSize,
+  @lineHeight: 2rem,
+  @padding : 1.0833333rem 1rem 0.9188888rem 1rem,
+  @iconSize : 4rem
+){  
+
+  @overrides();
+  .variables();
+
   &, .hidden.content {
     position:relative;
     font-size:@fontSize;
@@ -23,34 +169,44 @@ button.ui.compact,
 
     vertical-align: middle; /* "baseline" does not align with line grid */  
 
-    padding:1.0833333rem 1rem 0.9188888rem 1rem;
-    min-width:4rem;  
-    min-height:4rem;
+    padding:@padding;
+    min-width:@iconSize;  
+    min-height:@iconSize;
   }
 
-  box-shadow: 0px 0px 0px 0px rgba(34, 36, 38, 0.15), 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
+  & {
+    box-shadow: 0px 0px 0px 0px rgba(34, 36, 38, 0.15), 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
+  }
 
-
-  + button.ui,
-  + .ui.button {
+  & + & {
     margin-left:1rem;
   }
 
-  &.fluid {
-    + button.ui.fluid,
-    + .ui.fluid.buttons,
-    + .ui.fluid.compact.button,
-    + .ui.fluid.button {
+  &.fluid + &.fluid {
       margin:0.5rem 0;
-
-    }
   }
 
   &.animated {
    .hidden.content {
-     height:4rem;
-     margin-top:-2rem;
+     position:absolute;
+     font-size:1em;
+     height:@iconSize;
+     margin-top:-@iconSize/2;
    }
+  }
+
+  &.labeled.icon {
+    padding-left:(@iconSize+1) !important;
+    padding-right:1rem !important;
+
+    > .icon {
+      width:@iconSize;
+    }
+  }
+
+  &.right.labeled.icon {
+    padding-left:1rem !important;
+    padding-right:(@iconSize+1) !important;
   }
 
   > .icon {
@@ -63,374 +219,106 @@ button.ui.compact,
   }
 }
 
-.ui.buttons {
-  padding:0;
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
 
-  box-shadow: 0px 0px 0px 0px rgba(34, 36, 38, 0.15), 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
-  margin:0.5rem 0rem;
+.buttons(
+  @overrides:{.variables(){}},
+  @iconSize : 4rem,
+  @fontSize : @h5,
+  @orLineHeight : 3rem,
+  @orPadding : 2rem
+){  
 
-  vertical-align: middle; /* "baseline" does not align with line grid */  
+  @overrides();
+  .variables();
 
-  + .ui.buttons {
+  & {
+    padding:0;
+
+    box-shadow: 0px 0px 0px 0px rgba(34, 36, 38, 0.15), 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
+    margin:0.5rem 0rem;
+
+    vertical-align: middle; /* "baseline" does not align with line grid */  
+  }
+  & + & {
     margin-left:1rem;
   }
 
-  > .ui.button,
-  > button.ui {
+  .ui.button,
+  button.ui {
     margin:0 !important;
     box-shadow: 0px 0px 0px 0px rgba(34, 36, 38, 0.15), 0px 0px 0px 0 rgba(34, 36, 38, 0.15);
-
-  }
-}
-
-
-.ui.labeled.icon.buttons .button,
-.ui.labeled.icon.buttons button,
-.ui.labeled.icon.button {
-  padding-left:5rem !important;
-
-  > .icon {
-
-  }
-}
-
-.ui.conditional.buttons {
-
-  .button:first-child,
-  button:first-child {
-    padding-right:2rem;
   }
 
-  button:not(:first-child):not(:last-child),
-  .button:not(:first-child):not(:last-child) {
-    padding-left:2rem;
-    padding-right:2rem;
-  }
+
+  &.conditional {
+
+    button.ui,
+    .ui.button {
+
+      &:first-child,
+      &:first-child {
+        padding-right:@orPadding;
+      }
+
+      &:not(:first-child):not(:last-child),
+      &:not(:first-child):not(:last-child) {
+        padding-left:@orPadding;
+        padding-right:@orPadding;
+      }
   
-  button:last-child,
-  .button:last-child {
-    padding-left:2rem;
+      &:last-child,
+      &:last-child {
+        padding-left:@orPadding;
+      }
+    }
+
+    .or {
+      height:@iconSize;
+    }
+    .or:before {
+      height:@orLineHeight;
+      width:@orLineHeight;
+      margin-left:-@orLineHeight/2;
+      margin-top:-@orLineHeight/2;
+      line-height:@orLineHeight;
+      font-size:@fontSize;
+    }
   }
 
-  .or {
-    height:4rem;
-    font-size:1.16666667rem;
-  }
-  .or:before {
-    height:3rem;
-    width:3rem;
-    margin-left:-1.5rem;
-    margin-top:-1.5rem;
-    line-height:3rem;
-    font-size:@h5;
-  }
-}
+  &.icon {
+    button.ui,
+    .ui.button {
 
-/*MINI & TINY*/
+      > .icon {
+        margin:0px;
+      }    
 
-button.ui.mini,
-button.ui.mini.compact,
-.ui.mini.buttons .button, 
-.ui.mini.compact.button,
-.ui.mini.button,
-button.ui.tiny,
-button.ui.tiny.compact,
-.ui.tiny.buttons .button, 
-.ui.tiny.compact.button,
-.ui.tiny.button {
-  &, .hidden.content {
-
-    line-height:@h6Lineheight;
-    padding:0.25rem 1rem;
-    min-width:2rem;  
-    min-height:2rem;
+    }
   }
 
-  &.animated {
-   .hidden.content {
-     font-size:1em;
-     height:2rem;
-     margin-top:-1rem;
-   }
+  &.labeled.icon {
+
+    button.ui,
+    .ui.button {
+      padding-left:(@iconSize + 1) !important;
+      padding-right:1rem !important;
+      
+      > .icon {
+        width:@iconSize;
+      }    
+
+    }
+
   }
-  > .icon {/*
-    width:2rem;*/
-  }  
-}
+  &.right.labeled.icon {
 
-.ui.labeled.icon.mini.buttons .button,
-.ui.labeled.icon.buttons .mini.button,
-.ui.labeled.icon.mini.buttons button,
-.ui.labeled.icon.mini.button,
-.ui.labeled.icon.tiny.buttons .button,
-.ui.labeled.icon.buttons .tiny.button,
-.ui.labeled.icon.tiny.buttons button,
-.ui.labeled.icon.tiny.button  {
-  padding-left:3rem !important;
+    button.ui,
+    .ui.button {
+      padding-right:(@iconSize + 1) !important;
+      padding-left:1rem !important;
+    }
 
-  > .icon {
-    width:2rem;
   }
 }
-
-.ui.mini.conditional.buttons,
-.ui.tiny.conditional.buttons {
-
-  .button:first-child,
-  button:first-child {
-    padding-right:1.5rem;
-  }
-
-  button:not(:first-child):not(:last-child),
-  .button:not(:first-child):not(:last-child) {
-    padding-left:1.5rem;
-    padding-right:1.5rem;
-  }
-  
-  button:last-child,
-  .button:last-child {
-    padding-left:1.5rem;
-  }
-
-  .or {
-    height:2rem;
-  }
-  .or:before {
-    height:1.5rem;
-    width:1.5rem;
-    margin-left:-0.75rem;
-    margin-top:-0.75rem;
-    line-height:1.5rem;
-    font-size:@h6;
-  }
-} 
-
-
-/*SMALL*/
-
-button.ui.small,
-button.ui.small.compact,
-.ui.small.buttons .button, 
-.ui.small.compact.button,
-.ui.small.button {
-  &, .hidden.content {
-
-    line-height:@h5Lineheight;
-    padding:0.5rem 1rem;
-    min-width:3rem;  
-    min-height:3rem;
-  }
-
-  &.animated {
-   .hidden.content {
-     font-size:1em;
-     height:3rem;
-     margin-top:-1.5rem;
-   }
-  }
-
-  > .icon {
-    /*width:3rem - 2rem;*/
-  }  
-}
-
-.ui.labeled.icon.small.buttons .button,
-.ui.labeled.icon.buttons .small.button,
-.ui.labeled.icon.small.buttons button,
-.ui.labeled.icon.small.button {
-  padding-left:4rem !important;
-
-  > .icon {
-    width:3rem;
-  }
-}
-.ui.small.conditional.buttons {
-
-  .button:first-child,
-  button:first-child {
-    padding-right:1.5rem;
-  }
-
-  button:not(:first-child):not(:last-child),
-  .button:not(:first-child):not(:last-child) {
-    padding-left:1.5rem;
-    padding-right:1.5rem;
-  }
-  
-  button:last-child,
-  .button:last-child {
-    padding-left:1.5rem;
-  }
-
-  .or {
-    height:3rem;
-  }
-  .or:before {
-    height:2rem;
-    width:2rem;
-    margin-left:-1rem;
-    margin-top:-1rem;
-    line-height:2rem;
-    font-size:1.1666667rem;
-  }
-}
-
-/*LARGE & BIG*/
-
-button.ui.large,
-button.ui.large.compact,
-.ui.large.buttons .button, 
-.ui.large.compact.button,
-.ui.large.button,
-button.ui.big,
-button.ui.big.compact,
-.ui.big.buttons .button, 
-.ui.big.compact.button,
-.ui.big.button {
-  &, .hidden.content {
-    line-height:@lineHeight;
-    padding:1.5rem 1rem;
-    min-width:5rem;
-    min-height:5rem;
-  }
-
-  &.animated {
-   .hidden.content {
-     font-size:1em;
-     height:5rem;
-     margin-top:-2.5rem;
-   }
-  }
-
-  > .icon {
-    /*width:4rem - 2rem;*/
-  }  
-}
-
-
-.ui.labeled.icon.large.buttons .button,
-.ui.labeled.icon.buttons .large.button,
-.ui.labeled.icon.large.buttons button,
-.ui.labeled.icon.large.button,
-.ui.labeled.icon.big.buttons .button,
-.ui.labeled.icon.buttons .big.button,
-.ui.labeled.icon.big.buttons button,
-.ui.labeled.icon.big.button  {
-  padding-left:6rem !important;
-
-  > .icon {
-    width:5rem;
-  }
-}
-
-.ui.big.conditional.buttons,
-.ui.large.conditional.buttons {
-
-  .button:first-child,
-  button:first-child {
-    padding-right:2.5rem;
-  }
-
-  button:not(:first-child):not(:last-child),
-  .button:not(:first-child):not(:last-child) {
-    padding-left:2.5rem;
-    padding-right:2.5rem;
-  }
-  
-  button:last-child,
-  .button:last-child {
-    padding-left:2.5rem;
-  }
-
-  .or {
-    height:5rem;
-  }
-  .or:before {
-    height:3.5rem;
-    width:3.5rem;
-    margin-left:-1.75rem;
-    margin-top:-1.75rem;
-    line-height:3.5rem;
-    font-size:@h4;
-  } 
-}
-
-/*HUGE & MASSIVE*/
-
-button.ui.huge,
-button.ui.huge.compact,
-.ui.huge.buttons .button, 
-.ui.huge.compact.button,
-.ui.huge.button,
-button.ui.massive,
-button.ui.massive.compact,
-.ui.massive.buttons .button, 
-.ui.massive.compact.button,
-.ui.massive.button {
-  &, .hidden.content {
-    line-height:@h2Lineheight;
-    padding:0.5rem 1rem;
-    min-width:6rem;
-    min-height:6rem;
-  }
-
-  &.animated {
-   .hidden.content {
-     font-size:1em;
-     height:6rem;
-     margin-top:-3rem;
-   }
-  }
-
-  > .icon {
-    /*width:5rem - 2rem;*/
-  }  
-}
-
-.ui.labeled.icon.huge.buttons .button,
-.ui.labeled.icon.buttons .huge.button,
-.ui.labeled.icon.huge.buttons button,
-.ui.labeled.icon.huge.button,
-.ui.labeled.icon.massive.buttons .button,
-.ui.labeled.icon.buttons .massive.button,
-.ui.labeled.icon.massive.buttons button,
-.ui.labeled.icon.massive.button  {
-  padding-left:7rem !important;
-
-  > .icon {
-    width:6rem;
-  }
-}
-
-.ui.huge.conditional.buttons,
-.ui.massive.conditional.buttons {
-
-  .button:first-child,
-  button:first-child {
-    padding-right:3rem;
-  }
-
-  button:not(:first-child):not(:last-child),
-  .button:not(:first-child):not(:last-child) {
-    padding-left:3rem;
-    padding-right:3rem;
-  }
-  
-  button:last-child,
-  .button:last-child {
-    padding-left:3rem;
-  }
-
-  .or {
-    height:6rem;
-  }
-  .or:before {
-    height:4rem;
-    width:4rem;
-    margin-left:-2rem;
-    margin-top:-2rem;
-    line-height:4rem;
-    font-size:@h3;
-  }
-}
-
