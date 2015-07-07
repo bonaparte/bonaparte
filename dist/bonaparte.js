@@ -265,6 +265,7 @@ var scroll = require("./tags/scroll-bonaparte");
 var sidebar = require("./tags/sidebar-bonaparte");
 var toolbar = require("./tags/toolbar-bonaparte");
 var cornerstone = require("./tags/cornerstone-bonaparte");
+var button = require("./tags/button-bonaparte");
 
 // toolbar.mixin({
 //   test:function(){
@@ -277,11 +278,12 @@ scroll.register();
 sidebar.register();
 cornerstone.register();
 toolbar.register();
+button.register();
 
 document.registerElement('content-bonaparte');
 
 
-},{"./tags/cornerstone-bonaparte":9,"./tags/panel-bonaparte":10,"./tags/scroll-bonaparte":11,"./tags/sidebar-bonaparte":12,"./tags/toolbar-bonaparte":13}],3:[function(require,module,exports){
+},{"./tags/button-bonaparte":9,"./tags/cornerstone-bonaparte":10,"./tags/panel-bonaparte":11,"./tags/scroll-bonaparte":12,"./tags/sidebar-bonaparte":13,"./tags/toolbar-bonaparte":14}],3:[function(require,module,exports){
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
@@ -598,6 +600,26 @@ var registerTag = require("../core/tag");
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
+module.exports = registerTag("toolbar", toolbar, [
+  require("./sidebar-bonaparte.js")
+]);
+
+///////////////////////////////////////////////////////////////////////////////
+function toolbar(){
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+}
+
+///////////////////////////////////////////////////////////////////////////////
+},{"../core/tag":6,"../core/utility":7,"./sidebar-bonaparte.js":13}],10:[function(require,module,exports){
+var util = require("../core/utility");
+var registerTag = require("../core/tag");
+
+///////////////////////////////////////////////////////////////////////////////
+// Public
+
 module.exports = registerTag("cornerstone", cornerstone);
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -644,7 +666,7 @@ function cornerstone(){
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"../core/tag":6,"../core/utility":7}],10:[function(require,module,exports){
+},{"../core/tag":6,"../core/utility":7}],11:[function(require,module,exports){
 var util = require("../core/utility");
 var registerTag = require("../core/tag");
 
@@ -726,7 +748,7 @@ function panel(){
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"../core/tag":6,"../core/utility":7,"../mixins/toggle":8}],11:[function(require,module,exports){
+},{"../core/tag":6,"../core/utility":7,"../mixins/toggle":8}],12:[function(require,module,exports){
 var util   = require("../core/utility");
 var registerTag = require("../core/tag");
 
@@ -836,7 +858,7 @@ function getScrollBarWidth(){
   document.documentElement.style.overflow = overflow;
   return width;
 }
-},{"../core/tag":6,"../core/utility":7}],12:[function(require,module,exports){
+},{"../core/tag":6,"../core/utility":7}],13:[function(require,module,exports){
 var util = require("../core/utility");
 var registerTag = require("../core/tag");
 
@@ -879,19 +901,17 @@ function sidebar(){
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"../core/tag":6,"../core/utility":7}],13:[function(require,module,exports){
+},{"../core/tag":6,"../core/utility":7}],14:[function(require,module,exports){
 var util = require("../core/utility");
 var registerTag = require("../core/tag");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = registerTag("toolbar", toolbar, [
-  require("./sidebar-bonaparte.js")
-]);
+module.exports = registerTag("button", button);
 
 ///////////////////////////////////////////////////////////////////////////////
-function toolbar(){
+function button(){
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -899,4 +919,4 @@ function toolbar(){
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"../core/tag":6,"../core/utility":7,"./sidebar-bonaparte.js":12}]},{},[2]);
+},{"../core/tag":6,"../core/utility":7}]},{},[2]);
