@@ -600,20 +600,17 @@ var registerTag = require("../core/tag");
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = registerTag("toolbar", toolbar, [
-  require("./sidebar-bonaparte.js")
-]);
+module.exports = registerTag("button", button, [], HTMLButtonElement);
 
 ///////////////////////////////////////////////////////////////////////////////
-function toolbar(){
+function button(){
 
 
 ///////////////////////////////////////////////////////////////////////////////
 
 }
-
 ///////////////////////////////////////////////////////////////////////////////
-},{"../core/tag":6,"../core/utility":7,"./sidebar-bonaparte.js":13}],10:[function(require,module,exports){
+},{"../core/tag":6,"../core/utility":7}],10:[function(require,module,exports){
 var util = require("../core/utility");
 var registerTag = require("../core/tag");
 
@@ -908,10 +905,12 @@ var registerTag = require("../core/tag");
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = registerTag("button", button);
+module.exports = registerTag("toolbar", toolbar, [
+  require("./sidebar-bonaparte.js")
+]);
 
 ///////////////////////////////////////////////////////////////////////////////
-function button(){
+function toolbar(){
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -919,4 +918,4 @@ function button(){
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"../core/tag":6,"../core/utility":7}]},{},[2]);
+},{"../core/tag":6,"../core/utility":7,"./sidebar-bonaparte.js":13}]},{},[2]);

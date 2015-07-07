@@ -64,7 +64,6 @@ button.ui,
 button.ui.compact,
 .ui.compact.button,
 .ui.button {
-
   .button();
 }
 
@@ -72,11 +71,15 @@ button.ui.compact,
   .buttons();
 }
 
+toolbar-bonaparte.mini > *:first-child button.ui,
+toolbar-bonaparte.mini > *:first-child .ui.button,
 button.ui.mini,
 button.ui.mini.compact,
 .ui.mini.buttons .button, 
 .ui.mini.compact.button,
 .ui.mini.button,
+toolbar-bonaparte.tiny > *:first-child button.ui,
+toolbar-bonaparte.tiny > *:first-child .ui.button,
 button.ui.tiny,
 button.ui.tiny.compact,
 .ui.tiny.buttons .button, 
@@ -85,12 +88,16 @@ button.ui.tiny.compact,
   .button(@miniVariables);
 }
 
+toolbar-bonaparte.tiny > *:first-child .ui.buttons,
+toolbar-bonaparte.mini > *:first-child .ui.buttons,
 .ui.tiny.buttons,
 .ui.mini.buttons {
   .buttons(@miniVariables);
 }
 
 
+toolbar-bonaparte.small > *:first-child button.ui,
+toolbar-bonaparte.small > *:first-child .ui.button,
 button.ui.small,
 button.ui.small.compact,
 .ui.small.buttons .button, 
@@ -100,16 +107,21 @@ button.ui.small.compact,
   .button(@smallVariables);
 }
 
+toolbar-bonaparte.small > *:first-child .ui.buttons,
 .ui.small.buttons {
   .buttons(@smallVariables);
 }
 
 
+toolbar-bonaparte.large > *:first-child button.ui,
+toolbar-bonaparte.large > *:first-child .ui.button,
 button.ui.large,
 button.ui.large.compact,
 .ui.large.buttons .button, 
 .ui.large.compact.button,
 .ui.large.button,
+toolbar-bonaparte.big > *:first-child button.ui,
+toolbar-bonaparte.big > *:first-child .ui.button,
 button.ui.big,
 button.ui.big.compact,
 .ui.big.buttons .button, 
@@ -119,18 +131,23 @@ button.ui.big.compact,
   .button(@largeVariables);
 }
 
+toolbar-bonaparte.large > *:first-child .ui.buttons,
+toolbar-bonaparte.big > *:first-child .ui.buttons,
 .ui.large.buttons,
 .ui.big.buttons {
   .buttons(@largeVariables);
 }
 
 
-
+toolbar-bonaparte.huge > *:first-child button.ui,
+toolbar-bonaparte.huge > *:first-child .ui.button,
 button.ui.huge,
 button.ui.huge.compact,
 .ui.huge.buttons .button, 
 .ui.huge.compact.button,
 .ui.huge.button,
+toolbar-bonaparte.massive > *:first-child button.ui,
+toolbar-bonaparte.massive > *:first-child .ui.button,
 button.ui.massive,
 button.ui.massive.compact,
 .ui.massive.buttons .button, 
@@ -140,6 +157,8 @@ button.ui.massive.compact,
   .button(@hugeVariables);
 }
 
+toolbar-bonaparte.huge > *:first-child .ui.buttons,
+toolbar-bonaparte.massive > *:first-child .ui.buttons,
 .ui.huge.buttons,
 .ui.massive.buttons {
   .buttons(@hugeVariables);
@@ -209,13 +228,17 @@ button.ui.massive.compact,
     padding-right:(@iconSize+1) !important;
   }
 
-  > .icon {
+  > i.icon {
     height:auto;
     margin:0 1rem 0 0;
     opacity:0.9;
   }  
-  > .icon.right {
+  > i.icon.right {
     margin:0 0 0 1rem;
+  }
+
+  &.icon > i.icon {
+    margin:0px;
   }
 }
 
@@ -288,10 +311,11 @@ button.ui.massive.compact,
   }
 
   &.icon {
+    
     button.ui,
     .ui.button {
 
-      > .icon {
+      > i.icon {
         margin:0px;
       }    
 
@@ -305,7 +329,7 @@ button.ui.massive.compact,
       padding-left:(@iconSize + 1) !important;
       padding-right:1rem !important;
       
-      > .icon {
+      > i.icon {
         width:@iconSize;
       }    
 

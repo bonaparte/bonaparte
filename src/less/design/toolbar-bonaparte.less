@@ -11,30 +11,94 @@ toolbar-bonaparte {
 
   background-color:red;
 
+
   > cornerstone-bonaparte {  
     background-color:purple;
   }
 
   > :nth-child(1){
     background-color:teal;
+    display:flex;
+    flex-flow: column;
+    justify-content:space-between;
+
+    .ui.button,
+    button.ui,
+    .buttons {
+      margin:0px !important;
+      background-color:transparent;
+    }
   }
 
   > :nth-child(2){
     background-color:tomato;
   }
 
+  &[data-sidebar="left"],
+  &[sidebar="left"],
+  &[data-sidebar="right"],
+  &[sidebar="right"] {
+    > :nth-child(1){
+      flex-flow: column;
+    }
+  }
 
+  &[data-sidebar="top"],
+  &[sidebar="top"],
+  &[data-sidebar="bottom"],
+  &[sidebar="bottom"] {
+    > :nth-child(1){
+      flex-flow: row;
+    }
+  }
 }
 
-toolbar-bonaparte.massive {  
+
 
 
 /*////////////////////////////////*/  
+
+toolbar-bonaparte.tiny,
+toolbar-bonaparte.mini {  
+  .toolbar-bonaparte({
+    .variables(){
+      @baseSize : 2rem;
+    }
+  });
+
+}
+/*////////////////////////////////*/  
+
+toolbar-bonaparte.small {  
+  .toolbar-bonaparte({
+    .variables(){
+      @baseSize : 3rem;
+    }
+  });
+
+}
+/*////////////////////////////////*/  
+
+toolbar-bonaparte.large,
+toolbar-bonaparte.big {  
+  .toolbar-bonaparte({
+    .variables(){
+      @baseSize : 5rem;
+    }
+  });
+
+}
+/*////////////////////////////////*/  
+
+toolbar-bonaparte.huge,
+toolbar-bonaparte.massive {  
   .toolbar-bonaparte({
     .variables(){
       @baseSize : 6rem;
     }
   });
-/*////////////////////////////////*/  
 
 }
+/*////////////////////////////////*/  
+
+

@@ -41,18 +41,33 @@
     <toolbar-bonaparte display="cover" data-sidebar="top" cornerstone="top left" >  
 
       <aside>
+        <div class="buttons">
+          <button-bonaparte class="ui icon button" onclick="document.getElementById('left').open(this)"><i class="shop icon left"></i></button-bonaparte><!-- 
+       --><button-bonaparte class="ui button" onclick="document.getElementById('right').toggle('open')"><i class="shop icon left"></i>Start Button</button-bonaparte>
+        </div>
+        <div class="buttons">
+          <button-bonaparte class="ui  labeled icon button" onclick="document.getElementById('bottom').toggle('open')"><i class="shop icon left"></i>Middle Button</button-bonaparte>
+        </div>
+        <div class="buttons">
+          <button-bonaparte class="ui icon button" onclick="document.getElementById('left').open('open')"><i class="shop icon left"></i></button-bonaparte><!-- 
+       --><button-bonaparte class="ui button" onclick="document.getElementById('right').toggle('open')"><i class="shop icon left"></i>End Button</button-bonaparte>
+        </div>
       </aside>
 
 
       <toolbar-bonaparte display="cover" data-sidebar="left">  
 
         <aside>
-          <div class="ui buttons vertical">
-            <div class="ui icon button" onclick="document.getElementById('left').open(this)"><i class="shop icon left"></i></div>
-            <div class="ui icon button" onclick="document.getElementById('right').toggle('open')"><i class="shop icon left"></i></div>
-            <div class="ui icon button" onclick="document.getElementById('bottom').toggle('open')"><i class="shop icon left"></i></div>
-            <div class="ui icon button" onclick="document.getElementById('left').open('open')"><i class="shop icon left"></i></div>
-            <div class="ui icon button" onclick="document.getElementById('right').toggle('open')"><i class="shop icon left"></i></div>
+          <div class="buttons">
+            <button-bonaparte class="ui icon button" onclick="document.getElementById('left').open(this)"><i class="shop icon left"></i></button-bonaparte><!-- 
+         --><button-bonaparte class="ui icon button" onclick="document.getElementById('right').toggle('open')"><i class="shop icon left"></i></button-bonaparte>
+          </div>
+          <div class="buttons">
+            <button-bonaparte class="ui icon button" onclick="document.getElementById('bottom').toggle('open')"><i class="shop icon left"></i></button-bonaparte>
+          </div>
+          <div class="buttons">
+            <button-bonaparte class="ui icon button" onclick="document.getElementById('left').open('open')"><i class="shop icon left"></i></button-bonaparte><!-- 
+         --><button-bonaparte class="ui icon button" onclick="document.getElementById('right').toggle('open')"><i class="shop icon left"></i></button-bonaparte>
           </div>
         </aside>
 
@@ -60,11 +75,11 @@
           <div>
             <content-bonaparte>
 
-            
-                <button-bonaparte>
-                  <i class="shop icon left"></i>
-                  test button
-                </button-bonaparte>
+
+              <button-bonaparte class="ui button">
+                <i class="shop icon left"></i>
+                test button
+              </button-bonaparte>
 
               <h1> Content </h1>
               <h2> Content </h2>
