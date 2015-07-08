@@ -19,7 +19,7 @@ function button(){
     setEvents();
     setTargets();
     setAttributes();
-    
+
   });
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -76,7 +76,6 @@ function button(){
 
       for(var name in attributes) {
         targetValue = active === true ? target.values[name] : attributes[name];
-        console.log(name, targetValue);
         util.setAttribute(target.tag, name, targetValue); 
       }
     }
