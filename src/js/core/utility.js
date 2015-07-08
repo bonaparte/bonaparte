@@ -1,3 +1,4 @@
+var objct = require("objct");
 // var easing = require("./easing");
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6,7 +7,8 @@
 module.exports = {
   nodeContains : nodeContains,
   getAttribute : getAttribute,
-  isAttribute : isAttribute,
+  testAttribute : testAttribute,
+  setAttribute : setAttribute,
   map : map
 };
 
@@ -26,8 +28,26 @@ function getAttribute(tag, name){
 }
 ///////////////////////////////////////////////////////////////////////////////
 
-function isAttribute(name, attribute){
-  return name === attribute || name === "data-"+attribute;
+function testAttribute(patterns, name){
+  var pattern, dataPattern;
+  if(!objct.isArray(patterns)) patterns = [patterns];
+
+  for(var i=0; i<patterns.length; i++) {
+    pattern = patterns[i];
+    dataPattern = new RegExp("data-"+pattern.source);
+    if(pattern.test(name) ||  dataPattern.test(name)) 
+      return true;
+  }
+  return false;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+function setAttribute(tag, name, value) {
+  if(tag.attributes["data-"+name] !== undefined) 
+    tag.setAttribute("data-"+name, value);
+  else 
+    tag.setAttribute(name, value);
 }
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -20,7 +20,7 @@ function sidebar(){
 ///////////////////////////////////////////////////////////////////////////////
 
   function attributeChangedCallback(data){
-    if(util.isAttribute("size", data.name)) {
+    if(util.testAttribute(/size/, data.name)) {
       updateSize(data.newValue);
     }
   }

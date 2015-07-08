@@ -38,7 +38,7 @@
 
 
         
-    <toolbar-bonaparte display="cover" data-sidebar="top" cornerstone="top left" >  
+    <toolbar-bonaparte display="cover" id="toolbar"  data-sidebar="top" data-cornerstone="top left" >  
 
       <aside>
         <div class="buttons">
@@ -76,7 +76,7 @@
             <content-bonaparte>
 
 
-              <button-bonaparte class="ui button">
+              <button-bonaparte class="ui button" action="click" target="#toolbar, #right" target-sidebar="bottom" target-open="true">
                 <i class="shop icon left"></i>
                 test button
               </button-bonaparte>
