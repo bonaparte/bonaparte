@@ -303,6 +303,7 @@ function events(){
   this.addListener     = addListener;
   this.removeListener  = removeListener;
   this.trigger         = trigger;
+  this.triggerEvent    = triggerEvent;
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -343,6 +344,16 @@ function events(){
     while(++i < length) {
       eventHandlers[event][i](data, this, tagName.toLowerCase());
     }
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
+  function triggerEvent(event, data) {
+
+    var newEvent = new CustomEvent(event, {detail: data});
+
+    this.dispatchEvent(newEvent);
+
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -666,6 +677,30 @@ function button(){
 
 ///////////////////////////////////////////////////////////////////////////////
 
+  function eventHandler(){
+
+    syncAttributes();
+    triggerEvents();
+
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
+  function triggerEvents(){
+    var trigger = util.getAttribute(tag, "trigger");
+    
+    if(trigger === undefined) return; 
+
+    var event = new Event(trigger);
+
+    for(var i = 0; i < targets.length; i++){
+      target = targets[i];
+      target.tag.dispatchEvent(event);
+    }
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
   function checkAttributes(){
     var target, targetValue;
     active = undefined;
@@ -733,7 +768,6 @@ function button(){
         tag : newTargets[i],
         values : {}
       });
-      console.log(newTargets[i]);
       newTargets[i].addListener("attributeChangedCallback", targetAttributeChangedCallback);
     }
   }
@@ -746,10 +780,10 @@ function button(){
     if(action === newAction) return;
 
     if(action !== undefined)
-      tag.removeEventListener(action, syncAttributes);
+      tag.removeEventListener(action, eventHandler);
 
     if(newAction !== undefined)
-      tag.addEventListener(newAction, syncAttributes);
+      tag.addEventListener(newAction, eventHandler);
 
     action=newAction;
   }

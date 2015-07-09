@@ -57,7 +57,7 @@
 
         <aside>
           <div class="buttons">
-            <button-bonaparte class="ui icon button" onclick="document.getElementById('left').open(this)"><i class="shop icon left"></i></button-bonaparte><!-- 
+            <button-bonaparte id="button" class="ui icon button" onclick="document.getElementById('left').open(this)"><i class="shop icon left"></i></button-bonaparte><!-- 
          --><button-bonaparte class="ui icon button" onclick="document.getElementById('right').toggle('open')"><i class="shop icon left"></i></button-bonaparte>
           </div>
           <div class="buttons">
@@ -77,6 +77,11 @@
               <button-bonaparte class="ui button" action="click" target="#toolbar, #right" target-sidebar="bottom" target-open="true">
                 <i class="shop icon left"></i>
                 test button
+              </button-bonaparte>
+
+              <button-bonaparte class="ui button" action="click" target="#button" trigger="click">
+                <i class="shop icon left"></i>
+                test button 2
               </button-bonaparte>
 
               <h1> Content </h1>
