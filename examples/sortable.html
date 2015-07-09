@@ -1,0 +1,54 @@
+<!DOCTYPE html><html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="../dist/SUI/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="../dist/bonaparte.css">
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/document-register-element/0.4.3/document-register-element.js"
+    >/* W3C Custom Elements */</script>
+    <script src="../dist/bonaparte.js"></script>
+
+    <style>  
+      body, html {
+        position:relative;
+        margin:0;
+        padding:0;
+        height:100%;
+        background-color: blue;
+      }
+
+      body > toolbar-bonaparte {
+        height:100%;
+      }
+
+      .dragover { color: blue; }
+      .dragging { color: red; }
+    </style>
+
+  </head>
+  <body>
+    <toolbar-bonaparte display="cover" id="toolbar"  data-sidebar="left">  
+      <aside>
+      	<div class="buttons">
+          <button-bonaparte class="ui icon button" onclick="document.getElementById('panel').toggle('open')"><i class="shop icon left"></i></button-bonaparte>
+        </div>
+      </aside>
+      <content-bonaparte>
+        <h1> Content </h1>
+        <panel-bonaparte id="panel" position="left">
+          <scroll-bonaparte resize="true">
+        		<content-bonaparte>
+              <sortable-bonaparte>
+                <h1> Content </h1>
+                <h2> Content </h2>
+                <h3> Content </h3>
+                <h4> Content </h4>
+                <h5> Content </h5>
+                <h6> Content </h6>
+              </sortable-bonaparte> 
+        		</content-bonaparte>
+          </scroll-bonaparte>
+        </panel-bonaparte>
+      </content-bonaparte>
+    </toolbar-bonaparte>
+  </body>
+</html> 
