@@ -25,53 +25,51 @@ function sortable(){
   	child.addEventListener('dragend', dragend);
   	child.addEventListener('drop', drop);
   };
-
-  console.log('children', children);
-// debugger;
-
-
-
   
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
   function dragstart(e){
-   console.log('dragstart', e);
-   currentDraggedElem = e.srcElement;
-   e.target.classList.add('dragging');
+   currentDraggedElem = findDraggableEl(e);
+   findDraggableEl(e).classList.add('dragging');
   }
   function dragenter(e){
-   console.log('dragenter', e);
-   e.target.classList.add('dragover');
+   findDraggableEl(e).classList.add('dragover');
   }
   function dragover(e){
-   console.log('dragover', e);
    e.preventDefault();
   }  
   function dragleave(e){
-   console.log('dragleave', e);
-   e.target.classList.remove('dragover');
+   findDraggableEl(e).classList.remove('dragover');
   }
   function dragend(e){
-   console.log('dragend', e);
-   e.target.classList.remove('dragging');
-   // debugger;
+   findDraggableEl(e).classList.remove('dragging');
   }
-
   function drop(e){
-   var elem = e.srcElement;
+   findDraggableEl(e).classList.remove('dragover');
+   
+   var elem = findDraggableEl(e);
    var parent = currentDraggedElem.parentNode;
-
    parent.removeChild(currentDraggedElem);
    parent.insertBefore(currentDraggedElem, elem);
 
    currentDraggedElem = null;
-   console.log('drop', e);
-
-   // debugger;
   }
 
   
+
+  function findDraggableEl (e) {
+// console.log('e.target', e.target.getAttribute('draggable'));
+	var isElDraggable = (e.target.getAttribute('draggable') === 'true');
+	var target = e.target;
+	while (!isElDraggable) {
+		isElDraggable = (target.getAttribute('draggable') === 'true');
+		target = target.parentNode;
+	}
+	console.log('isElDraggable', isElDraggable);
+  	return target;
+
+  }
   
 // event.preventDefault()
 
