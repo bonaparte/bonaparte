@@ -43,11 +43,13 @@ function button(){
 
 ///////////////////////////////////////////////////////////////////////////////
 
-  function eventHandler(){
+  function eventHandler(e){
 
     syncAttributes();
     triggerEvents();
 
+    if(util.getAttribute(tag, "bubble") === "false") 
+      e.stopPropagation();
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -94,12 +96,13 @@ function button(){
 
   function syncAttributes(){
     var target, targetValue;
+    var toggle = util.getAttribute(tag, "toggle") === "true";
 
     for(var i = 0; i < targets.length; i++){
       target = targets[i];
 
       for(var name in attributes) {
-        targetValue = active === true ? target.values[name] : attributes[name];
+        targetValue = active === true && toggle === true ? target.values[name] : attributes[name];
         util.setAttribute(target.tag, name, targetValue); 
       }
     }
