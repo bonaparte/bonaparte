@@ -5,6 +5,7 @@ var objct = require("objct");
 // Polyfills
 
 require("document-register-element");
+require("custom-event-polyfill");
 
 if (!("MutationObserver" in document)) {
   MutationObserver = require("mutation-observer");
