@@ -900,29 +900,6 @@ document.registerElement('content-bonaparte');
 
 
 },{"./tags/button-bonaparte":12,"./tags/cornerstone-bonaparte":13,"./tags/panel-bonaparte":14,"./tags/scroll-bonaparte":15,"./tags/sidebar-bonaparte":16,"./tags/toolbar-bonaparte":17}],6:[function(require,module,exports){
-var util = require("./utility");
-
-///////////////////////////////////////////////////////////////////////////////
-// Public
-
-module.exports = {
-  triggerEvent : triggerEvent
-};
-
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-
-function triggerEvent(event, data, bubbles, cancelable){
-  util.triggerEvent(this, event, {
-      bubbles: bubbles | false,
-      cancelable: cancelable | false,
-      detail: data
-  });
-}
-
-
-
-},{"./utility":10}],7:[function(require,module,exports){
 var objct = require("objct");
 ///////////////////////////////////////////////////////////////////////////////
 // Public
@@ -930,7 +907,7 @@ var objct = require("objct");
 var globals = module.exports = {
   global : {}
 };
-},{"objct":4}],8:[function(require,module,exports){
+},{"objct":4}],7:[function(require,module,exports){
 var objct = require("objct");
 
 var registeredMixins = {};
@@ -969,7 +946,7 @@ function mixins(){
 ///////////////////////////////////////////////////////////////////////////////
 
 }
-},{"objct":4}],9:[function(require,module,exports){
+},{"objct":4}],8:[function(require,module,exports){
 var objct = require("objct");
 var util = require("./utility");
 
@@ -1043,7 +1020,7 @@ function registerTag(name, definition, mixins, nativeBaseElement){
   function createdCallback() {
     var elements = [
       require("./globals"),
-      require("./events"),
+      require("./triggerEvent"),
       mixins,
       definition
     ];
@@ -1093,7 +1070,30 @@ function attributeChangedCallback( name, previousValue, newValue ) {
 
 ///////////////////////////////////////////////////////////////////////////////
 
-},{"./events":6,"./globals":7,"./mixins":8,"./utility":10,"custom-event-polyfill":1,"document-register-element":2,"mutation-observer":3,"objct":4}],10:[function(require,module,exports){
+},{"./globals":6,"./mixins":7,"./triggerEvent":9,"./utility":10,"custom-event-polyfill":1,"document-register-element":2,"mutation-observer":3,"objct":4}],9:[function(require,module,exports){
+var util = require("./utility");
+
+///////////////////////////////////////////////////////////////////////////////
+// Public
+
+module.exports = {
+  triggerEvent : triggerEvent
+};
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+function triggerEvent(event, data, bubbles, cancelable){
+  util.triggerEvent(this, event, {
+      bubbles: bubbles | false,
+      cancelable: cancelable | false,
+      detail: data
+  });
+}
+
+
+
+},{"./utility":10}],10:[function(require,module,exports){
 var objct = require("objct");
 // var easing = require("./easing");
 
@@ -1381,7 +1381,7 @@ function button(){
 }
 
  ///////////////////////////////////////////////////////////////////////////////
-},{"../core/tag":9,"../core/utility":10}],13:[function(require,module,exports){
+},{"../core/tag":8,"../core/utility":10}],13:[function(require,module,exports){
 var util = require("../core/utility");
 var registerTag = require("../core/tag");
 
@@ -1434,7 +1434,7 @@ function cornerstone(){
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"../core/tag":9,"../core/utility":10}],14:[function(require,module,exports){
+},{"../core/tag":8,"../core/utility":10}],14:[function(require,module,exports){
 var util = require("../core/utility");
 var registerTag = require("../core/tag");
 
@@ -1517,7 +1517,7 @@ function panel(){
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"../core/tag":9,"../core/utility":10,"../mixins/toggle":11}],15:[function(require,module,exports){
+},{"../core/tag":8,"../core/utility":10,"../mixins/toggle":11}],15:[function(require,module,exports){
 var util   = require("../core/utility");
 var registerTag = require("../core/tag");
 
@@ -1627,7 +1627,7 @@ function getScrollBarWidth(){
   document.documentElement.style.overflow = overflow;
   return width;
 }
-},{"../core/tag":9,"../core/utility":10}],16:[function(require,module,exports){
+},{"../core/tag":8,"../core/utility":10}],16:[function(require,module,exports){
 var util = require("../core/utility");
 var registerTag = require("../core/tag");
 
@@ -1670,7 +1670,7 @@ function sidebar(){
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"../core/tag":9,"../core/utility":10}],17:[function(require,module,exports){
+},{"../core/tag":8,"../core/utility":10}],17:[function(require,module,exports){
 var util = require("../core/utility");
 var registerTag = require("../core/tag");
 
@@ -1690,4 +1690,4 @@ function toolbar(){
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"../core/tag":9,"../core/utility":10,"./sidebar-bonaparte.js":16}]},{},[5]);
+},{"../core/tag":8,"../core/utility":10,"./sidebar-bonaparte.js":16}]},{},[5]);
