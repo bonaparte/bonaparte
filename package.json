@@ -24,7 +24,7 @@
   },
 
   "scripts": {
-    "install" : "rmdir SUI/ui/dist; gulp SUI-install; cd SUI/ui ; npm install; gulp build; cd ../..; gulp BPA-build"
+    "install" : "rm -r SUI/ui/dist; gulp SUI-install; cd SUI/ui ; npm install; gulp build; cd ../..; gulp BPA-build"
   },
 
   "engines": {
