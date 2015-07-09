@@ -1007,7 +1007,11 @@ var objct = require("objct");
 // Polyfills
 
 require("document-register-element");
-MutationObserver = MutationObserver || require("mutation-observer");
+
+if (!("MutationObserver" in document)) {
+  MutationObserver = require("mutation-observer");
+};
+
 
 ///////////////////////////////////////////////////////////////////////////////
 
