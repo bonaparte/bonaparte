@@ -27,7 +27,7 @@ function scroll(){
 // Eventlisteners
 
   if(util.getAttribute(this, "resize") !== "false")
-    this.global.addListener("resize", update);
+    window.addEventListener("resize", update);
   
   content.addEventListener("scroll", updatePosition);
 

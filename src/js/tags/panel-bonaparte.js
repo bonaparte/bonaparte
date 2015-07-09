@@ -41,13 +41,13 @@ function panel(){
       if(data.detail.newValue == "true") {
         lock();
 
-        util.triggerEvent(tag, "bonaparte:closePanels", {bubbles:true});
-        util.triggerEvent(tag, "panel:open", {bubbles:true});
-        util.triggerEvent(tag, "open");
+        tag.triggerEvent("bonaparte:closePanels", null, true);
+        tag.triggerEvent("panel:open", null, true);
+        tag.triggerEvent("open");
       }
       else {
-        util.triggerEvent(tag, "panel:close", {bubbles:true});
-        util.triggerEvent(tag, "close");
+        tag.triggerEvent("panel:close", null, true);
+        tag.triggerEvent("close");
       }
     };    
   }

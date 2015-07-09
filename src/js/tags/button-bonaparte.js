@@ -23,7 +23,7 @@ function button(){
 
 ///////////////////////////////////////////////////////////////////////////////
 
-  tag.addListener("attributeChangedCallback", attributeChangedCallback);  
+  tag.addEventListener("attributeChangedCallback", attributeChangedCallback);  
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -58,11 +58,9 @@ function button(){
     
     if(trigger === undefined) return; 
 
-    var event = new CustomEvent(trigger);
-
     for(var i = 0; i < targets.length; i++){
       target = targets[i];
-      target.tag.dispatchEvent(event);
+      util.triggerEvent(target.tag, trigger)
     }
   }
 

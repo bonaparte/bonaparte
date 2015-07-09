@@ -900,93 +900,37 @@ document.registerElement('content-bonaparte');
 
 
 },{"./tags/button-bonaparte":12,"./tags/cornerstone-bonaparte":13,"./tags/panel-bonaparte":14,"./tags/scroll-bonaparte":15,"./tags/sidebar-bonaparte":16,"./tags/toolbar-bonaparte":17}],6:[function(require,module,exports){
-///////////////////////////////////////////////////////////////////////////////
-// Public
-
-module.exports = events;
-
-///////////////////////////////////////////////////////////////////////////////
-function events(){
-
-  var eventHandlers = {};
+var util = require("./utility");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-  this.addListener     = addListener;
-  this.removeListener  = removeListener;
-  this.trigger         = trigger;
+module.exports = {
+  triggerEvent : triggerEvent
+};
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-  function addListener(event, handler){
-    if( typeof handler !== "function" ) throw "Unexpected type of "+(typeof handler)+"! Expected function.";
-
-    eventHandlers[event] = eventHandlers[event] || [];
-
-    // if already registered
-    if( eventHandlers[event].indexOf(handler) >= 0 ) return;
-
-    eventHandlers[event].push(handler);    
-
-  }
-
-//////////////////////////////////////////////////////////////////////////////
-
-  function removeListener(event, handler){
-    if(typeof eventHandlers[event] !== "object") return;
-
-    var index = eventHandlers[event].indexOf(handler);
-
-    if( index >= 0 ) {
-      eventHandlers[event].splice(index, 1);
-    }
-  }
-
-///////////////////////////////////////////////////////////////////////////////
-
-  function trigger(event, data, element){
-    if(typeof eventHandlers[event] !== "object" ) return;
-   
-    element = element || this;
-    var tagName = element.tagName || "";
-    var length = eventHandlers[event].length;
-    var i = -1;
-    while(++i < length) {
-      eventHandlers[event][i](data, this, tagName.toLowerCase());
-    }
-  }
-
-///////////////////////////////////////////////////////////////////////////////
-
+function triggerEvent(event, data, bubbles, cancelable){
+  util.triggerEvent(this, event, {
+      bubbles: bubbles | false,
+      cancelable: cancelable | false,
+      detail: data
+  });
 }
 
 
-},{}],7:[function(require,module,exports){
+
+},{"./utility":10}],7:[function(require,module,exports){
 var objct = require("objct");
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
 var globals = module.exports = {
-  global : new objct(require("./events"))
+  global : {}
 };
-
-///////////////////////////////////////////////////////////////////////////////
-// EventListeners
-
-window.addEventListener("click", forwardEvent);
-window.addEventListener("resize", forwardEvent);
-
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-
-function forwardEvent(e){
-
-  globals.global.trigger(e.type, e); 
-
-}
-},{"./events":6,"objct":4}],8:[function(require,module,exports){
+},{"objct":4}],8:[function(require,module,exports){
 var objct = require("objct");
 
 var registeredMixins = {};
@@ -1110,8 +1054,7 @@ function registerTag(name, definition, mixins, nativeBaseElement){
     // Create and mixin tag instance
     new objct.extend(this, elements, require("./mixins"));
         
-    this.trigger("createdCallback");
-    this.global.trigger("createdCallback", null, this);
+    this.triggerEvent("createdCallback", null, true);
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1122,18 +1065,16 @@ function registerTag(name, definition, mixins, nativeBaseElement){
 
 function attachedCallback() {
 
-  this.trigger("attachedCallback");
-  this.global.trigger("attachedCallback", null, this);
+  this.triggerEvent("attachedCallback", null, true);
 
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 
 function detachedCallback() {
-
-  this.trigger("detachedCallback");
-  this.global.trigger("detachedCallback", null, this);
   
+  this.triggerEvent("detachedCallback", null, true);
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1146,9 +1087,7 @@ function attributeChangedCallback( name, previousValue, newValue ) {
     newValue : newValue
   };
 
-  util.triggerEvent(this, "attributeChangedCallback", {detail:data});
-  this.trigger("attributeChangedCallback", data);
-  this.global.trigger("attributeChangedCallback", data, this);
+  this.triggerEvent("attributeChangedCallback", data, true);
 
 }
 
@@ -1287,7 +1226,7 @@ function button(){
 
 ///////////////////////////////////////////////////////////////////////////////
 
-  tag.addListener("attributeChangedCallback", attributeChangedCallback);  
+  tag.addEventListener("attributeChangedCallback", attributeChangedCallback);  
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -1322,11 +1261,9 @@ function button(){
     
     if(trigger === undefined) return; 
 
-    var event = new CustomEvent(trigger);
-
     for(var i = 0; i < targets.length; i++){
       target = targets[i];
-      target.tag.dispatchEvent(event);
+      util.triggerEvent(target.tag, trigger)
     }
   }
 
@@ -1461,8 +1398,8 @@ function cornerstone(){
   updateCornerstonePadding();
 ///////////////////////////////////////////////////////////////////////////////
   
-  this.addListener("attributeChangedCallback", updateCornerstonePadding);
-  toolbar.addListener("attributeChangedCallback", updateCornerstonePadding);
+  this.addEventListener("attributeChangedCallback", updateCornerstonePadding);
+  toolbar.addEventListener("attributeChangedCallback", updateCornerstonePadding);
   
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -1541,13 +1478,13 @@ function panel(){
       if(data.detail.newValue == "true") {
         lock();
 
-        util.triggerEvent(tag, "bonaparte:closePanels", {bubbles:true});
-        util.triggerEvent(tag, "panel:open", {bubbles:true});
-        util.triggerEvent(tag, "open");
+        tag.triggerEvent("bonaparte:closePanels", null, true);
+        tag.triggerEvent("panel:open", null, true);
+        tag.triggerEvent("open");
       }
       else {
-        util.triggerEvent(tag, "panel:close", {bubbles:true});
-        util.triggerEvent(tag, "close");
+        tag.triggerEvent("panel:close", null, true);
+        tag.triggerEvent("close");
       }
     };    
   }
@@ -1610,7 +1547,7 @@ function scroll(){
 // Eventlisteners
 
   if(util.getAttribute(this, "resize") !== "false")
-    this.global.addListener("resize", update);
+    window.addEventListener("resize", update);
   
   content.addEventListener("scroll", updatePosition);
 
@@ -1707,7 +1644,7 @@ function sidebar(){
 
 ///////////////////////////////////////////////////////////////////////////////
 
-  this.addListener("attributeChangedCallback", attributeChangedCallback);
+  this.addEventListener("attributeChangedCallback", attributeChangedCallback);
   
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////

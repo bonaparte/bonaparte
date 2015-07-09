@@ -3,20 +3,5 @@ var objct = require("objct");
 // Public
 
 var globals = module.exports = {
-  global : new objct(require("./events"))
+  global : {}
 };
-
-///////////////////////////////////////////////////////////////////////////////
-// EventListeners
-
-window.addEventListener("click", forwardEvent);
-window.addEventListener("resize", forwardEvent);
-
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-
-function forwardEvent(e){
-
-  globals.global.trigger(e.type, e); 
-
-}
