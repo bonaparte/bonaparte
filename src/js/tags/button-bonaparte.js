@@ -38,6 +38,7 @@ function button(){
 ///////////////////////////////////////////////////////////////////////////////
 
   function targetAttributeChangedCallback(data) {
+    console.log(data);
     setTimeout(checkAttributes,0);
   }
 
@@ -129,7 +130,7 @@ function button(){
 
     // Remove old target event handlers
     for(var i = 0; i < targets.length; i++){
-      targtes[i].tag.removeListener("attributeChangedCallback", targetAttributeChangedCallbac);
+      targtes[i].observer.disconnect();
     }
 
     if(selector === undefined) return;
@@ -153,9 +154,10 @@ function button(){
     for(var i=0; i < newTargets.length; i++) {
       targets.push({
         tag : newTargets[i],
-        values : {}
+        values : {},
+        observer: new MutationObserver(targetAttributeChangedCallback)
       });
-      newTargets[i].addListener("attributeChangedCallback", targetAttributeChangedCallback);
+      targets[i].observer.observe(targets[i].tag, {attributes:true});
     }
   }
 
