@@ -543,6 +543,7 @@ module.exports = {
   getAttribute : getAttribute,
   testAttribute : testAttribute,
   setAttribute : setAttribute,
+  getClosest : getClosest,
   map : map
 };
 
@@ -553,6 +554,14 @@ function nodeContains(parent, child) {
   while((child=child.parentNode)&&child!==parent); 
   return !!child; 
 };
+
+///////////////////////////////////////////////////////////////////////////////
+
+function getClosest(tag, name){
+  while((tag=tag.parentNode)&&tag.nodeName.toUpperCase()!==name.toUpperCase()); 
+  return tag ? tag:false; 
+
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -749,10 +758,28 @@ function button(){
 
   function setTargets(){
     var selector = util.getAttribute(tag, "target");
-    
+
+    // Remove old target event handlers
+    for(var i = 0; i < targets.length; i++){
+      targtes[i].tag.removeListener("attributeChangedCallback", targetAttributeChangedCallbac);
+    }
+
     if(selector === undefined) return;
 
-    var newTargets = document.querySelectorAll(selector);
+    var potentialSidebar = tag.parentNode; 
+    var potentialToolbar = potentialSidebar.parentNode;
+
+
+    // restrict button by parent toolbar in general
+    var context = util.getClosest(tag, "toolbar-bonaparte") || document;
+
+    //only restrict button in toolbar sidebars.
+    // var potentialToolbar = util.getClosest(tag, "toolbar-bonaparte");
+    // var context = potentialToolbar && util.nodeContains(potentialToolbar.firstElementChild, tag)?
+    //   potentialToolbar : document;
+
+     
+    var newTargets = context.querySelectorAll(selector);
     targets = [];
 
     for(var i=0; i < newTargets.length; i++) {

@@ -9,6 +9,7 @@ module.exports = {
   getAttribute : getAttribute,
   testAttribute : testAttribute,
   setAttribute : setAttribute,
+  getClosest : getClosest,
   map : map
 };
 
@@ -19,6 +20,14 @@ function nodeContains(parent, child) {
   while((child=child.parentNode)&&child!==parent); 
   return !!child; 
 };
+
+///////////////////////////////////////////////////////////////////////////////
+
+function getClosest(tag, name){
+  while((tag=tag.parentNode)&&tag.nodeName.toUpperCase()!==name.toUpperCase()); 
+  return tag ? tag:false; 
+
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 
