@@ -116,3 +116,17 @@
 
 </scroll-bonaparte>
 ```
+
+```html
+
+<button-bonaparte
+  target=css-selector
+  action=[click|mouseover|...|event]
+  toggle=[false|true]
+  trigger=[click|mouseover|...|event]
+  bubble=[true|false]
+  
+  target-*=value
+>
+</button-bonaparte>
+```
