@@ -60,7 +60,7 @@ function button(){
     
     if(trigger === undefined) return; 
 
-    var event = new Event(trigger);
+    var event = new CustomEvent(trigger);
 
     for(var i = 0; i < targets.length; i++){
       target = targets[i];
