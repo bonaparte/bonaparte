@@ -1027,7 +1027,7 @@ function mixins(){
 }
 },{"objct":4}],9:[function(require,module,exports){
 var objct = require("objct");
-
+var util = require("./utility");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Polyfills
@@ -1146,6 +1146,7 @@ function attributeChangedCallback( name, previousValue, newValue ) {
     newValue : newValue
   };
 
+  util.triggerEvent(this, "attributeChangedCallback", {detail:data});
   this.trigger("attributeChangedCallback", data);
   this.global.trigger("attributeChangedCallback", data, this);
 
@@ -1153,7 +1154,7 @@ function attributeChangedCallback( name, previousValue, newValue ) {
 
 ///////////////////////////////////////////////////////////////////////////////
 
-},{"./events":6,"./globals":7,"./mixins":8,"custom-event-polyfill":1,"document-register-element":2,"mutation-observer":3,"objct":4}],10:[function(require,module,exports){
+},{"./events":6,"./globals":7,"./mixins":8,"./utility":10,"custom-event-polyfill":1,"document-register-element":2,"mutation-observer":3,"objct":4}],10:[function(require,module,exports){
 var objct = require("objct");
 // var easing = require("./easing");
 
@@ -1166,11 +1167,20 @@ module.exports = {
   testAttribute : testAttribute,
   setAttribute : setAttribute,
   getClosest : getClosest,
+  triggerEvent : triggerEvent,
   map : map
 };
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
+
+function triggerEvent(tag, event, params){
+    var newEvent = new CustomEvent(event, params);
+    tag.dispatchEvent(newEvent);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
 
 function nodeContains(parent, child) {
   while((child=child.parentNode)&&child!==parent); 
@@ -1269,7 +1279,6 @@ function button(){
   var active;
 
   window.addEventListener("load", function(){
-
     setEvents();
     setTargets();
     setAttributes();
@@ -1292,7 +1301,6 @@ function button(){
 ///////////////////////////////////////////////////////////////////////////////
 
   function targetAttributeChangedCallback(data) {
-    console.log(data);
     setTimeout(checkAttributes,0);
   }
 
@@ -1514,9 +1522,9 @@ function panel(){
 ///////////////////////////////////////////////////////////////////////////////
 // Eventlisteners
 
-  this.global.addListener("click", clickHandler);
-  this.global.addListener("bonaparte:closePanels", closePanels);
-  this.addListener("attributeChangedCallback", attributeChangedCallback);
+  window.addEventListener("click", clickHandler);
+  window.addEventListener("bonaparte:closePanels", closePanels);
+  this.addEventListener("attributeChangedCallback", attributeChangedCallback);
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -1529,16 +1537,17 @@ function panel(){
 ///////////////////////////////////////////////////////////////////////////////
 
   function attributeChangedCallback(data){
-    if(util.testAttribute(/open/, data.name)){
-      if(data.newValue == "true") {
+    if(util.testAttribute(/open/, data.detail.name)){
+      if(data.detail.newValue == "true") {
         lock();
-        tag.global.trigger("bonaparte:closePanels");
-        tag.global.trigger("panel:open");
-        tag.trigger("open");
+
+        util.triggerEvent(tag, "bonaparte:closePanels", {bubbles:true});
+        util.triggerEvent(tag, "panel:open", {bubbles:true});
+        util.triggerEvent(tag, "open");
       }
       else {
-        tag.global.trigger("panel:close");
-        tag.trigger("close");
+        util.triggerEvent(tag, "panel:close", {bubbles:true});
+        util.triggerEvent(tag, "close");
       }
     };    
   }

@@ -1,5 +1,5 @@
 var objct = require("objct");
-
+var util = require("./utility");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Polyfills
@@ -118,6 +118,7 @@ function attributeChangedCallback( name, previousValue, newValue ) {
     newValue : newValue
   };
 
+  util.triggerEvent(this, "attributeChangedCallback", {detail:data});
   this.trigger("attributeChangedCallback", data);
   this.global.trigger("attributeChangedCallback", data, this);
 

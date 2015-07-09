@@ -15,7 +15,6 @@ function button(){
   var active;
 
   window.addEventListener("load", function(){
-
     setEvents();
     setTargets();
     setAttributes();
@@ -38,7 +37,6 @@ function button(){
 ///////////////////////////////////////////////////////////////////////////////
 
   function targetAttributeChangedCallback(data) {
-    console.log(data);
     setTimeout(checkAttributes,0);
   }
 

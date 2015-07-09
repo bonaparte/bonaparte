@@ -10,11 +10,20 @@ module.exports = {
   testAttribute : testAttribute,
   setAttribute : setAttribute,
   getClosest : getClosest,
+  triggerEvent : triggerEvent,
   map : map
 };
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
+
+function triggerEvent(tag, event, params){
+    var newEvent = new CustomEvent(event, params);
+    tag.dispatchEvent(newEvent);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
 
 function nodeContains(parent, child) {
   while((child=child.parentNode)&&child!==parent); 

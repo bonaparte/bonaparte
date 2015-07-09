@@ -22,9 +22,9 @@ function panel(){
 ///////////////////////////////////////////////////////////////////////////////
 // Eventlisteners
 
-  this.global.addListener("click", clickHandler);
-  this.global.addListener("bonaparte:closePanels", closePanels);
-  this.addListener("attributeChangedCallback", attributeChangedCallback);
+  window.addEventListener("click", clickHandler);
+  window.addEventListener("bonaparte:closePanels", closePanels);
+  this.addEventListener("attributeChangedCallback", attributeChangedCallback);
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -37,16 +37,17 @@ function panel(){
 ///////////////////////////////////////////////////////////////////////////////
 
   function attributeChangedCallback(data){
-    if(util.testAttribute(/open/, data.name)){
-      if(data.newValue == "true") {
+    if(util.testAttribute(/open/, data.detail.name)){
+      if(data.detail.newValue == "true") {
         lock();
-        tag.global.trigger("bonaparte:closePanels");
-        tag.global.trigger("panel:open");
-        tag.trigger("open");
+
+        util.triggerEvent(tag, "bonaparte:closePanels", {bubbles:true});
+        util.triggerEvent(tag, "panel:open", {bubbles:true});
+        util.triggerEvent(tag, "open");
       }
       else {
-        tag.global.trigger("panel:close");
-        tag.trigger("close");
+        util.triggerEvent(tag, "panel:close", {bubbles:true});
+        util.triggerEvent(tag, "close");
       }
     };    
   }
