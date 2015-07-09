@@ -17,5 +17,10 @@
   },
   "permission": false,
   "rtl": false,
-  "version": "2.0.0"
+  "version": "2.0.0",
+
+  "globs"      : {
+    "ignored"    : "!(*.min|*.map|*.rtl|semantic.css|semantic.min.css)",
+    "ignoredRTL" : "!(*.min|*.map|semantic.css|semantic.min.css)"
+  }
 }
