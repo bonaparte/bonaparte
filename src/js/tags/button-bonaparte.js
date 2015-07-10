@@ -110,7 +110,10 @@ function button(){
       for(var name in attributes) {
         targetValue = active === true && toggle === true ? 
           target.values[name] : attributes[name];
-        util.setAttribute(target.tag, name, targetValue); 
+        if(targetValue !== undefined) 
+          util.setAttribute(target.tag, name, targetValue); 
+        else 
+          util.removeAttribute(target.tag, name);
       }
     }
   }
