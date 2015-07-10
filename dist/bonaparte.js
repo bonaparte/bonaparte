@@ -1032,7 +1032,7 @@ function registerTag(name, definition, mixins, nativeBaseElement){
     // Create and mixin tag instance
     objct.extend(this, elements)(this);
         
-    this.triggerEvent("createdCallback", null, true);
+    this.triggerEvent("bonaparte.tag.created", null, true);
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1043,7 +1043,7 @@ function registerTag(name, definition, mixins, nativeBaseElement){
 
 function attachedCallback() {
 
-  this.triggerEvent("attachedCallback", null, true);
+  this.triggerEvent("bonaparte.tag.attached", null, true);
 
 }
 
@@ -1051,7 +1051,7 @@ function attachedCallback() {
 
 function detachedCallback() {
   
-  this.triggerEvent("detachedCallback", null, true);
+  this.triggerEvent("bonaparte.tag.detached", null, true);
 
 }
 
@@ -1065,7 +1065,7 @@ function attributeChangedCallback( name, previousValue, newValue ) {
     newValue : newValue
   };
 
-  this.triggerEvent("attributeChangedCallback", data, true);
+  this.triggerEvent("bonaparte.tag.attributeChanged", data, true);
 
 }
 
@@ -1229,7 +1229,7 @@ function button(){
 
 ///////////////////////////////////////////////////////////////////////////////
 
-  tag.addEventListener("attributeChangedCallback", attributeChangedCallback);  
+  tag.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);  
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -1431,8 +1431,8 @@ function cornerstone(){
   updateCornerstonePadding();
 ///////////////////////////////////////////////////////////////////////////////
   
-  this.addEventListener("attributeChangedCallback", updateCornerstonePadding);
-  toolbar.addEventListener("attributeChangedCallback", updateCornerstonePadding);
+  this.addEventListener("bonaparte.tag.attributeChanged", updateCornerstonePadding);
+  toolbar.addEventListener("bonaparte.tag.attributeChanged", updateCornerstonePadding);
   
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -1493,8 +1493,8 @@ function panel(){
 // Eventlisteners
 
   window.addEventListener("click", clickHandler);
-  window.addEventListener("bonaparte:closePanels", closePanels);
-  this.addEventListener("attributeChangedCallback", attributeChangedCallback);
+  window.addEventListener("bonaparte.internal.closePanels", closePanels);
+  this.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -1511,13 +1511,11 @@ function panel(){
       if(data.detail.newValue == "true") {
         lock();
 
-        tag.triggerEvent("bonaparte:closePanels", null, true);
-        tag.triggerEvent("panel:open", null, true);
-        tag.triggerEvent("open");
+        tag.triggerEvent("bonaparte.internal.closePanels", null, true);
+        tag.triggerEvent("bonaparte.panel.open", null, true);
       }
       else {
-        tag.triggerEvent("panel:close", null, true);
-        tag.triggerEvent("close");
+        tag.triggerEvent("bonaparte.panel.close", null, true);
       }
     };    
   }
@@ -1677,7 +1675,7 @@ function sidebar(){
 
 ///////////////////////////////////////////////////////////////////////////////
 
-  this.addEventListener("attributeChangedCallback", attributeChangedCallback);
+  this.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
   
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////

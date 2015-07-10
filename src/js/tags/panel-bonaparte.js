@@ -23,8 +23,8 @@ function panel(){
 // Eventlisteners
 
   window.addEventListener("click", clickHandler);
-  window.addEventListener("bonaparte:closePanels", closePanels);
-  this.addEventListener("attributeChangedCallback", attributeChangedCallback);
+  window.addEventListener("bonaparte.internal.closePanels", closePanels);
+  this.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -41,13 +41,11 @@ function panel(){
       if(data.detail.newValue == "true") {
         lock();
 
-        tag.triggerEvent("bonaparte:closePanels", null, true);
-        tag.triggerEvent("panel:open", null, true);
-        tag.triggerEvent("open");
+        tag.triggerEvent("bonaparte.internal.closePanels", null, true);
+        tag.triggerEvent("bonaparte.panel.open", null, true);
       }
       else {
-        tag.triggerEvent("panel:close", null, true);
-        tag.triggerEvent("close");
+        tag.triggerEvent("bonaparte.panel.close", null, true);
       }
     };    
   }
