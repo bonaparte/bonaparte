@@ -1022,14 +1022,15 @@ function registerTag(name, definition, mixins, nativeBaseElement){
       require("./globals"),
       require("./triggerEvent"),
       mixins,
-      definition
+      definition, 
+      require("./mixins")
     ];
 
     // Create bonaparte namespace
     this.bonaparte = this.bonaparte || {};
 
     // Create and mixin tag instance
-    new objct.extend(this, elements, require("./mixins"));
+    objct.extend(this, elements)(this);
         
     this.triggerEvent("createdCallback", null, true);
   }
@@ -1215,13 +1216,15 @@ function button(){
   var action = undefined;
   var targets = [];
   var attributes = {};
+  var toggles = [];
+  var toggle = false;
   var active;
 
   window.addEventListener("load", function(){
     setEvents();
+    setToggles();
     setTargets();
     setAttributes();
-
   });
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1233,6 +1236,7 @@ function button(){
   
   function attributeChangedCallback(data){
     if(util.testAttribute(/action/, data.name)) setEvents();
+    if(util.testAttribute(/toggle/, data.name)) setToggles();
     if(util.testAttribute(/target/, data.name)) setTargets();
     if(util.testAttribute(/target-.*/, data.name)) setAttributes();
   }
@@ -1250,8 +1254,7 @@ function button(){
     syncAttributes();
     triggerEvents();
 
-    if(util.getAttribute(tag, "bubble") === "false") 
-      e.stopPropagation();
+    if(util.getAttribute(tag, "bubbles") === "false") e.stopPropagation();
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1296,18 +1299,48 @@ function button(){
 
   function syncAttributes(){
     var target, targetValue;
-    var toggle = util.getAttribute(tag, "toggle") === "true";
 
     for(var i = 0; i < targets.length; i++){
       target = targets[i];
 
+      // toggle attributes
+      for(var k=0; k<toggles.length; k++) {
+        targetValue = util.getAttribute(target.tag, toggles[k]) === "true" ? 
+          "false":"true";
+        util.setAttribute(target.tag, toggles[k], targetValue); 
+      }
+      
+      // sync attributes
       for(var name in attributes) {
-        targetValue = active === true && toggle === true ? target.values[name] : attributes[name];
+        targetValue = active === true && toggle === true ? 
+          target.values[name] : attributes[name];
         util.setAttribute(target.tag, name, targetValue); 
       }
     }
   }
   
+///////////////////////////////////////////////////////////////////////////////
+
+  function setToggles(){
+    var toggleValue = util.getAttribute(tag, "toggle");
+
+    toggles = [];
+    toggle = false;
+
+    if(toggleValue === undefined) return;
+
+    toggleValue = toggleValue.replace(/\s+/g, " ").split(" ");
+
+    for(var i=0; i < toggleValue.length; i++) {
+      if(toggleValue[i] === "true" || toggleValue[i] === "false") {
+        toggle = toggleValue[i] === "true";
+      }
+      else if(toggleValue[i] !== "") {
+        toggles.push(toggleValue[i]);
+      }
+    }
+  }
+
 ///////////////////////////////////////////////////////////////////////////////
 
   function setAttributes(){

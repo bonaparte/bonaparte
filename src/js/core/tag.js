@@ -73,14 +73,15 @@ function registerTag(name, definition, mixins, nativeBaseElement){
       require("./globals"),
       require("./triggerEvent"),
       mixins,
-      definition
+      definition, 
+      require("./mixins")
     ];
 
     // Create bonaparte namespace
     this.bonaparte = this.bonaparte || {};
 
     // Create and mixin tag instance
-    new objct.extend(this, elements, require("./mixins"));
+    objct.extend(this, elements)(this);
         
     this.triggerEvent("createdCallback", null, true);
   }
