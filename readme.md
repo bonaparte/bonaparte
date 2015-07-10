@@ -103,6 +103,11 @@
   open=[false|true]
 >
 </panel-bonaparte>
+
+<!-- events -->
+"bonaparte.panel.open"
+"bonaparte.panal.close"
+
 ```
 
 ```html
