@@ -898,7 +898,6 @@ button.register();
 
 document.registerElement('content-bonaparte');
 
-
 },{"./tags/button-bonaparte":12,"./tags/cornerstone-bonaparte":13,"./tags/panel-bonaparte":14,"./tags/scroll-bonaparte":15,"./tags/sidebar-bonaparte":16,"./tags/toolbar-bonaparte":17}],6:[function(require,module,exports){
 var objct = require("objct");
 ///////////////////////////////////////////////////////////////////////////////
@@ -1104,7 +1103,7 @@ var objct = require("objct");
 module.exports = {
   nodeContains : nodeContains,
   getAttribute : getAttribute,
-  testAttribute : testAttribute,
+  matchAttribute : matchAttribute,
   setAttribute : setAttribute,
   getClosest : getClosest,
   triggerEvent : triggerEvent,
@@ -1143,7 +1142,7 @@ function getAttribute(tag, name){
 }
 ///////////////////////////////////////////////////////////////////////////////
 
-function testAttribute(patterns, name){
+function matchAttribute(patterns, name){
   var pattern, dataPattern;
   if(!objct.isArray(patterns)) patterns = [patterns];
 
@@ -1235,10 +1234,10 @@ function button(){
 ///////////////////////////////////////////////////////////////////////////////
   
   function attributeChangedCallback(data){
-    if(util.testAttribute(/action/, data.name)) setEvents();
-    if(util.testAttribute(/toggle/, data.name)) setToggles();
-    if(util.testAttribute(/target/, data.name)) setTargets();
-    if(util.testAttribute(/target-.*/, data.name)) setAttributes();
+    if(util.matchAttribute(/action/, data.name)) setEvents();
+    if(util.matchAttribute(/toggle/, data.name)) setToggles();
+    if(util.matchAttribute(/target/, data.name)) setTargets();
+    if(util.matchAttribute(/target-.*/, data.name)) setAttributes();
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1347,7 +1346,7 @@ function button(){
     var attributeBase;
     attributes = [];
     for(var i=0; i < tag.attributes.length; i++) {
-      if(util.testAttribute(/target-.*/, tag.attributes[i].name)) {
+      if(util.matchAttribute(/target-.*/, tag.attributes[i].name)) {
         attributeBase = tag.attributes[i].name.match(/(?:data-)?target-(.*)/)[1];
         attributes[attributeBase] = tag.attributes[i].value;
       }
@@ -1507,7 +1506,7 @@ function panel(){
 ///////////////////////////////////////////////////////////////////////////////
 
   function attributeChangedCallback(data){
-    if(util.testAttribute(/open/, data.detail.name)){
+    if(util.matchAttribute(/open/, data.detail.name)){
       if(data.detail.newValue == "true") {
         lock();
 
@@ -1681,7 +1680,7 @@ function sidebar(){
 ///////////////////////////////////////////////////////////////////////////////
 
   function attributeChangedCallback(data){
-    if(util.testAttribute(/size/, data.name)) {
+    if(util.matchAttribute(/size/, data.name)) {
       updateSize(data.newValue);
     }
   }

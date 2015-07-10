@@ -31,10 +31,10 @@ function button(){
 ///////////////////////////////////////////////////////////////////////////////
   
   function attributeChangedCallback(data){
-    if(util.testAttribute(/action/, data.name)) setEvents();
-    if(util.testAttribute(/toggle/, data.name)) setToggles();
-    if(util.testAttribute(/target/, data.name)) setTargets();
-    if(util.testAttribute(/target-.*/, data.name)) setAttributes();
+    if(util.matchAttribute(/action/, data.name)) setEvents();
+    if(util.matchAttribute(/toggle/, data.name)) setToggles();
+    if(util.matchAttribute(/target/, data.name)) setTargets();
+    if(util.matchAttribute(/target-.*/, data.name)) setAttributes();
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -143,7 +143,7 @@ function button(){
     var attributeBase;
     attributes = [];
     for(var i=0; i < tag.attributes.length; i++) {
-      if(util.testAttribute(/target-.*/, tag.attributes[i].name)) {
+      if(util.matchAttribute(/target-.*/, tag.attributes[i].name)) {
         attributeBase = tag.attributes[i].name.match(/(?:data-)?target-(.*)/)[1];
         attributes[attributeBase] = tag.attributes[i].value;
       }

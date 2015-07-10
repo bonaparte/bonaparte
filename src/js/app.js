@@ -19,4 +19,3 @@ toolbar.register();
 button.register();
 
 document.registerElement('content-bonaparte');
-

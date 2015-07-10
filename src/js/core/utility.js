@@ -7,7 +7,7 @@ var objct = require("objct");
 module.exports = {
   nodeContains : nodeContains,
   getAttribute : getAttribute,
-  testAttribute : testAttribute,
+  matchAttribute : matchAttribute,
   setAttribute : setAttribute,
   getClosest : getClosest,
   triggerEvent : triggerEvent,
@@ -46,7 +46,7 @@ function getAttribute(tag, name){
 }
 ///////////////////////////////////////////////////////////////////////////////
 
-function testAttribute(patterns, name){
+function matchAttribute(patterns, name){
   var pattern, dataPattern;
   if(!objct.isArray(patterns)) patterns = [patterns];
 

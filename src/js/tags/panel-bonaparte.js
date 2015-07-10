@@ -37,7 +37,7 @@ function panel(){
 ///////////////////////////////////////////////////////////////////////////////
 
   function attributeChangedCallback(data){
-    if(util.testAttribute(/open/, data.detail.name)){
+    if(util.matchAttribute(/open/, data.detail.name)){
       if(data.detail.newValue == "true") {
         lock();
 
