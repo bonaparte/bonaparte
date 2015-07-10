@@ -77,7 +77,7 @@
 ```html
 <sidebar
   sidebar=[left|top|right|bottom]
-  size=[px|%|rem|em]
+  size=[value][px|%|rem|em]
   open=[true|false]
 >
 
@@ -120,13 +120,13 @@
 ```html
 
 <button-bonaparte
-  target=css-selector
-  action=[click|mouseover|...|event]
-  toggle=[false|true]|[attributes]
-  trigger=[click|mouseover|...|event]
+  target=[css-selector]
+  action=[event]
+  toggle=[false|true]?[attribute]*
+  trigger=[event]
   bubbles=[true|false]
   
-  target-*=value
+  target-[attribute]=[value]
 >
 </button-bonaparte>
 ```
