@@ -105,8 +105,8 @@
 </panel-bonaparte>
 
 <!-- events -->
-"bonaparte.panel.open"
-"bonaparte.panal.close"
+bonaparte.panel.open
+bonaparte.panal.close
 
 ```
 
