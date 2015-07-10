@@ -120,7 +120,7 @@
 ```html
 
 <button-bonaparte
-  target=[css-selector]
+  target=[querySelector]
   action=[event]
   toggle=[false|true]?[attribute]*
   trigger=[event]
