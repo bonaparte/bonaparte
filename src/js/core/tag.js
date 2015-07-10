@@ -11,6 +11,12 @@ if (!("MutationObserver" in document)) {
   MutationObserver = require("mutation-observer");
 };
 
+if (Element && !Element.prototype.matches) {
+    var proto = Element.prototype;
+    proto.matches = proto.matchesSelector ||
+        proto.mozMatchesSelector || proto.msMatchesSelector ||
+        proto.oMatchesSelector || proto.webkitMatchesSelector;
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 
