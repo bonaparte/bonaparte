@@ -106,7 +106,7 @@
 
 <!-- events -->
 bonaparte.panel.open
-bonaparte.panal.close
+bonaparte.panel.close
 
 ```
 
