@@ -122,9 +122,9 @@
 <button-bonaparte
   target=css-selector
   action=[click|mouseover|...|event]
-  toggle=[false|true]
+  toggle=[false|true]|[attributes]
   trigger=[click|mouseover|...|event]
-  bubble=[true|false]
+  bubbles=[true|false]
   
   target-*=value
 >
