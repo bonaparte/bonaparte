@@ -65,8 +65,8 @@
 >
 
   <!-- Required -->
-  <nth-child-1 sidebar />
-  <nth-child-2 content /> 
+  <1st-child sidebar />
+  <2nd-child content /> 
 
   <!-- Optional -->
   <cornerstone-bonaparte />
@@ -82,8 +82,8 @@
 >
 
   <!-- Required -->
-  <nth-child-1 sidebar />
-  <nth-child-2 content /> 
+  <1st-child sidebar />
+  <2nd-child content /> 
   
 </sidebar-bonaparte>
 ```
@@ -112,7 +112,7 @@
 >
 
   <!-- Required -->
-  <nth-child-1 content />
+  <1st-child content />
 
 </scroll-bonaparte>
 ```
