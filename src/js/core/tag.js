@@ -1,5 +1,5 @@
 var objct = require("objct");
-
+var util = require("./utility");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Polyfills
@@ -71,19 +71,19 @@ function registerTag(name, definition, mixins, nativeBaseElement){
   function createdCallback() {
     var elements = [
       require("./globals"),
-      require("./events"),
+      require("./triggerEvent"),
       mixins,
-      definition
+      definition, 
+      require("./mixins")
     ];
 
     // Create bonaparte namespace
     this.bonaparte = this.bonaparte || {};
 
     // Create and mixin tag instance
-    new objct.extend(this, elements, require("./mixins"));
+    objct.extend(this, elements)(this);
         
-    this.trigger("createdCallback");
-    this.global.trigger("createdCallback", null, this);
+    this.triggerEvent("bonaparte.tag.created", null, true);
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -94,18 +94,16 @@ function registerTag(name, definition, mixins, nativeBaseElement){
 
 function attachedCallback() {
 
-  this.trigger("attachedCallback");
-  this.global.trigger("attachedCallback", null, this);
+  this.triggerEvent("bonaparte.tag.attached", null, true);
 
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 
 function detachedCallback() {
-
-  this.trigger("detachedCallback");
-  this.global.trigger("detachedCallback", null, this);
   
+  this.triggerEvent("bonaparte.tag.detached", null, true);
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -118,8 +116,7 @@ function attributeChangedCallback( name, previousValue, newValue ) {
     newValue : newValue
   };
 
-  this.trigger("attributeChangedCallback", data);
-  this.global.trigger("attributeChangedCallback", data, this);
+  this.triggerEvent("bonaparte.tag.attributeChanged", data, true);
 
 }
 

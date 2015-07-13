@@ -14,13 +14,13 @@ function sidebar(){
 
 ///////////////////////////////////////////////////////////////////////////////
 
-  this.addListener("attributeChangedCallback", attributeChangedCallback);
+  this.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
   
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
   function attributeChangedCallback(data){
-    if(util.testAttribute(/size/, data.name)) {
+    if(util.matchAttribute(/size/, data.name)) {
       updateSize(data.newValue);
     }
   }

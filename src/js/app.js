@@ -21,4 +21,3 @@ button.register();
 sortable.register();
 
 document.registerElement('content-bonaparte');
-

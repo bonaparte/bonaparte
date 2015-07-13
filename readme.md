@@ -65,8 +65,8 @@
 >
 
   <!-- Required -->
-  <nth-child-1 sidebar />
-  <nth-child-2 content /> 
+  <1st-child sidebar />
+  <2nd-child content /> 
 
   <!-- Optional -->
   <cornerstone-bonaparte />
@@ -77,13 +77,13 @@
 ```html
 <sidebar
   sidebar=[left|top|right|bottom]
-  size=[px|%|rem|em]
+  size=[value][px|%|rem|em]
   open=[true|false]
 >
 
   <!-- Required -->
-  <nth-child-1 sidebar />
-  <nth-child-2 content /> 
+  <1st-child sidebar />
+  <2nd-child content /> 
   
 </sidebar-bonaparte>
 ```
@@ -103,6 +103,11 @@
   open=[false|true]
 >
 </panel-bonaparte>
+
+<!-- events -->
+bonaparte.panel.open
+bonaparte.panel.close
+
 ```
 
 ```html
@@ -112,7 +117,7 @@
 >
 
   <!-- Required -->
-  <nth-child-1 content />
+  <1st-child content />
 
 </scroll-bonaparte>
 ```
@@ -120,13 +125,13 @@
 ```html
 
 <button-bonaparte
-  target=css-selector
-  action=[click|mouseover|...|event]
-  toggle=[false|true]
-  trigger=[click|mouseover|...|event]
-  bubble=[true|false]
+  target=[querySelector]
+  action=[event]
+  toggle=[false|true]?[attribute]*
+  trigger=[event]
+  bubbles=[true|false]
   
-  target-*=value
+  target-[attribute]=[value]
 >
 </button-bonaparte>
 ```

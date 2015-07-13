@@ -22,9 +22,9 @@ function panel(){
 ///////////////////////////////////////////////////////////////////////////////
 // Eventlisteners
 
-  this.global.addListener("click", clickHandler);
-  this.global.addListener("bonaparte:closePanels", closePanels);
-  this.addListener("attributeChangedCallback", attributeChangedCallback);
+  window.addEventListener("click", clickHandler);
+  window.addEventListener("bonaparte.internal.closePanels", closePanels);
+  this.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -37,16 +37,15 @@ function panel(){
 ///////////////////////////////////////////////////////////////////////////////
 
   function attributeChangedCallback(data){
-    if(util.testAttribute(/open/, data.name)){
-      if(data.newValue == "true") {
+    if(util.matchAttribute(/open/, data.detail.name)){
+      if(data.detail.newValue == "true") {
         lock();
-        tag.global.trigger("bonaparte:closePanels");
-        tag.global.trigger("panel:open");
-        tag.trigger("open");
+
+        tag.triggerEvent("bonaparte.internal.closePanels", null, true);
+        tag.triggerEvent("bonaparte.panel.open", null, true);
       }
       else {
-        tag.global.trigger("panel:close");
-        tag.trigger("close");
+        tag.triggerEvent("bonaparte.panel.close", null, true);
       }
     };    
   }

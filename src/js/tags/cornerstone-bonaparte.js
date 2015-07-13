@@ -14,8 +14,8 @@ function cornerstone(){
   updateCornerstonePadding();
 ///////////////////////////////////////////////////////////////////////////////
   
-  this.addListener("attributeChangedCallback", updateCornerstonePadding);
-  toolbar.addListener("attributeChangedCallback", updateCornerstonePadding);
+  this.addEventListener("bonaparte.tag.attributeChanged", updateCornerstonePadding);
+  toolbar.addEventListener("bonaparte.tag.attributeChanged", updateCornerstonePadding);
   
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////

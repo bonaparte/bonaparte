@@ -7,14 +7,23 @@ var objct = require("objct");
 module.exports = {
   nodeContains : nodeContains,
   getAttribute : getAttribute,
-  testAttribute : testAttribute,
+  matchAttribute : matchAttribute,
   setAttribute : setAttribute,
   getClosest : getClosest,
+  triggerEvent : triggerEvent,
   map : map
 };
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
+
+function triggerEvent(tag, event, params){
+    var newEvent = new CustomEvent(event, params);
+    tag.dispatchEvent(newEvent);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
 
 function nodeContains(parent, child) {
   while((child=child.parentNode)&&child!==parent); 
@@ -37,7 +46,7 @@ function getAttribute(tag, name){
 }
 ///////////////////////////////////////////////////////////////////////////////
 
-function testAttribute(patterns, name){
+function matchAttribute(patterns, name){
   var pattern, dataPattern;
   if(!objct.isArray(patterns)) patterns = [patterns];
 
