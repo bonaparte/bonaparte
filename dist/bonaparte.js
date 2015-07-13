@@ -959,6 +959,12 @@ if (!("MutationObserver" in document)) {
   MutationObserver = require("mutation-observer");
 };
 
+if (Element && !Element.prototype.matches) {
+    var proto = Element.prototype;
+    proto.matches = proto.matchesSelector ||
+        proto.mozMatchesSelector || proto.msMatchesSelector ||
+        proto.oMatchesSelector || proto.webkitMatchesSelector;
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -1031,7 +1037,7 @@ function registerTag(name, definition, mixins, nativeBaseElement){
     // Create and mixin tag instance
     objct.extend(this, elements)(this);
         
-    this.triggerEvent("bonaparte.tag.created", null, true);
+    this.triggerEvent("bonaparte.tag.created", null);
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1042,7 +1048,7 @@ function registerTag(name, definition, mixins, nativeBaseElement){
 
 function attachedCallback() {
 
-  this.triggerEvent("bonaparte.tag.attached", null, true);
+  this.triggerEvent("bonaparte.tag.attached", null);
 
 }
 
@@ -1050,7 +1056,7 @@ function attachedCallback() {
 
 function detachedCallback() {
   
-  this.triggerEvent("bonaparte.tag.detached", null, true);
+  this.triggerEvent("bonaparte.tag.detached", null);
 
 }
 
@@ -1064,7 +1070,7 @@ function attributeChangedCallback( name, previousValue, newValue ) {
     newValue : newValue
   };
 
-  this.triggerEvent("bonaparte.tag.attributeChanged", data, true);
+  this.triggerEvent("bonaparte.tag.attributeChanged", data);
 
 }
 
@@ -1085,8 +1091,8 @@ module.exports = {
 
 function triggerEvent(event, data, bubbles, cancelable){
   util.triggerEvent(this, event, {
-      bubbles: bubbles | false,
-      cancelable: cancelable | false,
+      bubbles: bubbles || false,
+      cancelable: cancelable || false,
       detail: data
   });
 }
@@ -1105,6 +1111,7 @@ module.exports = {
   getAttribute : getAttribute,
   matchAttribute : matchAttribute,
   setAttribute : setAttribute,
+  removeAttribute : removeAttribute,
   getClosest : getClosest,
   triggerEvent : triggerEvent,
   map : map
@@ -1162,6 +1169,13 @@ function setAttribute(tag, name, value) {
     tag.setAttribute("data-"+name, value);
   else 
     tag.setAttribute(name, value);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+function removeAttribute(tag, name, value) {
+  tag.removeAttribute(name);
+  tag.removeAttribute("data-"+name);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1298,7 +1312,6 @@ function button(){
 
   function syncAttributes(){
     var target, targetValue;
-
     for(var i = 0; i < targets.length; i++){
       target = targets[i];
 
@@ -1313,7 +1326,10 @@ function button(){
       for(var name in attributes) {
         targetValue = active === true && toggle === true ? 
           target.values[name] : attributes[name];
-        util.setAttribute(target.tag, name, targetValue); 
+        if(targetValue !== undefined) 
+          util.setAttribute(target.tag, name, targetValue); 
+        else 
+          util.removeAttribute(target.tag, name);
       }
     }
   }
@@ -1373,13 +1389,19 @@ function button(){
     // restrict button by parent toolbar in general
     var context = util.getClosest(tag, "toolbar-bonaparte") || document;
 
-    //only restrict button in toolbar sidebars.
+    // only restrict button in toolbar sidebars.
     // var potentialToolbar = util.getClosest(tag, "toolbar-bonaparte");
     // var context = potentialToolbar && util.nodeContains(potentialToolbar.firstElementChild, tag)?
     //   potentialToolbar : document;
 
      
     var newTargets = context.querySelectorAll(selector);
+
+    if(context !== document && context.matches(selector)) {
+      newTargets=Array.prototype.slice.call(newTargets);
+      newTargets.push(context);
+    }
+
     targets = [];
 
     for(var i=0; i < newTargets.length; i++) {
@@ -1670,7 +1692,9 @@ module.exports = registerTag("sidebar", sidebar);
 function sidebar(){
   var tag = this;
   var sidebar = this.firstElementChild;
-  updateSize(util.getAttribute(this, "size"));
+  // updateSize();
+
+
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -1680,22 +1704,24 @@ function sidebar(){
 ///////////////////////////////////////////////////////////////////////////////
 
   function attributeChangedCallback(data){
-    if(util.matchAttribute(/size/, data.name)) {
-      updateSize(data.newValue);
-    }
+    console.log("attribute changed");
+    // if(util.matchAttribute(/open/, data.detail.name) && data.detail.newValue !== "true") updateSize(data);
   }
+
 
 ///////////////////////////////////////////////////////////////////////////////
 
-  function updateSize(size) {
-    if(typeof size === "undefined") return;
+  function updateSize(data){
+    console.log("update", data.detail);
 
-    sidebar.style["-webkit-flex-basis"] = size;
-    sidebar.style["-ms-flex-preferred-size"] = size;
-    sidebar.style["flex-basis"] = size;
+    var sidebar = util.getAttribute(tag, "sidebar");
+
+    if(sidebar === "left" || sidebar==="right")
+      tag.firstElementChild.style.width = tag.firstElementChild.offsetWidth+"px";
+    else 
+      tag.firstElementChild.style.height = tag.firstElementChild.offsetHeight+"px";
+
   }
-
-///////////////////////////////////////////////////////////////////////////////
 
 }
 
