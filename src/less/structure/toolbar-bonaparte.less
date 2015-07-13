@@ -1,7 +1,8 @@
 @import "sidebar-bonaparte.less";
 .toolbar-bonaparte(
   @overrides:{.variables(){}},
-  @baseSize : 4rem  
+  @icon-size : 4rem ,
+  @default-size : 200px
 ){
 
   @overrides();
@@ -9,14 +10,58 @@
 
   .sidebar-bonaparte(@overrides);   
 
+  /* standard toolbar size */
+  &[data-sidebar="left"],
+  &[sidebar="left"],
+  &[data-sidebar="right"],
+  &[sidebar="right"] {
+    > :nth-child(1){
+     width:@icon-size;
+    }
+  }
+
+  &[data-sidebar="top"],
+  &[sidebar="top"],
+  &[data-sidebar="bottom"],
+  &[sidebar="bottom"] {
+    > :nth-child(1){
+     height:@icon-size;
+    }
+  }  
+
+  /* open toolbar size */
+
+  &[data-open="true"],
+  &[open="true"] {
+    &[data-sidebar="left"],
+    &[sidebar="left"],
+    &[data-sidebar="right"],
+    &[sidebar="right"] {
+      > :nth-child(1){
+       width:@default-size;
+      }
+    }
+
+    &[data-sidebar="top"],
+    &[sidebar="top"],
+    &[data-sidebar="bottom"],
+    &[sidebar="bottom"] {
+      > :nth-child(1){
+       height:@default-size;
+      }
+    }  
+  }
+
+
+
  
   /*CORNERSTONE*/
 
   > cornerstone-bonaparte {  
     position:absolute;
     display:block;
-    width:@baseSize;
-    height:@baseSize;
+    width:@icon-size;
+    height:@icon-size;
     top:0px;
     left:0px;
     z-index:20;
