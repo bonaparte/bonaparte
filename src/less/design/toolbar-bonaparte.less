@@ -16,6 +16,13 @@ toolbar-bonaparte {
     background-color:purple;
   }
 
+  > :nth-child(2){
+    background-color:tomato;
+  }
+
+
+  /*BUTTON GROUPS*/
+
   > :nth-child(1){
     background-color:teal;
     display:flex;
@@ -27,11 +34,12 @@ toolbar-bonaparte {
     .buttons {
       margin:0px !important;
       background-color:transparent;
+      box-shadow: none;
     }
-  }
 
-  > :nth-child(2){
-    background-color:tomato;
+    > * {
+      overflow:hidden;
+    }
   }
 
   &[data-sidebar="left"],
@@ -50,13 +58,6 @@ toolbar-bonaparte {
     > :nth-child(1){
       flex-flow: row;
     }
-  }
-
-
-
-
-  & > :nth-child(1) > * {
-    overflow:hidden;
   }
 
 }

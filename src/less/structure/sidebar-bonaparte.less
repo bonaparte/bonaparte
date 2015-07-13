@@ -13,50 +13,23 @@
     position:relative;
     overflow:hidden;
     display: flex;  
-    flex-flow: row;
   }
 
   > :nth-child(1){
-    /*flex:0 0;*/
-    /*flex-basis:auto;*/
-    position:static;
-    z-index:20;
+    z-index:1;
     height:auto;
     width:auto;
-    max-height:100%;
-    max-width:100%;
-    transition:max-width @transition, max-height @transition, width @transition, height @transition;
-
+    transition:width @transition, height @transition;
   }
 
   > :nth-child(2){
     flex:1 auto;
-    order:3;
-    z-index:0;
     height:auto;
     width:auto;
   }
 
-  &[data-sidebar="left"],
-  &[sidebar="left"],
-  &[data-sidebar="right"],
-  &[sidebar="right"] {
-    > :nth-child(1){
-     width:@default-size;
-    }
-  }
 
-  &[data-sidebar="top"],
-  &[sidebar="top"],
-  &[data-sidebar="bottom"],
-  &[sidebar="bottom"] {
-    > :nth-child(1){
-     height:@default-size;
-    }
-  }  
-
-
-  /*SIDEBAR*/
+  /*SIDEBAR POSITION*/
 
   &[data-sidebar="left"],
   &[sidebar="left"] {
@@ -78,33 +51,39 @@
     flex-direction: column-reverse;
   }
 
-  /*SIDEBAR*/
 
-  &[data-open="false"],
-  &[open="false"] {
-    &[data-sidebar="left"],
-    &[sidebar="left"],
-    &[data-sidebar="right"],
-    &[sidebar="right"] {
+  /*SIDEBAR STATE*/ 
 
+  &[data-sidebar="left"],
+  &[sidebar="left"],
+  &[data-sidebar="right"],
+  &[sidebar="right"] {
+    > :nth-child(1){
+      width:@default-size;
+    }
+
+    &[data-open="false"],
+    &[open="false"] {
       > :nth-child(1){
         width:0px !important;
-        max-width:0%;
-        overflow:hidden;
       }
-    }
- 
-    &[data-sidebar="top"],
-    &[sidebar="top"],
-    &[data-sidebar="bottom"],
-    &[sidebar="bottom"] {
-
-      > :nth-child(1){
-        height:0px !important;
-        max-height:0%;
-      }
-    }
+    }   
   }
 
+  &[data-sidebar="top"],
+  &[sidebar="top"],
+  &[data-sidebar="bottom"],
+  &[sidebar="bottom"] {
+    > :nth-child(1){
+      height:@default-size;
+    }
+
+    &[data-open="false"],
+    &[open="false"] {
+      > :nth-child(1){
+        height:0px !important;
+      }
+    }      
+  }  
 
 }
