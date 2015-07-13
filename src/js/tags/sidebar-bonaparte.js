@@ -7,35 +7,38 @@ var registerTag = require("../core/tag");
 module.exports = registerTag("sidebar", sidebar);
 
 ///////////////////////////////////////////////////////////////////////////////
-function sidebar(){
-  var tag = this;
-  var sidebar = this.firstElementChild;
-  updateSize(util.getAttribute(this, "size"));
+function sidebar(tag){
+  var sidebar = tag.firstElementChild;
+  // updateSize();
+
+
 
 ///////////////////////////////////////////////////////////////////////////////
 
-  this.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
+  tag.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
   
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
   function attributeChangedCallback(data){
-    if(util.matchAttribute(/size/, data.name)) {
-      updateSize(data.newValue);
-    }
+    console.log("attribute changed");
+    // if(util.matchAttribute(/open/, data.detail.name) && data.detail.newValue !== "true") updateSize(data);
   }
+
 
 ///////////////////////////////////////////////////////////////////////////////
 
-  function updateSize(size) {
-    if(typeof size === "undefined") return;
+  function updateSize(data){
+    console.log("update", data.detail);
 
-    sidebar.style["-webkit-flex-basis"] = size;
-    sidebar.style["-ms-flex-preferred-size"] = size;
-    sidebar.style["flex-basis"] = size;
+    var sidebar = util.getAttribute(tag, "sidebar");
+
+    if(sidebar === "left" || sidebar==="right")
+      tag.firstElementChild.style.width = tag.firstElementChild.offsetWidth+"px";
+    else 
+      tag.firstElementChild.style.height = tag.firstElementChild.offsetHeight+"px";
+
   }
-
-///////////////////////////////////////////////////////////////////////////////
 
 }
 

@@ -9,12 +9,11 @@ var scrollBarWidth = false;
 module.exports = registerTag("scroll", scroll);
 
 ///////////////////////////////////////////////////////////////////////////////
-function scroll(){
-  var tag = this;
-  var content =  this.firstElementChild;
+function scroll(tag){
+  var content =  tag.firstElementChild;
   var slider, scrollbar, scrollBarVisible;
 
-  if(util.getAttribute(this, "scrollbar") === "native") return;
+  if(util.getAttribute(tag, "scrollbar") === "native") return;
 
   setupScroller();
 
@@ -26,7 +25,7 @@ function scroll(){
 ///////////////////////////////////////////////////////////////////////////////
 // Eventlisteners
 
-  if(util.getAttribute(this, "resize") !== "false")
+  if(util.getAttribute(tag, "resize") !== "false")
     window.addEventListener("resize", update);
   
   content.addEventListener("scroll", updatePosition);

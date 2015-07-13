@@ -7,8 +7,7 @@ var registerTag = require("../core/tag");
 module.exports = registerTag("button", button, [], HTMLButtonElement);
 
 ///////////////////////////////////////////////////////////////////////////////
-function button(){
-  var tag = this;
+function button(tag){
   var action = undefined;
   var targets = [];
   var attributes = {};
@@ -95,7 +94,6 @@ function button(){
 
   function syncAttributes(){
     var target, targetValue;
-
     for(var i = 0; i < targets.length; i++){
       target = targets[i];
 
@@ -110,7 +108,10 @@ function button(){
       for(var name in attributes) {
         targetValue = active === true && toggle === true ? 
           target.values[name] : attributes[name];
-        util.setAttribute(target.tag, name, targetValue); 
+        if(targetValue !== undefined) 
+          util.setAttribute(target.tag, name, targetValue); 
+        else 
+          util.removeAttribute(target.tag, name);
       }
     }
   }
@@ -170,13 +171,19 @@ function button(){
     // restrict button by parent toolbar in general
     var context = util.getClosest(tag, "toolbar-bonaparte") || document;
 
-    //only restrict button in toolbar sidebars.
+    // only restrict button in toolbar sidebars.
     // var potentialToolbar = util.getClosest(tag, "toolbar-bonaparte");
     // var context = potentialToolbar && util.nodeContains(potentialToolbar.firstElementChild, tag)?
     //   potentialToolbar : document;
 
      
     var newTargets = context.querySelectorAll(selector);
+
+    if(context !== document && context.matches(selector)) {
+      newTargets=Array.prototype.slice.call(newTargets);
+      newTargets.push(context);
+    }
+
     targets = [];
 
     for(var i=0; i < newTargets.length; i++) {

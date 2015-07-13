@@ -9,6 +9,7 @@ module.exports = {
   getAttribute : getAttribute,
   matchAttribute : matchAttribute,
   setAttribute : setAttribute,
+  removeAttribute : removeAttribute,
   getClosest : getClosest,
   triggerEvent : triggerEvent,
   map : map
@@ -66,6 +67,13 @@ function setAttribute(tag, name, value) {
     tag.setAttribute("data-"+name, value);
   else 
     tag.setAttribute(name, value);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+function removeAttribute(tag, name, value) {
+  tag.removeAttribute(name);
+  tag.removeAttribute("data-"+name);
 }
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -11,6 +11,12 @@ if (!("MutationObserver" in document)) {
   MutationObserver = require("mutation-observer");
 };
 
+if (Element && !Element.prototype.matches) {
+    var proto = Element.prototype;
+    proto.matches = proto.matchesSelector ||
+        proto.mozMatchesSelector || proto.msMatchesSelector ||
+        proto.oMatchesSelector || proto.webkitMatchesSelector;
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -35,6 +41,7 @@ function registerTag(name, definition, mixins, nativeBaseElement){
   
   function tagFactory(){};
   tagFactory.register = register;
+  tagFactory.initialize = initialize;
   tagFactory.mixin = mixin;
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -52,8 +59,8 @@ function registerTag(name, definition, mixins, nativeBaseElement){
         prototype : Object.create( nativeBaseElement.prototype , {
           createdCallback : { value: createdCallback },
           attachedCallback : { value: attachedCallback },
-          detachedCallback : { value: detachedCallback },
-          attributeChangedCallback : { value: attributeChangedCallback }
+          detachedCallback : { value: detachedCallback }
+          // attributeChangedCallback : { value: attributeChangedCallback }
         })
       });
 
@@ -68,22 +75,30 @@ function registerTag(name, definition, mixins, nativeBaseElement){
 
 ///////////////////////////////////////////////////////////////////////////////
 
-  function createdCallback() {
-    var elements = [
+  function initialize(element) {
+    var modules = [
       require("./globals"),
-      require("./triggerEvent"),
+      require("./events"),
       mixins,
       definition, 
       require("./mixins")
     ];
 
     // Create bonaparte namespace
-    this.bonaparte = this.bonaparte || {};
+    element.bonaparte = element.bonaparte || {};
 
     // Create and mixin tag instance
-    objct.extend(this, elements)(this);
+    objct.extend(element.bonaparte, modules)(element);
+  }
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+  function createdCallback() {
+
+    initialize(this);
         
-    this.triggerEvent("bonaparte.tag.created", null, true);
+    this.bonaparte.triggerEvent("tag.created", null);
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -94,7 +109,7 @@ function registerTag(name, definition, mixins, nativeBaseElement){
 
 function attachedCallback() {
 
-  this.triggerEvent("bonaparte.tag.attached", null, true);
+  this.bonaparte.triggerEvent("tag.attached", null);
 
 }
 
@@ -102,22 +117,9 @@ function attachedCallback() {
 
 function detachedCallback() {
   
-  this.triggerEvent("bonaparte.tag.detached", null, true);
+  this.bonaparte.triggerEvent("tag.detached", null);
 
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 
-function attributeChangedCallback( name, previousValue, newValue ) {
-
-  var data = {
-    name : name,
-    previousValue : previousValue,
-    newValue : newValue
-  };
-
-  this.triggerEvent("bonaparte.tag.attributeChanged", data, true);
-
-}
-
-///////////////////////////////////////////////////////////////////////////////

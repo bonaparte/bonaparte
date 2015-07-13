@@ -8,11 +8,10 @@ var registeredMixins = {};
 module.exports = mixins;
 
 ///////////////////////////////////////////////////////////////////////////////
-function mixins(){
+function mixins(tag){
 
-  var tag = this;
   registeredMixins[tag.tagName] = registeredMixins[tag.tagName] || [];
-  new objct.extend(tag, registeredMixins[tag.tagName]);
+  new objct.extend(tag.bonaparte, registeredMixins[tag.tagName]);
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
@@ -29,7 +28,7 @@ function mixins(){
     registeredMixins[tag.tagName].push(mixin);
 
     // apply mixin to current tag.
-    new objct.extend(tag, mixin);
+    new objct.extend(tag.bonaparte, mixin);
 
   }
 

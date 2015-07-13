@@ -16,6 +16,13 @@ toolbar-bonaparte {
     background-color:purple;
   }
 
+  > :nth-child(2){
+    background-color:tomato;
+  }
+
+
+  /*BUTTON GROUPS*/
+
   > :nth-child(1){
     background-color:teal;
     display:flex;
@@ -27,11 +34,12 @@ toolbar-bonaparte {
     .buttons {
       margin:0px !important;
       background-color:transparent;
+      box-shadow: none;
     }
-  }
 
-  > :nth-child(2){
-    background-color:tomato;
+    > * {
+      overflow:hidden;
+    }
   }
 
   &[data-sidebar="left"],
@@ -51,6 +59,7 @@ toolbar-bonaparte {
       flex-flow: row;
     }
   }
+
 }
 
 
@@ -62,7 +71,7 @@ toolbar-bonaparte.tiny,
 toolbar-bonaparte.mini {  
   .toolbar-bonaparte({
     .variables(){
-      @baseSize : 2rem;
+      @icon-size : 2rem;
     }
   });
 
@@ -72,7 +81,7 @@ toolbar-bonaparte.mini {
 toolbar-bonaparte.small {  
   .toolbar-bonaparte({
     .variables(){
-      @baseSize : 3rem;
+      @icon-size : 3rem;
     }
   });
 
@@ -83,7 +92,7 @@ toolbar-bonaparte.large,
 toolbar-bonaparte.big {  
   .toolbar-bonaparte({
     .variables(){
-      @baseSize : 5rem;
+      @icon-size : 5rem;
     }
   });
 
@@ -94,7 +103,7 @@ toolbar-bonaparte.huge,
 toolbar-bonaparte.massive {  
   .toolbar-bonaparte({
     .variables(){
-      @baseSize : 6rem;
+      @icon-size : 6rem;
     }
   });
 

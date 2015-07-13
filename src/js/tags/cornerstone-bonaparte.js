@@ -7,14 +7,13 @@ var registerTag = require("../core/tag");
 module.exports = registerTag("cornerstone", cornerstone);
 
 ///////////////////////////////////////////////////////////////////////////////
-function cornerstone(){
-  var tag = this;
-  var toolbar = this.parentNode;
+function cornerstone(tag){
+  var toolbar = tag.parentNode;
 
   updateCornerstonePadding();
 ///////////////////////////////////////////////////////////////////////////////
   
-  this.addEventListener("bonaparte.tag.attributeChanged", updateCornerstonePadding);
+  tag.addEventListener("bonaparte.tag.attributeChanged", updateCornerstonePadding);
   toolbar.addEventListener("bonaparte.tag.attributeChanged", updateCornerstonePadding);
   
 ///////////////////////////////////////////////////////////////////////////////

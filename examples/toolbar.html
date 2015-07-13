@@ -7,7 +7,7 @@
   
     <script>
      
-      document.createElement("panel-bonaparte").mixin(function(){
+      document.createElement("panel-bonaparte").bonaparte.mixin(function(){
         this.sayHello = function(){
           alert("hello");
         }
@@ -53,25 +53,27 @@
       </aside>
 
 
-      <toolbar-bonaparte display="cover" data-sidebar="left">  
+      <toolbar-bonaparte id="cover" data-sidebar="left" open="false">  
 
         <aside>
           <div class="buttons">
-            <button-bonaparte class="ui icon button" onclick="document.getElementById('left').open(this)"><i class="shop icon left"></i></button-bonaparte><!-- 
-         --><button-bonaparte id="button" class="ui icon button" onclick="document.getElementById('right').toggle('open')"><i class="shop icon left"></i></button-bonaparte>
+            <button-bonaparte class="ui icon button" onclick="document.getElementById('left').bonaparte.open(this)"><i class="shop icon left"></i></button-bonaparte><!-- 
+         --><button-bonaparte id="button" class="ui icon button" onclick="document.getElementById('right').bonaparte.toggle('open')"><i class="shop icon left"></i></button-bonaparte>
           </div>
           <div class="buttons">
-            <button-bonaparte class="ui icon button" onclick="document.getElementById('bottom').toggle('open')"><i class="shop icon left"></i></button-bonaparte>
+            <button-bonaparte class="ui icon button" onclick="document.getElementById('bottom').bonaparte.toggle('open')"><i class="shop icon left"></i></button-bonaparte>
           </div>
-          <div class="buttons">
-            <button-bonaparte class="ui icon button" onclick="document.getElementById('left').open('open')"><i class="shop icon left"></i></button-bonaparte><!-- 
-         --><button-bonaparte class="ui icon button" onclick="document.getElementById('right').toggle('open')"><i class="shop icon left"></i></button-bonaparte>
 
-         
-              <button-bonaparte class="ui button" action="click" bubble="false" toggle="true" target="#toolbar, #right" target-sidebar="bottom" target-open="true">
+                        <button-bonaparte class="ui button" action="click" bubble="false" toggle="true" target="#toolbar, #right" target-sidebar="bottom" target-open="true" style="position:absolute; left:100%; bottom:0px">
                 <i class="shop icon left"></i>
                 test button
               </button-bonaparte>
+          <div class="buttons">
+            <button-bonaparte class="ui icon button" onclick="document.getElementById('left').bonaparte.open('open')"><i class="shop icon left"></i></button-bonaparte><!-- 
+         --><button-bonaparte class="ui icon button" onclick="document.getElementById('right').bonaparte.toggle('open')"><i class="shop icon left"></i></button-bonaparte>
+
+         
+
           </div>
         </aside>
 
@@ -85,7 +87,7 @@
                 test button
               </button-bonaparte>
 
-              <button-bonaparte class="ui button" action="click" target="#button" trigger="click">
+              <button-bonaparte class="ui button" action="click" target="#cover" toggle="true" target-open="false">
                 <i class="shop icon left"></i>
                 test button 2
               </button-bonaparte>
@@ -124,7 +126,7 @@
 
      
       </toolbar-bonaparte>     
-      <cornerstone-bonaparte onclick="document.getElementById('panel').toggle('open')"></cornerstone-bonaparte>
+      <cornerstone-bonaparte onclick="document.getElementById('panel').bonaparte.toggle('open')"></cornerstone-bonaparte>
     </toolbar-bonaparte>
 
 
