@@ -12,8 +12,8 @@ module.exports = {
 
 function triggerEvent(event, data, bubbles, cancelable){
   util.triggerEvent(this, event, {
-      bubbles: bubbles | false,
-      cancelable: cancelable | false,
+      bubbles: bubbles || false,
+      cancelable: cancelable || false,
       detail: data
   });
 }
