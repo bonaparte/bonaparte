@@ -899,6 +899,73 @@ button.register();
 document.registerElement('content-bonaparte');
 
 },{"./tags/button-bonaparte":12,"./tags/cornerstone-bonaparte":13,"./tags/panel-bonaparte":14,"./tags/scroll-bonaparte":15,"./tags/sidebar-bonaparte":16,"./tags/toolbar-bonaparte":17}],6:[function(require,module,exports){
+var util = require("./utility");
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+// Public
+
+module.exports = events;
+
+///////////////////////////////////////////////////////////////////////////////
+function events(tag){
+
+  var values = {};
+  var observer = new MutationObserver(attributeChangedCallback);
+  observer.observe(tag, {attributes:true});
+
+///////////////////////////////////////////////////////////////////////////////
+// Public
+
+  this.triggerEvent = triggerEvent;
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+  function attributeChangedCallback(mutations){
+    var attribute, data;
+    
+    for(var i=0; i<mutations.length; i++) {
+      attribute = mutations[i].attributeName;
+      
+      if(typeof tag.attributes[attribute] === "undefined") continue;
+
+      data = {
+        name : attribute,
+        previousValue : values[attribute],
+        newValue : tag.attributes[attribute].value
+      };
+
+      values[attribute] = data.newValue;
+
+      triggerEvent("tag.attributeChanged", data);
+
+    }
+    
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
+  function triggerEvent(event, data, bubbles, cancelable){
+    util.triggerEvent(tag, "bonaparte."+event, {
+        bubbles: bubbles || false,
+        cancelable: cancelable || false,
+        detail: data
+    });
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+}
+
+
+
+
+},{"./utility":10}],7:[function(require,module,exports){
 var objct = require("objct");
 ///////////////////////////////////////////////////////////////////////////////
 // Public
@@ -906,7 +973,7 @@ var objct = require("objct");
 var globals = module.exports = {
   global : {}
 };
-},{"objct":4}],7:[function(require,module,exports){
+},{"objct":4}],8:[function(require,module,exports){
 var objct = require("objct");
 
 var registeredMixins = {};
@@ -920,7 +987,7 @@ module.exports = mixins;
 function mixins(tag){
 
   registeredMixins[tag.tagName] = registeredMixins[tag.tagName] || [];
-  new objct.extend(tag, registeredMixins[tag.tagName]);
+  new objct.extend(tag.bonaparte, registeredMixins[tag.tagName]);
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
@@ -937,14 +1004,14 @@ function mixins(tag){
     registeredMixins[tag.tagName].push(mixin);
 
     // apply mixin to current tag.
-    new objct.extend(tag, mixin);
+    new objct.extend(tag.bonaparte, mixin);
 
   }
 
 ///////////////////////////////////////////////////////////////////////////////
 
 }
-},{"objct":4}],8:[function(require,module,exports){
+},{"objct":4}],9:[function(require,module,exports){
 var objct = require("objct");
 var util = require("./utility");
 
@@ -1025,7 +1092,7 @@ function registerTag(name, definition, mixins, nativeBaseElement){
   function initialize(element) {
     var modules = [
       require("./globals"),
-      require("./triggerEvent"),
+      require("./events"),
       mixins,
       definition, 
       require("./mixins")
@@ -1045,7 +1112,7 @@ function registerTag(name, definition, mixins, nativeBaseElement){
 
     initialize(this);
         
-    this.triggerEvent("bonaparte.tag.created", null);
+    this.bonaparte.triggerEvent("tag.created", null);
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1056,7 +1123,7 @@ function registerTag(name, definition, mixins, nativeBaseElement){
 
 function attachedCallback() {
 
-  this.triggerEvent("bonaparte.tag.attached", null);
+  this.bonaparte.triggerEvent("tag.attached", null);
 
 }
 
@@ -1064,81 +1131,14 @@ function attachedCallback() {
 
 function detachedCallback() {
   
-  this.triggerEvent("bonaparte.tag.detached", null);
+  this.bonaparte.triggerEvent("tag.detached", null);
 
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 
 
-},{"./globals":6,"./mixins":7,"./triggerEvent":9,"./utility":10,"custom-event-polyfill":1,"document-register-element":2,"mutation-observer":3,"objct":4}],9:[function(require,module,exports){
-var util = require("./utility");
-
-
-
-
-
-///////////////////////////////////////////////////////////////////////////////
-// Public
-
-module.exports = events;
-
-///////////////////////////////////////////////////////////////////////////////
-function events(tag){
-
-  var values = {};
-  var observer = new MutationObserver(attributeChangedCallback);
-  observer.observe(tag, {attributes:true});
-
-///////////////////////////////////////////////////////////////////////////////
-// Public
-
-  this.triggerEvent = triggerEvent;
-
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-
-  function attributeChangedCallback(mutations){
-    var attribute, data;
-    
-    for(var i=0; i<mutations.length; i++) {
-      attribute = mutations[i].attributeName;
-      
-      if(typeof tag.attributes[attribute] === "undefined") continue;
-
-      data = {
-        name : attribute,
-        previousValue : values[attribute],
-        newValue : tag.attributes[attribute].value
-      };
-
-      values[attribute] = data.newValue;
-
-      triggerEvent("bonaparte.tag.attributeChanged", data);
-
-    }
-    
-  }
-
-///////////////////////////////////////////////////////////////////////////////
-
-  function triggerEvent(event, data, bubbles, cancelable){
-    util.triggerEvent(tag, event, {
-        bubbles: bubbles || false,
-        cancelable: cancelable || false,
-        detail: data
-    });
-  }
-
-///////////////////////////////////////////////////////////////////////////////
-
-
-}
-
-
-
-
-},{"./utility":10}],10:[function(require,module,exports){
+},{"./events":6,"./globals":7,"./mixins":8,"./utility":10,"custom-event-polyfill":1,"document-register-element":2,"mutation-observer":3,"objct":4}],10:[function(require,module,exports){
 var objct = require("objct");
 // var easing = require("./easing");
 
@@ -1478,7 +1478,7 @@ function button(tag){
 }
 
  ///////////////////////////////////////////////////////////////////////////////
-},{"../core/tag":8,"../core/utility":10}],13:[function(require,module,exports){
+},{"../core/tag":9,"../core/utility":10}],13:[function(require,module,exports){
 var util = require("../core/utility");
 var registerTag = require("../core/tag");
 
@@ -1530,7 +1530,7 @@ function cornerstone(tag){
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"../core/tag":8,"../core/utility":10}],14:[function(require,module,exports){
+},{"../core/tag":9,"../core/utility":10}],14:[function(require,module,exports){
 var util = require("../core/utility");
 var registerTag = require("../core/tag");
 
@@ -1573,11 +1573,11 @@ function panel(tag){
       if(data.detail.newValue == "true") {
         lock();
 
-        tag.triggerEvent("bonaparte.internal.closePanels", null, true);
-        tag.triggerEvent("bonaparte.panel.open", null, true);
+        tag.bonaparte.triggerEvent("internal.closePanels", null, true);
+        tag.bonaparte.triggerEvent("panel.open", null, true);
       }
-      else {
-        tag.triggerEvent("bonaparte.panel.close", null, true);
+      else { 
+        tag.bonaparte.triggerEvent("panel.close", null, true);
       }
     };    
   }
@@ -1610,7 +1610,7 @@ function panel(tag){
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"../core/tag":8,"../core/utility":10,"../mixins/toggle":11}],15:[function(require,module,exports){
+},{"../core/tag":9,"../core/utility":10,"../mixins/toggle":11}],15:[function(require,module,exports){
 var util   = require("../core/utility");
 var registerTag = require("../core/tag");
 
@@ -1719,7 +1719,7 @@ function getScrollBarWidth(){
   document.documentElement.style.overflow = overflow;
   return width;
 }
-},{"../core/tag":8,"../core/utility":10}],16:[function(require,module,exports){
+},{"../core/tag":9,"../core/utility":10}],16:[function(require,module,exports){
 var util = require("../core/utility");
 var registerTag = require("../core/tag");
 
@@ -1765,7 +1765,7 @@ function sidebar(tag){
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"../core/tag":8,"../core/utility":10}],17:[function(require,module,exports){
+},{"../core/tag":9,"../core/utility":10}],17:[function(require,module,exports){
 var util = require("../core/utility");
 var registerTag = require("../core/tag");
 
@@ -1785,4 +1785,4 @@ function toolbar(){
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"../core/tag":8,"../core/utility":10,"./sidebar-bonaparte.js":16}]},{},[5]);
+},{"../core/tag":9,"../core/utility":10,"./sidebar-bonaparte.js":16}]},{},[5]);

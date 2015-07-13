@@ -43,7 +43,7 @@ function panel(tag){
         tag.bonaparte.triggerEvent("internal.closePanels", null, true);
         tag.bonaparte.triggerEvent("panel.open", null, true);
       }
-      else {
+      else { 
         tag.bonaparte.triggerEvent("panel.close", null, true);
       }
     };    
