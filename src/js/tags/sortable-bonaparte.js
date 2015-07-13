@@ -7,9 +7,8 @@ var registerTag = require("../core/tag");
 module.exports = registerTag("sortable", sortable, []);
 
 ///////////////////////////////////////////////////////////////////////////////
-function sortable(){
-  var tag = this,
-    children = tag.children;
+function sortable(tag){
+  var children = tag.children;
     count = [],
     draggable = false,
     currentDraggedElem = null,

@@ -105,12 +105,12 @@ sortable-bonaparte > div.continuation .buttons .button i.icon {
 
   </head>
   <body>
-    <toolbar-bonaparte display="cover" id="toolbar"  data-sidebar="left">  
+    <toolbar-bonaparte id="toolbar"  data-sidebar="left">  
       <aside>
       	<div class="buttons">
-          <button-bonaparte class="ui icon button" onclick="document.getElementById('panel').toggle('open')"><i class="shop icon left"></i></button-bonaparte>
-          <button-bonaparte class="ui icon button" onclick="document.getElementById('panel2').toggle('open')"><i class="shop icon left"></i></button-bonaparte>
-          <button-bonaparte class="ui icon button" onclick="document.getElementById('panel3').toggle('open')"><i class="shop icon left"></i></button-bonaparte>
+          <button-bonaparte class="ui icon button" target="#panel" toggle="open" action="click"><i class="shop icon left"></i></button-bonaparte>
+          <button-bonaparte class="ui icon button"  target="#panel2" toggle="open" action="click"><i class="shop icon left"></i></button-bonaparte>
+          <button-bonaparte class="ui icon button"  target="#panel3" toggle="open" action="click"><i class="shop icon left"></i></button-bonaparte>
         </div>
       </aside>
       <content-bonaparte>
