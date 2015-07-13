@@ -95,7 +95,6 @@ function button(){
 
   function syncAttributes(){
     var target, targetValue;
-
     for(var i = 0; i < targets.length; i++){
       target = targets[i];
 
@@ -173,13 +172,19 @@ function button(){
     // restrict button by parent toolbar in general
     var context = util.getClosest(tag, "toolbar-bonaparte") || document;
 
-    //only restrict button in toolbar sidebars.
+    // only restrict button in toolbar sidebars.
     // var potentialToolbar = util.getClosest(tag, "toolbar-bonaparte");
     // var context = potentialToolbar && util.nodeContains(potentialToolbar.firstElementChild, tag)?
     //   potentialToolbar : document;
 
      
     var newTargets = context.querySelectorAll(selector);
+
+    if(context !== document && context.matches(selector)) {
+      newTargets=Array.prototype.slice.call(newTargets);
+      newTargets.push(context);
+    }
+
     targets = [];
 
     for(var i=0; i < newTargets.length; i++) {
