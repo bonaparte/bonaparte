@@ -989,6 +989,7 @@ function registerTag(name, definition, mixins, nativeBaseElement){
   
   function tagFactory(){};
   tagFactory.register = register;
+  tagFactory.initialize = initialize;
   tagFactory.mixin = mixin;
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1006,8 +1007,8 @@ function registerTag(name, definition, mixins, nativeBaseElement){
         prototype : Object.create( nativeBaseElement.prototype , {
           createdCallback : { value: createdCallback },
           attachedCallback : { value: attachedCallback },
-          detachedCallback : { value: detachedCallback },
-          attributeChangedCallback : { value: attributeChangedCallback }
+          detachedCallback : { value: detachedCallback }
+          // attributeChangedCallback : { value: attributeChangedCallback }
         })
       });
 
@@ -1022,8 +1023,8 @@ function registerTag(name, definition, mixins, nativeBaseElement){
 
 ///////////////////////////////////////////////////////////////////////////////
 
-  function createdCallback() {
-    var elements = [
+  function initialize(element) {
+    var modules = [
       require("./globals"),
       require("./triggerEvent"),
       mixins,
@@ -1032,10 +1033,18 @@ function registerTag(name, definition, mixins, nativeBaseElement){
     ];
 
     // Create bonaparte namespace
-    this.bonaparte = this.bonaparte || {};
+    element.bonaparte = element.bonaparte || {};
 
     // Create and mixin tag instance
-    objct.extend(this, elements)(this);
+    objct.extend(element, modules)(element);
+  }
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+  function createdCallback() {
+
+    initialize(this);
         
     this.triggerEvent("bonaparte.tag.created", null);
   }
@@ -1062,31 +1071,61 @@ function detachedCallback() {
 
 ///////////////////////////////////////////////////////////////////////////////
 
-function attributeChangedCallback( name, previousValue, newValue ) {
-
-  var data = {
-    name : name,
-    previousValue : previousValue,
-    newValue : newValue
-  };
-
-  this.triggerEvent("bonaparte.tag.attributeChanged", data);
-
-}
-
-///////////////////////////////////////////////////////////////////////////////
 
 },{"./globals":6,"./mixins":7,"./triggerEvent":9,"./utility":10,"custom-event-polyfill":1,"document-register-element":2,"mutation-observer":3,"objct":4}],9:[function(require,module,exports){
 var util = require("./utility");
 
+
+
+
+
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = {
-  triggerEvent : triggerEvent
-};
+module.exports = events;
 
 ///////////////////////////////////////////////////////////////////////////////
+function events(tag){
+
+  var values = {};
+  var observer = new MutationObserver(attributeChangedCallback);
+  observer.observe(tag, {attributes:true});
+
+///////////////////////////////////////////////////////////////////////////////
+// Public
+
+  this.triggerEvent = triggerEvent;
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+  function attributeChangedCallback(mutations){
+    var attribute, data;
+    
+    for(var i=0; i<mutations.length; i++) {
+      attribute = mutations[i].attributeName;
+      
+      if(typeof tag.attributes[attribute] === "undefined") continue;
+
+      data = {
+        name : attribute,
+        previousValue : values[attribute],
+        newValue : tag.attributes[attribute].value
+      };
+
+      values[attribute] = data.newValue;
+
+      tag.triggerEvent("bonaparte.tag.attributeChanged", data);
+
+
+    }
+    
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 
 function triggerEvent(event, data, bubbles, cancelable){
@@ -1096,6 +1135,8 @@ function triggerEvent(event, data, bubbles, cancelable){
       detail: data
   });
 }
+
+
 
 
 
