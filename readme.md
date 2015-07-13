@@ -77,7 +77,6 @@
 ```html
 <sidebar
   sidebar=[left|top|right|bottom]
-  size=[value][px|%|rem|em]
   open=[true|false]
 >
 
