@@ -9,8 +9,7 @@ module.exports = registerTag("panel", panel, [
 ]);
 
 ///////////////////////////////////////////////////////////////////////////////
-function panel(){
-  var tag = this;
+function panel(tag){
   var locked = false;
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -24,7 +23,7 @@ function panel(){
 
   window.addEventListener("click", clickHandler);
   window.addEventListener("bonaparte.internal.closePanels", closePanels);
-  this.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
+  tag.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -41,11 +40,11 @@ function panel(){
       if(data.detail.newValue == "true") {
         lock();
 
-        tag.triggerEvent("bonaparte.internal.closePanels", null, true);
-        tag.triggerEvent("bonaparte.panel.open", null, true);
+        tag.bonaparte.triggerEvent("internal.closePanels", null, true);
+        tag.bonaparte.triggerEvent("panel.open", null, true);
       }
       else {
-        tag.triggerEvent("bonaparte.panel.close", null, true);
+        tag.bonaparte.triggerEvent("panel.close", null, true);
       }
     };    
   }
@@ -54,7 +53,7 @@ function panel(){
 
   function closePanels(){
     if(locked) return;
-    tag.close();
+    close();
   }
 
 ///////////////////////////////////////////////////////////////////////////////

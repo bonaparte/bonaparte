@@ -917,9 +917,8 @@ var registeredMixins = {};
 module.exports = mixins;
 
 ///////////////////////////////////////////////////////////////////////////////
-function mixins(){
+function mixins(tag){
 
-  var tag = this;
   registeredMixins[tag.tagName] = registeredMixins[tag.tagName] || [];
   new objct.extend(tag, registeredMixins[tag.tagName]);
 
@@ -1036,7 +1035,7 @@ function registerTag(name, definition, mixins, nativeBaseElement){
     element.bonaparte = element.bonaparte || {};
 
     // Create and mixin tag instance
-    objct.extend(element, modules)(element);
+    objct.extend(element.bonaparte, modules)(element);
   }
 
 
@@ -1115,8 +1114,7 @@ function events(tag){
 
       values[attribute] = data.newValue;
 
-      tag.triggerEvent("bonaparte.tag.attributeChanged", data);
-
+      triggerEvent("bonaparte.tag.attributeChanged", data);
 
     }
     
@@ -1124,18 +1122,18 @@ function events(tag){
 
 ///////////////////////////////////////////////////////////////////////////////
 
-}
+  function triggerEvent(event, data, bubbles, cancelable){
+    util.triggerEvent(tag, event, {
+        bubbles: bubbles || false,
+        cancelable: cancelable || false,
+        detail: data
+    });
+  }
 
 ///////////////////////////////////////////////////////////////////////////////
 
-function triggerEvent(event, data, bubbles, cancelable){
-  util.triggerEvent(this, event, {
-      bubbles: bubbles || false,
-      cancelable: cancelable || false,
-      detail: data
-  });
-}
 
+}
 
 
 
@@ -1242,18 +1240,23 @@ var util = require("../core/utility");
 ///////////////////////////////////////////////////////////////////////////////
 // Public 
 
-module.exports = {
-  toggle : toggle
-};
+module.exports = toggleMixin;
 
+
+
+
+function toggleMixin(tag){
+
+  this.toggle = toggle;
+  
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-function toggle(attribute){
-  var newValue = util.getAttribute(this, attribute) === "true" ? "false" : "true";
-  this.setAttribute(attribute, newValue);
+  function toggle(attribute){
+    var newValue = util.getAttribute(tag, attribute) === "true" ? "false" : "true";
+    tag.setAttribute(attribute, newValue);
+  }
 }
-
 
 },{"../core/utility":10}],12:[function(require,module,exports){
 var util = require("../core/utility");
@@ -1265,8 +1268,7 @@ var registerTag = require("../core/tag");
 module.exports = registerTag("button", button, [], HTMLButtonElement);
 
 ///////////////////////////////////////////////////////////////////////////////
-function button(){
-  var tag = this;
+function button(tag){
   var action = undefined;
   var targets = [];
   var attributes = {};
@@ -1486,14 +1488,13 @@ var registerTag = require("../core/tag");
 module.exports = registerTag("cornerstone", cornerstone);
 
 ///////////////////////////////////////////////////////////////////////////////
-function cornerstone(){
-  var tag = this;
-  var toolbar = this.parentNode;
+function cornerstone(tag){
+  var toolbar = tag.parentNode;
 
   updateCornerstonePadding();
 ///////////////////////////////////////////////////////////////////////////////
   
-  this.addEventListener("bonaparte.tag.attributeChanged", updateCornerstonePadding);
+  tag.addEventListener("bonaparte.tag.attributeChanged", updateCornerstonePadding);
   toolbar.addEventListener("bonaparte.tag.attributeChanged", updateCornerstonePadding);
   
 ///////////////////////////////////////////////////////////////////////////////
@@ -1541,8 +1542,7 @@ module.exports = registerTag("panel", panel, [
 ]);
 
 ///////////////////////////////////////////////////////////////////////////////
-function panel(){
-  var tag = this;
+function panel(tag){
   var locked = false;
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1556,7 +1556,7 @@ function panel(){
 
   window.addEventListener("click", clickHandler);
   window.addEventListener("bonaparte.internal.closePanels", closePanels);
-  this.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
+  tag.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -1586,7 +1586,7 @@ function panel(){
 
   function closePanels(){
     if(locked) return;
-    tag.close();
+    close();
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1622,12 +1622,11 @@ var scrollBarWidth = false;
 module.exports = registerTag("scroll", scroll);
 
 ///////////////////////////////////////////////////////////////////////////////
-function scroll(){
-  var tag = this;
-  var content =  this.firstElementChild;
+function scroll(tag){
+  var content =  tag.firstElementChild;
   var slider, scrollbar, scrollBarVisible;
 
-  if(util.getAttribute(this, "scrollbar") === "native") return;
+  if(util.getAttribute(tag, "scrollbar") === "native") return;
 
   setupScroller();
 
@@ -1639,7 +1638,7 @@ function scroll(){
 ///////////////////////////////////////////////////////////////////////////////
 // Eventlisteners
 
-  if(util.getAttribute(this, "resize") !== "false")
+  if(util.getAttribute(tag, "resize") !== "false")
     window.addEventListener("resize", update);
   
   content.addEventListener("scroll", updatePosition);
@@ -1730,16 +1729,15 @@ var registerTag = require("../core/tag");
 module.exports = registerTag("sidebar", sidebar);
 
 ///////////////////////////////////////////////////////////////////////////////
-function sidebar(){
-  var tag = this;
-  var sidebar = this.firstElementChild;
+function sidebar(tag){
+  var sidebar = tag.firstElementChild;
   // updateSize();
 
 
 
 ///////////////////////////////////////////////////////////////////////////////
 
-  this.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
+  tag.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
   
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////

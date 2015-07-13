@@ -7,8 +7,7 @@ var registerTag = require("../core/tag");
 module.exports = registerTag("button", button, [], HTMLButtonElement);
 
 ///////////////////////////////////////////////////////////////////////////////
-function button(){
-  var tag = this;
+function button(tag){
   var action = undefined;
   var targets = [];
   var attributes = {};

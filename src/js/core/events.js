@@ -40,8 +40,7 @@ function events(tag){
 
       values[attribute] = data.newValue;
 
-      tag.triggerEvent("bonaparte.tag.attributeChanged", data);
-
+      triggerEvent("tag.attributeChanged", data);
 
     }
     
@@ -49,18 +48,18 @@ function events(tag){
 
 ///////////////////////////////////////////////////////////////////////////////
 
-}
+  function triggerEvent(event, data, bubbles, cancelable){
+    util.triggerEvent(tag, "bonaparte."+event, {
+        bubbles: bubbles || false,
+        cancelable: cancelable || false,
+        detail: data
+    });
+  }
 
 ///////////////////////////////////////////////////////////////////////////////
 
-function triggerEvent(event, data, bubbles, cancelable){
-  util.triggerEvent(this, event, {
-      bubbles: bubbles || false,
-      cancelable: cancelable || false,
-      detail: data
-  });
-}
 
+}
 
 
 

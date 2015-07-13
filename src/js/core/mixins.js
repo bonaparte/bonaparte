@@ -8,9 +8,8 @@ var registeredMixins = {};
 module.exports = mixins;
 
 ///////////////////////////////////////////////////////////////////////////////
-function mixins(){
+function mixins(tag){
 
-  var tag = this;
   registeredMixins[tag.tagName] = registeredMixins[tag.tagName] || [];
   new objct.extend(tag, registeredMixins[tag.tagName]);
 

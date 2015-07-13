@@ -78,7 +78,7 @@ function registerTag(name, definition, mixins, nativeBaseElement){
   function initialize(element) {
     var modules = [
       require("./globals"),
-      require("./triggerEvent"),
+      require("./events"),
       mixins,
       definition, 
       require("./mixins")
@@ -88,7 +88,7 @@ function registerTag(name, definition, mixins, nativeBaseElement){
     element.bonaparte = element.bonaparte || {};
 
     // Create and mixin tag instance
-    objct.extend(element, modules)(element);
+    objct.extend(element.bonaparte, modules)(element);
   }
 
 
@@ -98,7 +98,7 @@ function registerTag(name, definition, mixins, nativeBaseElement){
 
     initialize(this);
         
-    this.triggerEvent("bonaparte.tag.created", null);
+    this.bonaparte.triggerEvent("tag.created", null);
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -109,7 +109,7 @@ function registerTag(name, definition, mixins, nativeBaseElement){
 
 function attachedCallback() {
 
-  this.triggerEvent("bonaparte.tag.attached", null);
+  this.bonaparte.triggerEvent("tag.attached", null);
 
 }
 
@@ -117,7 +117,7 @@ function attachedCallback() {
 
 function detachedCallback() {
   
-  this.triggerEvent("bonaparte.tag.detached", null);
+  this.bonaparte.triggerEvent("tag.detached", null);
 
 }
 

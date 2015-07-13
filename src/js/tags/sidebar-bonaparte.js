@@ -7,16 +7,15 @@ var registerTag = require("../core/tag");
 module.exports = registerTag("sidebar", sidebar);
 
 ///////////////////////////////////////////////////////////////////////////////
-function sidebar(){
-  var tag = this;
-  var sidebar = this.firstElementChild;
+function sidebar(tag){
+  var sidebar = tag.firstElementChild;
   // updateSize();
 
 
 
 ///////////////////////////////////////////////////////////////////////////////
 
-  this.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
+  tag.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
   
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
