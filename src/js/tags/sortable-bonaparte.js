@@ -8,67 +8,136 @@ module.exports = registerTag("sortable", sortable, []);
 
 ///////////////////////////////////////////////////////////////////////////////
 function sortable(){
-  var tag = this;
-  var children = tag.children;
-
-  var currentDraggedElem = null;
-
+  var tag = this,
+    children = tag.children;
+    count = [],
+    draggable = false,
+    currentDraggedElem = null,
+    handler = util.getAttribute(tag, 'handler'),
+    target = util.getAttribute(tag, 'target'),
+    dropZones = target ? document.querySelectorAll(target) : children;
+    
   for (var i = children.length - 1; i >= 0; i--) {
-  	var child = children[i];
-  	util.setAttribute(child, 'draggable', 'true');
-  	util.setAttribute(child, 'data-bonaparte-Id', i);
+    var child = children[i];
+    util.setAttribute(child, 'draggable', 'true');
+    util.setAttribute(child, 'bonaparte-id', i);
 
-  	child.addEventListener('dragstart', dragstart);
-  	child.addEventListener('dragenter', dragenter);
-  	child.addEventListener('dragover', dragover);
-  	child.addEventListener('dragleave', dragleave);
-  	child.addEventListener('dragend', dragend);
-  	child.addEventListener('drop', drop);
+    child.addEventListener('mousedown', mousedown);
+    child.addEventListener('dragstart', dragstart);
   };
   
+
 ///////////////////////////////////////////////////////////////////////////////
+  function addListeners(){
+    for (var i = dropZones.length - 1; i >= 0; i--) {
+      var dropZone = dropZones[i];
+      draggable = true;
+      dropZone.addEventListener('dragenter', dragenter);
+      dropZone.addEventListener('dragover', dragover);
+      dropZone.addEventListener('dragleave', dragleave);
+      dropZone.addEventListener('dragend', dragend);
+      dropZone.addEventListener('drop', drop);
+    }
+  }
+  function removeListeners(){
+    for (var i = dropZones.length - 1; i >= 0; i--) {
+      var dropZone = dropZones[i];
+      draggable = false;
+      dropZone.removeEventListener('dragenter', dragenter);
+      dropZone.removeEventListener('dragover', dragover);
+      dropZone.removeEventListener('dragleave', dragleave);
+      dropZone.removeEventListener('dragend', dragend);
+      dropZone.removeEventListener('drop', drop);
+    }
+  }
+
+
 ///////////////////////////////////////////////////////////////////////////////
+  
+  function mousedown(e) {
+
+    console.log('mousedown', e.target);
+    var dragElem = findDraggableEl(e);
+      console.log('handler', handler);
+    if (handler) {
+      var slectedElem = dragElem.querySelectorAll(handler);
+      if (e.target === slectedElem[0] || util.nodeContains(slectedElem[0], e.target)) {
+        console.log('USE this to drag');
+        addListeners();
+      } else {
+        console.log('can not drag');
+        removeListeners();
+      }
+    } else {
+      console.log('can drag');
+      addListeners();
+    }
+
+  }
+
 
   function dragstart(e){
-   currentDraggedElem = findDraggableEl(e);
-   findDraggableEl(e).classList.add('dragging');
+
+    if (draggable) {
+      var dragElem = findDraggableEl(e);
+      currentDraggedElem = dragElem;
+      dragElem.classList.add('dragging');
+    } else {
+      var crt = this.cloneNode(true);
+      crt.style.visibility = "hidden";
+      e.dataTransfer.setDragImage(crt, 0, 0);
+    }
   }
+
+
   function dragenter(e){
-   findDraggableEl(e).classList.add('dragover');
+    var elem = findDraggableEl(e),
+      id = util.getAttribute(elem, 'bonaparte-id');
+       
+    count[id] = (count[id] + 1) || 1;
+    elem.classList.add('dragover');
   }
   function dragover(e){
    e.preventDefault();
   }  
   function dragleave(e){
-   findDraggableEl(e).classList.remove('dragover');
+    var elem = findDraggableEl(e),
+      id = util.getAttribute(elem, 'bonaparte-id');
+    
+    count[id] -= 1;
+
+    if (count[id] < 1) {
+      elem.classList.remove('dragover');
+    }
   }
   function dragend(e){
    findDraggableEl(e).classList.remove('dragging');
   }
   function drop(e){
-   findDraggableEl(e).classList.remove('dragover');
-   
    var elem = findDraggableEl(e);
-   var parent = currentDraggedElem.parentNode;
-   parent.removeChild(currentDraggedElem);
-   parent.insertBefore(currentDraggedElem, elem);
 
+   count = [];
+   elem.classList.remove('dragover');
+   currentDraggedElem.classList.remove('dragover');
+   
+   if (elem !== currentDraggedElem) {
+     var parent = currentDraggedElem.parentNode;
+     parent.removeChild(currentDraggedElem);
+     parent.insertBefore(currentDraggedElem, elem);
+    }
    currentDraggedElem = null;
   }
 
-  
-
   function findDraggableEl (e) {
-// console.log('e.target', e.target.getAttribute('draggable'));
-	var isElDraggable = (e.target.getAttribute('draggable') === 'true');
-	var target = e.target;
-	while (!isElDraggable) {
-		isElDraggable = (target.getAttribute('draggable') === 'true');
-		target = target.parentNode;
-	}
-	console.log('isElDraggable', isElDraggable);
-  	return target;
-
+    var isElDraggable = (e.target.getAttribute('draggable') === 'true');
+    var eventTarget = e.target;
+    while (!isElDraggable) {
+      isElDraggable = (eventTarget.getAttribute('draggable') === 'true');
+      if (!isElDraggable) {
+        eventTarget = eventTarget.parentNode;
+      }
+    }
+    return eventTarget;
   }
   
 // event.preventDefault()
