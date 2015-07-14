@@ -1581,7 +1581,7 @@ function panel(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function attributeChangedCallback(data){
-    console.log(data);
+    console.log(data, data.detail.name,  data.detail.newValue);
     if(util.matchAttribute(/open/, data.detail.name)){
       console.log(data);
       if(data.detail.newValue == "true") {
