@@ -124,7 +124,7 @@ function detachedCallback() {
 ///////////////////////////////////////////////////////////////////////////////
 
 function attributeChangedCallback(name, oldValue, newValue) {
-  
+  console.log("attributeChangedCallback");
   this.bonaparte.triggerEvent("tag.attributeChanged", {
     name:name,
     oldValue:oldValue,
