@@ -63,11 +63,13 @@ function matchAttribute(patterns, name){
 ///////////////////////////////////////////////////////////////////////////////
 
 function setAttribute(tag, name, value) {
-  console.log(tag.attributes, tag.attributes["data-"+name] !== undefined, name, value);
   if(tag.attributes["data-"+name] !== undefined) 
     tag.setAttribute("data-"+name, value);
   else 
     tag.setAttribute(name, value);
+
+  console.log("setAttribute", tag.attributes[name] , name, value);
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////

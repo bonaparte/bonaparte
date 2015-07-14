@@ -932,7 +932,7 @@ function events(tag){
     
     for(var i=0; i<mutations.length; i++) {
       attribute = mutations[i].attributeName;
-      console.log(mutations[i], mutations.length);
+
       if(typeof tag.attributes[attribute] === "undefined") continue;
 
       data = {
@@ -1215,11 +1215,13 @@ function matchAttribute(patterns, name){
 ///////////////////////////////////////////////////////////////////////////////
 
 function setAttribute(tag, name, value) {
-  console.log(tag.attributes, tag.attributes["data-"+name] !== undefined, name, value);
   if(tag.attributes["data-"+name] !== undefined) 
     tag.setAttribute("data-"+name, value);
   else 
     tag.setAttribute(name, value);
+
+  console.log("setAttribute", tag.attributes[name] , name, value);
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////
