@@ -71,9 +71,22 @@ function setAttribute(tag, name, value) {
 
 ///////////////////////////////////////////////////////////////////////////////
 
-function removeAttribute(tag, name, value) {
+function removeAttribute(tag, name) {
+
+  if(typeof tag.attributes[name] !== "object") return;
+
+  var value = tag.attributes[name].value;
+  // remove attribute
   tag.removeAttribute(name);
   tag.removeAttribute("data-"+name);
+
+  // trigger Mutation event
+  tag.bonaparte.triggerEvent("tag.attributeChanged", {
+    name : name,
+    previousValue : value,
+    newValue : null
+  });  
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////
