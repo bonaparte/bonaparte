@@ -1260,13 +1260,14 @@ module.exports = toggleMixin;
 function toggleMixin(tag){
 
   this.toggle = toggle;
-  
+
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
   function toggle(attribute){
     var newValue = util.getAttribute(tag, attribute) === "true" ? "false" : "true";
-    tag.setAttribute(attribute, newValue);
+    console.log(newValue);
+    util.setAttribute(tag, attribute, newValue);
   }
 }
 
@@ -1329,8 +1330,7 @@ function button(tag){
 
   function triggerEvents(){
     var trigger = util.getAttribute(tag, "trigger");
-     console.log(targets, trigger);
-   
+  
     if(trigger === undefined) return; 
     for(var i = 0; i < targets.length; i++){
       target = targets[i];
