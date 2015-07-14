@@ -20,7 +20,7 @@
     z-index:50;
     height:auto;
     width:auto;
-    transition:width @transition, height @transition;
+    transition:min-width @transition, min-height @transition;
   }
 
   > :nth-child(2){
@@ -61,13 +61,15 @@
   &[data-sidebar="right"],
   &[sidebar="right"] {
     > :nth-child(1){
-      width:@default-open;
+      max-width:0px;
+
+      min-width:@default-open;
     }
 
     &[data-open="false"],
     &[open="false"] {
       > :nth-child(1){
-        width:@default-closed;
+        min-width:@default-closed;
       }
     }   
   }
@@ -77,13 +79,14 @@
   &[data-sidebar="bottom"],
   &[sidebar="bottom"] {
     > :nth-child(1){
-      height:@default-open;
+      max-height:0px;
+      min-height:@default-open;
     }
 
     &[data-open="false"],
     &[open="false"] {
       > :nth-child(1){
-        height:@default-closed;
+        min-height:@default-closed;
       }
     }      
   }  

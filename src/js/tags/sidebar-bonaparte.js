@@ -8,7 +8,32 @@ module.exports = registerTag("sidebar", sidebar);
 
 ///////////////////////////////////////////////////////////////////////////////
 function sidebar(tag){
+  updateSize();
 
+///////////////////////////////////////////////////////////////////////////////
+
+  tag.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
+  
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+  function attributeChangedCallback(data){
+    console.log(data);
+    if(util.matchAttribute(/size/, data.detail.name)) updateSize();
+  }
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+  function updateSize(data){
+    var size = util.getAttribute(tag, "size");
+    console.log(size);
+    var style = sidebar === "left" || sidebar==="right" ? "min-width" : "min-height";
+    if(size === undefined) 
+      tag.firstElementChild.style[style] = "";
+    else 
+      tag.firstElementChild.style[style] = size;
+  }
 
 }
 
