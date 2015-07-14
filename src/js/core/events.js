@@ -31,6 +31,7 @@ function events(tag){
     
     for(var i=0; i<mutations.length; i++) {
       attribute = mutations[i].attributeName;
+      console.log(mutations[i]);
       if(typeof tag.attributes[attribute] === "undefined") continue;
 
       data = {

@@ -123,10 +123,15 @@ function detachedCallback() {
 
 ///////////////////////////////////////////////////////////////////////////////
 
-function attributeChangedCallback() {
+function attributeChangedCallback(name, oldValue, newValue) {
   
- console.log("attributeChangedCallback");
-
+  this.bonaparte.triggerEvent("tag.attributeChanged", {
+    detail:{
+      name:name,
+      oldValue:oldValue,
+      newValue:newValue
+    }  
+  });
 }
 
 ///////////////////////////////////////////////////////////////////////////////

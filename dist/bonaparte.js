@@ -932,6 +932,7 @@ function events(tag){
     
     for(var i=0; i<mutations.length; i++) {
       attribute = mutations[i].attributeName;
+      console.log(mutations[i]);
       if(typeof tag.attributes[attribute] === "undefined") continue;
 
       data = {
@@ -1136,10 +1137,15 @@ function detachedCallback() {
 
 ///////////////////////////////////////////////////////////////////////////////
 
-function attributeChangedCallback() {
+function attributeChangedCallback(name, oldValue, newValue) {
   
- console.log("attributeChangedCallback");
-
+  this.bonaparte.triggerEvent("tag.attributeChanged", {
+    detail:{
+      name:name,
+      oldValue:oldValue,
+      newValue:newValue
+    }  
+  });
 }
 
 ///////////////////////////////////////////////////////////////////////////////
