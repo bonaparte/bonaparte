@@ -63,6 +63,7 @@ function matchAttribute(patterns, name){
 ///////////////////////////////////////////////////////////////////////////////
 
 function setAttribute(tag, name, value) {
+  console.log(tag);
   if(tag.attributes["data-"+name] !== undefined) 
     tag.setAttribute("data-"+name, value);
   else 
