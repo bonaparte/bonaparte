@@ -1072,8 +1072,8 @@ function registerTag(name, definition, mixins, nativeBaseElement){
         prototype : Object.create( nativeBaseElement.prototype , {
           createdCallback : { value: createdCallback },
           attachedCallback : { value: attachedCallback },
-          detachedCallback : { value: detachedCallback }
-          // attributeChangedCallback : { value: attributeChangedCallback }
+          detachedCallback : { value: detachedCallback },
+          attributeChangedCallback : { value: attributeChangedCallback }
         })
       });
 
@@ -1131,6 +1131,14 @@ function attachedCallback() {
 function detachedCallback() {
   
   this.bonaparte.triggerEvent("tag.detached", null);
+
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+function attributeChangedCallback() {
+  
+ console.log("attributeChangedCallback");
 
 }
 
