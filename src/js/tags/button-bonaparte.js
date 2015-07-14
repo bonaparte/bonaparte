@@ -58,7 +58,7 @@ function button(tag){
     var trigger = util.getAttribute(tag, "trigger");
     
     if(trigger === undefined) return; 
-
+    console.log(targets, trigger);
     for(var i = 0; i < targets.length; i++){
       target = targets[i];
       util.triggerEvent(target.tag, trigger)
