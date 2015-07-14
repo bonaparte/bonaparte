@@ -1576,6 +1576,7 @@ function panel(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function clickHandler(e){
+    console.log("globalClick", e.target);
     if(e.target === tag || util.nodeContains(tag, e.target)) return;
     closePanels();
   }
