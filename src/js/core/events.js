@@ -12,11 +12,11 @@ module.exports = events;
 ///////////////////////////////////////////////////////////////////////////////
 function events(tag){
 
-  var observer = new MutationObserver(attributeChangedCallback);
-  observer.observe(tag, {
-    attributes:true,
-    attributeOldValue:true
-  });
+  // var observer = new MutationObserver(attributeChangedCallback);
+  // observer.observe(tag, {
+  //   attributes:true,
+  //   attributeOldValue:true
+  // });
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
@@ -31,7 +31,7 @@ function events(tag){
     
     for(var i=0; i<mutations.length; i++) {
       attribute = mutations[i].attributeName;
-      console.log(mutations[i]);
+      console.log(mutations[i], mutations.length);
       if(typeof tag.attributes[attribute] === "undefined") continue;
 
       data = {
