@@ -913,9 +913,11 @@ module.exports = events;
 ///////////////////////////////////////////////////////////////////////////////
 function events(tag){
 
-  var values = {};
   var observer = new MutationObserver(attributeChangedCallback);
-  observer.observe(tag, {attributes:true});
+  observer.observe(tag, {
+    attributes:true,
+    attributeOldValue:true
+  });
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
@@ -930,16 +932,13 @@ function events(tag){
     
     for(var i=0; i<mutations.length; i++) {
       attribute = mutations[i].attributeName;
-      
       if(typeof tag.attributes[attribute] === "undefined") continue;
 
       data = {
         name : attribute,
-        previousValue : values[attribute],
+        previousValue : mutations[i].oldValue,
         newValue : tag.attributes[attribute].value
       };
-
-      values[attribute] = data.newValue;
 
       triggerEvent("tag.attributeChanged", data);
 
@@ -1212,9 +1211,22 @@ function setAttribute(tag, name, value) {
 
 ///////////////////////////////////////////////////////////////////////////////
 
-function removeAttribute(tag, name, value) {
+function removeAttribute(tag, name) {
+
+  if(typeof tag.attributes[name] !== "object") return;
+
+  var value = tag.attributes[name].value;
+  // remove attribute
   tag.removeAttribute(name);
   tag.removeAttribute("data-"+name);
+
+  // trigger Mutation event
+  tag.bonaparte.triggerEvent("tag.attributeChanged", {
+    name : name,
+    previousValue : value,
+    newValue : null
+  });  
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1730,7 +1742,32 @@ module.exports = registerTag("sidebar", sidebar);
 
 ///////////////////////////////////////////////////////////////////////////////
 function sidebar(tag){
+  updateSize();
 
+///////////////////////////////////////////////////////////////////////////////
+
+  tag.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
+  
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+  function attributeChangedCallback(data){
+    console.log(data);
+    if(util.matchAttribute(/size/, data.detail.name)) updateSize();
+  }
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+  function updateSize(data){
+    var size = util.getAttribute(tag, "size");
+    console.log(size);
+    var style = sidebar === "left" || sidebar==="right" ? "min-width" : "min-height";
+    if(size === undefined) 
+      tag.firstElementChild.style[style] = "";
+    else 
+      tag.firstElementChild.style[style] = size;
+  }
 
 }
 
