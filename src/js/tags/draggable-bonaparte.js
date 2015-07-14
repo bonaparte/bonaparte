@@ -4,18 +4,17 @@ var registerTag = require("../core/tag");
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = registerTag("sortable", sortable, []);
-
+module.exports = registerTag("draggable", draggable);
 ///////////////////////////////////////////////////////////////////////////////
-function sortable(tag){
-  var children = tag.children;
+function draggable(tag) {
+  var children = tag.children,
     count = [],
     draggable = false,
     currentDraggedElem = null,
     handler = util.getAttribute(tag, 'handler'),
     target = util.getAttribute(tag, 'target'),
     dropZones = target ? document.querySelectorAll(target) : children;
-    
+
   for (var i = children.length - 1; i >= 0; i--) {
     var child = children[i];
     util.setAttribute(child, 'draggable', 'true');
@@ -54,10 +53,7 @@ function sortable(tag){
 ///////////////////////////////////////////////////////////////////////////////
   
   function mousedown(e) {
-
-    console.log('mousedown', e.target);
     var dragElem = findDraggableEl(e);
-      console.log('handler', handler);
     if (handler) {
       var slectedElem = dragElem.querySelectorAll(handler);
       if (e.target === slectedElem[0] || util.nodeContains(slectedElem[0], e.target)) {
@@ -113,18 +109,29 @@ function sortable(tag){
    findDraggableEl(e).classList.remove('dragging');
   }
   function drop(e){
-   var elem = findDraggableEl(e);
+    var elem = findDraggableEl(e);
 
-   count = [];
-   elem.classList.remove('dragover');
-   currentDraggedElem.classList.remove('dragover');
-   
-   if (elem !== currentDraggedElem) {
-     var parent = currentDraggedElem.parentNode;
-     parent.removeChild(currentDraggedElem);
-     parent.insertBefore(currentDraggedElem, elem);
+    count = [];
+    elem.classList.remove('dragover');
+    currentDraggedElem.classList.remove('dragover');
+
+    if (elem !== currentDraggedElem) {
+      var parent = currentDraggedElem.parentNode;
+      parent.removeChild(currentDraggedElem);
+      parent.insertBefore(currentDraggedElem, elem);
     }
-   currentDraggedElem = null;
+
+    var details = {
+      dropedElem:  currentDraggedElem,
+      dropZone:  elem,
+      order: tag.children
+    }
+
+    util.triggerEvent(tag, "draggable.drop", {detail : details});
+
+
+    // draggable
+    currentDraggedElem = null;
   }
 
   function findDraggableEl (e) {
@@ -138,8 +145,6 @@ function sortable(tag){
     }
     return eventTarget;
   }
-  
-// event.preventDefault()
 
 ///////////////////////////////////////////////////////////////////////////////
 

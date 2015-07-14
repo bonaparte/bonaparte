@@ -24,13 +24,13 @@
       .dragging { color: red; }
 
 
-sortable-bonaparte > div{
+draggable-bonaparte > div{
   height: 3em;
   overflow: hidden;
   box-sizing: border-box;
   border-bottom: 1px solid #E6E5E6; }
 
-sortable-bonaparte > div .img {
+draggable-bonaparte > div .img {
   width: 3em;
   height: 3em;
   background-size: cover;
@@ -38,10 +38,10 @@ sortable-bonaparte > div .img {
   float: left;
   margin: 0 0.5rem; }
 
-sortable-bonaparte > div .text {
+draggable-bonaparte > div .text {
   margin: 0.5em 4em 0 4.5em; }
 
-sortable-bonaparte > div .text p.headline, sortable-bonaparte > div .text p.deckline {
+draggable-bonaparte > div .text p.headline, draggable-bonaparte > div .text p.deckline {
   padding: 0;
   margin: 0;
   height: 1.2em;
@@ -49,19 +49,19 @@ sortable-bonaparte > div .text p.headline, sortable-bonaparte > div .text p.deck
   overflow: hidden;
   text-overflow: ellipsis; }
 
-sortable-bonaparte > div .text p.headline {
+draggable-bonaparte > div .text p.headline {
   font-weight: 700; }
 
-sortable-bonaparte > div .text p.deckline {
+draggable-bonaparte > div .text p.deckline {
   font-size: 0.7em; }
 
-sortable-bonaparte > div.continuation .img {
+draggable-bonaparte > div.continuation .img {
   opacity: 0.4; }
 /*
-sortable-bonaparte > div.continuation .text {
+draggable-bonaparte > div.continuation .text {
   color: #999; }
 */
-sortable-bonaparte > div:not(.continuation):after {
+draggable-bonaparte > div:not(.continuation):after {
   content: '';
   width: 0;
   height: 0;
@@ -72,7 +72,7 @@ sortable-bonaparte > div:not(.continuation):after {
   right: 7px;
   top: 18px; }
 
-sortable-bonaparte > div:not(.continuation):before {
+draggable-bonaparte > div:not(.continuation):before {
   content: '';
   width: 0;
   border-left: 1px solid #425CBD;
@@ -81,19 +81,19 @@ sortable-bonaparte > div:not(.continuation):before {
   top: 0px;
   bottom: 0px; }
 
-sortable-bonaparte > div .buttons {
+draggable-bonaparte > div .buttons {
   position: absolute;
   right: 15px;
   top: 0; }
 
-sortable-bonaparte > div .buttons .button {
+draggable-bonaparte > div .buttons .button {
   margin: 0;
   box-shadow: none; }
 
-sortable-bonaparte > div .buttons .button i.icon {
+draggable-bonaparte > div .buttons .button i.icon {
   color: #425CBD; }
 
-sortable-bonaparte > div.continuation .buttons .button i.icon {
+draggable-bonaparte > div.continuation .buttons .button i.icon {
   color: #999; }
 
 
@@ -105,26 +105,26 @@ sortable-bonaparte > div.continuation .buttons .button i.icon {
 
   </head>
   <body>
-    <toolbar-bonaparte id="toolbar"  data-sidebar="left">  
+    <toolbar-bonaparte id="toolbar" data-sidebar="left">  
       <aside>
       	<div class="buttons">
-          <button-bonaparte class="ui icon button" target="#panel" toggle="open" action="click"><i class="shop icon left"></i></button-bonaparte>
-          <button-bonaparte class="ui icon button"  target="#panel2" toggle="open" action="click"><i class="shop icon left"></i></button-bonaparte>
-          <button-bonaparte class="ui icon button"  target="#panel3" toggle="open" action="click"><i class="shop icon left"></i></button-bonaparte>
+          <button-bonaparte class="ui icon button" target="#panel" target-open="true" toggle="open" action="click"><i class="shop icon left"></i></button-bonaparte>
+          <button-bonaparte class="ui icon button"  target="#panel2" toggle="open" target-open="true" action="click"><i class="shop icon left"></i></button-bonaparte>
+          <button-bonaparte class="ui icon button"  target="#panel3" toggle="open" target-open="true" action="click"><i class="shop icon left"></i></button-bonaparte>
         </div>
       </aside>
       <content-bonaparte>
         <h1> Content </h1>
 
 
-         <sortable-bonaparte target="#abc">
+         <draggable-bonaparte target="#abc">
                 <h1> Content </h1>
                 <h2> Content </h2>
                 <h3> Content </h3>
                 <h4> Content </h4>
                 <h5> Content </h5>
                 <h6> Content </h6>
-              </sortable-bonaparte> 
+              </draggable-bonaparte> 
 
               <div id="abc">
                 Drop Here
@@ -133,26 +133,24 @@ sortable-bonaparte > div.continuation .buttons .button i.icon {
 
 
 
-
-
         <panel-bonaparte id="panel" position="left">
           <scroll-bonaparte resize="true">
         		<content-bonaparte>
-              <sortable-bonaparte>
+              <draggable-bonaparte sortable="true">
                 <h1> Content </h1>
                 <h2> Content </h2>
                 <h3> Content </h3>
                 <h4> Content </h4>
                 <h5> Content </h5>
                 <h6> Content </h6>
-              </sortable-bonaparte> 
+              </draggable-bonaparte> 
         		</content-bonaparte>
           </scroll-bonaparte>
         </panel-bonaparte>
         <panel-bonaparte id="panel2" position="left">
           <scroll-bonaparte resize="true">
         		<content-bonaparte>
-              <sortable-bonaparte>
+              <draggable-bonaparte>
                 <div data-page="0" data-box="b1" data-sb="SB11148209685471614704404580536710479713270" class="article-list-item ui-draggable" data-reactid=".0.1.1.1.1.1.0.0.$SB11148209685471614704404580536710479713270" style="position: relative;"><div class="img" style="background-image:url(http://s.wsj.net/public/resources/images/BN-HO062_mag041_A_20150323171855.jpg);" data-reactid=".0.1.1.1.1.1.0.0.$SB11148209685471614704404580536710479713270.0"></div><div class="text" data-reactid=".0.1.1.1.1.1.0.0.$SB11148209685471614704404580536710479713270.1"><p class="headline" data-reactid=".0.1.1.1.1.1.0.0.$SB11148209685471614704404580536710479713270.1.0">The Real Fast-Food Revolution test</p><p class="deckline" data-reactid=".0.1.1.1.1.1.0.0.$SB11148209685471614704404580536710479713270.1.1">Two prominent California chefs have founded Loco’l, a new approach to fast food that provides nutritious and delicious fare in some of the country’s poorest neighborhoods</p></div><div class="buttons" data-reactid=".0.1.1.1.1.1.0.0.$SB11148209685471614704404580536710479713270.2"><div title="Drag to module" class="ui button icon drag-handle ui-draggable-handle" data-reactid=".0.1.1.1.1.1.0.0.$SB11148209685471614704404580536710479713270.2.0"><i class="icon view-headline" data-reactid=".0.1.1.1.1.1.0.0.$SB11148209685471614704404580536710479713270.2.0.0"></i></div></div></div>
                 <div data-page="0" data-box="deco" data-sb="SB10001424052702303373904579495624261686320" class="article-list-item ui-draggable" data-reactid=".0.1.1.1.1.1.0.0.$SB10001424052702303373904579495624261686320" style="position: relative;"><div class="img" style="background-image:url(http://s.wsj.net/public/resources/images/BN-HZ069_sample_Z120_20150420142440.jpg);" data-reactid=".0.1.1.1.1.1.0.0.$SB10001424052702303373904579495624261686320.0"></div><div class="text" data-reactid=".0.1.1.1.1.1.0.0.$SB10001424052702303373904579495624261686320.1"><p class="headline" data-reactid=".0.1.1.1.1.1.0.0.$SB10001424052702303373904579495624261686320.1.0">Greece Rattles Markets Ahead of Eurogroup Meeting</p><p class="deckline" data-reactid=".0.1.1.1.1.1.0.0.$SB10001424052702303373904579495624261686320.1.1"></p></div><div class="buttons" data-reactid=".0.1.1.1.1.1.0.0.$SB10001424052702303373904579495624261686320.2"><div title="Drag to module" class="ui button icon drag-handle ui-draggable-handle" data-reactid=".0.1.1.1.1.1.0.0.$SB10001424052702303373904579495624261686320.2.0"><i class="icon view-headline" data-reactid=".0.1.1.1.1.1.0.0.$SB10001424052702303373904579495624261686320.2.0.0"></i></div></div></div>
                 <div data-page="0" data-box="b2" data-sb="SB11156702552649734117904580600481050748958" class="article-list-item ui-draggable" data-reactid=".0.1.1.1.1.1.0.0.$SB11156702552649734117904580600481050748958" style="position: relative;"><div class="img" style="background-image:url(http://s.wsj.net/public/resources/images/BN-IB713_0424ba_OR_20150424133138.jpg);" data-reactid=".0.1.1.1.1.1.0.0.$SB11156702552649734117904580600481050748958.0"></div><div class="text" data-reactid=".0.1.1.1.1.1.0.0.$SB11156702552649734117904580600481050748958.1"><p class="headline" data-reactid=".0.1.1.1.1.1.0.0.$SB11156702552649734117904580600481050748958.1.0">GM CEO Earned $16.2 Million Last Year</p><p class="deckline" data-reactid=".0.1.1.1.1.1.0.0.$SB11156702552649734117904580600481050748958.1.1">General Motors CEO’s pay was 80% higher than predecessor’s $9 Million 2013 pay</p></div><div class="buttons" data-reactid=".0.1.1.1.1.1.0.0.$SB11156702552649734117904580600481050748958.2"><div title="Drag to module" class="ui button icon drag-handle ui-draggable-handle" data-reactid=".0.1.1.1.1.1.0.0.$SB11156702552649734117904580600481050748958.2.0"><i class="icon view-headline" data-reactid=".0.1.1.1.1.1.0.0.$SB11156702552649734117904580600481050748958.2.0.0"></i></div></div></div>
@@ -182,7 +180,7 @@ sortable-bonaparte > div.continuation .buttons .button i.icon {
                 <div data-page="2" data-box="b4" data-sb="SB11613683466619763327504580593063901459490" class="article-list-item continuation ui-draggable" data-reactid=".0.1.1.1.1.1.0.0.$SB11613683466619763327504580593063901459490" style="position: relative;"><div class="img" style="background-image:url(http://s.wsj.net/public/resources/images/BN-HZ526_NYSCHO_OR_20150420200654.jpg);" data-reactid=".0.1.1.1.1.1.0.0.$SB11613683466619763327504580593063901459490.0"></div><div class="text" data-reactid=".0.1.1.1.1.1.0.0.$SB11613683466619763327504580593063901459490.1"><p class="headline" data-reactid=".0.1.1.1.1.1.0.0.$SB11613683466619763327504580593063901459490.1.0">State Tests Had Reading Passages Meant for Older Children</p><p class="deckline" data-reactid=".0.1.1.1.1.1.0.0.$SB11613683466619763327504580593063901459490.1.1">Excerpts came from ‘The Green Dog: A Mostly True Story,’ ‘Hattie Big Sky,’ and ‘The Clay Marble.’</p></div><div class="buttons" data-reactid=".0.1.1.1.1.1.0.0.$SB11613683466619763327504580593063901459490.2"><div title="Drag to module" class="ui button icon drag-handle ui-draggable-handle" data-reactid=".0.1.1.1.1.1.0.0.$SB11613683466619763327504580593063901459490.2.0"><i class="icon view-headline" data-reactid=".0.1.1.1.1.1.0.0.$SB11613683466619763327504580593063901459490.2.0.0"></i></div></div></div>
                 <div data-page="3" data-box="b1" data-sb="SB11500025451638853982204581094152154231360" class="article-list-item continuation ui-draggable" data-reactid=".0.1.1.1.1.1.0.0.$SB11500025451638853982204581094152154231360" style="position: relative;"><div class="img" style="background-image:url(http://s.wsj.net/public/resources/images/BN-JG963_WIMBEL_OR_20150707174744.jpg);" data-reactid=".0.1.1.1.1.1.0.0.$SB11500025451638853982204581094152154231360.0"></div><div class="text" data-reactid=".0.1.1.1.1.1.0.0.$SB11500025451638853982204581094152154231360.1"><p class="headline" data-reactid=".0.1.1.1.1.1.0.0.$SB11500025451638853982204581094152154231360.1.0">Why You Won’t See Any Colorful Characters at Wimbledon</p><p class="deckline" data-reactid=".0.1.1.1.1.1.0.0.$SB11500025451638853982204581094152154231360.1.1">Tennis tournament enforces wearing white, from headbands to soles; cream is called out</p></div><div class="buttons" data-reactid=".0.1.1.1.1.1.0.0.$SB11500025451638853982204581094152154231360.2"><div title="Drag to module" class="ui button icon drag-handle ui-draggable-handle" data-reactid=".0.1.1.1.1.1.0.0.$SB11500025451638853982204581094152154231360.2.0"><i class="icon view-headline" data-reactid=".0.1.1.1.1.1.0.0.$SB11500025451638853982204581094152154231360.2.0.0"></i></div></div></div>
                 <div data-page="3" data-box="b2" data-sb="SB10647853898323594231504581098081738449112" class="article-list-item continuation ui-draggable" data-reactid=".0.1.1.1.1.1.0.0.$SB10647853898323594231504581098081738449112" style="position: relative;"><div class="img" style="background-image:url(http://s.wsj.net/public/resources/images/BN-JH730_botwt0_OR_20150709115305.jpg);" data-reactid=".0.1.1.1.1.1.0.0.$SB10647853898323594231504581098081738449112.0"></div><div class="text" data-reactid=".0.1.1.1.1.1.0.0.$SB10647853898323594231504581098081738449112.1"><p class="headline" data-reactid=".0.1.1.1.1.1.0.0.$SB10647853898323594231504581098081738449112.1.0">Opinion: Taranto’s Best of the Web</p><p class="deckline" data-reactid=".0.1.1.1.1.1.0.0.$SB10647853898323594231504581098081738449112.1.1">A newspaper’s bizarre Cuba coverage.</p></div><div class="buttons" data-reactid=".0.1.1.1.1.1.0.0.$SB10647853898323594231504581098081738449112.2"><div title="Drag to module" class="ui button icon drag-handle ui-draggable-handle" data-reactid=".0.1.1.1.1.1.0.0.$SB10647853898323594231504581098081738449112.2.0"><i class="icon view-headline" data-reactid=".0.1.1.1.1.1.0.0.$SB10647853898323594231504581098081738449112.2.0.0"></i></div></div></div>
-              </sortable-bonaparte> 
+              </draggable-bonaparte> 
         		</content-bonaparte>
           </scroll-bonaparte>
         </panel-bonaparte>
@@ -191,7 +189,7 @@ sortable-bonaparte > div.continuation .buttons .button i.icon {
         <panel-bonaparte id="panel3" position="left">
           <scroll-bonaparte resize="true">
             <content-bonaparte>
-              <sortable-bonaparte data-handler=".buttons .button">
+              <draggable-bonaparte id="sortable" data-handler=".buttons .button">
                 <div data-page="0" data-box="b1" data-sb="SB11148209685471614704404580536710479713270" class="article-list-item ui-draggable" data-reactid=".0.1.1.1.1.1.0.0.$SB11148209685471614704404580536710479713270" style="position: relative;">
                   <div class="img" style="background-image:url(http://s.wsj.net/public/resources/images/BN-HO062_mag041_A_20150323171855.jpg);" data-reactid=".0.1.1.1.1.1.0.0.$SB11148209685471614704404580536710479713270.0"></div>
                   <div class="text" data-reactid=".0.1.1.1.1.1.0.0.$SB11148209685471614704404580536710479713270.1">
@@ -232,11 +230,18 @@ sortable-bonaparte > div.continuation .buttons .button i.icon {
                 <div data-page="2" data-box="b4" data-sb="SB11613683466619763327504580593063901459490" class="article-list-item continuation ui-draggable" data-reactid=".0.1.1.1.1.1.0.0.$SB11613683466619763327504580593063901459490" style="position: relative;"><div class="img" style="background-image:url(http://s.wsj.net/public/resources/images/BN-HZ526_NYSCHO_OR_20150420200654.jpg);" data-reactid=".0.1.1.1.1.1.0.0.$SB11613683466619763327504580593063901459490.0"></div><div class="text" data-reactid=".0.1.1.1.1.1.0.0.$SB11613683466619763327504580593063901459490.1"><p class="headline" data-reactid=".0.1.1.1.1.1.0.0.$SB11613683466619763327504580593063901459490.1.0">State Tests Had Reading Passages Meant for Older Children</p><p class="deckline" data-reactid=".0.1.1.1.1.1.0.0.$SB11613683466619763327504580593063901459490.1.1">Excerpts came from ‘The Green Dog: A Mostly True Story,’ ‘Hattie Big Sky,’ and ‘The Clay Marble.’</p></div><div class="buttons" data-reactid=".0.1.1.1.1.1.0.0.$SB11613683466619763327504580593063901459490.2"><div title="Drag to module" class="ui button icon drag-handle ui-draggable-handle" data-reactid=".0.1.1.1.1.1.0.0.$SB11613683466619763327504580593063901459490.2.0"><i class="icon view-headline" data-reactid=".0.1.1.1.1.1.0.0.$SB11613683466619763327504580593063901459490.2.0.0"></i></div></div></div>
                 <div data-page="3" data-box="b1" data-sb="SB11500025451638853982204581094152154231360" class="article-list-item continuation ui-draggable" data-reactid=".0.1.1.1.1.1.0.0.$SB11500025451638853982204581094152154231360" style="position: relative;"><div class="img" style="background-image:url(http://s.wsj.net/public/resources/images/BN-JG963_WIMBEL_OR_20150707174744.jpg);" data-reactid=".0.1.1.1.1.1.0.0.$SB11500025451638853982204581094152154231360.0"></div><div class="text" data-reactid=".0.1.1.1.1.1.0.0.$SB11500025451638853982204581094152154231360.1"><p class="headline" data-reactid=".0.1.1.1.1.1.0.0.$SB11500025451638853982204581094152154231360.1.0">Why You Won’t See Any Colorful Characters at Wimbledon</p><p class="deckline" data-reactid=".0.1.1.1.1.1.0.0.$SB11500025451638853982204581094152154231360.1.1">Tennis tournament enforces wearing white, from headbands to soles; cream is called out</p></div><div class="buttons" data-reactid=".0.1.1.1.1.1.0.0.$SB11500025451638853982204581094152154231360.2"><div title="Drag to module" class="ui button icon drag-handle ui-draggable-handle" data-reactid=".0.1.1.1.1.1.0.0.$SB11500025451638853982204581094152154231360.2.0"><i class="icon view-headline" data-reactid=".0.1.1.1.1.1.0.0.$SB11500025451638853982204581094152154231360.2.0.0"></i></div></div></div>
                 <div data-page="3" data-box="b2" data-sb="SB10647853898323594231504581098081738449112" class="article-list-item continuation ui-draggable" data-reactid=".0.1.1.1.1.1.0.0.$SB10647853898323594231504581098081738449112" style="position: relative;"><div class="img" style="background-image:url(http://s.wsj.net/public/resources/images/BN-JH730_botwt0_OR_20150709115305.jpg);" data-reactid=".0.1.1.1.1.1.0.0.$SB10647853898323594231504581098081738449112.0"></div><div class="text" data-reactid=".0.1.1.1.1.1.0.0.$SB10647853898323594231504581098081738449112.1"><p class="headline" data-reactid=".0.1.1.1.1.1.0.0.$SB10647853898323594231504581098081738449112.1.0">Opinion: Taranto’s Best of the Web</p><p class="deckline" data-reactid=".0.1.1.1.1.1.0.0.$SB10647853898323594231504581098081738449112.1.1">A newspaper’s bizarre Cuba coverage.</p></div><div class="buttons" data-reactid=".0.1.1.1.1.1.0.0.$SB10647853898323594231504581098081738449112.2"><div title="Drag to module" class="ui button icon drag-handle ui-draggable-handle" data-reactid=".0.1.1.1.1.1.0.0.$SB10647853898323594231504581098081738449112.2.0"><i class="icon view-headline" data-reactid=".0.1.1.1.1.1.0.0.$SB10647853898323594231504581098081738449112.2.0.0"></i></div></div></div>
-              </sortable-bonaparte> 
+              </draggable-bonaparte> 
             </content-bonaparte>
           </scroll-bonaparte>
         </panel-bonaparte>
       </content-bonaparte>
     </toolbar-bonaparte>
+
+<script>
+  document.getElementById("sortable").addEventListener("draggable.drop", function (e) {
+    console.log('my event', e, this.elements);
+  } );
+</script>
+
   </body>
 </html> 
