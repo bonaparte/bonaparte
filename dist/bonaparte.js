@@ -1329,9 +1329,9 @@ function button(tag){
 
   function triggerEvents(){
     var trigger = util.getAttribute(tag, "trigger");
-    
+     console.log(targets, trigger);
+   
     if(trigger === undefined) return; 
-
     for(var i = 0; i < targets.length; i++){
       target = targets[i];
       util.triggerEvent(target.tag, trigger)
@@ -1752,7 +1752,6 @@ function sidebar(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function attributeChangedCallback(data){
-    console.log(data);
     if(util.matchAttribute(/size/, data.detail.name)) updateSize();
   }
 
@@ -1761,7 +1760,6 @@ function sidebar(tag){
 
   function updateSize(data){
     var size = util.getAttribute(tag, "size");
-    console.log(size);
     var style = sidebar === "left" || sidebar==="right" ? "min-width" : "min-height";
     if(size === undefined) 
       tag.firstElementChild.style[style] = "";
