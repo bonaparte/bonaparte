@@ -1267,6 +1267,8 @@ function toggleMixin(tag){
 
   function toggle(attribute){
     var newValue = util.getAttribute(tag, attribute) === "true" ? "false" : "true";
+        console.log("toggle", attribute, newValue);
+
     util.setAttribute(tag, attribute, newValue);
   }
 }
@@ -1583,7 +1585,6 @@ function panel(tag){
   function attributeChangedCallback(data){
     console.log(data, data.detail.name,  data.detail.newValue);
     if(util.matchAttribute(/open/, data.detail.name)){
-      console.log(data);
       if(data.detail.newValue == "true") {
         lock();
 
