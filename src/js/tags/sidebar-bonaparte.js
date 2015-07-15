@@ -8,10 +8,7 @@ module.exports = registerTag("sidebar", sidebar);
 
 ///////////////////////////////////////////////////////////////////////////////
 function sidebar(tag){
-  var sidebar = tag.firstElementChild;
-  // updateSize();
-
-
+  updateSize();
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -21,23 +18,19 @@ function sidebar(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function attributeChangedCallback(data){
-    console.log("attribute changed");
-    // if(util.matchAttribute(/open/, data.detail.name) && data.detail.newValue !== "true") updateSize(data);
+    if(util.matchAttribute(/size/, data.detail.name)) updateSize();
   }
 
 
 ///////////////////////////////////////////////////////////////////////////////
 
   function updateSize(data){
-    console.log("update", data.detail);
-
-    var sidebar = util.getAttribute(tag, "sidebar");
-
-    if(sidebar === "left" || sidebar==="right")
-      tag.firstElementChild.style.width = tag.firstElementChild.offsetWidth+"px";
+    var size = util.getAttribute(tag, "size");
+    var style = sidebar === "left" || sidebar==="right" ? "min-width" : "min-height";
+    if(size === undefined) 
+      tag.firstElementChild.style[style] = "";
     else 
-      tag.firstElementChild.style.height = tag.firstElementChild.offsetHeight+"px";
-
+      tag.firstElementChild.style[style] = size;
   }
 
 }

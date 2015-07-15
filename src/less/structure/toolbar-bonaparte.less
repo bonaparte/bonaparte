@@ -1,49 +1,15 @@
 @import "sidebar-bonaparte.less";
 .toolbar-bonaparte(
   @overrides:{.variables(){}},
-  @icon-size : 4rem ,
-  @default-size : 200px
+  @icon-size : 4rem,
+  @default-open : 10rem,
+  @default-closed : 0rem
 ){
 
   @overrides();
   .variables();
 
   .sidebar-bonaparte(@overrides);   
-
-
-  /* TOOLBAR STATE */
-
-  &[data-sidebar="left"],
-  &[sidebar="left"],
-  &[data-sidebar="right"],
-  &[sidebar="right"] {
-    > :nth-child(1){
-     width:@icon-size;
-    }
-   
-    &[data-open="true"],
-    &[open="true"] {
-      > :nth-child(1){
-        width:@default-size;
-      }  
-    }
-  }
-
-  &[data-sidebar="top"],
-  &[sidebar="top"],
-  &[data-sidebar="bottom"],
-  &[sidebar="bottom"] {
-    > :nth-child(1){
-     height:@icon-size;
-    }
-   
-    &[data-open="true"],
-    &[open="true"] {
-      > :nth-child(1){
-        height:@default-size;
-      }  
-    }
-  }  
 
  
   /*CORNERSTONE*/

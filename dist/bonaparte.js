@@ -913,9 +913,11 @@ module.exports = events;
 ///////////////////////////////////////////////////////////////////////////////
 function events(tag){
 
-  var values = {};
-  var observer = new MutationObserver(attributeChangedCallback);
-  observer.observe(tag, {attributes:true});
+  // var observer = new MutationObserver(attributeChangedCallback);
+  // observer.observe(tag, {
+  //   attributes:true,
+  //   attributeOldValue:true
+  // });
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
@@ -930,16 +932,14 @@ function events(tag){
     
     for(var i=0; i<mutations.length; i++) {
       attribute = mutations[i].attributeName;
-      
+
       if(typeof tag.attributes[attribute] === "undefined") continue;
 
       data = {
         name : attribute,
-        previousValue : values[attribute],
+        previousValue : mutations[i].oldValue,
         newValue : tag.attributes[attribute].value
       };
-
-      values[attribute] = data.newValue;
 
       triggerEvent("tag.attributeChanged", data);
 
@@ -1073,8 +1073,8 @@ function registerTag(name, definition, mixins, nativeBaseElement){
         prototype : Object.create( nativeBaseElement.prototype , {
           createdCallback : { value: createdCallback },
           attachedCallback : { value: attachedCallback },
-          detachedCallback : { value: detachedCallback }
-          // attributeChangedCallback : { value: attributeChangedCallback }
+          detachedCallback : { value: detachedCallback },
+          attributeChangedCallback : { value: attributeChangedCallback }
         })
       });
 
@@ -1133,6 +1133,17 @@ function detachedCallback() {
   
   this.bonaparte.triggerEvent("tag.detached", null);
 
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+function attributeChangedCallback(name, oldValue, newValue) {
+  console.log("attributeChangedCallback", name, oldValue, newValue);
+  this.bonaparte.triggerEvent("tag.attributeChanged", {
+    name:name,
+    oldValue:oldValue,
+    newValue:newValue
+  });
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1208,13 +1219,29 @@ function setAttribute(tag, name, value) {
     tag.setAttribute("data-"+name, value);
   else 
     tag.setAttribute(name, value);
+
+  console.log("setAttribute", tag.attributes[name] , name, value);
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 
-function removeAttribute(tag, name, value) {
+function removeAttribute(tag, name) {
+
+  if(typeof tag.attributes[name] !== "object") return;
+
+  var value = tag.attributes[name].value;
+  // remove attribute
   tag.removeAttribute(name);
   tag.removeAttribute("data-"+name);
+
+  // trigger Mutation event
+  tag.bonaparte.triggerEvent("tag.attributeChanged", {
+    name : name,
+    previousValue : value,
+    newValue : null
+  });  
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1248,13 +1275,15 @@ module.exports = toggleMixin;
 function toggleMixin(tag){
 
   this.toggle = toggle;
-  
+
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
   function toggle(attribute){
     var newValue = util.getAttribute(tag, attribute) === "true" ? "false" : "true";
-    tag.setAttribute(attribute, newValue);
+        console.log("toggle", attribute, newValue);
+
+    util.setAttribute(tag, attribute, newValue);
   }
 }
 
@@ -1317,9 +1346,8 @@ function button(tag){
 
   function triggerEvents(){
     var trigger = util.getAttribute(tag, "trigger");
-    
+  
     if(trigger === undefined) return; 
-
     for(var i = 0; i < targets.length; i++){
       target = targets[i];
       util.triggerEvent(target.tag, trigger)
@@ -1562,6 +1590,7 @@ function panel(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function clickHandler(e){
+    console.log("globalClick", e.target);
     if(e.target === tag || util.nodeContains(tag, e.target)) return;
     closePanels();
   }
@@ -1569,6 +1598,7 @@ function panel(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function attributeChangedCallback(data){
+    console.log(data, data.detail.name,  data.detail.newValue);
     if(util.matchAttribute(/open/, data.detail.name)){
       if(data.detail.newValue == "true") {
         lock();
@@ -1730,10 +1760,7 @@ module.exports = registerTag("sidebar", sidebar);
 
 ///////////////////////////////////////////////////////////////////////////////
 function sidebar(tag){
-  var sidebar = tag.firstElementChild;
-  // updateSize();
-
-
+  updateSize();
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -1743,23 +1770,19 @@ function sidebar(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function attributeChangedCallback(data){
-    console.log("attribute changed");
-    // if(util.matchAttribute(/open/, data.detail.name) && data.detail.newValue !== "true") updateSize(data);
+    if(util.matchAttribute(/size/, data.detail.name)) updateSize();
   }
 
 
 ///////////////////////////////////////////////////////////////////////////////
 
   function updateSize(data){
-    console.log("update", data.detail);
-
-    var sidebar = util.getAttribute(tag, "sidebar");
-
-    if(sidebar === "left" || sidebar==="right")
-      tag.firstElementChild.style.width = tag.firstElementChild.offsetWidth+"px";
+    var size = util.getAttribute(tag, "size");
+    var style = sidebar === "left" || sidebar==="right" ? "min-width" : "min-height";
+    if(size === undefined) 
+      tag.firstElementChild.style[style] = "";
     else 
-      tag.firstElementChild.style.height = tag.firstElementChild.offsetHeight+"px";
-
+      tag.firstElementChild.style[style] = size;
   }
 
 }

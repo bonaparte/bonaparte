@@ -6,7 +6,13 @@ toolbar-bonaparte {
 
 
 /*////////////////////////////////*/  
-  .toolbar-bonaparte();
+  .toolbar-bonaparte({
+    .variables(){
+      @icon-size : 4rem;
+      @default-open : 20rem;
+      @default-closed : 4rem;
+    }
+  });
 /*////////////////////////////////*/  
 
   background-color:red;
@@ -37,10 +43,8 @@ toolbar-bonaparte {
       box-shadow: none;
     }
 
-    > * {
-      overflow:hidden;
-    }
-  }
+
+}
 
   &[data-sidebar="left"],
   &[sidebar="left"],
@@ -48,6 +52,13 @@ toolbar-bonaparte {
   &[sidebar="right"] {
     > :nth-child(1){
       flex-flow: column;
+    
+      .ui.button,
+      button.ui,
+      .buttons {
+        display:block;
+        white-space: nowrap;
+      }
     }
   }
 
@@ -57,13 +68,17 @@ toolbar-bonaparte {
   &[sidebar="bottom"] {
     > :nth-child(1){
       flex-flow: row;
+     
+      .ui.button,
+      button.ui,
+      .buttons {
+        display:inline-block;
+        white-space: nowrap;
+      }
     }
   }
 
 }
-
-
-
 
 /*////////////////////////////////*/  
 
@@ -72,6 +87,7 @@ toolbar-bonaparte.mini {
   .toolbar-bonaparte({
     .variables(){
       @icon-size : 2rem;
+      @default-open : 2rem;
     }
   });
 
@@ -82,6 +98,7 @@ toolbar-bonaparte.small {
   .toolbar-bonaparte({
     .variables(){
       @icon-size : 3rem;
+      @default-open : 3rem;
     }
   });
 
@@ -93,6 +110,7 @@ toolbar-bonaparte.big {
   .toolbar-bonaparte({
     .variables(){
       @icon-size : 5rem;
+      @default-open : 5rem;
     }
   });
 
@@ -104,6 +122,7 @@ toolbar-bonaparte.massive {
   .toolbar-bonaparte({
     .variables(){
       @icon-size : 6rem;
+      @default-open : 6rem;
     }
   });
 

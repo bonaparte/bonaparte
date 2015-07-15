@@ -4685,12 +4685,20 @@ button.ui.compact.animated .hidden.content,
   margin-top: -2rem;
 }
 
+button.ui.icon,
+button.ui.compact.icon,
+.ui.compact.button.icon,
+.ui.button.icon {
+  text-align: center;
+}
+
 button.ui.labeled.icon,
 button.ui.compact.labeled.icon,
 .ui.compact.button.labeled.icon,
 .ui.button.labeled.icon {
   padding-left: 5rem !important;
   padding-right: 1rem !important;
+  text-align: left;
 }
 
 button.ui.labeled.icon > .icon,
@@ -5280,6 +5288,23 @@ button.ui.tiny.compact.animated .hidden.content,
   margin-top: -1rem;
 }
 
+toolbar-bonaparte.mini > *:first-child button.ui.icon,
+toolbar-bonaparte.mini > *:first-child .ui.button.icon,
+button.ui.mini.icon,
+button.ui.mini.compact.icon,
+.ui.mini.buttons .button.icon,
+.ui.mini.compact.button.icon,
+.ui.mini.button.icon,
+toolbar-bonaparte.tiny > *:first-child button.ui.icon,
+toolbar-bonaparte.tiny > *:first-child .ui.button.icon,
+button.ui.tiny.icon,
+button.ui.tiny.compact.icon,
+.ui.tiny.buttons .button.icon,
+.ui.tiny.compact.button.icon,
+.ui.tiny.button.icon {
+  text-align: center;
+}
+
 toolbar-bonaparte.mini > *:first-child button.ui.labeled.icon,
 toolbar-bonaparte.mini > *:first-child .ui.button.labeled.icon,
 button.ui.mini.labeled.icon,
@@ -5296,6 +5321,7 @@ button.ui.tiny.compact.labeled.icon,
 .ui.tiny.button.labeled.icon {
   padding-left: 3rem !important;
   padding-right: 1rem !important;
+  text-align: left;
 }
 
 toolbar-bonaparte.mini > *:first-child button.ui.labeled.icon > .icon,
@@ -5703,6 +5729,16 @@ button.ui.small.compact.animated .hidden.content,
   margin-top: -1.5rem;
 }
 
+toolbar-bonaparte.small > *:first-child button.ui.icon,
+toolbar-bonaparte.small > *:first-child .ui.button.icon,
+button.ui.small.icon,
+button.ui.small.compact.icon,
+.ui.small.buttons .button.icon,
+.ui.small.compact.button.icon,
+.ui.small.button.icon {
+  text-align: center;
+}
+
 toolbar-bonaparte.small > *:first-child button.ui.labeled.icon,
 toolbar-bonaparte.small > *:first-child .ui.button.labeled.icon,
 button.ui.small.labeled.icon,
@@ -5712,6 +5748,7 @@ button.ui.small.compact.labeled.icon,
 .ui.small.button.labeled.icon {
   padding-left: 4rem !important;
   padding-right: 1rem !important;
+  text-align: left;
 }
 
 toolbar-bonaparte.small > *:first-child button.ui.labeled.icon > .icon,
@@ -6344,6 +6381,23 @@ button.ui.big.compact.animated .hidden.content,
   margin-top: -2.5rem;
 }
 
+toolbar-bonaparte.large > *:first-child button.ui.icon,
+toolbar-bonaparte.large > *:first-child .ui.button.icon,
+button.ui.large.icon,
+button.ui.large.compact.icon,
+.ui.large.buttons .button.icon,
+.ui.large.compact.button.icon,
+.ui.large.button.icon,
+toolbar-bonaparte.big > *:first-child button.ui.icon,
+toolbar-bonaparte.big > *:first-child .ui.button.icon,
+button.ui.big.icon,
+button.ui.big.compact.icon,
+.ui.big.buttons .button.icon,
+.ui.big.compact.button.icon,
+.ui.big.button.icon {
+  text-align: center;
+}
+
 toolbar-bonaparte.large > *:first-child button.ui.labeled.icon,
 toolbar-bonaparte.large > *:first-child .ui.button.labeled.icon,
 button.ui.large.labeled.icon,
@@ -6360,6 +6414,7 @@ button.ui.big.compact.labeled.icon,
 .ui.big.button.labeled.icon {
   padding-left: 6rem !important;
   padding-right: 1rem !important;
+  text-align: left;
 }
 
 toolbar-bonaparte.large > *:first-child button.ui.labeled.icon > .icon,
@@ -7089,6 +7144,23 @@ button.ui.massive.compact.animated .hidden.content,
   margin-top: -3rem;
 }
 
+toolbar-bonaparte.huge > *:first-child button.ui.icon,
+toolbar-bonaparte.huge > *:first-child .ui.button.icon,
+button.ui.huge.icon,
+button.ui.huge.compact.icon,
+.ui.huge.buttons .button.icon,
+.ui.huge.compact.button.icon,
+.ui.huge.button.icon,
+toolbar-bonaparte.massive > *:first-child button.ui.icon,
+toolbar-bonaparte.massive > *:first-child .ui.button.icon,
+button.ui.massive.icon,
+button.ui.massive.compact.icon,
+.ui.massive.buttons .button.icon,
+.ui.massive.compact.button.icon,
+.ui.massive.button.icon {
+  text-align: center;
+}
+
 toolbar-bonaparte.huge > *:first-child button.ui.labeled.icon,
 toolbar-bonaparte.huge > *:first-child .ui.button.labeled.icon,
 button.ui.huge.labeled.icon,
@@ -7105,6 +7177,7 @@ button.ui.massive.compact.labeled.icon,
 .ui.massive.button.labeled.icon {
   padding-left: 7rem !important;
   padding-right: 1rem !important;
+  text-align: left;
 }
 
 toolbar-bonaparte.huge > *:first-child button.ui.labeled.icon > .icon,

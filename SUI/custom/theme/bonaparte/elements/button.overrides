@@ -213,10 +213,14 @@ toolbar-bonaparte.massive > *:first-child .ui.buttons,
      margin-top:-@iconSize/2;
    }
   }
+  &.icon {
+    text-align:center;
+  }
 
   &.labeled.icon {
     padding-left:(@iconSize+1) !important;
     padding-right:1rem !important;
+    text-align:left;
 
     > .icon {
       width:@iconSize;
