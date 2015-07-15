@@ -45,7 +45,6 @@ function button(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function eventHandler(e){
-
     syncAttributes();
     triggerEvents();
 
@@ -73,6 +72,7 @@ function button(tag){
       target = targets[i];
       for(var name in attributes) {
         targetValue = util.getAttribute(target.tag, name);
+
         if(targetValue !== attributes[name]) {
           active = false;
           target.values[name]= targetValue;
@@ -168,12 +168,12 @@ function button(tag){
 
 
     // restrict button by parent toolbar in general
-    var context = util.getClosest(tag, "toolbar-bonaparte") || document;
+    // var context = util.getClosest(tag, "toolbar-bonaparte") || document;
 
     // only restrict button in toolbar sidebars.
-    // var potentialToolbar = util.getClosest(tag, "toolbar-bonaparte");
-    // var context = potentialToolbar && util.nodeContains(potentialToolbar.firstElementChild, tag)?
-    //   potentialToolbar : document;
+    var potentialToolbar = util.getClosest(tag, "toolbar-bonaparte");
+    var context = potentialToolbar && util.nodeContains(potentialToolbar.firstElementChild, tag)?
+      potentialToolbar : document;
 
      
     var newTargets = context.querySelectorAll(selector);

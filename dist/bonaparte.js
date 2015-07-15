@@ -1058,8 +1058,8 @@ function registerTag(name, definition, mixins, nativeBaseElement){
 ///////////////////////////////////////////////////////////////////////////////
 
   function initialize(element){
-    apply(element);
     
+    apply(element);  
     util.observe(element); 
 
   }
@@ -1088,7 +1088,7 @@ function registerTag(name, definition, mixins, nativeBaseElement){
   function createdCallback() {
 
     apply(this);
-    this.bonaparte.observer = true;
+    this.bonaparte.registered = true;
     this.bonaparte.triggerEvent("tag.created", null);
   }
 
@@ -1154,9 +1154,8 @@ var observedElements = [];
 
 function observe(element){
   if(observedElements.indexOf(element)>=0) return;
-  if(typeof element.bonaparte === "object" && element.bonaparte.observer) return;
+  if(typeof element.bonaparte === "object" && element.bonaparte.registered) return;
 
-  
   element.bonaparte = element.bonaparte || {};
   element.bonaparte.observer = new MutationObserver(mutationHandler);
 
@@ -1171,10 +1170,11 @@ function observe(element){
 ///////////////////////////////////////////////////////////////////////////////
 
 function mutationHandler(mutations){
-  var attribute, data;
+  var attribute, data, tag;
   
   for(var i=0; i<mutations.length; i++) {
     attribute = mutations[i].attributeName;
+    tag = mutations[i].target;
     if(typeof tag.attributes[attribute] === "undefined") continue;
 
     data = {
@@ -1183,7 +1183,7 @@ function mutationHandler(mutations){
       newValue : tag.attributes[attribute].value
     };
 
-    triggerEvent("tag.attributeChanged", data);
+    triggerEvent(tag, "bonaparte.tag.attributeChanged", {detail:data});
   }
  
 }
@@ -1244,21 +1244,20 @@ function setAttribute(tag, name, value) {
 ///////////////////////////////////////////////////////////////////////////////
 
 function removeAttribute(tag, name) {
-
   if(typeof tag.attributes[name] !== "object") return;
 
-  var value = tag.attributes[name].value;
+  var data = {
+    name : name,
+    previousValue : tag.attributes[name].value,
+    newValue : null
+  }
   // remove attribute
   tag.removeAttribute(name);
   tag.removeAttribute("data-"+name);
 
-  // trigger Mutation event
-  tag.bonaparte.triggerEvent("tag.attributeChanged", {
-    name : name,
-    previousValue : value,
-    newValue : null
-  });  
-
+  // trigger Mutation event if not "native" bonaparte element
+  if(typeof tag.bonaparte !== "object" || !tag.bonaparte.registered) 
+    triggerEvent(tag, "bonaparte.tag.attributeChanged", {detail:data});  
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1349,7 +1348,6 @@ function button(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function eventHandler(e){
-
     syncAttributes();
     triggerEvents();
 
@@ -1377,6 +1375,7 @@ function button(tag){
       target = targets[i];
       for(var name in attributes) {
         targetValue = util.getAttribute(target.tag, name);
+
         if(targetValue !== attributes[name]) {
           active = false;
           target.values[name]= targetValue;
@@ -1472,12 +1471,12 @@ function button(tag){
 
 
     // restrict button by parent toolbar in general
-    var context = util.getClosest(tag, "toolbar-bonaparte") || document;
+    // var context = util.getClosest(tag, "toolbar-bonaparte") || document;
 
     // only restrict button in toolbar sidebars.
-    // var potentialToolbar = util.getClosest(tag, "toolbar-bonaparte");
-    // var context = potentialToolbar && util.nodeContains(potentialToolbar.firstElementChild, tag)?
-    //   potentialToolbar : document;
+    var potentialToolbar = util.getClosest(tag, "toolbar-bonaparte");
+    var context = potentialToolbar && util.nodeContains(potentialToolbar.firstElementChild, tag)?
+      potentialToolbar : document;
 
      
     var newTargets = context.querySelectorAll(selector);
