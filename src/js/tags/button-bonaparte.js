@@ -65,9 +65,29 @@ function button(tag){
 
 ///////////////////////////////////////////////////////////////////////////////
 
+  function checkStyle(targetValue, attributeValue){
+
+    if(targetValue === attributeValue) return true;
+    if(targetValue === undefined || attributeValue === undefined) return false;
+
+    // IE handling from here on out
+
+    attributeValue = attributeValue.replace(/\s*;\s*/g,";").split(";").sort().join(";");
+    attributeValue += attributeValue.slice(-1) === ";" ? "":";";
+
+    targetValue = targetValue.replace(/\s/g, "\\s*");
+
+    return (new RegExp( targetValue )).test(attributeValue);
+
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
   function checkAttributes(){
     var target, targetValue;
     active = undefined;
+
+    // for each target
     for(var i =0; i< targets.length; i++){
       target = targets[i];
       
@@ -75,19 +95,24 @@ function button(tag){
       for(var name in attributes) {
         targetValue = util.getAttribute(target.tag, name);
 
-        if(targetValue !== attributes[name]) {
-          active = false;
-          target.values[name]= targetValue;
+        if(name === "style") {
+          active=checkStyle(targetValue, attributes[name]);
         }
-        if(active !== false) active = true;
+        else {
+          if(targetValue !== attributes[name]) {
+            active = false;
+            target.values[name]= targetValue;
+          }
+          if(active !== false) active = true;
+        }
       }
 
       // check toggles
       for(var k=0; k<toggles.length; k++) {
-        active = util.getAttribute(target.tag, toggles[k]) === "true";
+        active = util.getAttribute(target.tag, toggles[k]) == "true";
       }     
-
-    }
+ 
+    } 
 
     if(active === true){
       tag.classList.add("active");
