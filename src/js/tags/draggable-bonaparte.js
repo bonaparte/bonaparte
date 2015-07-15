@@ -7,23 +7,39 @@ var registerTag = require("../core/tag");
 module.exports = registerTag("draggable", draggable);
 ///////////////////////////////////////////////////////////////////////////////
 function draggable(tag) {
-  var children = tag.children,
+
+  tag.update = update;
+
+  var children = [],
     count = [],
     draggable = false,
     currentDraggedElem = null,
-    handler = util.getAttribute(tag, 'handler'),
-    target = util.getAttribute(tag, 'target'),
+    handler,
+    target,
+    dropZones;
+  
+  initialise();
+
+  function update () {
+    initialise();
+  }
+
+  function initialise () {
+
+    children = tag.children;
+    handler = util.getAttribute(tag, 'handler');
+    target = util.getAttribute(tag, 'target');
     dropZones = target ? document.querySelectorAll(target) : children;
 
-  for (var i = children.length - 1; i >= 0; i--) {
-    var child = children[i];
-    util.setAttribute(child, 'draggable', 'true');
-    util.setAttribute(child, 'bonaparte-id', i);
+    for (var i = children.length - 1; i >= 0; i--) {
+      var child = children[i];
+      util.setAttribute(child, 'draggable', 'true');
+      util.setAttribute(child, 'bonaparte-id', i);
 
-    child.addEventListener('mousedown', mousedown);
-    child.addEventListener('dragstart', dragstart);
-  };
-  
+      child.addEventListener('mousedown', mousedown);
+      child.addEventListener('dragstart', dragstart);
+    };
+  }
 
 ///////////////////////////////////////////////////////////////////////////////
   function addListeners(){
@@ -57,14 +73,14 @@ function draggable(tag) {
     if (handler) {
       var slectedElem = dragElem.querySelectorAll(handler);
       if (e.target === slectedElem[0] || util.nodeContains(slectedElem[0], e.target)) {
-        console.log('USE this to drag');
+        // console.log('Use handler to drag');
         addListeners();
       } else {
-        console.log('can not drag');
+        // console.log('can not drag');
         removeListeners();
       }
     } else {
-      console.log('can drag');
+      // console.log('can drag');
       addListeners();
     }
 
