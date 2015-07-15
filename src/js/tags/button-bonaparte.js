@@ -70,6 +70,8 @@ function button(tag){
     active = undefined;
     for(var i =0; i< targets.length; i++){
       target = targets[i];
+      
+      // check attributes
       for(var name in attributes) {
         targetValue = util.getAttribute(target.tag, name);
 
@@ -79,6 +81,12 @@ function button(tag){
         }
         if(active !== false) active = true;
       }
+
+      // check toggles
+      for(var k=0; k<toggles.length; k++) {
+        active = util.getAttribute(target.tag, toggles[k]) === "true";
+      }     
+
     }
 
     if(active === true){
