@@ -12,10 +12,50 @@ module.exports = {
   removeAttribute : removeAttribute,
   getClosest : getClosest,
   triggerEvent : triggerEvent,
+  observe : observe,
   map : map
 };
 
 ///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+var observedElements = [];
+
+function observe(element){
+  if(observedElements.indexOf(element)>=0) return;
+  if(typeof element.bonaparte === "object" && element.bonaparte.observer) return;
+
+  
+  element.bonaparte = element.bonaparte || {};
+  element.bonaparte.observer = new MutationObserver(mutationHandler);
+
+  element.bonaparte.observer.observe(element, {
+    attributes:true,
+    attributeOldValue:true
+  });
+  observedElements.push(element);
+
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+function mutationHandler(mutations){
+  var attribute, data;
+  
+  for(var i=0; i<mutations.length; i++) {
+    attribute = mutations[i].attributeName;
+    if(typeof tag.attributes[attribute] === "undefined") continue;
+
+    data = {
+      name : attribute,
+      previousValue : mutations[i].oldValue,
+      newValue : tag.attributes[attribute].value
+    };
+
+    triggerEvent("tag.attributeChanged", data);
+  }
+ 
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 
 function triggerEvent(tag, event, params){

@@ -56,7 +56,7 @@ function button(tag){
 
   function triggerEvents(){
     var trigger = util.getAttribute(tag, "trigger");
-  
+   
     if(trigger === undefined) return; 
     for(var i = 0; i < targets.length; i++){
       target = targets[i];
@@ -158,7 +158,7 @@ function button(tag){
 
     // Remove old target event handlers
     for(var i = 0; i < targets.length; i++){
-      targtes[i].observer.disconnect();
+      targets[i].removeEventListener("bonaparte.tag.attributeChanged", targetAttributeChangedCallback);
     }
 
     if(selector === undefined) return;
@@ -177,21 +177,19 @@ function button(tag){
 
      
     var newTargets = context.querySelectorAll(selector);
-
     if(context !== document && context.matches(selector)) {
       newTargets=Array.prototype.slice.call(newTargets);
       newTargets.push(context);
     }
-
     targets = [];
 
     for(var i=0; i < newTargets.length; i++) {
       targets.push({
         tag : newTargets[i],
-        values : {},
-        observer: new MutationObserver(targetAttributeChangedCallback)
+        values : {}
       });
-      targets[i].observer.observe(targets[i].tag, {attributes:true});
+      util.observe(newTargets[i]);
+      newTargets[i].addEventListener("bonaparte.tag.attributeChanged", targetAttributeChangedCallback);
     }
   }
 
@@ -200,7 +198,7 @@ function button(tag){
   function setEvents(){
     var newAction = util.getAttribute(tag, "action");
 
-    if(action === newAction) return;
+    if(action === newAction) return false;
 
     if(action !== undefined)
       tag.removeEventListener(action, eventHandler);
@@ -209,6 +207,8 @@ function button(tag){
       tag.addEventListener(newAction, eventHandler);
 
     action=newAction;
+
+    return action !== undefined;
   }
 
 ///////////////////////////////////////////////////////////////////////////////

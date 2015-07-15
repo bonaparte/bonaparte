@@ -5,8 +5,7 @@ var util = require("../core/utility");
 
 module.exports = toggleMixin;
 
-
-
+///////////////////////////////////////////////////////////////////////////////
 
 function toggleMixin(tag){
 
@@ -17,8 +16,6 @@ function toggleMixin(tag){
 
   function toggle(attribute){
     var newValue = util.getAttribute(tag, attribute) === "true" ? "false" : "true";
-        console.log("toggle", attribute, newValue);
-
     util.setAttribute(tag, attribute, newValue);
   }
 }
