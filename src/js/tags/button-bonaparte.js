@@ -95,21 +95,20 @@ function button(tag){
       for(var name in attributes) {
         targetValue = util.getAttribute(target.tag, name);
 
-        if(name === "style") {
-          active=checkStyle(targetValue, attributes[name]);
+        if((name === "style" && !checkStyle(targetValue, attributes[name])) || targetValue !== attributes[name]) {
+          active = false;
+          target.values[name] = targetValue;
         }
-        else {
-          if(targetValue !== attributes[name]) {
-            active = false;
-            target.values[name]= targetValue;
-          }
-          if(active !== false) active = true;
-        }
+
+        if(active !== false) active = true;
       }
 
       // check toggles
       for(var k=0; k<toggles.length; k++) {
-        active = util.getAttribute(target.tag, toggles[k]) == "true";
+        if(util.getAttribute(target.tag, toggles[k]) !== "true")
+          active=false;
+
+        if(active !== false) active = true;
       }     
  
     } 
@@ -214,8 +213,8 @@ function button(tag){
       newTargets=Array.prototype.slice.call(newTargets);
       newTargets.push(context);
     }
-    targets = [];
 
+    targets = [];
     for(var i=0; i < newTargets.length; i++) {
       targets.push({
         tag : newTargets[i],
