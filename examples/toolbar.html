@@ -164,7 +164,7 @@
             <content-bonaparte>
 
 
-              <button-bonaparte class="ui button" action="click" bubble="false" toggle="true" target="#toolbar, #right" target-sidebar="bottom" target-open="true">
+              <button-bonaparte class="ui button" action="click" bubble="false" toggle="true" target="#right" target-open="true">
                 <i class="shop icon left"></i>
                 test button
               </button-bonaparte>
@@ -172,6 +172,11 @@
               <button-bonaparte class="ui button" action="click" target="#cover" toggle="true" target-open="false">
                 <i class="shop icon left"></i>
                 test button 2
+              </button-bonaparte>
+
+              <button-bonaparte id = "hello" class="ui button" action="click" target="h1" toggle="true" target-style="color:gold; border:1px solid red">
+                <i class="shop icon left"></i>
+                test button 3
               </button-bonaparte>
 
               <h1> Content </h1>
@@ -208,7 +213,7 @@
 
      
       </toolbar-bonaparte>     
-      <cornerstone-bonaparte onclick="document.getElementById('panel').bonaparte.toggle('open')"></cornerstone-bonaparte>
+      <cornerstone-bonaparte id="cs" onclick="document.getElementById('panel').bonaparte.toggle('open')"></cornerstone-bonaparte>
     </toolbar-bonaparte>
 
 

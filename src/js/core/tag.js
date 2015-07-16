@@ -76,8 +76,8 @@ function registerTag(name, definition, mixins, nativeBaseElement){
 ///////////////////////////////////////////////////////////////////////////////
 
   function initialize(element){
-    apply(element);
     
+    apply(element);  
     util.observe(element); 
 
   }
@@ -106,7 +106,7 @@ function registerTag(name, definition, mixins, nativeBaseElement){
   function createdCallback() {
 
     apply(this);
-    this.bonaparte.observer = true;
+    this.bonaparte.registered = true;
     this.bonaparte.triggerEvent("tag.created", null);
   }
 

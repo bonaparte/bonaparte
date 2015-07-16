@@ -1058,8 +1058,8 @@ function registerTag(name, definition, mixins, nativeBaseElement){
 ///////////////////////////////////////////////////////////////////////////////
 
   function initialize(element){
-    apply(element);
     
+    apply(element);  
     util.observe(element); 
 
   }
@@ -1088,7 +1088,7 @@ function registerTag(name, definition, mixins, nativeBaseElement){
   function createdCallback() {
 
     apply(this);
-    this.bonaparte.observer = true;
+    this.bonaparte.registered = true;
     this.bonaparte.triggerEvent("tag.created", null);
   }
 
@@ -1154,9 +1154,8 @@ var observedElements = [];
 
 function observe(element){
   if(observedElements.indexOf(element)>=0) return;
-  if(typeof element.bonaparte === "object" && element.bonaparte.observer) return;
+  if(typeof element.bonaparte === "object" && element.bonaparte.registered) return;
 
-  
   element.bonaparte = element.bonaparte || {};
   element.bonaparte.observer = new MutationObserver(mutationHandler);
 
@@ -1171,10 +1170,11 @@ function observe(element){
 ///////////////////////////////////////////////////////////////////////////////
 
 function mutationHandler(mutations){
-  var attribute, data;
+  var attribute, data, tag;
   
   for(var i=0; i<mutations.length; i++) {
     attribute = mutations[i].attributeName;
+    tag = mutations[i].target;
     if(typeof tag.attributes[attribute] === "undefined") continue;
 
     data = {
@@ -1183,7 +1183,7 @@ function mutationHandler(mutations){
       newValue : tag.attributes[attribute].value
     };
 
-    triggerEvent("tag.attributeChanged", data);
+    triggerEvent(tag, "bonaparte.tag.attributeChanged", {detail:data});
   }
  
 }
@@ -1244,21 +1244,20 @@ function setAttribute(tag, name, value) {
 ///////////////////////////////////////////////////////////////////////////////
 
 function removeAttribute(tag, name) {
-
   if(typeof tag.attributes[name] !== "object") return;
 
-  var value = tag.attributes[name].value;
+  var data = {
+    name : name,
+    previousValue : tag.attributes[name].value,
+    newValue : null
+  }
   // remove attribute
   tag.removeAttribute(name);
   tag.removeAttribute("data-"+name);
 
-  // trigger Mutation event
-  tag.bonaparte.triggerEvent("tag.attributeChanged", {
-    name : name,
-    previousValue : value,
-    newValue : null
-  });  
-
+  // trigger Mutation event if not "native" bonaparte element
+  if(typeof tag.bonaparte !== "object" || !tag.bonaparte.registered) 
+    triggerEvent(tag, "bonaparte.tag.attributeChanged", {detail:data});  
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1349,7 +1348,6 @@ function button(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function eventHandler(e){
-
     syncAttributes();
     triggerEvents();
 
@@ -1370,20 +1368,53 @@ function button(tag){
 
 ///////////////////////////////////////////////////////////////////////////////
 
+  function checkStyle(targetValue, attributeValue){
+
+    if(targetValue === attributeValue) return true;
+    if(targetValue === undefined || attributeValue === undefined) return false;
+
+    // IE handling from here on out
+
+    attributeValue = attributeValue.replace(/\s*;\s*/g,";").split(";").sort().join(";");
+    attributeValue += attributeValue.slice(-1) === ";" ? "":";";
+
+    targetValue = targetValue.replace(/\s/g, "\\s*");
+
+    return (new RegExp( targetValue )).test(attributeValue);
+
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
   function checkAttributes(){
     var target, targetValue;
     active = undefined;
+
+    // for each target
     for(var i =0; i< targets.length; i++){
       target = targets[i];
+      
+      // check attributes
       for(var name in attributes) {
         targetValue = util.getAttribute(target.tag, name);
-        if(targetValue !== attributes[name]) {
+
+        if((name === "style" && !checkStyle(targetValue, attributes[name])) || targetValue !== attributes[name]) {
           active = false;
-          target.values[name]= targetValue;
+          target.values[name] = targetValue;
         }
+
         if(active !== false) active = true;
       }
-    }
+
+      // check toggles
+      for(var k=0; k<toggles.length; k++) {
+        if(util.getAttribute(target.tag, toggles[k]) !== "true")
+          active=false;
+
+        if(active !== false) active = true;
+      }     
+ 
+    } 
 
     if(active === true){
       tag.classList.add("active");
@@ -1472,12 +1503,12 @@ function button(tag){
 
 
     // restrict button by parent toolbar in general
-    var context = util.getClosest(tag, "toolbar-bonaparte") || document;
+    // var context = util.getClosest(tag, "toolbar-bonaparte") || document;
 
     // only restrict button in toolbar sidebars.
-    // var potentialToolbar = util.getClosest(tag, "toolbar-bonaparte");
-    // var context = potentialToolbar && util.nodeContains(potentialToolbar.firstElementChild, tag)?
-    //   potentialToolbar : document;
+    var potentialToolbar = util.getClosest(tag, "toolbar-bonaparte");
+    var context = potentialToolbar && util.nodeContains(potentialToolbar.firstElementChild, tag)?
+      potentialToolbar : document;
 
      
     var newTargets = context.querySelectorAll(selector);
@@ -1485,8 +1516,8 @@ function button(tag){
       newTargets=Array.prototype.slice.call(newTargets);
       newTargets.push(context);
     }
-    targets = [];
 
+    targets = [];
     for(var i=0; i < newTargets.length; i++) {
       targets.push({
         tag : newTargets[i],

@@ -65,7 +65,19 @@
 >
 
   <!-- Required -->
-  <1st-child sidebar />
+  <1st-child sidebar>
+    
+    <!-- Required -->
+    <nth-child button-group>
+    
+      <!-- Required -->
+      <nth-child button
+        extends:button
+      />
+      
+    </nth-child>
+  
+  </1st-child>
   <2nd-child content /> 
 
   <!-- Optional -->
@@ -124,13 +136,20 @@ bonaparte.panel.close
 ```html
 
 <button-bonaparte
-  target=[querySelector]
   action=[event]
   toggle=[false|true]?[attribute]*
   trigger=[event]
   bubbles=[true|false]
   
+  target=[querySelector]
   target-[attribute]=[value]
+  
+  [dropdown=[top|bottom][left|right]]
+  [keyboard=[shortcut]]
 >
+
+  <!-- Required if dropdown attribute defined -->
+  <1st-child drowdown />
+
 </button-bonaparte>
 ```
