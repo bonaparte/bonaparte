@@ -15,12 +15,8 @@ function button(tag){
   var toggle = false;
   var active;
 
-  window.addEventListener("load", function(){
-    setEvents();
-    setToggles();
-    setTargets();
-    setAttributes();
-  });
+  if(document.readyState === "complete") init();
+  else window.addEventListener("load", init);
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -28,7 +24,16 @@ function button(tag){
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
-  
+
+  function init(){
+    setEvents();
+    setToggles();
+    setTargets();
+    setAttributes();
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
   function attributeChangedCallback(data){
     if(util.matchAttribute(/action/, data.name)) setEvents();
     if(util.matchAttribute(/toggle/, data.name)) setToggles();

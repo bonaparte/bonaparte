@@ -1066,6 +1066,15 @@ function registerTag(name, definition, mixins, nativeBaseElement){
 
 ///////////////////////////////////////////////////////////////////////////////
 
+  function createdCallback() {
+
+    apply(this);
+    this.bonaparte.registered = true;
+    this.bonaparte.triggerEvent("tag.created", null);
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
   function apply(element) {
     var modules = [
       require("./globals"),
@@ -1080,16 +1089,6 @@ function registerTag(name, definition, mixins, nativeBaseElement){
 
     // Create and mixin tag instance
     objct.extend(element.bonaparte, modules)(element);
-  }
-
-
-///////////////////////////////////////////////////////////////////////////////
-
-  function createdCallback() {
-
-    apply(this);
-    this.bonaparte.registered = true;
-    this.bonaparte.triggerEvent("tag.created", null);
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1109,7 +1108,6 @@ function attachedCallback() {
 function detachedCallback() {
   
   this.bonaparte.triggerEvent("tag.detached", null);
-
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1318,12 +1316,8 @@ function button(tag){
   var toggle = false;
   var active;
 
-  window.addEventListener("load", function(){
-    setEvents();
-    setToggles();
-    setTargets();
-    setAttributes();
-  });
+  if(document.readyState === "complete") init();
+  else window.addEventListener("load", init);
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -1331,7 +1325,16 @@ function button(tag){
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
-  
+
+  function init(){
+    setEvents();
+    setToggles();
+    setTargets();
+    setAttributes();
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
   function attributeChangedCallback(data){
     if(util.matchAttribute(/action/, data.name)) setEvents();
     if(util.matchAttribute(/toggle/, data.name)) setToggles();
@@ -1843,12 +1846,35 @@ module.exports = registerTag("toolbar", toolbar, [
 ]);
 
 ///////////////////////////////////////////////////////////////////////////////
-function toolbar(){
+function toolbar(tag){
 
 
+  window.addEventListener("load", initializeButtons)
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+  
+  function initializeButtons(){
+    var groups = tag.firstElementChild.children;
+    var buttons=[];
+    for(var i=0; i<  groups.length; i++) {
+      for(var k=0; k<groups[i].children.length; k++) {
+
+        if(groups[i].children[k].nodeName.toUpperCase() !== "BUTTON-BONAPARTE")
+          buttons.push(groups[i].children[k]);
+      }
+
+    }
+
+    for(var i = 0; i< buttons.length; i++){
+      require("./button-bonaparte").initialize(buttons[i]);
+    }
+
+
+  }
 ///////////////////////////////////////////////////////////////////////////////
 
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"../core/tag":9,"../core/utility":10,"./sidebar-bonaparte.js":16}]},{},[5]);
+},{"../core/tag":9,"../core/utility":10,"./button-bonaparte":12,"./sidebar-bonaparte.js":16}]},{},[5]);

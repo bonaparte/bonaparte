@@ -84,6 +84,15 @@ function registerTag(name, definition, mixins, nativeBaseElement){
 
 ///////////////////////////////////////////////////////////////////////////////
 
+  function createdCallback() {
+
+    apply(this);
+    this.bonaparte.registered = true;
+    this.bonaparte.triggerEvent("tag.created", null);
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
   function apply(element) {
     var modules = [
       require("./globals"),
@@ -98,16 +107,6 @@ function registerTag(name, definition, mixins, nativeBaseElement){
 
     // Create and mixin tag instance
     objct.extend(element.bonaparte, modules)(element);
-  }
-
-
-///////////////////////////////////////////////////////////////////////////////
-
-  function createdCallback() {
-
-    apply(this);
-    this.bonaparte.registered = true;
-    this.bonaparte.triggerEvent("tag.created", null);
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -127,7 +126,6 @@ function attachedCallback() {
 function detachedCallback() {
   
   this.bonaparte.triggerEvent("tag.detached", null);
-
 }
 
 ///////////////////////////////////////////////////////////////////////////////

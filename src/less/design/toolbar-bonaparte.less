@@ -35,14 +35,19 @@ toolbar-bonaparte {
     flex-flow: column;
     justify-content:space-between;
 
-    .ui.button,
-    button.ui,
-    .buttons {
-      margin:0px !important;
-      background-color:transparent;
-      box-shadow: none;
-    }
 
+    > *,
+    > * > * {
+      margin:0px !important;
+      background-color:transparent !important;
+      box-shadow: none !important;
+    }
+    > * > * {
+      &:extend(button-bonaparte);
+    }    
+    > * > .active {
+      &:extend(button-bonaparte.active);
+    }
 
 }
 
@@ -53,12 +58,11 @@ toolbar-bonaparte {
     > :nth-child(1){
       flex-flow: column;
     
-      .ui.button,
-      button.ui,
-      .buttons {
+      > * > * {
         display:block;
         white-space: nowrap;
-      }
+
+      } 
     }
   }
 
@@ -69,9 +73,7 @@ toolbar-bonaparte {
     > :nth-child(1){
       flex-flow: row;
      
-      .ui.button,
-      button.ui,
-      .buttons {
+      > * > * {
         display:inline-block;
         white-space: nowrap;
       }
