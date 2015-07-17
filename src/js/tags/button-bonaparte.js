@@ -1,6 +1,5 @@
 var util = require("../core/utility");
 var registerTag = require("../core/tag");
-var mousetrap = require("mousetrap");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
@@ -13,7 +12,6 @@ function button(tag){
   var targets = [];
   var attributes = {};
   var toggles = [];
-  var shortcuts = [];
   var toggle = false;
   var active;
 
@@ -32,7 +30,6 @@ function button(tag){
     setToggles();
     setTargets();
     setAttributes();
-    setShortcut();
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -42,7 +39,6 @@ function button(tag){
     if(util.matchAttribute(/toggle/, data.name)) setToggles();
     if(util.matchAttribute(/target/, data.name)) setTargets();
     if(util.matchAttribute(/target-.*/, data.name)) setAttributes();
-    if(util.matchAttribute(/shortcut/, data.name)) setKeyEvents();
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -74,10 +70,10 @@ function button(tag){
 
 ///////////////////////////////////////////////////////////////////////////////
 
-  function checkValues(name, targetValue, attributeValue){
+  function checkStyle(targetValue, attributeValue){
 
     if(targetValue === attributeValue) return true;
-    if(name !== "style" || targetValue === undefined || attributeValue === undefined) return false;
+    if(targetValue === undefined || attributeValue === undefined) return false;
 
     // IE handling from here on out
 
@@ -104,7 +100,7 @@ function button(tag){
       for(var name in attributes) {
         targetValue = util.getAttribute(target.tag, name);
 
-        if(!checkValues(name, targetValue, attributes[name])) {
+        if((name === "style" && !checkStyle(targetValue, attributes[name])) || targetValue !== attributes[name]) {
           active = false;
           target.values[name] = targetValue;
         }
@@ -122,13 +118,23 @@ function button(tag){
  
     } 
     
+    // console.log('util.getAttribute(tag, "display-active")', util.getAttribute(tag, "display-active"));
     var displayActive = !(util.getAttribute(tag, "display-active") === "false");
+
+
 
     if(displayActive && active === true){
       tag.classList.add("active");
     } else {
       tag.classList.remove("active");
     }
+
+    // if(active === true){
+    //   tag.classList.add("active");
+    // }
+    // else {
+    //   tag.classList.remove("active");
+    // }
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -157,25 +163,6 @@ function button(tag){
     }
   }
   
-///////////////////////////////////////////////////////////////////////////////
-
-  function setShortcut(){
-    var newShortcuts = util.getAttribute(tag, "shortcut");
-
-    mousetrap.unbind(shortcuts);
-
-    if(typeof newShortcuts === "undefined") return;
-
-    shortcuts = newShortcuts.split(",");
-
-    for(var i=0; i<shortcuts.length; i++) {
-      shortcuts[i] = shortcuts[i].trim();
-    }
-
-    mousetrap.bind(shortcuts, eventHandler);
-
-  }
-
 ///////////////////////////////////////////////////////////////////////////////
 
   function setToggles(){

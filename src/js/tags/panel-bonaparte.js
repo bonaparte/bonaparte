@@ -32,7 +32,7 @@ function panel(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function clickHandler(e){
-    console.log("globalClick", e.target);
+    // console.log("globalClick", e.target);
     if(e.target === tag || util.nodeContains(tag, e.target)) return;
     closePanels();
   }
@@ -40,7 +40,7 @@ function panel(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function attributeChangedCallback(data){
-    console.log(data, data.detail.name,  data.detail.newValue);
+    // console.log(data, data.detail.name,  data.detail.newValue);
     if(util.matchAttribute(/open/, data.detail.name)){
       if(data.detail.newValue == "true") {
         lock();

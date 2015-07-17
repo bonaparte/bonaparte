@@ -25,7 +25,6 @@ function draggable(tag) {
   }
 
   function initialise () {
-
     children = tag.children;
     handler = util.getAttribute(tag, 'handler');
     target = util.getAttribute(tag, 'target');
@@ -37,10 +36,28 @@ function draggable(tag) {
       util.setAttribute(child, 'bonaparte-id', i);
 
       child.addEventListener('mousedown', mousedown);
+      child.addEventListener('mouseup', mouseup);
       child.addEventListener('dragstart', dragstart);
     };
+    setRange();
   }
 
+  function setRange () {
+    var range = util.getAttribute(tag, 'range');
+    if (range) {
+      range = range.split(',');
+      for (var i = range.length - 1; i >= 0; i--) {
+        range[i] = parseInt(range[i])
+      };
+      for (var i = children.length - 1; i >= 0; i--) {
+        if (i >= range[0] && i <= range[1]) {
+          children[i].classList.add('inRange');
+        } else {
+          children[i].classList.remove('inRange');
+        }
+      }
+    }
+  }
 ///////////////////////////////////////////////////////////////////////////////
   function addListeners(){
     for (var i = dropZones.length - 1; i >= 0; i--) {
@@ -86,9 +103,11 @@ function draggable(tag) {
 
   }
 
+  function mouseup () {
+    removeListeners();
+  }
 
   function dragstart(e){
-
     if (draggable) {
       var dragElem = findDraggableEl(e);
       currentDraggedElem = dragElem;
@@ -100,7 +119,6 @@ function draggable(tag) {
     }
   }
 
-
   function dragenter(e){
     var elem = findDraggableEl(e),
       id = util.getAttribute(elem, 'bonaparte-id');
@@ -108,9 +126,11 @@ function draggable(tag) {
     count[id] = (count[id] + 1) || 1;
     elem.classList.add('dragover');
   }
+
   function dragover(e){
    e.preventDefault();
   }  
+
   function dragleave(e){
     var elem = findDraggableEl(e),
       id = util.getAttribute(elem, 'bonaparte-id');
@@ -121,9 +141,11 @@ function draggable(tag) {
       elem.classList.remove('dragover');
     }
   }
+
   function dragend(e){
    findDraggableEl(e).classList.remove('dragging');
   }
+
   function drop(e){
     var elem = findDraggableEl(e);
 
@@ -143,10 +165,8 @@ function draggable(tag) {
       order: tag.children
     }
 
+    setRange();
     util.triggerEvent(tag, "draggable.drop", {detail : details});
-
-
-    // draggable
     currentDraggedElem = null;
   }
 
