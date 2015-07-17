@@ -74,10 +74,10 @@ function button(tag){
 
 ///////////////////////////////////////////////////////////////////////////////
 
-  function checkStyle(targetValue, attributeValue){
+  function checkValues(name, targetValue, attributeValue){
 
     if(targetValue === attributeValue) return true;
-    if(targetValue === undefined || attributeValue === undefined) return false;
+    if(name !== "style" || targetValue === undefined || attributeValue === undefined) return false;
 
     // IE handling from here on out
 
@@ -104,7 +104,7 @@ function button(tag){
       for(var name in attributes) {
         targetValue = util.getAttribute(target.tag, name);
 
-        if((name === "style" && !checkStyle(targetValue, attributes[name])) || targetValue !== attributes[name]) {
+        if(!checkValues(name, targetValue, attributes[name])) {
           active = false;
           target.values[name] = targetValue;
         }
