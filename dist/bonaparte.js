@@ -2457,11 +2457,12 @@ function button(tag){
       }     
  
     } 
+    
+    var displayActive = !(util.getAttribute(tag, "display-active") === "false");
 
-    if(active === true){
+    if(displayActive && active === true){
       tag.classList.add("active");
-    }
-    else {
+    } else {
       tag.classList.remove("active");
     }
   }
