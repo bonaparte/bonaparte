@@ -2667,6 +2667,7 @@ function cornerstone(tag){
 },{"../core/tag":10,"../core/utility":11}],15:[function(require,module,exports){
 var util = require("../core/utility");
 var registerTag = require("../core/tag");
+var mousetrap = require("mousetrap");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
@@ -2674,6 +2675,8 @@ var registerTag = require("../core/tag");
 module.exports = registerTag("panel", panel, [
   require("../mixins/toggle")
 ]);
+
+mousetrap.bind("esc", function(){util.triggerEvent(window, "bonaparte.internal.closePanels")});
 
 ///////////////////////////////////////////////////////////////////////////////
 function panel(tag){
@@ -2743,7 +2746,7 @@ function panel(tag){
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"../core/tag":10,"../core/utility":11,"../mixins/toggle":12}],16:[function(require,module,exports){
+},{"../core/tag":10,"../core/utility":11,"../mixins/toggle":12,"mousetrap":3}],16:[function(require,module,exports){
 var util   = require("../core/utility");
 var registerTag = require("../core/tag");
 
