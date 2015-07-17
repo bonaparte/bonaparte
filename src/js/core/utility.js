@@ -52,6 +52,7 @@ function mutationHandler(mutations){
     };
 
     triggerEvent(tag, "bonaparte.tag.attributeChanged", {detail:data});
+    triggerEvent(tag, "bonaparte.tag.attributeUpdated", {detail:data});
   }
  
 }
@@ -103,10 +104,18 @@ function matchAttribute(patterns, name){
 ///////////////////////////////////////////////////////////////////////////////
 
 function setAttribute(tag, name, value) {
-  if(tag.attributes["data-"+name] !== undefined) 
-    tag.setAttribute("data-"+name, value);
-  else 
-    tag.setAttribute(name, value);
+  name = tag.hasAttribute("data-"+name) ? "data-"+name : name;
+  var oldValue = getAttribute(tag, name);
+
+  tag.setAttribute(name, value);
+
+  if(oldValue === value) {
+    tag.bonaparte.triggerEvent("tag.attributeUpdated",{
+      name:name,
+      previousValue : oldValue,
+      newValue: value
+    });
+  }  
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -124,8 +133,10 @@ function removeAttribute(tag, name) {
   tag.removeAttribute("data-"+name);
 
   // trigger Mutation event if not "native" bonaparte element
-  if(typeof tag.bonaparte !== "object" || !tag.bonaparte.registered) 
-    triggerEvent(tag, "bonaparte.tag.attributeChanged", {detail:data});  
+  if(typeof tag.bonaparte !== "object" || !tag.bonaparte.registered) {
+    triggerEvent(tag, "bonaparte.tag.attributeChanged", {detail:data});
+    triggerEvent(tag, "bonaparte.tag.attributeUpdated", {detail:data});
+  }
 }
 
 ///////////////////////////////////////////////////////////////////////////////

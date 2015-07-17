@@ -23,7 +23,7 @@ function panel(tag){
 
   window.addEventListener("click", clickHandler);
   window.addEventListener("bonaparte.internal.closePanels", closePanels);
-  tag.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
+  tag.addEventListener("bonaparte.tag.attributeUpdated", attributeChangedCallback);
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -59,14 +59,13 @@ function panel(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function close() {
-    tag.setAttribute("open", "false");
+    util.setAttribute(tag, "open", "false");
   }
 
 ///////////////////////////////////////////////////////////////////////////////
 
   function open(e) {    
-    lock();
-    tag.setAttribute("open", "true");
+    util.setAttribute(tag, "open", "true");
   }
 ///////////////////////////////////////////////////////////////////////////////
 

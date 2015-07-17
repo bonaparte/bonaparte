@@ -2144,6 +2144,7 @@ function attributeChangedCallback(name, old, value) {
   };
 
   this.bonaparte.triggerEvent("tag.attributeChanged", data);
+  this.bonaparte.triggerEvent("tag.attributeUpdated", data);
 
 }
 
@@ -2205,6 +2206,7 @@ function mutationHandler(mutations){
     };
 
     triggerEvent(tag, "bonaparte.tag.attributeChanged", {detail:data});
+    triggerEvent(tag, "bonaparte.tag.attributeUpdated", {detail:data});
   }
  
 }
@@ -2256,10 +2258,18 @@ function matchAttribute(patterns, name){
 ///////////////////////////////////////////////////////////////////////////////
 
 function setAttribute(tag, name, value) {
-  if(tag.attributes["data-"+name] !== undefined) 
-    tag.setAttribute("data-"+name, value);
-  else 
-    tag.setAttribute(name, value);
+  name = tag.hasAttribute("data-"+name) ? "data-"+name : name;
+  var oldValue = getAttribute(tag, name);
+
+  tag.setAttribute(name, value);
+
+  if(oldValue === value) {
+    tag.bonaparte.triggerEvent("tag.attributeUpdated",{
+      name:name,
+      previousValue : oldValue,
+      newValue: value
+    });
+  }  
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2277,8 +2287,10 @@ function removeAttribute(tag, name) {
   tag.removeAttribute("data-"+name);
 
   // trigger Mutation event if not "native" bonaparte element
-  if(typeof tag.bonaparte !== "object" || !tag.bonaparte.registered) 
-    triggerEvent(tag, "bonaparte.tag.attributeChanged", {detail:data});  
+  if(typeof tag.bonaparte !== "object" || !tag.bonaparte.registered) {
+    triggerEvent(tag, "bonaparte.tag.attributeChanged", {detail:data});
+    triggerEvent(tag, "bonaparte.tag.attributeUpdated", {detail:data});
+  }
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2678,7 +2690,7 @@ function panel(tag){
 
   window.addEventListener("click", clickHandler);
   window.addEventListener("bonaparte.internal.closePanels", closePanels);
-  tag.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
+  tag.addEventListener("bonaparte.tag.attributeUpdated", attributeChangedCallback);
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -2714,14 +2726,13 @@ function panel(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function close() {
-    tag.setAttribute("open", "false");
+    util.setAttribute(tag, "open", "false");
   }
 
 ///////////////////////////////////////////////////////////////////////////////
 
   function open(e) {    
-    lock();
-    tag.setAttribute("open", "true");
+    util.setAttribute(tag, "open", "true");
   }
 ///////////////////////////////////////////////////////////////////////////////
 
