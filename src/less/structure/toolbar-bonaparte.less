@@ -15,22 +15,22 @@
   /*CORNERSTONE*/
 
   > cornerstone-bonaparte {  
-    position:absolute;
-    display:block;
+    position:absolute !important;
+    display:block !important;
     width:@icon-size;
     height:@icon-size;
-    top:0px;
-    left:0px;
+    top:0px !important;
+    left:0px !important;
     z-index:99;
-
+    margin:0 !important;
   }
 
   &[data-cornerstone*="bottom"],
   &[cornerstone*="bottom"] {
 
     > cornerstone-bonaparte {
-      bottom:0px;
-      top:auto;
+      bottom:0px !important;
+      top:auto !important;
     }
   }
 
@@ -38,8 +38,8 @@
   &[cornerstone*="top"] {
 
     > cornerstone-bonaparte {
-      top:0px;
-      bottom:auto;
+      top:0px !important;
+      bottom:auto !important;
     }
   }
 
@@ -47,8 +47,8 @@
   &[cornerstone*="left"] {
 
     > cornerstone-bonaparte {
-      left:0px;
-      right:auto;
+      left:0px !important;
+      right:auto !important;
     }
   }
 
@@ -56,8 +56,8 @@
   &[cornerstone*="right"] {
 
     > cornerstone-bonaparte {
-      right:0px;
-      left:auto;
+      right:0px !important;
+      left:auto !important;
     }
   }
   /*CORNERSTONE OUTSIDE*/
