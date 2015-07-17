@@ -139,6 +139,7 @@ function attributeChangedCallback(name, old, value) {
   };
 
   this.bonaparte.triggerEvent("tag.attributeChanged", data);
+  this.bonaparte.triggerEvent("tag.attributeUpdated", data);
 
 }
 

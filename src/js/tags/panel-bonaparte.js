@@ -1,5 +1,6 @@
 var util = require("../core/utility");
 var registerTag = require("../core/tag");
+var mousetrap = require("mousetrap");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
@@ -7,6 +8,8 @@ var registerTag = require("../core/tag");
 module.exports = registerTag("panel", panel, [
   require("../mixins/toggle")
 ]);
+
+mousetrap.bind("esc", function(){util.triggerEvent(window, "bonaparte.internal.closePanels")});
 
 ///////////////////////////////////////////////////////////////////////////////
 function panel(tag){
@@ -23,7 +26,7 @@ function panel(tag){
 
   window.addEventListener("click", clickHandler);
   window.addEventListener("bonaparte.internal.closePanels", closePanels);
-  tag.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
+  tag.addEventListener("bonaparte.tag.attributeUpdated", attributeChangedCallback);
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -61,14 +64,13 @@ function panel(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function close() {
-    tag.setAttribute("open", "false");
+    util.setAttribute(tag, "open", "false");
   }
 
 ///////////////////////////////////////////////////////////////////////////////
 
   function open(e) {    
-    lock();
-    tag.setAttribute("open", "true");
+    util.setAttribute(tag, "open", "true");
   }
 ///////////////////////////////////////////////////////////////////////////////
 
