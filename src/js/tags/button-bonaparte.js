@@ -42,7 +42,7 @@ function button(tag){
     if(util.matchAttribute(/toggle/, data.name)) setToggles();
     if(util.matchAttribute(/target/, data.name)) setTargets();
     if(util.matchAttribute(/target-.*/, data.name)) setAttributes();
-    if(util.matchAttribute(/shortcut/, data.name)) setKeyEvents();
+    if(util.matchAttribute(/shortcut/, data.name)) setShortcut();
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -54,6 +54,7 @@ function button(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function eventHandler(e){
+    setTargets();
     syncAttributes();
     triggerEvents();
 
@@ -217,20 +218,6 @@ function button(tag){
   function setTargets(){
     var selector = util.getAttribute(tag, "target");
 
-    // Remove old target event handlers
-    for(var i = 0; i < targets.length; i++){
-      targets[i].removeEventListener("bonaparte.tag.attributeChanged", targetAttributeChangedCallback);
-    }
-
-    if(selector === undefined) return;
-
-    var potentialSidebar = tag.parentNode; 
-    var potentialToolbar = potentialSidebar.parentNode;
-
-
-    // restrict button by parent toolbar in general
-    // var context = util.getClosest(tag, "toolbar-bonaparte") || document;
-
     // only restrict button in toolbar sidebars.
     var potentialToolbar = util.getClosest(tag, "toolbar-bonaparte");
     var context = potentialToolbar && util.nodeContains(potentialToolbar.firstElementChild, tag)?
@@ -241,6 +228,14 @@ function button(tag){
     if(context !== document && context.matches(selector)) {
       newTargets=Array.prototype.slice.call(newTargets);
       newTargets.push(context);
+    }
+
+
+    if(newTargets.length <= 0) return;
+
+    // Remove old target event handlers
+    for(var i = 0; i < targets.length; i++){
+      targets[i].removeEventListener("bonaparte.tag.attributeChanged", targetAttributeChangedCallback);
     }
 
     targets = [];
