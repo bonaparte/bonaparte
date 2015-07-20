@@ -1,10 +1,17 @@
 # Bonaparte - Backend UI Framework
 
+__Internal:__
+
 [Kitchen-Sink](https://github.dowjones.net/pages/newsroomdevelopment/bonaparte/examples/kitchen-sink.html)
 <br>
 [Toolbar](https://github.dowjones.net/pages/newsroomdevelopment/bonaparte/examples/toolbar.html)
+
+__Public:__
+
+[Kitchen-Sink](http://dowjones.github.io/bonaparte/examples/kitchen-sink.html)
 <br>
-[Xavier](https://github.dowjones.net/pages/newsroomdevelopment/bonaparte/examples/Xavier.html)
+[Toolbar](http://dowjones.github.io/bonaparte/examples/toolbar.html)
+
 
 ### Use
 
