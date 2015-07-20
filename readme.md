@@ -10,11 +10,11 @@ __Internal:__
 
 __Public__
 
-[Kitchen-Sink](https://github.com/dowjones/bonaparte/examples/kitchen-sink.html)
+[Kitchen-Sink](http://dowjones.github.io/bonaparte/examples/kitchen-sink.html)
 <br>
-[Toolbar](https://github.com/dowjones/bonaparte/examples/toolbar.html)
+[Toolbar](http://dowjones.github.io/bonaparte/examples/toolbar.html)
 <br>
-[Xavier](https://github.com/dowjones/bonaparte/examples/Xavier.html)
+[Xavier](http://dowjones.github.io/bonaparte/examples/Xavier.html)
 
 
 ### Use
