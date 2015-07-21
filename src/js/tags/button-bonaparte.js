@@ -235,7 +235,7 @@ function button(tag){
 
     // Remove old target event handlers
     for(var i = 0; i < targets.length; i++){
-      targets[i].removeEventListener("bonaparte.tag.attributeChanged", targetAttributeChangedCallback);
+      targets[i].tag.removeEventListener("bonaparte.tag.attributeChanged", targetAttributeChangedCallback);
     }
 
     targets = [];
