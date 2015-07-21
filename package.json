@@ -1,0 +1,20 @@
+{
+  "name": "bonaparte",
+  
+  "version": "0.0.1",
+  
+  "author": {
+    "name" : "Philipp Adrian",
+    "email" : "hello@philippadrian.com",
+    "website" : "http://philippadrian.com"
+  },
+
+  "description": "UX Framework",
+  
+  "license" :"MIT",
+
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/greenish/bonaparte.git"
+  }
+}
