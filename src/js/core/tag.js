@@ -106,7 +106,7 @@ function registerTag(name, definition, mixins, nativeBaseElement){
     element.bonaparte = element.bonaparte || {};
 
     // Create and mixin tag instance
-    objct.extend(element.bonaparte, modules)(element);
+    objct.extend(element, modules)(element);
   }
 
 ///////////////////////////////////////////////////////////////////////////////

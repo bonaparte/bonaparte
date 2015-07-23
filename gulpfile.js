@@ -29,7 +29,7 @@ function js(){
 
   browserify({
     // debug: true,
-    entries: ['./src/js/app.js']
+    entries: ['./src/js/bonaparte.js']
   })
   .bundle()
   .pipe(source('bonaparte.js'))
@@ -40,12 +40,12 @@ function js(){
 ///////////////////////////////////////////////////////////////////////////////
 
 function css(){
-  return gulp.src('./src/less/app.less')
+  return gulp.src('./src/less/bonaparte.less')
     .pipe(less({
       plugins : [cleancss]
     }))
     .pipe(autoprefixer())
-    .pipe(rename("bonaparte.css"))
+    // .pipe(rename("bonaparte.css"))
     .pipe(gulp.dest('./dist/')); 
 }
 
