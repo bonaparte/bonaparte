@@ -1,10 +1,9 @@
-var util = require("../core/utility");
-var registerTag = require("../core/tag");
+var util = require("bonaparte");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = registerTag("draggable", draggable);
+module.exports = util.registerTag("draggable", draggable);
 ///////////////////////////////////////////////////////////////////////////////
 function draggable(tag) {
 
