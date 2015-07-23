@@ -30,6 +30,7 @@ __Public:__
 
 ### Install / Build
 
+- Clone Repository (Note: Respository includes submodules)
 - Run `npm install` in `./`. _(Select **NO** for all options for fastes result)_
 
 ### Development
@@ -52,12 +53,10 @@ __Public:__
 
 ### Install / Build
 
+- Clone Repository (Note: Respository includes submodules)
 - Run `npm install` in `./`.
 
 ### Development
-
-> __One doesn't simply work in `dist/` directly.__ <br>
-> _- Wise Man_
 
 - Run `gulp BPA-watch` to watch `./src/` and keep `./dist/` up to date.
 
