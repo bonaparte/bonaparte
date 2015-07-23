@@ -142,16 +142,14 @@ bonaparte.panel.close
 ```html
 
 <button-bonaparte
+  target=[querySelector]
+  target-[attribute]=[value]
   action=[event]
   toggle=[false|true]?[attribute]*
   trigger=[event]
   bubbles=[true|false]
-  
-  target=[querySelector]
-  target-[attribute]=[value]
-  
-  [dropdown=[top|bottom][left|right]]
-  [keyboard=[shortcut]]
+  activeClass=[classname|""]
+  shortcut=[shortcut]
 >
 
   <!-- Required if dropdown attribute defined -->
