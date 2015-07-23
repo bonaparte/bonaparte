@@ -95,7 +95,7 @@ function registerTag(name, definition, mixins, nativeBaseElement){
 
   function apply(element) {
     var modules = [
-      require("./globals"),
+      // require("./globals"),
       require("./events"),
       mixins,
       definition, 
