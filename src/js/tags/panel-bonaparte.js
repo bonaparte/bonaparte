@@ -43,11 +43,11 @@ function panel(tag){
       if(data.detail.newValue == "true") {
         lock();
 
-        tag.bonaparte.triggerEvent("internal.closePanels", null, true);
-        tag.bonaparte.triggerEvent("panel.open", null, true);
+        tag.bonaparte.triggerEvent("bonaparte.internal.closePanels", null, true);
+        tag.bonaparte.triggerEvent("bonaparte.panel.open", null, true);
       }
       else { 
-        tag.bonaparte.triggerEvent("panel.close", null, true);
+        tag.bonaparte.triggerEvent("bonaparte.panel.close", null, true);
       }
     };    
   }

@@ -51,16 +51,20 @@ function mutationHandler(mutations){
       newValue : tag.attributes[attribute].value
     };
 
-    triggerEvent(tag, "bonaparte.tag.attributeChanged", {detail:data});
-    triggerEvent(tag, "bonaparte.tag.attributeUpdated", {detail:data});
+    triggerEvent(tag, "bonaparte.tag.attributeChanged", data);
+    triggerEvent(tag, "bonaparte.tag.attributeUpdated", data);
   }
  
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 
-function triggerEvent(tag, event, params){
-    var newEvent = new CustomEvent(event, params);
+function triggerEvent(tag, event, data, bubbles, cancelable){
+    var newEvent = new CustomEvent(event, {
+        bubbles: bubbles || false,
+        cancelable: cancelable || false,
+        detail: data
+    });
     tag.dispatchEvent(newEvent);
 }
 
@@ -110,7 +114,7 @@ function setAttribute(tag, name, value) {
   tag.setAttribute(name, value);
 
   if(oldValue === value) {
-    tag.bonaparte.triggerEvent("tag.attributeUpdated",{
+    tag.bonaparte.triggerEvent("bonaparte.tag.attributeUpdated",{
       name:name,
       previousValue : oldValue,
       newValue: value
@@ -134,8 +138,8 @@ function removeAttribute(tag, name) {
 
   // trigger Mutation event if not "native" bonaparte element
   if(typeof tag.bonaparte !== "object" || !tag.bonaparte.registered) {
-    triggerEvent(tag, "bonaparte.tag.attributeChanged", {detail:data});
-    triggerEvent(tag, "bonaparte.tag.attributeUpdated", {detail:data});
+    triggerEvent(tag, "bonaparte.tag.attributeChanged", data);
+    triggerEvent(tag, "bonaparte.tag.attributeUpdated", data);
   }
 }
 

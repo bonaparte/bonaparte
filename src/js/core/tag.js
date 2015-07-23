@@ -88,7 +88,7 @@ function registerTag(name, definition, mixins, nativeBaseElement){
 
     apply(this);
     this.bonaparte.registered = true;
-    this.bonaparte.triggerEvent("tag.created", null);
+    this.bonaparte.triggerEvent("bonaparte.tag.created", null);
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -117,7 +117,7 @@ function registerTag(name, definition, mixins, nativeBaseElement){
 
 function attachedCallback() {
 
-  this.bonaparte.triggerEvent("tag.attached", null);
+  this.bonaparte.triggerEvent("bonaparte.tag.attached", null);
 
 }
 
@@ -125,7 +125,7 @@ function attachedCallback() {
 
 function detachedCallback() {
   
-  this.bonaparte.triggerEvent("tag.detached", null);
+  this.bonaparte.triggerEvent("bonaparte.tag.detached", null);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -138,8 +138,8 @@ function attributeChangedCallback(name, old, value) {
     newValue : value
   };
 
-  this.bonaparte.triggerEvent("tag.attributeChanged", data);
-  this.bonaparte.triggerEvent("tag.attributeUpdated", data);
+  this.bonaparte.triggerEvent("bonaparte.tag.attributeChanged", data);
+  this.bonaparte.triggerEvent("bonaparte.tag.attributeUpdated", data);
 
 }
 
