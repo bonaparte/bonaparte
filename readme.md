@@ -1,4 +1,4 @@
-# Bonaparte - Backend UI Framework
+# Bonaparte UX Framework
 
 __Internal:__
 
