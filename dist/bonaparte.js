@@ -2657,13 +2657,12 @@ function cornerstone(tag){
 
 ///////////////////////////////////////////////////////////////////////////////
 },{"bonaparte":1}],15:[function(require,module,exports){
-var util = require("../core/utility");
-var registerTag = require("../core/tag");
+var util = require("bonaparte");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = registerTag("draggable", draggable);
+module.exports = util.registerTag("draggable", draggable);
 ///////////////////////////////////////////////////////////////////////////////
 function draggable(tag) {
 
@@ -2846,7 +2845,7 @@ function draggable(tag) {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"../core/tag":10,"../core/utility":11}],16:[function(require,module,exports){
+},{"bonaparte":1}],16:[function(require,module,exports){
 var util = require("bonaparte");
 var mousetrap = require("mousetrap");
 
