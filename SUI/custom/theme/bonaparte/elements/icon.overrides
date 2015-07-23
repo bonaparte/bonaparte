@@ -39,6 +39,7 @@ for instance `lemon icon` not `lemon outline icon` since there is only one lemon
 
 i.icon {
   vertical-align:top;
+  font-size: 1.3em;
 }
 /* Web Content */
 
