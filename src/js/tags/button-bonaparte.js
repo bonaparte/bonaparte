@@ -123,9 +123,10 @@ function button(tag){
  
     } 
     
-    var displayActive = !(util.getAttribute(tag, "display-active") === "false");
+    var activeClass = util.getAttribute(tag, "activeClass") || "active";
+    if(activeClass==="") return;
 
-    if(displayActive && active === true){
+    if(active === true){
       tag.classList.add("active");
     } else {
       tag.classList.remove("active");

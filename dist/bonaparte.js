@@ -1921,7 +1921,7 @@ button.register();
 
 document.registerElement('content-bonaparte');
 
-},{"./tags/button-bonaparte":13,"./tags/cornerstone-bonaparte":14,"./tags/panel-bonaparte":15,"./tags/scroll-bonaparte":16,"./tags/sidebar-bonaparte":17,"./tags/toolbar-bonaparte":18}],7:[function(require,module,exports){
+},{"./tags/button-bonaparte":12,"./tags/cornerstone-bonaparte":13,"./tags/panel-bonaparte":14,"./tags/scroll-bonaparte":15,"./tags/sidebar-bonaparte":16,"./tags/toolbar-bonaparte":17}],7:[function(require,module,exports){
 var util = require("./utility");
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1941,11 +1941,7 @@ function events(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function triggerEvent(event, data, bubbles, cancelable){
-    util.triggerEvent(tag, "bonaparte."+event, {
-        bubbles: bubbles || false,
-        cancelable: cancelable || false,
-        detail: data
-    });
+    util.triggerEvent(tag, event, data, bubbles, cancelable);
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1956,15 +1952,7 @@ function events(tag){
 
 
 
-},{"./utility":11}],8:[function(require,module,exports){
-var objct = require("objct");
-///////////////////////////////////////////////////////////////////////////////
-// Public
-
-var globals = module.exports = {
-  global : {}
-};
-},{"objct":5}],9:[function(require,module,exports){
+},{"./utility":10}],8:[function(require,module,exports){
 var objct = require("objct");
 
 var registeredMixins = {};
@@ -2002,7 +1990,7 @@ function mixins(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
 }
-},{"objct":5}],10:[function(require,module,exports){
+},{"objct":5}],9:[function(require,module,exports){
 var objct = require("objct");
 var util = require("./utility");
 
@@ -2095,14 +2083,14 @@ function registerTag(name, definition, mixins, nativeBaseElement){
 
     apply(this);
     this.bonaparte.registered = true;
-    this.bonaparte.triggerEvent("tag.created", null);
+    this.bonaparte.triggerEvent("bonaparte.tag.created", null);
   }
 
 ///////////////////////////////////////////////////////////////////////////////
 
   function apply(element) {
     var modules = [
-      require("./globals"),
+      // require("./globals"),
       require("./events"),
       mixins,
       definition, 
@@ -2124,7 +2112,7 @@ function registerTag(name, definition, mixins, nativeBaseElement){
 
 function attachedCallback() {
 
-  this.bonaparte.triggerEvent("tag.attached", null);
+  this.bonaparte.triggerEvent("bonaparte.tag.attached", null);
 
 }
 
@@ -2132,7 +2120,7 @@ function attachedCallback() {
 
 function detachedCallback() {
   
-  this.bonaparte.triggerEvent("tag.detached", null);
+  this.bonaparte.triggerEvent("bonaparte.tag.detached", null);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2145,15 +2133,15 @@ function attributeChangedCallback(name, old, value) {
     newValue : value
   };
 
-  this.bonaparte.triggerEvent("tag.attributeChanged", data);
-  this.bonaparte.triggerEvent("tag.attributeUpdated", data);
+  this.bonaparte.triggerEvent("bonaparte.tag.attributeChanged", data);
+  this.bonaparte.triggerEvent("bonaparte.tag.attributeUpdated", data);
 
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 
 
-},{"./events":7,"./globals":8,"./mixins":9,"./utility":11,"custom-event-polyfill":1,"document-register-element":2,"mutation-observer":4,"objct":5}],11:[function(require,module,exports){
+},{"./events":7,"./mixins":8,"./utility":10,"custom-event-polyfill":1,"document-register-element":2,"mutation-observer":4,"objct":5}],10:[function(require,module,exports){
 var objct = require("objct");
 // var easing = require("./easing");
 
@@ -2207,16 +2195,20 @@ function mutationHandler(mutations){
       newValue : tag.attributes[attribute].value
     };
 
-    triggerEvent(tag, "bonaparte.tag.attributeChanged", {detail:data});
-    triggerEvent(tag, "bonaparte.tag.attributeUpdated", {detail:data});
+    triggerEvent(tag, "bonaparte.tag.attributeChanged", data);
+    triggerEvent(tag, "bonaparte.tag.attributeUpdated", data);
   }
  
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 
-function triggerEvent(tag, event, params){
-    var newEvent = new CustomEvent(event, params);
+function triggerEvent(tag, event, data, bubbles, cancelable){
+    var newEvent = new CustomEvent(event, {
+        bubbles: bubbles || false,
+        cancelable: cancelable || false,
+        detail: data
+    });
     tag.dispatchEvent(newEvent);
 }
 
@@ -2266,7 +2258,7 @@ function setAttribute(tag, name, value) {
   tag.setAttribute(name, value);
 
   if(oldValue === value) {
-    tag.bonaparte.triggerEvent("tag.attributeUpdated",{
+    tag.bonaparte.triggerEvent("bonaparte.tag.attributeUpdated",{
       name:name,
       previousValue : oldValue,
       newValue: value
@@ -2290,8 +2282,8 @@ function removeAttribute(tag, name) {
 
   // trigger Mutation event if not "native" bonaparte element
   if(typeof tag.bonaparte !== "object" || !tag.bonaparte.registered) {
-    triggerEvent(tag, "bonaparte.tag.attributeChanged", {detail:data});
-    triggerEvent(tag, "bonaparte.tag.attributeUpdated", {detail:data});
+    triggerEvent(tag, "bonaparte.tag.attributeChanged", data);
+    triggerEvent(tag, "bonaparte.tag.attributeUpdated", data);
   }
 }
 
@@ -2312,7 +2304,7 @@ function map(x, cMin, cMax, tMin, tMax, easingFunction) {
 }
 ///////////////////////////////////////////////////////////////////////////////
 
-},{"objct":5}],12:[function(require,module,exports){
+},{"objct":5}],11:[function(require,module,exports){
 var util = require("../core/utility");
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2335,7 +2327,7 @@ function toggleMixin(tag){
   }
 }
 
-},{"../core/utility":11}],13:[function(require,module,exports){
+},{"../core/utility":10}],12:[function(require,module,exports){
 var util = require("../core/utility");
 var registerTag = require("../core/tag");
 var mousetrap = require("mousetrap");
@@ -2461,9 +2453,10 @@ function button(tag){
  
     } 
     
-    var displayActive = !(util.getAttribute(tag, "display-active") === "false");
+    var activeClass = util.getAttribute(tag, "activeClass") || "active";
+    if(activeClass==="") return;
 
-    if(displayActive && active === true){
+    if(active === true){
       tag.classList.add("active");
     } else {
       tag.classList.remove("active");
@@ -2610,7 +2603,7 @@ function button(tag){
 }
 
  ///////////////////////////////////////////////////////////////////////////////
-},{"../core/tag":10,"../core/utility":11,"mousetrap":3}],14:[function(require,module,exports){
+},{"../core/tag":9,"../core/utility":10,"mousetrap":3}],13:[function(require,module,exports){
 var util = require("../core/utility");
 var registerTag = require("../core/tag");
 
@@ -2662,7 +2655,7 @@ function cornerstone(tag){
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"../core/tag":10,"../core/utility":11}],15:[function(require,module,exports){
+},{"../core/tag":9,"../core/utility":10}],14:[function(require,module,exports){
 var util = require("../core/utility");
 var registerTag = require("../core/tag");
 var mousetrap = require("mousetrap");
@@ -2708,11 +2701,11 @@ function panel(tag){
       if(data.detail.newValue == "true") {
         lock();
 
-        tag.bonaparte.triggerEvent("internal.closePanels", null, true);
-        tag.bonaparte.triggerEvent("panel.open", null, true);
+        tag.bonaparte.triggerEvent("bonaparte.internal.closePanels", null, true);
+        tag.bonaparte.triggerEvent("bonaparte.panel.open", null, true);
       }
       else { 
-        tag.bonaparte.triggerEvent("panel.close", null, true);
+        tag.bonaparte.triggerEvent("bonaparte.panel.close", null, true);
       }
     };    
   }
@@ -2744,7 +2737,7 @@ function panel(tag){
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"../core/tag":10,"../core/utility":11,"../mixins/toggle":12,"mousetrap":3}],16:[function(require,module,exports){
+},{"../core/tag":9,"../core/utility":10,"../mixins/toggle":11,"mousetrap":3}],15:[function(require,module,exports){
 var util   = require("../core/utility");
 var registerTag = require("../core/tag");
 
@@ -2853,7 +2846,7 @@ function getScrollBarWidth(){
   document.documentElement.style.overflow = overflow;
   return width;
 }
-},{"../core/tag":10,"../core/utility":11}],17:[function(require,module,exports){
+},{"../core/tag":9,"../core/utility":10}],16:[function(require,module,exports){
 var util = require("../core/utility");
 var registerTag = require("../core/tag");
 
@@ -2892,7 +2885,7 @@ function sidebar(tag){
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"../core/tag":10,"../core/utility":11}],18:[function(require,module,exports){
+},{"../core/tag":9,"../core/utility":10}],17:[function(require,module,exports){
 var util = require("../core/utility");
 var registerTag = require("../core/tag");
 
@@ -2905,7 +2898,6 @@ module.exports = registerTag("toolbar", toolbar, [
 
 ///////////////////////////////////////////////////////////////////////////////
 function toolbar(tag){
-
 
   window.addEventListener("load", initializeButtons)
 
@@ -2935,4 +2927,4 @@ function toolbar(tag){
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"../core/tag":10,"../core/utility":11,"./button-bonaparte":13,"./sidebar-bonaparte.js":17}]},{},[6]);
+},{"../core/tag":9,"../core/utility":10,"./button-bonaparte":12,"./sidebar-bonaparte.js":16}]},{},[6]);
