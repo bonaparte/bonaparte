@@ -7,6 +7,7 @@ var browserify   = require("browserify");
 var source       = require('vinyl-source-stream');
 var buffer       = require('vinyl-buffer');
 var rename       = require('gulp-rename');
+var glob       = require('glob');
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -35,6 +36,10 @@ function js(){
   .pipe(source('bonaparte.js'))
   .pipe(buffer())
   .pipe(gulp.dest('./dist'));
+
+
+  // var tags = glob.sync('./src/js/tags/*.js');
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -11,8 +11,6 @@ var button = require("./tags/button-bonaparte");
 //   }
 // });
 
-console.log(panel);
-
 panel.register();
 scroll.register();
 sidebar.register();

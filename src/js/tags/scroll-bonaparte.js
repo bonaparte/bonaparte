@@ -1,12 +1,11 @@
-var util   = require("../core/utility");
-var registerTag = require("../core/tag");
+var util = require("bonaparte");
 
 var scrollBarWidth = false;
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = registerTag("scroll", scroll);
+module.exports = util.registerTag("scroll", scroll);
 
 ///////////////////////////////////////////////////////////////////////////////
 function scroll(tag){

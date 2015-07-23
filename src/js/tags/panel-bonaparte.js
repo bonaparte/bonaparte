@@ -1,11 +1,10 @@
-var util = require("../core/utility");
-var registerTag = require("../core/tag");
+var util = require("bonaparte");
 var mousetrap = require("mousetrap");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = registerTag("panel", panel, [
+module.exports = util.registerTag("panel", panel, [
   require("../mixins/toggle")
 ]);
 
@@ -18,8 +17,8 @@ function panel(tag){
 ///////////////////////////////////////////////////////////////////////////////
 // Public 
 
-  this.bonaparte.open = open;
-  this.bonaparte.close = close;
+  tag.bonaparte.open = open;
+  tag.bonaparte.close = close;
 
 ///////////////////////////////////////////////////////////////////////////////
 // Eventlisteners

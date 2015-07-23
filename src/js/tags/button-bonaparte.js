@@ -1,11 +1,10 @@
-var util = require("../core/utility");
-var registerTag = require("../core/tag");
+var util = require("bonaparte");
 var mousetrap = require("mousetrap");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = registerTag("button", button, [], HTMLButtonElement);
+module.exports = util.registerTag("button", button, [], HTMLButtonElement);
 
 ///////////////////////////////////////////////////////////////////////////////
 function button(tag){

@@ -12,7 +12,7 @@
 
   },
   
-  "main":"./src/app.js",
+  "main":"./src/js/core/tag.js",
   
   "devDependencies": {
     "gulp": "*",
@@ -21,6 +21,7 @@
     "gulp-shell" : "^0.4.2",
     "gulp-rename" : "^1.2.2",
     "less-plugin-clean-css" : "^1.5.0",
+    "glob" :"^5.0.14",
 
     "browserify": "^10.2.4",
     "vinyl-source-stream": "^1.1.0",

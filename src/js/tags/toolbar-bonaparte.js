@@ -1,10 +1,9 @@
-var util = require("../core/utility");
-var registerTag = require("../core/tag");
+var util = require("bonaparte");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = registerTag("toolbar", toolbar, [
+module.exports = util.registerTag("toolbar", toolbar, [
   require("./sidebar-bonaparte.js")
 ]);
 
