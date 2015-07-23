@@ -4,6 +4,7 @@ var sidebar = require("./tags/sidebar-bonaparte");
 var toolbar = require("./tags/toolbar-bonaparte");
 var cornerstone = require("./tags/cornerstone-bonaparte");
 var button = require("./tags/button-bonaparte");
+var draggable = require("./tags/draggable-bonaparte")
 
 // toolbar.mixin({
 //   test:function(){
@@ -17,5 +18,6 @@ sidebar.register();
 cornerstone.register();
 toolbar.register();
 button.register();
+draggable.register();
 
 document.registerElement('content-bonaparte');
