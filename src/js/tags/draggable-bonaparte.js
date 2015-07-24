@@ -1,10 +1,9 @@
-var util = require("../core/utility");
-var registerTag = require("../core/tag");
+var bp = require("bonaparte");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = registerTag("draggable", draggable);
+module.exports = bp.tag.create("draggable", draggable);
 ///////////////////////////////////////////////////////////////////////////////
 function draggable(tag) {
 
@@ -26,14 +25,15 @@ function draggable(tag) {
 
   function initialise () {
     children = tag.children;
-    handler = util.getAttribute(tag, 'handler');
-    target = util.getAttribute(tag, 'target');
+    handler = bp.attribute.get(tag, 'handler');
+    target = bp.attribute.get(tag, 'target');
     dropZones = target ? document.querySelectorAll(target) : children;
 
     for (var i = children.length - 1; i >= 0; i--) {
       var child = children[i];
-      util.setAttribute(child, 'draggable', 'true');
-      util.setAttribute(child, 'bonaparte-order-id', i);
+
+      bp.attribute.set(child, 'draggable', 'true');
+      bp.attribute.set(child, 'bp-order-id', i);
 
       child.addEventListener('mousedown', mousedown);
       child.addEventListener('mouseup', mouseup);
@@ -43,7 +43,7 @@ function draggable(tag) {
   }
 
   function setRange () {
-    var range = util.getAttribute(tag, 'range');
+    var range = bp.attribute.get(tag, 'range');
     if (range) {
       range = range.split(',');
       for (var i = range.length - 1; i >= 0; i--) {
@@ -89,7 +89,7 @@ function draggable(tag) {
     var dragElem = findDraggableEl(e);
     if (handler) {
       var slectedElem = dragElem.querySelectorAll(handler);
-      if (e.target === slectedElem[0] || util.nodeContains(slectedElem[0], e.target)) {
+      if (e.target === slectedElem[0] || bp.tag.contains(slectedElem[0], e.target)) {
         // console.log('Use handler to drag');
         addListeners();
       } else {
@@ -121,8 +121,8 @@ function draggable(tag) {
 
   function dragenter(e){
     var elem = findDraggableEl(e),
-      id = util.getAttribute(elem, 'bonaparte-order-id');
-       
+      id = bp.attribute.get(elem, 'bp-order-id');
+
     count[id] = (count[id] + 1) || 1;
     elem.classList.add('dragover');
   }
@@ -133,8 +133,8 @@ function draggable(tag) {
 
   function dragleave(e){
     var elem = findDraggableEl(e),
-      id = util.getAttribute(elem, 'bonaparte-order-id');
-    
+      id = bp.attribute.get(elem, 'bp-order-id');
+
     count[id] -= 1;
 
     if (count[id] < 1) {
@@ -166,8 +166,12 @@ function draggable(tag) {
     }
 
     setRange();
+<<<<<<< HEAD
     console.log('draggable triggerEvent');
     util.triggerEvent(tag, "draggable.drop", {detail : details});
+=======
+    bp.triggerEvent(tag, "draggable.drop", {detail : details});
+>>>>>>> 7ec3573da1e70a4a52bfc127fd523e01258fd6b8
     currentDraggedElem = null;
   }
 

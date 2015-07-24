@@ -1,5 +1,5 @@
 var objct = require("objct");
-var util = require("./utility");
+var bp = require("./utility");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Polyfills
@@ -25,14 +25,15 @@ var registeredTags = {};
 ///////////////////////////////////////////////////////////////////////////////
 // Public 
 
-module.exports = registerTag;
+bp.tag.create=createTag;
+module.exports = bp;
 
 ///////////////////////////////////////////////////////////////////////////////
 
-function registerTag(name, definition, mixins, nativeBaseElement){
+function createTag(name, definition, mixins, nativeBaseElement){
   var definitionType = (objct.isArray(definition) && "array") || typeof definition;
   if(definitionType !== "object" && definitionType !== "function")
-    throw "Bonaparte - registerTag: Unexpected "+definitionType+". Expected Function or Object."
+    throw "Bonaparte - createTag: Unexpected "+definitionType+". Expected Function or Object."
 
   nativeBaseElement = nativeBaseElement || HTMLElement;
   mixins = mixins || [];
@@ -78,7 +79,7 @@ function registerTag(name, definition, mixins, nativeBaseElement){
   function initialize(element){
     
     apply(element);  
-    util.observe(element); 
+    bp.tag.observe(element); 
 
   }
 
@@ -95,7 +96,6 @@ function registerTag(name, definition, mixins, nativeBaseElement){
 
   function apply(element) {
     var modules = [
-      // require("./globals"),
       require("./events"),
       mixins,
       definition, 
@@ -106,7 +106,7 @@ function registerTag(name, definition, mixins, nativeBaseElement){
     element.bonaparte = element.bonaparte || {};
 
     // Create and mixin tag instance
-    objct.extend(element.bonaparte, modules)(element);
+    objct.extend(element, modules)(element);
   }
 
 ///////////////////////////////////////////////////////////////////////////////

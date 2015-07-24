@@ -11,12 +11,12 @@ module.exports = mixins;
 function mixins(tag){
 
   registeredMixins[tag.tagName] = registeredMixins[tag.tagName] || [];
-  new objct.extend(tag.bonaparte, registeredMixins[tag.tagName]);
+  new objct.extend(tag, registeredMixins[tag.tagName]);
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-  this.mixin = mixin;
+  tag.bonaparte.mixin = mixin;
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -28,7 +28,7 @@ function mixins(tag){
     registeredMixins[tag.tagName].push(mixin);
 
     // apply mixin to current tag.
-    new objct.extend(tag.bonaparte, mixin);
+    new objct.extend(tag, mixin);
 
   }
 

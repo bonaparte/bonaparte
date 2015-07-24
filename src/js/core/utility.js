@@ -5,15 +5,18 @@ var objct = require("objct");
 // Public
 
 module.exports = {
-  nodeContains : nodeContains,
-  getAttribute : getAttribute,
-  matchAttribute : matchAttribute,
-  setAttribute : setAttribute,
-  removeAttribute : removeAttribute,
-  getClosest : getClosest,
-  triggerEvent : triggerEvent,
-  observe : observe,
-  map : map
+  tag : {
+    contains : nodeContains,
+    observe : observe,
+    triggerEvent : triggerEvent,
+    closest : getClosest
+  },
+  attribute : {
+    get : getAttribute,
+    set : setAttribute,
+    remove : removeAttribute,
+    matchName : matchAttribute
+  }
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -143,19 +146,4 @@ function removeAttribute(tag, name) {
   }
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// x: current Value, 
-// cMin: current range min, 
-// cMax: current range max, 
-// tMin: target range min, 
-// tMax: target range max, 
-// easingFunction: easingFunction (string)
-
-function map(x, cMin, cMax, tMin, tMax, easingFunction) {
-  easingFunction = typeof easing === "object" && easing[easingFunction] !== undefined ? 
-    easing[easingFunction] : 
-    function (t, b, c, d) { return b+c*(t/=d) };
-  if(x===0) return tMin;
-  return easingFunction(x-cMin, tMin, tMax-tMin, cMax-cMin);  
-}
 ///////////////////////////////////////////////////////////////////////////////

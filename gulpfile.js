@@ -7,6 +7,7 @@ var browserify   = require("browserify");
 var source       = require('vinyl-source-stream');
 var buffer       = require('vinyl-buffer');
 var rename       = require('gulp-rename');
+var glob       = require('glob');
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -29,23 +30,27 @@ function js(){
 
   browserify({
     // debug: true,
-    entries: ['./src/js/app.js']
+    entries: ['./src/js/bonaparte.js']
   })
   .bundle()
   .pipe(source('bonaparte.js'))
   .pipe(buffer())
   .pipe(gulp.dest('./dist'));
+
+
+  // var tags = glob.sync('./src/js/tags/*.js');
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 
 function css(){
-  return gulp.src('./src/less/app.less')
+  return gulp.src('./src/less/bonaparte.less')
     .pipe(less({
       plugins : [cleancss]
     }))
     .pipe(autoprefixer())
-    .pipe(rename("bonaparte.css"))
+    // .pipe(rename("bonaparte.css"))
     .pipe(gulp.dest('./dist/')); 
 }
 

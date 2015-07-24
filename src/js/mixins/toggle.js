@@ -1,4 +1,4 @@
-var util = require("../core/utility");
+var bp = require("bonaparte");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public 
@@ -9,13 +9,13 @@ module.exports = toggleMixin;
 
 function toggleMixin(tag){
 
-  this.toggle = toggle;
+  tag.bonaparte.toggle = toggle;
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
   function toggle(attribute){
-    var newValue = util.getAttribute(tag, attribute) === "true" ? "false" : "true";
-    util.setAttribute(tag, attribute, newValue);
+    var newValue = bp.attribute.get(tag, attribute) === "true" ? "false" : "true";
+    bp.attribute.set(tag, attribute, newValue);
   }
 }

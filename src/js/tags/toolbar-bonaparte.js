@@ -1,16 +1,14 @@
-var util = require("../core/utility");
-var registerTag = require("../core/tag");
+var bp = require("bonaparte");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = registerTag("toolbar", toolbar, [
+module.exports = bp.tag.create("toolbar", toolbar, [
   require("./sidebar-bonaparte.js")
 ]);
 
 ///////////////////////////////////////////////////////////////////////////////
 function toolbar(tag){
-
 
   window.addEventListener("load", initializeButtons)
 
