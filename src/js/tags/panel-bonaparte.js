@@ -4,8 +4,9 @@ var mousetrap = require("mousetrap");
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = bp.tag.create("panel", panel, [
-  require("../mixins/toggle")
+module.exports = bp.tag.create("panel", [
+  require("../mixins/toggle"),
+  panel
 ]);
 
 mousetrap.bind("esc", function(){bp.tag.triggerEvent(window, "bonaparte.internal.closePanels")});

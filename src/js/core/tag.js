@@ -30,13 +30,16 @@ module.exports = bp;
 
 ///////////////////////////////////////////////////////////////////////////////
 
-function createTag(name, definition, mixins, nativeBaseElement){
-  var definitionType = (objct.isArray(definition) && "array") || typeof definition;
-  if(definitionType !== "object" && definitionType !== "function")
-    throw "Bonaparte - createTag: Unexpected "+definitionType+". Expected Function or Object."
+function createTag(name, modules, nativeBaseElement){
+  var modulesType = (objct.isArray(modules) && "array") || typeof modules;
+ 
+  if(modulesType === "function") 
+    modules = [modules];
+  else if(modulesType !== "array")
+    throw "Bonaparte - createTag: Unexpected "+modulesType+". Expected Function or Array."
+
 
   nativeBaseElement = nativeBaseElement || HTMLElement;
-  mixins = mixins || [];
 ///////////////////////////////////////////////////////////////////////////////
 // Public
   
@@ -47,7 +50,7 @@ function createTag(name, definition, mixins, nativeBaseElement){
 
 ///////////////////////////////////////////////////////////////////////////////
 
-  definition = objct(tagFactory, definition);
+  var definition = objct(tagFactory, modules);
   return definition;
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -71,7 +74,7 @@ function createTag(name, definition, mixins, nativeBaseElement){
 ///////////////////////////////////////////////////////////////////////////////
 
   function mixin(mixin){
-    definition = objct(definition, mixin);
+    objct.extend(definition, mixin);
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -97,7 +100,6 @@ function createTag(name, definition, mixins, nativeBaseElement){
   function apply(element) {
     var modules = [
       require("./events"),
-      mixins,
       definition, 
       require("./mixins")
     ];

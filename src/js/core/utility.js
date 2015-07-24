@@ -16,6 +16,9 @@ module.exports = {
     set : setAttribute,
     remove : removeAttribute,
     matchName : matchAttribute
+  },
+  modules : {
+    mixin : mixin
   }
 };
 
@@ -58,6 +61,12 @@ function mutationHandler(mutations){
     triggerEvent(tag, "bonaparte.tag.attributeUpdated", data);
   }
  
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+function mixin() {
+  return objct(arguments);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
