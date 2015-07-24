@@ -1907,7 +1907,7 @@ var sidebar = require("./tags/sidebar-bonaparte");
 var toolbar = require("./tags/toolbar-bonaparte");
 var cornerstone = require("./tags/cornerstone-bonaparte");
 var button = require("./tags/button-bonaparte");
-var draggable = require("./tags/draggable-bonaparte")
+var draggable = require("./tags/draggable-bonaparte");
 
 // toolbar.mixin({
 //   test:function(){
@@ -2441,7 +2441,7 @@ function button(tag){
  
     } 
     
-    var activeClass = bp.attribute.get(tag, "activeClass") || "active";
+    var activeClass = bp.attribute.get(tag, "active-class") || "active";
     if(activeClass==="") return;
 
     if(active === true){

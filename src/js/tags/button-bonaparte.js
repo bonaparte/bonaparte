@@ -122,7 +122,7 @@ function button(tag){
  
     } 
     
-    var activeClass = bp.attribute.get(tag, "activeClass") || "active";
+    var activeClass = bp.attribute.get(tag, "active-class") || "active";
     if(activeClass==="") return;
 
     if(active === true){
