@@ -91,6 +91,8 @@ var module = bp.modules.mixin(
 )
 
 ```
+> Modules are combinded to an `objct`. Read more about the objct library [here](https://github.com/greenish/js-objct)
+
 ### bp.tag
 #### bp.tag.create();
 Creates a new bonaparte-tag from _modules_. <br>
@@ -99,19 +101,22 @@ __Returns__ a tag definition.
 ```javascript
 
 var tag = bp.tag.create( 
-    (String)        name,               // Tag name. "-bonaparte" is automatically appended.
-    (Function)      constructor,        // Tag constructor function. Will be instanciated for every tag on the page.
-  [ (Array)         mixins,         ]   // Array of mixins and tagDefinitions the new tag inherits from.
-  [ (HTMLElement)   htmlBaseElement ]   // Define the html element this tag inherits from (Default: HTMLElement)
+    (String) name,                    // Tag name. "-bonaparte" is automatically appended.
+    (Array|Function) modules,         // Modules the new tag includes.
+  [ (HTMLElement) htmlBaseElement ]   // Define the html element this tag inherits from (Default: HTMLElement)
 )
 
 ////////////
+// Static functions
 
 tag.register();                         // Registers tag in HTML. After calling this function, the tag can be used in HTML.
 tag.initialize( (HTMLElement) tag );    // Initializes the tag on an existion HTMLElement.
 tag.mixin( (Array) mixins );            // Define mixins to chustomize existing tags behaviors.      
 
 ```
+> Modules are combinded to an `objct`. Read more about the objct library [here](https://github.com/greenish/js-objct)
+      
+> Note: static methods on modules become static methods on the tag-definition.
 
 #### bp.tag.observe();
 
