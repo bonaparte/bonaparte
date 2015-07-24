@@ -2262,7 +2262,7 @@ function setAttribute(tag, name, value) {
 
   tag.setAttribute(name, value);
 
-  if(oldValue === value) {
+  if(oldValue === value && tag.bonaparte) {
     tag.bonaparte.triggerEvent("bonaparte.tag.attributeUpdated",{
       name:name,
       previousValue : oldValue,
@@ -2676,8 +2676,9 @@ function draggable(tag) {
 
     for (var i = children.length - 1; i >= 0; i--) {
       var child = children[i];
+
       bp.attribute.set(child, 'draggable', 'true');
-      bp.attribute.set(child, 'bonaparte-id', i);
+      bp.attribute.set(child, 'bp-order-id', i);
 
       child.addEventListener('mousedown', mousedown);
       child.addEventListener('mouseup', mouseup);
@@ -2765,8 +2766,8 @@ function draggable(tag) {
 
   function dragenter(e){
     var elem = findDraggableEl(e),
-      id = bp.attribute.get(elem, 'bonaparte-id');
-       
+      id = bp.attribute.get(elem, 'bp-order-id');
+
     count[id] = (count[id] + 1) || 1;
     elem.classList.add('dragover');
   }
@@ -2777,8 +2778,8 @@ function draggable(tag) {
 
   function dragleave(e){
     var elem = findDraggableEl(e),
-      id = bp.attribute.get(elem, 'bonaparte-id');
-    
+      id = bp.attribute.get(elem, 'bp-order-id');
+
     count[id] -= 1;
 
     if (count[id] < 1) {

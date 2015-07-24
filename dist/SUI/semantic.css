@@ -20815,6 +20815,92 @@ ol.ui.horizontal.list li:before,
          Theme Overrides
 *******************************/
 
+.ui.form {
+  padding: 0 1rem 2rem 1rem;
+  width: 100%;
+  background-color: #fff;
+}
+
+.ui.form .field {
+  display: table;
+  width: 100%;
+}
+
+.ui.form input:not([type]),
+.ui.form input[type=text],
+.ui.form input[type=email],
+.ui.form input[type=search],
+.ui.form input[type=password],
+.ui.form input[type=date],
+.ui.form input[type=datetime-local],
+.ui.form input[type=tel],
+.ui.form input[type=time],
+.ui.form input[type=url],
+.ui.form input[type=number],
+.ui.form textarea {
+  width: 100%;
+  border: 0;
+  border-bottom: 3px double #e0e0e0;
+  background-color: #f5f5f5;
+  padding: 1rem;
+  font-size: 1.3rem;
+  color: #1a1a1a;
+  outline: none;
+  display: table-row-group;
+}
+
+.ui.form .field > label {
+  display: table-header-group;
+}
+
+.ui.form label {
+  font-weight: 600;
+  color: #000000;
+}
+
+.ui.form textarea {
+  width: 100%;
+}
+
+.ui.form input:not([type]):focus,
+.ui.form input[type=text]:focus,
+.ui.form input[type=email]:focus,
+.ui.form input[type=search]:focus,
+.ui.form input[type=password]:focus,
+.ui.form input[type=date]:focus,
+.ui.form input[type=datetime-local]:focus,
+.ui.form input[type=tel]:focus,
+.ui.form input[type=time]:focus,
+.ui.form input[type=url]:focus,
+.ui.form input[type=number]:focus,
+.ui.form textarea:focus {
+  border-color: #425cbd;
+}
+
+.ui.form .dropdown.active:focus + label,
+.ui.form input:not([type]):focus + label,
+.ui.form input[type=text]:focus + label,
+.ui.form input[type=email]:focus + label,
+.ui.form input[type=search]:focus + label,
+.ui.form input[type=password]:focus + label,
+.ui.form input[type=date]:focus + label,
+.ui.form input[type=datetime-local]:focus + label,
+.ui.form input[type=tel]:focus + label,
+.ui.form input[type=time]:focus + label,
+.ui.form input[type=url]:focus + label,
+.ui.form input[type=number]:focus + label,
+.ui.form textarea:focus + label {
+  color: #425cbd;
+}
+
+.ui.form .ui.selection.dropdown {
+  color: #1a1a1a;
+  border: 0;
+  border-bottom: 3px double #e0e0e0;
+  background-color: #f5f5f5;
+  padding: 1rem;
+}
+
 /*******************************
          Site Overrides
 *******************************/
