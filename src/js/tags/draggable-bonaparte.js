@@ -166,12 +166,7 @@ function draggable(tag) {
     }
 
     setRange();
-<<<<<<< HEAD
-    console.log('draggable triggerEvent');
-    util.triggerEvent(tag, "draggable.drop", {detail : details});
-=======
     bp.triggerEvent(tag, "draggable.drop", {detail : details});
->>>>>>> 7ec3573da1e70a4a52bfc127fd523e01258fd6b8
     currentDraggedElem = null;
   }
 
