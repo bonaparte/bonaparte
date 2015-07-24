@@ -78,7 +78,7 @@ Requiring the `bonaparte` module provides all the necessary functions to create 
 ```
 
 ### bp.module
-#### bp.modules.mixin()
+#### bp.module.mixin()
 Combines _modules_ into a new _module_ <br>
 __Returns__ a _module_.
 
@@ -112,6 +112,26 @@ tag.initialize( (HTMLElement) tag );    // Initializes the tag on an existion HT
 tag.mixin( (Array) mixins );            // Define mixins to chustomize existing tags behaviors.      
 
 ```
+
+#### bp.tag.observe();
+
+#### bp.tag.contains();
+
+#### bp.tag.closest();
+
+#### bp.tag.triggerEvent();
+
+### bp.attribute
+Utility functions that should be used to handle attributes. <br>
+They automatically handle both `name` and `data-name` attributes in one go and normalize events across browsers.
+
+#### bp.attribute.get();
+
+#### bp.attribute.set();
+
+#### bp.attribute.remove();
+
+#### bp.attribute.matchName();
 
 
 ## Tags
