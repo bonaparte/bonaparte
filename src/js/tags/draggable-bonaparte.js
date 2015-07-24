@@ -166,7 +166,7 @@ function draggable(tag) {
     }
 
     setRange();
-    bp.triggerEvent(tag, "draggable.drop", {detail : details});
+    bp.tag.triggerEvent(tag, "draggable.drop", details);
     currentDraggedElem = null;
   }
 
