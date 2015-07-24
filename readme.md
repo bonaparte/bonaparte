@@ -30,20 +30,20 @@ __Public:__
 
 ## Development
 
-### SUI
-#### Install / Build
-
-- Clone Repository (Note: Respository includes submodules)
-- Run `npm install` in `./`. _(Select **NO** for all options for fastes result)_
-
-#### Development
-
-> __One doesn't simply work in `dist/` directly.__ <br>
-> _- Wise Man_
-
-- Install / Build SUI.
-- Run `gulp SUI-watch` to watch `.SUI/ui/` and keep `dist/` up to date.
-- Work in `ui/`. _( Theme: `./ui/src/themes/bonaparte/` )_
+> ### SUI theme
+> #### Install / Build
+>
+> - Clone Repository (Note: Respository includes submodules)
+> - Run `npm install` in `./`. _(Select **NO** for all options for fastes result)_
+>
+> #### Development
+>
+> > __One doesn't simply work in `dist/` directly.__ <br>
+> > _- Wise Man_
+>
+> - Install / Build SUI.
+> - Run `gulp SUI-watch` to watch `.SUI/ui/` and keep `dist/` up to date.
+> - Work in `ui/`. _( Theme: `./ui/src/themes/bonaparte/` )_
 
 
 ### Bonaparte
@@ -56,6 +56,16 @@ __Public:__
 #### Development
 
 - Run `gulp BPA-watch` to watch `./src/` and keep `./dist/` up to date.
+
+#### Structure
+
+Bonaparte has a very modular structure and is therefore very easily extendable.
+Each bonaparte tag is a combination of __mixins__ and __tag definitions__.
+
+Mixins and tag definitions are structurally the same thing (aka. _modules_), they each can be either a `Function` or a `Object`-literal.
+
+
+
 
 ## API
 Requiring the bonaparte module provides all the necessary functions to create new _tags_ and a set of utility functions that can be used in _tags_ and _mixins_.
@@ -70,7 +80,7 @@ __Returns__ a tag definition.
 
 ```javascript
 
-var tagDefinition = bp.tag.create( 
+var tag = bp.tag.create( 
     (String)        name,               // Tag name. "-bonaparte" is automatically appended.
     (Function)      constructor,        // Tag constructor function. Will be instanciated for every tag on the page.
   [ (Array)         mixins,         ]   // Array of mixins and tagDefinitions the new tag inherits from.
@@ -79,9 +89,9 @@ var tagDefinition = bp.tag.create(
 
 ////////////
 
-tagDefinition.register();               // Registers tag in HTML. After calling this function, the tag can be used in HTML.
-tagDefinition.initialize( (HTMLElement) tag ); // Initializes the tag on an existion HTMLElement.
-tagDefinition.mixin( (Array) mixins );  // Define mixins to chustomize existing tags behaviors.      
+tag.register();                         // Registers tag in HTML. After calling this function, the tag can be used in HTML.
+tag.initialize( (HTMLElement) tag );    // Initializes the tag on an existion HTMLElement.
+tag.mixin( (Array) mixins );            // Define mixins to chustomize existing tags behaviors.      
 
 ```
 
