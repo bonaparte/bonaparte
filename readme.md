@@ -28,7 +28,7 @@ __Public:__
   ./dist/bonaparte.js
   ```
 
-## Development
+## Dev Setup
 
 > ### SUI theme
 > #### Install / Build
@@ -57,7 +57,7 @@ __Public:__
 
 - Run `gulp BPA-watch` to watch `./src/` and keep `./dist/` up to date.
 
-#### Structure
+## Structure
 
 Bonaparte has a modular structure and is therefore very easily extendable.
 Each bonaparte tag is a combination of __modules__.
@@ -68,6 +68,28 @@ __Modules__ are simple javascript functions that get instanciated for each tag-i
   function module(tag) {
     // tag === this === current tag instance
   }
+```
+
+## Events
+
+Bonaparte-Tags emit the following custom events.
+
+```javascript
+  "bonaparte.tag.created"
+  "bonaparte.tag.attached"
+  "bonaparte.tag.detached"
+  "bonaparte.tag.attributeChanged"
+  "bonaparte.tag.attributeUpdated"
+```
+
+Custom tags can easily be triggered on Bonaparte-Tags by calling
+```javascript
+document.getElementById("bonaparte-tag").bonaparte.triggerEvent("name", data)`
+```
+or through the api on any element 
+
+```javascript
+bp.tag.triggerEvent(tag, "name", data)`;
 ```
 
 ## API
@@ -116,28 +138,106 @@ tag.mixin( (Array) mixins );            // Define mixins to chustomize existing 
 ```
 > Modules are combinded to an `objct`. Read more about the objct library [here](https://github.com/greenish/js-objct)
       
-> Note: static methods on modules become static methods on the tag-definition.
+> Static methods on modules become static methods on the tag-definition.
 
 #### bp.tag.observe();
+Sets on observer on the given Element.
+The observed element now emits `bonaparte.tag.attributeChanged` and `bonaparte.tag.attributeUpdated` events.
+
+```javascript
+bp.tag.observe(
+  (HTMLElement) element
+)
+```
 
 #### bp.tag.contains();
+Checks one Element is placed inside another.<br>
+__Returns:__ `true|false`
+
+```javascript
+bp.tag.contains(
+  (HTMLElement) parent,
+  (HTMLElement) child
+)
+```
 
 #### bp.tag.closest();
+Traverses up the element tree to find the first element that matches the given selector.
+__Returns:__ `Element|undefined`
+
+```javascript
+bp.tag.closest(
+  (HTMLElement)   element,
+  (querySelector) selector
+)
+```
 
 #### bp.tag.triggerEvent();
+Triggers a event on the given HTMLElement
+__Returns:__ `undefined`
+
+```javascript
+bp.tag.triggerEvent(
+  (String)        event,
+  (HTMLElement)   target,
+  (Object)        data,
+ [(Boolean)       bubbles = true ]
+ [(Boolean)       cancelable=true]
+)
+```
+
 
 ### bp.attribute
 Utility functions that should be used to handle attributes. <br>
 They automatically handle both `name` and `data-name` attributes in one go and normalize events across browsers.
 
 #### bp.attribute.get();
+Get an attribute from the given tag by attribute name. Automatically checks for data-[name] as well.<br>
+__Return:__ attribute value.
+
+```javascript
+bp.attribute.get(
+  (HTMLElement)   element,
+  (String)        attributeName,
+)
+
+```
 
 #### bp.attribute.set();
+Set an attribute on the given tag. Checks automatically if the attribute exists with or without data- prefix.
 
+```javascript
+bp.attribute.set(
+  (HTMLElement)   element,
+  (String)        attributeName,
+  (String)        value
+)
+
+```
 #### bp.attribute.remove();
+
+Removes an attribute from the given tag. Checks automatically if the attribute exists with or without data- prefix.
+
+```javascript
+bp.attribute.remove(
+  (HTMLElement)   element,
+  (String)        attributeName
+)
+
+```
 
 #### bp.attribute.matchName();
 
+Compares two attribute names and checks if they are the same with: `"attributeName" === "data-attributeName"`<br>
+__Returns:__ `true|false`
+
+```javascript
+bp.attribute.matchName(
+  (String)      needle,
+  (String)      haystack
+)
+
+```
 
 ## Tags
 
