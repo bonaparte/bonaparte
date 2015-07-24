@@ -15,7 +15,7 @@ __Public:__
 [Toolbar](http://dowjones.github.io/bonaparte/examples/toolbar.html)
 
 
-### Use
+### Basic Use
 
 - Download / Clone Repository.
 - Include files: 
