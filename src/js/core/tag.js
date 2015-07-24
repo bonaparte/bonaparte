@@ -51,7 +51,6 @@ function createTag(name, modules, nativeBaseElement){
 ///////////////////////////////////////////////////////////////////////////////
 
   var definition = objct(modules, tagFactory);
-
   return definition;
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -70,13 +69,15 @@ function createTag(name, modules, nativeBaseElement){
         })
       });
 
-    return registeredTags[name+"-bonaparte"];
+    return definition;
   }
 
 ///////////////////////////////////////////////////////////////////////////////
 
   function mixin(mixin){
     objct.extend(definition, mixin);
+   
+    return definition;
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -85,7 +86,8 @@ function createTag(name, modules, nativeBaseElement){
     
     apply(element);  
     bp.tag.observe(element); 
-
+    
+    return definition;
   }
 
 ///////////////////////////////////////////////////////////////////////////////
