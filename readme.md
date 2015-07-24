@@ -173,7 +173,7 @@ bonaparte.panel.close
   toggle=[false|true]?[attribute]*
   trigger=[event]
   bubbles=[true|false]
-  activeClass=[classname|""]
+  active-class=[classname|""]
   shortcut=[shortcut]
 >
 
