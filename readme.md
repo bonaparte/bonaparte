@@ -59,23 +59,41 @@ __Public:__
 
 #### Structure
 
-Bonaparte has a very modular structure and is therefore very easily extendable.
-Each bonaparte tag is a combination of __mixins__ and __tag definitions__.
+Bonaparte has a modular structure and is therefore very easily extendable.
+Each bonaparte tag is a combination of __modules__.
 
-Mixins and tag definitions are structurally the same thing (aka. _modules_), they each can be either a `Function` or a `Object`-literal.
+__Modules__ are simple javascript functions that get instanciated for each tag-instance on the page:
 
-
-
+```javascript
+  function module(tag) {
+    // tag === this === current tag instance
+  }
+```
 
 ## API
-Requiring the bonaparte module provides all the necessary functions to create new _tags_ and a set of utility functions that can be used in _tags_ and _mixins_.
+Requiring the `bonaparte` module provides all the necessary functions to create new _tags_ from modules, as well a set of utility functions that can be used within _modules_.
 
 ```javascript
   var bp = require("bonaparte"); // this also works in the module repository itself
 ```
 
-#### bp.tag.create()
-Defines a new bonaparte-tag. <br>
+### bp.module
+#### bp.modules.mixin()
+Combines _modules_ into a new _module_ <br>
+__Returns__ a _module_.
+
+```javascript
+
+var module = bp.modules.mixin(
+    (Function)   module,                 // Modules to be combined
+    (Function)   module,                 // Modules will be instanciated in the order they they are passed to the mixin funcition.
+    ...
+)
+
+```
+### bp.tag
+#### bp.tag.create();
+Creates a new bonaparte-tag from _modules_. <br>
 __Returns__ a tag definition.
 
 ```javascript
