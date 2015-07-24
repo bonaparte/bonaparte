@@ -2047,13 +2047,15 @@ function createTag(name, modules, nativeBaseElement){
 
 ///////////////////////////////////////////////////////////////////////////////
 
-  var definition = objct(tagFactory, modules);
+  var definition = objct(modules, tagFactory);
+
   return definition;
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
   function register(){ 
+
     registeredTags[name+"-bonaparte"] = registeredTags[name+"-bonaparte"] !== undefined ?
       registeredTags[name+"-bonaparte"]:
       document.registerElement(name+"-bonaparte", {
@@ -2164,6 +2166,9 @@ module.exports = {
     set : setAttribute,
     remove : removeAttribute,
     matchName : matchAttribute
+  },
+  modules : {
+    mixin : mixin
   }
 };
 
@@ -2206,6 +2211,12 @@ function mutationHandler(mutations){
     triggerEvent(tag, "bonaparte.tag.attributeUpdated", data);
   }
  
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+function mixin() {
+  return objct(arguments);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2329,6 +2340,7 @@ module.exports = bp.tag.create("button", button, HTMLButtonElement);
 
 ///////////////////////////////////////////////////////////////////////////////
 function button(tag){
+
   var action = undefined;
   var targets = [];
   var attributes = {};
@@ -2842,7 +2854,7 @@ var mousetrap = require("mousetrap");
 // Public
 
 module.exports = bp.tag.create("panel", [
-  require("../mixins/toggle"),
+  require("../modules/toggle"),
   panel
 ]);
 
@@ -2918,7 +2930,7 @@ function panel(tag){
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"../mixins/toggle":12,"bonaparte":1,"mousetrap":4}],17:[function(require,module,exports){
+},{"../modules/toggle":12,"bonaparte":1,"mousetrap":4}],17:[function(require,module,exports){
 var bp = require("bonaparte");
 
 var scrollBarWidth = false;
@@ -3094,7 +3106,8 @@ module.exports = bp.tag.create("toolbar", [
 ///////////////////////////////////////////////////////////////////////////////
 function toolbar(tag){
 
-  window.addEventListener("load", initializeButtons)
+  if(document.readyState === "complete") initializeButtons();
+  else window.addEventListener("load", initializeButtons);
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////

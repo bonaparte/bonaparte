@@ -5,7 +5,7 @@ var mousetrap = require("mousetrap");
 // Public
 
 module.exports = bp.tag.create("panel", [
-  require("../mixins/toggle"),
+  require("../modules/toggle"),
   panel
 ]);
 

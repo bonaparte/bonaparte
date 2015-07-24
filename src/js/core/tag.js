@@ -50,13 +50,15 @@ function createTag(name, modules, nativeBaseElement){
 
 ///////////////////////////////////////////////////////////////////////////////
 
-  var definition = objct(tagFactory, modules);
+  var definition = objct(modules, tagFactory);
+
   return definition;
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
   function register(){ 
+
     registeredTags[name+"-bonaparte"] = registeredTags[name+"-bonaparte"] !== undefined ?
       registeredTags[name+"-bonaparte"]:
       document.registerElement(name+"-bonaparte", {
