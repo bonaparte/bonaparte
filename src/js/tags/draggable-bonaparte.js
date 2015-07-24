@@ -33,7 +33,7 @@ function draggable(tag) {
     for (var i = children.length - 1; i >= 0; i--) {
       var child = children[i];
       util.setAttribute(child, 'draggable', 'true');
-      util.setAttribute(child, 'bonaparte-id', i);
+      util.setAttribute(child, 'bonaparte-order-id', i);
 
       child.addEventListener('mousedown', mousedown);
       child.addEventListener('mouseup', mouseup);
@@ -121,7 +121,7 @@ function draggable(tag) {
 
   function dragenter(e){
     var elem = findDraggableEl(e),
-      id = util.getAttribute(elem, 'bonaparte-id');
+      id = util.getAttribute(elem, 'bonaparte-order-id');
        
     count[id] = (count[id] + 1) || 1;
     elem.classList.add('dragover');
@@ -133,7 +133,7 @@ function draggable(tag) {
 
   function dragleave(e){
     var elem = findDraggableEl(e),
-      id = util.getAttribute(elem, 'bonaparte-id');
+      id = util.getAttribute(elem, 'bonaparte-order-id');
     
     count[id] -= 1;
 
@@ -166,6 +166,7 @@ function draggable(tag) {
     }
 
     setRange();
+    console.log('draggable triggerEvent');
     util.triggerEvent(tag, "draggable.drop", {detail : details});
     currentDraggedElem = null;
   }

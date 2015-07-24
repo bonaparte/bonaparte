@@ -113,7 +113,7 @@ function setAttribute(tag, name, value) {
 
   tag.setAttribute(name, value);
 
-  if(oldValue === value) {
+  if(oldValue === value && tag.bonaparte) {
     tag.bonaparte.triggerEvent("bonaparte.tag.attributeUpdated",{
       name:name,
       previousValue : oldValue,

@@ -151,47 +151,7 @@ toolbar-bonaparte:not([data-open="true"]) > aside button-bonaparte span.label {
   border-bottom: 1px solid #FFFFFF;
 }
 
-#saveTemplete .inner {
-  position: absolute;
-  padding: 0 1rem 2rem 1rem;
-  width: 100%;
-  background-color: #fff;
-  margin-top: -303px;
-}
-#saveTemplete.active .inner{
-  margin-top: 0px;
-}
-
-#saveTemplete .inputContainer {
-  display: table;
-    width: 100%;
-}
-
-#saveTemplete label {
-  font-weight: 600;
-  color: #000000;
-  display: table-header-group;
-}
-
-#saveTemplete textarea,
-#saveTemplete input[type=text] {
-  width: 100%;
-  border: 0;
-  border-bottom: 3px double #e0e0e0;
-  background-color: #f5f5f5;
-  padding: 1rem;
-  font-size: 1.3rem;
-  color: #1a1a1a;
-  outline: none;
-  margin-bottom: 1rem;
-  display: table-row-group; 
-}
-
-#saveTemplete textarea:focus,
-#saveTemplete input[type=text]:focus  {
-  border-color: #425CBD;
-}
-
+  
 #saveTemplete .ui.selection.dropdown {
   color: #1a1a1a;
   border: 0;
@@ -221,11 +181,7 @@ toolbar-bonaparte:not([data-open="true"]) > aside button-bonaparte span.label {
 }
 #saveTemplete label {padding-left: 1rem;}
 
-.dropdown.active + label,
-textarea:focus + label,
-input[type=text]:focus + label {
-  color: #425CBD;
-}
+
 #saveTemplete button-bonaparte {
   margin: 0;
   float: right;
@@ -236,14 +192,20 @@ input[type=text]:focus + label {
   border-bottom: 1px solid #E6E5E6;
 }
 
-input:focus + label {
-    color:red;
-    font-weight: bold;
-}
-
 .ui.labeled.icon.button>.icon {
     background-color: #FFFFFF !important;
 }
+
+
+/*animations*/
+#saveTemplete .ui.form  {
+  position: absolute;
+  margin-top: -303px;
+}
+#saveTemplete.active .ui.form {
+  margin-top: 0px;
+}
+/* animations */
 
     </style>
 
