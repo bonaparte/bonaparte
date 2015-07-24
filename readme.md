@@ -1,5 +1,7 @@
 # Bonaparte UX Framework
 
+### Examples
+
 __Internal:__
 
 [Kitchen-Sink](https://github.dowjones.net/pages/newsroomdevelopment/bonaparte/examples/kitchen-sink.html)
@@ -26,14 +28,15 @@ __Public:__
   ./dist/bonaparte.js
   ```
 
-## SUI
+## Development
 
-### Install / Build
+### SUI
+#### Install / Build
 
 - Clone Repository (Note: Respository includes submodules)
 - Run `npm install` in `./`. _(Select **NO** for all options for fastes result)_
 
-### Development
+#### Development
 
 > __One doesn't simply work in `dist/` directly.__ <br>
 > _- Wise Man_
@@ -42,23 +45,45 @@ __Public:__
 - Run `gulp SUI-watch` to watch `.SUI/ui/` and keep `dist/` up to date.
 - Work in `ui/`. _( Theme: `./ui/src/themes/bonaparte/` )_
 
-### Build Docs 
 
-- Install / Build SUI.
-- Run `npm install` in `./SUI/docs/`.
-- Follow Instructions: https://github.com/Semantic-Org/Semantic-UI-Docs.
+### Bonaparte
 
-
-## Bonaparte
-
-### Install / Build
+#### Install / Build
 
 - Clone Repository (Note: Respository includes submodules)
 - Run `npm install` in `./`.
 
-### Development
+#### Development
 
 - Run `gulp BPA-watch` to watch `./src/` and keep `./dist/` up to date.
+
+## API
+Requiring the bonaparte module provides all the necessary functions to create new _tags_ and a set of utility functions that can be used in _tags_ and _mixins_.
+
+```javascript
+  var bp = require("bonaparte"); // this also works in the module repository itself
+```
+
+#### bp.tag.create()
+Defines a new bonaparte-tag. <br>
+__Returns__ a tag definition.
+
+```javascript
+
+var tagDefinition = bp.tag.create( 
+    (String)        name,               // Tag name. "-bonaparte" is automatically appended.
+    (Function)      constructor,        // Tag constructor function. Will be instanciated for every tag on the page.
+  [ (Array)         mixins,         ]   // Array of mixins and tagDefinitions the new tag inherits from.
+  [ (HTMLElement)   htmlBaseElement ]   // Define the html element this tag inherits from (Default: HTMLElement)
+)
+
+////////////
+
+tagDefinition.register();               // Registers tag in HTML. After calling this function, the tag can be used in HTML.
+tagDefinition.initialize( (HTMLElement) tag ); // Initializes the tag on an existion HTMLElement.
+tagDefinition.mixin( (Array) mixins );  // Define mixins to chustomize existing tags behaviors.      
+
+```
 
 
 ## Tags
