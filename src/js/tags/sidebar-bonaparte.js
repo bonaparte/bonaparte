@@ -3,7 +3,7 @@ var util = require("bonaparte");
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = util.registerTag("sidebar", sidebar);
+module.exports = util.tag.create("sidebar", sidebar);
 
 ///////////////////////////////////////////////////////////////////////////////
 function sidebar(tag){
@@ -17,14 +17,14 @@ function sidebar(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function attributeChangedCallback(data){
-    if(util.matchAttribute(/size/, data.detail.name)) updateSize();
+    if(util.attribute.matchName(/size/, data.detail.name)) updateSize();
   }
 
 
 ///////////////////////////////////////////////////////////////////////////////
 
   function updateSize(data){
-    var size = util.getAttribute(tag, "size");
+    var size = util.attribute.get(tag, "size");
     var style = sidebar === "left" || sidebar==="right" ? "min-width" : "min-height";
     if(size === undefined) 
       tag.firstElementChild.style[style] = "";

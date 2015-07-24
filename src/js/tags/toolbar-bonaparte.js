@@ -3,7 +3,7 @@ var util = require("bonaparte");
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = util.registerTag("toolbar", toolbar, [
+module.exports = util.tag.create("toolbar", toolbar, [
   require("./sidebar-bonaparte.js")
 ]);
 

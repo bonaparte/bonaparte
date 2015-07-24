@@ -25,16 +25,15 @@ var registeredTags = {};
 ///////////////////////////////////////////////////////////////////////////////
 // Public 
 
-module.exports = new objct({
-  registerTag : registerTag
-}, util);
+util.tag.create=createTag;
+module.exports = util;
 
 ///////////////////////////////////////////////////////////////////////////////
 
-function registerTag(name, definition, mixins, nativeBaseElement){
+function createTag(name, definition, mixins, nativeBaseElement){
   var definitionType = (objct.isArray(definition) && "array") || typeof definition;
   if(definitionType !== "object" && definitionType !== "function")
-    throw "Bonaparte - registerTag: Unexpected "+definitionType+". Expected Function or Object."
+    throw "Bonaparte - createTag: Unexpected "+definitionType+". Expected Function or Object."
 
   nativeBaseElement = nativeBaseElement || HTMLElement;
   mixins = mixins || [];
@@ -80,7 +79,7 @@ function registerTag(name, definition, mixins, nativeBaseElement){
   function initialize(element){
     
     apply(element);  
-    util.observe(element); 
+    util.tag.observe(element); 
 
   }
 

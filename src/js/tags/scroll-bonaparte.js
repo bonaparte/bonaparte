@@ -5,14 +5,14 @@ var scrollBarWidth = false;
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = util.registerTag("scroll", scroll);
+module.exports = util.tag.create("scroll", scroll);
 
 ///////////////////////////////////////////////////////////////////////////////
 function scroll(tag){
   var content =  tag.firstElementChild;
   var slider, scrollbar, scrollBarVisible;
 
-  if(util.getAttribute(tag, "scrollbar") === "native") return;
+  if(util.attribute.get(tag, "scrollbar") === "native") return;
 
   setupScroller();
 
@@ -24,7 +24,7 @@ function scroll(tag){
 ///////////////////////////////////////////////////////////////////////////////
 // Eventlisteners
 
-  if(util.getAttribute(tag, "resize") !== "false")
+  if(util.attribute.get(tag, "resize") !== "false")
     window.addEventListener("resize", update);
   
   content.addEventListener("scroll", updatePosition);
@@ -61,10 +61,10 @@ function scroll(tag){
     var containerHeight = tag.offsetHeight;
     var scrollHeight = content.scrollHeight;
 
-    var sliderSize = Math.min(1, Math.max( 0.05, util.map(scrollHeight/containerHeight, 1, 5, 1, 0.05)));
+    var sliderSize = Math.min(1, Math.max( 0.05, map(scrollHeight/containerHeight, 1, 5, 1, 0.05)));
 
     var position = scrollHeight-containerHeight > 0 ? content.scrollTop / (scrollHeight-containerHeight) : 0;
-    var top = util.map(position, 0, 1, 0, containerHeight-(containerHeight*sliderSize));
+    var top = map(position, 0, 1, 0, containerHeight-(containerHeight*sliderSize));
 
     slider.style.height=(100*sliderSize)+"%";
     slider.style.top=top+"px";
@@ -89,6 +89,22 @@ function scroll(tag){
 
     tag.appendChild(scrollbar);
 
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+// x: current Value, 
+// cMin: current range min, 
+// cMax: current range max, 
+// tMin: target range min, 
+// tMax: target range max, 
+// easingFunction: easingFunction (string)
+
+  function map(x, cMin, cMax, tMin, tMax, easingFunction) {
+    easingFunction = typeof easing === "object" && easing[easingFunction] !== undefined ? 
+      easing[easingFunction] : 
+      function (t, b, c, d) { return b+c*(t/=d) };
+    if(x===0) return tMin;
+    return easingFunction(x-cMin, tMin, tMax-tMin, cMax-cMin);  
   }
 
 ///////////////////////////////////////////////////////////////////////////////

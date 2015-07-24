@@ -3,7 +3,7 @@ var util = require("bonaparte");
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = util.registerTag("draggable", draggable);
+module.exports = util.tag.create("draggable", draggable);
 ///////////////////////////////////////////////////////////////////////////////
 function draggable(tag) {
 
@@ -25,14 +25,14 @@ function draggable(tag) {
 
   function initialise () {
     children = tag.children;
-    handler = util.getAttribute(tag, 'handler');
-    target = util.getAttribute(tag, 'target');
+    handler = util.attribute.get(tag, 'handler');
+    target = util.attribute.get(tag, 'target');
     dropZones = target ? document.querySelectorAll(target) : children;
 
     for (var i = children.length - 1; i >= 0; i--) {
       var child = children[i];
-      util.setAttribute(child, 'draggable', 'true');
-      util.setAttribute(child, 'bonaparte-id', i);
+      util.attribute.set(child, 'draggable', 'true');
+      util.attribute.set(child, 'bonaparte-id', i);
 
       child.addEventListener('mousedown', mousedown);
       child.addEventListener('mouseup', mouseup);
@@ -42,7 +42,7 @@ function draggable(tag) {
   }
 
   function setRange () {
-    var range = util.getAttribute(tag, 'range');
+    var range = util.attribute.get(tag, 'range');
     if (range) {
       range = range.split(',');
       for (var i = range.length - 1; i >= 0; i--) {
@@ -88,7 +88,7 @@ function draggable(tag) {
     var dragElem = findDraggableEl(e);
     if (handler) {
       var slectedElem = dragElem.querySelectorAll(handler);
-      if (e.target === slectedElem[0] || util.nodeContains(slectedElem[0], e.target)) {
+      if (e.target === slectedElem[0] || util.tag.contains(slectedElem[0], e.target)) {
         // console.log('Use handler to drag');
         addListeners();
       } else {
@@ -120,7 +120,7 @@ function draggable(tag) {
 
   function dragenter(e){
     var elem = findDraggableEl(e),
-      id = util.getAttribute(elem, 'bonaparte-id');
+      id = util.attribute.get(elem, 'bonaparte-id');
        
     count[id] = (count[id] + 1) || 1;
     elem.classList.add('dragover');
@@ -132,7 +132,7 @@ function draggable(tag) {
 
   function dragleave(e){
     var elem = findDraggableEl(e),
-      id = util.getAttribute(elem, 'bonaparte-id');
+      id = util.attribute.get(elem, 'bonaparte-id');
     
     count[id] -= 1;
 

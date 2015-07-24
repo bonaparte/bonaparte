@@ -15,7 +15,7 @@ function toggleMixin(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function toggle(attribute){
-    var newValue = util.getAttribute(tag, attribute) === "true" ? "false" : "true";
-    util.setAttribute(tag, attribute, newValue);
+    var newValue = util.attribute.get(tag, attribute) === "true" ? "false" : "true";
+    util.attribute.set(tag, attribute, newValue);
   }
 }

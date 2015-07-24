@@ -17,7 +17,7 @@ function events(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function triggerEvent(event, data, bubbles, cancelable){
-    util.triggerEvent(tag, event, data, bubbles, cancelable);
+    util.tag.triggerEvent(tag, event, data, bubbles, cancelable);
   }
 
 ///////////////////////////////////////////////////////////////////////////////

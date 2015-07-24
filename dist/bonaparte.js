@@ -1945,7 +1945,7 @@ function events(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function triggerEvent(event, data, bubbles, cancelable){
-    util.triggerEvent(tag, event, data, bubbles, cancelable);
+    util.tag.triggerEvent(tag, event, data, bubbles, cancelable);
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2022,16 +2022,15 @@ var registeredTags = {};
 ///////////////////////////////////////////////////////////////////////////////
 // Public 
 
-module.exports = new objct({
-  registerTag : registerTag
-}, util);
+util.tag.create=createTag;
+module.exports = util;
 
 ///////////////////////////////////////////////////////////////////////////////
 
-function registerTag(name, definition, mixins, nativeBaseElement){
+function createTag(name, definition, mixins, nativeBaseElement){
   var definitionType = (objct.isArray(definition) && "array") || typeof definition;
   if(definitionType !== "object" && definitionType !== "function")
-    throw "Bonaparte - registerTag: Unexpected "+definitionType+". Expected Function or Object."
+    throw "Bonaparte - createTag: Unexpected "+definitionType+". Expected Function or Object."
 
   nativeBaseElement = nativeBaseElement || HTMLElement;
   mixins = mixins || [];
@@ -2077,7 +2076,7 @@ function registerTag(name, definition, mixins, nativeBaseElement){
   function initialize(element){
     
     apply(element);  
-    util.observe(element); 
+    util.tag.observe(element); 
 
   }
 
@@ -2153,15 +2152,18 @@ var objct = require("objct");
 // Public
 
 module.exports = {
-  nodeContains : nodeContains,
-  getAttribute : getAttribute,
-  matchAttribute : matchAttribute,
-  setAttribute : setAttribute,
-  removeAttribute : removeAttribute,
-  getClosest : getClosest,
-  triggerEvent : triggerEvent,
-  observe : observe,
-  map : map
+  tag : {
+    contains : nodeContains,
+    observe : observe,
+    triggerEvent : triggerEvent,
+    closest : getClosest
+  },
+  attribute : {
+    get : getAttribute,
+    set : setAttribute,
+    remove : removeAttribute,
+    matchName : matchAttribute
+  }
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2292,21 +2294,6 @@ function removeAttribute(tag, name) {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// x: current Value, 
-// cMin: current range min, 
-// cMax: current range max, 
-// tMin: target range min, 
-// tMax: target range max, 
-// easingFunction: easingFunction (string)
-
-function map(x, cMin, cMax, tMin, tMax, easingFunction) {
-  easingFunction = typeof easing === "object" && easing[easingFunction] !== undefined ? 
-    easing[easingFunction] : 
-    function (t, b, c, d) { return b+c*(t/=d) };
-  if(x===0) return tMin;
-  return easingFunction(x-cMin, tMin, tMax-tMin, cMax-cMin);  
-}
-///////////////////////////////////////////////////////////////////////////////
 },{"objct":6}],12:[function(require,module,exports){
 var util = require("bonaparte");
 
@@ -2325,8 +2312,8 @@ function toggleMixin(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function toggle(attribute){
-    var newValue = util.getAttribute(tag, attribute) === "true" ? "false" : "true";
-    util.setAttribute(tag, attribute, newValue);
+    var newValue = util.attribute.get(tag, attribute) === "true" ? "false" : "true";
+    util.attribute.set(tag, attribute, newValue);
   }
 }
 
@@ -2337,7 +2324,7 @@ var mousetrap = require("mousetrap");
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = util.registerTag("button", button, [], HTMLButtonElement);
+module.exports = util.tag.create("button", button, [], HTMLButtonElement);
 
 ///////////////////////////////////////////////////////////////////////////////
 function button(tag){
@@ -2370,11 +2357,11 @@ function button(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function attributeChangedCallback(data){
-    if(util.matchAttribute(/action/, data.name)) setEvents();
-    if(util.matchAttribute(/toggle/, data.name)) setToggles();
-    if(util.matchAttribute(/target/, data.name)) setTargets();
-    if(util.matchAttribute(/target-.*/, data.name)) setAttributes();
-    if(util.matchAttribute(/shortcut/, data.name)) setShortcut();
+    if(util.attribute.matchName(/action/, data.name)) setEvents();
+    if(util.attribute.matchName(/toggle/, data.name)) setToggles();
+    if(util.attribute.matchName(/target/, data.name)) setTargets();
+    if(util.attribute.matchName(/target-.*/, data.name)) setAttributes();
+    if(util.attribute.matchName(/shortcut/, data.name)) setShortcut();
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2390,18 +2377,18 @@ function button(tag){
     syncAttributes();
     triggerEvents();
 
-    if(util.getAttribute(tag, "bubbles") === "false") e.stopPropagation();
+    if(util.attribute.get(tag, "bubbles") === "false") e.stopPropagation();
   }
 
 ///////////////////////////////////////////////////////////////////////////////
 
   function triggerEvents(){
-    var trigger = util.getAttribute(tag, "trigger");
+    var trigger = util.attribute.get(tag, "trigger");
    
     if(trigger === undefined) return; 
     for(var i = 0; i < targets.length; i++){
       target = targets[i];
-      util.triggerEvent(target.tag, trigger)
+      util.tag.triggerEvent(target.tag, trigger)
     }
   }
 
@@ -2435,7 +2422,7 @@ function button(tag){
       
       // check attributes
       for(var name in attributes) {
-        targetValue = util.getAttribute(target.tag, name);
+        targetValue = util.attribute.get(target.tag, name);
 
         if(!checkValues(name, targetValue, attributes[name])) {
           active = false;
@@ -2447,7 +2434,7 @@ function button(tag){
 
       // check toggles
       for(var k=0; k<toggles.length; k++) {
-        if(util.getAttribute(target.tag, toggles[k]) !== "true")
+        if(util.attribute.get(target.tag, toggles[k]) !== "true")
           active=false;
 
         if(active !== false) active = true;
@@ -2455,7 +2442,7 @@ function button(tag){
  
     } 
     
-    var activeClass = util.getAttribute(tag, "activeClass") || "active";
+    var activeClass = util.attribute.get(tag, "activeClass") || "active";
     if(activeClass==="") return;
 
     if(active === true){
@@ -2474,9 +2461,9 @@ function button(tag){
 
       // toggle attributes
       for(var k=0; k<toggles.length; k++) {
-        targetValue = util.getAttribute(target.tag, toggles[k]) === "true" ? 
+        targetValue = util.attribute.get(target.tag, toggles[k]) === "true" ? 
           "false":"true";
-        util.setAttribute(target.tag, toggles[k], targetValue); 
+        util.attribute.set(target.tag, toggles[k], targetValue); 
       }
       
       // sync attributes
@@ -2484,9 +2471,9 @@ function button(tag){
         targetValue = active === true && toggle === true ? 
           target.values[name] : attributes[name];
         if(targetValue !== undefined) 
-          util.setAttribute(target.tag, name, targetValue); 
+          util.attribute.set(target.tag, name, targetValue); 
         else 
-          util.removeAttribute(target.tag, name);
+          util.attribute.remove(target.tag, name);
       }
     }
   }
@@ -2494,7 +2481,7 @@ function button(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function setShortcut(){
-    var newShortcuts = util.getAttribute(tag, "shortcut");
+    var newShortcuts = util.attribute.get(tag, "shortcut");
 
     mousetrap.unbind(shortcuts);
 
@@ -2513,7 +2500,7 @@ function button(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function setToggles(){
-    var toggleValue = util.getAttribute(tag, "toggle");
+    var toggleValue = util.attribute.get(tag, "toggle");
 
     toggles = [];
     toggle = false;
@@ -2538,7 +2525,7 @@ function button(tag){
     var attributeBase;
     attributes = [];
     for(var i=0; i < tag.attributes.length; i++) {
-      if(util.matchAttribute(/target-.*/, tag.attributes[i].name)) {
+      if(util.attribute.matchName(/target-.*/, tag.attributes[i].name)) {
         attributeBase = tag.attributes[i].name.match(/(?:data-)?target-(.*)/)[1];
         attributes[attributeBase] = tag.attributes[i].value;
       }
@@ -2549,11 +2536,11 @@ function button(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function setTargets(){
-    var selector = util.getAttribute(tag, "target");
+    var selector = util.attribute.get(tag, "target");
 
     // only restrict button in toolbar sidebars.
-    var potentialToolbar = util.getClosest(tag, "toolbar-bonaparte");
-    var context = potentialToolbar && util.nodeContains(potentialToolbar.firstElementChild, tag)?
+    var potentialToolbar = util.tag.closest(tag, "toolbar-bonaparte");
+    var context = potentialToolbar && util.tag.contains(potentialToolbar.firstElementChild, tag)?
       potentialToolbar : document;
 
      
@@ -2577,7 +2564,7 @@ function button(tag){
         tag : newTargets[i],
         values : {}
       });
-      util.observe(newTargets[i]);
+      util.tag.observe(newTargets[i]);
       newTargets[i].addEventListener("bonaparte.tag.attributeChanged", targetAttributeChangedCallback);
     }
   }
@@ -2585,7 +2572,7 @@ function button(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function setEvents(){
-    var newAction = util.getAttribute(tag, "action");
+    var newAction = util.attribute.get(tag, "action");
 
     if(action === newAction) return false;
 
@@ -2611,7 +2598,7 @@ var util = require("bonaparte");
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = util.registerTag("cornerstone", cornerstone);
+module.exports = util.tag.create("cornerstone", cornerstone);
 
 ///////////////////////////////////////////////////////////////////////////////
 function cornerstone(tag){
@@ -2627,8 +2614,8 @@ function cornerstone(tag){
 ///////////////////////////////////////////////////////////////////////////////
   
   function updateCornerstonePadding(){
-    var cornerStonePosition = util.getAttribute(toolbar, "cornerstone").match(/(\w+)/g);
-    var sidebarPosition = util.getAttribute(toolbar, "sidebar");
+    var cornerStonePosition = util.attribute.get(toolbar, "cornerstone").match(/(\w+)/g);
+    var sidebarPosition = util.attribute.get(toolbar, "sidebar");
     
     toolbar.firstElementChild.style.padding="";
     
@@ -2662,7 +2649,7 @@ var util = require("bonaparte");
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = util.registerTag("draggable", draggable);
+module.exports = util.tag.create("draggable", draggable);
 ///////////////////////////////////////////////////////////////////////////////
 function draggable(tag) {
 
@@ -2684,14 +2671,14 @@ function draggable(tag) {
 
   function initialise () {
     children = tag.children;
-    handler = util.getAttribute(tag, 'handler');
-    target = util.getAttribute(tag, 'target');
+    handler = util.attribute.get(tag, 'handler');
+    target = util.attribute.get(tag, 'target');
     dropZones = target ? document.querySelectorAll(target) : children;
 
     for (var i = children.length - 1; i >= 0; i--) {
       var child = children[i];
-      util.setAttribute(child, 'draggable', 'true');
-      util.setAttribute(child, 'bonaparte-id', i);
+      util.attribute.set(child, 'draggable', 'true');
+      util.attribute.set(child, 'bonaparte-id', i);
 
       child.addEventListener('mousedown', mousedown);
       child.addEventListener('mouseup', mouseup);
@@ -2701,7 +2688,7 @@ function draggable(tag) {
   }
 
   function setRange () {
-    var range = util.getAttribute(tag, 'range');
+    var range = util.attribute.get(tag, 'range');
     if (range) {
       range = range.split(',');
       for (var i = range.length - 1; i >= 0; i--) {
@@ -2747,7 +2734,7 @@ function draggable(tag) {
     var dragElem = findDraggableEl(e);
     if (handler) {
       var slectedElem = dragElem.querySelectorAll(handler);
-      if (e.target === slectedElem[0] || util.nodeContains(slectedElem[0], e.target)) {
+      if (e.target === slectedElem[0] || util.tag.contains(slectedElem[0], e.target)) {
         // console.log('Use handler to drag');
         addListeners();
       } else {
@@ -2779,7 +2766,7 @@ function draggable(tag) {
 
   function dragenter(e){
     var elem = findDraggableEl(e),
-      id = util.getAttribute(elem, 'bonaparte-id');
+      id = util.attribute.get(elem, 'bonaparte-id');
        
     count[id] = (count[id] + 1) || 1;
     elem.classList.add('dragover');
@@ -2791,7 +2778,7 @@ function draggable(tag) {
 
   function dragleave(e){
     var elem = findDraggableEl(e),
-      id = util.getAttribute(elem, 'bonaparte-id');
+      id = util.attribute.get(elem, 'bonaparte-id');
     
     count[id] -= 1;
 
@@ -2852,11 +2839,11 @@ var mousetrap = require("mousetrap");
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = util.registerTag("panel", panel, [
+module.exports = util.tag.create("panel", panel, [
   require("../mixins/toggle")
 ]);
 
-mousetrap.bind("esc", function(){util.triggerEvent(window, "bonaparte.internal.closePanels")});
+mousetrap.bind("esc", function(){util.tag.triggerEvent(window, "bonaparte.internal.closePanels")});
 
 ///////////////////////////////////////////////////////////////////////////////
 function panel(tag){
@@ -2880,7 +2867,7 @@ function panel(tag){
 
   function clickHandler(e){
     // console.log("globalClick", e.target);
-    if(e.target === tag || util.nodeContains(tag, e.target)) return;
+    if(e.target === tag || util.tag.contains(tag, e.target)) return;
     closePanels();
   }
 
@@ -2888,7 +2875,7 @@ function panel(tag){
 
   function attributeChangedCallback(data){
     // console.log(data, data.detail.name,  data.detail.newValue);
-    if(util.matchAttribute(/open/, data.detail.name)){
+    if(util.attribute.matchName(/open/, data.detail.name)){
       if(data.detail.newValue == "true") {
         lock();
 
@@ -2911,13 +2898,13 @@ function panel(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function close() {
-    util.setAttribute(tag, "open", "false");
+    util.attribute.set(tag, "open", "false");
   }
 
 ///////////////////////////////////////////////////////////////////////////////
 
   function open(e) {    
-    util.setAttribute(tag, "open", "true");
+    util.attribute.set(tag, "open", "true");
   }
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -2936,14 +2923,14 @@ var scrollBarWidth = false;
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = util.registerTag("scroll", scroll);
+module.exports = util.tag.create("scroll", scroll);
 
 ///////////////////////////////////////////////////////////////////////////////
 function scroll(tag){
   var content =  tag.firstElementChild;
   var slider, scrollbar, scrollBarVisible;
 
-  if(util.getAttribute(tag, "scrollbar") === "native") return;
+  if(util.attribute.get(tag, "scrollbar") === "native") return;
 
   setupScroller();
 
@@ -2955,7 +2942,7 @@ function scroll(tag){
 ///////////////////////////////////////////////////////////////////////////////
 // Eventlisteners
 
-  if(util.getAttribute(tag, "resize") !== "false")
+  if(util.attribute.get(tag, "resize") !== "false")
     window.addEventListener("resize", update);
   
   content.addEventListener("scroll", updatePosition);
@@ -2992,10 +2979,10 @@ function scroll(tag){
     var containerHeight = tag.offsetHeight;
     var scrollHeight = content.scrollHeight;
 
-    var sliderSize = Math.min(1, Math.max( 0.05, util.map(scrollHeight/containerHeight, 1, 5, 1, 0.05)));
+    var sliderSize = Math.min(1, Math.max( 0.05, map(scrollHeight/containerHeight, 1, 5, 1, 0.05)));
 
     var position = scrollHeight-containerHeight > 0 ? content.scrollTop / (scrollHeight-containerHeight) : 0;
-    var top = util.map(position, 0, 1, 0, containerHeight-(containerHeight*sliderSize));
+    var top = map(position, 0, 1, 0, containerHeight-(containerHeight*sliderSize));
 
     slider.style.height=(100*sliderSize)+"%";
     slider.style.top=top+"px";
@@ -3023,6 +3010,22 @@ function scroll(tag){
   }
 
 ///////////////////////////////////////////////////////////////////////////////
+// x: current Value, 
+// cMin: current range min, 
+// cMax: current range max, 
+// tMin: target range min, 
+// tMax: target range max, 
+// easingFunction: easingFunction (string)
+
+  function map(x, cMin, cMax, tMin, tMax, easingFunction) {
+    easingFunction = typeof easing === "object" && easing[easingFunction] !== undefined ? 
+      easing[easingFunction] : 
+      function (t, b, c, d) { return b+c*(t/=d) };
+    if(x===0) return tMin;
+    return easingFunction(x-cMin, tMin, tMax-tMin, cMax-cMin);  
+  }
+
+///////////////////////////////////////////////////////////////////////////////
 
 }
 
@@ -3042,7 +3045,7 @@ var util = require("bonaparte");
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = util.registerTag("sidebar", sidebar);
+module.exports = util.tag.create("sidebar", sidebar);
 
 ///////////////////////////////////////////////////////////////////////////////
 function sidebar(tag){
@@ -3056,14 +3059,14 @@ function sidebar(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function attributeChangedCallback(data){
-    if(util.matchAttribute(/size/, data.detail.name)) updateSize();
+    if(util.attribute.matchName(/size/, data.detail.name)) updateSize();
   }
 
 
 ///////////////////////////////////////////////////////////////////////////////
 
   function updateSize(data){
-    var size = util.getAttribute(tag, "size");
+    var size = util.attribute.get(tag, "size");
     var style = sidebar === "left" || sidebar==="right" ? "min-width" : "min-height";
     if(size === undefined) 
       tag.firstElementChild.style[style] = "";
@@ -3080,7 +3083,7 @@ var util = require("bonaparte");
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = util.registerTag("toolbar", toolbar, [
+module.exports = util.tag.create("toolbar", toolbar, [
   require("./sidebar-bonaparte.js")
 ]);
 

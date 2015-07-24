@@ -3,7 +3,7 @@ var util = require("bonaparte");
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = util.registerTag("cornerstone", cornerstone);
+module.exports = util.tag.create("cornerstone", cornerstone);
 
 ///////////////////////////////////////////////////////////////////////////////
 function cornerstone(tag){
@@ -19,8 +19,8 @@ function cornerstone(tag){
 ///////////////////////////////////////////////////////////////////////////////
   
   function updateCornerstonePadding(){
-    var cornerStonePosition = util.getAttribute(toolbar, "cornerstone").match(/(\w+)/g);
-    var sidebarPosition = util.getAttribute(toolbar, "sidebar");
+    var cornerStonePosition = util.attribute.get(toolbar, "cornerstone").match(/(\w+)/g);
+    var sidebarPosition = util.attribute.get(toolbar, "sidebar");
     
     toolbar.firstElementChild.style.padding="";
     
