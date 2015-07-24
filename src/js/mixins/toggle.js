@@ -1,4 +1,4 @@
-var util = require("bonaparte");
+var bp = require("bonaparte");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public 
@@ -15,7 +15,7 @@ function toggleMixin(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function toggle(attribute){
-    var newValue = util.attribute.get(tag, attribute) === "true" ? "false" : "true";
-    util.attribute.set(tag, attribute, newValue);
+    var newValue = bp.attribute.get(tag, attribute) === "true" ? "false" : "true";
+    bp.attribute.set(tag, attribute, newValue);
   }
 }

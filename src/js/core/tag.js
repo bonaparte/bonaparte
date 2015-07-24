@@ -1,5 +1,5 @@
 var objct = require("objct");
-var util = require("./utility");
+var bp = require("./utility");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Polyfills
@@ -25,8 +25,8 @@ var registeredTags = {};
 ///////////////////////////////////////////////////////////////////////////////
 // Public 
 
-util.tag.create=createTag;
-module.exports = util;
+bp.tag.create=createTag;
+module.exports = bp;
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -79,7 +79,7 @@ function createTag(name, definition, mixins, nativeBaseElement){
   function initialize(element){
     
     apply(element);  
-    util.tag.observe(element); 
+    bp.tag.observe(element); 
 
   }
 

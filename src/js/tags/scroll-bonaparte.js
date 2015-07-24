@@ -1,18 +1,18 @@
-var util = require("bonaparte");
+var bp = require("bonaparte");
 
 var scrollBarWidth = false;
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = util.tag.create("scroll", scroll);
+module.exports = bp.tag.create("scroll", scroll);
 
 ///////////////////////////////////////////////////////////////////////////////
 function scroll(tag){
   var content =  tag.firstElementChild;
   var slider, scrollbar, scrollBarVisible;
 
-  if(util.attribute.get(tag, "scrollbar") === "native") return;
+  if(bp.attribute.get(tag, "scrollbar") === "native") return;
 
   setupScroller();
 
@@ -24,7 +24,7 @@ function scroll(tag){
 ///////////////////////////////////////////////////////////////////////////////
 // Eventlisteners
 
-  if(util.attribute.get(tag, "resize") !== "false")
+  if(bp.attribute.get(tag, "resize") !== "false")
     window.addEventListener("resize", update);
   
   content.addEventListener("scroll", updatePosition);

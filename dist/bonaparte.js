@@ -1926,7 +1926,7 @@ draggable.register();
 document.registerElement('content-bonaparte');
 
 },{"./tags/button-bonaparte":13,"./tags/cornerstone-bonaparte":14,"./tags/draggable-bonaparte":15,"./tags/panel-bonaparte":16,"./tags/scroll-bonaparte":17,"./tags/sidebar-bonaparte":18,"./tags/toolbar-bonaparte":19}],8:[function(require,module,exports){
-var util = require("bonaparte");
+var bp = require("bonaparte");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
@@ -1945,7 +1945,7 @@ function events(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function triggerEvent(event, data, bubbles, cancelable){
-    util.tag.triggerEvent(tag, event, data, bubbles, cancelable);
+    bp.tag.triggerEvent(tag, event, data, bubbles, cancelable);
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1996,7 +1996,7 @@ function mixins(tag){
 }
 },{"objct":6}],10:[function(require,module,exports){
 var objct = require("objct");
-var util = require("./utility");
+var bp = require("./utility");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Polyfills
@@ -2022,8 +2022,8 @@ var registeredTags = {};
 ///////////////////////////////////////////////////////////////////////////////
 // Public 
 
-util.tag.create=createTag;
-module.exports = util;
+bp.tag.create=createTag;
+module.exports = bp;
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -2076,7 +2076,7 @@ function createTag(name, definition, mixins, nativeBaseElement){
   function initialize(element){
     
     apply(element);  
-    util.tag.observe(element); 
+    bp.tag.observe(element); 
 
   }
 
@@ -2295,7 +2295,7 @@ function removeAttribute(tag, name) {
 
 ///////////////////////////////////////////////////////////////////////////////
 },{"objct":6}],12:[function(require,module,exports){
-var util = require("bonaparte");
+var bp = require("bonaparte");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public 
@@ -2312,19 +2312,19 @@ function toggleMixin(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function toggle(attribute){
-    var newValue = util.attribute.get(tag, attribute) === "true" ? "false" : "true";
-    util.attribute.set(tag, attribute, newValue);
+    var newValue = bp.attribute.get(tag, attribute) === "true" ? "false" : "true";
+    bp.attribute.set(tag, attribute, newValue);
   }
 }
 
 },{"bonaparte":1}],13:[function(require,module,exports){
-var util = require("bonaparte");
+var bp = require("bonaparte");
 var mousetrap = require("mousetrap");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = util.tag.create("button", button, [], HTMLButtonElement);
+module.exports = bp.tag.create("button", button, [], HTMLButtonElement);
 
 ///////////////////////////////////////////////////////////////////////////////
 function button(tag){
@@ -2357,11 +2357,11 @@ function button(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function attributeChangedCallback(data){
-    if(util.attribute.matchName(/action/, data.name)) setEvents();
-    if(util.attribute.matchName(/toggle/, data.name)) setToggles();
-    if(util.attribute.matchName(/target/, data.name)) setTargets();
-    if(util.attribute.matchName(/target-.*/, data.name)) setAttributes();
-    if(util.attribute.matchName(/shortcut/, data.name)) setShortcut();
+    if(bp.attribute.matchName(/action/, data.name)) setEvents();
+    if(bp.attribute.matchName(/toggle/, data.name)) setToggles();
+    if(bp.attribute.matchName(/target/, data.name)) setTargets();
+    if(bp.attribute.matchName(/target-.*/, data.name)) setAttributes();
+    if(bp.attribute.matchName(/shortcut/, data.name)) setShortcut();
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2377,18 +2377,18 @@ function button(tag){
     syncAttributes();
     triggerEvents();
 
-    if(util.attribute.get(tag, "bubbles") === "false") e.stopPropagation();
+    if(bp.attribute.get(tag, "bubbles") === "false") e.stopPropagation();
   }
 
 ///////////////////////////////////////////////////////////////////////////////
 
   function triggerEvents(){
-    var trigger = util.attribute.get(tag, "trigger");
+    var trigger = bp.attribute.get(tag, "trigger");
    
     if(trigger === undefined) return; 
     for(var i = 0; i < targets.length; i++){
       target = targets[i];
-      util.tag.triggerEvent(target.tag, trigger)
+      bp.tag.triggerEvent(target.tag, trigger)
     }
   }
 
@@ -2422,7 +2422,7 @@ function button(tag){
       
       // check attributes
       for(var name in attributes) {
-        targetValue = util.attribute.get(target.tag, name);
+        targetValue = bp.attribute.get(target.tag, name);
 
         if(!checkValues(name, targetValue, attributes[name])) {
           active = false;
@@ -2434,7 +2434,7 @@ function button(tag){
 
       // check toggles
       for(var k=0; k<toggles.length; k++) {
-        if(util.attribute.get(target.tag, toggles[k]) !== "true")
+        if(bp.attribute.get(target.tag, toggles[k]) !== "true")
           active=false;
 
         if(active !== false) active = true;
@@ -2442,7 +2442,7 @@ function button(tag){
  
     } 
     
-    var activeClass = util.attribute.get(tag, "activeClass") || "active";
+    var activeClass = bp.attribute.get(tag, "activeClass") || "active";
     if(activeClass==="") return;
 
     if(active === true){
@@ -2461,9 +2461,9 @@ function button(tag){
 
       // toggle attributes
       for(var k=0; k<toggles.length; k++) {
-        targetValue = util.attribute.get(target.tag, toggles[k]) === "true" ? 
+        targetValue = bp.attribute.get(target.tag, toggles[k]) === "true" ? 
           "false":"true";
-        util.attribute.set(target.tag, toggles[k], targetValue); 
+        bp.attribute.set(target.tag, toggles[k], targetValue); 
       }
       
       // sync attributes
@@ -2471,9 +2471,9 @@ function button(tag){
         targetValue = active === true && toggle === true ? 
           target.values[name] : attributes[name];
         if(targetValue !== undefined) 
-          util.attribute.set(target.tag, name, targetValue); 
+          bp.attribute.set(target.tag, name, targetValue); 
         else 
-          util.attribute.remove(target.tag, name);
+          bp.attribute.remove(target.tag, name);
       }
     }
   }
@@ -2481,7 +2481,7 @@ function button(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function setShortcut(){
-    var newShortcuts = util.attribute.get(tag, "shortcut");
+    var newShortcuts = bp.attribute.get(tag, "shortcut");
 
     mousetrap.unbind(shortcuts);
 
@@ -2500,7 +2500,7 @@ function button(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function setToggles(){
-    var toggleValue = util.attribute.get(tag, "toggle");
+    var toggleValue = bp.attribute.get(tag, "toggle");
 
     toggles = [];
     toggle = false;
@@ -2525,7 +2525,7 @@ function button(tag){
     var attributeBase;
     attributes = [];
     for(var i=0; i < tag.attributes.length; i++) {
-      if(util.attribute.matchName(/target-.*/, tag.attributes[i].name)) {
+      if(bp.attribute.matchName(/target-.*/, tag.attributes[i].name)) {
         attributeBase = tag.attributes[i].name.match(/(?:data-)?target-(.*)/)[1];
         attributes[attributeBase] = tag.attributes[i].value;
       }
@@ -2536,11 +2536,11 @@ function button(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function setTargets(){
-    var selector = util.attribute.get(tag, "target");
+    var selector = bp.attribute.get(tag, "target");
 
     // only restrict button in toolbar sidebars.
-    var potentialToolbar = util.tag.closest(tag, "toolbar-bonaparte");
-    var context = potentialToolbar && util.tag.contains(potentialToolbar.firstElementChild, tag)?
+    var potentialToolbar = bp.tag.closest(tag, "toolbar-bonaparte");
+    var context = potentialToolbar && bp.tag.contains(potentialToolbar.firstElementChild, tag)?
       potentialToolbar : document;
 
      
@@ -2564,7 +2564,7 @@ function button(tag){
         tag : newTargets[i],
         values : {}
       });
-      util.tag.observe(newTargets[i]);
+      bp.tag.observe(newTargets[i]);
       newTargets[i].addEventListener("bonaparte.tag.attributeChanged", targetAttributeChangedCallback);
     }
   }
@@ -2572,7 +2572,7 @@ function button(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function setEvents(){
-    var newAction = util.attribute.get(tag, "action");
+    var newAction = bp.attribute.get(tag, "action");
 
     if(action === newAction) return false;
 
@@ -2593,12 +2593,12 @@ function button(tag){
 
  ///////////////////////////////////////////////////////////////////////////////
 },{"bonaparte":1,"mousetrap":4}],14:[function(require,module,exports){
-var util = require("bonaparte");
+var bp = require("bonaparte");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = util.tag.create("cornerstone", cornerstone);
+module.exports = bp.tag.create("cornerstone", cornerstone);
 
 ///////////////////////////////////////////////////////////////////////////////
 function cornerstone(tag){
@@ -2614,8 +2614,8 @@ function cornerstone(tag){
 ///////////////////////////////////////////////////////////////////////////////
   
   function updateCornerstonePadding(){
-    var cornerStonePosition = util.attribute.get(toolbar, "cornerstone").match(/(\w+)/g);
-    var sidebarPosition = util.attribute.get(toolbar, "sidebar");
+    var cornerStonePosition = bp.attribute.get(toolbar, "cornerstone").match(/(\w+)/g);
+    var sidebarPosition = bp.attribute.get(toolbar, "sidebar");
     
     toolbar.firstElementChild.style.padding="";
     
@@ -2644,12 +2644,12 @@ function cornerstone(tag){
 
 ///////////////////////////////////////////////////////////////////////////////
 },{"bonaparte":1}],15:[function(require,module,exports){
-var util = require("bonaparte");
+var bp = require("bonaparte");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = util.tag.create("draggable", draggable);
+module.exports = bp.tag.create("draggable", draggable);
 ///////////////////////////////////////////////////////////////////////////////
 function draggable(tag) {
 
@@ -2671,14 +2671,14 @@ function draggable(tag) {
 
   function initialise () {
     children = tag.children;
-    handler = util.attribute.get(tag, 'handler');
-    target = util.attribute.get(tag, 'target');
+    handler = bp.attribute.get(tag, 'handler');
+    target = bp.attribute.get(tag, 'target');
     dropZones = target ? document.querySelectorAll(target) : children;
 
     for (var i = children.length - 1; i >= 0; i--) {
       var child = children[i];
-      util.attribute.set(child, 'draggable', 'true');
-      util.attribute.set(child, 'bonaparte-id', i);
+      bp.attribute.set(child, 'draggable', 'true');
+      bp.attribute.set(child, 'bonaparte-id', i);
 
       child.addEventListener('mousedown', mousedown);
       child.addEventListener('mouseup', mouseup);
@@ -2688,7 +2688,7 @@ function draggable(tag) {
   }
 
   function setRange () {
-    var range = util.attribute.get(tag, 'range');
+    var range = bp.attribute.get(tag, 'range');
     if (range) {
       range = range.split(',');
       for (var i = range.length - 1; i >= 0; i--) {
@@ -2734,7 +2734,7 @@ function draggable(tag) {
     var dragElem = findDraggableEl(e);
     if (handler) {
       var slectedElem = dragElem.querySelectorAll(handler);
-      if (e.target === slectedElem[0] || util.tag.contains(slectedElem[0], e.target)) {
+      if (e.target === slectedElem[0] || bp.tag.contains(slectedElem[0], e.target)) {
         // console.log('Use handler to drag');
         addListeners();
       } else {
@@ -2766,7 +2766,7 @@ function draggable(tag) {
 
   function dragenter(e){
     var elem = findDraggableEl(e),
-      id = util.attribute.get(elem, 'bonaparte-id');
+      id = bp.attribute.get(elem, 'bonaparte-id');
        
     count[id] = (count[id] + 1) || 1;
     elem.classList.add('dragover');
@@ -2778,7 +2778,7 @@ function draggable(tag) {
 
   function dragleave(e){
     var elem = findDraggableEl(e),
-      id = util.attribute.get(elem, 'bonaparte-id');
+      id = bp.attribute.get(elem, 'bonaparte-id');
     
     count[id] -= 1;
 
@@ -2811,7 +2811,7 @@ function draggable(tag) {
     }
 
     setRange();
-    util.triggerEvent(tag, "draggable.drop", {detail : details});
+    bp.triggerEvent(tag, "draggable.drop", {detail : details});
     currentDraggedElem = null;
   }
 
@@ -2833,17 +2833,17 @@ function draggable(tag) {
 
 ///////////////////////////////////////////////////////////////////////////////
 },{"bonaparte":1}],16:[function(require,module,exports){
-var util = require("bonaparte");
+var bp = require("bonaparte");
 var mousetrap = require("mousetrap");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = util.tag.create("panel", panel, [
+module.exports = bp.tag.create("panel", panel, [
   require("../mixins/toggle")
 ]);
 
-mousetrap.bind("esc", function(){util.tag.triggerEvent(window, "bonaparte.internal.closePanels")});
+mousetrap.bind("esc", function(){bp.tag.triggerEvent(window, "bonaparte.internal.closePanels")});
 
 ///////////////////////////////////////////////////////////////////////////////
 function panel(tag){
@@ -2867,7 +2867,7 @@ function panel(tag){
 
   function clickHandler(e){
     // console.log("globalClick", e.target);
-    if(e.target === tag || util.tag.contains(tag, e.target)) return;
+    if(e.target === tag || bp.tag.contains(tag, e.target)) return;
     closePanels();
   }
 
@@ -2875,7 +2875,7 @@ function panel(tag){
 
   function attributeChangedCallback(data){
     // console.log(data, data.detail.name,  data.detail.newValue);
-    if(util.attribute.matchName(/open/, data.detail.name)){
+    if(bp.attribute.matchName(/open/, data.detail.name)){
       if(data.detail.newValue == "true") {
         lock();
 
@@ -2898,13 +2898,13 @@ function panel(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function close() {
-    util.attribute.set(tag, "open", "false");
+    bp.attribute.set(tag, "open", "false");
   }
 
 ///////////////////////////////////////////////////////////////////////////////
 
   function open(e) {    
-    util.attribute.set(tag, "open", "true");
+    bp.attribute.set(tag, "open", "true");
   }
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -2916,21 +2916,21 @@ function panel(tag){
 
 ///////////////////////////////////////////////////////////////////////////////
 },{"../mixins/toggle":12,"bonaparte":1,"mousetrap":4}],17:[function(require,module,exports){
-var util = require("bonaparte");
+var bp = require("bonaparte");
 
 var scrollBarWidth = false;
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = util.tag.create("scroll", scroll);
+module.exports = bp.tag.create("scroll", scroll);
 
 ///////////////////////////////////////////////////////////////////////////////
 function scroll(tag){
   var content =  tag.firstElementChild;
   var slider, scrollbar, scrollBarVisible;
 
-  if(util.attribute.get(tag, "scrollbar") === "native") return;
+  if(bp.attribute.get(tag, "scrollbar") === "native") return;
 
   setupScroller();
 
@@ -2942,7 +2942,7 @@ function scroll(tag){
 ///////////////////////////////////////////////////////////////////////////////
 // Eventlisteners
 
-  if(util.attribute.get(tag, "resize") !== "false")
+  if(bp.attribute.get(tag, "resize") !== "false")
     window.addEventListener("resize", update);
   
   content.addEventListener("scroll", updatePosition);
@@ -3040,12 +3040,12 @@ function getScrollBarWidth(){
   return width;
 }
 },{"bonaparte":1}],18:[function(require,module,exports){
-var util = require("bonaparte");
+var bp = require("bonaparte");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = util.tag.create("sidebar", sidebar);
+module.exports = bp.tag.create("sidebar", sidebar);
 
 ///////////////////////////////////////////////////////////////////////////////
 function sidebar(tag){
@@ -3059,14 +3059,14 @@ function sidebar(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function attributeChangedCallback(data){
-    if(util.attribute.matchName(/size/, data.detail.name)) updateSize();
+    if(bp.attribute.matchName(/size/, data.detail.name)) updateSize();
   }
 
 
 ///////////////////////////////////////////////////////////////////////////////
 
   function updateSize(data){
-    var size = util.attribute.get(tag, "size");
+    var size = bp.attribute.get(tag, "size");
     var style = sidebar === "left" || sidebar==="right" ? "min-width" : "min-height";
     if(size === undefined) 
       tag.firstElementChild.style[style] = "";
@@ -3078,12 +3078,12 @@ function sidebar(tag){
 
 ///////////////////////////////////////////////////////////////////////////////
 },{"bonaparte":1}],19:[function(require,module,exports){
-var util = require("bonaparte");
+var bp = require("bonaparte");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = util.tag.create("toolbar", toolbar, [
+module.exports = bp.tag.create("toolbar", toolbar, [
   require("./sidebar-bonaparte.js")
 ]);
 

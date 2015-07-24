@@ -1,9 +1,9 @@
-var util = require("bonaparte");
+var bp = require("bonaparte");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = util.tag.create("toolbar", toolbar, [
+module.exports = bp.tag.create("toolbar", toolbar, [
   require("./sidebar-bonaparte.js")
 ]);
 

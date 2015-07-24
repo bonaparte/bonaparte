@@ -1,9 +1,9 @@
-var util = require("bonaparte");
+var bp = require("bonaparte");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = util.tag.create("sidebar", sidebar);
+module.exports = bp.tag.create("sidebar", sidebar);
 
 ///////////////////////////////////////////////////////////////////////////////
 function sidebar(tag){
@@ -17,14 +17,14 @@ function sidebar(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function attributeChangedCallback(data){
-    if(util.attribute.matchName(/size/, data.detail.name)) updateSize();
+    if(bp.attribute.matchName(/size/, data.detail.name)) updateSize();
   }
 
 
 ///////////////////////////////////////////////////////////////////////////////
 
   function updateSize(data){
-    var size = util.attribute.get(tag, "size");
+    var size = bp.attribute.get(tag, "size");
     var style = sidebar === "left" || sidebar==="right" ? "min-width" : "min-height";
     if(size === undefined) 
       tag.firstElementChild.style[style] = "";

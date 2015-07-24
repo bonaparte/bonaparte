@@ -1,14 +1,14 @@
-var util = require("bonaparte");
+var bp = require("bonaparte");
 var mousetrap = require("mousetrap");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = util.tag.create("panel", panel, [
+module.exports = bp.tag.create("panel", panel, [
   require("../mixins/toggle")
 ]);
 
-mousetrap.bind("esc", function(){util.tag.triggerEvent(window, "bonaparte.internal.closePanels")});
+mousetrap.bind("esc", function(){bp.tag.triggerEvent(window, "bonaparte.internal.closePanels")});
 
 ///////////////////////////////////////////////////////////////////////////////
 function panel(tag){
@@ -32,7 +32,7 @@ function panel(tag){
 
   function clickHandler(e){
     // console.log("globalClick", e.target);
-    if(e.target === tag || util.tag.contains(tag, e.target)) return;
+    if(e.target === tag || bp.tag.contains(tag, e.target)) return;
     closePanels();
   }
 
@@ -40,7 +40,7 @@ function panel(tag){
 
   function attributeChangedCallback(data){
     // console.log(data, data.detail.name,  data.detail.newValue);
-    if(util.attribute.matchName(/open/, data.detail.name)){
+    if(bp.attribute.matchName(/open/, data.detail.name)){
       if(data.detail.newValue == "true") {
         lock();
 
@@ -63,13 +63,13 @@ function panel(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function close() {
-    util.attribute.set(tag, "open", "false");
+    bp.attribute.set(tag, "open", "false");
   }
 
 ///////////////////////////////////////////////////////////////////////////////
 
   function open(e) {    
-    util.attribute.set(tag, "open", "true");
+    bp.attribute.set(tag, "open", "true");
   }
 ///////////////////////////////////////////////////////////////////////////////
 

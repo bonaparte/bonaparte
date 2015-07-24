@@ -1,10 +1,10 @@
-var util = require("bonaparte");
+var bp = require("bonaparte");
 var mousetrap = require("mousetrap");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = util.tag.create("button", button, [], HTMLButtonElement);
+module.exports = bp.tag.create("button", button, [], HTMLButtonElement);
 
 ///////////////////////////////////////////////////////////////////////////////
 function button(tag){
@@ -37,11 +37,11 @@ function button(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function attributeChangedCallback(data){
-    if(util.attribute.matchName(/action/, data.name)) setEvents();
-    if(util.attribute.matchName(/toggle/, data.name)) setToggles();
-    if(util.attribute.matchName(/target/, data.name)) setTargets();
-    if(util.attribute.matchName(/target-.*/, data.name)) setAttributes();
-    if(util.attribute.matchName(/shortcut/, data.name)) setShortcut();
+    if(bp.attribute.matchName(/action/, data.name)) setEvents();
+    if(bp.attribute.matchName(/toggle/, data.name)) setToggles();
+    if(bp.attribute.matchName(/target/, data.name)) setTargets();
+    if(bp.attribute.matchName(/target-.*/, data.name)) setAttributes();
+    if(bp.attribute.matchName(/shortcut/, data.name)) setShortcut();
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -57,18 +57,18 @@ function button(tag){
     syncAttributes();
     triggerEvents();
 
-    if(util.attribute.get(tag, "bubbles") === "false") e.stopPropagation();
+    if(bp.attribute.get(tag, "bubbles") === "false") e.stopPropagation();
   }
 
 ///////////////////////////////////////////////////////////////////////////////
 
   function triggerEvents(){
-    var trigger = util.attribute.get(tag, "trigger");
+    var trigger = bp.attribute.get(tag, "trigger");
    
     if(trigger === undefined) return; 
     for(var i = 0; i < targets.length; i++){
       target = targets[i];
-      util.tag.triggerEvent(target.tag, trigger)
+      bp.tag.triggerEvent(target.tag, trigger)
     }
   }
 
@@ -102,7 +102,7 @@ function button(tag){
       
       // check attributes
       for(var name in attributes) {
-        targetValue = util.attribute.get(target.tag, name);
+        targetValue = bp.attribute.get(target.tag, name);
 
         if(!checkValues(name, targetValue, attributes[name])) {
           active = false;
@@ -114,7 +114,7 @@ function button(tag){
 
       // check toggles
       for(var k=0; k<toggles.length; k++) {
-        if(util.attribute.get(target.tag, toggles[k]) !== "true")
+        if(bp.attribute.get(target.tag, toggles[k]) !== "true")
           active=false;
 
         if(active !== false) active = true;
@@ -122,7 +122,7 @@ function button(tag){
  
     } 
     
-    var activeClass = util.attribute.get(tag, "activeClass") || "active";
+    var activeClass = bp.attribute.get(tag, "activeClass") || "active";
     if(activeClass==="") return;
 
     if(active === true){
@@ -141,9 +141,9 @@ function button(tag){
 
       // toggle attributes
       for(var k=0; k<toggles.length; k++) {
-        targetValue = util.attribute.get(target.tag, toggles[k]) === "true" ? 
+        targetValue = bp.attribute.get(target.tag, toggles[k]) === "true" ? 
           "false":"true";
-        util.attribute.set(target.tag, toggles[k], targetValue); 
+        bp.attribute.set(target.tag, toggles[k], targetValue); 
       }
       
       // sync attributes
@@ -151,9 +151,9 @@ function button(tag){
         targetValue = active === true && toggle === true ? 
           target.values[name] : attributes[name];
         if(targetValue !== undefined) 
-          util.attribute.set(target.tag, name, targetValue); 
+          bp.attribute.set(target.tag, name, targetValue); 
         else 
-          util.attribute.remove(target.tag, name);
+          bp.attribute.remove(target.tag, name);
       }
     }
   }
@@ -161,7 +161,7 @@ function button(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function setShortcut(){
-    var newShortcuts = util.attribute.get(tag, "shortcut");
+    var newShortcuts = bp.attribute.get(tag, "shortcut");
 
     mousetrap.unbind(shortcuts);
 
@@ -180,7 +180,7 @@ function button(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function setToggles(){
-    var toggleValue = util.attribute.get(tag, "toggle");
+    var toggleValue = bp.attribute.get(tag, "toggle");
 
     toggles = [];
     toggle = false;
@@ -205,7 +205,7 @@ function button(tag){
     var attributeBase;
     attributes = [];
     for(var i=0; i < tag.attributes.length; i++) {
-      if(util.attribute.matchName(/target-.*/, tag.attributes[i].name)) {
+      if(bp.attribute.matchName(/target-.*/, tag.attributes[i].name)) {
         attributeBase = tag.attributes[i].name.match(/(?:data-)?target-(.*)/)[1];
         attributes[attributeBase] = tag.attributes[i].value;
       }
@@ -216,11 +216,11 @@ function button(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function setTargets(){
-    var selector = util.attribute.get(tag, "target");
+    var selector = bp.attribute.get(tag, "target");
 
     // only restrict button in toolbar sidebars.
-    var potentialToolbar = util.tag.closest(tag, "toolbar-bonaparte");
-    var context = potentialToolbar && util.tag.contains(potentialToolbar.firstElementChild, tag)?
+    var potentialToolbar = bp.tag.closest(tag, "toolbar-bonaparte");
+    var context = potentialToolbar && bp.tag.contains(potentialToolbar.firstElementChild, tag)?
       potentialToolbar : document;
 
      
@@ -244,7 +244,7 @@ function button(tag){
         tag : newTargets[i],
         values : {}
       });
-      util.tag.observe(newTargets[i]);
+      bp.tag.observe(newTargets[i]);
       newTargets[i].addEventListener("bonaparte.tag.attributeChanged", targetAttributeChangedCallback);
     }
   }
@@ -252,7 +252,7 @@ function button(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function setEvents(){
-    var newAction = util.attribute.get(tag, "action");
+    var newAction = bp.attribute.get(tag, "action");
 
     if(action === newAction) return false;
 
