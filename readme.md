@@ -1,5 +1,7 @@
 # Bonaparte UX Framework
 
+### Examples
+
 __Internal:__
 
 [Kitchen-Sink](https://github.dowjones.net/pages/newsroomdevelopment/bonaparte/examples/kitchen-sink.html)
@@ -26,14 +28,15 @@ __Public:__
   ./dist/bonaparte.js
   ```
 
-## SUI
+## Development
 
-### Install / Build
+### SUI
+#### Install / Build
 
 - Clone Repository (Note: Respository includes submodules)
 - Run `npm install` in `./`. _(Select **NO** for all options for fastes result)_
 
-### Development
+#### Development
 
 > __One doesn't simply work in `dist/` directly.__ <br>
 > _- Wise Man_
@@ -42,21 +45,15 @@ __Public:__
 - Run `gulp SUI-watch` to watch `.SUI/ui/` and keep `dist/` up to date.
 - Work in `ui/`. _( Theme: `./ui/src/themes/bonaparte/` )_
 
-### Build Docs 
 
-- Install / Build SUI.
-- Run `npm install` in `./SUI/docs/`.
-- Follow Instructions: https://github.com/Semantic-Org/Semantic-UI-Docs.
+### Bonaparte
 
-
-## Bonaparte
-
-### Install / Build
+#### Install / Build
 
 - Clone Repository (Note: Respository includes submodules)
 - Run `npm install` in `./`.
 
-### Development
+#### Development
 
 - Run `gulp BPA-watch` to watch `./src/` and keep `./dist/` up to date.
 
