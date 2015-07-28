@@ -2169,7 +2169,7 @@ module.exports = {
     remove : removeAttribute,
     matchName : matchAttribute
   },
-  modules : {
+  module : {
     mixin : mixin
   }
 };
