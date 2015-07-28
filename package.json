@@ -10,7 +10,7 @@
     "mousetrap" : "^1.5.3"
   },
   
-  "main":"./src/js/core/tag.js",
+  "main":"./src/js/core/index.js",
   
   "devDependencies": {
     "gulp": "*",
