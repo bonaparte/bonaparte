@@ -3,14 +3,22 @@
 *******************************/
 
 .ui.form {
-  padding: 0 1rem 2rem 1rem;
+  padding: 1rem 1rem 2rem 1rem;
   width: 100%;
   background-color: #fff;
 }
 
 .ui.form .field {
   display: table;
-  width: 100%;
+}
+
+.ui.form .field {
+  width: 100%; 
+}
+
+.ui.form .fields.inline .ui.radio.checkbox {
+  margin-right: 1rem;
+  margin-left: 1rem;
 }
 
 .ui.form input:not([type]),
@@ -38,10 +46,9 @@
 
 .ui.form .field > label {
   display: table-header-group;
-}
-
-.ui.form label {
-  font-weight: 600;
+  font-size: @tinySize;
+  font-weight: @text-semibold;
+  text-indent: 1rem;
   color: @color-dark-0;
 }
 .ui.form textarea {
@@ -79,10 +86,39 @@
   color: @color-active;
 }
 
-.ui.form .ui.selection.dropdown {
+.ui.form .ui.dropdown {
   color: @color-dark-2;
   border: 0;
-  border-bottom: 3px double @color-light-6;
+  border-bottom: 1px solid @color-light-6;
   background-color: @color-light-2;
   padding: 1rem;
 }
+
+
+.inline.block.fields {
+  color: @color-dark-2;
+  background-color: @color-light-2;
+  padding: 1rem;
+}
+
+.inline.block.fields > label {
+    text-indent: 0;
+    min-width: 50%;
+}
+
+.ui.form .dropdown i.dropdown.button.icon {
+    position: absolute;
+    height: 100%;
+    line-height: 4rem;
+    width: 4rem;
+    text-align: center;
+    color: @color-interactive;
+    border-radius: 0;
+    top: 0;
+    right: 0;
+}
+.ui.form .dropdown label.text {
+  font-weight: 700;
+  margin-left: 1rem;
+}
+
