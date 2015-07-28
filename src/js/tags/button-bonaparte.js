@@ -127,9 +127,9 @@ function button(tag){
     if(activeClass==="") return;
 
     if(active === true){
-      tag.classList.add("active");
+      tag.classList.add(activeClass);
     } else {
-      tag.classList.remove("active");
+      tag.classList.remove(activeClass);
     }
   }
 
