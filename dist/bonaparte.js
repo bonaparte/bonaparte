@@ -1926,7 +1926,7 @@ draggable.register();
 document.registerElement('content-bonaparte');
 
 },{"./tags/button-bonaparte":13,"./tags/cornerstone-bonaparte":14,"./tags/draggable-bonaparte":15,"./tags/panel-bonaparte":16,"./tags/scroll-bonaparte":17,"./tags/sidebar-bonaparte":18,"./tags/toolbar-bonaparte":19}],8:[function(require,module,exports){
-var bp = require("bonaparte");
+var bp = require("../core/tag");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
@@ -1956,7 +1956,7 @@ function events(tag){
 
 
 
-},{"bonaparte":1}],9:[function(require,module,exports){
+},{"../core/tag":10}],9:[function(require,module,exports){
 var objct = require("objct");
 
 var registeredMixins = {};
@@ -2332,7 +2332,7 @@ function toggleMixin(tag){
 }
 
 },{"bonaparte":1}],13:[function(require,module,exports){
-var bp = require("bonaparte");
+var bp = require("../core/tag");
 var mousetrap = require("mousetrap");
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2607,8 +2607,8 @@ function button(tag){
 }
 
  ///////////////////////////////////////////////////////////////////////////////
-},{"bonaparte":1,"mousetrap":4}],14:[function(require,module,exports){
-var bp = require("bonaparte");
+},{"../core/tag":10,"mousetrap":4}],14:[function(require,module,exports){
+var bp = require("../core/tag");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
@@ -2658,8 +2658,8 @@ function cornerstone(tag){
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"bonaparte":1}],15:[function(require,module,exports){
-var bp = require("bonaparte");
+},{"../core/tag":10}],15:[function(require,module,exports){
+var bp = require("../core/tag");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
@@ -2848,8 +2848,8 @@ function draggable(tag) {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"bonaparte":1}],16:[function(require,module,exports){
-var bp = require("bonaparte");
+},{"../core/tag":10}],16:[function(require,module,exports){
+var bp = require("../core/tag");
 var mousetrap = require("mousetrap");
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2932,8 +2932,8 @@ function panel(tag){
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"../modules/toggle":12,"bonaparte":1,"mousetrap":4}],17:[function(require,module,exports){
-var bp = require("bonaparte");
+},{"../core/tag":10,"../modules/toggle":12,"mousetrap":4}],17:[function(require,module,exports){
+var bp = require("../core/tag");
 
 var scrollBarWidth = false;
 
@@ -3056,8 +3056,8 @@ function getScrollBarWidth(){
   document.documentElement.style.overflow = overflow;
   return width;
 }
-},{"bonaparte":1}],18:[function(require,module,exports){
-var bp = require("bonaparte");
+},{"../core/tag":10}],18:[function(require,module,exports){
+var bp = require("../core/tag");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
@@ -3094,8 +3094,8 @@ function sidebar(tag){
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"bonaparte":1}],19:[function(require,module,exports){
-var bp = require("bonaparte");
+},{"../core/tag":10}],19:[function(require,module,exports){
+var bp = require("../core/tag");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
@@ -3137,4 +3137,4 @@ function toolbar(tag){
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"./button-bonaparte":13,"./sidebar-bonaparte.js":18,"bonaparte":1}]},{},[7]);
+},{"../core/tag":10,"./button-bonaparte":13,"./sidebar-bonaparte.js":18}]},{},[7]);
