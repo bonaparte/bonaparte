@@ -2027,13 +2027,16 @@ module.exports = bp;
 
 ///////////////////////////////////////////////////////////////////////////////
 
-function createTag(name, definition, mixins, nativeBaseElement){
-  var definitionType = (objct.isArray(definition) && "array") || typeof definition;
-  if(definitionType !== "object" && definitionType !== "function")
-    throw "Bonaparte - createTag: Unexpected "+definitionType+". Expected Function or Object."
+function createTag(name, modules, nativeBaseElement){
+  var modulesType = (objct.isArray(modules) && "array") || typeof modules;
+ 
+  if(modulesType === "function") 
+    modules = [modules];
+  else if(modulesType !== "array")
+    throw "Bonaparte - createTag: Unexpected "+modulesType+". Expected Function or Array."
+
 
   nativeBaseElement = nativeBaseElement || HTMLElement;
-  mixins = mixins || [];
 ///////////////////////////////////////////////////////////////////////////////
 // Public
   
@@ -2044,13 +2047,14 @@ function createTag(name, definition, mixins, nativeBaseElement){
 
 ///////////////////////////////////////////////////////////////////////////////
 
-  definition = objct(tagFactory, definition);
+  var definition = objct(modules, tagFactory);
   return definition;
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
   function register(){ 
+
     registeredTags[name+"-bonaparte"] = registeredTags[name+"-bonaparte"] !== undefined ?
       registeredTags[name+"-bonaparte"]:
       document.registerElement(name+"-bonaparte", {
@@ -2062,13 +2066,15 @@ function createTag(name, definition, mixins, nativeBaseElement){
         })
       });
 
-    return registeredTags[name+"-bonaparte"];
+    return definition;
   }
 
 ///////////////////////////////////////////////////////////////////////////////
 
   function mixin(mixin){
-    definition = objct(definition, mixin);
+    objct.extend(definition, mixin);
+   
+    return definition;
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2077,7 +2083,8 @@ function createTag(name, definition, mixins, nativeBaseElement){
     
     apply(element);  
     bp.tag.observe(element); 
-
+    
+    return definition;
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2094,7 +2101,6 @@ function createTag(name, definition, mixins, nativeBaseElement){
   function apply(element) {
     var modules = [
       require("./events"),
-      mixins,
       definition, 
       require("./mixins")
     ];
@@ -2162,6 +2168,9 @@ module.exports = {
     set : setAttribute,
     remove : removeAttribute,
     matchName : matchAttribute
+  },
+  modules : {
+    mixin : mixin
   }
 };
 
@@ -2204,6 +2213,12 @@ function mutationHandler(mutations){
     triggerEvent(tag, "bonaparte.tag.attributeUpdated", data);
   }
  
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+function mixin() {
+  return objct(arguments);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2323,10 +2338,11 @@ var mousetrap = require("mousetrap");
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = bp.tag.create("button", button, [], HTMLButtonElement);
+module.exports = bp.tag.create("button", button, HTMLButtonElement);
 
 ///////////////////////////////////////////////////////////////////////////////
 function button(tag){
+
   var action = undefined;
   var targets = [];
   var attributes = {};
@@ -2839,8 +2855,9 @@ var mousetrap = require("mousetrap");
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = bp.tag.create("panel", panel, [
-  require("../mixins/toggle")
+module.exports = bp.tag.create("panel", [
+  require("../modules/toggle"),
+  panel
 ]);
 
 mousetrap.bind("esc", function(){bp.tag.triggerEvent(window, "bonaparte.internal.closePanels")});
@@ -2915,7 +2932,7 @@ function panel(tag){
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"../mixins/toggle":12,"bonaparte":1,"mousetrap":4}],17:[function(require,module,exports){
+},{"../modules/toggle":12,"bonaparte":1,"mousetrap":4}],17:[function(require,module,exports){
 var bp = require("bonaparte");
 
 var scrollBarWidth = false;
@@ -3083,14 +3100,16 @@ var bp = require("bonaparte");
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = bp.tag.create("toolbar", toolbar, [
-  require("./sidebar-bonaparte.js")
+module.exports = bp.tag.create("toolbar", [
+  require("./sidebar-bonaparte.js"),
+  toolbar
 ]);
 
 ///////////////////////////////////////////////////////////////////////////////
 function toolbar(tag){
 
-  window.addEventListener("load", initializeButtons)
+  if(document.readyState === "complete") initializeButtons();
+  else window.addEventListener("load", initializeButtons);
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////

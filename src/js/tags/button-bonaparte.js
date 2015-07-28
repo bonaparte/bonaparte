@@ -4,10 +4,11 @@ var mousetrap = require("mousetrap");
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = bp.tag.create("button", button, [], HTMLButtonElement);
+module.exports = bp.tag.create("button", button, HTMLButtonElement);
 
 ///////////////////////////////////////////////////////////////////////////////
 function button(tag){
+
   var action = undefined;
   var targets = [];
   var attributes = {};

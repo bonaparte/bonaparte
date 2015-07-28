@@ -30,13 +30,16 @@ module.exports = bp;
 
 ///////////////////////////////////////////////////////////////////////////////
 
-function createTag(name, definition, mixins, nativeBaseElement){
-  var definitionType = (objct.isArray(definition) && "array") || typeof definition;
-  if(definitionType !== "object" && definitionType !== "function")
-    throw "Bonaparte - createTag: Unexpected "+definitionType+". Expected Function or Object."
+function createTag(name, modules, nativeBaseElement){
+  var modulesType = (objct.isArray(modules) && "array") || typeof modules;
+ 
+  if(modulesType === "function") 
+    modules = [modules];
+  else if(modulesType !== "array")
+    throw "Bonaparte - createTag: Unexpected "+modulesType+". Expected Function or Array."
+
 
   nativeBaseElement = nativeBaseElement || HTMLElement;
-  mixins = mixins || [];
 ///////////////////////////////////////////////////////////////////////////////
 // Public
   
@@ -47,13 +50,14 @@ function createTag(name, definition, mixins, nativeBaseElement){
 
 ///////////////////////////////////////////////////////////////////////////////
 
-  definition = objct(tagFactory, definition);
+  var definition = objct(modules, tagFactory);
   return definition;
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
   function register(){ 
+
     registeredTags[name+"-bonaparte"] = registeredTags[name+"-bonaparte"] !== undefined ?
       registeredTags[name+"-bonaparte"]:
       document.registerElement(name+"-bonaparte", {
@@ -65,13 +69,15 @@ function createTag(name, definition, mixins, nativeBaseElement){
         })
       });
 
-    return registeredTags[name+"-bonaparte"];
+    return definition;
   }
 
 ///////////////////////////////////////////////////////////////////////////////
 
   function mixin(mixin){
-    definition = objct(definition, mixin);
+    objct.extend(definition, mixin);
+   
+    return definition;
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -80,7 +86,8 @@ function createTag(name, definition, mixins, nativeBaseElement){
     
     apply(element);  
     bp.tag.observe(element); 
-
+    
+    return definition;
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -97,7 +104,6 @@ function createTag(name, definition, mixins, nativeBaseElement){
   function apply(element) {
     var modules = [
       require("./events"),
-      mixins,
       definition, 
       require("./mixins")
     ];
