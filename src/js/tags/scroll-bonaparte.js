@@ -1,4 +1,4 @@
-var bp = require("../core/tag");
+var bp = require("../core");
 
 var scrollBarWidth = false;
 

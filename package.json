@@ -8,7 +8,6 @@
     "mutation-observer":"^1.0.2",
     "custom-event-polyfill" : "^0.2.1",
     "mousetrap" : "^1.5.3"
-
   },
   
   "main":"./src/js/core/tag.js",
