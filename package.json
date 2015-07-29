@@ -4,15 +4,13 @@
   
   "dependencies" : {
     "objct": "^2.0.4",
-    "bonaparte": "file:./",
     "document-register-element" : "^0.4.5",
     "mutation-observer":"^1.0.2",
     "custom-event-polyfill" : "^0.2.1",
     "mousetrap" : "^1.5.3"
-
   },
   
-  "main":"./src/js/core/tag.js",
+  "main":"./src/js/core/index.js",
   
   "devDependencies": {
     "gulp": "*",
@@ -29,7 +27,7 @@
   },
 
   "scripts": {
-    "install" : "rm -r SUI/ui/dist; gulp SUI-install; cd SUI/ui ; npm install; gulp build; cd ../..; gulp BPA-build"
+    "install-dev" : "rm -r SUI/ui/dist; gulp SUI-install; cd SUI/ui ; npm install; gulp build; cd ../..; gulp BPA-build"
   },
 
   "engines": {

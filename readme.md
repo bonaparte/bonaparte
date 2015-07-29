@@ -34,7 +34,7 @@ __Public:__
 > #### Install / Build
 >
 > - Clone Repository (Note: Respository includes submodules)
-> - Run `npm install` in `./`. _(Select **NO** for all options for fastes result)_
+> - Run `npm install` in `./`. 
 >
 > #### Development
 >
@@ -42,6 +42,7 @@ __Public:__
 > > _- Wise Man_
 >
 > - Install / Build SUI.
+> - Run `npm run install-dev` in `./`. _(Select **NO** for all options for fastes result)_
 > - Run `gulp SUI-watch` to watch `.SUI/ui/` and keep `dist/` up to date.
 > - Work in `ui/`. _( Theme: `./ui/src/themes/bonaparte/` )_
 
@@ -55,6 +56,7 @@ __Public:__
 
 #### Development
 
+- Run `npm run install-dev` in `./`. _(Select **NO** for all options for fastes result)_
 - Run `gulp BPA-watch` to watch `./src/` and keep `./dist/` up to date.
 
 ## Structure
