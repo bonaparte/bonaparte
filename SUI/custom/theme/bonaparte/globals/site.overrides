@@ -26,3 +26,16 @@ b, strong {
   font-weight:@text-bold;  
 }
  
+.ui.block {
+    box-sizing: border-box;
+}
+
+.ui.block .header {
+	background: @color-light-2;
+	padding: 1rem 1rem;
+	margin: 0;
+	box-shadow: none;
+	border-bottom: 1px solid @color-light-3;
+	text-transform: uppercase;
+  box-sizing: border-box;
+}

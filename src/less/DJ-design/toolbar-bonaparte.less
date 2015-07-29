@@ -18,6 +18,7 @@ toolbar-bonaparte {
   background-color:red;
 
 
+
   > cornerstone-bonaparte {  
     background-color:@color-interactive;
     color:@color-light-0;
@@ -27,14 +28,24 @@ toolbar-bonaparte {
   }
 
   > :nth-child(2){
-    background-color:tomato;
+    background-color:$color-light-3;
   }
+
+  > .inverted {
+    background-color: $color-dark-0;
+    color: $color-text-light;
+  }
+
+  > .inverted > * {
+    color: $color-text-light;
+  }
+
 
 
   /*BUTTON GROUPS*/
 
   > :nth-child(1){
-    background-color:teal;
+    background-color:$color-light-2;
     display:flex;
     flex-flow: column;
     justify-content:space-between;

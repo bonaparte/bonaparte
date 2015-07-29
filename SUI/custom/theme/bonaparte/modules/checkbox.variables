@@ -1,0 +1,158 @@
+/*******************************
+            Checkbox
+*******************************/
+
+@checkboxColor: @textColor;
+@fontSize: 1em;
+@checkboxLineHeight: 15px;
+
+
+/* Label */
+@labelDistance: 1.85714em;
+
+@neutralCheckbox: @transparentBlack;
+@positiveCheckbox: @positiveColor;
+@negativeCheckbox: @negativeColor;
+
+/* Checkbox */
+@checkboxSize: 17px;
+@checkboxBackground: @white;
+@checkboxBorder: 1px solid @solidBorderColor;
+@checkboxBorderRadius: 0.25em;
+@checkboxTransition:
+  background-color @defaultDuration @defaultEasing,
+  border @defaultDuration @defaultEasing,
+  opacity @defaultDuration @defaultEasing,
+  box-shadow @defaultDuration @defaultEasing
+;
+
+/* Checkmark */
+@checkboxCheckTop: 0px;
+@checkboxCheckLeft: 0px;
+
+/* Label */
+@labelColor: @textColor;
+@labelTransition: color @defaultDuration @defaultEasing;
+
+/*-------------------
+        States
+--------------------*/
+
+@checkboxHoverBackground: @checkboxBackground;
+@checkboxHoverBorderColor: @selectedBorderColor;
+@labelHoverColor: @hoveredTextColor;
+
+@checkboxPressedBackground: @offWhite;
+@checkboxPressedBorderColor: @selectedBorderColor;
+@checkboxPressedColor: @selectedTextColor;
+@labelPressedColor: @selectedTextColor;
+
+@checkboxFocusedBackground: @offWhite;
+@checkboxFocusedBorderColor: @selectedBorderColor;
+@checkboxFocusedColor: @selectedTextColor;
+@labelFocusedColor: @selectedTextColor;
+
+@checkboxActiveBackground: #FFFFFF;
+@checkboxActiveBorderColor: @selectedBorderColor;
+@checkboxActiveColor: @selectedTextColor;
+@labelActiveColor: @selectedTextColor;
+
+
+/* Disabled */
+@disabledCheckboxOpacity: 0.5;
+@disabledCheckboxLabelColor: rgba(0, 0, 0, 1);
+
+/*-------------------
+        Types
+--------------------*/
+
+/* Radio */
+/* Uses px to avoid rounding issues with circles */
+
+@radioSize: 14px;
+@radioCircleSize: 9px;
+@radioTop: 1px;
+@radioLeft: 0px;
+@radioLabelDistance: @labelDistance;
+
+@bulletScale: (0.428571428); /* 6px @ 14pxrem */
+@bulletColor: @textColor;
+@bulletRadius: @circularRadius;
+
+@radioActiveBackground: @white;
+@radioActiveBulletColor: @checkboxActiveColor;
+
+/* Slider & Toggle Handle */
+@handleBackground: @white @subtleGradient;
+@handleBoxShadow:
+  @subtleShadow,
+  0px 0px 0px 1px @borderColor inset
+;
+
+/* Slider */
+@sliderHandleSize: 1.5rem;
+@sliderLineWidth: 3.5rem;
+@sliderTransitionDuration: 0.3s;
+
+@sliderHandleOffset: (1rem - @sliderHandleSize) / 2;
+@sliderHandleTransition: left @sliderTransitionDuration @defaultEasing;
+
+@sliderWidth: @sliderLineWidth;
+@sliderHeight: (@sliderHandleSize + @sliderHandleOffset);
+
+@sliderLineHeight: 0.2142rem;
+@sliderLineVerticalOffset: 0.4rem;
+@sliderLineColor: @neutralCheckbox;
+@sliderLineRadius: @circularRadius;
+@sliderLineTransition: background @sliderTransitionDuration @defaultEasing;
+
+@sliderTravelDistance: @sliderLineWidth - @sliderHandleSize;
+
+@sliderLabelDistance: @sliderLineWidth + 1rem;
+@sliderOffLabelColor: @unselectedTextColor;
+
+@sliderOnLineColor: @lightBlack;
+@sliderOnLabelColor: @selectedTextColor;
+@sliderLabelLineHeight: 1rem;
+
+@sliderHoverLaneBackground: @veryStrongTransparentBlack;
+@sliderHoverLabelColor: @hoveredTextColor;
+
+
+/* Toggle */
+@toggleLaneWidth: 3.5rem;
+@toggleHandleSize: 1.5rem;
+@toggleTransitionDuration: 0.2s;
+
+@toggleWidth: @toggleLaneWidth;
+@toggleHeight: @toggleHandleSize;
+
+@toggleHandleRadius: @circularRadius;
+@toggleHandleOffset: 0rem;
+@toggleHandleTransition:
+  background @sliderTransitionDuration @defaultEasing,
+  left @sliderTransitionDuration @defaultEasing
+;
+
+@toggleLaneHeight: @toggleHandleSize;
+@toggleLaneVerticalOffset: 0rem;
+@toggleOffOffset: -0.05rem;
+@toggleOnOffset: (@toggleLaneWidth - @toggleHandleSize) + 0.15rem;
+
+@toggleLabelDistance: @toggleLaneWidth + 1rem;
+@toggleLabelLineHeight: 1.5rem;
+@toggleLabelOffset: 0.15em;
+
+
+@toggleFocusColor: @veryStrongTransparentBlack;
+@toggleHoverColor: @toggleFocusColor;
+
+@toggleOffLabelColor: @checkboxColor;
+@toggleOnLabelColor: @selectedTextColor;
+@toggleOnLaneColor: @primaryColor;
+
+
+
+/*-------------------
+      Variations
+--------------------*/
