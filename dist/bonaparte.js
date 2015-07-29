@@ -2275,13 +2275,14 @@ function setAttribute(tag, name, value) {
 
   tag.setAttribute(name, value);
 
-  if(oldValue === value && tag.bonaparte) {
+  if(oldValue === value && typeof tag.bonaparte === "object" && typeof tag.bonaparte.triggerEvent === "function") {
     tag.bonaparte.triggerEvent("bonaparte.tag.attributeUpdated",{
       name:name,
       previousValue : oldValue,
       newValue: value
     });
   }  
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2401,7 +2402,7 @@ function button(tag){
     if(trigger === undefined) return; 
     for(var i = 0; i < targets.length; i++){
       target = targets[i];
-      bp.tag.triggerEvent(target.tag, trigger)
+      bp.tag.triggerEvent(target, trigger)
     }
   }
 
@@ -2412,7 +2413,7 @@ function button(tag){
     if(targetValue === attributeValue) return true;
     if(name !== "style" || targetValue === undefined || attributeValue === undefined) return false;
 
-    // IE handling from here on out
+    // IE handling from here on down
 
     attributeValue = attributeValue.replace(/\s*;\s*/g,";").split(";").sort().join(";");
     attributeValue += attributeValue.slice(-1) === ";" ? "":";";
@@ -2435,11 +2436,11 @@ function button(tag){
       
       // check attributes
       for(var name in attributes) {
-        targetValue = bp.attribute.get(target.tag, name);
+        targetValue = bp.attribute.get(target, name);
 
         if(!checkValues(name, targetValue, attributes[name])) {
           active = false;
-          target.values[name] = targetValue;
+          target.bonaparte.values[name] = targetValue;
         }
 
         if(active !== false) active = true;
@@ -2447,7 +2448,7 @@ function button(tag){
 
       // check toggles
       for(var k=0; k<toggles.length; k++) {
-        if(bp.attribute.get(target.tag, toggles[k]) !== "true")
+        if(bp.attribute.get(target, toggles[k]) !== "true")
           active=false;
 
         if(active !== false) active = true;
@@ -2473,20 +2474,21 @@ function button(tag){
       target = targets[i];
 
       // toggle attributes
-      for(var k=0; k<toggles.length; k++) {
-        targetValue = bp.attribute.get(target.tag, toggles[k]) === "true" ? 
-          "false":"true";
-        bp.attribute.set(target.tag, toggles[k], targetValue); 
-      }
+      // for(var k=0; k<toggles.length; k++) {
+      //   targetValue = bp.attribute.get(target, toggles[k]) === "true" ? 
+      //     "false":"true";
+      //   bp.attribute.set(target, toggles[k], targetValue); 
+      // }
       
       // sync attributes
       for(var name in attributes) {
-        targetValue = active === true && toggle === true ? 
-          target.values[name] : attributes[name];
+        targetValue = active === true && (toggle === true || toggles.indexOf(name) >=0)? 
+          target.bonaparte.values[name]  : attributes[name];
+
         if(targetValue !== undefined) 
-          bp.attribute.set(target.tag, name, targetValue); 
+          bp.attribute.set(target, name, targetValue); 
         else 
-          bp.attribute.remove(target.tag, name);
+          bp.attribute.remove(target, name);
       }
     }
   }
@@ -2527,7 +2529,7 @@ function button(tag){
         toggle = toggleValue[i] === "true";
       }
       else if(toggleValue[i] !== "") {
-        toggles.push(toggleValue[i]);
+        toggles.push(toggleValue[i].match(/(?:data-)?(.*)/)[1]);
       }
     }
   }
@@ -2536,10 +2538,10 @@ function button(tag){
 
   function setAttributes(){
     var attributeBase;
-    attributes = [];
+    attributes = {};
     for(var i=0; i < tag.attributes.length; i++) {
       if(bp.attribute.matchName(/target-.*/, tag.attributes[i].name)) {
-        attributeBase = tag.attributes[i].name.match(/(?:data-)?target-(.*)/)[1];
+        attributeBase = tag.attributes[i].name.match(/(?:data-)?target-(?:data-)?(.*)/)[1];
         attributes[attributeBase] = tag.attributes[i].value;
       }
     }
@@ -2568,15 +2570,14 @@ function button(tag){
 
     // Remove old target event handlers
     for(var i = 0; i < targets.length; i++){
-      targets[i].tag.removeEventListener("bonaparte.tag.attributeChanged", targetAttributeChangedCallback);
+      targets[i].removeEventListener("bonaparte.tag.attributeChanged", targetAttributeChangedCallback);
     }
 
     targets = [];
     for(var i=0; i < newTargets.length; i++) {
-      targets.push({
-        tag : newTargets[i],
-        values : {}
-      });
+      newTargets[i].bonaparte = newTargets[i].bonaparte || {};
+      newTargets[i].bonaparte.values = newTargets[i].bonaparte.values ||{};
+      targets.push(newTargets[i]);
       bp.tag.observe(newTargets[i]);
       newTargets[i].addEventListener("bonaparte.tag.attributeChanged", targetAttributeChangedCallback);
     }

@@ -125,13 +125,14 @@ function setAttribute(tag, name, value) {
 
   tag.setAttribute(name, value);
 
-  if(oldValue === value && tag.bonaparte) {
+  if(oldValue === value && typeof tag.bonaparte === "object" && typeof tag.bonaparte.triggerEvent === "function") {
     tag.bonaparte.triggerEvent("bonaparte.tag.attributeUpdated",{
       name:name,
       previousValue : oldValue,
       newValue: value
     });
   }  
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////
