@@ -39,6 +39,26 @@
       body > toolbar-bonaparte {
         height:100%;
       }
+
+
+
+      #cornerstoneContent {
+        background-color:gold;
+        z-index: 90;
+        position:absolute;
+        top:0px;
+        left:0px;
+        width:0%;
+        height:0%;
+        -webkit-transition:width 500ms cubic-bezier(.12, .38, .4, .98), height 500ms cubic-bezier(.12, .38, .4, .98);
+        transition:width 500ms cubic-bezier(.12, .38, .4, .98), height 500ms cubic-bezier(.12, .38, .4, .98);
+
+      }
+
+      #cornerstoneContent.open {
+        width:100%;
+        height:100%;
+      }
     </style>
 
   </head>
@@ -212,7 +232,10 @@
 
      
       </toolbar-bonaparte>     
-      <cornerstone-bonaparte class="ui icon button"id="cs" onclick="document.getElementById('panel').bonaparte.toggle('open')"><i class="shop icon left"></i></cornerstone-bonaparte>
+      <cornerstone-bonaparte target="#cornerstoneContent" target-class="open" toggle="true" action="click" class="ui button icon">
+          <i class="shop icon left"></i>
+      </cornerstone-bonaparte>
+      <div id="cornerstoneContent"></div>
     </toolbar-bonaparte>
 
 
