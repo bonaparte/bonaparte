@@ -1688,7 +1688,7 @@ var decoratedModule = function(module, data, instance) {
 	return typeof module === strFunction && module.hash === hash ?
 		module.call(instance, {
 			args:data.a, 
-			modules:data.m, 
+			modules:data.m
 		}):
 		module;
 }
@@ -1832,7 +1832,7 @@ factory.extend = function(){
 		a : [], // args
 		m : [], // modules
 		i : null, // instance
-		d : that.hash === hash ? that.d : false, // decorated
+		d : that.hash === hash ? that.d : false // decorated
 	};
 	var type;
 	var args = arguments.length > 0 ? arguments : that.arguments;
@@ -1859,10 +1859,8 @@ factory.extend = function(){
 		});
 
 		// if module is a function and not a decorator, copy static properties to Executable
-		if(!instant && type === strFunction && args[i].hash !== hash) {
+		if(!instant && type === strFunction && args[i].hash !== hash)
 			mixinObject(Executable, args[i], thisData);
-		}
-
 	}	
 	return instant ? new Executable() : Executable;
 };
@@ -1961,20 +1959,22 @@ var bp = require("./utility");
 ///////////////////////////////////////////////////////////////////////////////
 // Polyfills
 
-require("document-register-element");
-require("custom-event-polyfill");
+if(typeof document.addEventListener === "function") { // no polyfills for IE8 -> silently fail.
+  
+  if(!("MutationObserver" in document)) {
+    MutationObserver = require("mutation-observer");
+  };
+  require("document-register-element");
+  require("custom-event-polyfill");
 
-if (!("MutationObserver" in document)) {
-  MutationObserver = require("mutation-observer");
-};
 
-if (Element && !Element.prototype.matches) {
-    var proto = Element.prototype;
-    proto.matches = proto.matchesSelector ||
-        proto.mozMatchesSelector || proto.msMatchesSelector ||
-        proto.oMatchesSelector || proto.webkitMatchesSelector;
+  if (Element && !Element.prototype.matches) {
+      var proto = Element.prototype;
+      proto.matches = proto.matchesSelector ||
+          proto.mozMatchesSelector || proto.msMatchesSelector ||
+          proto.oMatchesSelector || proto.webkitMatchesSelector;
+  }
 }
-
 ///////////////////////////////////////////////////////////////////////////////
 
 var registeredTags = {};
@@ -1996,7 +1996,7 @@ function createTag(name, modules, nativeBaseElement){
     throw "Bonaparte - createTag: Unexpected "+modulesType+". Expected Function or Array."
 
 
-  nativeBaseElement = nativeBaseElement || HTMLElement;
+  nativeBaseElement = nativeBaseElement || window.HTMLElement || window.Element;
 ///////////////////////////////////////////////////////////////////////////////
 // Public
   
@@ -2014,7 +2014,13 @@ function createTag(name, modules, nativeBaseElement){
 ///////////////////////////////////////////////////////////////////////////////
 
   function register(){ 
-
+    console.log("register");
+    console.log(typeof document.registerElement);
+    if(typeof document.registerElement === "undefined") {
+      console.log(name);
+      document.createElement(name+"-bonaparte");
+      return;
+    }
     registeredTags[name+"-bonaparte"] = registeredTags[name+"-bonaparte"] !== undefined ?
       registeredTags[name+"-bonaparte"]:
       document.registerElement(name+"-bonaparte", {
