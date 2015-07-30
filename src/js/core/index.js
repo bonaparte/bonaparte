@@ -59,10 +59,7 @@ function createTag(name, modules, nativeBaseElement){
 ///////////////////////////////////////////////////////////////////////////////
 
   function register(){ 
-    console.log("register");
-    console.log(typeof document.registerElement);
-    if(typeof document.registerElement === "undefined") {
-      console.log(name);
+    if(typeof document.registerElement === "undefined") { // If IE8 make tag stylable but otherwise do nothing.
       document.createElement(name+"-bonaparte");
       return;
     }
