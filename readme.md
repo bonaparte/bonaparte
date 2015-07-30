@@ -273,10 +273,7 @@ bp.attribute.matchName(
       <nth-child button
         extends:button
       />
-      
-    </nth-child>
   
-  </1st-child>
   <2nd-child content /> 
 
   <!-- Optional -->
@@ -301,7 +298,7 @@ bp.attribute.matchName(
 ```html
 <!-- only as direct child of <toolbar-bonaparte> -->
 <cornerstone-bonaparte
-  open=[false|true]
+  extends:button
 >
 </cornerstone-bonaparte>
 ```
@@ -345,8 +342,6 @@ bonaparte.panel.close
   shortcut=[shortcut]
 >
 
-  <!-- Required if dropdown attribute defined -->
-  <1st-child drowdown />
 
 </button-bonaparte>
 ```
