@@ -1,29 +1,29 @@
 # Bonaparte UX Framework
 
-- [Basic Use](#basic-usage)
+- [Basic Use](#basic-use)
 - [Examples](#examples)
 - [Bonaparte Tags](#bonaparte-tags)
 - [Development](#development)
   - [Bonaparte](#bonaparte)
   - [Semantic UI Theme](#sui-theme)
-- [Structure](#structure)
-- [Events](#events)
-  - [Listen](#listen)
-  - [Trigger](#trigger)
+- [Structure/Modules](#structuremodules)
+  - [Events](#events)
+    - [Listen](#listen)
+    - [Trigger](#trigger)
 - [API](#api)
-  - [bp.attribute](#bp-attribute)
-    -  [bp.attribute.get()](#bp-attribute-get--)
-    -  [bp.attribute.matchName()](#bp-attribute-matchName--)
-    -  [bp.attribute.remove()](#bp-attribute-remove--)
-    -  [bp.attribute.set()](#bp-attribute-set--)
-  - [bp.module](#bp-module)
-    -  [bp.module.mixin()](#bp-module-mixin--)
-  - [bp.tag](#bp-tag)
-    -  [bp.tag.closest()](#bp-tag-closest--)
-    -  [bp.tag.contains()](#bp-tag-contains--)
-    -  [bp.tag.create()](#bp-tag-create--)
-    -  [bp.tag.observe()](#bp-tag-observe--)
-    -  [bp.tag.triggerEvent()](#bp-tag-triggerEvent--)
+  - [bp.attribute](#bpattribute)
+    -  [bp.attribute.get()](#bpattributeget)
+    -  [bp.attribute.matchName()](#bpattributematchname)
+    -  [bp.attribute.remove()](#bpattributeremove)
+    -  [bp.attribute.set()](#bpattributeset)
+  - [bp.module](#bpmodule)
+    -  [bp.module.mixin()](#bpmodulemixin)
+  - [bp.tag](#bptag)
+    -  [bp.tag.closest()](#bptagclosest)
+    -  [bp.tag.contains()](#bptagcontains)
+    -  [bp.tag.create()](#bptagcreate)
+    -  [bp.tag.observe()](#bptagobserve)
+    -  [bp.tag.triggerEvent()](#bptagtriggerevent)
 
 
 ## Basic Use
@@ -180,7 +180,7 @@ bonaparte.panel.close
 > - Work in `ui/`. _( Theme: `./ui/src/themes/bonaparte/` )_
 
 
-## Structure
+## Structure/Modules
 
 Bonaparte has a modular structure and is therefore very easily extendable.
 Each bonaparte tag is a combination of __modules__.
@@ -193,7 +193,7 @@ __Modules__ are simple javascript functions that get instanciated for each tag-i
   }
 ```
 
-## Events
+### Events
 
 Bonaparte-Tags emit the following custom events.
 
@@ -205,24 +205,24 @@ Bonaparte-Tags emit the following custom events.
   "bonaparte.tag.attributeUpdated" // Value updated (might not have changed)
 ```
 
-### Listen
+##### Listen
 Listen to them like you do with native events:
 ```javascript
 document.getElementById("bonaparte-tag").addEventListener("bonaparte.tag.created", handler);
 ```
 
-#### Trigger
+##### Trigger
 On Bonaparte-Tags Custom events can easily be triggered by calling
 ```javascript
 document.getElementById("bonaparte-tag").bonaparte.triggerEvent("name", data)
 ```
 
-Or through the API events can be triggered on any element: 
+Or through the [API](#api) events can be triggered on any element: 
 ```javascript
 bp.tag.triggerEvent(tag, "name", data)`;
 ```
 
-#### API
+## API
 Requiring the `bonaparte` module provides all the necessary functions to create new _tags_ from modules, as well a set of utility functions that can be used within _modules_.
 
 ```javascript
@@ -236,6 +236,7 @@ Requiring the `bonaparte` module provides all the necessary functions to create 
 Utility functions that should be used to handle attributes. <br>
 They automatically handle both `name` and `data-name` attributes in one go and normalize events across browsers.
 
+---
 #### bp.attribute.get();
 Get an attribute from the given tag by attribute name. Automatically checks for data-[name] as well.<br>
 __Return:__ attribute value.
@@ -247,6 +248,7 @@ bp.attribute.get(
 )
 
 ```
+---
 #### bp.attribute.matchName();
 
 Compares two attribute names and checks if they are the same with: `"attributeName" === "data-attributeName"`<br>
@@ -260,6 +262,7 @@ bp.attribute.matchName(
 
 ```
 
+---
 #### bp.attribute.remove();
 
 Removes an attribute from the given tag. Checks automatically if the attribute exists with or without data- prefix.
@@ -271,6 +274,8 @@ bp.attribute.remove(
 )
 
 ```
+
+---
 #### bp.attribute.set();
 Set an attribute on the given tag. Checks automatically if the attribute exists with or without data- prefix.
 
@@ -287,6 +292,7 @@ bp.attribute.set(
 ---
 ---
 ### bp.module
+---
 #### bp.module.mixin()
 Combines _modules_ into a new _module_ <br>
 __Returns__ a _module_.
@@ -306,6 +312,7 @@ var module = bp.modules.mixin(
 
 ### bp.tag
 
+---
 #### bp.tag.closest();
 Traverses up the element tree to find the first element that matches the given selector.
 __Returns:__ `Element|undefined`
@@ -317,6 +324,7 @@ bp.tag.closest(
 )
 ```
 
+---
 #### bp.tag.contains();
 Checks one Element is placed inside another.<br>
 __Returns:__ `true|false`
@@ -327,6 +335,7 @@ bp.tag.contains(
   (HTMLElement) child
 )
 ```
+---
 #### bp.tag.create();
 Creates a new bonaparte-tag from _modules_. <br>
 __Returns__ a tag definition.
@@ -352,6 +361,8 @@ tag.mixin( (Array) mixins );            // Define mixins to chustomize existing 
       
 > Static methods on modules become static methods on the tag-definition.
 
+---
+
 #### bp.tag.observe();
 Sets on observer on the given Element.
 The observed element now emits `bonaparte.tag.attributeChanged` and `bonaparte.tag.attributeUpdated` events.
@@ -361,6 +372,7 @@ bp.tag.observe(
   (HTMLElement) element
 )
 ```
+---
 
 #### bp.tag.triggerEvent();
 Triggers a event on the given HTMLElement
@@ -376,3 +388,4 @@ bp.tag.triggerEvent(
 )
 ```
 
+---
