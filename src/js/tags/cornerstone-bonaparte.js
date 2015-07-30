@@ -3,7 +3,10 @@ var bp = require("../core");
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = bp.tag.create("cornerstone", cornerstone);
+module.exports = bp.tag.create("cornerstone", [
+  require("./button-bonaparte.js"),
+  cornerstone
+]);
 
 ///////////////////////////////////////////////////////////////////////////////
 function cornerstone(tag){

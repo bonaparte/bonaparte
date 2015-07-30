@@ -15,6 +15,19 @@ __Public:__
 [Toolbar](http://dowjones.github.io/bonaparte/examples/toolbar.html)
 
 
+
+__Designs:__
+
+
+[Bonaparte Styles](http://dowjones.github.io/bonaparte/designs/Bonaparte%20v0.2.pdf)
+<br>
+[Narrator](http://dowjones.github.io/bonaparte/designs/Narrator%20UI%20v0.1.pdf)
+<br>
+[Narrator (Toolbars)](http://dowjones.github.io/bonaparte/designs/Narrator%20UI%20v0.1%20-%20toolbars.pdf)
+<br>
+[Xavier](http://dowjones.github.io/bonaparte/designs/Xavier%20UI%20v0.2.pdf)
+
+
 ### Basic Use
 
 - Download / Clone Repository.

@@ -2612,7 +2612,10 @@ var bp = require("../core");
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = bp.tag.create("cornerstone", cornerstone);
+module.exports = bp.tag.create("cornerstone", [
+  require("./button-bonaparte.js"),
+  cornerstone
+]);
 
 ///////////////////////////////////////////////////////////////////////////////
 function cornerstone(tag){
@@ -2657,7 +2660,7 @@ function cornerstone(tag){
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-},{"../core":8}],14:[function(require,module,exports){
+},{"../core":8,"./button-bonaparte.js":12}],14:[function(require,module,exports){
 var bp = require("../core");
 
 ///////////////////////////////////////////////////////////////////////////////
