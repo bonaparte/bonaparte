@@ -5,7 +5,6 @@
 .ui.form {
   padding: 1rem 1rem 2rem 1rem;
   width: 100%;
-  background-color: #fff;
 }
 
 .ui.form .field {
@@ -86,6 +85,11 @@
   color: @color-active;
 }
 
+
+/******************************/
+/*          dropdown          */
+/******************************/
+
 .ui.form .ui.dropdown {
   color: @color-dark-2;
   border: 0;
@@ -107,18 +111,58 @@
 }
 
 .ui.form .dropdown i.dropdown.button.icon {
-    position: absolute;
-    height: 100%;
-    line-height: 4rem;
-    width: 4rem;
-    text-align: center;
-    color: @color-interactive;
-    border-radius: 0;
-    top: 0;
-    right: 0;
+  position: absolute;
+  height: 100%;
+  line-height: 4rem;
+  width: 4rem;
+  text-align: center;
+  color: @color-interactive;
+  border-radius: 0;
+  top: 0;
+  right: 0;
+  background-color: @color-light-3;
 }
+
 .ui.form .dropdown label.text {
   font-weight: 700;
   margin-left: 1rem;
+}
+
+
+/******************************/
+/*          checkbox          */
+/******************************/
+
+
+.ui.form .ui.checkbox:not(.toggle) {
+    width: 100%;
+    color: #1a1a1a;
+    border: 0;
+    border-bottom: 1px solid @color-light-2;
+    background-color: @color-light-1;
+    padding: 0;
+}
+.ui.form .ui.checkbox:not(.toggle) label {
+    padding: 1rem;
+    font-size: 1.33333333rem;
+    line-height: 2rem;
+}
+
+.ui.form .ui.checkbox:not(.toggle) label:after {
+    left: inherit;
+    right: 0;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: @color-light-3;
+}
+
+.ui.form .ui.checkbox.checked:not(.toggle) label:after {
+    background-color: @color-light-0;
+    border-right: 2px solid @color-active;
+    border-left: 2px solid transparent;
+    color: @color-active;
 }
 

@@ -218,18 +218,28 @@ toolbar-bonaparte.massive > *:first-child .ui.buttons,
   }
 
   &.labeled.icon {
-    padding-left:(@iconSize+1) !important;
-    padding-right:1rem !important;
+    padding-left:@iconSize !important;
+    padding-right:0rem !important;
     text-align:left;
-
+    background-color: transparent;
+    text-indent: 1rem;
+    overflow: hidden;
     > .icon {
       width:@iconSize;
+      text-indent: 0;
     }
   }
 
   &.right.labeled.icon {
     padding-left:1rem !important;
-    padding-right:(@iconSize+1) !important;
+    padding-right:@iconSize !important;
+    text-align: right;
+    background-color: transparent;
+    
+    > i.icon {
+      left: auto;
+      right: 0;
+    }
   }
 
   > i.icon {
@@ -330,11 +340,16 @@ toolbar-bonaparte.massive > *:first-child .ui.buttons,
 
     button.ui,
     .ui.button {
-      padding-left:(@iconSize + 1) !important;
-      padding-right:1rem !important;
-      
+      padding-left:@iconSize !important;
+      padding-right:0 !important;
+      // padding-left:(@iconSize + 1) !important;
+      // padding-right:1rem !important;
+      text-indent: 1rem;
+      overflow: hidden;
+
       > i.icon {
         width:@iconSize;
+        text-indent: 0;
       }    
 
     }
@@ -344,8 +359,18 @@ toolbar-bonaparte.massive > *:first-child .ui.buttons,
 
     button.ui,
     .ui.button {
-      padding-right:(@iconSize + 1) !important;
-      padding-left:1rem !important;
+      padding-right:@iconSize !important;
+      padding-left:0 !important;
+      text-align: right;
+      
+      > i.icon {
+        left: auto;
+        right: 0;
+      }
+
+      // padding-right:(@iconSize + 1) !important;
+      // padding-left:1rem !important;
+
     }
 
   }
