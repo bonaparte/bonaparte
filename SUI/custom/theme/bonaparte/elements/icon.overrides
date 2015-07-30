@@ -41,6 +41,11 @@ i.icon {
   vertical-align:top;
   font-size: 1.3em;
 }
+
+span.icon {
+  padding: 1rem 0;
+  line-height: 2.2rem !important;
+}
 /* Web Content */
 
 i.icon.rotation-3d:before { content: "\e84d"; }

@@ -3,6 +3,19 @@
         Global Overrides
 *******************************/
 
+html, body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body,
+body toolbar-bonaparte:first-of-type {
+  height:100%;
+}
+
 /*Import Fonts*/
 @import url("@{assetsPath}/site/fonts/wsj-fonts.css"); 
 

@@ -29,33 +29,26 @@ toolbar-bonaparte {
   }
 
   > :nth-child(2){
-    background-color:$color-light-3;
+    background-color:@color-light-3;
   }
-
-  > .inverted {
-    background-color: $color-dark-0;
-    color: $color-text-light;
-  }
-
-  > .inverted > * {
-    color: $color-text-light;
-  }
-
 
 
   /*BUTTON GROUPS*/
 
   > :nth-child(1){
-    background-color:$color-light-2;
+    background-color:@color-light-2;
     display:flex;
     flex-flow: column;
     justify-content:space-between;
 
 
+    > * {
+      background-color:transparent !important;
+    }
+
     > *,
     > * > * {
       margin:0px !important;
-      background-color:transparent !important;
       box-shadow: none !important;
     }
     > * > * {
@@ -64,8 +57,17 @@ toolbar-bonaparte {
     > * > .active {
       &:extend(button-bonaparte.active);
     }
+  }
 
-}
+  > .inverted {
+    background-color: @color-dark-0 !important;
+    color: @color-text-light;
+  }
+
+  > .inverted > * {
+    color: @color-text-light;
+  }
+
 
   &[data-sidebar="left"],
   &[sidebar="left"],

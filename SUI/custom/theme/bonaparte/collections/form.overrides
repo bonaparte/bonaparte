@@ -111,16 +111,18 @@
 }
 
 .ui.form .dropdown i.dropdown.button.icon {
-    position: absolute;
-    height: 100%;
-    line-height: 4rem;
-    width: 4rem;
-    text-align: center;
-    color: @color-interactive;
-    border-radius: 0;
-    top: 0;
-    right: 0;
+  position: absolute;
+  height: 100%;
+  line-height: 4rem;
+  width: 4rem;
+  text-align: center;
+  color: @color-interactive;
+  border-radius: 0;
+  top: 0;
+  right: 0;
+  background-color: @color-light-3;
 }
+
 .ui.form .dropdown label.text {
   font-weight: 700;
   margin-left: 1rem;

@@ -4,7 +4,31 @@
 button-bonaparte {
   .button-bonaparte();
 
-  &.active {
-    background-color:@color-active ! important;
-  }
+  &.ui.button.labeled.icon {
+	  
+	  &.primary-active {
+	    color:@color-interactive;
+	  }
+	  &.primary-active.active,
+	  &.active {
+	    color:@color-light-0;
+	    background-color:@color-active;
+	  }
+	  &.secondary-active-light.active {
+	    background-color: @color-light-0;
+	    color: @color-active;
+
+			&:after {
+			  border-width: 0 3px 0 0;
+				border-style: solid;
+				border-color: @color-active;
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				content: ' ';
+			}
+	  }
+	}
 }
