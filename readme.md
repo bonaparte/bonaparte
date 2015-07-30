@@ -14,6 +14,7 @@
   - [Semantic UI Theme](#sui-theme)
 - [Structure/Modules](#structuremodules)
   - [Events](#events)
+- [Creating New Components](#creating-new-components)
 - [API](#api)
   -  [bp.attribute.get()](#bpattributeget)
   -  [bp.attribute.matchName()](#bpattributematchname)
@@ -246,6 +247,8 @@ Or through the [API](#api) events can be triggered on any element:
 ```javascript
 bp.tag.triggerEvent(tag, "name", data)`;
 ```
+
+##Create New Components
 
 ## API
 Requiring the `bonaparte` module provides all the necessary functions to create new _tags_ from modules, as well a set of utility functions that can be used within _modules_.
