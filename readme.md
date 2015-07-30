@@ -1,34 +1,32 @@
 # Bonaparte UX Framework
 
-### Examples
-
-__Internal:__
-
-[Kitchen-Sink](https://github.dowjones.net/pages/newsroomdevelopment/bonaparte/examples/kitchen-sink.html)
-<br>
-[Toolbar](https://github.dowjones.net/pages/newsroomdevelopment/bonaparte/examples/toolbar.html)
-
-__Public:__
-
-[Kitchen-Sink](http://dowjones.github.io/bonaparte/examples/kitchen-sink.html)
-<br>
-[Toolbar](http://dowjones.github.io/bonaparte/examples/toolbar.html)
-
-
-
-__Designs:__
-
-
-[Bonaparte Styles](http://dowjones.github.io/bonaparte/designs/Bonaparte%20v0.2.pdf)
-<br>
-[Narrator](http://dowjones.github.io/bonaparte/designs/Narrator%20UI%20v0.1.pdf)
-<br>
-[Narrator (Toolbars)](http://dowjones.github.io/bonaparte/designs/Narrator%20UI%20v0.1%20-%20toolbars.pdf)
-<br>
-[Xavier](http://dowjones.github.io/bonaparte/designs/Xavier%20UI%20v0.2.pdf)
+- [Basic Use](#basic-usage)
+- [Examples](#examples)
+- [Bonaparte Tags](#bonaparte-tags)
+- [Development](#development)
+  - [Bonaparte](#bonaparte)
+  - [Semantic UI Theme](#sui-theme)
+- [Structure](#structure)
+- [Events](#events)
+  - [Listen](#listen)
+  - [Trigger](#trigger)
+- [API](#api)
+  - [bp.attribute](#bp-attribute)
+    -  [bp.attribute.get()](#bp-attribute-get--)
+    -  [bp.attribute.matchName()](#bp-attribute-matchName--)
+    -  [bp.attribute.remove()](#bp-attribute-remove--)
+    -  [bp.attribute.set()](#bp-attribute-set--)
+  - [bp.module](#bp-module)
+    -  [bp.module.mixin()](#bp-module-mixin--)
+  - [bp.tag](#bp-tag)
+    -  [bp.tag.closest()](#bp-tag-closest--)
+    -  [bp.tag.contains()](#bp-tag-contains--)
+    -  [bp.tag.create()](#bp-tag-create--)
+    -  [bp.tag.observe()](#bp-tag-observe--)
+    -  [bp.tag.triggerEvent()](#bp-tag-triggerEvent--)
 
 
-### Basic Use
+## Basic Use
 
 - Download / Clone Repository.
 - Include files: 
@@ -41,235 +39,25 @@ __Designs:__
   ./dist/bonaparte.js
   ```
 
-## Dev Setup
+## Examples
 
-> ### SUI theme
-> #### Install / Build
->
-> - Clone Repository (Note: Respository includes submodules)
-> - Run `npm install` in `./`. 
->
-> #### Development
->
-> > __One doesn't simply work in `dist/` directly.__ <br>
-> > _- Wise Man_
->
-> - Install / Build SUI.
-> - Run `npm run install-dev` in `./`. _(Select **NO** for all options for fastes result)_
-> - Run `gulp SUI-watch` to watch `.SUI/ui/` and keep `dist/` up to date.
-> - Work in `ui/`. _( Theme: `./ui/src/themes/bonaparte/` )_
+[Kitchen-Sink](http://dowjones.github.io/bonaparte/examples/kitchen-sink.html)
+<br>
+[Toolbar](http://dowjones.github.io/bonaparte/examples/toolbar.html)
 
 
-### Bonaparte
+__Designs:__
 
-#### Install / Build
-
-- Clone Repository (Note: Respository includes submodules)
-- Run `npm install` in `./`.
-
-#### Development
-
-- Run `npm run install-dev` in `./`. _(Select **NO** for all options for fastes result)_
-- Run `gulp BPA-watch` to watch `./src/` and keep `./dist/` up to date.
-
-## Structure
-
-Bonaparte has a modular structure and is therefore very easily extendable.
-Each bonaparte tag is a combination of __modules__.
-
-__Modules__ are simple javascript functions that get instanciated for each tag-instance on the page:
-
-```javascript
-  function module(tag) {
-    // tag === this === current tag instance
-  }
-```
-
-## Events
-
-Bonaparte-Tags emit the following custom events.
-
-```javascript
-  "bonaparte.tag.created"
-  "bonaparte.tag.attached"
-  "bonaparte.tag.detached"
-  "bonaparte.tag.attributeChanged" // Value changed
-  "bonaparte.tag.attributeUpdated" // Value updated (might not have changed)
-```
-
-__Listen__<br>
-Listen to them like you do with native events:
-```javascript
-document.getElementById("bonaparte-tag").addEventListener("bonaparte.tag.created", handler);
-```
-
-__Trigger__<br>
-On Bonaparte-Tags Custom events can easily be triggered by calling
-```javascript
-document.getElementById("bonaparte-tag").bonaparte.triggerEvent("name", data)
-```
-
-Or through the API events can be triggered on any element: 
-```javascript
-bp.tag.triggerEvent(tag, "name", data)`;
-```
-
-## API
-Requiring the `bonaparte` module provides all the necessary functions to create new _tags_ from modules, as well a set of utility functions that can be used within _modules_.
-
-```javascript
-  var bp = require("bonaparte"); // this also works in the module repository itself
-```
-
----
----
-### bp.module
-#### bp.module.mixin()
-Combines _modules_ into a new _module_ <br>
-__Returns__ a _module_.
-```javascript
-
-var module = bp.modules.mixin(
-    (Function)   module,                 // Modules to be combined
-    (Function)   module,                 // Modules will be instanciated in the order they they are passed to the mixin funcition.
-    ...
-)
-
-```
-> Modules are combinded to an `objct`. Read more about the objct library [here](https://github.com/greenish/js-objct)
-
----
----
-
-### bp.tag
-#### bp.tag.create();
-Creates a new bonaparte-tag from _modules_. <br>
-__Returns__ a tag definition.
+[Bonaparte Styles](http://dowjones.github.io/bonaparte/designs/Bonaparte%20v0.2.pdf)
+<br>
+[Narrator](http://dowjones.github.io/bonaparte/designs/Narrator%20UI%20v0.1.pdf)
+<br>
+[Narrator (Toolbars)](http://dowjones.github.io/bonaparte/designs/Narrator%20UI%20v0.1%20-%20toolbars.pdf)
+<br>
+[Xavier](http://dowjones.github.io/bonaparte/designs/Xavier%20UI%20v0.2.pdf)
 
 
-```javascript
-
-var tag = bp.tag.create( 
-    (String) name,                    // Tag name. "-bonaparte" is automatically appended.
-    (Array|Function) modules,         // Modules the new tag includes.
-  [ (HTMLElement) htmlBaseElement ]   // Define the html element this tag inherits from (Default: HTMLElement)
-)
-
-////////////
-// Static functions
-
-tag.register();                         // Registers tag in HTML. After calling this function, the tag can be used in HTML.
-tag.initialize( (HTMLElement) tag );    // Initializes the tag on an existion HTMLElement.
-tag.mixin( (Array) mixins );            // Define mixins to chustomize existing tags behaviors.      
-
-```
-> Modules are combinded to an `objct`. Read more about the objct library [here](https://github.com/greenish/js-objct)
-      
-> Static methods on modules become static methods on the tag-definition.
-
-#### bp.tag.observe();
-Sets on observer on the given Element.
-The observed element now emits `bonaparte.tag.attributeChanged` and `bonaparte.tag.attributeUpdated` events.
-
-```javascript
-bp.tag.observe(
-  (HTMLElement) element
-)
-```
-
-#### bp.tag.contains();
-Checks one Element is placed inside another.<br>
-__Returns:__ `true|false`
-
-```javascript
-bp.tag.contains(
-  (HTMLElement) parent,
-  (HTMLElement) child
-)
-```
-
-#### bp.tag.closest();
-Traverses up the element tree to find the first element that matches the given selector.
-__Returns:__ `Element|undefined`
-
-```javascript
-bp.tag.closest(
-  (HTMLElement)   element,
-  (querySelector) selector
-)
-```
-
-#### bp.tag.triggerEvent();
-Triggers a event on the given HTMLElement
-__Returns:__ `undefined`
-
-```javascript
-bp.tag.triggerEvent(
-  (String)        event,
-  (HTMLElement)   target,
-  (Object)        data,
- [(Boolean)       bubbles = true ]
- [(Boolean)       cancelable=true]
-)
-```
-
----
----
-
-### bp.attribute
-
-Utility functions that should be used to handle attributes. <br>
-They automatically handle both `name` and `data-name` attributes in one go and normalize events across browsers.
-
-#### bp.attribute.get();
-Get an attribute from the given tag by attribute name. Automatically checks for data-[name] as well.<br>
-__Return:__ attribute value.
-
-```javascript
-bp.attribute.get(
-  (HTMLElement)   element,
-  (String)        attributeName,
-)
-
-```
-
-#### bp.attribute.set();
-Set an attribute on the given tag. Checks automatically if the attribute exists with or without data- prefix.
-
-```javascript
-bp.attribute.set(
-  (HTMLElement)   element,
-  (String)        attributeName,
-  (String)        value
-)
-
-```
-#### bp.attribute.remove();
-
-Removes an attribute from the given tag. Checks automatically if the attribute exists with or without data- prefix.
-
-```javascript
-bp.attribute.remove(
-  (HTMLElement)   element,
-  (String)        attributeName
-)
-
-```
-
-#### bp.attribute.matchName();
-
-Compares two attribute names and checks if they are the same with: `"attributeName" === "data-attributeName"`<br>
-__Returns:__ `true|false`
-
-```javascript
-bp.attribute.matchName(
-  (String)      needle,
-  (String)      haystack
-)
-
-```
-
-## Tags
+## Bonaparte Tags
 
 ```html
 <toolbar
@@ -360,3 +148,231 @@ bonaparte.panel.close
 
 </button-bonaparte>
 ```
+
+## Development
+
+### Bonaparte
+
+#### Install / Build
+
+- Clone Repository (Note: Respository includes submodules)
+- Run `npm install` in `./`.
+
+#### Development
+
+- Run `npm run install-dev` in `./`. _(Select **NO** for all options for fastes result)_
+- Run `gulp BPA-watch` to watch `./src/` and keep `./dist/` up to date.
+
+> ### SUI theme
+> #### Install / Build
+>
+> - Clone Repository (Note: Respository includes submodules)
+> - Run `npm install` in `./`. 
+>
+> #### Development
+>
+> > __One doesn't simply work in `dist/` directly.__ <br>
+> > _- Wise Man_
+>
+> - Install / Build SUI.
+> - Run `npm run install-dev` in `./`. _(Select **NO** for all options for fastes result)_
+> - Run `gulp SUI-watch` to watch `.SUI/ui/` and keep `dist/` up to date.
+> - Work in `ui/`. _( Theme: `./ui/src/themes/bonaparte/` )_
+
+
+## Structure
+
+Bonaparte has a modular structure and is therefore very easily extendable.
+Each bonaparte tag is a combination of __modules__.
+
+__Modules__ are simple javascript functions that get instanciated for each tag-instance on the page:
+
+```javascript
+  function module(tag) {
+    // tag === this === current tag instance
+  }
+```
+
+## Events
+
+Bonaparte-Tags emit the following custom events.
+
+```javascript
+  "bonaparte.tag.created"
+  "bonaparte.tag.attached"
+  "bonaparte.tag.detached"
+  "bonaparte.tag.attributeChanged" // Value changed
+  "bonaparte.tag.attributeUpdated" // Value updated (might not have changed)
+```
+
+### Listen
+Listen to them like you do with native events:
+```javascript
+document.getElementById("bonaparte-tag").addEventListener("bonaparte.tag.created", handler);
+```
+
+#### Trigger
+On Bonaparte-Tags Custom events can easily be triggered by calling
+```javascript
+document.getElementById("bonaparte-tag").bonaparte.triggerEvent("name", data)
+```
+
+Or through the API events can be triggered on any element: 
+```javascript
+bp.tag.triggerEvent(tag, "name", data)`;
+```
+
+#### API
+Requiring the `bonaparte` module provides all the necessary functions to create new _tags_ from modules, as well a set of utility functions that can be used within _modules_.
+
+```javascript
+  var bp = require("bonaparte"); // this also works in the module repository itself
+```
+---
+---
+
+### bp.attribute
+
+Utility functions that should be used to handle attributes. <br>
+They automatically handle both `name` and `data-name` attributes in one go and normalize events across browsers.
+
+#### bp.attribute.get();
+Get an attribute from the given tag by attribute name. Automatically checks for data-[name] as well.<br>
+__Return:__ attribute value.
+
+```javascript
+bp.attribute.get(
+  (HTMLElement)   element,
+  (String)        attributeName,
+)
+
+```
+#### bp.attribute.matchName();
+
+Compares two attribute names and checks if they are the same with: `"attributeName" === "data-attributeName"`<br>
+__Returns:__ `true|false`
+
+```javascript
+bp.attribute.matchName(
+  (String)      needle,
+  (String)      haystack
+)
+
+```
+
+#### bp.attribute.remove();
+
+Removes an attribute from the given tag. Checks automatically if the attribute exists with or without data- prefix.
+
+```javascript
+bp.attribute.remove(
+  (HTMLElement)   element,
+  (String)        attributeName
+)
+
+```
+#### bp.attribute.set();
+Set an attribute on the given tag. Checks automatically if the attribute exists with or without data- prefix.
+
+```javascript
+bp.attribute.set(
+  (HTMLElement)   element,
+  (String)        attributeName,
+  (String)        value
+)
+
+```
+
+
+---
+---
+### bp.module
+#### bp.module.mixin()
+Combines _modules_ into a new _module_ <br>
+__Returns__ a _module_.
+```javascript
+
+var module = bp.modules.mixin(
+    (Function)   module,                 // Modules to be combined
+    (Function)   module,                 // Modules will be instanciated in the order they they are passed to the mixin funcition.
+    ...
+)
+
+```
+> Modules are combinded to an `objct`. Read more about the objct library [here](https://github.com/greenish/js-objct)
+
+---
+---
+
+### bp.tag
+
+#### bp.tag.closest();
+Traverses up the element tree to find the first element that matches the given selector.
+__Returns:__ `Element|undefined`
+
+```javascript
+bp.tag.closest(
+  (HTMLElement)   element,
+  (querySelector) selector
+)
+```
+
+#### bp.tag.contains();
+Checks one Element is placed inside another.<br>
+__Returns:__ `true|false`
+
+```javascript
+bp.tag.contains(
+  (HTMLElement) parent,
+  (HTMLElement) child
+)
+```
+#### bp.tag.create();
+Creates a new bonaparte-tag from _modules_. <br>
+__Returns__ a tag definition.
+
+
+```javascript
+
+var tag = bp.tag.create( 
+    (String) name,                    // Tag name. "-bonaparte" is automatically appended.
+    (Array|Function) modules,         // Modules the new tag includes.
+  [ (HTMLElement) htmlBaseElement ]   // Define the html element this tag inherits from (Default: HTMLElement)
+)
+
+////////////
+// Static functions
+
+tag.register();                         // Registers tag in HTML. After calling this function, the tag can be used in HTML.
+tag.initialize( (HTMLElement) tag );    // Initializes the tag on an existion HTMLElement.
+tag.mixin( (Array) mixins );            // Define mixins to chustomize existing tags behaviors.      
+
+```
+> Modules are combinded to an `objct`. Read more about the objct library [here](https://github.com/greenish/js-objct)
+      
+> Static methods on modules become static methods on the tag-definition.
+
+#### bp.tag.observe();
+Sets on observer on the given Element.
+The observed element now emits `bonaparte.tag.attributeChanged` and `bonaparte.tag.attributeUpdated` events.
+
+```javascript
+bp.tag.observe(
+  (HTMLElement) element
+)
+```
+
+#### bp.tag.triggerEvent();
+Triggers a event on the given HTMLElement
+__Returns:__ `undefined`
+
+```javascript
+bp.tag.triggerEvent(
+  (String)        event,
+  (HTMLElement)   target,
+  (Object)        data,
+ [(Boolean)       bubbles = true ]
+ [(Boolean)       cancelable=true]
+)
+```
+
