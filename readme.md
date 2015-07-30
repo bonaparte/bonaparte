@@ -4,13 +4,13 @@
 - [Examples](#examples)
 - [Bonaparte Components](#bonaparte-components)
   - [Standard Components](#standard-components)
-    - [< button-bonaparte >]()
-    - [< scroll-bonaparte >]()
-    - [< sidebar-bonaparte >]()
-    - [< panel-bonaparte >]()
+    - [< button-bonaparte >](#-button-bonaparte-)
+    - [< scroll-bonaparte >](#-scroll-bonaparte-)
+    - [< sidebar-bonaparte >](#-sidebar-bonaparte-)
+    - [< panel-bonaparte >](#-panel-bonaparte-)
   - [Highlevel Components](#highlevel-components)
-    - [< toolbar-bonaparte >]()    
-      - [< cornerstone-bonaparte >]()
+    - [< toolbar-bonaparte >](#-toolbar-bonaparte-)    
+      - [< cornerstone-bonaparte >](#-cornerstone-bonaparte-)
 - [Development](#development)
   - [Bonaparte](#bonaparte)
   - [Semantic UI Theme](#sui-theme)
@@ -78,19 +78,22 @@ In addition, some components define a number of `required` child tags. Required 
 
 ### Standard Components
 
-#### < sidebar-bonaparte >
-
+#### < button-bonaparte >
 ```html
-<sidebar-bonaparte
-  sidebar=[left|top|right|bottom]
-  open=[true|false]
+
+<button-bonaparte
+  target=[querySelector]
+  target-[attribute]=[value]
+  action=[event]
+  toggle=[false|true]?[attribute]*
+  trigger=[event]
+  bubbles=[true|false]
+  active-class=[classname|""]
+  shortcut=[shortcut]
 >
 
-  <!-- Required -->
-  <1st-child sidebar />
-  <2nd-child content /> 
-  
-</sidebar-bonaparte>
+
+</button-bonaparte>
 ```
 
 #### < panel-bonaparte >
@@ -121,22 +124,19 @@ bonaparte.panel.close
 
 </scroll-bonaparte>
 ```
-#### < button-bonaparte >
-```html
+#### < sidebar-bonaparte >
 
-<button-bonaparte
-  target=[querySelector]
-  target-[attribute]=[value]
-  action=[event]
-  toggle=[false|true]?[attribute]*
-  trigger=[event]
-  bubbles=[true|false]
-  active-class=[classname|""]
-  shortcut=[shortcut]
+```html
+<sidebar-bonaparte
+  sidebar=[left|top|right|bottom]
+  open=[true|false]
 >
 
-
-</button-bonaparte>
+  <!-- Required -->
+  <1st-child sidebar />
+  <2nd-child content /> 
+  
+</sidebar-bonaparte>
 ```
 
 ### Highlevel Components
