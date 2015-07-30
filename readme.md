@@ -93,16 +93,23 @@ Bonaparte-Tags emit the following custom events.
   "bonaparte.tag.created"
   "bonaparte.tag.attached"
   "bonaparte.tag.detached"
-  "bonaparte.tag.attributeChanged"
-  "bonaparte.tag.attributeUpdated"
+  "bonaparte.tag.attributeChanged" // Value changed
+  "bonaparte.tag.attributeUpdated" // Value updated (might not have changed)
 ```
 
-Custom tags can easily be triggered on Bonaparte-Tags by calling
+__Listen__<br>
+Listen to them like you do with native events:
 ```javascript
-document.getElementById("bonaparte-tag").bonaparte.triggerEvent("name", data)`
+document.getElementById("bonaparte-tag").addEventListener("bonaparte.tag.created", handler);
 ```
-or through the api on any element 
 
+__Trigger__<br>
+On Bonaparte-Tags Custom events can easily be triggered by calling
+```javascript
+document.getElementById("bonaparte-tag").bonaparte.triggerEvent("name", data)
+```
+
+Or through the API events can be triggered on any element: 
 ```javascript
 bp.tag.triggerEvent(tag, "name", data)`;
 ```
@@ -114,11 +121,12 @@ Requiring the `bonaparte` module provides all the necessary functions to create 
   var bp = require("bonaparte"); // this also works in the module repository itself
 ```
 
+---
+---
 ### bp.module
 #### bp.module.mixin()
 Combines _modules_ into a new _module_ <br>
 __Returns__ a _module_.
-
 ```javascript
 
 var module = bp.modules.mixin(
@@ -130,10 +138,14 @@ var module = bp.modules.mixin(
 ```
 > Modules are combinded to an `objct`. Read more about the objct library [here](https://github.com/greenish/js-objct)
 
+---
+---
+
 ### bp.tag
 #### bp.tag.create();
 Creates a new bonaparte-tag from _modules_. <br>
 __Returns__ a tag definition.
+
 
 ```javascript
 
@@ -201,8 +213,11 @@ bp.tag.triggerEvent(
 )
 ```
 
+---
+---
 
 ### bp.attribute
+
 Utility functions that should be used to handle attributes. <br>
 They automatically handle both `name` and `data-name` attributes in one go and normalize events across browsers.
 
