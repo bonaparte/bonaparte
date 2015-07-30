@@ -2,7 +2,15 @@
 
 - [Basic Use](#basic-use)
 - [Examples](#examples)
-- [Bonaparte Tags](#bonaparte-tags)
+- [Bonaparte Components](#bonaparte-components)
+  - [Standard Components](#standard-components)
+    - [< button-bonaparte >]()
+    - [< scroll-bonaparte >]()
+    - [< sidebar-bonaparte >]()
+    - [< panel-bonaparte >]()
+  - [Highlevel Components](#highlevel-components)
+    - [< toolbar-bonaparte >]()    
+      - [< cornerstone-bonaparte >]()
 - [Development](#development)
   - [Bonaparte](#bonaparte)
   - [Semantic UI Theme](#sui-theme)
@@ -57,10 +65,86 @@ __Designs:__
 [Xavier](http://dowjones.github.io/bonaparte/designs/Xavier%20UI%20v0.2.pdf)
 
 
-## Bonaparte Tags
+## Bonaparte Components
+Bonaparte Components are custom tags, that can be used in HTML and come with built in functionality.
+
+Each component can be customized through attributes.
+
+In addition, some components define a number of `required` child tags. Required children must be the first children. After the required child elements, there can be aubitrary additional content.
+
+> Note: No component uses the `class` attribute in any way. You can use your favorite frontend frameworks classes for styling.
+
+> Note: Required children can be any type of tag. (i.e. the <sidebar-bonapartes>'s first child can be a `<div>` or more semantically correct an `<aside>` tag.
+
+### Standard Components
+
+#### < sidebar-bonaparte >
 
 ```html
-<toolbar
+<sidebar-bonaparte
+  sidebar=[left|top|right|bottom]
+  open=[true|false]
+>
+
+  <!-- Required -->
+  <1st-child sidebar />
+  <2nd-child content /> 
+  
+</sidebar-bonaparte>
+```
+
+#### < panel-bonaparte >
+
+```html
+<!-- parent element must not be position:static -->
+<panel-bonaparte
+  position=[left|top|right|bottom]
+  open=[false|true]
+>
+</panel-bonaparte>
+
+<!-- events -->
+bonaparte.panel.open
+bonaparte.panel.close
+
+```
+#### < scroll-bonaparte >
+
+```html
+<!-- parent element must not be position:static -->
+<scroll-bonaparte
+  scrollBar=[hover|visible|hidden|native]
+>
+
+  <!-- Required -->
+  <1st-child content />
+
+</scroll-bonaparte>
+```
+#### < button-bonaparte >
+```html
+
+<button-bonaparte
+  target=[querySelector]
+  target-[attribute]=[value]
+  action=[event]
+  toggle=[false|true]?[attribute]*
+  trigger=[event]
+  bubbles=[true|false]
+  active-class=[classname|""]
+  shortcut=[shortcut]
+>
+
+
+</button-bonaparte>
+```
+
+### Highlevel Components
+Highlevel components enforce a certain level of design hierachry by implementing some restrictions. 
+
+#### < toolbar-bonaparte >
+```html
+<toolbar-bonaparte
   cornerstone=[top|bottom][left|right][outside]?
 
   extends:sidebar
@@ -84,19 +168,7 @@ __Designs:__
 
 </toolbar-bonaparte>
 ```
-
-```html
-<sidebar
-  sidebar=[left|top|right|bottom]
-  open=[true|false]
->
-
-  <!-- Required -->
-  <1st-child sidebar />
-  <2nd-child content /> 
-  
-</sidebar-bonaparte>
-```
+##### < cornerstone-bonaparte >
 
 ```html
 <!-- only as direct child of <toolbar-bonaparte> -->
@@ -104,49 +176,6 @@ __Designs:__
   extends:button
 >
 </cornerstone-bonaparte>
-```
-
-```html
-<!-- parent element must not be position:static -->
-<panel-bonaparte
-  position=[left|top|right|bottom]
-  open=[false|true]
->
-</panel-bonaparte>
-
-<!-- events -->
-bonaparte.panel.open
-bonaparte.panel.close
-
-```
-
-```html
-<!-- parent element must not be position:static -->
-<scroll-bonaparte
-  scrollBar=[hover|visible|hidden|native]
->
-
-  <!-- Required -->
-  <1st-child content />
-
-</scroll-bonaparte>
-```
-
-```html
-
-<button-bonaparte
-  target=[querySelector]
-  target-[attribute]=[value]
-  action=[event]
-  toggle=[false|true]?[attribute]*
-  trigger=[event]
-  bubbles=[true|false]
-  active-class=[classname|""]
-  shortcut=[shortcut]
->
-
-
-</button-bonaparte>
 ```
 
 ## Development
