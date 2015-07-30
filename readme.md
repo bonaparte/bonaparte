@@ -46,6 +46,8 @@
   ./dist/SUI/semantic.min.js
   ./dist/bonaparte.js
   ```
+  
+This makes bonaparte and the bonaparte Semantic UI theme available in your project.
 
 ## Examples
 
@@ -74,7 +76,7 @@ In addition, some components define a number of `required` child tags. Required 
 
 > Note: No component uses the `class` attribute in any way. You can use your favorite frontend frameworks classes for styling.
 
-> Note: Required children can be any type of tag. (i.e. the <sidebar-bonapartes>'s first child can be a `<div>` or more semantically correct an `<aside>` tag.
+> Note: Required children can be any type of tag. (i.e. the < sidebar-bonaparte >'s first child can be a `<div>` or more semantically correct an `<aside>` tag.
 
 ### Standard Components
 
