@@ -1091,12 +1091,17 @@
   border-radius: 0;
   top: 0;
   right: 0;
+<<<<<<< Updated upstream
   background-color: #f5f5f5;
+=======
+  background-color: #f0f0f0;
+>>>>>>> Stashed changes
 }
 .ui.form .dropdown label.text {
   font-weight: 700;
   margin-left: 1rem;
 }
+<<<<<<< Updated upstream
 .ui.form .dropdown .meun {
   background-color: #fafafa;
   border-bottom: 1px solid #425cbd;
@@ -1105,6 +1110,8 @@
   color: #425cbd;
   font-weight: 400;
 }
+=======
+>>>>>>> Stashed changes
 
 
 /******************************/
@@ -1123,12 +1130,20 @@
   background-color: #fafafa;
   padding: 0;
 }
+<<<<<<< Updated upstream
 .ui.form .ui.checkbox:not(.toggle):not(.slider) label {
+=======
+.ui.form .ui.checkbox:not(.toggle) label {
+>>>>>>> Stashed changes
   padding: 1rem;
   font-size: 1.33333333rem;
   line-height: 2rem;
 }
+<<<<<<< Updated upstream
 .ui.form .ui.checkbox:not(.toggle):not(.slider) label:after {
+=======
+.ui.form .ui.checkbox:not(.toggle) label:after {
+>>>>>>> Stashed changes
   left: inherit;
   right: 0;
   width: 4rem;
@@ -1147,15 +1162,22 @@
           justify-content: center;
   background-color: #f0f0f0;
 }
+<<<<<<< Updated upstream
 .ui.form .ui.checkbox.checked:not(.toggle):not(.slider) label:after {
+=======
+.ui.form .ui.checkbox.checked:not(.toggle) label:after {
+>>>>>>> Stashed changes
   background-color: #ffffff;
   border-right: 2px solid #425cbd;
   border-left: 2px solid transparent;
   color: #425cbd;
 }
+<<<<<<< Updated upstream
 
 
 /*******************************
          Site Overrides
 *******************************/
 
+=======
+>>>>>>> Stashed changes

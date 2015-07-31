@@ -2014,10 +2014,7 @@ function createTag(name, modules, nativeBaseElement){
 ///////////////////////////////////////////////////////////////////////////////
 
   function register(){ 
-    console.log("register");
-    console.log(typeof document.registerElement);
-    if(typeof document.registerElement === "undefined") {
-      console.log(name);
+    if(typeof document.registerElement === "undefined") { // If IE8 make tag stylable but otherwise do nothing.
       document.createElement(name+"-bonaparte");
       return;
     }
@@ -2165,7 +2162,8 @@ module.exports = {
     contains : nodeContains,
     observe : observe,
     triggerEvent : triggerEvent,
-    closest : getClosest
+    closest : getClosest,
+    DOMReady : DOMReady    
   },
   attribute : {
     get : getAttribute,
@@ -2225,6 +2223,12 @@ function mixin() {
   return objct(arguments);
 }
 
+///////////////////////////////////////////////////////////////////////////////
+
+function DOMReady(handler){
+  if(document.readyState === "complete") handler();
+  else window.addEventListener("load", handler); 
+}
 ///////////////////////////////////////////////////////////////////////////////
 
 function triggerEvent(tag, event, data, bubbles, cancelable){
@@ -2356,8 +2360,8 @@ function button(tag){
   var toggle = false;
   var active;
 
-  if(document.readyState === "complete") init();
-  else window.addEventListener("load", init);
+
+  bp.tag.DOMReady(init);
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -3116,8 +3120,7 @@ module.exports = bp.tag.create("toolbar", [
 ///////////////////////////////////////////////////////////////////////////////
 function toolbar(tag){
 
-  if(document.readyState === "complete") initializeButtons();
-  else window.addEventListener("load", initializeButtons);
+  // bp.tag.DOMReady(initializeButtons);
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
