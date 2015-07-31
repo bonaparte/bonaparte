@@ -9,7 +9,8 @@ module.exports = {
     contains : nodeContains,
     observe : observe,
     triggerEvent : triggerEvent,
-    closest : getClosest
+    closest : getClosest,
+    DOMReady : DOMReady    
   },
   attribute : {
     get : getAttribute,
@@ -69,6 +70,12 @@ function mixin() {
   return objct(arguments);
 }
 
+///////////////////////////////////////////////////////////////////////////////
+
+function DOMReady(handler){
+  if(document.readyState === "complete") handler();
+  else window.addEventListener("load", handler); 
+}
 ///////////////////////////////////////////////////////////////////////////////
 
 function triggerEvent(tag, event, data, bubbles, cancelable){

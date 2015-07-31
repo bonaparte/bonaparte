@@ -17,8 +17,8 @@ function button(tag){
   var toggle = false;
   var active;
 
-  if(document.readyState === "complete") init();
-  else window.addEventListener("load", init);
+
+  bp.tag.DOMReady(init);
 
 ///////////////////////////////////////////////////////////////////////////////
 
