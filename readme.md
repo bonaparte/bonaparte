@@ -252,8 +252,9 @@ bp.tag.triggerEvent(tag, "name", data);
 New Bonaparte Components can easily be created with help of the [API](#api):
 
 ```javascript
-var tag = bp.tag.create("name", function(){
-  // Tag logic here.
+var tag = bp.tag.create("name", function(tag){
+  // tag === this === current tag instance
+  // Logic goes here.
 });
 ```
 (Full documentation: [bp.tag.create()](#bptagcreate))
