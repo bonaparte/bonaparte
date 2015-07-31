@@ -24,6 +24,7 @@
   -  [bp.tag.closest()](#bptagclosest)
   -  [bp.tag.contains()](#bptagcontains)
   -  [bp.tag.create()](#bptagcreate)
+  -  [bp.tag.DOMReady()](#bptagdomready)
   -  [bp.tag.observe()](#bptagobserve)
   -  [bp.tag.triggerEvent()](#bptagtriggerevent)
 
@@ -201,6 +202,9 @@ For the best result, use as many highlevel components in your design as possible
 ---
 
 #### < toolbar-bonaparte >
+A Toolbar is a specialized sidebar which contains button groups. The toolbar inherits all the functionality from [`<sidebar-bonaparte>`](#-sidebar-bonaparte-). In addition child elements of the sidebar are handled as button groups and spread evenly from left to right or top to bottom.
+As a highlevel component Toolbars also implements restrictions on buttons. Buttons within a toolbar can only _target_ child elements of the `<toolbar-bonaparte>` tag. They can not _target_ parent elements of the toolbar.
+
 ```html
 <toolbar-bonaparte
   cornerstone=[top|bottom][left|right][outside]?
@@ -208,17 +212,10 @@ For the best result, use as many highlevel components in your design as possible
   extends:sidebar
 >
 
-  <!-- Required -->
   <1st-child sidebar>
     
-    <!-- Required -->
     <nth-child button-group>
-    
-      <!-- Required -->
-      <nth-child button
-        extends:button
-      />
-  
+
   <2nd-child content /> 
 
   <!-- Optional -->
@@ -470,6 +467,16 @@ The returned _Tag Factory_ that can be.
       
 > Static methods on modules become static methods on the _Tag Factory_.
 
+---
+
+#### bp.tag.DOMReady();
+Calls the handler function when the DOM is ready. If the DOM is already completed, the handler is called imediately.
+
+```javascript
+bp.tag.DOMReady(
+  (function) handler
+)
+```
 ---
 
 #### bp.tag.observe();
