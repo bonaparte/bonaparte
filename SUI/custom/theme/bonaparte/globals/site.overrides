@@ -44,11 +44,27 @@ b, strong {
 }
 
 .ui.block .header {
-	background: @color-light-2;
-	padding: 1rem 1rem;
-	margin: 0;
-	box-shadow: none;
-	border-bottom: 1px solid @color-light-3;
-	text-transform: uppercase;
+  background: @color-light-2;
+  padding: 1rem 1rem;
+  margin: 0;
+  box-shadow: none;
+  border-bottom: 1px solid @color-light-3;
+  text-transform: uppercase;
   box-sizing: border-box;
 }
+
+.ui.block .header i.icon {
+  margin-right: 1rem;
+}
+
+.ui.block .header .button {
+  margin: 0 1rem;
+}
+
+.ui.block .header .button.right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+}
+

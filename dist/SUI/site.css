@@ -153,6 +153,18 @@ input::selection {
         Global Overrides
 *******************************/
 
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+body,
+body toolbar-bonaparte:first-of-type {
+  height: 100%;
+}
 /*Import Fonts*/
 p {
   font-weight: 400;
@@ -172,3 +184,33 @@ b,
 strong {
   font-weight: 700;
 }
+.ui.block {
+  box-sizing: border-box;
+}
+.ui.block .header {
+  background: #f5f5f5;
+  padding: 1rem 1rem;
+  margin: 0;
+  box-shadow: none;
+  border-bottom: 1px solid #f0f0f0;
+  text-transform: uppercase;
+  box-sizing: border-box;
+}
+.ui.block .header i.icon {
+  margin-right: 1rem;
+}
+.ui.block .header .button {
+  margin: 0 1rem;
+}
+.ui.block .header .button.right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+}
+
+
+/*******************************
+         Site Overrides
+*******************************/
+

@@ -528,3 +528,20 @@
 .radio:before { content: '\e803'; }
 
 */
+.ui.checkbox.visibility label:before {
+  visibility: hidden;
+}
+.ui.checkbox.visibility label:after {
+  font-family: Icons;
+  content: "\e8f5";
+  opacity: 1;
+}
+.ui.checkbox.visibility.checked label:after {
+  content: "\e8f4";
+}
+
+
+/*******************************
+         Site Overrides
+*******************************/
+

@@ -35,7 +35,7 @@
   width: 100%;
   border: 0;
   border-bottom: 3px double @color-light-6;
-  background-color: @color-light-2;
+  background-color: @color-light-1;
   padding: 1rem;
   font-size: 1.3rem;
   color: @color-dark-2;
@@ -94,14 +94,14 @@
   color: @color-dark-2;
   border: 0;
   border-bottom: 1px solid @color-light-6;
-  background-color: @color-light-2;
+  background-color: @color-light-1;
   padding: 1rem;
 }
 
 
 .inline.block.fields {
   color: @color-dark-2;
-  background-color: @color-light-2;
+  background-color: @color-light-1;
   padding: 1rem;
 }
 
@@ -120,7 +120,7 @@
   border-radius: 0;
   top: 0;
   right: 0;
-  background-color: @color-light-3;
+  background-color: @color-light-2;
 }
 
 .ui.form .dropdown label.text {
@@ -128,6 +128,15 @@
   margin-left: 1rem;
 }
 
+.ui.form .dropdown .meun {
+  background-color: @color-light-1;
+  border-bottom: 1px solid @color-active;
+}
+
+.ui.form .dropdown .menu .selected.item {
+  color: @color-active;
+  font-weight: 400;
+}
 
 /******************************/
 /*          checkbox          */
@@ -142,13 +151,13 @@
     background-color: @color-light-1;
     padding: 0;
 }
-.ui.form .ui.checkbox:not(.toggle) label {
+.ui.form .ui.checkbox:not(.toggle):not(.slider) label {
     padding: 1rem;
     font-size: 1.33333333rem;
     line-height: 2rem;
 }
 
-.ui.form .ui.checkbox:not(.toggle) label:after {
+.ui.form .ui.checkbox:not(.toggle):not(.slider) label:after {
     left: inherit;
     right: 0;
     width: 4rem;
@@ -159,7 +168,7 @@
     background-color: @color-light-3;
 }
 
-.ui.form .ui.checkbox.checked:not(.toggle) label:after {
+.ui.form .ui.checkbox.checked:not(.toggle):not(.slider) label:after {
     background-color: @color-light-0;
     border-right: 2px solid @color-active;
     border-left: 2px solid transparent;

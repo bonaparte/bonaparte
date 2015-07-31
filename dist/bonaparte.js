@@ -1859,10 +1859,8 @@ factory.extend = function(){
 		});
 
 		// if module is a function and not a decorator, copy static properties to Executable
-		if(!instant && type === strFunction && args[i].hash !== hash) {
+		if(!instant && type === strFunction && args[i].hash !== hash)
 			mixinObject(Executable, args[i], thisData);
-		}
-
 	}	
 	return instant ? new Executable() : Executable;
 };
