@@ -24,6 +24,7 @@
   -  [bp.tag.closest()](#bptagclosest)
   -  [bp.tag.contains()](#bptagcontains)
   -  [bp.tag.create()](#bptagcreate)
+  -  [bp.tag.DOMReady()](#bptagDOMReady)
   -  [bp.tag.observe()](#bptagobserve)
   -  [bp.tag.triggerEvent()](#bptagtriggerevent)
 
@@ -470,6 +471,16 @@ The returned _Tag Factory_ that can be.
       
 > Static methods on modules become static methods on the _Tag Factory_.
 
+---
+
+#### bp.tag.DOMReady();
+Calls the handler function when the DOM is ready. If the DOM is already completed, the handler is called imediately.
+
+```javascript
+bp.tag.DOMReady(
+  (function) handler
+)
+```
 ---
 
 #### bp.tag.observe();
