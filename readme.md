@@ -74,6 +74,8 @@ In addition, some components define a number of `required` child tags. Required 
 
 ### Standard Components
 
+---
+
 #### < button-bonaparte >
 ```html
 
@@ -92,9 +94,11 @@ In addition, some components define a number of `required` child tags. Required 
 </button-bonaparte>
 ```
 
+---
+
 #### < panel-bonaparte >
 A panel is a temporary UI element that slides in from one side. It automatically attaches itself to its next positioned parent element. There can only be one panel open at a time and opening another panel or clicking outside of it will close the current panel.
-(For a permanent sidebar, use the `<sidebar-bonaparte` tag)
+(For a permanent sidebar, use the `<sidebar-bonaparte>` tag)
 ```html
 <!-- parent element must not be position:static -->
 <panel-bonaparte 
@@ -106,7 +110,7 @@ A panel is a temporary UI element that slides in from one side. It automatically
 
 ##### Attributes
 Attribute | Values | Default | Description 
-:--------- | :--- | :------ | :---------- | :-------- 
+:--------- | :--- | :------ | :----------
 __position__ | `left`<br>`top`<br>`right`<br>`bottom` | `left` | Defines the position and direction of the panel within its parent element.
 __open__ | `true`<br>`false` | `false` | Depending on this attribute the panel is visible or not. 
 
@@ -116,21 +120,38 @@ Name | Target | Bubbles | Description
 __bonaparte.panel.open__ | `<panel-bonaparte>` | yes | Triggers when a panel opens.
 __bonaparte.panel.close__ | `<panel-bonaparte>` | yes | Triggers when a panel closes.
 
-
+---
 
 #### < scroll-bonaparte >
+The scroll component can be used to very easily implement scrolling in a container.
 
 ```html
 <!-- parent element must not be position:static -->
 <scroll-bonaparte
-  scrollBar=[hover|visible|hidden|native]
+  scrollBar
 >
 
-  <!-- Required -->
   <1st-child content />
 
 </scroll-bonaparte>
 ```
+
+##### Attributes
+Name | Values | Default | Description 
+:--------- | :--- | :------ | :---------
+__scrollbar__  |  `hover`  | `hover` | Scrollbar is only visible if the user hover over the scrollable area. 
+ | `visible`  | | Scrollbar is always visible.
+ | `hidden` | | Scrollbar is never visible
+ | `native` | | The native scrollbar will not be replaced and is visible.
+
+
+##### Child elements
+Index | Name |  Required | Description 
+:--------- | :--- | :------ | :-----
+__1__ | content | yes | Content that will be scrolled.
+
+---
+
 #### < sidebar-bonaparte >
 
 ```html
@@ -146,9 +167,13 @@ __bonaparte.panel.close__ | `<panel-bonaparte>` | yes | Triggers when a panel cl
 </sidebar-bonaparte>
 ```
 
+---
+
 ### Highlevel Components
 Highlevel components enforce a certain level of design hierachry by implementing some restrictions.
 For the best result, use as many highlevel components in your design as possible.
+
+---
 
 #### < toolbar-bonaparte >
 ```html
@@ -185,6 +210,8 @@ For the best result, use as many highlevel components in your design as possible
 >
 </cornerstone-bonaparte>
 ```
+
+---
 
 ## Development
 
