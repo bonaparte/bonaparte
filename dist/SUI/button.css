@@ -6117,6 +6117,26 @@ toolbar-bonaparte.massive > *:first-child .ui.buttons.right.labeled.icon .ui.but
 /*////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////*/
 
+/*--------------
+     Toggle
+---------------*/
+
+
+/* Toggle (Modifies active state to give affordances) */
+.ui.toggle.buttons .active.button,
+.ui.buttons .button.toggle.active,
+.ui.button.toggle.active {
+  background-color: #fafafa !important;
+  box-shadow: none !important;
+  text-shadow: none;
+  color: #425cbd !important;
+}
+.ui.button.toggle.active:hover {
+  background-color: transparent !important;
+  text-shadow: none;
+  color: #425cbd !important;
+}
+
 
 /*******************************
          Site Overrides

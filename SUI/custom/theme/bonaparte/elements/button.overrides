@@ -375,3 +375,24 @@ toolbar-bonaparte.massive > *:first-child .ui.buttons,
 
   }
 }
+
+
+
+/*--------------
+     Toggle
+---------------*/
+
+/* Toggle (Modifies active state to give affordances) */
+.ui.toggle.buttons .active.button,
+.ui.buttons .button.toggle.active,
+.ui.button.toggle.active {
+  background-color: @color-light-1 !important;
+  box-shadow: none !important;
+  text-shadow: none;
+  color: @color-active !important;
+}
+.ui.button.toggle.active:hover {
+  background-color: transparent !important;
+  text-shadow: none;
+  color: @color-active !important;
+}

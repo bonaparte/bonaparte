@@ -923,7 +923,6 @@ strong {
   text-transform: uppercase;
   box-sizing: border-box;
 }
-<<<<<<< Updated upstream
 
 .ui.block .header i.icon {
   margin-right: 1rem;
@@ -943,8 +942,6 @@ strong {
 /*******************************
          Site Overrides
 *******************************/
-=======
->>>>>>> Stashed changes
 /*!
  * # Semantic UI 2.0.0 - Button
  * http://github.com/semantic-org/semantic-ui/
@@ -7659,6 +7656,27 @@ toolbar-bonaparte.massive > *:first-child .ui.buttons.right.labeled.icon .ui.but
 /*////////////////////////////////////////////////////////////////////*/
 
 /*////////////////////////////////////////////////////////////////////*/
+
+/*--------------
+     Toggle
+---------------*/
+
+/* Toggle (Modifies active state to give affordances) */
+
+.ui.toggle.buttons .active.button,
+.ui.buttons .button.toggle.active,
+.ui.button.toggle.active {
+  background-color: #fafafa !important;
+  box-shadow: none !important;
+  text-shadow: none;
+  color: #425cbd !important;
+}
+
+.ui.button.toggle.active:hover {
+  background-color: transparent !important;
+  text-shadow: none;
+  color: #425cbd !important;
+}
 
 /*******************************
          Site Overrides
@@ -21158,11 +21176,7 @@ ol.ui.horizontal.list li:before,
   border-radius: 0;
   top: 0;
   right: 0;
-<<<<<<< Updated upstream
   background-color: #f5f5f5;
-=======
-  background-color: #f0f0f0;
->>>>>>> Stashed changes
 }
 
 .ui.form .dropdown label.text {
@@ -21170,7 +21184,6 @@ ol.ui.horizontal.list li:before,
   margin-left: 1rem;
 }
 
-<<<<<<< Updated upstream
 .ui.form .dropdown .meun {
   background-color: #fafafa;
   border-bottom: 1px solid #425cbd;
@@ -21181,8 +21194,6 @@ ol.ui.horizontal.list li:before,
   font-weight: 400;
 }
 
-=======
->>>>>>> Stashed changes
 /******************************/
 
 /*          checkbox          */
@@ -21198,21 +21209,13 @@ ol.ui.horizontal.list li:before,
   padding: 0;
 }
 
-<<<<<<< Updated upstream
 .ui.form .ui.checkbox:not(.toggle):not(.slider) label {
-=======
-.ui.form .ui.checkbox:not(.toggle) label {
->>>>>>> Stashed changes
   padding: 1rem;
   font-size: 1.33333333rem;
   line-height: 2rem;
 }
 
-<<<<<<< Updated upstream
 .ui.form .ui.checkbox:not(.toggle):not(.slider) label:after {
-=======
-.ui.form .ui.checkbox:not(.toggle) label:after {
->>>>>>> Stashed changes
   left: inherit;
   right: 0;
   width: 4rem;
@@ -21232,23 +21235,16 @@ ol.ui.horizontal.list li:before,
   background-color: #f0f0f0;
 }
 
-<<<<<<< Updated upstream
 .ui.form .ui.checkbox.checked:not(.toggle):not(.slider) label:after {
-=======
-.ui.form .ui.checkbox.checked:not(.toggle) label:after {
->>>>>>> Stashed changes
   background-color: #ffffff;
   border-right: 2px solid #425cbd;
   border-left: 2px solid transparent;
   color: #425cbd;
 }
-<<<<<<< Updated upstream
 
 /*******************************
          Site Overrides
 *******************************/
-=======
->>>>>>> Stashed changes
 /*!
  * # Semantic UI 2.0.0 - Grid
  * http://github.com/semantic-org/semantic-ui/
@@ -31053,13 +31049,10 @@ a.ui.card:hover,
 .ui.checkbox.visibility.checked label:after {
   content: "\e8f4";
 }
-<<<<<<< Updated upstream
 
 /*******************************
          Site Overrides
 *******************************/
-=======
->>>>>>> Stashed changes
 /*!
  * # Semantic UI 2.0.0 - Dimmer
  * http://github.com/semantic-org/semantic-ui/
