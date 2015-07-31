@@ -14,7 +14,7 @@
   - [Semantic UI Theme](#sui-theme)
 - [Structure/Modules](#structuremodules)
   - [Events](#events)
-- [Creating New Components](#creating-new-components)
+- [Create New Components](#create-new-components)
 - [API](#api)
   -  [bp.attribute.get()](#bpattributeget)
   -  [bp.attribute.matchName()](#bpattributematchname)
@@ -74,6 +74,8 @@ In addition, some components define a number of `required` child tags. Required 
 
 ### Standard Components
 
+---
+
 #### < button-bonaparte >
 ```html
 
@@ -92,40 +94,73 @@ In addition, some components define a number of `required` child tags. Required 
 </button-bonaparte>
 ```
 
-#### < panel-bonaparte >
+---
 
+#### < panel-bonaparte >
+A panel is a temporary UI element that slides in from one side. It automatically attaches itself to its next positioned parent element. There can only be one panel open at a time and opening another panel or clicking outside of it will close the current panel.
+(For a permanent sidebar, use the `<sidebar-bonaparte>` tag)
 ```html
 <!-- parent element must not be position:static -->
-<panel-bonaparte
-  position=[left|top|right|bottom]
-  open=[false|true]
+<panel-bonaparte 
+  position 
+  open
 >
 </panel-bonaparte>
-
-<!-- events -->
-bonaparte.panel.open
-bonaparte.panel.close
-
 ```
+
+##### Attributes
+Name | Values | Default | Description 
+:--------- | :--- | :------ | :----------
+__position__ | `left`<br>`top`<br>`right`<br>`bottom` | `left` | Defines the position and direction of the panel within its parent element.
+__open__ | `false` | `false` | Panel is not visible and moves out of its parent element.
+ | `true` | | Panel is visible and moves into its parent element
+
+##### Events
+Name | Target | Bubbles | Description 
+:--------- | :--- | :------ | :------
+__bonaparte.panel.open__ | `<panel-bonaparte>` | yes | Triggers when a panel opens.
+__bonaparte.panel.close__ | `<panel-bonaparte>` | yes | Triggers when a panel closes.
+
+---
+
 #### < scroll-bonaparte >
+The scroll component can be used to very easily implement scrolling in a container.
 
 ```html
 <!-- parent element must not be position:static -->
 <scroll-bonaparte
-  scrollBar=[hover|visible|hidden|native]
+  scrollBar
 >
 
-  <!-- Required -->
   <1st-child content />
 
 </scroll-bonaparte>
 ```
+
+##### Attributes
+Name | Values | Default | Description 
+:--------- | :--- | :------ | :---------
+__scrollbar__  |  `hover`  | `hover` | Scrollbar is only visible if the user hover over the scrollable area. 
+ | `visible`  | | Scrollbar is always visible.
+ | `hidden` | | Scrollbar is never visible
+ | `native` | | The native scrollbar will not be replaced and is visible.
+
+
+##### Child elements
+Index | Name |  Required | Description 
+:--------- | :--- | :------ | :-----
+__1__ | content | yes | Content that will be scrolled.
+
+---
+
 #### < sidebar-bonaparte >
+The Sidebar is a UI element consisting of to two areas, a sidebar and a content area. As opposed to the panel, the sidebar does not overlay over the content but pushes it. There can be multiple sidebars open at the same time and they can be nested.
+(Have a look at the `<toolbar-bonaparte>` highlevel component if you plan to only have buttons in the sidebar)
 
 ```html
 <sidebar-bonaparte
-  sidebar=[left|top|right|bottom]
-  open=[true|false]
+  sidebar
+  open
 >
 
   <!-- Required -->
@@ -135,9 +170,35 @@ bonaparte.panel.close
 </sidebar-bonaparte>
 ```
 
+##### Attributes
+Name | Values | Default | Description 
+:--------- | :--- | :------ | :---------
+__sidebar__  |   `left`<br>`top`<br>`right`<br>`bottom` | `left` | Defines the position of the sidebar relative to its content area.
+__open__ | `true` | `true` | Displays the Sidebar according to its `min-width`.
+ | `false` | | Sets the size of the sidebar to 0px.
+
+
+##### Child elements
+Index | Name |  Required | Description 
+:--------- | :--- | :------ | :-----
+__1__ | sidebar | yes | Will be place according to the _sidebar_ attribute.
+__2__ | content | yes | Holds the main content. The sidebar is placed around this element.
+
+
+##### Events
+Name | Target | Bubbles | Description 
+:--------- | :--- | :------ | :------
+__bonaparte.sidebar.open__ | `<sidebar-bonaparte>` | yes | Triggers when a sidebar opens.
+__bonaparte.sidebar.close__ | `<sidebar-bonaparte>` | yes | Triggers when a sidebar closes.
+
+
+---
+
 ### Highlevel Components
 Highlevel components enforce a certain level of design hierachry by implementing some restrictions.
 For the best result, use as many highlevel components in your design as possible.
+
+---
 
 #### < toolbar-bonaparte >
 ```html
@@ -174,6 +235,8 @@ For the best result, use as many highlevel components in your design as possible
 >
 </cornerstone-bonaparte>
 ```
+
+---
 
 ## Development
 
@@ -245,10 +308,20 @@ document.getElementById("bonaparte-tag").bonaparte.triggerEvent("name", data)
 
 Or through the [API](#api) events can be triggered on any element: 
 ```javascript
-bp.tag.triggerEvent(tag, "name", data)`;
+bp.tag.triggerEvent(tag, "name", data);
 ```
 
 ##Create New Components
+New Bonaparte Components can easily be created with help of the [API](#api):
+
+```javascript
+var tag = bp.tag.create("name", function(tag){
+  // tag === this === current tag instance
+  // Logic goes here.
+});
+```
+(Full documentation: [bp.tag.create()](#bptagcreate))
+
 
 ## API
 Requiring the `bonaparte` module provides all the necessary functions to create new _tags_ from modules, as well a set of utility functions that can be used within _modules_.
@@ -366,7 +439,7 @@ bp.tag.contains(
 ---
 #### bp.tag.create();
 Creates a new bonaparte-tag from _modules_. <br>
-__Returns__ a tag definition.
+__Returns__ _Tag Factory_.
 
 
 ```javascript
@@ -385,9 +458,17 @@ tag.initialize( (HTMLElement) tag );    // Initializes the tag on an existion HT
 tag.mixin( (Array) mixins );            // Define mixins to chustomize existing tags behaviors.      
 
 ```
-> Modules are combinded to an `objct`. Read more about the objct library [here](https://github.com/greenish/js-objct)
+
+The returned _Tag Factory_ that can be.
+  - Used as a mixin in other tags to extend their functionality.
+  - Registered to the DOM with `tag.register()` 
+  - Initiated on an existing element in the DOM with `tag.initialize(element)`
+  - Extended with modules through `tag.mixin(module)`
+
+
+> A _Tag Factory_ is an `objct`. Read more about the objct library [here](https://github.com/greenish/js-objct)
       
-> Static methods on modules become static methods on the tag-definition.
+> Static methods on modules become static methods on the _Tag Factory_.
 
 ---
 

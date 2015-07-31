@@ -3317,22 +3317,35 @@ button.ui.labeled.icon,
 button.ui.compact.labeled.icon,
 .ui.compact.button.labeled.icon,
 .ui.button.labeled.icon {
-  padding-left: 5rem !important;
-  padding-right: 1rem !important;
+  padding-left: 4rem !important;
+  padding-right: 0rem !important;
   text-align: left;
+  background-color: transparent;
+  text-indent: 1rem;
+  overflow: hidden;
 }
 button.ui.labeled.icon > .icon,
 button.ui.compact.labeled.icon > .icon,
 .ui.compact.button.labeled.icon > .icon,
 .ui.button.labeled.icon > .icon {
   width: 4rem;
+  text-indent: 0;
 }
 button.ui.right.labeled.icon,
 button.ui.compact.right.labeled.icon,
 .ui.compact.button.right.labeled.icon,
 .ui.button.right.labeled.icon {
   padding-left: 1rem !important;
-  padding-right: 5rem !important;
+  padding-right: 4rem !important;
+  text-align: right;
+  background-color: transparent;
+}
+button.ui.right.labeled.icon > i.icon,
+button.ui.compact.right.labeled.icon > i.icon,
+.ui.compact.button.right.labeled.icon > i.icon,
+.ui.button.right.labeled.icon > i.icon {
+  left: auto;
+  right: 0;
 }
 button.ui > i.icon,
 button.ui.compact > i.icon,
@@ -3406,17 +3419,26 @@ button.ui.compact.icon > i.icon,
 }
 .ui.buttons.labeled.icon button.ui,
 .ui.buttons.labeled.icon .ui.button {
-  padding-left: 5rem !important;
-  padding-right: 1rem !important;
+  padding-left: 4rem !important;
+  padding-right: 0 !important;
+  text-indent: 1rem;
+  overflow: hidden;
 }
 .ui.buttons.labeled.icon button.ui > i.icon,
 .ui.buttons.labeled.icon .ui.button > i.icon {
   width: 4rem;
+  text-indent: 0;
 }
 .ui.buttons.right.labeled.icon button.ui,
 .ui.buttons.right.labeled.icon .ui.button {
-  padding-right: 5rem !important;
-  padding-left: 1rem !important;
+  padding-right: 4rem !important;
+  padding-left: 0 !important;
+  text-align: right;
+}
+.ui.buttons.right.labeled.icon button.ui > i.icon,
+.ui.buttons.right.labeled.icon .ui.button > i.icon {
+  left: auto;
+  right: 0;
 }
 toolbar-bonaparte.mini > *:first-child button.ui,
 toolbar-bonaparte.mini > *:first-child .ui.button,
@@ -3918,9 +3940,12 @@ button.ui.tiny.compact.labeled.icon,
 .ui.tiny.buttons .button.labeled.icon,
 .ui.tiny.compact.button.labeled.icon,
 .ui.tiny.button.labeled.icon {
-  padding-left: 3rem !important;
-  padding-right: 1rem !important;
+  padding-left: 2rem !important;
+  padding-right: 0rem !important;
   text-align: left;
+  background-color: transparent;
+  text-indent: 1rem;
+  overflow: hidden;
 }
 toolbar-bonaparte.mini > *:first-child button.ui.labeled.icon > .icon,
 toolbar-bonaparte.mini > *:first-child .ui.button.labeled.icon > .icon,
@@ -3937,6 +3962,7 @@ button.ui.tiny.compact.labeled.icon > .icon,
 .ui.tiny.compact.button.labeled.icon > .icon,
 .ui.tiny.button.labeled.icon > .icon {
   width: 2rem;
+  text-indent: 0;
 }
 toolbar-bonaparte.mini > *:first-child button.ui.right.labeled.icon,
 toolbar-bonaparte.mini > *:first-child .ui.button.right.labeled.icon,
@@ -3953,7 +3979,26 @@ button.ui.tiny.compact.right.labeled.icon,
 .ui.tiny.compact.button.right.labeled.icon,
 .ui.tiny.button.right.labeled.icon {
   padding-left: 1rem !important;
-  padding-right: 3rem !important;
+  padding-right: 2rem !important;
+  text-align: right;
+  background-color: transparent;
+}
+toolbar-bonaparte.mini > *:first-child button.ui.right.labeled.icon > i.icon,
+toolbar-bonaparte.mini > *:first-child .ui.button.right.labeled.icon > i.icon,
+button.ui.mini.right.labeled.icon > i.icon,
+button.ui.mini.compact.right.labeled.icon > i.icon,
+.ui.mini.buttons .button.right.labeled.icon > i.icon,
+.ui.mini.compact.button.right.labeled.icon > i.icon,
+.ui.mini.button.right.labeled.icon > i.icon,
+toolbar-bonaparte.tiny > *:first-child button.ui.right.labeled.icon > i.icon,
+toolbar-bonaparte.tiny > *:first-child .ui.button.right.labeled.icon > i.icon,
+button.ui.tiny.right.labeled.icon > i.icon,
+button.ui.tiny.compact.right.labeled.icon > i.icon,
+.ui.tiny.buttons .button.right.labeled.icon > i.icon,
+.ui.tiny.compact.button.right.labeled.icon > i.icon,
+.ui.tiny.button.right.labeled.icon > i.icon {
+  left: auto;
+  right: 0;
 }
 toolbar-bonaparte.mini > *:first-child button.ui > i.icon,
 toolbar-bonaparte.mini > *:first-child .ui.button > i.icon,
@@ -4135,8 +4180,10 @@ toolbar-bonaparte.tiny > *:first-child .ui.buttons.labeled.icon .ui.button,
 toolbar-bonaparte.mini > *:first-child .ui.buttons.labeled.icon .ui.button,
 .ui.tiny.buttons.labeled.icon .ui.button,
 .ui.mini.buttons.labeled.icon .ui.button {
-  padding-left: 3rem !important;
-  padding-right: 1rem !important;
+  padding-left: 2rem !important;
+  padding-right: 0 !important;
+  text-indent: 1rem;
+  overflow: hidden;
 }
 toolbar-bonaparte.tiny > *:first-child .ui.buttons.labeled.icon button.ui > i.icon,
 toolbar-bonaparte.mini > *:first-child .ui.buttons.labeled.icon button.ui > i.icon,
@@ -4147,6 +4194,7 @@ toolbar-bonaparte.mini > *:first-child .ui.buttons.labeled.icon .ui.button > i.i
 .ui.tiny.buttons.labeled.icon .ui.button > i.icon,
 .ui.mini.buttons.labeled.icon .ui.button > i.icon {
   width: 2rem;
+  text-indent: 0;
 }
 toolbar-bonaparte.tiny > *:first-child .ui.buttons.right.labeled.icon button.ui,
 toolbar-bonaparte.mini > *:first-child .ui.buttons.right.labeled.icon button.ui,
@@ -4156,8 +4204,20 @@ toolbar-bonaparte.tiny > *:first-child .ui.buttons.right.labeled.icon .ui.button
 toolbar-bonaparte.mini > *:first-child .ui.buttons.right.labeled.icon .ui.button,
 .ui.tiny.buttons.right.labeled.icon .ui.button,
 .ui.mini.buttons.right.labeled.icon .ui.button {
-  padding-right: 3rem !important;
-  padding-left: 1rem !important;
+  padding-right: 2rem !important;
+  padding-left: 0 !important;
+  text-align: right;
+}
+toolbar-bonaparte.tiny > *:first-child .ui.buttons.right.labeled.icon button.ui > i.icon,
+toolbar-bonaparte.mini > *:first-child .ui.buttons.right.labeled.icon button.ui > i.icon,
+.ui.tiny.buttons.right.labeled.icon button.ui > i.icon,
+.ui.mini.buttons.right.labeled.icon button.ui > i.icon,
+toolbar-bonaparte.tiny > *:first-child .ui.buttons.right.labeled.icon .ui.button > i.icon,
+toolbar-bonaparte.mini > *:first-child .ui.buttons.right.labeled.icon .ui.button > i.icon,
+.ui.tiny.buttons.right.labeled.icon .ui.button > i.icon,
+.ui.mini.buttons.right.labeled.icon .ui.button > i.icon {
+  left: auto;
+  right: 0;
 }
 toolbar-bonaparte.small > *:first-child button.ui,
 toolbar-bonaparte.small > *:first-child .ui.button,
@@ -4323,9 +4383,12 @@ button.ui.small.compact.labeled.icon,
 .ui.small.buttons .button.labeled.icon,
 .ui.small.compact.button.labeled.icon,
 .ui.small.button.labeled.icon {
-  padding-left: 4rem !important;
-  padding-right: 1rem !important;
+  padding-left: 3rem !important;
+  padding-right: 0rem !important;
   text-align: left;
+  background-color: transparent;
+  text-indent: 1rem;
+  overflow: hidden;
 }
 toolbar-bonaparte.small > *:first-child button.ui.labeled.icon > .icon,
 toolbar-bonaparte.small > *:first-child .ui.button.labeled.icon > .icon,
@@ -4335,6 +4398,7 @@ button.ui.small.compact.labeled.icon > .icon,
 .ui.small.compact.button.labeled.icon > .icon,
 .ui.small.button.labeled.icon > .icon {
   width: 3rem;
+  text-indent: 0;
 }
 toolbar-bonaparte.small > *:first-child button.ui.right.labeled.icon,
 toolbar-bonaparte.small > *:first-child .ui.button.right.labeled.icon,
@@ -4344,7 +4408,19 @@ button.ui.small.compact.right.labeled.icon,
 .ui.small.compact.button.right.labeled.icon,
 .ui.small.button.right.labeled.icon {
   padding-left: 1rem !important;
-  padding-right: 4rem !important;
+  padding-right: 3rem !important;
+  text-align: right;
+  background-color: transparent;
+}
+toolbar-bonaparte.small > *:first-child button.ui.right.labeled.icon > i.icon,
+toolbar-bonaparte.small > *:first-child .ui.button.right.labeled.icon > i.icon,
+button.ui.small.right.labeled.icon > i.icon,
+button.ui.small.compact.right.labeled.icon > i.icon,
+.ui.small.buttons .button.right.labeled.icon > i.icon,
+.ui.small.compact.button.right.labeled.icon > i.icon,
+.ui.small.button.right.labeled.icon > i.icon {
+  left: auto;
+  right: 0;
 }
 toolbar-bonaparte.small > *:first-child button.ui > i.icon,
 toolbar-bonaparte.small > *:first-child .ui.button > i.icon,
@@ -4451,21 +4527,32 @@ toolbar-bonaparte.small > *:first-child .ui.buttons.labeled.icon button.ui,
 .ui.small.buttons.labeled.icon button.ui,
 toolbar-bonaparte.small > *:first-child .ui.buttons.labeled.icon .ui.button,
 .ui.small.buttons.labeled.icon .ui.button {
-  padding-left: 4rem !important;
-  padding-right: 1rem !important;
+  padding-left: 3rem !important;
+  padding-right: 0 !important;
+  text-indent: 1rem;
+  overflow: hidden;
 }
 toolbar-bonaparte.small > *:first-child .ui.buttons.labeled.icon button.ui > i.icon,
 .ui.small.buttons.labeled.icon button.ui > i.icon,
 toolbar-bonaparte.small > *:first-child .ui.buttons.labeled.icon .ui.button > i.icon,
 .ui.small.buttons.labeled.icon .ui.button > i.icon {
   width: 3rem;
+  text-indent: 0;
 }
 toolbar-bonaparte.small > *:first-child .ui.buttons.right.labeled.icon button.ui,
 .ui.small.buttons.right.labeled.icon button.ui,
 toolbar-bonaparte.small > *:first-child .ui.buttons.right.labeled.icon .ui.button,
 .ui.small.buttons.right.labeled.icon .ui.button {
-  padding-right: 4rem !important;
-  padding-left: 1rem !important;
+  padding-right: 3rem !important;
+  padding-left: 0 !important;
+  text-align: right;
+}
+toolbar-bonaparte.small > *:first-child .ui.buttons.right.labeled.icon button.ui > i.icon,
+.ui.small.buttons.right.labeled.icon button.ui > i.icon,
+toolbar-bonaparte.small > *:first-child .ui.buttons.right.labeled.icon .ui.button > i.icon,
+.ui.small.buttons.right.labeled.icon .ui.button > i.icon {
+  left: auto;
+  right: 0;
 }
 toolbar-bonaparte.large > *:first-child button.ui,
 toolbar-bonaparte.large > *:first-child .ui.button,
@@ -4967,9 +5054,12 @@ button.ui.big.compact.labeled.icon,
 .ui.big.buttons .button.labeled.icon,
 .ui.big.compact.button.labeled.icon,
 .ui.big.button.labeled.icon {
-  padding-left: 6rem !important;
-  padding-right: 1rem !important;
+  padding-left: 5rem !important;
+  padding-right: 0rem !important;
   text-align: left;
+  background-color: transparent;
+  text-indent: 1rem;
+  overflow: hidden;
 }
 toolbar-bonaparte.large > *:first-child button.ui.labeled.icon > .icon,
 toolbar-bonaparte.large > *:first-child .ui.button.labeled.icon > .icon,
@@ -4986,6 +5076,7 @@ button.ui.big.compact.labeled.icon > .icon,
 .ui.big.compact.button.labeled.icon > .icon,
 .ui.big.button.labeled.icon > .icon {
   width: 5rem;
+  text-indent: 0;
 }
 toolbar-bonaparte.large > *:first-child button.ui.right.labeled.icon,
 toolbar-bonaparte.large > *:first-child .ui.button.right.labeled.icon,
@@ -5002,7 +5093,26 @@ button.ui.big.compact.right.labeled.icon,
 .ui.big.compact.button.right.labeled.icon,
 .ui.big.button.right.labeled.icon {
   padding-left: 1rem !important;
-  padding-right: 6rem !important;
+  padding-right: 5rem !important;
+  text-align: right;
+  background-color: transparent;
+}
+toolbar-bonaparte.large > *:first-child button.ui.right.labeled.icon > i.icon,
+toolbar-bonaparte.large > *:first-child .ui.button.right.labeled.icon > i.icon,
+button.ui.large.right.labeled.icon > i.icon,
+button.ui.large.compact.right.labeled.icon > i.icon,
+.ui.large.buttons .button.right.labeled.icon > i.icon,
+.ui.large.compact.button.right.labeled.icon > i.icon,
+.ui.large.button.right.labeled.icon > i.icon,
+toolbar-bonaparte.big > *:first-child button.ui.right.labeled.icon > i.icon,
+toolbar-bonaparte.big > *:first-child .ui.button.right.labeled.icon > i.icon,
+button.ui.big.right.labeled.icon > i.icon,
+button.ui.big.compact.right.labeled.icon > i.icon,
+.ui.big.buttons .button.right.labeled.icon > i.icon,
+.ui.big.compact.button.right.labeled.icon > i.icon,
+.ui.big.button.right.labeled.icon > i.icon {
+  left: auto;
+  right: 0;
 }
 toolbar-bonaparte.large > *:first-child button.ui > i.icon,
 toolbar-bonaparte.large > *:first-child .ui.button > i.icon,
@@ -5184,8 +5294,10 @@ toolbar-bonaparte.large > *:first-child .ui.buttons.labeled.icon .ui.button,
 toolbar-bonaparte.big > *:first-child .ui.buttons.labeled.icon .ui.button,
 .ui.large.buttons.labeled.icon .ui.button,
 .ui.big.buttons.labeled.icon .ui.button {
-  padding-left: 6rem !important;
-  padding-right: 1rem !important;
+  padding-left: 5rem !important;
+  padding-right: 0 !important;
+  text-indent: 1rem;
+  overflow: hidden;
 }
 toolbar-bonaparte.large > *:first-child .ui.buttons.labeled.icon button.ui > i.icon,
 toolbar-bonaparte.big > *:first-child .ui.buttons.labeled.icon button.ui > i.icon,
@@ -5196,6 +5308,7 @@ toolbar-bonaparte.big > *:first-child .ui.buttons.labeled.icon .ui.button > i.ic
 .ui.large.buttons.labeled.icon .ui.button > i.icon,
 .ui.big.buttons.labeled.icon .ui.button > i.icon {
   width: 5rem;
+  text-indent: 0;
 }
 toolbar-bonaparte.large > *:first-child .ui.buttons.right.labeled.icon button.ui,
 toolbar-bonaparte.big > *:first-child .ui.buttons.right.labeled.icon button.ui,
@@ -5205,8 +5318,20 @@ toolbar-bonaparte.large > *:first-child .ui.buttons.right.labeled.icon .ui.butto
 toolbar-bonaparte.big > *:first-child .ui.buttons.right.labeled.icon .ui.button,
 .ui.large.buttons.right.labeled.icon .ui.button,
 .ui.big.buttons.right.labeled.icon .ui.button {
-  padding-right: 6rem !important;
-  padding-left: 1rem !important;
+  padding-right: 5rem !important;
+  padding-left: 0 !important;
+  text-align: right;
+}
+toolbar-bonaparte.large > *:first-child .ui.buttons.right.labeled.icon button.ui > i.icon,
+toolbar-bonaparte.big > *:first-child .ui.buttons.right.labeled.icon button.ui > i.icon,
+.ui.large.buttons.right.labeled.icon button.ui > i.icon,
+.ui.big.buttons.right.labeled.icon button.ui > i.icon,
+toolbar-bonaparte.large > *:first-child .ui.buttons.right.labeled.icon .ui.button > i.icon,
+toolbar-bonaparte.big > *:first-child .ui.buttons.right.labeled.icon .ui.button > i.icon,
+.ui.large.buttons.right.labeled.icon .ui.button > i.icon,
+.ui.big.buttons.right.labeled.icon .ui.button > i.icon {
+  left: auto;
+  right: 0;
 }
 toolbar-bonaparte.huge > *:first-child button.ui,
 toolbar-bonaparte.huge > *:first-child .ui.button,
@@ -5708,9 +5833,12 @@ button.ui.massive.compact.labeled.icon,
 .ui.massive.buttons .button.labeled.icon,
 .ui.massive.compact.button.labeled.icon,
 .ui.massive.button.labeled.icon {
-  padding-left: 7rem !important;
-  padding-right: 1rem !important;
+  padding-left: 6rem !important;
+  padding-right: 0rem !important;
   text-align: left;
+  background-color: transparent;
+  text-indent: 1rem;
+  overflow: hidden;
 }
 toolbar-bonaparte.huge > *:first-child button.ui.labeled.icon > .icon,
 toolbar-bonaparte.huge > *:first-child .ui.button.labeled.icon > .icon,
@@ -5727,6 +5855,7 @@ button.ui.massive.compact.labeled.icon > .icon,
 .ui.massive.compact.button.labeled.icon > .icon,
 .ui.massive.button.labeled.icon > .icon {
   width: 6rem;
+  text-indent: 0;
 }
 toolbar-bonaparte.huge > *:first-child button.ui.right.labeled.icon,
 toolbar-bonaparte.huge > *:first-child .ui.button.right.labeled.icon,
@@ -5743,7 +5872,26 @@ button.ui.massive.compact.right.labeled.icon,
 .ui.massive.compact.button.right.labeled.icon,
 .ui.massive.button.right.labeled.icon {
   padding-left: 1rem !important;
-  padding-right: 7rem !important;
+  padding-right: 6rem !important;
+  text-align: right;
+  background-color: transparent;
+}
+toolbar-bonaparte.huge > *:first-child button.ui.right.labeled.icon > i.icon,
+toolbar-bonaparte.huge > *:first-child .ui.button.right.labeled.icon > i.icon,
+button.ui.huge.right.labeled.icon > i.icon,
+button.ui.huge.compact.right.labeled.icon > i.icon,
+.ui.huge.buttons .button.right.labeled.icon > i.icon,
+.ui.huge.compact.button.right.labeled.icon > i.icon,
+.ui.huge.button.right.labeled.icon > i.icon,
+toolbar-bonaparte.massive > *:first-child button.ui.right.labeled.icon > i.icon,
+toolbar-bonaparte.massive > *:first-child .ui.button.right.labeled.icon > i.icon,
+button.ui.massive.right.labeled.icon > i.icon,
+button.ui.massive.compact.right.labeled.icon > i.icon,
+.ui.massive.buttons .button.right.labeled.icon > i.icon,
+.ui.massive.compact.button.right.labeled.icon > i.icon,
+.ui.massive.button.right.labeled.icon > i.icon {
+  left: auto;
+  right: 0;
 }
 toolbar-bonaparte.huge > *:first-child button.ui > i.icon,
 toolbar-bonaparte.huge > *:first-child .ui.button > i.icon,
@@ -5925,8 +6073,10 @@ toolbar-bonaparte.huge > *:first-child .ui.buttons.labeled.icon .ui.button,
 toolbar-bonaparte.massive > *:first-child .ui.buttons.labeled.icon .ui.button,
 .ui.huge.buttons.labeled.icon .ui.button,
 .ui.massive.buttons.labeled.icon .ui.button {
-  padding-left: 7rem !important;
-  padding-right: 1rem !important;
+  padding-left: 6rem !important;
+  padding-right: 0 !important;
+  text-indent: 1rem;
+  overflow: hidden;
 }
 toolbar-bonaparte.huge > *:first-child .ui.buttons.labeled.icon button.ui > i.icon,
 toolbar-bonaparte.massive > *:first-child .ui.buttons.labeled.icon button.ui > i.icon,
@@ -5937,6 +6087,7 @@ toolbar-bonaparte.massive > *:first-child .ui.buttons.labeled.icon .ui.button > 
 .ui.huge.buttons.labeled.icon .ui.button > i.icon,
 .ui.massive.buttons.labeled.icon .ui.button > i.icon {
   width: 6rem;
+  text-indent: 0;
 }
 toolbar-bonaparte.huge > *:first-child .ui.buttons.right.labeled.icon button.ui,
 toolbar-bonaparte.massive > *:first-child .ui.buttons.right.labeled.icon button.ui,
@@ -5946,10 +6097,28 @@ toolbar-bonaparte.huge > *:first-child .ui.buttons.right.labeled.icon .ui.button
 toolbar-bonaparte.massive > *:first-child .ui.buttons.right.labeled.icon .ui.button,
 .ui.huge.buttons.right.labeled.icon .ui.button,
 .ui.massive.buttons.right.labeled.icon .ui.button {
-  padding-right: 7rem !important;
-  padding-left: 1rem !important;
+  padding-right: 6rem !important;
+  padding-left: 0 !important;
+  text-align: right;
+}
+toolbar-bonaparte.huge > *:first-child .ui.buttons.right.labeled.icon button.ui > i.icon,
+toolbar-bonaparte.massive > *:first-child .ui.buttons.right.labeled.icon button.ui > i.icon,
+.ui.huge.buttons.right.labeled.icon button.ui > i.icon,
+.ui.massive.buttons.right.labeled.icon button.ui > i.icon,
+toolbar-bonaparte.huge > *:first-child .ui.buttons.right.labeled.icon .ui.button > i.icon,
+toolbar-bonaparte.massive > *:first-child .ui.buttons.right.labeled.icon .ui.button > i.icon,
+.ui.huge.buttons.right.labeled.icon .ui.button > i.icon,
+.ui.massive.buttons.right.labeled.icon .ui.button > i.icon {
+  left: auto;
+  right: 0;
 }
 /*////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////*/
+
+
+/*******************************
+         Site Overrides
+*******************************/
+

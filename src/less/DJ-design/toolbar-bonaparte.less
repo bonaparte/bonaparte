@@ -5,7 +5,6 @@
 toolbar-bonaparte {
 
 
-
 /*////////////////////////////////*/  
   .toolbar-bonaparte({
     .variables(){
@@ -35,12 +34,18 @@ toolbar-bonaparte {
 
   /*BUTTON GROUPS*/
 
-  > :nth-child(1){
+  > :nth-child(1) {
     background-color:@color-light-2;
     display:flex;
     flex-flow: column;
     justify-content:space-between;
 
+    .header {
+      padding: 0 1em 0 2em;
+      line-height: 3.1em;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
 
     > * {
       background-color:transparent !important;
@@ -59,12 +64,15 @@ toolbar-bonaparte {
     }
   }
 
+  > .dark,
   > .inverted {
     background-color: @color-dark-0 !important;
     color: @color-text-light;
   }
 
-  > .inverted > * {
+  > .dark * ,
+  > .inverted * {
+    background-color: transparent;
     color: @color-text-light;
   }
 

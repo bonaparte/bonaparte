@@ -983,7 +983,6 @@
 .ui.form {
   padding: 1rem 1rem 2rem 1rem;
   width: 100%;
-  background-color: #fff;
 }
 .ui.form .field {
   display: table;
@@ -1010,7 +1009,7 @@
   width: 100%;
   border: 0;
   border-bottom: 3px double #e0e0e0;
-  background-color: #f5f5f5;
+  background-color: #fafafa;
   padding: 1rem;
   font-size: 1.3rem;
   color: #1a1a1a;
@@ -1056,16 +1055,26 @@
 .ui.form textarea:focus + label {
   color: #425cbd;
 }
+
+
+/******************************/
+
+
+/*          dropdown          */
+
+
+/******************************/
+
 .ui.form .ui.dropdown {
   color: #1a1a1a;
   border: 0;
   border-bottom: 1px solid #e0e0e0;
-  background-color: #f5f5f5;
+  background-color: #fafafa;
   padding: 1rem;
 }
 .inline.block.fields {
   color: #1a1a1a;
-  background-color: #f5f5f5;
+  background-color: #fafafa;
   padding: 1rem;
 }
 .inline.block.fields > label {
@@ -1082,8 +1091,71 @@
   border-radius: 0;
   top: 0;
   right: 0;
+  background-color: #f5f5f5;
 }
 .ui.form .dropdown label.text {
   font-weight: 700;
   margin-left: 1rem;
 }
+.ui.form .dropdown .meun {
+  background-color: #fafafa;
+  border-bottom: 1px solid #425cbd;
+}
+.ui.form .dropdown .menu .selected.item {
+  color: #425cbd;
+  font-weight: 400;
+}
+
+
+/******************************/
+
+
+/*          checkbox          */
+
+
+/******************************/
+
+.ui.form .ui.checkbox:not(.toggle) {
+  width: 100%;
+  color: #1a1a1a;
+  border: 0;
+  border-bottom: 1px solid #f5f5f5;
+  background-color: #fafafa;
+  padding: 0;
+}
+.ui.form .ui.checkbox:not(.toggle):not(.slider) label {
+  padding: 1rem;
+  font-size: 1.33333333rem;
+  line-height: 2rem;
+}
+.ui.form .ui.checkbox:not(.toggle):not(.slider) label:after {
+  left: inherit;
+  right: 0;
+  width: 4rem;
+  height: 4rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #f0f0f0;
+}
+.ui.form .ui.checkbox.checked:not(.toggle):not(.slider) label:after {
+  background-color: #ffffff;
+  border-right: 2px solid #425cbd;
+  border-left: 2px solid transparent;
+  color: #425cbd;
+}
+
+
+/*******************************
+         Site Overrides
+*******************************/
+

@@ -1361,6 +1361,11 @@ select.ui.dropdown {
 }
 
 /* Sub Menu */
+.ui.dropdown .menu {
+  left: 1px;
+  width: calc(100% - 2px);
+  border: none;
+}
 .ui.dropdown .menu .item .dropdown.icon:before {
   content: '\f0da' /*rtl:'\f0d9'*/;
 }
@@ -1391,3 +1396,9 @@ select.ui.dropdown {
   font-family: 'Dropdown';
   content: "\f0da";
 }
+
+
+/*******************************
+        User Overrides
+*******************************/
+
