@@ -1,7 +1,7 @@
 # Bonaparte UX Framework
 
 - [Basic Use](#basic-use)
-- [Examples](#examples)
+- [To Look At](#to-look-at)
 - [Bonaparte Components](#bonaparte-components)
   - [< button-bonaparte >](#-button-bonaparte-)
   - [< scroll-bonaparte >](#-scroll-bonaparte-)
@@ -44,7 +44,16 @@
   
 This makes bonaparte and the bonaparte Semantic UI theme available in your project.
 
-## Examples
+## To Look At
+
+__Research/Proposal:__
+
+[Bonaparte Research/Proposal](https://docs.google.com/a/dowjones.com/document/d/1l0vsb8ZkeJjaNtEFa-49VCAalIajGf0l4zmKBbP95sI/edit?usp=sharing)
+<br>
+[Bonaparte Components](https://docs.google.com/a/dowjones.com/document/d/11ufSpZOKBbgdOJ5NUsfq_Yk-ziA9sWgTJiMd1G02IzA/edit?usp=sharing)
+
+
+__Examples:__
 
 [Kitchen-Sink](http://dowjones.github.io/bonaparte/examples/kitchen-sink.html)
 <br>
