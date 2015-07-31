@@ -196,6 +196,7 @@ __2__ | content | yes | Holds the main content. The sidebar is placed around thi
 
 
 ##### Events
+[Not yet implemented.. sry]
 Name | Target | Bubbles | Description 
 :--------- | :--- | :------ | :------
 __bonaparte.sidebar.open__ | `<sidebar-bonaparte>` | yes | Triggers when a sidebar opens.
