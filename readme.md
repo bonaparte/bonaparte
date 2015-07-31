@@ -14,7 +14,7 @@
   - [Semantic UI Theme](#sui-theme)
 - [Structure/Modules](#structuremodules)
   - [Events](#events)
-- [Creating New Components](#creating-new-components)
+- [Create New Components](#create-new-components)
 - [API](#api)
   -  [bp.attribute.get()](#bpattributeget)
   -  [bp.attribute.matchName()](#bpattributematchname)
@@ -245,10 +245,19 @@ document.getElementById("bonaparte-tag").bonaparte.triggerEvent("name", data)
 
 Or through the [API](#api) events can be triggered on any element: 
 ```javascript
-bp.tag.triggerEvent(tag, "name", data)`;
+bp.tag.triggerEvent(tag, "name", data);
 ```
 
 ##Create New Components
+New Bonaparte Components can easily be created with help of the [API](#api):
+
+```javascript
+var tag = bp.tag.create("name", function(){
+  // Tag logic here.
+});
+```
+(Full documentation: [bp.tag.create()](#bptagcreate))
+
 
 ## API
 Requiring the `bonaparte` module provides all the necessary functions to create new _tags_ from modules, as well a set of utility functions that can be used within _modules_.
@@ -366,7 +375,7 @@ bp.tag.contains(
 ---
 #### bp.tag.create();
 Creates a new bonaparte-tag from _modules_. <br>
-__Returns__ a tag definition.
+__Returns__ _Tag Factory_.
 
 
 ```javascript
@@ -385,9 +394,17 @@ tag.initialize( (HTMLElement) tag );    // Initializes the tag on an existion HT
 tag.mixin( (Array) mixins );            // Define mixins to chustomize existing tags behaviors.      
 
 ```
-> Modules are combinded to an `objct`. Read more about the objct library [here](https://github.com/greenish/js-objct)
+
+The returned _Tag Factory_ that can be.
+  - Used as a mixin in other tags to extend their functionality.
+  - Registered to the DOM with `tag.register()` 
+  - Initiated on an existing element in the DOM with `tag.initialize(element)`
+  - Extended with modules through `tag.mixin(module)`
+
+
+> A _Tag Factory_ is an `objct`. Read more about the objct library [here](https://github.com/greenish/js-objct)
       
-> Static methods on modules become static methods on the tag-definition.
+> Static methods on modules become static methods on the _Tag Factory_.
 
 ---
 
