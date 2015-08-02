@@ -173,7 +173,6 @@ The Sidebar is a UI element consisting of to two areas, a sidebar and a content 
   open
 >
 
-  <!-- Required -->
   <1st-child sidebar />
   <2nd-child content /> 
   
@@ -223,17 +222,33 @@ As a highlevel component Toolbars also implements restrictions on buttons. Butto
 >
 
   <1st-child sidebar>
-    
     <nth-child button-group>
 
   <2nd-child content /> 
 
-  <!-- Optional -->
-  <cornerstone-bonaparte />
+  <cornerstone-bonaparte />  <!-- Optional -->
 
 </toolbar-bonaparte>
 ```
+
+##### Child elements
+Index | Name |  Required | Description 
+:--------- | :--- | :------ | :-----
+__1__ | sidebar | yes | Will be place according to the _sidebar_ attribute.
+__1.x__ | button-group | (yes) | All direct children of the _sidebar_ are handled as button groups and spread evenly within the sidebar.
+__2__ | content | yes | Holds the main content. The sidebar is placed around this element.
+
+
+##### Attributes
+Name | Values | Default | Description 
+:--------- | :--- | :------ | :----------
+__cornerstone__ | `left` `right`<br>`top` `bottom` | `left top` | Defines the position of the cornerstone within the toolbar.
+ | `outside` | | If present, the cornerstone sits outside the toolbar and pushes it.<br>The first passed side defines the side on which the cornerstone leaves the toolbar. <br>`left top outside`: Cornerstone sits left of the toolbar aligned top.<br>`top left outside`: Cornerstone sits on top of the toolbar aligned left.
+
+
+
 ##### < cornerstone-bonaparte >
+A cornerstone is a special button placed in one corner of a toolbar. There can only be one cornerstone per toolbar and its position is defined by it's toolbar. Cornerstones don't exist outside Toolbars.
 
 ```html
 <!-- only as direct child of <toolbar-bonaparte> -->
