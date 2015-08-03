@@ -162,7 +162,7 @@ body {
   overflow: hidden;
 }
 body,
-body toolbar-bonaparte:first-of-type {
+body > toolbar-bonaparte {
   height: 100%;
 }
 /*Import Fonts*/
