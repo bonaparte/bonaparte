@@ -1396,6 +1396,47 @@ select.ui.dropdown {
   font-family: 'Dropdown';
   content: "\f0da";
 }
+.ui.selection.dropdown.dark,
+.ui.selection.dropdown.inverted {
+  color: #ffffff;
+  background-color: transparent;
+}
+.ui.selection.dropdown > .search.icon,
+.ui.selection.dropdown > .delete.icon,
+.ui.selection.dropdown > .dropdown.icon {
+  color: #e2bf3d;
+  height: 4rem;
+  width: 4rem;
+}
+.ui.selection.dropdown.active > .search.icon,
+.ui.selection.dropdown.active > .delete.icon,
+.ui.selection.dropdown.active > .dropdown.icon {
+  color: #ffffff;
+  background-color: #425cbd;
+}
+.ui.selection.dropdown.active > .dropdown.icon {
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.ui.selection.dropdown.dark .menu,
+.ui.selection.dropdown.inverted .menu {
+  background-color: #0d0d0d;
+  border-bottom: 3px solid #425cbd !important;
+}
+.ui.selection.dropdown.inverted.active .text {
+  color: #6683ed;
+}
+.ui.selection.dropdown.inverted .menu > .item {
+  color: #ffffff;
+  border: 0;
+}
+.ui.selection.dropdown.inverted .menu > .item:hover {
+  background-color: #000000;
+}
+.ui.selection.dropdown.inverted .menu > .item.active {
+  color: #425cbd;
+}
 
 
 /*******************************

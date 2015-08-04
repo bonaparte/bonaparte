@@ -70,3 +70,49 @@
   content: "\f0da";
 }
 
+.ui.selection.dropdown.dark,
+.ui.selection.dropdown.inverted {
+  color: @color-light-0;
+  background-color: transparent;
+}
+
+
+
+.ui.selection.dropdown > .search.icon,
+.ui.selection.dropdown > .delete.icon,
+.ui.selection.dropdown > .dropdown.icon {
+    color: @color-interactive-light;
+    height: 4rem;
+    width: 4rem;
+}
+
+.ui.selection.dropdown.active > .search.icon,
+.ui.selection.dropdown.active > .delete.icon,
+.ui.selection.dropdown.active > .dropdown.icon {
+  color: @color-light-0;
+  background-color: @color-active;
+}
+.ui.selection.dropdown.active > .dropdown.icon {
+  transform: rotate(180deg);
+}
+
+.ui.selection.dropdown.dark .menu,
+.ui.selection.dropdown.inverted .menu {
+  background-color: @color-dark-1;
+  border-bottom: 3px solid @color-active !important; 
+}
+
+.ui.selection.dropdown.inverted.active .text {
+  color: @color-active-light;
+}
+
+.ui.selection.dropdown.inverted .menu > .item {
+  color: @color-light-0;
+  border: 0;
+}
+.ui.selection.dropdown.inverted .menu > .item:hover {
+  background-color: @color-dark-0;
+}
+.ui.selection.dropdown.inverted .menu > .item.active {
+  color: @color-active;
+}
