@@ -528,16 +528,24 @@
 .radio:before { content: '\e803'; }
 
 */
+.ui.checkbox.tick label:before,
 .ui.checkbox.visibility label:before {
   visibility: hidden;
 }
+.ui.checkbox.tick label:after,
 .ui.checkbox.visibility label:after {
   font-family: Icons;
-  content: "\e8f5";
   opacity: 1;
 }
-.ui.checkbox.visibility.checked label:after {
-  content: "\e8f4";
+.ui.checkbox.visibility label:after {
+  content: "\e8f5";
+}
+.ui.checkbox.tick label:after {
+  content: "\e909";
+  font-size: 1.4em;
+}
+.ui.checkbox.tick.checked label:after {
+  content: "\e834";
 }
 
 

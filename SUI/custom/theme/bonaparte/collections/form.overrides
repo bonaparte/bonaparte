@@ -123,6 +123,10 @@
   background-color: @color-light-2;
 }
 
+.ui.form .dropdown:hover i.dropdown.button.icon {
+  background-color: @color-light-3;
+}
+
 .ui.form .dropdown label.text {
   font-weight: 700;
   margin-left: 1rem;
@@ -151,6 +155,10 @@
     background-color: @color-light-1;
     padding: 0;
 }
+.ui.form .ui.checkbox:not(.toggle):hover {
+    border-bottom: 1px solid @color-light-2;
+}
+
 .ui.form .ui.checkbox:not(.toggle):not(.slider) label {
     padding: 1rem;
     font-size: 1.33333333rem;
@@ -165,7 +173,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: @color-light-3;
+    background-color: @color-light-2;
 }
 
 .ui.form .ui.checkbox.checked:not(.toggle):not(.slider) label:after {
@@ -173,5 +181,9 @@
     border-right: 2px solid @color-active;
     border-left: 2px solid transparent;
     color: @color-active;
+}
+.ui.form .ui.checkbox.checked:not(.toggle):not(.slider):hover label:after,
+.ui.form .ui.checkbox:not(.toggle):not(.slider):hover label:after {
+    background-color: @color-light-3;
 }
 
