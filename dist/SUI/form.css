@@ -1127,7 +1127,7 @@
   padding: 0;
 }
 .ui.form .ui.checkbox:not(.toggle):hover {
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f5f5f5;
 }
 .ui.form .ui.checkbox:not(.toggle):not(.slider) label {
   padding: 1rem;
@@ -1151,7 +1151,7 @@
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background-color: #f0f0f0;
+  background-color: #f5f5f5;
 }
 .ui.form .ui.checkbox.checked:not(.toggle):not(.slider) label:after {
   background-color: #ffffff;
@@ -1161,7 +1161,7 @@
 }
 .ui.form .ui.checkbox.checked:not(.toggle):not(.slider):hover label:after,
 .ui.form .ui.checkbox:not(.toggle):not(.slider):hover label:after {
-  background-color: #f5f5f5;
+  background-color: #f0f0f0;
 }
 
 

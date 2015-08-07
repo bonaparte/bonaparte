@@ -2702,7 +2702,7 @@ function draggable(tag) {
     target = bp.attribute.get(tag, 'target');
     dropZones = target ? document.querySelectorAll(target) : children;
 
-    for (var i = children.length - 1; i >= 0; i--) {
+    for (var i = 0; i < children.length; i++) {
       var child = children[i];
 
       bp.attribute.set(child, 'draggable', 'true');
@@ -2719,10 +2719,10 @@ function draggable(tag) {
     var range = bp.attribute.get(tag, 'range');
     if (range) {
       range = range.split(',');
-      for (var i = range.length - 1; i >= 0; i--) {
+      for (var i = 0; i < range.length; i++) {
         range[i] = parseInt(range[i])
       };
-      for (var i = children.length - 1; i >= 0; i--) {
+      for (var i = 0; i < children.length; i++) {
         if (i >= range[0] && i <= range[1]) {
           children[i].classList.add('inRange');
         } else {
@@ -2733,7 +2733,7 @@ function draggable(tag) {
   }
 ///////////////////////////////////////////////////////////////////////////////
   function addListeners(){
-    for (var i = dropZones.length - 1; i >= 0; i--) {
+    for (var i = 0; i < dropZones.length; i++) {
       var dropZone = dropZones[i];
       draggable = true;
       dropZone.addEventListener('dragenter', dragenter);
@@ -2744,7 +2744,7 @@ function draggable(tag) {
     }
   }
   function removeListeners(){
-    for (var i = dropZones.length - 1; i >= 0; i--) {
+    for (var i = 0; i < dropZones.length; i++) {
       var dropZone = dropZones[i];
       draggable = false;
       dropZone.removeEventListener('dragenter', dragenter);
@@ -2820,27 +2820,50 @@ function draggable(tag) {
   }
 
   function drop(e){
-    var elem = findDraggableEl(e);
+    var elem = findDraggableEl(e),
+      updateDom = true;
 
+    if (bp.attribute.get(tag, 'update-dom') === 'false') {
+        updateDom = false;
+    }
     count = [];
     elem.classList.remove('dragover');
     currentDraggedElem.classList.remove('dragover');
 
+    var parent = currentDraggedElem.parentNode,
+      newParent = parent.cloneNode(true),
+      clonedDraggedElem = newParent.querySelector('[bp-order-id="' + currentDraggedElem.getAttribute('bp-order-id') + '"]'),
+      clonedElem = newParent.querySelector('[bp-order-id="' + elem.getAttribute('bp-order-id')  + '"]');
     if (elem !== currentDraggedElem) {
-      var parent = currentDraggedElem.parentNode;
-      parent.removeChild(currentDraggedElem);
-      parent.insertBefore(currentDraggedElem, elem);
+      newParent.removeChild(clonedDraggedElem);
+      newParent.insertBefore(clonedDraggedElem, clonedElem);
     }
 
     var details = {
       dropedElem:  currentDraggedElem,
       dropZone:  elem,
-      order: tag.children
+      order: newParent.children
     }
 
-    setRange();
+    if (updateDom) {
+      parent = newParent;
+      setRange();
+    }
+
     bp.tag.triggerEvent(tag, "draggable.drop", details);
     currentDraggedElem = null;
+  }
+
+  function findDraggableEl (e) {
+    var isElDraggable = (e.target.getAttribute('draggable') === 'true');
+    var eventTarget = e.target;
+    while (!isElDraggable) {
+      isElDraggable = (eventTarget.getAttribute('draggable') === 'true');
+      if (!isElDraggable) {
+        eventTarget = eventTarget.parentNode;
+      }
+    }
+    return eventTarget;
   }
 
   function findDraggableEl (e) {
