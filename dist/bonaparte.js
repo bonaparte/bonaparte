@@ -2866,18 +2866,6 @@ function draggable(tag) {
     return eventTarget;
   }
 
-  function findDraggableEl (e) {
-    var isElDraggable = (e.target.getAttribute('draggable') === 'true');
-    var eventTarget = e.target;
-    while (!isElDraggable) {
-      isElDraggable = (eventTarget.getAttribute('draggable') === 'true');
-      if (!isElDraggable) {
-        eventTarget = eventTarget.parentNode;
-      }
-    }
-    return eventTarget;
-  }
-
 ///////////////////////////////////////////////////////////////////////////////
 
 }

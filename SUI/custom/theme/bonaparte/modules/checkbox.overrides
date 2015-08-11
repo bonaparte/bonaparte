@@ -43,6 +43,9 @@
 .ui.checkbox.visibility label:after {
   content: "\e8f5";// visibility-off icon
 }
+.ui.checkbox.visibility.checked label:after {
+  content: "\e8f4";// visibility icon
+}
 .ui.checkbox.tick label:after {
   content: "\e909";
   font-size: 1.4em;

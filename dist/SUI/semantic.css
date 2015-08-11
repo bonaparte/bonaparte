@@ -31064,6 +31064,10 @@ a.ui.card:hover,
   content: "\e8f5";
 }
 
+.ui.checkbox.visibility.checked label:after {
+  content: "\e8f4";
+}
+
 .ui.checkbox.tick label:after {
   content: "\e909";
   font-size: 1.4em;
