@@ -36,6 +36,8 @@
   left: 1px;
   width: ~"calc(100% - 2px)";
   border: none;
+  background-color: @color-light-1;
+  box-shadow: 0 1px 1px 0 rgba(34,36,38,.15);
 }
 
 .ui.dropdown .menu .item .dropdown.icon:before {
@@ -70,13 +72,15 @@
   content: "\f0da";
 }
 
+.ui.selection.dropdown {
+  padding-right: 6em;
+}
+
 .ui.selection.dropdown.dark,
 .ui.selection.dropdown.inverted {
   color: @color-light-0;
   background-color: transparent;
 }
-
-
 
 .ui.selection.dropdown > .search.icon,
 .ui.selection.dropdown > .delete.icon,
@@ -104,6 +108,7 @@
 
 .ui.selection.dropdown.inverted.active .text {
   color: @color-active-light;
+  font-weight: @selectionVisibleTextFontWeight;
 }
 
 .ui.selection.dropdown.inverted .menu > .item {

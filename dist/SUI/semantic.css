@@ -32780,6 +32780,7 @@ select.ui.dropdown {
   left: 1px;
   width: calc(100% - 2px);
   border: none;
+  background-color: #fafafa;
 }
 
 .ui.dropdown .menu .item .dropdown.icon:before {
@@ -32819,6 +32820,10 @@ select.ui.dropdown {
   content: "\f0da";
 }
 
+.ui.selection.dropdown {
+  padding-right: 6em;
+}
+
 .ui.selection.dropdown.dark,
 .ui.selection.dropdown.inverted {
   color: #ffffff;
@@ -32854,6 +32859,7 @@ select.ui.dropdown {
 
 .ui.selection.dropdown.inverted.active .text {
   color: #6683ed;
+  font-weight: normal;
 }
 
 .ui.selection.dropdown.inverted .menu > .item {
