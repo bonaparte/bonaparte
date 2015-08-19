@@ -23,11 +23,21 @@
 
     "browserify": "^10.2.4",
     "vinyl-source-stream": "^1.1.0",
-    "vinyl-buffer": "^1.0.0"
+    "vinyl-buffer": "^1.0.0",
+
+    "webpack" : "^1.11.0",
+    "style-loader" :"^0.12.3",
+    "css-loader" : "^0.16.0",
+    "less-loader" : "^2.2.0",
+    "less":"^2.3.1",
+    "extract-text-webpack-plugin" : "0.8.2"
+
   },
 
   "scripts": {
-    "install-dev" : "rm -r SUI/ui/dist; gulp SUI-install; cd SUI/ui ; npm install; gulp build; cd ../..; gulp BPA-build"
+    "install-dev" : "rm -r SUI/ui/dist; gulp SUI-install; cd SUI/ui ; npm install; gulp build; cd ../..; gulp BPA-build",
+    "build" : "webpack",
+    "watch" : "webpack --progress --colors --watch"
   },
 
   "engines": {
