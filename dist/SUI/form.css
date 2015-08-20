@@ -1026,33 +1026,63 @@
 .ui.form textarea {
   width: 100%;
 }
-.ui.form input:not([type]):focus,
-.ui.form input[type=text]:focus,
-.ui.form input[type=email]:focus,
-.ui.form input[type=search]:focus,
-.ui.form input[type=password]:focus,
-.ui.form input[type=date]:focus,
-.ui.form input[type=datetime-local]:focus,
-.ui.form input[type=tel]:focus,
-.ui.form input[type=time]:focus,
-.ui.form input[type=url]:focus,
-.ui.form input[type=number]:focus,
-.ui.form textarea:focus {
+.ui.form input:not([type]):not([readonly]):focus,
+.ui.form input[type=text]:not([readonly]):focus,
+.ui.form input[type=email]:not([readonly]):focus,
+.ui.form input[type=search]:not([readonly]):focus,
+.ui.form input[type=password]:not([readonly]):focus,
+.ui.form input[type=date]:not([readonly]):focus,
+.ui.form input[type=datetime-local]:not([readonly]):focus,
+.ui.form input[type=tel]:not([readonly]):focus,
+.ui.form input[type=time]:not([readonly]):focus,
+.ui.form input[type=url]:not([readonly]):focus,
+.ui.form input[type=number]:not([readonly]):focus,
+.ui.form textarea:not([readonly]):focus {
   border-color: #425cbd;
 }
-.ui.form .dropdown.active:focus + label,
-.ui.form input:not([type]):focus + label,
-.ui.form input[type=text]:focus + label,
-.ui.form input[type=email]:focus + label,
-.ui.form input[type=search]:focus + label,
-.ui.form input[type=password]:focus + label,
-.ui.form input[type=date]:focus + label,
-.ui.form input[type=datetime-local]:focus + label,
-.ui.form input[type=tel]:focus + label,
-.ui.form input[type=time]:focus + label,
-.ui.form input[type=url]:focus + label,
-.ui.form input[type=number]:focus + label,
-.ui.form textarea:focus + label {
+.ui.form input[readonly]:not([type]):focus,
+.ui.form input[readonly][type=text]:focus,
+.ui.form input[readonly][type=email]:focus,
+.ui.form input[readonly][type=search]:focus,
+.ui.form input[readonly][type=password]:focus,
+.ui.form input[readonly][type=date]:focus,
+.ui.form input[readonly][type=datetime-local]:focus,
+.ui.form input[readonly][type=tel]:focus,
+.ui.form input[readonly][type=time]:focus,
+.ui.form input[readonly][type=url]:focus,
+.ui.form input[readonly][type=number]:focus,
+.ui.form textarea[readonly]:focus {
+  background-color: #fafafa;
+}
+.ui.form input[readonly]:not([type]),
+.ui.form input[readonly][type=text],
+.ui.form input[readonly][type=email],
+.ui.form input[readonly][type=search],
+.ui.form input[readonly][type=password],
+.ui.form input[readonly][type=date],
+.ui.form input[readonly][type=datetime-local],
+.ui.form input[readonly][type=tel],
+.ui.form input[readonly][type=time],
+.ui.form input[readonly][type=url],
+.ui.form input[readonly][type=number],
+.ui.form textarea[readonly] {
+  cursor: default;
+  pointer-events: none;
+  opacity: .45;
+}
+.ui.form .dropdown.active:not([readonly]):focus + label,
+.ui.form input:not([type]):not([readonly]):focus + label,
+.ui.form input[type=text]:not([readonly]):focus + label,
+.ui.form input[type=email]:not([readonly]):focus + label,
+.ui.form input[type=search]:not([readonly]):focus + label,
+.ui.form input[type=password]:not([readonly]):focus + label,
+.ui.form input[type=date]:not([readonly]):focus + label,
+.ui.form input[type=datetime-local]:not([readonly]):focus + label,
+.ui.form input[type=tel]:not([readonly]):focus + label,
+.ui.form input[type=time]:not([readonly]):focus + label,
+.ui.form input[type=url]:not([readonly]):focus + label,
+.ui.form input[type=number]:not([readonly]):focus + label,
+.ui.form textarea:not([readonly]):focus + label {
   color: #425cbd;
 }
 
