@@ -76,6 +76,9 @@ sidebar-bonaparte {
   /*DEFINITION*/
   position: relative;
   overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
   /*SIDEBAR POSITION*/
   /*SIDEBAR STATE*/
@@ -87,30 +90,50 @@ sidebar-bonaparte > :nth-child(1) {
   z-index: 50;
   height: auto;
   width: auto;
-  transition: min-width 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98), min-height 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
+  -webkit-transition: min-width 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98), min-height 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
+          transition: min-width 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98), min-height 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
 }
 sidebar-bonaparte > :nth-child(2) {
   position: relative;
   z-index: 0;
-  flex: 1 auto;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 auto;
+      -ms-flex: 1 auto;
+          flex: 1 auto;
   height: auto;
   width: auto;
 }
 sidebar-bonaparte[data-sidebar="left"],
 sidebar-bonaparte[sidebar="left"] {
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 sidebar-bonaparte[data-sidebar="right"],
 sidebar-bonaparte[sidebar="right"] {
-  flex-direction: row-reverse;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: row-reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
 }
 sidebar-bonaparte[data-sidebar="top"],
 sidebar-bonaparte[sidebar="top"] {
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 sidebar-bonaparte[data-sidebar="bottom"],
 sidebar-bonaparte[sidebar="bottom"] {
-  flex-direction: column-reverse;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: column-reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
 }
 sidebar-bonaparte[data-sidebar="left"] > :nth-child(1),
 sidebar-bonaparte[sidebar="left"] > :nth-child(1),
@@ -230,6 +253,9 @@ toolbar-bonaparte {
   /*DEFINITION*/
   position: relative;
   overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
   /*SIDEBAR POSITION*/
   /*SIDEBAR STATE*/
@@ -244,30 +270,50 @@ toolbar-bonaparte > :nth-child(1) {
   z-index: 50;
   height: auto;
   width: auto;
-  transition: min-width 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98), min-height 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
+  -webkit-transition: min-width 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98), min-height 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
+          transition: min-width 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98), min-height 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
 }
 toolbar-bonaparte > :nth-child(2) {
   position: relative;
   z-index: 0;
-  flex: 1 auto;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 auto;
+      -ms-flex: 1 auto;
+          flex: 1 auto;
   height: auto;
   width: auto;
 }
 toolbar-bonaparte[data-sidebar="left"],
 toolbar-bonaparte[sidebar="left"] {
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 toolbar-bonaparte[data-sidebar="right"],
 toolbar-bonaparte[sidebar="right"] {
-  flex-direction: row-reverse;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: row-reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
 }
 toolbar-bonaparte[data-sidebar="top"],
 toolbar-bonaparte[sidebar="top"] {
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 toolbar-bonaparte[data-sidebar="bottom"],
 toolbar-bonaparte[sidebar="bottom"] {
-  flex-direction: column-reverse;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: column-reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
 }
 toolbar-bonaparte[data-sidebar="left"] > :nth-child(1),
 toolbar-bonaparte[sidebar="left"] > :nth-child(1),
@@ -305,9 +351,18 @@ toolbar-bonaparte[sidebar="bottom"][open="false"] > :nth-child(1) {
 }
 toolbar-bonaparte > cornerstone-bonaparte {
   position: absolute !important;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 4rem;
   height: 4rem;
   top: 0px;
@@ -373,18 +428,35 @@ toolbar-bonaparte[cornerstone~="outside"][cornerstone~="bottom"][cornerstone$="r
 toolbar-bonaparte > cornerstone-bonaparte {
   background-color: #d9a000;
   color: #ffffff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 toolbar-bonaparte > :nth-child(2) {
   background-color: #f0f0f0;
 }
 toolbar-bonaparte > :nth-child(1) {
   background-color: #f5f5f5;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  flex-flow: column;
-  justify-content: space-between;
+  -webkit-flex-flow: column;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 toolbar-bonaparte > :nth-child(1) .header {
   padding: 0 1em 0 2em;
@@ -414,7 +486,9 @@ toolbar-bonaparte[data-sidebar="left"] > :nth-child(1),
 toolbar-bonaparte[sidebar="left"] > :nth-child(1),
 toolbar-bonaparte[data-sidebar="right"] > :nth-child(1),
 toolbar-bonaparte[sidebar="right"] > :nth-child(1) {
-  flex-flow: column;
+  -webkit-flex-flow: column;
+      -ms-flex-flow: column;
+          flex-flow: column;
 }
 toolbar-bonaparte[data-sidebar="left"] > :nth-child(1) > * > *,
 toolbar-bonaparte[sidebar="left"] > :nth-child(1) > * > *,
@@ -427,7 +501,9 @@ toolbar-bonaparte[data-sidebar="top"] > :nth-child(1),
 toolbar-bonaparte[sidebar="top"] > :nth-child(1),
 toolbar-bonaparte[data-sidebar="bottom"] > :nth-child(1),
 toolbar-bonaparte[sidebar="bottom"] > :nth-child(1) {
-  flex-flow: row;
+  -webkit-flex-flow: row;
+      -ms-flex-flow: row;
+          flex-flow: row;
 }
 toolbar-bonaparte[data-sidebar="top"] > :nth-child(1) > * > *,
 toolbar-bonaparte[sidebar="top"] > :nth-child(1) > * > *,
@@ -442,6 +518,9 @@ toolbar-bonaparte.mini {
   /*DEFINITION*/
   position: relative;
   overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
   /*SIDEBAR POSITION*/
   /*SIDEBAR STATE*/
@@ -454,13 +533,17 @@ toolbar-bonaparte.mini > :nth-child(1) {
   z-index: 50;
   height: auto;
   width: auto;
-  transition: min-width 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98), min-height 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
+  -webkit-transition: min-width 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98), min-height 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
+          transition: min-width 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98), min-height 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
 }
 toolbar-bonaparte.tiny > :nth-child(2),
 toolbar-bonaparte.mini > :nth-child(2) {
   position: relative;
   z-index: 0;
-  flex: 1 auto;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 auto;
+      -ms-flex: 1 auto;
+          flex: 1 auto;
   height: auto;
   width: auto;
 }
@@ -468,25 +551,41 @@ toolbar-bonaparte.tiny[data-sidebar="left"],
 toolbar-bonaparte.mini[data-sidebar="left"],
 toolbar-bonaparte.tiny[sidebar="left"],
 toolbar-bonaparte.mini[sidebar="left"] {
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 toolbar-bonaparte.tiny[data-sidebar="right"],
 toolbar-bonaparte.mini[data-sidebar="right"],
 toolbar-bonaparte.tiny[sidebar="right"],
 toolbar-bonaparte.mini[sidebar="right"] {
-  flex-direction: row-reverse;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: row-reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
 }
 toolbar-bonaparte.tiny[data-sidebar="top"],
 toolbar-bonaparte.mini[data-sidebar="top"],
 toolbar-bonaparte.tiny[sidebar="top"],
 toolbar-bonaparte.mini[sidebar="top"] {
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 toolbar-bonaparte.tiny[data-sidebar="bottom"],
 toolbar-bonaparte.mini[data-sidebar="bottom"],
 toolbar-bonaparte.tiny[sidebar="bottom"],
 toolbar-bonaparte.mini[sidebar="bottom"] {
-  flex-direction: column-reverse;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: column-reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
 }
 toolbar-bonaparte.tiny[data-sidebar="left"] > :nth-child(1),
 toolbar-bonaparte.mini[data-sidebar="left"] > :nth-child(1),
@@ -549,9 +648,18 @@ toolbar-bonaparte.mini[sidebar="bottom"][open="false"] > :nth-child(1) {
 toolbar-bonaparte.tiny > cornerstone-bonaparte,
 toolbar-bonaparte.mini > cornerstone-bonaparte {
   position: absolute !important;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 2rem;
   height: 2rem;
   top: 0px;
@@ -651,6 +759,9 @@ toolbar-bonaparte.small {
   /*DEFINITION*/
   position: relative;
   overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
   /*SIDEBAR POSITION*/
   /*SIDEBAR STATE*/
@@ -662,30 +773,50 @@ toolbar-bonaparte.small > :nth-child(1) {
   z-index: 50;
   height: auto;
   width: auto;
-  transition: min-width 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98), min-height 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
+  -webkit-transition: min-width 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98), min-height 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
+          transition: min-width 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98), min-height 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
 }
 toolbar-bonaparte.small > :nth-child(2) {
   position: relative;
   z-index: 0;
-  flex: 1 auto;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 auto;
+      -ms-flex: 1 auto;
+          flex: 1 auto;
   height: auto;
   width: auto;
 }
 toolbar-bonaparte.small[data-sidebar="left"],
 toolbar-bonaparte.small[sidebar="left"] {
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 toolbar-bonaparte.small[data-sidebar="right"],
 toolbar-bonaparte.small[sidebar="right"] {
-  flex-direction: row-reverse;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: row-reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
 }
 toolbar-bonaparte.small[data-sidebar="top"],
 toolbar-bonaparte.small[sidebar="top"] {
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 toolbar-bonaparte.small[data-sidebar="bottom"],
 toolbar-bonaparte.small[sidebar="bottom"] {
-  flex-direction: column-reverse;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: column-reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
 }
 toolbar-bonaparte.small[data-sidebar="left"] > :nth-child(1),
 toolbar-bonaparte.small[sidebar="left"] > :nth-child(1),
@@ -723,9 +854,18 @@ toolbar-bonaparte.small[sidebar="bottom"][open="false"] > :nth-child(1) {
 }
 toolbar-bonaparte.small > cornerstone-bonaparte {
   position: absolute !important;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 3rem;
   height: 3rem;
   top: 0px;
@@ -794,6 +934,9 @@ toolbar-bonaparte.big {
   /*DEFINITION*/
   position: relative;
   overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
   /*SIDEBAR POSITION*/
   /*SIDEBAR STATE*/
@@ -806,13 +949,17 @@ toolbar-bonaparte.big > :nth-child(1) {
   z-index: 50;
   height: auto;
   width: auto;
-  transition: min-width 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98), min-height 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
+  -webkit-transition: min-width 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98), min-height 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
+          transition: min-width 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98), min-height 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
 }
 toolbar-bonaparte.large > :nth-child(2),
 toolbar-bonaparte.big > :nth-child(2) {
   position: relative;
   z-index: 0;
-  flex: 1 auto;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 auto;
+      -ms-flex: 1 auto;
+          flex: 1 auto;
   height: auto;
   width: auto;
 }
@@ -820,25 +967,41 @@ toolbar-bonaparte.large[data-sidebar="left"],
 toolbar-bonaparte.big[data-sidebar="left"],
 toolbar-bonaparte.large[sidebar="left"],
 toolbar-bonaparte.big[sidebar="left"] {
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 toolbar-bonaparte.large[data-sidebar="right"],
 toolbar-bonaparte.big[data-sidebar="right"],
 toolbar-bonaparte.large[sidebar="right"],
 toolbar-bonaparte.big[sidebar="right"] {
-  flex-direction: row-reverse;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: row-reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
 }
 toolbar-bonaparte.large[data-sidebar="top"],
 toolbar-bonaparte.big[data-sidebar="top"],
 toolbar-bonaparte.large[sidebar="top"],
 toolbar-bonaparte.big[sidebar="top"] {
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 toolbar-bonaparte.large[data-sidebar="bottom"],
 toolbar-bonaparte.big[data-sidebar="bottom"],
 toolbar-bonaparte.large[sidebar="bottom"],
 toolbar-bonaparte.big[sidebar="bottom"] {
-  flex-direction: column-reverse;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: column-reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
 }
 toolbar-bonaparte.large[data-sidebar="left"] > :nth-child(1),
 toolbar-bonaparte.big[data-sidebar="left"] > :nth-child(1),
@@ -901,9 +1064,18 @@ toolbar-bonaparte.big[sidebar="bottom"][open="false"] > :nth-child(1) {
 toolbar-bonaparte.large > cornerstone-bonaparte,
 toolbar-bonaparte.big > cornerstone-bonaparte {
   position: absolute !important;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 5rem;
   height: 5rem;
   top: 0px;
@@ -1004,6 +1176,9 @@ toolbar-bonaparte.massive {
   /*DEFINITION*/
   position: relative;
   overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
   /*SIDEBAR POSITION*/
   /*SIDEBAR STATE*/
@@ -1016,13 +1191,17 @@ toolbar-bonaparte.massive > :nth-child(1) {
   z-index: 50;
   height: auto;
   width: auto;
-  transition: min-width 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98), min-height 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
+  -webkit-transition: min-width 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98), min-height 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
+          transition: min-width 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98), min-height 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
 }
 toolbar-bonaparte.huge > :nth-child(2),
 toolbar-bonaparte.massive > :nth-child(2) {
   position: relative;
   z-index: 0;
-  flex: 1 auto;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 auto;
+      -ms-flex: 1 auto;
+          flex: 1 auto;
   height: auto;
   width: auto;
 }
@@ -1030,25 +1209,41 @@ toolbar-bonaparte.huge[data-sidebar="left"],
 toolbar-bonaparte.massive[data-sidebar="left"],
 toolbar-bonaparte.huge[sidebar="left"],
 toolbar-bonaparte.massive[sidebar="left"] {
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 toolbar-bonaparte.huge[data-sidebar="right"],
 toolbar-bonaparte.massive[data-sidebar="right"],
 toolbar-bonaparte.huge[sidebar="right"],
 toolbar-bonaparte.massive[sidebar="right"] {
-  flex-direction: row-reverse;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: row-reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
 }
 toolbar-bonaparte.huge[data-sidebar="top"],
 toolbar-bonaparte.massive[data-sidebar="top"],
 toolbar-bonaparte.huge[sidebar="top"],
 toolbar-bonaparte.massive[sidebar="top"] {
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 toolbar-bonaparte.huge[data-sidebar="bottom"],
 toolbar-bonaparte.massive[data-sidebar="bottom"],
 toolbar-bonaparte.huge[sidebar="bottom"],
 toolbar-bonaparte.massive[sidebar="bottom"] {
-  flex-direction: column-reverse;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: column-reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
 }
 toolbar-bonaparte.huge[data-sidebar="left"] > :nth-child(1),
 toolbar-bonaparte.massive[data-sidebar="left"] > :nth-child(1),
@@ -1111,9 +1306,18 @@ toolbar-bonaparte.massive[sidebar="bottom"][open="false"] > :nth-child(1) {
 toolbar-bonaparte.huge > cornerstone-bonaparte,
 toolbar-bonaparte.massive > cornerstone-bonaparte {
   position: absolute !important;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 6rem;
   height: 6rem;
   top: 0px;
@@ -1288,7 +1492,8 @@ panel-bonaparte {
   border: 0;
   overflow: hidden;
   z-index: 60;
-  transition: transform 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
+  -webkit-transition: -webkit-transform 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
+          transition: transform 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
   /*////////////////////////////////////////////////////////////////////*/
   background-color: #ffffff;
   /*ACTIVE BORDER*/
@@ -1296,7 +1501,8 @@ panel-bonaparte {
 panel-bonaparte[data-open="true"],
 panel-bonaparte[open="true"] {
   z-index: 70;
-  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
 }
 panel-bonaparte[data-position~="left"],
 panel-bonaparte[position~="left"] {
@@ -1311,7 +1517,9 @@ panel-bonaparte[data-position~="left"][data-open="true"],
 panel-bonaparte[position~="left"][data-open="true"],
 panel-bonaparte[data-position~="left"][open="true"],
 panel-bonaparte[position~="left"][open="true"] {
-  transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+          transform: translateX(100%);
 }
 panel-bonaparte[data-position~="right"],
 panel-bonaparte[position~="right"] {
@@ -1325,7 +1533,9 @@ panel-bonaparte[data-position~="right"][data-open="true"],
 panel-bonaparte[position~="right"][data-open="true"],
 panel-bonaparte[data-position~="right"][open="true"],
 panel-bonaparte[position~="right"][open="true"] {
-  transform: translateX(-100%);
+  -webkit-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
+          transform: translateX(-100%);
 }
 panel-bonaparte[data-position~="top"],
 panel-bonaparte[position~="top"] {
@@ -1339,7 +1549,9 @@ panel-bonaparte[data-position~="top"][data-open="true"],
 panel-bonaparte[position~="top"][data-open="true"],
 panel-bonaparte[data-position~="top"][open="true"],
 panel-bonaparte[position~="top"][open="true"] {
-  transform: translateY(100%);
+  -webkit-transform: translateY(100%);
+      -ms-transform: translateY(100%);
+          transform: translateY(100%);
 }
 panel-bonaparte[data-position~="bottom"],
 panel-bonaparte[position~="bottom"] {
@@ -1354,7 +1566,9 @@ panel-bonaparte[data-position~="bottom"][data-open="true"],
 panel-bonaparte[position~="bottom"][data-open="true"],
 panel-bonaparte[data-position~="bottom"][open="true"],
 panel-bonaparte[position~="bottom"][open="true"] {
-  transform: translateY(-100%);
+  -webkit-transform: translateY(-100%);
+      -ms-transform: translateY(-100%);
+          transform: translateY(-100%);
 }
 panel-bonaparte[data-position~="left"],
 panel-bonaparte[position~="left"] {
@@ -1470,7 +1684,7 @@ scroll-bonaparte > :nth-child(1) {
 scroll-bonaparte > :nth-child(1):focus {
   outline: thin dotted;
 }
-@supports (-webkit-appearance:none) {
+@supports (-webkit-appearance: none) {
   scroll-bonaparte > :nth-child(1) {
     -webkit-transform: translateZ(0);
   }
@@ -1484,7 +1698,8 @@ scroll-bonaparte > .scrollbar {
   bottom: 0;
   opacity: .01;
   z-index: 0;
-  transition: .2s;
+  -webkit-transition: .2s;
+          transition: .2s;
   border-radius: 5px;
 }
 scroll-bonaparte > .scrollbar > :first-child {

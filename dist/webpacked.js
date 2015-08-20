@@ -49,10 +49,10 @@
 	var panel = __webpack_require__(8);
 	var scroll = __webpack_require__(20);
 	var sidebar = __webpack_require__(21);
-	var toolbar = __webpack_require__(22);
-	var cornerstone = __webpack_require__(24);
-	var button = __webpack_require__(23);
-	var draggable = __webpack_require__(25);
+	var toolbar = __webpack_require__(26);
+	var cornerstone = __webpack_require__(28);
+	var button = __webpack_require__(27);
+	var draggable = __webpack_require__(29);
 
 	// toolbar.mixin({
 	//   test:function(){
@@ -73,12 +73,12 @@
 
 	// CSS
 
-	__webpack_require__(26);
 	__webpack_require__(30);
 	__webpack_require__(32);
 	__webpack_require__(34);
 	__webpack_require__(36);
 	__webpack_require__(38);
+	__webpack_require__(40);
 
 
 /***/ },
@@ -2682,7 +2682,7 @@
 /* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(40);
+	__webpack_require__(22);
 
 	///////////////////////////////////////////////////////////////////////////////
 
@@ -2726,6 +2726,15 @@
 
 /***/ },
 /* 22 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var bp = __webpack_require__(9);
@@ -2759,7 +2768,7 @@
 	    }
 
 	    for(var i = 0; i< buttons.length; i++){
-	      __webpack_require__(23).initialize(buttons[i]);
+	      __webpack_require__(27).initialize(buttons[i]);
 	    }
 
 
@@ -2771,7 +2780,7 @@
 	///////////////////////////////////////////////////////////////////////////////
 
 /***/ },
-/* 23 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var bp = __webpack_require__(9);
@@ -3051,7 +3060,7 @@
 	 ///////////////////////////////////////////////////////////////////////////////
 
 /***/ },
-/* 24 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var bp = __webpack_require__(9);
@@ -3060,7 +3069,7 @@
 	// Public
 
 	module.exports = bp.tag.create("cornerstone", [
-	  __webpack_require__(23),
+	  __webpack_require__(27),
 	  cornerstone
 	]);
 
@@ -3109,7 +3118,7 @@
 	///////////////////////////////////////////////////////////////////////////////
 
 /***/ },
-/* 25 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var bp = __webpack_require__(9);
@@ -3314,15 +3323,6 @@
 	///////////////////////////////////////////////////////////////////////////////
 
 /***/ },
-/* 26 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 27 */,
-/* 28 */,
-/* 29 */,
 /* 30 */
 /***/ function(module, exports) {
 

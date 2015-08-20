@@ -11,13 +11,13 @@ module.exports = {
             // Extract css files
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+                loader: ExtractTextPlugin.extract("style-loader", "css-loader!autoprefixer-loader")
             },
             // Optionally extract less files
             // or any other compile-to-css language
             {
                 test: /\.less$/,
-                loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
+                loader: ExtractTextPlugin.extract("style-loader", "css-loader!autoprefixer-loader!less-loader")
             }
             // You could also use other loaders the same way. I. e. the autoprefixer-loader
         ]
