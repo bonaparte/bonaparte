@@ -1366,6 +1366,7 @@ select.ui.dropdown {
   width: calc(100% - 2px);
   border: none;
   background-color: #fafafa;
+  box-shadow: 0 1px 1px 0 rgba(34, 36, 38, 0.15);
 }
 .ui.dropdown .menu .item .dropdown.icon:before {
   content: '\f0da' /*rtl:'\f0d9'*/;
