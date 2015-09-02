@@ -6,6 +6,7 @@ var objct = require("objct");
 
 module.exports = {
   tag : {
+    create : require("./tag"),
     contains : nodeContains,
     observe : observe,
     triggerEvent : triggerEvent,
@@ -18,8 +19,8 @@ module.exports = {
     remove : removeAttribute,
     matchName : matchAttribute
   },
-  module : {
-    mixin : mixin
+  mixin : {
+    create : mixin
   }
 };
 

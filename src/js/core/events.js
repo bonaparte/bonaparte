@@ -24,6 +24,3 @@ function events(tag){
 
 
 }
-
-
-
