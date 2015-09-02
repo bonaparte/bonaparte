@@ -10,7 +10,7 @@ module.exports = function(name){
     // ].join("\n");
 
     return {
-        entry: './bonaparte.build.js!',
+        entry: './bonaparte.build.js',
         output: {
             path: "./dist",
             filename: name+".js"
