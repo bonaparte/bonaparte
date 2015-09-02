@@ -4,19 +4,32 @@ module.exports = function(name){
     var ExtractCSS = new ExtractTextPlugin(name+".css");
     var ExtractLESS = new ExtractTextPlugin(name+".less");
 
+    var entry = [
+        'var tag = require("./bonaparte.js");',
+        '((typeof tag === "object" || typeof tag === "function") && typeof tag.register === "function") && tag.register();',
+        'require("./bonaparte.less");'
+    ].join("\n");
 
     return {
-        entry: './entry-loader?require("./bonaparte.js").register(); require("./bonaparte.less");!',
+        entry: [
+            'optional?./bonaparte.build.js!parse?'+entry+'!'     
+        ],
         output: {
             path: "./dist",
             filename: name+".js"
         },
         module: {
+            preLoaders : [
+                {
+                    test: /.*/,
+                    loader : "include-loader"
+                }
+            ],
             loaders: [
                 // Extract css files
                 {
                     test: /\.css$/,
-                    loader: ExtractCSS.extract("style-loader", "css-loader!autoprefixer-loader")
+                    loader: ExtractCSS.extract("css-loader!autoprefixer-loader")
                 },
                 // Optionally extract less files
                 // or any other compile-to-css language
@@ -28,8 +41,12 @@ module.exports = function(name){
                 // or any other compile-to-css language
                 {
                     test: /\.less$/,
-                    loader: ExtractCSS.extract("style-loader", "css-loader!autoprefixer-loader!less-loader")
-                }            
+                    loader: ExtractCSS.extract("css-loader!autoprefixer-loader!less-loader")
+                }
+                // {
+                //     test: /\.less$/,
+                //     loader: "css-loader!autoprefixer-loader!less-loader"
+                // }            
                 // Optionally extract less files
                 // or any other compile-to-css language
                 // {
