@@ -3,13 +3,14 @@ module.exports = function(name){
     var ExtractTextPlugin = require("extract-text-webpack-plugin");
     var ExtractCSS = new ExtractTextPlugin(name+".css");
 
-    // var entry = [
-    //     'var tag = require("./bonaparte.js");',
-    //     '((typeof tag === "object" || typeof tag === "function") && typeof tag.register === "function") && tag.register();',
-    //     'require("./bonaparte.less");'
-    // ].join("\n");
+    var entry = [
+        'var tag = require("optional?./bonaparte.js¿");',
+        '((typeof tag === "object" || typeof tag === "function") && typeof tag.register === "function") && tag.register();',
+        'require("optional?./bonaparte.less¿optional?./bonaparte.scss¿optional?./bonaparte.sass¿optional?./bonaparte.css¿");'
+    ].join("\n");
 
     return {
+        entry: 'optional?./bonaparte.build.js!parse?'+entry+'!',
         entry: './bonaparte.build.js',
         output: {
             path: "./dist",
@@ -23,18 +24,18 @@ module.exports = function(name){
                 }
             ],
             loaders: [
-                // Extract css files
                 {
                     test: /\.css$/,
                     loader: ExtractCSS.extract("css-loader!autoprefixer-loader")
                 },
-                // Optionally extract less files
-                // or any other compile-to-css language
                 {
                     test: /\.less$/,
                     loader: ExtractCSS.extract("css-loader!autoprefixer-loader!less-loader")
+                },
+                {
+                    test: /\.scss$/,
+                    loader: ExtractCSS.extract("css-loader!autoprefixer-loader!sass-loader")
                 }
-                // You could also use other loaders the same way. I. e. the autoprefixer-loader
             ]
         },
         // Use the plugin to specify the resulting filename (and add needed behavior to the compiler)
