@@ -6,8 +6,7 @@
     "objct": "^2.0.6",
     "document-register-element" : "^0.4.5",
     "mutation-observer":"^1.0.2",
-    "custom-event-polyfill" : "^0.2.1",
-    "mousetrap" : "^1.5.3"
+    "custom-event-polyfill" : "^0.2.1"
   },
   
   "main":"./src/js/index.js",
