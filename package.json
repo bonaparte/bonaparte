@@ -10,30 +10,9 @@
     "mousetrap" : "^1.5.3"
   },
   
-  "main":"./src/js/core/index.js",
+  "main":"./src/js/index.js",
   
-  "devDependencies": {
-    "gulp": "*",
-    "gulp-autoprefixer": "2.3.1",
-    "gulp-less" : "^3.0.3",
-    "gulp-shell" : "^0.4.2",
-    "gulp-rename" : "^1.2.2",
-    "less-plugin-clean-css" : "^1.5.0",
-    "glob" :"^5.0.14",
-
-    "browserify": "^10.2.4",
-    "vinyl-source-stream": "^1.1.0",
-    "vinyl-buffer": "^1.0.0",
-
-    "webpack" : "^1.11.0",
-    "style-loader" : "^0.12.3",
-    "css-loader" : "^0.16.0",
-    "less-loader" : "^2.2.0",
-    "less" : "^2.3.1",
-    "extract-text-webpack-plugin" : "0.8.2",
-    "autoprefixer-loader" : "^2.0.0"
- 
-  },
+  "devDependencies": {},
 
   "peerDependencies" : {
     "webpack" : "^1.11.0",
@@ -47,9 +26,6 @@
   },
 
   "scripts": {
-    "install-dev" : "rm -r SUI/ui/dist; gulp SUI-install; cd SUI/ui ; npm install; gulp build; cd ../..; gulp BPA-build",
-    "build" : "webpack",
-    "watch" : "webpack --progress --colors --watch"
   },
 
   "engines": {
