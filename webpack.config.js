@@ -21,6 +21,14 @@ module.exports = function(name){
                 {
                     test: /.*/,
                     loader : "include-loader"
+                },
+                {
+                    test: /.*/,
+                    loader : "importStyle-loader"
+                },
+                {
+                    test: /.*/,
+                    loader : "includePath-loader"
                 }
             ],
             loaders: [
