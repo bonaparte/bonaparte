@@ -1,10 +1,3 @@
-/*@import "./src/less/panel-bonaparte.less";
-*/
-/*panel-bonaparte {  
-  .panel-bonaparte();
-}
-*/
-/*///////////////////////////////////////////////////////////////////////////*/
 panel-bonaparte {
   display: none;
   position: absolute;
@@ -86,3 +79,81 @@ panel-bonaparte[position~="bottom"][open="true"] {
       -ms-transform: translateY(-100%);
           transform: translateY(-100%);
 }
+panel-bonaparte[data-open="true"],
+panel-bonaparte[open="true"] {
+  z-index: 70;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+}
+panel-bonaparte[data-position~="left"],
+panel-bonaparte[position~="left"] {
+  display: block;
+  height: 100%;
+  top: 0px;
+  border: 0;
+  width: 10rem;
+  right: 100%;
+}
+panel-bonaparte[data-position~="left"][data-open="true"],
+panel-bonaparte[position~="left"][data-open="true"],
+panel-bonaparte[data-position~="left"][open="true"],
+panel-bonaparte[position~="left"][open="true"] {
+  -webkit-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+          transform: translateX(100%);
+}
+panel-bonaparte[data-position~="right"],
+panel-bonaparte[position~="right"] {
+  display: block;
+  height: 100%;
+  top: 0px;
+  width: 10rem;
+  left: 100%;
+}
+panel-bonaparte[data-position~="right"][data-open="true"],
+panel-bonaparte[position~="right"][data-open="true"],
+panel-bonaparte[data-position~="right"][open="true"],
+panel-bonaparte[position~="right"][open="true"] {
+  -webkit-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+panel-bonaparte[data-position~="top"],
+panel-bonaparte[position~="top"] {
+  display: block;
+  width: 100%;
+  left: 0px;
+  height: 10rem;
+  bottom: 100%;
+}
+panel-bonaparte[data-position~="top"][data-open="true"],
+panel-bonaparte[position~="top"][data-open="true"],
+panel-bonaparte[data-position~="top"][open="true"],
+panel-bonaparte[position~="top"][open="true"] {
+  -webkit-transform: translateY(100%);
+      -ms-transform: translateY(100%);
+          transform: translateY(100%);
+}
+panel-bonaparte[data-position~="bottom"],
+panel-bonaparte[position~="bottom"] {
+  display: block;
+  width: 100%;
+  bottom: 0px;
+  left: 0px;
+  height: 10rem;
+  top: 100%;
+}
+panel-bonaparte[data-position~="bottom"][data-open="true"],
+panel-bonaparte[position~="bottom"][data-open="true"],
+panel-bonaparte[data-position~="bottom"][open="true"],
+panel-bonaparte[position~="bottom"][open="true"] {
+  -webkit-transform: translateY(-100%);
+      -ms-transform: translateY(-100%);
+          transform: translateY(-100%);
+}
+/*///////////////////////////////////////////////////////////////////////////*/
+/*panel-bonaparte {  
+  .panel-bonaparte();
+}
+
+/*/
