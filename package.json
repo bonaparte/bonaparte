@@ -11,11 +11,7 @@
   
   "main":"./src/js/index.js",
   
-  "devDependencies": {
-    "import-style-loader" : "file:../import-style-loader",
-    "external-css-loader" : "file:../external-css-loader",
-    "copy-file-loader" : "file:../copy-file-loader"    
-  },
+  "devDependencies": {},
 
   "peerDependencies" : {
     "webpack" : "^1.11.0",
@@ -26,7 +22,10 @@
     "node-sass" : "^3.3.2",
     "extract-text-webpack-plugin" : "0.8.2",
     "autoprefixer-loader" : "^2.0.0",
-    "file-loader" : "^0.8.4"
+    "file-loader" : "^0.8.4",
+    "import-style-loader" : "git://github.dowjones.net/bonaparte/import-style-loader.git#gh-pages",
+    "external-css-loader" : "git://github.dowjones.net/bonaparte/external-css-loader.git#gh-pages",
+    "copy-file-loader" : "git://github.dowjones.net/bonaparte/copy-file-loader.git#gh-pages"    
   },
 
   "scripts": {
