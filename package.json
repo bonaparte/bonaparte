@@ -4,8 +4,8 @@
   
   "dependencies" : {
     "bonaparte" : "git://github.dowjones.net/bonaparte/bonaparte.git#gh-pages",
-    "bonaparte-button" : "file:../bonaparte-button",
-    "bonaparte-sidebar" : "file:../bonaparte-sidebar",
+    "bonaparte-button" : "git://github.dowjones.net/bonaparte/bonaparte-button.git#gh-pages",
+    "bonaparte-sidebar" : "git://github.dowjones.net/bonaparte/bonaparte-sidebar.git#gh-pages",
     "mousetrap" : "^1.5.3"
   },
   
