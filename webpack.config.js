@@ -3,14 +3,7 @@ module.exports = function(name){
     var ExtractTextPlugin = require("extract-text-webpack-plugin");
     var ExtractCSS = new ExtractTextPlugin(name+".css");
 
-    var entry = [
-        'var tag = require("optional?./bonaparte.js¿");',
-        '((typeof tag === "object" || typeof tag === "function") && typeof tag.register === "function") && tag.register();',
-        'require("optional?./bonaparte.less¿optional?./bonaparte.scss¿optional?./bonaparte.sass¿optional?./bonaparte.css¿");'
-    ].join("\n");
-
     return {
-        entry: 'optional?./bonaparte.build.js!parse?'+entry+'!',
         entry: './bonaparte.build.js',
         output: {
             path: "./dist",
@@ -20,29 +13,29 @@ module.exports = function(name){
             preLoaders : [
                 {
                     test: /.*/,
-                    loader : "include-loader"
-                },
-                {
-                    test: /.*/,
-                    loader : "importStyle-loader"
-                },
-                {
-                    test: /.*/,
-                    loader : "includePath-loader"
+                    loader : "import-style-loader"
                 }
             ],
             loaders: [
                 {
-                    test: /\.css$/,
+                    test: /\.css$/i,
                     loader: ExtractCSS.extract("css-loader!autoprefixer-loader")
                 },
                 {
-                    test: /\.less$/,
+                    test: /\.less$/i,
                     loader: ExtractCSS.extract("css-loader!autoprefixer-loader!less-loader")
                 },
                 {
-                    test: /\.scss$/,
+                    test: /\.scss$/i,
                     loader: ExtractCSS.extract("css-loader!autoprefixer-loader!sass-loader")
+                },
+                {
+                    test: /\.(woff|woff2|eot|ttf)$/i,
+                    loader: "copy-file-loader?name=fonts/[name]-[hash].[ext]"
+                },
+                {
+                    test: /\.(jpe?g|png|gif|svg)$/i,
+                    loader: "file-loader?name=images/[name]-[hash].[ext]"
                 }
             ]
         },

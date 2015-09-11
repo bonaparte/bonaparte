@@ -11,7 +11,11 @@
   
   "main":"./src/js/index.js",
   
-  "devDependencies": {},
+  "devDependencies": {
+    "import-style-loader" : "file:../import-style-loader",
+    "external-css-loader" : "file:../external-css-loader",
+    "copy-file-loader" : "file:../copy-file-loader"    
+  },
 
   "peerDependencies" : {
     "webpack" : "^1.11.0",
@@ -21,7 +25,8 @@
     "sass-loader" : "^2.0.1",
     "node-sass" : "^3.3.2",
     "extract-text-webpack-plugin" : "0.8.2",
-    "autoprefixer-loader" : "^2.0.0"
+    "autoprefixer-loader" : "^2.0.0",
+    "file-loader" : "^0.8.4"
   },
 
   "scripts": {
