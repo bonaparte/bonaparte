@@ -22,6 +22,15 @@ toolbar-bonaparte {
 
   .sidebar-bonaparte(@overrides);   
 
+  &[data-sidebar="top"],
+  &[sidebar="top"],
+  &[data-sidebar="bottom"],
+  &[sidebar="bottom"] {
+    > :nth-child(1) * {
+      white-space:nowrap;
+    }
+  }
+
   /*CORNERSTONE*/
 
   > cornerstone-bonaparte {  
