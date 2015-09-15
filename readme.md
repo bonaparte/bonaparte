@@ -68,7 +68,7 @@ Some components define a number of `required` child tags. Required children must
   - [< panel-bonaparte >](https://github.dowjones.net/bonaparte/bonaparte-panel)
 
 
-##### Highlevel Components
+#### Highlevel Components
 Highlevel components enforce a certain level of design hierachry by implementing some restrictions.
 For the best result, use as many highlevel components in your design as possible.
 
