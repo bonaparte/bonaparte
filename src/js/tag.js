@@ -21,8 +21,8 @@ function createTag(name, modules, nativeBaseElement){
   else if(modulesType !== "array")
     throw "Bonaparte - createTag: Unexpected "+modulesType+". Expected Function or Array."
 
-
   nativeBaseElement = nativeBaseElement || window.HTMLElement || window.Element;
+
 ///////////////////////////////////////////////////////////////////////////////
 // Public
   
@@ -42,7 +42,7 @@ function createTag(name, modules, nativeBaseElement){
   function register(){ 
     if(typeof document.registerElement === "undefined") { // If IE8 make tag stylable but otherwise do nothing.
       document.createElement(name+"-bonaparte");
-      return;
+      return definition;
     }
     registeredTags[name+"-bonaparte"] = registeredTags[name+"-bonaparte"] !== undefined ?
       registeredTags[name+"-bonaparte"]:

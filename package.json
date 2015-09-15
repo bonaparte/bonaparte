@@ -13,7 +13,6 @@
   
   "devDependencies": {
     "import-style-loader" : "git://github.dowjones.net/bonaparte/import-style-loader.git#gh-pages",
-    "external-css-loader" : "git://github.dowjones.net/bonaparte/external-css-loader.git#gh-pages",
     "copy-file-loader" : "git://github.dowjones.net/bonaparte/copy-file-loader.git#gh-pages"    
   },
 
