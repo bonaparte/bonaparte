@@ -23,7 +23,7 @@
   -  [bp.tag.triggerEvent()](#bptagtriggerevent)
 
 ## About
-This bonaparte module is the core of the _Bonaparte UX Framework_. It provides an [API](#api) with all the tools needed to create Bonaparte Components.
+This module is the core of the _Bonaparte UX Framework_. It provides an [API](#api) with all the tools needed to create Bonaparte Components.
 
 ## To Look At
 
