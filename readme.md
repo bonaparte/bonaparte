@@ -1,14 +1,11 @@
 # Bonaparte UX Framework
 
 - [About](#about)
-- [Basic Use](#basic-use)
 - [To Look At](#to-look-at)
+- [Basic Use](#basic-use)
 - [Bonaparte Components](#bonaparte-components)
   - [Standard Components](#standard-components)
   - [Highlevel Components](#highlevel-components)
-- [Development](#development)
-  - [Bonaparte](#bonaparte)
-  - [Semantic UI Theme](#sui-theme)
 - [Structure/Modules](#structuremodules)
   - [Events](#events)
 - [Create New Components](#create-new-components)
@@ -28,6 +25,14 @@
 ## About
 This bonaparte module is the core of the _Bonaparte UX Framework_. It provides an [API](#api) with all the tools needed to create Bonaparte Components.
 
+## To Look At
+
+__Research/Proposal:__
+
+[Bonaparte Research/Proposal](https://docs.google.com/a/dowjones.com/document/d/1l0vsb8ZkeJjaNtEFa-49VCAalIajGf0l4zmKBbP95sI/edit?usp=sharing)
+<br>
+[Bonaparte Components](https://docs.google.com/a/dowjones.com/document/d/11ufSpZOKBbgdOJ5NUsfq_Yk-ziA9sWgTJiMd1G02IzA/edit?usp=sharing)
+
 
 ## Basic Use
 
@@ -40,15 +45,6 @@ Create a custom component:
 ```javascript
 module.exports = bp.tag.create("tag-name", function(){…});
 ```
-
-## To Look At
-
-__Research/Proposal:__
-
-[Bonaparte Research/Proposal](https://docs.google.com/a/dowjones.com/document/d/1l0vsb8ZkeJjaNtEFa-49VCAalIajGf0l4zmKBbP95sI/edit?usp=sharing)
-<br>
-[Bonaparte Components](https://docs.google.com/a/dowjones.com/document/d/11ufSpZOKBbgdOJ5NUsfq_Yk-ziA9sWgTJiMd1G02IzA/edit?usp=sharing)
-
 
 ## Bonaparte Components
 Bonaparte Components are library and design agnostic UX components. They are placed in HTML in form of custom tags. 
