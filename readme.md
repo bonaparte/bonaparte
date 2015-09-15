@@ -8,7 +8,6 @@
   - [< sidebar-bonaparte >](#-sidebar-bonaparte-)
   - [< panel-bonaparte >](#-panel-bonaparte-)
   - [< toolbar-bonaparte >](#-toolbar-bonaparte-)    
-    - [< cornerstone-bonaparte >](#-cornerstone-bonaparte-)
 - [Development](#development)
   - [Bonaparte](#bonaparte)
   - [Semantic UI Theme](#sui-theme)
@@ -31,18 +30,15 @@
 
 ## Basic Use
 
-- Download / Clone Repository.
-- Include files: 
+Require the API:
+```javascript
+var bp = require("bonaparte");
+```
 
-  ```
-  ./dist/SUI/semantic.min.css
-  ./dist/bonaparte.css
-
-  ./dist/SUI/semantic.min.js
-  ./dist/bonaparte.js
-  ```
-  
-This makes bonaparte and the bonaparte Semantic UI theme available in your project.
+Create a custom component:
+```javascript
+module.exports = bp.tag.create("tag-name", function(){…});
+```
 
 ## To Look At
 
@@ -53,314 +49,15 @@ __Research/Proposal:__
 [Bonaparte Components](https://docs.google.com/a/dowjones.com/document/d/11ufSpZOKBbgdOJ5NUsfq_Yk-ziA9sWgTJiMd1G02IzA/edit?usp=sharing)
 
 
-__Examples:__
-
-[Kitchen-Sink](http://dowjones.github.io/bonaparte/examples/kitchen-sink.html)
-<br>
-[Toolbar](http://dowjones.github.io/bonaparte/examples/toolbar.html)
-
-
-__Designs:__
-
-[Bonaparte Styles](http://dowjones.github.io/bonaparte/designs/Bonaparte%20v0.2.pdf)
-<br>
-[Narrator](http://dowjones.github.io/bonaparte/designs/Narrator%20UI%20v0.1.pdf)
-<br>
-[Narrator (Toolbars)](http://dowjones.github.io/bonaparte/designs/Narrator%20UI%20v0.1%20-%20toolbars.pdf)
-<br>
-[Xavier](http://dowjones.github.io/bonaparte/designs/Xavier%20UI%20v0.2.pdf)
-
-
 ## Bonaparte Components
-Bonaparte Components are custom tags, that can be used in HTML and come with built in functionality.
+Bonaparte Components are library and design agnostic UX components. They are placed in HTML in form of custom tags. 
+Each components functionality can be customized through attributes.
 
-Each component can be customized through attributes.
+Some components define a number of `required` child tags. Required children must be the first children. After the required child elements, there can be aubitrary additional content.
 
-In addition, some components define a number of `required` child tags. Required children must be the first children. After the required child elements, there can be aubitrary additional content.
-
-> Note: No component uses the `class` attribute in any way. You can use your favorite frontend frameworks classes for styling.
+> Note: (Design Agnostic) No component uses the `class` attribute in any way. You can use your favorite frontend frameworks classes for styling.
 
 > Note: Required children can be any type of tag. (i.e. the < sidebar-bonaparte >'s first child can be a `<div>` or more semantically correct an `<aside>` tag.
-
-### Standard Components
-
----
-
-#### < button-bonaparte >
-Bonaparte buttons are a powerfull tool to define interface behaviour. <br>A button defines a target-state which it invokes on a target-element when its action is triggered.<br> A button defines one or more target elements on the page. On those target-elements it affects the specified target-attributes and syncs their values with the correlating attribute on the target. The active state is automatically set when all target-attributes match the attributes on all target-elements. <br>
-With this mechanic most UI behaviour can be implemented without writing any javascript.
-
-```html
-
-<button-bonaparte
-  action
-  active-class
-  target
-  target-[attribute]
-  toggle
-  trigger
-  bubbles
-  shortcut
->
-</button-bonaparte>
-```
-
-##### Attributes
-Name | Values | Default | Description 
-:--------- | :--- | :------ | :----------
-__action__ | _Event_ |  | HTMLEvent that triggers the button.
-__active-class__ | className | `active` | Defines which class will be added to the button if all target-attributes are matched on (all) target-elements.<br>Setting this explicitly to `""` will disable the active class.
-__bubbles__ | `true`<br>`false` | `true` | Defines if the action-event bubbels up the DOM
-__shortcut__ | _key combination_ | | Defines keyboard shortcuts to trigger this button. (For more details see: [Mousetrap](https://craig.is/killing/mice))
-__target__ | _querySelector_ |  | CSS Selector defining the elements this button affects.
-__target-*__ | target-value |  | * : attribute on target element<br>Attribute value this button will set on the target element when it is triggered by the action.
-__toggle__ | `true` | `false` | Clicking a button a second time will restore its state before it was affected by this button. All attributes will toggle.
- | `false` | | This button doesn't toggle any attributes. Clicking the button again will set the target-* values again.
- | _attribute-name_, _attribute-name_ | | Only the listed attributes toggle.
-__trigger__ | (String) _Event_ |  | Event to be triggered on the target element.
-
-
-
----
-
-#### < panel-bonaparte >
-A panel is a temporary UI element that slides in from one side. It automatically attaches itself to its next positioned parent element. There can only be one panel open at a time and opening another panel or clicking outside of it will close the current panel.
-(For a permanent sidebar, use the `<sidebar-bonaparte>` tag)
-```html
-<!-- parent element must not be position:static -->
-<panel-bonaparte 
-  position 
-  open
->
-</panel-bonaparte>
-```
-
-##### Attributes
-Name | Values | Default | Description 
-:--------- | :--- | :------ | :----------
-__position__ | `left`<br>`top`<br>`right`<br>`bottom` | `left` | Defines the position and direction of the panel within its parent element.
-__open__ | `false` | `false` | Panel is not visible and moves out of its parent element.
- | `true` | | Panel is visible and moves into its parent element
-
-##### Events
-Name | Target | Bubbles | Description 
-:--------- | :--- | :------ | :------
-__bonaparte.panel.open__ | `<panel-bonaparte>` | yes | Triggers when a panel opens.
-__bonaparte.panel.close__ | `<panel-bonaparte>` | yes | Triggers when a panel closes.
-
----
-
-#### < scroll-bonaparte >
-The scroll component can be used to very easily implement scrolling in a container.
-
-```html
-<!-- parent element must not be position:static -->
-<scroll-bonaparte
-  scrollBar
->
-
-  <1st-child content />
-
-</scroll-bonaparte>
-```
-
-##### Attributes
-Name | Values | Default | Description 
-:--------- | :--- | :------ | :---------
-__scrollbar__  |  `hover`  | `hover` | Scrollbar is only visible if the user hover over the scrollable area. 
- | `visible`  | | Scrollbar is always visible.
- | `hidden` | | Scrollbar is never visible
- | `native` | | The native scrollbar will not be replaced and is visible.
-
-
-##### Child elements
-Index | Name |  Required | Description 
-:--------- | :--- | :------ | :-----
-__1__ | content | yes | Content that will be scrolled.
-
----
-
-#### < sidebar-bonaparte >
-The Sidebar is a UI element consisting of to two areas, a sidebar and a content area. As opposed to the panel, the sidebar does not overlay over the content but pushes it. There can be multiple sidebars open at the same time and they can be nested.
-(Have a look at the `<toolbar-bonaparte>` highlevel component if you plan to only have buttons in the sidebar)
-
-```html
-<sidebar-bonaparte
-  sidebar
-  open
->
-
-  <1st-child sidebar />
-  <2nd-child content /> 
-  
-</sidebar-bonaparte>
-```
-
-##### Attributes
-Name | Values | Default | Description 
-:--------- | :--- | :------ | :---------
-__sidebar__  |   `left`<br>`top`<br>`right`<br>`bottom` | `left` | Defines the position of the sidebar relative to its content area.
-__open__ | `true` | `true` | Displays the Sidebar according to its `min-width`.
- | `false` | | Sets the size of the sidebar to 0px.
-
-
-##### Child elements
-Index | Name |  Required | Description 
-:--------- | :--- | :------ | :-----
-__1__ | sidebar | yes | Will be place according to the _sidebar_ attribute.
-__2__ | content | yes | Holds the main content. The sidebar is placed around this element.
-
-
-##### Events
-[Not yet implemented.. sry]
-Name | Target | Bubbles | Description 
-:--------- | :--- | :------ | :------
-__bonaparte.sidebar.open__ | `<sidebar-bonaparte>` | yes | Triggers when a sidebar opens.
-__bonaparte.sidebar.close__ | `<sidebar-bonaparte>` | yes | Triggers when a sidebar closes.
-
-
----
-
-### Highlevel Components
-Highlevel components enforce a certain level of design hierachry by implementing some restrictions.
-For the best result, use as many highlevel components in your design as possible.
-
----
-
-#### < toolbar-bonaparte >
-A Toolbar is a specialized sidebar which contains button groups. The toolbar inherits all the functionality from [`<sidebar-bonaparte>`](#-sidebar-bonaparte-). In addition child elements of the sidebar are handled as button groups and spread evenly from left to right or top to bottom.
-As a highlevel component Toolbars also implements restrictions on buttons. Buttons within a toolbar can only _target_ child elements of the `<toolbar-bonaparte>` tag. They can not _target_ parent elements of the toolbar.
-
-```html
-<toolbar-bonaparte
-  cornerstone=[top|bottom][left|right][outside]?
-
-  extends:sidebar
->
-
-  <1st-child sidebar>
-    <nth-child button-group>
-
-  <2nd-child content /> 
-
-  <cornerstone-bonaparte />  <!-- Optional -->
-
-</toolbar-bonaparte>
-```
-
-##### Child elements
-Index | Name |  Required | Description 
-:--------- | :--- | :------ | :-----
-__1__ | sidebar | yes | Will be place according to the _sidebar_ attribute.
-__1.x__ | button-group | (yes) | All direct children of the _sidebar_ are handled as button groups and spread evenly within the sidebar.
-__2__ | content | yes | Holds the main content. The sidebar is placed around this element.
-
-
-##### Attributes
-Name | Values | Default | Description 
-:--------- | :--- | :------ | :----------
-__cornerstone__ | `left` `right`<br>`top` `bottom` | `left top` | Defines the position of the cornerstone within the toolbar.
- | `outside` | | If present, the cornerstone sits outside the toolbar and pushes it.<br>The first passed side defines the side on which the cornerstone leaves the toolbar. <br>`left top outside`: Cornerstone sits left of the toolbar aligned top.<br>`top left outside`: Cornerstone sits on top of the toolbar aligned left.
-
-
-
-##### < cornerstone-bonaparte >
-A cornerstone is a special button placed in one corner of a toolbar. There can only be one cornerstone per toolbar and its position is defined by it's toolbar. Cornerstones don't exist outside Toolbars.
-
-```html
-<!-- only as direct child of <toolbar-bonaparte> -->
-<cornerstone-bonaparte
-  extends:button
->
-</cornerstone-bonaparte>
-```
-
----
-
-## Development
-
-### Bonaparte
-
-#### Install / Build
-
-- Clone Repository (Note: Respository includes submodules)
-- Run `npm install` in `./`.
-
-#### Development
-
-- Run `npm run install-dev` in `./`. _(Select **NO** for all options for fastes result)_
-- Run `gulp BPA-watch` to watch `./src/` and keep `./dist/` up to date.
-
-> ### SUI theme
-> #### Install / Build
->
-> - Clone Repository (Note: Respository includes submodules)
-> - Run `npm install` in `./`. 
->
-> #### Development
->
-> > __One doesn't simply work in `dist/` directly.__ <br>
-> > _- Wise Man_
->
-> - Install / Build SUI.
-> - Run `npm run install-dev` in `./`. _(Select **NO** for all options for fastes result)_
-> - Run `gulp SUI-watch` to watch `.SUI/ui/` and keep `dist/` up to date.
-> - Work in `ui/`. _( Theme: `./ui/src/themes/bonaparte/` )_
-
-
-## Structure/Modules
-
-Bonaparte has a modular structure and is therefore very easily extendable.
-Each bonaparte tag is a combination of __modules__.
-
-__Modules__ are simple javascript functions that get instanciated for each tag-instance on the page:
-
-```javascript
-  function module(tag) {
-    // tag === this === current tag instance
-  }
-```
-
-### Events
-
-Bonaparte-Tags emit the following custom events.
-
-```javascript
-  "bonaparte.tag.created"
-  "bonaparte.tag.attached"
-  "bonaparte.tag.detached"
-  "bonaparte.tag.attributeChanged" // Value changed
-  "bonaparte.tag.attributeUpdated" // Value updated (might not have changed)
-```
-
-##### Listen
-Listen to them like you do with native events:
-```javascript
-document.getElementById("bonaparte-tag").addEventListener("bonaparte.tag.created", handler);
-```
-
-##### Trigger
-On Bonaparte-Tags Custom events can easily be triggered by calling
-```javascript
-document.getElementById("bonaparte-tag").bonaparte.triggerEvent("name", data)
-```
-
-Or through the [API](#api) events can be triggered on any element: 
-```javascript
-bp.tag.triggerEvent(tag, "name", data);
-```
-
-##Create New Components
-New Bonaparte Components can easily be created with help of the [API](#api):
-
-```javascript
-var tag = bp.tag.create("name", function(tag){
-  // tag === this === current tag instance
-  // Logic goes here.
-});
-```
-(Full documentation: [bp.tag.create()](#bptagcreate))
-
 
 ## API
 Requiring the `bonaparte` module provides all the necessary functions to create new _tags_ from modules, as well a set of utility functions that can be used within _modules_.
@@ -449,7 +146,6 @@ var module = bp.modules.mixin(
 
 ---
 ---
-
 ### bp.tag
 
 ---
@@ -510,7 +206,6 @@ The returned _Tag Factory_ that can be.
 > Static methods on modules become static methods on the _Tag Factory_.
 
 ---
-
 #### bp.tag.DOMReady();
 Calls the handler function when the DOM is ready. If the DOM is already completed, the handler is called imediately.
 
@@ -520,7 +215,6 @@ bp.tag.DOMReady(
 )
 ```
 ---
-
 #### bp.tag.observe();
 Sets on observer on the given Element.
 The observed element now emits `bonaparte.tag.attributeChanged` and `bonaparte.tag.attributeUpdated` events.
@@ -531,7 +225,6 @@ bp.tag.observe(
 )
 ```
 ---
-
 #### bp.tag.triggerEvent();
 Triggers a event on the given HTMLElement
 __Returns:__ `undefined`
@@ -547,3 +240,68 @@ bp.tag.triggerEvent(
 ```
 
 ---
+
+### Standard Components
+
+
+### Highlevel Components
+Highlevel components enforce a certain level of design hierachry by implementing some restrictions.
+For the best result, use as many highlevel components in your design as possible.
+
+
+
+
+## Structure/Modules
+
+Bonaparte has a modular structure and is therefore very easily extendable.
+Each bonaparte tag is a combination of __modules__.
+
+__Modules__ are simple javascript functions that get instanciated for each tag-instance on the page:
+
+```javascript
+  function module(tag) {
+    // tag === this === current tag instance
+  }
+```
+
+### Events
+
+Bonaparte-Tags emit the following custom events.
+
+```javascript
+  "bonaparte.tag.created"
+  "bonaparte.tag.attached"
+  "bonaparte.tag.detached"
+  "bonaparte.tag.attributeChanged" // Value changed
+  "bonaparte.tag.attributeUpdated" // Value updated (might not have changed)
+```
+
+##### Listen
+Listen to them like you do with native events:
+```javascript
+document.getElementById("bonaparte-tag").addEventListener("bonaparte.tag.created", handler);
+```
+
+##### Trigger
+On Bonaparte-Tags Custom events can easily be triggered by calling
+```javascript
+document.getElementById("bonaparte-tag").bonaparte.triggerEvent("name", data)
+```
+
+Or through the [API](#api) events can be triggered on any element: 
+```javascript
+bp.tag.triggerEvent(tag, "name", data);
+```
+
+##Create New Components
+New Bonaparte Components can easily be created with help of the [API](#api):
+
+```javascript
+var tag = bp.tag.create("name", function(tag){
+  // tag === this === current tag instance
+  // Logic goes here.
+});
+```
+(Full documentation: [bp.tag.create()](#bptagcreate))
+
+
