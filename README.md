@@ -33,3 +33,14 @@ Name | Values | Default | Description
 __cornerstone__ | `left` `right`<br>`top` `bottom` | `left top` | Defines the position of the cornerstone within the toolbar.
  | `outside` | | If present, the cornerstone sits outside the toolbar and pushes it.<br>The first passed side defines the side on which the cornerstone leaves the toolbar. <br>`left top outside`: Cornerstone sits left of the toolbar aligned top.<br>`top left outside`: Cornerstone sits on top of the toolbar aligned left.
 
+
+## < cornerstone-bonaparte >
+A cornerstone is a special button placed in one corner of a toolbar. There can only be one cornerstone per toolbar and its position is defined by it's toolbar. Cornerstones don't exist outside Toolbars.
+
+```html
+<!-- only as direct child of <toolbar-bonaparte> -->
+<cornerstone-bonaparte
+  extends:button
+>
+</cornerstone-bonaparte>
+```
