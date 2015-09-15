@@ -1,4 +1,4 @@
-# Bonaparte UX Framework
+# Bonaparte UX Framework – Core
 
 - [About](#about)
 - [To Look At](#to-look-at)
