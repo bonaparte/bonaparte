@@ -1,13 +1,11 @@
 # Bonaparte UX Framework
 
+- [About](#about)
 - [Basic Use](#basic-use)
 - [To Look At](#to-look-at)
 - [Bonaparte Components](#bonaparte-components)
-  - [< button-bonaparte >](#-button-bonaparte-)
-  - [< scroll-bonaparte >](#-scroll-bonaparte-)
-  - [< sidebar-bonaparte >](#-sidebar-bonaparte-)
-  - [< panel-bonaparte >](#-panel-bonaparte-)
-  - [< toolbar-bonaparte >](#-toolbar-bonaparte-)    
+  - [Standard Components](#standard-components)
+  - [Highlevel Components](#highlevel-components)
 - [Development](#development)
   - [Bonaparte](#bonaparte)
   - [Semantic UI Theme](#sui-theme)
@@ -26,6 +24,9 @@
   -  [bp.tag.DOMReady()](#bptagdomready)
   -  [bp.tag.observe()](#bptagobserve)
   -  [bp.tag.triggerEvent()](#bptagtriggerevent)
+
+## About
+This bonaparte module is the core of the _Bonaparte UX Framework_. It provides an [API](#api) with all the tools needed to create Bonaparte Components.
 
 
 ## Basic Use
@@ -58,6 +59,76 @@ Some components define a number of `required` child tags. Required children must
 > Note: (Design Agnostic) No component uses the `class` attribute in any way. You can use your favorite frontend frameworks classes for styling.
 
 > Note: Required children can be any type of tag. (i.e. the < sidebar-bonaparte >'s first child can be a `<div>` or more semantically correct an `<aside>` tag.
+
+#### Standard Components
+
+  - [< button-bonaparte >](https://github.dowjones.net/bonaparte/bonaparte-button)
+  - [< scroll-bonaparte >](https://github.dowjones.net/bonaparte/bonaparte-scroll)
+  - [< sidebar-bonaparte >](https://github.dowjones.net/bonaparte/bonaparte-sidebar)
+  - [< panel-bonaparte >](https://github.dowjones.net/bonaparte/bonaparte-panel)
+
+
+##### Highlevel Components
+Highlevel components enforce a certain level of design hierachry by implementing some restrictions.
+For the best result, use as many highlevel components in your design as possible.
+
+  - [< toolbar-bonaparte >](https://github.dowjones.net/bonaparte/bonaparte-toolbar)
+
+
+## Structure/Modules
+
+Bonaparte has a modular structure and is therefore very easily extendable.
+Each bonaparte tag is a combination of __modules__.
+
+__Modules__ are simple javascript functions that get instanciated for each tag-instance on the page:
+
+```javascript
+  function module(tag) {
+    // tag === this === current tag instance
+  }
+```
+
+### Events
+
+Bonaparte-Tags emit the following custom events.
+
+```javascript
+  "bonaparte.tag.created"
+  "bonaparte.tag.attached"
+  "bonaparte.tag.detached"
+  "bonaparte.tag.attributeChanged" // Value changed
+  "bonaparte.tag.attributeUpdated" // Value updated (might not have changed)
+```
+
+##### Listen
+Listen to them like you do with native events:
+```javascript
+document.getElementById("bonaparte-tag").addEventListener("bonaparte.tag.created", handler);
+```
+
+##### Trigger
+On Bonaparte-Tags Custom events can easily be triggered by calling
+```javascript
+document.getElementById("bonaparte-tag").bonaparte.triggerEvent("name", data)
+```
+
+Or through the [API](#api) events can be triggered on any element: 
+```javascript
+bp.tag.triggerEvent(tag, "name", data);
+```
+
+##Create New Components
+New Bonaparte Components can easily be created with help of the [API](#api):
+
+```javascript
+var tag = bp.tag.create("name", function(tag){
+  // tag === this === current tag instance
+  // Logic goes here.
+});
+```
+(Full documentation: [bp.tag.create()](#bptagcreate))
+
+
 
 ## API
 Requiring the `bonaparte` module provides all the necessary functions to create new _tags_ from modules, as well a set of utility functions that can be used within _modules_.
@@ -238,70 +309,3 @@ bp.tag.triggerEvent(
  [(Boolean)       cancelable=true]
 )
 ```
-
----
-
-### Standard Components
-
-
-### Highlevel Components
-Highlevel components enforce a certain level of design hierachry by implementing some restrictions.
-For the best result, use as many highlevel components in your design as possible.
-
-
-
-
-## Structure/Modules
-
-Bonaparte has a modular structure and is therefore very easily extendable.
-Each bonaparte tag is a combination of __modules__.
-
-__Modules__ are simple javascript functions that get instanciated for each tag-instance on the page:
-
-```javascript
-  function module(tag) {
-    // tag === this === current tag instance
-  }
-```
-
-### Events
-
-Bonaparte-Tags emit the following custom events.
-
-```javascript
-  "bonaparte.tag.created"
-  "bonaparte.tag.attached"
-  "bonaparte.tag.detached"
-  "bonaparte.tag.attributeChanged" // Value changed
-  "bonaparte.tag.attributeUpdated" // Value updated (might not have changed)
-```
-
-##### Listen
-Listen to them like you do with native events:
-```javascript
-document.getElementById("bonaparte-tag").addEventListener("bonaparte.tag.created", handler);
-```
-
-##### Trigger
-On Bonaparte-Tags Custom events can easily be triggered by calling
-```javascript
-document.getElementById("bonaparte-tag").bonaparte.triggerEvent("name", data)
-```
-
-Or through the [API](#api) events can be triggered on any element: 
-```javascript
-bp.tag.triggerEvent(tag, "name", data);
-```
-
-##Create New Components
-New Bonaparte Components can easily be created with help of the [API](#api):
-
-```javascript
-var tag = bp.tag.create("name", function(tag){
-  // tag === this === current tag instance
-  // Logic goes here.
-});
-```
-(Full documentation: [bp.tag.create()](#bptagcreate))
-
-
