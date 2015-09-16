@@ -11,9 +11,7 @@
   
   "main":"./src/js/index.js",
   
-  "devDependencies": {
-    "copy-file-loader" : "git://github.dowjones.net/bonaparte/copy-file-loader.git#gh-pages"    
-  },
+  "devDependencies": {},
 
   "peerDependencies" : {
     "webpack" : "^1.11.0",
