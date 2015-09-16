@@ -10,12 +10,6 @@ module.exports = function(name){
             filename: name+".js"
         },
         module: {
-            preLoaders : [
-                {
-                    test: /.*/,
-                    loader : "import-style-loader"
-                }
-            ],
             loaders: [
                 {
                     test: /\.css$/i,
@@ -39,7 +33,6 @@ module.exports = function(name){
                 }
             ]
         },
-        // Use the plugin to specify the resulting filename (and add needed behavior to the compiler)
         plugins: [
            ExtractCSS,
         ]
