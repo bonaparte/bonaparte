@@ -94,8 +94,6 @@ sidebar-bonaparte[sidebar="bottom"][open="false"] > :nth-child(1) {
   min-height: 0rem;
 }
 /*///////////////////////////////////////////////////////////////////////////*/
-/* @import "./src/less/sidebar-bonaparte.less"; 
-*/
 /*///////////////////////////////////////////////////////////////////////////*/
 toolbar-bonaparte {
   /*DEFINITION*/
@@ -107,8 +105,6 @@ toolbar-bonaparte {
   display: flex;
   /*SIDEBAR POSITION*/
   /*SIDEBAR STATE*/
-  /*CORNERSTONE*/
-  /*CORNERSTONE OUTSIDE*/
 }
 toolbar-bonaparte > :nth-child(1) {
   position: relative;
@@ -194,80 +190,10 @@ toolbar-bonaparte[data-sidebar="bottom"][open="false"] > :nth-child(1),
 toolbar-bonaparte[sidebar="bottom"][open="false"] > :nth-child(1) {
   min-height: 0rem;
 }
-toolbar-bonaparte > cornerstone-bonaparte {
-  position: absolute !important;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 4rem;
-  height: 4rem;
-  top: 0px;
-  left: 0px;
-  z-index: 99;
-  margin: 0 !important;
-  font-size: 1.3em;
-  line-height: 1.3em;
-  padding-left: 0.1em;
-}
-toolbar-bonaparte[data-cornerstone*="bottom"] > cornerstone-bonaparte,
-toolbar-bonaparte[cornerstone*="bottom"] > cornerstone-bonaparte {
-  bottom: 0px !important;
-  top: auto !important;
-}
-toolbar-bonaparte[data-cornerstone*="top"] > cornerstone-bonaparte,
-toolbar-bonaparte[cornerstone*="top"] > cornerstone-bonaparte {
-  top: 0px !important;
-  bottom: auto !important;
-}
-toolbar-bonaparte[data-cornerstone*="left"] > cornerstone-bonaparte,
-toolbar-bonaparte[cornerstone*="left"] > cornerstone-bonaparte {
-  left: 0px !important;
-  right: auto !important;
-}
-toolbar-bonaparte[data-cornerstone*="right"] > cornerstone-bonaparte,
-toolbar-bonaparte[cornerstone*="right"] > cornerstone-bonaparte {
-  right: 0px !important;
-  left: auto !important;
-}
-toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone^="right"],
-toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone~="right"][data-cornerstone$="top"],
-toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone~="right"][data-cornerstone$="bottom"],
-toolbar-bonaparte[cornerstone~="outside"][cornerstone^="right"],
-toolbar-bonaparte[cornerstone~="outside"][cornerstone~="right"][cornerstone$="top"],
-toolbar-bonaparte[cornerstone~="outside"][cornerstone~="right"][cornerstone$="bottom"] {
-  padding-right: 4rem;
-}
-toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone^="left"],
-toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone~="left"][data-cornerstone$="top"],
-toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone~="left"][data-cornerstone$="bottom"],
-toolbar-bonaparte[cornerstone~="outside"][cornerstone^="left"],
-toolbar-bonaparte[cornerstone~="outside"][cornerstone~="left"][cornerstone$="top"],
-toolbar-bonaparte[cornerstone~="outside"][cornerstone~="left"][cornerstone$="bottom"] {
-  padding-left: 4rem;
-}
-toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone^="top"],
-toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone~="top"][data-cornerstone$="left"],
-toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone~="top"][data-cornerstone$="right"],
-toolbar-bonaparte[cornerstone~="outside"][cornerstone^="top"],
-toolbar-bonaparte[cornerstone~="outside"][cornerstone~="top"][cornerstone$="left"],
-toolbar-bonaparte[cornerstone~="outside"][cornerstone~="top"][cornerstone$="right"] {
-  padding-top: 4rem;
-}
-toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone^="bottom"],
-toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone~="bottom"][data-cornerstone$="left"],
-toolbar-bonaparte[data-cornerstone~="outside"][data-cornerstone~="bottom"][data-cornerstone$="right"],
-toolbar-bonaparte[cornerstone~="outside"][cornerstone^="bottom"],
-toolbar-bonaparte[cornerstone~="outside"][cornerstone~="bottom"][cornerstone$="left"],
-toolbar-bonaparte[cornerstone~="outside"][cornerstone~="bottom"][cornerstone$="right"] {
-  padding-bottom: 4rem;
+toolbar-bonaparte[data-sidebar="top"] > :nth-child(1) *,
+toolbar-bonaparte[sidebar="top"] > :nth-child(1) *,
+toolbar-bonaparte[data-sidebar="bottom"] > :nth-child(1) *,
+toolbar-bonaparte[sidebar="bottom"] > :nth-child(1) * {
+  white-space: nowrap;
 }
 /*///////////////////////////////////////////////////////////////////////////*/

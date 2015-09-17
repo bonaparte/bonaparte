@@ -45,8 +45,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(4).register();
-	__webpack_require__(39).register();
-	__webpack_require__(40);
+	__webpack_require__(39);
 
 /***/ },
 /* 1 */,
@@ -5441,64 +5440,6 @@
 
 /***/ },
 /* 39 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var bp = __webpack_require__(6);
-
-	///////////////////////////////////////////////////////////////////////////////
-	// Public
-
-	module.exports = bp.tag.create("cornerstone", [
-	  __webpack_require__(27),
-	  cornerstone
-	]);
-
-	///////////////////////////////////////////////////////////////////////////////
-	function cornerstone(tag){
-	  var toolbar = tag.parentNode;
-
-	  updateCornerstonePadding();
-	///////////////////////////////////////////////////////////////////////////////
-	  
-	  tag.addEventListener("bonaparte.tag.attributeChanged", updateCornerstonePadding);
-	  toolbar.addEventListener("bonaparte.tag.attributeChanged", updateCornerstonePadding);
-	  
-	///////////////////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////////////////
-	  
-	  function updateCornerstonePadding(){
-	    var cornerStonePosition = bp.attribute.get(toolbar, "cornerstone").match(/(\w+)/g);
-	    var sidebarPosition = bp.attribute.get(toolbar, "sidebar");
-	    
-	    toolbar.firstElementChild.style.padding="";
-	    
-	    if(cornerStonePosition.indexOf("outside") >= 0) return;
-
-	    var sidebarPositionIndex = cornerStonePosition.indexOf(sidebarPosition);
-
-	    if(sidebarPositionIndex < 0) return;
-	    else cornerStonePosition.splice(sidebarPositionIndex,1);
-
-	    var paddingSide = cornerStonePosition[0];
-
-	    var paddingValue = paddingSide === "left" || paddingSide === "right"?
-	      tag.offsetWidth:
-	      tag.offsetHeight;
-
-	    paddingSide=paddingSide.charAt(0).toUpperCase() + paddingSide.slice(1);
-
-	    toolbar.firstElementChild.style["padding"+paddingSide]=paddingValue+"px";
-
-	  }
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
-
-/***/ },
-/* 40 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
