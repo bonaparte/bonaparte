@@ -5,4 +5,4 @@
  * require("bonaparte").mixin.create()
  */
 
-module.exports = require("./src/js/draggable-bonaparte.js");
+module.exports = require("./src/js/bonaparte-draggable.js");
