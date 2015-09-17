@@ -9,7 +9,7 @@
     "custom-event-polyfill" : "^0.2.1"
   },
   
-  "main":"./src/js/index.js",
+  "main":"./src/index.js",
   
   "devDependencies": {},
 

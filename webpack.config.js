@@ -25,7 +25,7 @@ module.exports = function(name){
                 },
                 {
                     test: /\.(woff|woff2|eot|ttf)$/i,
-                    loader: "copy-file-loader?name=fonts/[name]-[hash].[ext]"
+                    loader: "file-loader?name=fonts/[name]-[hash].[ext]"
                 },
                 {
                     test: /\.(jpe?g|png|gif|svg)$/i,
