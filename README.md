@@ -1,9 +1,9 @@
-# < toolbar-bonaparte >
+# < bonaparte-toolbar >
 A Toolbar is a specialized sidebar which contains button groups. The toolbar inherits all the functionality from [`<sidebar-bonaparte>`](#-sidebar-bonaparte-). In addition child elements of the sidebar are handled as button groups and spread evenly from left to right or top to bottom.
-As a highlevel component Toolbars also implements restrictions on buttons. Buttons within a toolbar can only _target_ child elements of the `<toolbar-bonaparte>` tag. They can not _target_ parent elements of the toolbar.
+As a highlevel component Toolbars also implements restrictions on buttons. Buttons within a toolbar can only _target_ child elements of the `<bonaparte-toolbar>` tag. They can not _target_ parent elements of the toolbar.
 
 ```html
-<toolbar-bonaparte
+<bonaparte-toolbar
   cornerstone=[top|bottom][left|right][outside]?
 
   extends:sidebar
@@ -14,8 +14,7 @@ As a highlevel component Toolbars also implements restrictions on buttons. Butto
 
   <2nd-child content /> 
 
-
-</toolbar-bonaparte>
+</bonaparte-toolbar>
 ```
 
 ##### Child elements

@@ -5,4 +5,4 @@
  * require("bonaparte").mixin.create()
  */
 
-module.exports = require("./src/js/toolbar-bonaparte.js");
+module.exports = require("./src/js/bonaparte-toolbar.js");
