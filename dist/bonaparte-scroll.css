@@ -1,4 +1,4 @@
-scroll-bonaparte {
+bonaparte-scroll {
   /* 
     Inspired by: nanoScrollerJS
     https://github.com/jamesflorentino/nanoScrollerJS
@@ -10,7 +10,7 @@ scroll-bonaparte {
   display: block;
   /* PREVENT REDRAW BUG IN CHROME (but not Safari!)*/
 }
-scroll-bonaparte > :nth-child(1) {
+bonaparte-scroll > :nth-child(1) {
   position: absolute;
   overflow: scroll;
   overflow-x: hidden;
@@ -20,15 +20,15 @@ scroll-bonaparte > :nth-child(1) {
   left: 0;
   padding: 0px;
 }
-scroll-bonaparte > :nth-child(1):focus {
+bonaparte-scroll > :nth-child(1):focus {
   outline: thin dotted;
 }
 @supports (-webkit-appearance: none) {
-  scroll-bonaparte > :nth-child(1) {
+  bonaparte-scroll > :nth-child(1) {
     -webkit-transform: translateZ(0);
   }
 }
-scroll-bonaparte > .scrollbar {
+bonaparte-scroll > .scrollbar {
   background: rgba(0, 0, 0, 0.25);
   position: absolute;
   width: 10px;
@@ -41,33 +41,33 @@ scroll-bonaparte > .scrollbar {
           transition: .2s;
   border-radius: 5px;
 }
-scroll-bonaparte > .scrollbar > :first-child {
+bonaparte-scroll > .scrollbar > :first-child {
   background: #444;
   background: rgba(0, 0, 0, 0.5);
   position: relative;
   margin: 0 1px;
   border-radius: 3px;
 }
-scroll-bonaparte > :nth-child(1)::-webkit-scrollbar {
+bonaparte-scroll > :nth-child(1)::-webkit-scrollbar {
   display: none;
 }
-scroll-bonaparte[scrollbar~="native"] > :nth-child(1)::-webkit-scrollbar {
+bonaparte-scroll[scrollbar~="native"] > :nth-child(1)::-webkit-scrollbar {
   display: block;
 }
-scroll-bonaparte:hover > .scrollbar,
-scroll-bonaparte[scrollbar~="hover"]:hover > .scrollbar,
-scroll-bonaparte[data-scrollbar~="hover"]:hover > .scrollbar,
-scroll-bonaparte:focus > .scrollbar,
-scroll-bonaparte[scrollbar~="hover"]:focus > .scrollbar,
-scroll-bonaparte[data-scrollbar~="hover"]:focus > .scrollbar {
+bonaparte-scroll:hover > .scrollbar,
+bonaparte-scroll[scrollbar~="hover"]:hover > .scrollbar,
+bonaparte-scroll[data-scrollbar~="hover"]:hover > .scrollbar,
+bonaparte-scroll:focus > .scrollbar,
+bonaparte-scroll[scrollbar~="hover"]:focus > .scrollbar,
+bonaparte-scroll[data-scrollbar~="hover"]:focus > .scrollbar {
   opacity: 0.99;
 }
-scroll-bonaparte[scrollbar~="hidden"] > .scrollbar,
-scroll-bonaparte[data-scrollbar~="hidden"] > .scrollbar {
+bonaparte-scroll[scrollbar~="hidden"] > .scrollbar,
+bonaparte-scroll[data-scrollbar~="hidden"] > .scrollbar {
   opacity: 0;
 }
-scroll-bonaparte[scrollbar~="visible"] > .scrollbar,
-scroll-bonaparte[data-scrollbar~="visible"] > .scrollbar {
+bonaparte-scroll[scrollbar~="visible"] > .scrollbar,
+bonaparte-scroll[data-scrollbar~="visible"] > .scrollbar {
   opacity: 0.99;
 }
 /*///////////////////////////////////////////////////////////////////////////*/

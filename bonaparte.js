@@ -5,4 +5,4 @@
  * require("bonaparte").mixin.create()
  */
 
-module.exports = require("./src/js/scroll-bonaparte.js");
+module.exports = require("./src/js/bonaparte-scroll.js");

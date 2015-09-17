@@ -1,15 +1,15 @@
-# < scroll-bonaparte >
+# < bonaparte-scroll >
 The scroll component can be used to very easily implement scrolling in a container.
 
 ```html
 <!-- parent element must not be position:static -->
-<scroll-bonaparte
+<bonaparte-scroll
   scrollBar
 >
 
   <1st-child content />
 
-</scroll-bonaparte>
+</bonaparte-scroll>
 ```
 
 ##### Attributes
