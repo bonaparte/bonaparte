@@ -26,9 +26,39 @@ bonaparte-toolbar {
   &[sidebar="top"],
   &[data-sidebar="bottom"],
   &[sidebar="bottom"] {
+
+    > :nth-child(1) {
+       min-height:@default-closed;
+    }
+
     > :nth-child(1) * {
       white-space:nowrap;
     }
+
+    &[data-open="true"],
+    &[open="true"] {
+      > :nth-child(1){
+        min-height:@default-open;
+      }
+    }   
+  }  
+
+  &[data-sidebar="left"],
+  &[sidebar="left"],
+  &[data-sidebar="right"],
+  &[sidebar="right"] {
+
+    > :nth-child(1) {
+       min-width:@default-closed;
+    }
+
+    &[data-open="true"],
+    &[open="true"] {
+      
+      > :nth-child(1){
+        min-width:@default-open;
+      }
+    }   
   }
   
 }
