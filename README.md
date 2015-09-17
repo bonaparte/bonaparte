@@ -1,9 +1,9 @@
-# < sidebar-bonaparte >
+# < bonaparte-sidebar >
 The Sidebar is a UI element consisting of to two areas, a sidebar and a content area. As opposed to the panel, the sidebar does not overlay over the content but pushes it. There can be multiple sidebars open at the same time and they can be nested.
 (Have a look at the `<toolbar-bonaparte>` highlevel component if you plan to only have buttons in the sidebar)
 
 ```html
-<sidebar-bonaparte
+<bonaparte-sidebar
   sidebar
   open
 >
@@ -11,7 +11,7 @@ The Sidebar is a UI element consisting of to two areas, a sidebar and a content 
   <1st-child sidebar />
   <2nd-child content /> 
   
-</sidebar-bonaparte>
+</bonaparte-sidebar>
 ```
 
 ##### Attributes
@@ -33,6 +33,6 @@ __2__ | content | yes | Holds the main content. The sidebar is placed around thi
 [Not yet implemented.. sry]
 Name | Target | Bubbles | Description 
 :--------- | :--- | :------ | :------
-__bonaparte.sidebar.open__ | `<sidebar-bonaparte>` | yes | Triggers when a sidebar opens.
-__bonaparte.sidebar.close__ | `<sidebar-bonaparte>` | yes | Triggers when a sidebar closes.
+__bonaparte.sidebar.open__ | `<bonaparte-sidebar>` | yes | Triggers when a sidebar opens.
+__bonaparte.sidebar.close__ | `<bonaparte-sidebar>` | yes | Triggers when a sidebar closes.
 
