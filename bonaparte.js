@@ -5,4 +5,4 @@
  * require("bonaparte").mixin.create()
  */
 
-module.exports = require("./src/js/panel-bonaparte.js");
+module.exports = require("./src/js/bonaparte-panel.js");

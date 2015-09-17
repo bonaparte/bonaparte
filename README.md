@@ -1,13 +1,13 @@
-# < panel-bonaparte >
+# < bonaparte-panel >
 A panel is a temporary UI element that slides in from one side. It automatically attaches itself to its next positioned parent element. There can only be one panel open at a time and opening another panel or clicking outside of it will close the current panel.
 (For a permanent sidebar, use the `<sidebar-bonaparte>` tag)
 ```html
 <!-- parent element must not be position:static -->
-<panel-bonaparte 
+<bonaparte-panel 
   position 
   open
 >
-</panel-bonaparte>
+</bonaparte-panel>
 ```
 
 ##### Attributes
@@ -20,5 +20,5 @@ __open__ | `false` | `false` | Panel is not visible and moves out of its parent 
 ##### Events
 Name | Target | Bubbles | Description 
 :--------- | :--- | :------ | :------
-__bonaparte.panel.open__ | `<panel-bonaparte>` | yes | Triggers when a panel opens.
-__bonaparte.panel.close__ | `<panel-bonaparte>` | yes | Triggers when a panel closes.
+__bonaparte.panel.open__ | `<bonaparte-panel>` | yes | Triggers when a panel opens.
+__bonaparte.panel.close__ | `<bonaparte-panel>` | yes | Triggers when a panel closes.
