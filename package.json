@@ -3,7 +3,7 @@
   "version": "0.0.1",
   
   "dependencies" : {
-    "bonaparte" : "git://github.dowjones.net/bonaparte/bonaparte.git#gh-pages",
+    "bonaparte" : "git+https://git@github.dowjones.net/bonaparte/bonaparte.git#gh-pages",
     "mousetrap" : "^1.5.3"
   },
   
