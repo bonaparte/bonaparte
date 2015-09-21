@@ -3,7 +3,7 @@
   "version": "0.0.1",
   
   "dependencies" : {
-    "bonaparte" : "git://github.dowjones.net/bonaparte/bonaparte.git#gh-pages",
+    "bonaparte" : "git+https://git@github.dowjones.net/bonaparte/bonaparte.git#gh-pages",
     "mousetrap" : "^1.5.3"
   },
   
@@ -19,9 +19,9 @@
     "extract-text-webpack-plugin" : "0.8.2",
     "autoprefixer-loader" : "^2.0.0",
     "file-loader" : "^0.8.4",
-    "import-style-loader" : "git://github.dowjones.net/bonaparte/import-style-loader.git#gh-pages",
-    "external-css-loader" : "git://github.dowjones.net/bonaparte/external-css-loader.git#gh-pages",
-    "copy-file-loader" : "git://github.dowjones.net/bonaparte/copy-file-loader.git#gh-pages"  
+    "import-style-loader" : "git+https://git@github.dowjones.net/bonaparte/import-style-loader.git#gh-pages",
+    "external-css-loader" : "git+https://git@github.dowjones.net/bonaparte/external-css-loader.git#gh-pages",
+    "copy-file-loader" : "git+https://git@github.dowjones.net/bonaparte/copy-file-loader.git#gh-pages"  
   },
 
   "scripts": {
