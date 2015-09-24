@@ -1,0 +1,34 @@
+
+{
+  "name": "bonaparte-dropdown",
+  "version": "0.0.1",
+  
+  "dependencies" : {
+    "bonaparte" : "git+https://git@github.dowjones.net/bonaparte/bonaparte.git#gh-pages",
+    "mousetrap" : "^1.5.3"
+  },
+  
+  "main":"bonaparte.js",
+
+  "devDependencies": {
+    "webpack" : "^1.11.0",
+    "css-loader" : "^0.16.0",
+    "less-loader" : "^2.2.0",
+    "less" : "^2.3.1",
+    "sass-loader" : "^2.0.1",
+    "node-sass" : "^3.3.2",
+    "extract-text-webpack-plugin" : "0.8.2",
+    "autoprefixer-loader" : "^2.0.0",
+    "file-loader" : "^0.8.4"
+  },
+
+  "scripts": {
+    "build" : "webpack",
+    "build-prod" : "webpack -p",
+    "watch" : "webpack --progress --colors --watch"
+  },
+
+  "engines": {
+    "node": ">=0.12.x"
+  }
+}
