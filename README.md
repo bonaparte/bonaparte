@@ -24,5 +24,5 @@ __2__ | handler | (yes) | Holds the main content. The sidebar is placed around t
 ##### Attributes
 Name | Values | Default | Description 
 :--------- | :--- | :------ | :----------
-__position__ | `left` `right`<br>`top` `bottom` | `left top` | Defines the position of the cornerstone within the toolbar.
+__position__ | `left` `right`<br>`top` `bottom` | `left bottom` | Defines the position of the cornerstone within the toolbar.
 __handler__ | querySelector |  | CSS Selector defining the elements this button affects
