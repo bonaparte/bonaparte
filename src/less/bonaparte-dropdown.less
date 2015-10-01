@@ -21,7 +21,64 @@ bonaparte-dropdown {
 
   & {
     position:relative;
-    display: flex;
+    display: inline-block;
+  }
+
+  & > :first-child {
+    display: none;
+    position: absolute;
+    z-index: 99;
+  }
+
+  &[data-open="true"] > :first-child,
+  &[open="true"] > :first-child {
+    display: block;
+  }
+
+  &:not([position]) > :first-child,
+  &[position=""] > :first-child,
+  &[position*="bottom"] > :first-child {
+    top: 100%;
+    bottom: auto;
+  }
+
+  &[position*="top"] > :first-child {
+    top: auto;
+    bottom: 100%;
+  }
+
+  &[position*="left"] > :first-child {
+    right: 100%;
+    left: auto;
+  }
+
+  &[position*="right"] > :first-child {
+    right: auto;
+    left: 100%;
+  }
+  
+  &[position^="right"][position$="bottom"] > :first-child,
+  &[position^="left"][position$="bottom"] > :first-child {
+    top: auto;
+    bottom: 0;
+  }
+
+  &[position^="right"][position$="top"] > :first-child,
+  &[position^="left"][position$="top"] > :first-child {
+    top: 0;
+    bottom: auto;
+  }
+
+  &[position^="top"][position$="right"] > :first-child,
+  &[position^="bottom"][position$="right"] > :first-child {
+  right: 0;
+  left: auto;
+  }
+
+  &[position^="top"][position$="left"] > :first-child,
+  &[position^="bottom"][position$="left"] > :first-child {
+  right: auto;
+  left: 0;
   }
 
 }
