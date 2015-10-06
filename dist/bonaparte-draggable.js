@@ -72,7 +72,7 @@
 	///////////////////////////////////////////////////////////////////////////////
 	function draggable(tag) {
 
-	  tag.update = update;
+	  tag.addEventListener("bonaparte.tag.attributeChanged", update);
 
 	  var children = [],
 	    count = [],
@@ -114,12 +114,12 @@
 	      for (var i = 0; i < range.length; i++) {
 	        range[i] = parseInt(range[i])
 	      };
-	      for (var i = 0; i < children.length; i++) {
-	        if (i >= range[0] && i <= range[1]) {
-	          children[i].classList.add('inRange');
-	        } else {
-	          children[i].classList.remove('inRange');
-	        }
+	    }
+	    for (var i = 0; i < children.length; i++) {
+	      if (i >= range[0] && i <= range[1]) {
+	        children[i].classList.add('inRange');
+	      } else {
+	        children[i].classList.remove('inRange');
 	      }
 	    }
 	  }
@@ -220,7 +220,7 @@
 	    }
 	    count = [];
 	    elem.classList.remove('dragover');
-	    currentDraggedElem.classList.remove('dragover');
+	    currentDraggedElem.classList.remove('dragging');
 
 	    var parent = currentDraggedElem.parentNode,
 	      newParent = parent.cloneNode(true),
@@ -238,8 +238,8 @@
 	    }
 
 	    if (updateDom) {
-	      parent = newParent;
-	      setRange();
+	      parent.innerHTML = newParent.innerHTML;
+	      update();
 	    }
 
 	    bp.tag.triggerEvent(tag, "draggable.drop", details);
@@ -773,8 +773,8 @@
 	  else if(modulesType !== "array")
 	    throw "Bonaparte - createTag: Unexpected "+modulesType+". Expected Function or Array."
 
-
 	  nativeBaseElement = nativeBaseElement || window.HTMLElement || window.Element;
+
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
 	  
@@ -792,13 +792,14 @@
 	///////////////////////////////////////////////////////////////////////////////
 
 	  function register(){ 
+
 	    if(typeof document.registerElement === "undefined") { // If IE8 make tag stylable but otherwise do nothing.
-	      document.createElement(name+"-bonaparte");
-	      return;
+	      document.createElement("bonaparte-"+name);
+	      return definition;
 	    }
-	    registeredTags[name+"-bonaparte"] = registeredTags[name+"-bonaparte"] !== undefined ?
-	      registeredTags[name+"-bonaparte"]:
-	      document.registerElement(name+"-bonaparte", {
+	    registeredTags[name] = registeredTags[name] !== undefined ?
+	      registeredTags[name]:
+	      document.registerElement("bonaparte-"+name, {
 	        prototype : Object.create( nativeBaseElement.prototype , {
 	          createdCallback : { value: createdCallback },
 	          attachedCallback : { value: attachedCallback },

@@ -7,7 +7,7 @@ module.exports = bp.tag.create("draggable", draggable);
 ///////////////////////////////////////////////////////////////////////////////
 function draggable(tag) {
 
-  tag.update = update;
+  tag.addEventListener("bonaparte.tag.attributeChanged", update);
 
   var children = [],
     count = [],
@@ -49,12 +49,12 @@ function draggable(tag) {
       for (var i = 0; i < range.length; i++) {
         range[i] = parseInt(range[i])
       };
-      for (var i = 0; i < children.length; i++) {
-        if (i >= range[0] && i <= range[1]) {
-          children[i].classList.add('inRange');
-        } else {
-          children[i].classList.remove('inRange');
-        }
+    }
+    for (var i = 0; i < children.length; i++) {
+      if (i >= range[0] && i <= range[1]) {
+        children[i].classList.add('inRange');
+      } else {
+        children[i].classList.remove('inRange');
       }
     }
   }
@@ -155,7 +155,7 @@ function draggable(tag) {
     }
     count = [];
     elem.classList.remove('dragover');
-    currentDraggedElem.classList.remove('dragover');
+    currentDraggedElem.classList.remove('dragging');
 
     var parent = currentDraggedElem.parentNode,
       newParent = parent.cloneNode(true),
@@ -173,8 +173,8 @@ function draggable(tag) {
     }
 
     if (updateDom) {
-      parent = newParent;
-      setRange();
+      parent.innerHTML = newParent.innerHTML;
+      update();
     }
 
     bp.tag.triggerEvent(tag, "draggable.drop", details);
