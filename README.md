@@ -4,8 +4,6 @@ As a highlevel component Toolbars also implements restrictions on buttons. Butto
 
 ```html
 <bonaparte-toolbar
-  cornerstone=[top|bottom][left|right][outside]?
-
   extends:sidebar
 >
 
@@ -23,10 +21,3 @@ Index | Name |  Required | Description
 __1__ | sidebar | yes | Will be place according to the _sidebar_ attribute.
 __1.x__ | button-group | (yes) | All direct children of the _sidebar_ are handled as button groups and spread evenly within the sidebar.
 __2__ | content | yes | Holds the main content. The sidebar is placed around this element.
-
-
-##### Attributes
-Name | Values | Default | Description 
-:--------- | :--- | :------ | :----------
-__cornerstone__ | `left` `right`<br>`top` `bottom` | `left top` | Defines the position of the cornerstone within the toolbar.
- | `outside` | | If present, the cornerstone sits outside the toolbar and pushes it.<br>The first passed side defines the side on which the cornerstone leaves the toolbar. <br>`left top outside`: Cornerstone sits left of the toolbar aligned top.<br>`top left outside`: Cornerstone sits on top of the toolbar aligned left.

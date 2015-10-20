@@ -22,10 +22,10 @@ bonaparte-toolbar {
 
   .bonaparte-sidebar(@overrides);   
 
-  &[data-sidebar="top"],
-  &[sidebar="top"],
-  &[data-sidebar="bottom"],
-  &[sidebar="bottom"] {
+  &[data-position="top"],
+  &[position="top"],
+  &[data-position="bottom"],
+  &[position="bottom"] {
 
     > :nth-child(1) {
        min-height:@default-closed;
@@ -43,10 +43,10 @@ bonaparte-toolbar {
     }   
   }  
 
-  &[data-sidebar="left"],
-  &[sidebar="left"],
-  &[data-sidebar="right"],
-  &[sidebar="right"] {
+  &[data-position="left"],
+  &[position="left"],
+  &[data-position="right"],
+  &[position="right"] {
 
     > :nth-child(1) {
        min-width:@default-closed;

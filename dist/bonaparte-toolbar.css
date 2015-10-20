@@ -188,10 +188,42 @@ bonaparte-toolbar[data-sidebar="bottom"][open="false"] > :nth-child(1),
 bonaparte-toolbar[sidebar="bottom"][open="false"] > :nth-child(1) {
   min-height: 0rem;
 }
-bonaparte-toolbar[data-sidebar="top"] > :nth-child(1) *,
-bonaparte-toolbar[sidebar="top"] > :nth-child(1) *,
-bonaparte-toolbar[data-sidebar="bottom"] > :nth-child(1) *,
-bonaparte-toolbar[sidebar="bottom"] > :nth-child(1) * {
+bonaparte-toolbar[data-position="top"] > :nth-child(1),
+bonaparte-toolbar[position="top"] > :nth-child(1),
+bonaparte-toolbar[data-position="bottom"] > :nth-child(1),
+bonaparte-toolbar[position="bottom"] > :nth-child(1) {
+  min-height: 0rem;
+}
+bonaparte-toolbar[data-position="top"] > :nth-child(1) *,
+bonaparte-toolbar[position="top"] > :nth-child(1) *,
+bonaparte-toolbar[data-position="bottom"] > :nth-child(1) *,
+bonaparte-toolbar[position="bottom"] > :nth-child(1) * {
   white-space: nowrap;
+}
+bonaparte-toolbar[data-position="top"][data-open="true"] > :nth-child(1),
+bonaparte-toolbar[position="top"][data-open="true"] > :nth-child(1),
+bonaparte-toolbar[data-position="bottom"][data-open="true"] > :nth-child(1),
+bonaparte-toolbar[position="bottom"][data-open="true"] > :nth-child(1),
+bonaparte-toolbar[data-position="top"][open="true"] > :nth-child(1),
+bonaparte-toolbar[position="top"][open="true"] > :nth-child(1),
+bonaparte-toolbar[data-position="bottom"][open="true"] > :nth-child(1),
+bonaparte-toolbar[position="bottom"][open="true"] > :nth-child(1) {
+  min-height: 10rem;
+}
+bonaparte-toolbar[data-position="left"] > :nth-child(1),
+bonaparte-toolbar[position="left"] > :nth-child(1),
+bonaparte-toolbar[data-position="right"] > :nth-child(1),
+bonaparte-toolbar[position="right"] > :nth-child(1) {
+  min-width: 0rem;
+}
+bonaparte-toolbar[data-position="left"][data-open="true"] > :nth-child(1),
+bonaparte-toolbar[position="left"][data-open="true"] > :nth-child(1),
+bonaparte-toolbar[data-position="right"][data-open="true"] > :nth-child(1),
+bonaparte-toolbar[position="right"][data-open="true"] > :nth-child(1),
+bonaparte-toolbar[data-position="left"][open="true"] > :nth-child(1),
+bonaparte-toolbar[position="left"][open="true"] > :nth-child(1),
+bonaparte-toolbar[data-position="right"][open="true"] > :nth-child(1),
+bonaparte-toolbar[position="right"][open="true"] > :nth-child(1) {
+  min-width: 10rem;
 }
 /*///////////////////////////////////////////////////////////////////////////*/
