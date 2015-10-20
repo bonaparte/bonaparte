@@ -94,6 +94,7 @@
 
 	  function updateSize(data){
 	    var size = bp.attribute.get(tag, "size");
+	    var sidebar = bp.attribute.get(tag, "position");
 	    var style = sidebar === "left" || sidebar==="right" ? "min-width" : "min-height";
 	    if(size === undefined) 
 	      tag.firstElementChild.style[style] = "";
@@ -614,8 +615,8 @@
 	  else if(modulesType !== "array")
 	    throw "Bonaparte - createTag: Unexpected "+modulesType+". Expected Function or Array."
 
-
 	  nativeBaseElement = nativeBaseElement || window.HTMLElement || window.Element;
+
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
 	  
@@ -633,13 +634,14 @@
 	///////////////////////////////////////////////////////////////////////////////
 
 	  function register(){ 
+
 	    if(typeof document.registerElement === "undefined") { // If IE8 make tag stylable but otherwise do nothing.
-	      document.createElement(name+"-bonaparte");
-	      return;
+	      document.createElement("bonaparte-"+name);
+	      return definition;
 	    }
-	    registeredTags[name+"-bonaparte"] = registeredTags[name+"-bonaparte"] !== undefined ?
-	      registeredTags[name+"-bonaparte"]:
-	      document.registerElement(name+"-bonaparte", {
+	    registeredTags[name] = registeredTags[name] !== undefined ?
+	      registeredTags[name]:
+	      document.registerElement("bonaparte-"+name, {
 	        prototype : Object.create( nativeBaseElement.prototype , {
 	          createdCallback : { value: createdCallback },
 	          attachedCallback : { value: attachedCallback },

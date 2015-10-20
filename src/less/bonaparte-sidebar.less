@@ -43,33 +43,33 @@ bonaparte-sidebar {
 
   /*SIDEBAR POSITION*/
 
-  &[data-sidebar="left"],
-  &[sidebar="left"] {
+  &[data-position="left"],
+  &[position="left"] {
     flex-direction: row;
   }
 
-  &[data-sidebar="right"],
-  &[sidebar="right"] {
+  &[data-position="right"],
+  &[position="right"] {
     flex-direction: row-reverse;
   }
 
-  &[data-sidebar="top"],
-  &[sidebar="top"] {
+  &[data-position="top"],
+  &[position="top"] {
     flex-direction: column;
   }
 
-  &[data-sidebar="bottom"],
-  &[sidebar="bottom"] {
+  &[data-position="bottom"],
+  &[position="bottom"] {
     flex-direction: column-reverse;
   }
 
 
   /*SIDEBAR STATE*/ 
 
-  &[data-sidebar="left"],
-  &[sidebar="left"],
-  &[data-sidebar="right"],
-  &[sidebar="right"] {
+  &[data-position="left"],
+  &[position="left"],
+  &[data-position="right"],
+  &[position="right"] {
     > :nth-child(1){
       max-width:0px;
 
@@ -84,10 +84,10 @@ bonaparte-sidebar {
     }   
   }
 
-  &[data-sidebar="top"],
-  &[sidebar="top"],
-  &[data-sidebar="bottom"],
-  &[sidebar="bottom"] {
+  &[data-position="top"],
+  &[position="top"],
+  &[data-position="bottom"],
+  &[position="bottom"] {
     > :nth-child(1){
       max-height:0px;
       min-height:@default-open;

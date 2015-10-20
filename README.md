@@ -4,7 +4,7 @@ The Sidebar is a UI element consisting of to two areas, a sidebar and a content 
 
 ```html
 <bonaparte-sidebar
-  sidebar
+  position
   open
 >
 
@@ -17,7 +17,7 @@ The Sidebar is a UI element consisting of to two areas, a sidebar and a content 
 ##### Attributes
 Name | Values | Default | Description 
 :--------- | :--- | :------ | :---------
-__sidebar__  |   `left`<br>`top`<br>`right`<br>`bottom` | `left` | Defines the position of the sidebar relative to its content area.
+__position__  |   `left`<br>`top`<br>`right`<br>`bottom` | `left` | Defines the position of the sidebar relative to its content area.
 __open__ | `true` | `true` | Displays the Sidebar according to its `min-width`.
  | `false` | | Sets the size of the sidebar to 0px.
 
