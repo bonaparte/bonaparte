@@ -9,7 +9,7 @@ module.exports = bp.tag.create("dropdown", dropdown);
 function dropdown(tag) {
 
   tag.addEventListener("bonaparte.tag.attributeChanged", update);
-  bp.tag.DOMReady(initialise());
+  bp.tag.DOMReady(initialise);
   
 
   function update (data) {
