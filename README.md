@@ -3,7 +3,7 @@ The Dropdown is a UI element consisting of to two areas, a content area and a ha
 
 Note: if placed inside a < p > then block elements (ie div) may break the flow of the HTML
 
-[Example](https://github.dowjones.net/pages/newsroomdevelopment/bonaparte-nd/examples/dropdown.html)
+[Example](https://dowjones.github.io/bonaparte/examples/dropdown.html)
 
 
 ```html
