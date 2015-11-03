@@ -27,9 +27,9 @@
 This module is the core of the _Bonaparte UX Framework_. It provides an [API](#api) with all the tools needed to create Bonaparte Components.
 
 ## Getting Started
-Later you can come back and build your own Bonaparte implementation. Bonaparte itself are just a lot of parts that can be used together or by themseves. 
-
 They don't even have any design that comes with them. So order to get started, check out the Dow Jones imlementation of Bonparte here: https://github.com/dowjones/bonaparte
+
+Later you can come back and build your own Bonaparte implementation. Bonaparte itself are just a lot of parts that can be used together or by themseves. 
 
 ## To Look At
 
