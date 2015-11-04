@@ -4,7 +4,7 @@ The scroll component can be used to very easily implement scrolling in a contain
 ```html
 <!-- parent element must not be position:static -->
 <bonaparte-scroll
-  scrollBar
+  scrollbar
 >
 
   <1st-child content />
