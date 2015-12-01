@@ -21,7 +21,467 @@
       <bonaparte-scroll scrollbar="visible" resize="true">
         <bonaparte-content>
 
-			<div>NO Example found</div>
+			    <style type="text/css">
+
+      pre {
+        background-color: #fff;
+        display: block;
+        font-size: 1.1rem;
+      }
+      code .code_position:not([position=""]):after {
+        color: red;
+        content: " position=\"" attr(position) "\"";
+      }
+
+      code .code_action:not([action=""]):after {
+        color: red;
+        content: " action=\"" attr(action) "\"";
+      }
+
+      code .code_handler:not([handler=""]):after {
+        color: red;
+        content: " handler=\"" attr(handler) "\"";
+      }
+
+
+      div.example {text-align: center; margin-top: 1.5rem;}
+      h4.ui.dividing.header {margin-bottom: 0.5rem;}
+      p.small {font-size: 1.2rem; line-height: 1.4rem;}
+
+      bonaparte-dropdown div.menu {
+        width: 200px;
+      }
+
+      bonaparte-dropdown div.menu bonaparte-button.ui.button {
+        width: 200px;
+        display: block;
+        text-align: left;
+      }
+
+
+
+      .menuExample i.icon.right {
+        float: right;
+      }
+
+      .searchMenu {
+        background-color: #fff;
+        width: 260px;
+        border-top: 2px solid #425cbd;
+      }
+
+      .imageList {
+        background-color: #fff;
+        padding: 1rem;
+        width: 360px;
+        border-top: 2px solid #425cbd;
+        border-right: 2px solid #425cbd;
+      }
+
+      .link.item img {
+        width: 100%;
+      }
+
+    </style>
+          <div class="pusher">
+            <div class="full height">
+              <div class="article">
+                <div class="main demo ui container">
+                  <div class="ui active tab" data-tab="elements">
+                    <h4 class="ui dividing header">About</h4>
+                      <p>The Dropdown is a UI element consisting of to two areas, a content area and a handler. When the user interacts with the handler the content area is show. The position of the content area is relative to the bonaparte-dropdown tag, this can be set by using a position attribute on the tag. </p>
+                      <p>Note: if placed inside a < p > then block elements (ie div) may break the flow of the HTML</p>
+        <h4 class="ui dividing header">Example</h4>
+                    <div class="example">
+                     <!-- ######################################################################## -->
+                      <bonaparte-dropdown id="interactiveExample" position="" action="" handler="">
+                        <div class="menu">
+                          <bonaparte-button class="ui button labeled monochrome marginless">
+                            <i class="local-offer icon"></i>
+                            Menu button
+                          </bonaparte-button>
+                          <bonaparte-button class="ui button labeled monochrome marginless">
+                            <i class="local-offer icon"></i>
+                            Menu button
+                          </bonaparte-button>
+                          <bonaparte-button class="ui button labeled monochrome marginless">
+                            <i class="local-offer icon"></i>
+                            Menu button
+                          </bonaparte-button>
+                          <bonaparte-button class="ui button labeled monochrome marginless">
+                            <i class="local-offer icon"></i>
+                            Menu button
+                          </bonaparte-button>
+                                 
+                        </div>
+                                        
+                        <bonaparte-button class="ui button marginless">
+                          Example
+                         <i class="more-vert icon right"></i>
+                       </bonaparte-button>
+                      </bonaparte-dropdown>
+                 <!-- ######################################################################## -->
+        
+                  </div>
+              <h4 class="ui dividing header">Attributes</h4>
+
+                    <div class="ui two column stackable grid">
+                      <div class="column">
+
+                        <h5 class="ui dividing header">Position</h5>
+                        <p>
+                         <bonaparte-button
+                            class="ui button small"
+                            action="click" target="bonaparte-dropdown#interactiveExample, .code_position"
+                            toggle="true" target-position="">Default 
+                          </bonaparte-button>
+                         <br />
+                          <bonaparte-button
+                            class="ui button small"
+                            action="click" target="bonaparte-dropdown#interactiveExample, .code_position"
+                            target-position="top">Top 
+                          </bonaparte-button>
+                          <bonaparte-button
+                            class="ui button small"
+                            action="click" target="bonaparte-dropdown#interactiveExample, .code_position"
+                            toggle="true" target-position="top left">Top Left
+                          </bonaparte-button>
+                          <bonaparte-button
+                            class="ui button small"
+                            action="click" target="bonaparte-dropdown#interactiveExample, .code_position"
+                            toggle="true" target-position="top right">Top Right
+                          </bonaparte-button>
+                        <br />
+                          <bonaparte-button
+                            class="ui button small"
+                            action="click" target="bonaparte-dropdown#interactiveExample, .code_position"
+                            toggle="true" target-position="right">Right
+                          </bonaparte-button>
+                          <bonaparte-button
+                            class="ui button small"
+                            action="click" target="bonaparte-dropdown#interactiveExample, .code_position"
+                            toggle="true" target-position="right top">Right Top
+                          </bonaparte-button>
+                          <bonaparte-button
+                            class="ui button small"
+                            action="click" target="bonaparte-dropdown#interactiveExample, .code_position"
+                            toggle="true" target-position="right bottom">Right Bottom
+                          </bonaparte-button>
+                        <br />
+                         <bonaparte-button
+                            class="ui button small"
+                            action="click" target="bonaparte-dropdown#interactiveExample, .code_position"
+                            toggle="true" target-position="bottom">Bottom 
+                          </bonaparte-button>
+                          <bonaparte-button
+                            class="ui button small"
+                            action="click" target="bonaparte-dropdown#interactiveExample, .code_position"
+                            toggle="true" target-position="bottom left">Bottom Left
+                          </bonaparte-button>
+                          <bonaparte-button
+                            class="ui button small"
+                            action="click" target="bonaparte-dropdown#interactiveExample, .code_position"
+                            toggle="true" target-position="bottom right">Bottom Right
+                          </bonaparte-button>
+                        <br />
+                          <bonaparte-button
+                            class="ui button small"
+                            action="click" target="bonaparte-dropdown#interactiveExample, .code_position"
+                            toggle="true" target-position="left">Left
+                          </bonaparte-button>
+                          <bonaparte-button
+                            class="ui button small"
+                            action="click" target="bonaparte-dropdown#interactiveExample, .code_position"
+                            toggle="true" target-position="left top">Left Top
+                          </bonaparte-button>
+                          <bonaparte-button
+                            class="ui button small"
+                            action="click" target="bonaparte-dropdown#interactiveExample, .code_position"
+                            toggle="true" target-position="left bottom">Left Bottom
+                          </bonaparte-button>
+                        </p>
+                      </div>
+                      <div class="column">
+
+                        <h5 class="ui dividing header">Action</h5>
+                        <p>
+                         <bonaparte-button
+                            class="ui button small"
+                            action="click" target="bonaparte-dropdown#interactiveExample, .code_action"
+                            toggle="true" target-action="">Default 
+                          </bonaparte-button>
+                         <bonaparte-button
+                            class="ui button small"
+                            action="click" target="bonaparte-dropdown#interactiveExample, .code_action"
+                            toggle="true" target-action="mouseover">mouseover 
+                          </bonaparte-button>
+                         <bonaparte-button
+                            class="ui button small"
+                            action="click" target="bonaparte-dropdown#interactiveExample, .code_action"
+                            toggle="true" target-action="mouseenter">mouseenter 
+                          </bonaparte-button>
+                    <!--      <bonaparte-button
+                            class="ui button small"
+                            action="click" target="bonaparte-dropdown#interactiveExample, .code_action"
+                            toggle="true" target-action="mouseenter, mouseout">mouseenter, mouseout 
+                          </bonaparte-button> -->
+                       </p>
+                         <h5 class="ui dividing header">Handler</h5>
+                         <p class="small"><em>Note: if the handler override is not a child of the default handler, the override is not applyed.</em></p>
+                         <p>
+                         <bonaparte-button
+                            class="ui button small"
+                            action="click" target="bonaparte-dropdown#interactiveExample, .code_handler"
+                            toggle="true" target-handler="">Default 
+                          </bonaparte-button>
+                          <bonaparte-button
+                            class="ui button small"
+                            action="click" target="bonaparte-dropdown#interactiveExample, .code_handler"
+                            toggle="true" target-handler="i.icon">i.icon
+                          </bonaparte-button>
+
+
+                        </p>
+
+                      </div>
+                  </div>
+
+                    <h4 class="ui dividing header">Code</h4>
+
+
+<pre class="prettyprint"><code>  &lt;bonaparte-dropdown<span class="code_position" position=""></span><span class="code_action" action=""></span><span class="code_handler" handler=""></span>&gt;
+    &lt;div class="menu"&gt;
+      &lt;bonaparte-button class="..."&gt;
+        ...
+      &lt;/bonaparte-button&gt;
+    &lt;/div&gt;
+    &lt;bonaparte-button class="ui button marginless"&gt;
+      Example &lt;i class="more-vert icon right"&gt;&lt;/i&gt;
+    &lt;/bonaparte-button&gt;
+  &lt;/bonaparte-dropdown&gt;
+</code></pre>
+         
+
+
+                    <h4 class="ui dividing header">Dropdowns as Menus</h4>
+                <!-- ####################################################################### -->
+                      <bonaparte-dropdown class="menuExample">
+                        <div class="menu">
+                          <bonaparte-button class="ui button labeled monochrome marginless">
+                            New
+                            <i class="content-copy icon right"></i>
+                          </bonaparte-button>
+                          <bonaparte-button class="ui button labeled monochrome marginless">
+                            Open
+                            <i class="description icon right"></i>
+                          </bonaparte-button>
+                            <bonaparte-dropdown position="right" action="" handler="">
+                                    <div class="menu">
+                                      <bonaparte-button class="ui button labeled monochrome marginless">
+                                        File one
+                                      </bonaparte-button>
+                                      <bonaparte-button class="ui button labeled monochrome marginless">
+                                       File two
+                                      </bonaparte-button>
+                                      <bonaparte-button class="ui button labeled monochrome marginless">
+                                        File three
+                                      </bonaparte-button>
+                                      <bonaparte-button class="ui button labeled monochrome marginless">
+                                        File four
+                                      </bonaparte-button>
+                                    </div>
+                                    
+                                  <bonaparte-button class="ui button monochrome marginless">
+                                   <i class="navigate-next icon right"></i>
+                                    Open Recent
+                                 </bonaparte-button>
+                                </bonaparte-dropdown>
+                          <bonaparte-button class="ui button labeled monochrome marginless">
+                            Label
+                            <i class="local-offer icon right"></i>
+                          </bonaparte-button>
+                          <bonaparte-button class="ui button labeled monochrome marginless">
+                            Exit
+                            <i class="cancel icon right"></i>
+                          </bonaparte-button>                                
+                        </div>
+                        
+                        <bonaparte-button class="ui button marginless">
+                          Menu 1
+                         <i class="arrow-drop-down icon right"></i>
+                       </bonaparte-button>
+                      </bonaparte-dropdown><bonaparte-button class="ui button labeled marginless">
+                        Item 2
+                      </bonaparte-button><bonaparte-button class="ui button labeled marginless">
+                        Item 3
+                      </bonaparte-button><bonaparte-dropdown class="menuExample" position="top right">
+                        
+                          <bonaparte-dropdown class="menuExample" position="right" handler="input" action="focus">
+                            <div class="imageList">
+                              <div class="ui divided items">
+                                <div class="link item">
+                                  <div class="ui tiny image">
+                                    <img src="images/wireframe/image.png">
+                                  </div>
+                                  <div class="content">
+                                    <a class="header">Content Header</a>
+                                    <div class="description">
+                                      A description which may flow for several lines and give context to the content.
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="link item">
+                                  <div class="ui tiny image">
+                                    <img src="images/wireframe/image.png">
+                                  </div>
+                                  <div class="content">
+                                    <a class="header">Content Header</a>
+                                    <div class="description">
+                                      A description which may flow for several lines and give context to the content.
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="link item">
+                                  <div class="ui tiny image">
+                                    <img src="images/wireframe/image.png">
+                                  </div>
+                                  <div class="content">
+                                    <a class="header">Content Header</a>
+                                    <div class="description">
+                                      A description which may flow for several lines and give context to the content.
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="searchMenu">
+                              <div class="ui form">
+                                <div class="field">
+                                  <input placeholder="Search" type="text">
+                                  <label>Image Search</label>
+                                </div>
+                              </div>
+                            </div>
+                          </bonaparte-dropdown>
+                       
+                        <bonaparte-button class="ui button marginless">
+                          Menu 4
+                         <i class="arrow-drop-up icon right"></i>
+                       </bonaparte-button>
+                      </bonaparte-dropdown>
+                 <!-- ######################################################################## -->
+
+
+<pre class="prettyprint"><code>  &lt;bonaparte-dropdown class="menuExample"&gt;
+    &lt;div class="menu"&gt;
+      &lt;bonaparte-button class="ui button labeled monochrome marginless"&gt;
+        New
+        &lt;i class="content-copy icon right"&gt;&lt;/i&gt;
+      &lt;/bonaparte-button&gt;
+      &lt;bonaparte-button class="ui button labeled monochrome marginless"&gt;
+        Open
+        &lt;i class="description icon right"&gt;&lt;/i&gt;
+      &lt;/bonaparte-button&gt;
+      &lt;bonaparte-dropdown position="right" action="" handler=""&gt;
+        &lt;div class="menu"&gt;
+          &lt;bonaparte-button class="ui button labeled monochrome marginless"&gt;
+            File one
+          &lt;/bonaparte-button&gt;
+          &lt;bonaparte-button class="ui button labeled monochrome marginless"&gt;
+            File two
+          &lt;/bonaparte-button&gt;
+          &lt;bonaparte-button class="ui button labeled monochrome marginless"&gt;
+            File three
+          &lt;/bonaparte-button&gt;
+          &lt;bonaparte-button class="ui button labeled monochrome marginless"&gt;
+            File four
+          &lt;/bonaparte-button&gt;
+        &lt;/div&gt;
+        &lt;bonaparte-button class="ui button monochrome marginless"&gt;
+          &lt;i class="navigate-next icon right"&gt;&lt;/i&gt;
+          Open Recent
+        &lt;/bonaparte-button&gt;
+      &lt;/bonaparte-dropdown&gt;
+      &lt;bonaparte-button class="ui button labeled monochrome marginless"&gt;
+        Label
+        &lt;i class="local-offer icon right"&gt;&lt;/i&gt;
+      &lt;/bonaparte-button&gt;
+      &lt;bonaparte-button class="ui button labeled monochrome marginless"&gt;
+        Exit
+        &lt;i class="cancel icon right"&gt;&lt;/i&gt;
+      &lt;/bonaparte-button&gt;
+    &lt;/div&gt;
+    &lt;bonaparte-button class="ui button marginless"&gt;
+      Menu 1
+      &lt;i class="arrow-drop-down icon right"&gt;&lt;/i&gt;
+    &lt;/bonaparte-button&gt;
+  &lt;/bonaparte-dropdown&gt;
+  &lt;bonaparte-button class="ui button labeled marginless"&gt;
+    Item 2
+  &lt;/bonaparte-button&gt;
+  &lt;bonaparte-button class="ui button labeled marginless"&gt;
+    Item 3
+  &lt;/bonaparte-button&gt;
+  &lt;bonaparte-dropdown class="menuExample" position="top right"&gt;
+    &lt;bonaparte-dropdown class="menuExample" position="right" handler="input" action="focus, blur"&gt;
+      &lt;div class="imageList"&gt;
+        &lt;div class="ui divided items"&gt;
+          &lt;div class="link item"&gt;
+            &lt;div class="ui tiny image"&gt;
+              &lt;img src="images/wireframe/image.png"&gt;
+            &lt;/div&gt;
+            &lt;div class="content"&gt;
+              &lt;a class="header"&gt;Content Header&lt;/a&gt;
+              &lt;div class="description"&gt;
+                A description which may flow for several lines and give context to the content.
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class="link item"&gt;
+            &lt;div class="ui tiny image"&gt;
+              &lt;img src="images/wireframe/image.png"&gt;
+            &lt;/div&gt;
+            &lt;div class="content"&gt;
+              &lt;a class="header"&gt;Content Header&lt;/a&gt;
+              &lt;div class="description"&gt;
+                A description which may flow for several lines and give context to the content.
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class="link item"&gt;
+            &lt;div class="ui tiny image"&gt;
+              &lt;img src="images/wireframe/image.png"&gt;
+            &lt;/div&gt;
+            &lt;div class="content"&gt;
+              &lt;a class="header"&gt;Content Header&lt;/a&gt;
+              &lt;div class="description"&gt;
+                A description which may flow for several lines and give context to the content.
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="searchMenu"&gt;
+        &lt;div class="ui form"&gt;
+          &lt;div class="field"&gt;
+            &lt;input placeholder="Search" type="text"&gt;
+            &lt;label&gt;Image Search&lt;/label&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/bonaparte-dropdown&gt;
+    &lt;bonaparte-button class="ui button marginless"&gt;
+      Menu 4
+      &lt;i class="arrow-drop-up icon right"&gt;&lt;/i&gt;
+    &lt;/bonaparte-button&gt;
+  &lt;/bonaparte-dropdown&gt;
+</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+       
 
         </bonaparte-content>
       </bonaparte-scroll>
