@@ -1,0 +1,221 @@
+/*******************************
+         Theme Overrides
+*******************************/
+
+.ui.form {
+  padding: 1rem 1rem 2rem 1rem;
+  width: 100%;
+}
+
+.ui.form .field {
+  display: table;
+}
+
+.ui.form .field {
+  width: 100%; 
+}
+
+.ui.form .fields.inline .ui.radio.checkbox {
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+.ui.form input:not([type]),
+.ui.form input[type=text],
+.ui.form input[type=email],
+.ui.form input[type=search],
+.ui.form input[type=password],
+.ui.form input[type=date],
+.ui.form input[type=datetime-local],
+.ui.form input[type=tel],
+.ui.form input[type=time],
+.ui.form input[type=url],
+.ui.form input[type=number],
+.ui.form textarea {
+  width: 100%;
+  border: 0;
+  border-bottom: 3px double @color-light-6;
+  background-color: @color-light-1;
+  padding: 1rem;
+  font-size: 1.3rem;
+  color: @color-dark-2;
+  outline: none;
+  display: table-row-group; 
+}
+
+.ui.form .field > label {
+  display: table-header-group;
+  font-size: @tinySize;
+  font-weight: @text-semibold;
+  text-indent: 1rem;
+  color: @color-dark-0;
+}
+.ui.form textarea {
+  width: 100%;
+}
+
+.ui.form input:not([type]):not([readonly]):focus,
+.ui.form input[type=text]:not([readonly]):focus,
+.ui.form input[type=email]:not([readonly]):focus,
+.ui.form input[type=search]:not([readonly]):focus,
+.ui.form input[type=password]:not([readonly]):focus,
+.ui.form input[type=date]:not([readonly]):focus,
+.ui.form input[type=datetime-local]:not([readonly]):focus,
+.ui.form input[type=tel]:not([readonly]):focus,
+.ui.form input[type=time]:not([readonly]):focus,
+.ui.form input[type=url]:not([readonly]):focus,
+.ui.form input[type=number]:not([readonly]):focus,
+.ui.form textarea:not([readonly]):focus {
+  border-color: @color-active;
+}
+
+.ui.form input[readonly]:not([type]):focus,
+.ui.form input[readonly][type=text]:focus,
+.ui.form input[readonly][type=email]:focus,
+.ui.form input[readonly][type=search]:focus,
+.ui.form input[readonly][type=password]:focus,
+.ui.form input[readonly][type=date]:focus,
+.ui.form input[readonly][type=datetime-local]:focus,
+.ui.form input[readonly][type=tel]:focus,
+.ui.form input[readonly][type=time]:focus,
+.ui.form input[readonly][type=url]:focus,
+.ui.form input[readonly][type=number]:focus,
+.ui.form textarea[readonly]:focus {
+  background-color: @color-light-1;
+}
+
+.ui.form input[readonly]:not([type]),
+.ui.form input[readonly][type=text],
+.ui.form input[readonly][type=email],
+.ui.form input[readonly][type=search],
+.ui.form input[readonly][type=password],
+.ui.form input[readonly][type=date],
+.ui.form input[readonly][type=datetime-local],
+.ui.form input[readonly][type=tel],
+.ui.form input[readonly][type=time],
+.ui.form input[readonly][type=url],
+.ui.form input[readonly][type=number],
+.ui.form textarea[readonly] {
+  cursor: default;
+  pointer-events: none;
+  opacity: .45;
+}
+
+.ui.form .dropdown.active:not([readonly]):focus + label,
+.ui.form input:not([type]):not([readonly]):focus + label,
+.ui.form input[type=text]:not([readonly]):focus + label,
+.ui.form input[type=email]:not([readonly]):focus + label,
+.ui.form input[type=search]:not([readonly]):focus + label,
+.ui.form input[type=password]:not([readonly]):focus + label,
+.ui.form input[type=date]:not([readonly]):focus + label,
+.ui.form input[type=datetime-local]:not([readonly]):focus + label,
+.ui.form input[type=tel]:not([readonly]):focus + label,
+.ui.form input[type=time]:not([readonly]):focus + label,
+.ui.form input[type=url]:not([readonly]):focus + label,
+.ui.form input[type=number]:not([readonly]):focus + label,
+.ui.form textarea:not([readonly]):focus + label {
+  color: @color-active;
+}
+
+
+/******************************/
+/*          dropdown          */
+/******************************/
+
+.ui.form .ui.dropdown {
+  color: @color-dark-2;
+  border: 0;
+  border-bottom: 1px solid @color-light-6;
+  background-color: @color-light-1;
+  padding: 1rem;
+}
+
+
+.inline.block.fields {
+  color: @color-dark-2;
+  background-color: @color-light-1;
+  padding: 1rem;
+}
+
+.inline.block.fields > label {
+    text-indent: 0;
+    min-width: 50%;
+}
+
+.ui.form .dropdown i.dropdown.button.icon {
+  position: absolute;
+  height: 100%;
+  line-height: 4rem;
+  width: 4rem;
+  text-align: center;
+  color: @color-interactive;
+  border-radius: 0;
+  top: 0;
+  right: 0;
+  background-color: @color-light-2;
+}
+
+.ui.form .dropdown:hover i.dropdown.button.icon {
+  background-color: @color-light-3;
+}
+
+.ui.form .dropdown label.text {
+  font-weight: 700;
+  margin-left: 1rem;
+}
+
+.ui.form .dropdown .meun {
+  background-color: @color-light-1;
+  border-bottom: 1px solid @color-active;
+}
+
+.ui.form .dropdown .menu .selected.item {
+  color: @color-active;
+  font-weight: 400;
+}
+
+/******************************/
+/*          checkbox          */
+/******************************/
+
+
+.ui.form .ui.checkbox:not(.toggle) {
+    width: 100%;
+    color: #1a1a1a;
+    border: 0;
+    border-bottom: 1px solid @color-light-2;
+    background-color: @color-light-1;
+    padding: 0;
+}
+.ui.form .ui.checkbox:not(.toggle):hover {
+    border-bottom: 1px solid @color-light-2;
+}
+
+.ui.form .ui.checkbox:not(.toggle):not(.slider) label {
+    padding: 1rem;
+    font-size: 1.33333333rem;
+    line-height: 2rem;
+}
+
+.ui.form .ui.checkbox:not(.toggle):not(.slider) label:after {
+    left: inherit;
+    right: 0;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: @color-light-2;
+}
+
+.ui.form .ui.checkbox.checked:not(.toggle):not(.slider) label:after {
+    background-color: @color-light-0;
+    border-right: 2px solid @color-active;
+    border-left: 2px solid transparent;
+    color: @color-active;
+}
+.ui.form .ui.checkbox.checked:not(.toggle):not(.slider):hover label:after,
+.ui.form .ui.checkbox:not(.toggle):not(.slider):hover label:after {
+    background-color: @color-light-3;
+}
+

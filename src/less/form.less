@@ -1,0 +1,190 @@
+
+
+@veryStrongTransparentBlack : rgba(0, 0, 0, 0.15);
+
+@toggleHeight : 1.5rem;
+@toggleWidth : 3.5rem;
+@toggleHandleSize : 1.5rem;
+
+@toggleLaneWidth: 3.5rem;
+
+@toggleLabelDistance: @toggleLaneWidth + 1rem;
+@toggleLabelLineHeight: 1.5rem;
+@toggleLabelOffset: 0.15em;
+
+
+@toggleFocusColor: @veryStrongTransparentBlack;
+@toggleHoverColor: @toggleFocusColor;
+
+@selectedTextColor           : rgba(0, 0, 0, 0.95);
+
+@color-text-dark : #1A1A1A;
+@color-interactive : #B50008;
+@primaryColor : @color-interactive;
+@toggleOffLabelColor: @color-text-dark;
+
+@toggleOnLabelColor: @selectedTextColor;
+@toggleOnLaneColor: @primaryColor;
+
+
+@primaryColorFocus    : saturate(darken(@primaryColor, 8), 20);
+
+@toggleOnFocusLaneColor: @primaryColorFocus;
+@toggleOnFocusLabelColor: @toggleOnLabelColor;
+
+
+@toggleLaneVerticalOffset: 0rem;
+
+@transparentBlack           : rgba(0, 0, 0, 0.05);
+
+@toggleLaneBackground: @transparentBlack;
+
+@toggleLaneHeight: @toggleHandleSize;
+
+
+@circularRadius                : 500rem;
+
+@toggleHandleRadius: @circularRadius;
+
+
+@white: #fff;
+
+@subtleGradient: linear-gradient(transparent, @transparentBlack);
+
+@handleBackground: @white @subtleGradient;
+
+
+@subtleShadow:
+  0px 1px 2px 0 @borderColor
+;
+@handleBoxShadow:
+  @subtleShadow,
+  0px 0px 0px 1px @borderColor inset
+;
+@borderColor                   : rgba(34, 36, 38, 0.15);
+
+@toggleHandleOffset: 0rem;
+
+@defaultDuration : 50ms;
+@defaultEasing   : ease-out;
+
+@sliderTransitionDuration: 0.3s;
+@toggleHandleTransition:
+  background @sliderTransitionDuration @defaultEasing,
+  left @sliderTransitionDuration @defaultEasing
+;
+
+
+@toggleOffOffset: -0.05rem;
+@toggleOnOffset: (@toggleLaneWidth - @toggleHandleSize) + 0.15rem;
+
+/*--------------
+     Toggle
+---------------*/
+
+.ui.toggle.checkbox {
+  min-height: @toggleHeight;
+    position: relative;
+}
+
+/* Input */
+.ui.toggle.checkbox input {
+  width: @toggleWidth;
+  height: @toggleHeight;
+  visibility: hidden;
+  position: absolute;
+}
+
+/* Label */
+.ui.toggle.checkbox .box,
+.ui.toggle.checkbox label {
+  min-height: @toggleHandleSize;
+  padding-left: @toggleLabelDistance;
+  color: @toggleOffLabelColor;
+}
+.ui.toggle.checkbox label {
+  padding-top: @toggleLabelOffset;
+  text-indent: @toggleLabelDistance;
+}
+
+/* Switch */
+.ui.toggle.checkbox .box:before,
+.ui.toggle.checkbox label:before {
+  display: block;
+  position: absolute;
+  content: '';
+  z-index: 1;
+  transform: none;
+  border: none;
+
+  top: @toggleLaneVerticalOffset;
+
+  background: @toggleLaneBackground;
+  width: @toggleLaneWidth;
+  height: @toggleLaneHeight;
+  border-radius: @toggleHandleRadius;
+}
+
+/* Handle */
+.ui.toggle.checkbox .box:after,
+.ui.toggle.checkbox label:after {
+  background: @handleBackground;
+  position: absolute;
+  content: '' !important;
+  opacity: 1;
+  z-index: 2;
+
+  border: none;
+  box-shadow: @handleBoxShadow;
+  width: @toggleHandleSize;
+  height: @toggleHandleSize;
+  top: @toggleHandleOffset;
+  left: 0em;
+
+  border-radius: @circularRadius;
+  transition: @toggleHandleTransition;
+}
+
+.ui.toggle.checkbox input ~ .box:after,
+.ui.toggle.checkbox input ~ label:after {
+  left: @toggleOffOffset;
+}
+
+/* Focus */
+.ui.toggle.checkbox input:focus ~ .box:before,
+.ui.toggle.checkbox input:focus ~ label:before {
+  background-color: @toggleFocusColor;
+  border: none;
+}
+
+/* Hover */
+.ui.toggle.checkbox .box:hover::before,
+.ui.toggle.checkbox label:hover::before {
+  background-color: @toggleHoverColor;
+  border: none;
+}
+
+/* Active */
+.ui.toggle.checkbox input:checked ~ .box,
+.ui.toggle.checkbox input:checked ~ label {
+  color: @toggleOnLabelColor !important;
+}
+.ui.toggle.checkbox input:checked ~ .box:before,
+.ui.toggle.checkbox input:checked ~ label:before {
+  background-color: @toggleOnLaneColor !important;
+}
+.ui.toggle.checkbox input:checked ~ .box:after,
+.ui.toggle.checkbox input:checked ~ label:after {
+  left: @toggleOnOffset;
+}
+
+
+/* Active Focus */
+.ui.toggle.checkbox input:focus:checked ~ .box,
+.ui.toggle.checkbox input:focus:checked ~ label {
+  color: @toggleOnFocusLabelColor !important;
+}
+.ui.toggle.checkbox input:focus:checked ~ .box:before,
+.ui.toggle.checkbox input:focus:checked ~ label:before {
+  background-color: @toggleOnFocusLaneColor !important;
+}

@@ -1,0 +1,160 @@
+@import "./variables.less";
+@import "~bonaparte-toolbar/bonaparte.less";
+
+/*SIZES*/
+bonaparte-toolbar {
+
+
+/*////////////////////////////////*/  
+  .bonaparte-toolbar({
+    .variables(){
+      @icon-size : 4rem;
+      @default-open : 20rem;
+      @default-closed : 4rem;
+    }
+  });
+/*////////////////////////////////*/  
+
+  font-weight: 100;
+
+
+
+  > cornerstone-bonaparte {  
+    background-color:@color-interactive;
+    color:@color-light-0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  > :nth-child(2){
+    background-color:@color-light-3;
+  }
+
+
+  /*BUTTON GROUPS*/
+
+  > :nth-child(1) {
+    background-color:@color-light-2;
+    display:flex;
+    flex-flow: column;
+    justify-content:space-between;
+
+    .header {
+      padding: 0 1em 0 2em;
+      line-height: 3.1em;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    > * {
+      background-color:transparent !important;
+    }
+
+    > *,
+    > * > * {
+      margin:0px;
+      box-shadow: none;
+    }
+    > * > * {
+      &:extend(bonaparte-button);
+    }    
+    > * > .active {
+      &:extend(bonaparte-button.active);
+    }
+  }
+
+  > .dark,
+  > .inverted {
+    background-color: @color-dark-1 !important;
+    color: @color-text-light;
+  }
+
+  > .dark > * ,
+  > .inverted > * {
+    background-color: transparent;
+    color: @color-text-light;
+  }
+
+
+  &[data-position="left"],
+  &[position="left"],
+  &[data-position="right"],
+  &[position="right"] {
+    > :nth-child(1){
+      flex-flow: column;
+    
+      > * > * {
+        display:block;
+        white-space: nowrap;
+
+      } 
+    }
+  }
+
+  &[data-position="top"],
+  &[position="top"],
+  &[data-position="bottom"],
+  &[position="bottom"] {
+    > :nth-child(1){
+      flex-flow: row;
+     
+      > * > * {
+        display:inline-block;
+        white-space: nowrap;
+      }
+    }
+  }
+
+}
+
+/*////////////////////////////////*/  
+
+bonaparte-toolbar.tiny,
+bonaparte-toolbar.mini {  
+  .bonaparte-toolbar({
+    .variables(){
+      @icon-size : 2rem;
+      @default-closed : 2rem;
+    }
+  });
+
+}
+/*////////////////////////////////*/  
+
+bonaparte-toolbar.small {  
+  .bonaparte-toolbar({
+    .variables(){
+      @icon-size : 3rem;
+      @default-closed : 3rem;
+    }
+  });
+
+}
+/*////////////////////////////////*/  
+
+bonaparte-toolbar.large,
+bonaparte-toolbar.big {  
+  .bonaparte-toolbar({
+    .variables(){
+      @icon-size : 5rem;
+      @default-closed : 5rem;
+    }
+  });
+
+}
+/*////////////////////////////////*/  
+
+bonaparte-toolbar.huge,
+bonaparte-toolbar.massive {  
+  .bonaparte-toolbar({
+    .variables(){
+      @icon-size : 6rem;
+      @default-closed : 6rem;
+    }
+  });
+
+}
+/*////////////////////////////////*/  
+
+

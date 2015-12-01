@@ -1,0 +1,13 @@
+/*******************************
+         Theme Overrides
+*******************************/
+
+.grid .ui.container {
+  background-image:url("@{assetsPath}/images/grid.png"); 
+
+}
+.ui.container {
+  padding:0px 1rem;
+
+}
+

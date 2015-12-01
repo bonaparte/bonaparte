@@ -1,0 +1,53 @@
+@import "./variables.less";
+@import "~bonaparte-panel/bonaparte.less";
+
+
+bonaparte-panel {  
+
+/*////////////////////////////////////////////////////////////////////*/
+
+  .bonaparte-panel({
+    .variables() {
+      @default-size:400px;
+    }
+  });
+
+/*////////////////////////////////////////////////////////////////////*/
+
+  @border-width : 0.5rem;
+  @border-color : @color-active;
+
+  & {
+    background-color:rgba(255,255,255,1);
+  }
+  /*ACTIVE BORDER*/
+
+  &:not([data-position]),
+  &:not([position]),
+  &[data-position=""],
+  &[position=""],
+  &[data-position~="left"],
+  &[position~="left"] {
+    border-width: 0 @border-width 0 0;
+    border-color: @border-color;
+    border-style: solid;
+  }
+  &[data-position~="right"],
+  &[position~="right"] {
+    border-width: 0 0 0 @border-width;
+    border-color: @border-color;
+    border-style: solid;
+  }
+  &[data-position~="bottom"],
+  &[position~="bottom"] {
+    border-width: @border-width 0 0 0;
+    border-color: @border-color;
+    border-style: solid;
+  }
+  &[data-position~="top"],
+  &[position~="top"] {
+    border-width: 0 0 @border-width 0;
+    border-color: @border-color;
+    border-style: solid;
+  }
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Examples | Bonaparte</title>
+  </head>
+  <body>
+    <bonaparte-toolbar id="toolbar" position="top" open="false">  
+      <aside class="dark">
+        <div>
+          <div class="header">Bonaparte Examples</div>
+        </div>
+
+      </aside>
+      <bonaparte-scroll scrollbar="visible" resize="true">
+        <bonaparte-content>
+          <div class="main demo ui container">
+            <h4 class="ui dividing header">About</h4>
+            <p><a href="https://github.com/bonaparte/">Bonaparte</a> is a is a UX framework deigned to work with standard UI framworks. This build uses a custom theme inspired by <a href="http://semantic-ui.com">Semantic UI</a> which has been developed for editorial tools at Dow Jones.</p>
+
+            <h4 class="ui dividing header">Designs</h4>
+            <ul>
+              <li><a href="http://dowjones.github.io/bonaparte/designs/Bonaparte%20v0.2.pdf">Bonaparte Styles</a></li>
+              <li><a href="http://dowjones.github.io/bonaparte/designs/Narrator%20UI%20v0.1.pdf">Narrator</a></li>
+              <li><a href="http://dowjones.github.io/bonaparte/designs/Narrator%20UI%20v0.1%20-%20toolbars.pdf">Narrator (Toolbars)</a></li>
+              <li><a href="http://dowjones.github.io/bonaparte/designs/Xavier%20UI%20v0.2.pdf">Xavier</a></li>
+            </ul>
+
+            <h4 class="ui dividing header">Examples</h4>
+            <h5>Components</h5>
+
+            <p>All components available on <a href="https://github.com/bonaparte/"><i class="github icon"></i> Github</a></p>
+        
+             <ul>
+            {% for (var i=0; i<o.htmlWebpackPlugin.options.components.length; i++) { %}
+                <li>
+                  <a href="{%=o.htmlWebpackPlugin.options.components[i].href%}">
+                  {%=o.htmlWebpackPlugin.options.components[i].name%}
+                  </a>
+                  {% if (!o.htmlWebpackPlugin.options.components[i].hasExample) { %}
+                    (<i class="warning red icon"></i>TODO: Update Example)
+                  {% } %}
+                </li>
+            {% } %}
+            </ul>
+            <h5>Site Examples</h5>
+            <ul>
+              <li>Coming soon</li>
+            </ul>
+
+            <h5>Other Examples</h5>
+            <ul>
+              <li><a href="http://dowjones.github.io/bonaparte/examples/kitchen-sink.html">Kitchen-Sink</a> in progress</li>
+              <li><a href="http://dowjones.github.io/bonaparte/examples/forms.html">forms</a> in progress</li>
+            </ul>
+
+          </div>
+        </bonaparte-content>
+      </bonaparte-scroll>
+    </bonaparte-toolbar>
+  </body>
+</html>

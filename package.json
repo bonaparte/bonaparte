@@ -1,0 +1,47 @@
+{
+  "name": "dj-bonaparte",
+  "version": "0.0.1",
+  "dependencies": {
+    "bonaparte": "git+https://bonaparte-read:5913bd3907acbcb3e20356f56992024c7213d854@github.com/bonaparte/bonaparte.git#gh-pages",
+    "bonaparte-panel": "git+https://bonaparte-read:5913bd3907acbcb3e20356f56992024c7213d854@github.com/bonaparte/bonaparte-panel.git#gh-pages",
+    "bonaparte-scroll": "git+https://bonaparte-read:5913bd3907acbcb3e20356f56992024c7213d854@github.com/bonaparte/bonaparte-scroll.git#gh-pages",
+    "bonaparte-button": "git+https://bonaparte-read:5913bd3907acbcb3e20356f56992024c7213d854@github.com/bonaparte/bonaparte-button.git#gh-pages",
+    "bonaparte-sidebar": "git+https://bonaparte-read:5913bd3907acbcb3e20356f56992024c7213d854@github.com/bonaparte/bonaparte-sidebar.git#gh-pages",
+    "bonaparte-toolbar": "git+https://bonaparte-read:5913bd3907acbcb3e20356f56992024c7213d854@github.com/bonaparte/bonaparte-toolbar.git#gh-pages",
+    "bonaparte-draggable": "git+https://bonaparte-read:5913bd3907acbcb3e20356f56992024c7213d854@github.com/bonaparte/bonaparte-draggable.git#gh-pages",
+    "bonaparte-dropdown": "git+https://bonaparte-read:5913bd3907acbcb3e20356f56992024c7213d854@github.com/bonaparte/bonaparte-dropdown.git#gh-pages",
+    "http-server": "^0.8.5"
+  },
+  "main": "bonaparte.build.js",
+  "devDependencies": {
+    "webpack": "^1.11.0",
+    "css-loader": "^0.16.0",
+    "less-loader": "^2.2.0",
+    "less": "^2.3.1",
+    "sass-loader": "^2.0.1",
+    "node-sass": "^3.3.2",
+    "extract-text-webpack-plugin": "0.8.2",
+    "autoprefixer-loader": "^2.0.0",
+    "file-loader": "^0.8.4",
+    "external-css-loader": "git+https://bonaparte-read:5913bd3907acbcb3e20356f56992024c7213d854@github.com/dowjones/external-css-loader.git#gh-pages",
+    "karma": "^0.13.15",
+    "jasmine-core": "^2.3.4",
+    "karma-jasmine": "^0.3.6",
+    "karma-chrome-launcher": "^0.2.1",
+    "karma-cli": "^0.1.1",
+    "phantomjs": "^1.9.19",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "html-webpack-plugin": "^1.7.0"
+  },
+  "scripts": {
+    "pretest": "npm run build",
+    "prestart": "npm run build",
+    "start": "http-server ./public/ -c-1",
+    "build": "webpack --optimize-dedupe",
+    "prod": "webpack -p --optimize-dedupe",
+    "watch": "webpack --progress --colors --watch --optimize-dedupe"
+  },
+  "engines": {
+    "node": ">=0.12.x"
+  }
+}
