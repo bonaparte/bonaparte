@@ -35,7 +35,7 @@
   },
   "scripts": {
     "pretest": "npm run build",
-    "prestart": "npm run build",
+    "prestart": "npm install --force && npm run build",
     "start": "http-server ./public/ -c-1",
     "build": "webpack --optimize-dedupe",
     "prod": "webpack -p --optimize-dedupe",
