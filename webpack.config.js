@@ -32,7 +32,7 @@ module.exports = function(name){
         entry: './bonaparte.build.js',
         output: {
             path: "./public",
-            filename: "./assets/js/" + name + ".js"
+            filename: "assets/js/" + name + ".js"
         },
         module: {
             loaders: [

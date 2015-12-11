@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Standard Meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="image_src" type="image/jpeg" href="images/logo.png" />
+    <!-- Site Properities -->
+    <meta name="generator" content="DocPad v6.78.1" />
+    <title>Bonaparte : CMS Example</title>
+    <meta name="description" content="Examples of all user interface elements" />
+    <meta name="keywords" content="html5, ui, library, framework, javascript" />
+
+    <script src="../assets/js/dj-bonaparte.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link href="../assets/css/dj-bonaparte.css" rel="stylesheet"></head>
+    <style>
+
+      bonaparte-sidebar#messageBar[open="false"] > :nth-child(1) {
+        display: none;
+      }
+
+      bonaparte-sidebar#messageBar:not([open="false"]) > :nth-child(1) {
+        min-height: 150px;
+        color: #D8000C;
+        background-color: #FFBABA;
+      }
+
+      bonaparte-sidebar > :nth-child(2) {
+        background-color: #f0f0f0;
+      }
+
+      bonaparte-sidebar#messageBar > :nth-child(1) div {
+        width: 800px;
+        margin: auto;
+      }
+
+      bonaparte-sidebar#messageBar > :nth-child(1) div h1 {
+        font-size: 3rem;
+        line-height:  3.5rem;
+        margin-top: 0.4em;
+        margin-left: -1.5em;
+      }
+      bonaparte-sidebar#messageBar > :nth-child(1) div p {
+        font-size: 1.5rem;
+        margin: 0 1rem 0rem 0.25rem;
+        padding: 0;
+      }
+      bonaparte-sidebar#messageBar > :nth-child(1) div div.right {
+        text-align: right;
+      }
+      bonaparte-sidebar#messageBar > :nth-child(1) div bonaparte-button, 
+      bonaparte-sidebar#messageBar > :nth-child(1) div a {
+        color: #21759b;
+      }
+
+      .ui.form {
+        display: inline-flex;
+        padding: 2rem;
+      }
+      .ui.form .field {
+        width: auto;
+        display: inline-block;
+        flex: 1;
+        margin-right: 2rem;
+        margin-bottom: 0;
+      }
+      .ui.form bonaparte-button {
+        margin-top: 0;
+        display: inline-block;
+        min-height: 3rem;
+        line-height: 1.9rem;
+      }
+      .ui.form > i.inverted.circular.icon {
+        font-size: 1.5rem;
+        margin: 0.4rem 1rem 0.4rem 0.4rem;
+        background-color: orange !important;
+      }
+      bonaparte-dropdown > bonaparte-button.ui.button {
+        margin-bottom: 0px;
+      }
+
+      bonaparte-dropdown > div > bonaparte-button {
+        width: 100%;
+      }
+
+      img {
+        height: 4rem;
+        width: 4rem;
+      }
+
+      .loggedin,
+      .menu {
+        background-color: #fff;
+        border-bottom: 2px solid #425cbd;
+      }
+      .menu p {
+        font-size: 12px;
+      }
+      .menu a.ui.button {
+        width: 210px;
+        display: block;
+      }
+      .loggedin p { margin: 0;}
+      .loggedin {
+        color: #000;
+        width: 30rem;
+        padding: 1.5rem 3rem;
+      }
+
+ .dragover { color: #425CBD; }
+      .dragging { color: #d9a000; }
+
+      #dropZone {
+        float: right;
+      }
+
+      #dropZone,
+      bonaparte-draggable {
+        margin: 1rem;
+        display: block;
+        background-color: #ccc;
+        width: 45%;
+        height: 16rem;
+        border: 1px solid #E6E5E6;
+      }
+
+      bonaparte-draggable > div {
+        overflow: hidden;
+        box-sizing: border-box;
+        background-color: #fff;
+        border-bottom: 1px solid #E6E5E6;
+        position: relative;
+      }
+
+      bonaparte-draggable > div > bonaparte-button {
+        width: 3em;
+        height: 3em;
+        background-size: contain;
+        background-position: 0;
+        display: inline-block;
+        float: left;
+        margin: 0;
+      }
+
+      bonaparte-draggable > div.inRange {
+        color: #425cbd;
+      }
+
+      bonaparte-draggable > div .text {
+        margin: 0.5em 4em 0 4.5em; }
+
+      bonaparte-draggable > div .text p.headline,
+      bonaparte-draggable > div .text p.deckline {
+        padding: 0;
+        margin: 0;
+        height: 1.2em;
+        line-height: 1.2em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      bonaparte-draggable > div .text p.headline {
+        font-weight: 700;
+      }
+
+      bonaparte-draggable > div .text p.deckline {
+        font-size: 0.7em;
+      }
+
+      bonaparte-draggable > div .buttons {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+
+      bonaparte-draggable > div .buttons .button {
+        margin: 0;
+        box-shadow: none;
+      }
+      .cardDetails {
+        display: none;
+        clear: both;
+        background-color: #eee;
+      }
+
+    </style>
+
+
+
+  </head>
+  <body>
+    <bonaparte-toolbar id="toolbar" position="top">  
+      <aside class="dark">
+        <div>
+          <div class="header"><a href="../examples/">Bonaparte</a> : CMS Example</div>
+        </div>
+      
+        <div>
+          <a href="#stories" class="ui transparent inverted marginless button toggle active">Stories</a>
+          <a href="#stories" class="ui transparent inverted marginless button toggle">Home Screen</a>
+          <a href="#stories" class="ui transparent inverted marginless button toggle">Push Alerts</a>
+          <bonaparte-dropdown>
+              <div class="menu">
+                <a target="_blank" class="ui small monochrome button marginless" href="http://graphicsdev.dowjones.net/tools/whopper/log">Whopper/Cropper</a>
+                <a target="_blank" class="ui small monochrome button marginless" href="https://docs.google.com/a/wsj.com/document/d/1KPMDRRKyBm7C0AirywzaC5ZJwfe_KWUiVTnO7MIuMKg/edit">What's News style and tips</a>
+                <a target="_blank" class="ui small monochrome button marginless" href="http://newsnet.dowjones.net/Lists/Stylebook/AllItems.aspx">WSJ stylebook</a>
+                <a target="_blank" class="ui small monochrome button marginless" href="http://graphicsdev.dowjones.net/tools/">Graphics tools</a>
+                <a target="_blank" class="ui small monochrome button marginless" href="https://dowjones.slack.com/messages/whatsnews-app/ ">Chat room</a>
+              </div>
+            <bonaparte-button class="ui transparent inverted marginless button toggle right">Quick Links <i class="arrow-drop-down icon"></i></bonaparte-button>
+          </bonaparte-dropdown>
+        </div>
+
+        <div>
+
+
+          <bonaparte-dropdown position="bottom right" style="height: 4rem"><div class="loggedin">
+                <p>Signed in as Peran Osborn <br />
+                  <a href="mailto:peran.osborn@dowjones.com">peran.osborn@dowjones.com</a></p>
+                <a class="ui small inverted button" href="https://dowjones.slack.com/messages/whatsnews-app/ ">Sign out</a>
+            </div><img src="http://lh4.googleusercontent.com/-RxakUKbd79w/AAAAAAAAAAI/AAAAAAAAAAA/Z5mwj0DoqWM/s64-c-mo/photo.jpg" />
+          </bonaparte-dropdown>
+            <bonaparte-button class="ui transparent inverted marginless button toggle icon">
+              <i class="icon  done"></i>
+            </bonaparte-button>
+        </div>
+      </aside>
+      <bonaparte-sidebar id="messageBar" position="top" open="true">
+        <div>
+          <div>
+            <h1><i class="lock-outline icon"></i>Sorry, you can't edit this story right now.</h1>
+            <p><a href="mailto:peran.osborn@dowjones.com">Peran</a> has been editing it for 19 hours</p>
+            <div class="right">
+              <bonaparte-button class="ui small button transparent" target="#messageBar" action="click" target-open="false">Try again</bonaparte-button>
+              <bonaparte-button class="ui small button" target="#messageBar" action="click" target-open="false"><i class="lock-open icon"></i>Boot Peran</bonaparte-button>
+            </div>
+          </div>
+        </div>
+        <bonaparte-scroll scrollbar="visible" resize="true">
+          <bonaparte-content>
+            <div class="ui form">
+              <i class="circular inverted phonelink-off icon" title="Never on home screen"></i>
+              <div class="field artcileSlug">
+                <input type="text" value="My Article Name" />
+                               <div style="margin-left: -52px;">
+
+                <bonaparte-dropdown>
+                  <div class="menu" style="width:300px">
+                    <p>Created by Peran Osborn 10/07/2015 4:28 PM<br/>
+                      Modified by Peran Osborn 10/07/2015 5:37 PM</p>
+
+                  </div>
+                  <bonaparte-button class="ui small button transparent toggle icon">
+                  <i class="info icon"></i>
+                </bonaparte-button>
+              </bonaparte-dropdown>
+                <bonaparte-dropdown>
+                  <div class="menu">
+                    <bonaparte-button class="ui small monochrome button marginless">None</bonaparte-button>
+                    <bonaparte-button class="ui small monochrome button marginless">Today's Markets</bonaparte-button>
+                    <bonaparte-button class="ui small monochrome button marginless">The Morning Brief</bonaparte-button>
+                    <bonaparte-button class="ui small monochrome button marginless">World Wide</bonaparte-button>
+                    <bonaparte-button class="ui small monochrome button marginless">The Week Ahead</bonaparte-button>
+                    <bonaparte-button class="ui small monochrome button marginless">Week in Brief</bonaparte-button>
+                    <bonaparte-button class="ui small monochrome button marginless">Weekend Reads</bonaparte-button>
+                    <bonaparte-button class="ui small monochrome button marginless">Around the web</bonaparte-button>
+                  </div>
+                  <bonaparte-button class="ui small button transparent toggle">
+                  <i class="view-day icon"></i>Digest Type: <span class="label">None</span>
+                </bonaparte-button>
+              </bonaparte-dropdown>
+                <bonaparte-dropdown>
+                  <div class="menu">
+                    <bonaparte-button class="ui small monochrome button marginless">In Progress</bonaparte-button>
+                    <bonaparte-button class="ui small monochrome button marginless">Needs Edit</bonaparte-button>
+                    <bonaparte-button class="ui small monochrome button marginless">In Edit</bonaparte-button>
+                    <bonaparte-button class="ui small monochrome button marginless">Ready to Publish</bonaparte-button>
+
+                  </div>
+                <bonaparte-button class="ui small button transparent toggle">
+                  <i class="traffic icon"></i>Status: <span class="label">In Progress</span>
+                </bonaparte-button>
+              </bonaparte-dropdown>
+                <bonaparte-dropdown>
+                  <div class="menu">
+                    <bonaparte-button class="ui small monochrome button marginless">Tag One</bonaparte-button>
+                    <bonaparte-button class="ui small monochrome button marginless">Tag Two</bonaparte-button>
+
+                  </div>
+                <bonaparte-button class="ui small button transparent toggle">
+                  <i class="label icon"></i>Tag: Not Set
+                </bonaparte-button>
+              </bonaparte-dropdown>
+
+                <bonaparte-dropdown>
+                  <div class="menu" style="width: 400px;">
+                    <p><strong>Notes</strong><br/>
+                      <textarea style="height: 100px"></textarea>
+                    </p>
+                    <p><strong>Reference Urls <i class="help icon"></i></strong><br/>
+                      <i class="edit icon"></i> <a target="_blank" href="http://google.com">http://google.com/</a><br/>
+                      <i class="edit icon"></i> <a target="_blank" href="http://google.com">http://google.com/</a><br/>
+                      <i class="edit icon"></i> <a target="_blank" href="http://google.com">http://google.com/</a><br/>
+                    </p>
+
+                  </div>
+                  <bonaparte-button class="ui small button transparent toggle icon">
+                  <i class="chat-bubble-outline icon"></i><!-- chat icon -->
+                </bonaparte-button>
+              </bonaparte-dropdown>
+
+                <bonaparte-dropdown>
+                  <div class="menu" style="width: 400px;">
+
+                    <p><strong>Share Text</strong> (0/130 character limit)<br/>
+                      <input type="checkbox" tabindex="0"> Use headline title <br/>
+                      <textarea style="height: 100px"></textarea>
+                    </p>
+                    <p><strong>Share URL</strong> <a target="_blank" href="http://on.wsj.com/1LyK0PY">http://on.wsj.com/1LyK0PY</a></p><p>
+                    <bonaparte-button class="ui button">View callouts</bonaparte-button>
+                  </p>
+                  </div>
+                  <bonaparte-button class="ui small button transparent toggle icon">
+                  <i class="share icon"></i>
+                </bonaparte-button>
+              </bonaparte-dropdown>
+
+                  </div>
+
+              </div>
+              <div>
+                <bonaparte-button class="ui button">Save</bonaparte-button>
+                <bonaparte-button class="ui button">Preview</bonaparte-button>
+                <bonaparte-button class="ui button">Publish</bonaparte-button>
+                <bonaparte-button class="ui button icon"><i class="delete icon"></i></bonaparte-button>
+              </div>
+            </div>
+              <div>
+                <h1>Cards</h1>
+
+
+   <bonaparte-draggable id="sortable" handler="">
+         
+                <div class="article-list-item ui-draggable">
+                    <bonaparte-button class="ui marginless button toggle icon" target="bonaparte-draggable :nth-child(1) .cardDetails" action="click"  toggle="true" target-style="display: block">
+                      <i class="arrow-drop-down icon"></i>
+                    </bonaparte-button>
+                    <div class="text">
+                        <p class="headline">Summary Card</p>
+                        <p class="deckline">peran-test-summary </p>
+                    </div>
+                    <div class="cardDetails">
+                        <p>Summary Type Title<p>
+                        <p>summary card
+Text  (character count: 25 ) 
+some text for the summary
+Image 
+
+http://s.wsj.net/public/resources/images/BN-KN882_KEYSTO_ER_20150929162342.jpg
+Select  Clear Attribution 
+                    <bonaparte-button class="ui button toggle" style="width: auto">
+                      <i class="save icon"></i> Save Card
+                    </bonaparte-button></p>
+
+ 
+                    </div>
+                    <div class="buttons">
+                        <div title="Drag to module" class="ui button icon drag-handle ui-draggable-handle">
+                            <i class="icon view-headline"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-list-item ui-draggable">
+                    <bonaparte-button class="ui marginless button toggle icon"><i class="arrow-drop-down icon"></i></bonaparte-button>
+                    <div class="text">
+                        <p class="headline">Headline Card</p>
+                        <p class="deckline">peran-test-headline </p>
+                    </div>
+                    <div class="cardDetails">
+                        More stuff
+                    </div>
+                    <div class="buttons">
+                        <div title="Drag to module" class="ui button icon drag-handle ui-draggable-handle">
+                            <i class="icon view-headline"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-list-item ui-draggable">
+                    <bonaparte-button class="ui marginless button toggle icon"><i class="arrow-drop-down icon"></i></bonaparte-button>
+                    <div class="text">
+                        <p class="headline">Separator</p>
+                        <p class="deckline">peran-test-separator </p>
+                    </div>
+                    <div class="buttons">
+                        <div title="Drag to module" class="ui button icon drag-handle ui-draggable-handle">
+                            <i class="icon view-headline"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-list-item ui-draggable">
+                    <bonaparte-button class="ui marginless button toggle icon"><i class="arrow-drop-down icon"></i></bonaparte-button>
+                    <div class="text">
+                        <p class="headline">Bar Chart Card</p>
+                        <p class="deckline">peran-test-bar-chart </p>
+                    </div>
+                    <div class="buttons">
+                        <div title="Drag to module" class="ui button icon drag-handle ui-draggable-handle">
+                            <i class="icon view-headline"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-list-item ui-draggable">
+                    <bonaparte-button class="ui marginless button toggle icon"><i class="arrow-drop-down icon"></i></bonaparte-button>
+                    <div class="text">
+                        <p class="headline">Map Card</p>
+                        <p class="deckline">peran-test-map </p>
+                    </div>
+                    <div class="buttons">
+                        <div title="Drag to module" class="ui button icon drag-handle ui-draggable-handle">
+                            <i class="icon view-headline"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-list-item ui-draggable">
+                    <bonaparte-button class="ui marginless button toggle icon"><i class="arrow-drop-down icon"></i></bonaparte-button>
+                    <div class="text">
+                        <p class="headline">Youtube Card</p>
+                        <p class="deckline">peran-test-youtube </p>
+                    </div>
+                    <div class="buttons">
+                        <div title="Drag to module" class="ui button icon drag-handle ui-draggable-handle">
+                            <i class="icon view-headline"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-list-item ui-draggable">
+                    <bonaparte-button class="ui marginless button toggle icon"><i class="arrow-drop-down icon"></i></bonaparte-button>
+                    <div class="text">
+                        <p class="headline">Related Links Card</p>
+                        <p class="deckline">peran-test-links </p>
+                    </div>
+                    <div class="buttons">
+                        <div title="Drag to module" class="ui button icon drag-handle ui-draggable-handle">
+                            <i class="icon view-headline"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-list-item ui-draggable">
+                    <bonaparte-button class="ui marginless button toggle icon"><i class="arrow-drop-down icon"></i></bonaparte-button>
+                    <div class="text">
+                        <p class="headline">Pie Chart Card</p>
+                        <p class="deckline">peran-test-pie-chart </p>
+                    </div>
+                    <div class="buttons">
+                        <div title="Drag to module" class="ui button icon drag-handle ui-draggable-handle">
+                            <i class="icon view-headline"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-list-item ui-draggable">
+                    <bonaparte-button class="ui marginless button toggle icon"><i class="arrow-drop-down icon"></i></bonaparte-button>
+                    <div class="text">
+                        <p class="headline">Separator</p>
+                        <p class="deckline">peran-test-separator </p>
+                    </div>
+                    <div class="buttons">
+                        <div title="Drag to module" class="ui button icon drag-handle ui-draggable-handle">
+                            <i class="icon view-headline"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-list-item ui-draggable">
+                    <bonaparte-button class="ui marginless button toggle icon"><i class="arrow-drop-down icon"></i></bonaparte-button>
+                    <div class="text">
+                        <p class="headline">Number Card</p>
+                        <p class="deckline">peran-test-number </p>
+                    </div>
+                    <div class="buttons">
+                        <div title="Drag to module" class="ui button icon drag-handle ui-draggable-handle">
+                            <i class="icon view-headline"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-list-item ui-draggable">
+                    <bonaparte-button class="ui marginless button toggle icon"><i class="arrow-drop-down icon"></i></bonaparte-button>
+                    <div class="text">
+                        <p class="headline">Bullet Card</p>
+                        <p class="deckline">peran-test-bullet </p>
+                    </div>
+                    <div class="buttons">
+                        <div title="Drag to module" class="ui button icon drag-handle ui-draggable-handle">
+                            <i class="icon view-headline"></i>
+                        </div>
+                    </div>
+                </div>
+
+              </bonaparte-draggable>
+              
+              </div>
+          </bonaparte-content>
+        </bonaparte-scroll>
+      </bonaparte-sidebar>
+    </bonaparte-toolbar>
+  </body>
+</html>
+
+  </body>
+</html> 
