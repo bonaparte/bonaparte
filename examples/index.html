@@ -1,0 +1,84 @@
+
+    <style>  
+      .example {
+        width: 100%;
+        height: 20rem;
+        overflow: hidden;
+        margin-top: 0.5rem;
+        border: 1px solid #999;
+        position: relative;
+      }
+      pre {
+        background-color: #fff;
+        display: block;
+        font-size: 1.1rem;
+      }
+      code .code_scrollbar:not([scrollbar=""]):after {
+        color: red;
+        content: " scrollbar=\"" attr(scrollbar) "\"";
+      }
+
+    </style>
+
+  </head>
+
+          <div class="pusher">
+            <div class="full height">
+              <div class="article">
+                <div class="main demo ui container">
+                  <div class="ui active tab" data-tab="elements">
+                    <h4 class="ui dividing header">About</h4>
+                      <p>The scroll component can be used to very easily implement scrolling in a container.</br><em>Note: currently only supports horizontal scrolling</em></p>
+                    <h4 class="ui dividing header">Example</h4>
+                    <div class="example">
+                      <!-- ######################################################################## -->
+                      <bonaparte-scroll id="example" scrollbar="">
+                        <div>
+                          <h1>this is lots of content</h1>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In maximus magna ac rhoncus sodales. Donec mollis magna dolor, mollis ultrices arcu tincidunt at. Quisque dui turpis, vehicula a faucibus id, sodales sit amet nisi. Fusce a imperdiet enim. Maecenas quis cursus libero. Aenean suscipit neque neque, non elementum magna iaculis in. Fusce consectetur lectus vel viverra eleifend. Maecenas sit amet massa eget ante congue eleifend. Morbi fringilla leo non tempus molestie. Sed vulputate ultrices augue eget vehicula. Praesent est velit, maximus sed libero nec, pharetra vehicula neque. Vivamus lobortis laoreet leo, ac pretium lorem tempor tincidunt. Maecenas sit amet nibh dictum, viverra sem ac, congue nisi. Pellentesque et venenatis lectus, in auctor felis.</p>
+                          <p>Aliquam luctus lacus vitae leo suscipit, ut pretium lectus aliquam. Pellentesque nec scelerisque augue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque dignissim turpis sit amet ultricies ultricies. Quisque rhoncus in nisl id suscipit. Nam faucibus sem ut nibh aliquam rhoncus. Proin non dictum libero. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque faucibus tempus libero semper suscipit. Ut non turpis in mauris malesuada pulvinar vel in lacus. Phasellus sit amet ultrices purus, ut tincidunt lacus. Sed feugiat faucibus tortor, at aliquet lacus aliquam at. Maecenas sit amet vestibulum lorem, a consectetur est. Suspendisse vitae scelerisque lacus, eget auctor nisl.</p>
+                          <p>Aenean congue viverra sem, at faucibus justo ullamcorper non. Integer vehicula nulla arcu. Cras accumsan blandit egestas. Maecenas rhoncus diam a nisl varius vulputate in eget odio. Vivamus vulputate finibus mauris sed cursus. Donec pellentesque mauris ut tellus sagittis vestibulum. Vestibulum vitae consectetur enim. Morbi augue lorem, aliquam commodo mi vitae, porttitor vulputate neque. Fusce in condimentum metus, at imperdiet tortor. Sed laoreet quis odio sed varius.</p>
+                          <p>Suspendisse enim ex, feugiat id felis at, sagittis semper sapien. Maecenas ornare massa venenatis lectus viverra, id elementum est pellentesque. In lacinia vehicula lacus, ac bibendum enim. Vestibulum tempor purus quis justo pharetra interdum. Nullam quam nibh, ultrices eget ipsum quis, finibus efficitur dolor. Nunc faucibus dignissim lorem, in ultrices felis vestibulum at. Proin interdum ex aliquam pretium malesuada. Phasellus egestas non nisl at consectetur. Praesent iaculis condimentum consequat. In laoreet purus ipsum, sed porta odio ultricies quis.</p>
+                          <p>Curabitur aliquet metus a dapibus mattis. Cras sed placerat enim. Nullam at cursus enim. Donec blandit tincidunt ultrices. Suspendisse ornare dui eu accumsan venenatis. Morbi quam ipsum, finibus in scelerisque id, hendrerit a nunc. Morbi feugiat commodo libero non feugiat. Aliquam non elit eget est efficitur maximus ac eget neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi volutpat erat sed dolor dictum ultrices a ac odio. Fusce non purus mauris. Vestibulum pretium purus massa, vel elementum libero porttitor nec. Phasellus ut molestie purus. Vestibulum ut dignissim dui. Suspendisse potenti. Duis rhoncus, dui varius tempus aliquet, quam massa mollis elit, non cursus est metus eget libero.</p>
+                        </div>
+                      </bonaparte-scroll>
+                      <!-- ######################################################################## -->
+                    </div>
+
+                    <h4 class="ui dividing header">Attributes</h4>
+                    <div class="ui two column stackable grid">
+                      <div class="column">
+                        <h5 class="ui dividing header">Scrollbar</h5>
+                         <p class="small"><em>Optional</em> - <code>[string]</code> - Default <code>hover</code>, sets the scrollbar visibility.</p>
+                         <p>
+                          <bonaparte-button class="ui button small" action="click" target="bonaparte-scroll#example, .code_scrollbar" toggle="true" target-scrollbar="">Default </bonaparte-button>
+                          <br/>
+
+                          <bonaparte-button class="ui button small" action="click" target="bonaparte-scroll#example, .code_scrollbar" toggle="true" target-scrollbar="hover">hover </bonaparte-button>
+                          <bonaparte-button class="ui button small" action="click" target="bonaparte-scroll#example, .code_scrollbar" toggle="true" target-scrollbar="visible">visible </bonaparte-button>
+                          <bonaparte-button class="ui button small" action="click" target="bonaparte-scroll#example, .code_scrollbar" toggle="true" target-scrollbar="hidden">hidden </bonaparte-button>
+                          <bonaparte-button class="ui button small" action="click" target="bonaparte-scroll#example, .code_scrollbar" toggle="true" target-scrollbar="native">native </bonaparte-button>
+                        </p>
+                      </div>
+                      <div class="column">
+                      </div>
+                    </div>
+
+                      <h4 class="ui dividing header">Code</h4>
+
+
+
+
+<pre class="prettyprint"><code>  &lt;bonaparte-scrollbar<span class="code_scrollbar" scrollbar=""></span>&gt;
+    &lt;div&gt;
+      &lt;h1&gt;Your content&lt;/h1&gt;
+        ...
+    &lt;/div&gt;
+  &lt;/bonaparte-scrollbar&gt;
+</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+       
