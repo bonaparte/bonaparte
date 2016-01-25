@@ -1,5 +1,6 @@
 # Bonaparte UX Framework – Core
 
+- [Getting Started](#getting-started)
 - [About](#about)
 - [To Look At](#to-look-at)
 - [Basic Use](#basic-use)
@@ -21,6 +22,13 @@
   -  [bp.tag.DOMReady()](#bptagdomready)
   -  [bp.tag.observe()](#bptagobserve)
   -  [bp.tag.triggerEvent()](#bptagtriggerevent)
+
+## Getting Started
+The Bonaparte UX Framework is a set of loosely connected components that can be used together or by themselves.
+
+In order to get started and see it all tied together, check out the Dow Jones implementation of Bonaparte here: https://github.com/dowjones/bonaparte
+
+Later you can come back and build your own Bonaparte components or custom implementation. 
 
 ## About
 This module is the core of the _Bonaparte UX Framework_. It provides an [API](#api) with all the tools needed to create Bonaparte Components.
@@ -58,17 +66,17 @@ Some components define a number of `required` child tags. Required children must
 
 #### Standard Components
 
-  - [< button-bonaparte >](https://github.dowjones.net/bonaparte/bonaparte-button)
-  - [< scroll-bonaparte >](https://github.dowjones.net/bonaparte/bonaparte-scroll)
-  - [< sidebar-bonaparte >](https://github.dowjones.net/bonaparte/bonaparte-sidebar)
-  - [< panel-bonaparte >](https://github.dowjones.net/bonaparte/bonaparte-panel)
+  - [< button-bonaparte >](https://github.com/bonaparte/bonaparte-button)
+  - [< scroll-bonaparte >](https://github.com/bonaparte/bonaparte-scroll)
+  - [< sidebar-bonaparte >](https://github.com/bonaparte/bonaparte-sidebar)
+  - [< panel-bonaparte >](https://github.com/bonaparte/bonaparte-panel)
 
 
 #### Highlevel Components
 Highlevel components enforce a certain level of design hierachry by implementing some restrictions.
 For the best result, use as many highlevel components in your design as possible.
 
-  - [< toolbar-bonaparte >](https://github.dowjones.net/bonaparte/bonaparte-toolbar)
+  - [< toolbar-bonaparte >](https://github.com/bonaparte/bonaparte-toolbar)
 
 
 ## Structure/Modules
