@@ -22,6 +22,26 @@ bonaparte-toolbar {
 
   .bonaparte-sidebar(@overrides);   
 
+   
+  &:not([data-position]):not([position]),
+  &[data-position="left"],
+  &[position="left"],
+  &[data-position="right"],
+  &[position="right"] {
+
+    > :nth-child(1) {
+       min-width:@default-closed;
+    }
+
+    &[data-open="true"],
+    &[open="true"] {
+      
+      > :nth-child(1){
+        min-width:@default-open;
+      }
+    }   
+  }
+  
   &[data-position="top"],
   &[position="top"],
   &[data-position="bottom"],
@@ -41,24 +61,7 @@ bonaparte-toolbar {
         min-height:@default-open;
       }
     }   
-  }  
+  } 
 
-  &[data-position="left"],
-  &[position="left"],
-  &[data-position="right"],
-  &[position="right"] {
-
-    > :nth-child(1) {
-       min-width:@default-closed;
-    }
-
-    &[data-open="true"],
-    &[open="true"] {
-      
-      > :nth-child(1){
-        min-width:@default-open;
-      }
-    }   
-  }
   
 }
