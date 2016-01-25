@@ -22,7 +22,7 @@ bonaparte-sidebar {
   & {
     position:relative;
     display: flex;  
-    padding:0;
+    padding:0 !important;
   }
 
   > :nth-child(1){
@@ -43,7 +43,7 @@ bonaparte-sidebar {
 
   /*SIDEBAR POSITION*/
 
-  &,
+  &:not([data-position]):not([position]),
   &[data-position="left"],
   &[position="left"] {
     flex-direction: row;
@@ -67,6 +67,7 @@ bonaparte-sidebar {
 
   /*SIDEBAR STATE*/ 
 
+  &:not([data-position]):not([position]),
   &[data-position="left"],
   &[position="left"],
   &[data-position="right"],
@@ -80,7 +81,7 @@ bonaparte-sidebar {
     &[data-open="false"],
     &[open="false"] {
       > :nth-child(1){
-        min-width:@default-closed;
+        min-width:@default-closed !important;
       }
     }   
   }
@@ -97,7 +98,7 @@ bonaparte-sidebar {
     &[data-open="false"],
     &[open="false"] {
       > :nth-child(1){
-        min-height:@default-closed;
+        min-height:@default-closed !important;
       }
     }      
   }  
