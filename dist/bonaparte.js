@@ -376,7 +376,6 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var objct = __webpack_require__(6);
-	// var easing = require("./easing");
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
@@ -850,8 +849,8 @@
 	  else if(modulesType !== "array")
 	    throw "Bonaparte - createTag: Unexpected "+modulesType+". Expected Function or Array."
 
-
 	  nativeBaseElement = nativeBaseElement || window.HTMLElement || window.Element;
+
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
 	  
@@ -869,13 +868,14 @@
 	///////////////////////////////////////////////////////////////////////////////
 
 	  function register(){ 
+
 	    if(typeof document.registerElement === "undefined") { // If IE8 make tag stylable but otherwise do nothing.
-	      document.createElement(name+"-bonaparte");
-	      return;
+	      document.createElement("bonaparte-"+name);
+	      return definition;
 	    }
-	    registeredTags[name+"-bonaparte"] = registeredTags[name+"-bonaparte"] !== undefined ?
-	      registeredTags[name+"-bonaparte"]:
-	      document.registerElement(name+"-bonaparte", {
+	    registeredTags[name] = registeredTags[name] !== undefined ?
+	      registeredTags[name]:
+	      document.registerElement("bonaparte-"+name, {
 	        prototype : Object.create( nativeBaseElement.prototype , {
 	          createdCallback : { value: createdCallback },
 	          attachedCallback : { value: attachedCallback },
