@@ -5,7 +5,7 @@
 * [Components](components/index.md)
    * [<bonaparte-sidebar>](components/bonaparte-sidebar.md)
    * [<bonaparte-toolbar>](components/bonaparte-toolbar.md)
-   * <bonaparte-button>
+   * [<bonaparte-button>](components/bonaparte-button.md)
    * <bonaparte-dropdown>
    * <bonaparte-panel>
 * [Themes](themes/index.md)
