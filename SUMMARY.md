@@ -7,4 +7,5 @@
    * [<bonaparte-toolbar>](components/bonaparte-toolbar.md)
    * <bonaparte-button>
    * <bonaparte-dropdown>
+   * <bonaparte-panel>
 
