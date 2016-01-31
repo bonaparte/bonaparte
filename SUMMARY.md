@@ -5,4 +5,5 @@
 * [Components](components/index.md)
    * [<bonaparte-sidebar>](components/bonaparte-sidebar.md)
    * [<bonaparte-toolbar>](components/bonaparte-toolbar.md)
+   * <bonaparte-button>
 
