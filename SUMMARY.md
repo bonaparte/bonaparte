@@ -8,4 +8,5 @@
    * <bonaparte-button>
    * <bonaparte-dropdown>
    * <bonaparte-panel>
+* Themes
 
