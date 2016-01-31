@@ -1,12 +1,12 @@
 {
-  "name": "bonaparte",
+  "name": "bonaparte.io",
   
   "version": "0.0.1",
   
   "author": {
     "name" : "Philipp Adrian",
-    "email" : "hello@philippadrian.com",
-    "website" : "http://philippadrian.com"
+    "email" : "philipp.adrian@dowjones.com",
+    "website" : "http://www.bonaparte.io"
   },
 
   "description": "UX Framework",
