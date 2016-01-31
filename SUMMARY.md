@@ -9,4 +9,5 @@
    * <bonaparte-dropdown>
    * <bonaparte-panel>
 * [Themes](themes/index.md)
+   * Napoleon
 
