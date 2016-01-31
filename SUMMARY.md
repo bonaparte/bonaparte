@@ -8,5 +8,5 @@
    * <bonaparte-button>
    * <bonaparte-dropdown>
    * <bonaparte-panel>
-* Themes
+* [Themes](themes/themes.md)
 
