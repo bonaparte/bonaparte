@@ -12,5 +12,5 @@
    * Napoleon
 * Advanced
    * [Custom Build](advanced/custom_build.md)
-   * Create Components
+   * [Create Components](advanced/create_components.md)
 
