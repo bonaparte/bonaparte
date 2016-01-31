@@ -1,2 +1,2 @@
-# `<bonaparte-sidebar>`
+# < bonaparte-sidebar >
 
