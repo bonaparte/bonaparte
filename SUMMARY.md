@@ -2,5 +2,5 @@
 
 * About
 * [Getting Started](getting_started.md)
-* Components
+* [Components](components/index.md)
 
