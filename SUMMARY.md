@@ -1,4 +1,5 @@
 # Summary
 
-* [About](README.md)
+* About
+* Getting Started
 
