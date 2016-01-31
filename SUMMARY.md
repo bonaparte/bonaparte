@@ -11,4 +11,5 @@
 * [Themes](themes/index.md)
    * Napoleon
 * Custom Build
+* Create Components
 
