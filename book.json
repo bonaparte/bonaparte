@@ -1,5 +1,9 @@
 {
     links:{
-        "home": null
-    }
+        "home": null,
+        "Github" : "http://www.github.com/bonaparte"
+    },
+    "plugins": [
+        "exercises"
+    ]
 }
