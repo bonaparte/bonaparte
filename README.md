@@ -2,4 +2,4 @@
 
 Test 
 
-{% include "git+https://github.com/bonaparte/core.git/README.md#gh-pages" %}
+{% include "git+https://github.com/bonaparte/core.git/readme.md#gh-pages" %}
