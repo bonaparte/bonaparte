@@ -10,7 +10,6 @@
    * <bonaparte-panel>
 * [Themes](themes/index.md)
    * Napoleon
-* Custom Build
 * Advanced
    * Custom Build
    * Create Components
