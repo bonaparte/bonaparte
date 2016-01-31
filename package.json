@@ -1,5 +1,5 @@
 {
-  "name": "bonaparte.io",
+  "name": "bonaparte-io",
   
   "version": "0.0.1",
   
@@ -15,6 +15,6 @@
 
   "repository": {
     "type": "git",
-    "url": "https://github.com/greenish/bonaparte.git"
+    "url": "https://github.com/bonaparte/bonaparte.io.git"
   }
 }
