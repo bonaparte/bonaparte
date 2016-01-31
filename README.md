@@ -2,6 +2,4 @@
 
 Test 
 
-{% include "git+https://github.com/greenish/js-objct/readme.md#master" %} 
-
 {% include "git+https://github.com/greenish/js-objct.git/readme.md#master" %}
