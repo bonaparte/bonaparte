@@ -2,4 +2,5 @@
 
 * About
 * [Getting Started](getting_started.md)
+* Components
 
