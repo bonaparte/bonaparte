@@ -9,7 +9,7 @@
    * <bonaparte-dropdown>
    * <bonaparte-panel>
 * [Themes](themes/index.md)
-   * Napoleon
+   * [Napoleon](themes/napoleon.md)
 * Advanced
    * [Custom Build](advanced/custom_build.md)
    * [Create Components](advanced/create_components.md)
