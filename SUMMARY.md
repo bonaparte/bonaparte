@@ -2,7 +2,7 @@
 
 * [About](README.md)
 * [Getting Started](getting_started.md)
-   * Starter Build
+   * [Starter Build](getting_started/starter_build.md)
    * React Starter
    * Angular Starter
    * Vanilla Starter
