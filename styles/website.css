@@ -3,6 +3,7 @@
     cursor: default;
     opacity: 1;
     filter: alpha(opacity=100);
+    font-style:italic;
 }
 
 ul.summary > .chapter > a,
