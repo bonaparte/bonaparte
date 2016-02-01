@@ -8,12 +8,12 @@
    * [Angular Starter](getting_started/angular_starter.md)
 * [Components](components/index.md)
    * [<bonaparte-button>](components/bonaparte-button.md)
+   * [<bonaparte-draggable>](components/bonaparte-draggable.md)
    * [<bonaparte-dropdown>](components/bonaparte-dropdown.md)
    * [<bonaparte-sidebar>](components/bonaparte-sidebar.md)
    * [<bonaparte-toolbar>](components/bonaparte-toolbar.md)
    * [<bonaparte-panel>](components/bonaparte-panel.md)
    * [<bonaparte-scroll>](components/bonaparte-scroll.md)
-   * [<bonaparte-draggable>](components/bonaparte-draggable.md)
 * [Themes](themes/index.md)
    * [Napoleon](themes/napoleon.md)
 * Advanced
