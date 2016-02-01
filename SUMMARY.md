@@ -14,5 +14,5 @@
    * [Napoleon](themes/napoleon.md)
 * [Custom Build](advanced/custom_build.md)
 * [Create Components](advanced/create_components.md)
-   * [API - Core](advanced/api-core.md)
+   * [Bonaparte Core - API](advanced/api-core.md)
 
