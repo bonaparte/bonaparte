@@ -5,6 +5,7 @@
     filter: alpha(opacity=100);
 }
 
-ul.summary > .chapter {
+ul.summary > .chapter a,
+ul.summary > .chapter span {
     font-weight:bold;
 }
