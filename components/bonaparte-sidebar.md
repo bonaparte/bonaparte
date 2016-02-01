@@ -1,1 +1,1 @@
-{% include "git+https://github.com/greenish/js-objct.git/readme.md#gh-pages" %}
+{% include "git+https://github.com/greenish/js-objct.git/readme.md#gh-pager" %}
