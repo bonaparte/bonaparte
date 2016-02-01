@@ -15,4 +15,5 @@
 * [Custom Build](advanced/custom_build.md)
 * [Create Components](advanced/create_components.md)
    * [Bonaparte Core - API](advanced/api-core.md)
+* Advanced
 
