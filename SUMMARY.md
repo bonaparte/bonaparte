@@ -5,7 +5,7 @@
    * [Starter Build](getting_started/starter_build.md)
    * [React Starter](getting_started/react_starter.md)
    * [Angular Starter](getting_started/angular_starter.md)
-   * Vanilla Starter
+   * [Vanilla Starter](getting_started/vanilla_starter.md)
 * [Components](components/index.md)
    * [<bonaparte-sidebar>](components/bonaparte-sidebar.md)
    * [<bonaparte-toolbar>](components/bonaparte-toolbar.md)
