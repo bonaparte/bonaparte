@@ -1,2 +1,1 @@
-[bonaparte.io](http://bonaparte.io)
-
+{% include "git+https://github.com/bonaparte/bonaparte-sidebar.git/readme.md#gh-pages" %}
