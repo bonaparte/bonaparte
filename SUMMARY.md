@@ -8,7 +8,7 @@
    * [<bonaparte-button>](components/bonaparte-button.md)
    * [<bonaparte-dropdown>](components/bonaparte-dropdown.md)
    * [<bonaparte-panel>](components/bonaparte-panel.md)
-   * <bonaparte-scroll>
+   * [<bonaparte-scroll>](components/bonaparte-scroll.md)
 * [Themes](themes/index.md)
    * [Napoleon](themes/napoleon.md)
 * Advanced
