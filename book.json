@@ -1,11 +1,4 @@
 {
     "title":"Bonaparte",
-    "description" : "UX Frontend Framework",
-    "links":{
-        "home": null,
-        "Github" : "http://www.github.com/bonaparte"
-    },
-    "plugins": [
-        "exercises"
-    ]
+    "description" : "UX Frontend Framework"
 }
