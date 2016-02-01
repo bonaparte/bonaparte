@@ -3,6 +3,7 @@
 * [About](README.md)
 * [Getting Started](getting_started.md)
    * Starter Build
+   * React Starter
 * [Components](components/index.md)
    * [<bonaparte-sidebar>](components/bonaparte-sidebar.md)
    * [<bonaparte-toolbar>](components/bonaparte-toolbar.md)
