@@ -12,6 +12,7 @@
    * [<bonaparte-draggable>](components/bonaparte-draggable.md)
 * [Themes](themes/index.md)
    * [Napoleon](themes/napoleon.md)
+* [Custom Build](advanced/custom_build.md)
 * [Create Components](advanced/create_components.md)
    * [Custom Build](advanced/custom_build.md)
    * [API - Core](advanced/api-core.md)
