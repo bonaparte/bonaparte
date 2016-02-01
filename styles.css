@@ -1,0 +1,5 @@
+.summary > .chapter > span {
+    cursor: not-allowed;
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
