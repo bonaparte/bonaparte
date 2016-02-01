@@ -1,5 +1,5 @@
 /* CSS for website */
-.summary li span {
+.book .book-summary ul.summary li span  {
     cursor: default;
     opacity: 1;
     filter: alpha(opacity=100);
