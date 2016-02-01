@@ -15,5 +15,5 @@
 * Advanced
    * [Custom Build](advanced/custom_build.md)
    * [Create Components](advanced/create_components.md)
-       * Core - API
+       * [Core - API](advanced/api-core.md)
 
