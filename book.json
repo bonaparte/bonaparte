@@ -1,6 +1,6 @@
 {
     "title":"Bonaparte",
-    "description" : "UX Frontend Framework"
+    "description" : "UX Frontend Framework",
     "styles": {
         "website":"styles.css"
     }
