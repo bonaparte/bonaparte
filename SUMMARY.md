@@ -12,9 +12,9 @@
    * [<bonaparte-draggable>](components/bonaparte-draggable.md)
 * [Themes](themes/index.md)
    * [Napoleon](themes/napoleon.md)
-* [Create Components](advanced/create_components.md)
-   * [Bonaparte Core - API](advanced/api-core.md)
 * [Custom Build](advanced/custom_build.md)
 * Advanced
+   * [Create Components](advanced/create_components.md)
+       * [Bonaparte Core - API](advanced/api-core.md)
    * sdf
 
