@@ -14,11 +14,11 @@ function scroll(tag){
 
   if(bp.attribute.get(tag, "scrollbar") === "native") return;
 
-  setupScroller();
+  bp.tag.DOMReady(setupScroller);
 
 ///////////////////////////////////////////////////////////////////////////////
-// Public 
- 
+// Public
+
   this.bonaparte.update = update;
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -26,7 +26,7 @@ function scroll(tag){
 
   if(bp.attribute.get(tag, "resize") !== "false")
     window.addEventListener("resize", update);
-  
+
   content.addEventListener("scroll", updatePosition);
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -48,7 +48,7 @@ function scroll(tag){
         scrollbar.style.opacity = "";
         scrollBarVisible = true;
       }
-    } 
+    }
 
     // SLIDER SIZE / POSITION
     updatePosition();
@@ -77,7 +77,7 @@ function scroll(tag){
     scrollBarWidth = scrollBarWidth || getScrollBarWidth();
     content.style.marginRight = -scrollBarWidth+"px";
     content.style.paddingRight = scrollBarWidth+"px";
-  
+
     slider = document.createElement("div")
     slider.setAttribute("class", "slider");
 
@@ -92,19 +92,19 @@ function scroll(tag){
   }
 
 ///////////////////////////////////////////////////////////////////////////////
-// x: current Value, 
-// cMin: current range min, 
-// cMax: current range max, 
-// tMin: target range min, 
-// tMax: target range max, 
+// x: current Value,
+// cMin: current range min,
+// cMax: current range max,
+// tMin: target range min,
+// tMax: target range max,
 // easingFunction: easingFunction (string)
 
   function map(x, cMin, cMax, tMin, tMax, easingFunction) {
-    easingFunction = typeof easing === "object" && easing[easingFunction] !== undefined ? 
-      easing[easingFunction] : 
+    easingFunction = typeof easing === "object" && easing[easingFunction] !== undefined ?
+      easing[easingFunction] :
       function (t, b, c, d) { return b+c*(t/=d) };
     if(x===0) return tMin;
-    return easingFunction(x-cMin, tMin, tMax-tMin, cMax-cMin);  
+    return easingFunction(x-cMin, tMin, tMax-tMin, cMax-cMin);
   }
 
 ///////////////////////////////////////////////////////////////////////////////
