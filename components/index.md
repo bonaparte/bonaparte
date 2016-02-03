@@ -1,5 +1,8 @@
 # Components
 
+## General
+
+
 Bonaparte Components follow three main principles:
 
 - Components create structure but are otherwise design agnostic.
