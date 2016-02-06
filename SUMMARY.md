@@ -17,6 +17,7 @@
    * [<bonaparte-toolbar>](components/bonaparte-toolbar.md)
 * [Themes](themes/index.md)
    * [Napoleon](themes/napoleon.md)
+* License
 * Advanced
    * [Custom Build](advanced/custom_build.md)
    * [Create Components](advanced/create_components.md)
