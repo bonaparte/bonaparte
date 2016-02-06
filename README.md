@@ -7,6 +7,13 @@ Components are written in plain JavaScript and work nicely with JavaScript frame
 
 Bonaparte is Design agnostic. It's components provide structure but do not come with any design. In addition, no component uses the `class` attribute to create functionality. Therefore, the CSS classes of any Frontend Framework can be used to add styling.
 
+
+
+
+
+---
+
+
 This build uses a custom theme inspired by Semantic UI which has been developed for editorial tools at Dow Jones & Co.
 
 Bonaparte is a modular UX front-end framework created at Dow Jones & Co.
