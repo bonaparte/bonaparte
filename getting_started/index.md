@@ -22,6 +22,8 @@ To include all Bonaparte Components:
 <script src='path/to/dist/bonaparte.js'></script>
 ```
 
+> Createing your own custom build is easy as well! <br>Learn more: [4.1 Custom Build](advanced/custom-build.md)
+
 ## Use a single Bonaparte component in your project
 Each component can also be used separately:
 
