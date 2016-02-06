@@ -1,4 +1,4 @@
-# Bonaparte 
+# Bonaparte *(Alpha)*
 
 Bonaparte is a modular UX framework designed to work with standard UI frameworks.
 It provides a set of commonly used structural components that help designers and developers to create better user experiences.
