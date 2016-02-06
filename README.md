@@ -31,3 +31,5 @@ Bonaparte is under active development. We know it's not perfect and we appreciat
 
 We are collecting general feedback and feature requests for bonaparte here:<br>
 http://github.com/bonaparte/bonaparte.io/issues
+
+And Pull Requests are welcome as well of course ;)
