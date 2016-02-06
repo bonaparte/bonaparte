@@ -5,7 +5,7 @@ It provides a set of commonly used structural components that help designers and
 
 Components are written in plain JavaScript and work nicely with JavaScript frameworks like React, Angular or just jQuery. WebComponents allow functionality to live in HTML. This makes Bonaparte compatible with any framework in any programming language that outputs HTML.
 
-Bonaparte is Design agnostic. It's components provide structure but do not come with any design. In addition, no component uses the `class` attribute to create functionality. Therefore, the CSS classes of any Frontend Framework can be used to add styling.
+Bonaparte is Design agnostic. It's components provide structure but do not come with any design. In addition, no component uses the `class` attribute to create functionality. Therefore, the CSS classes of any front end framework like Bootstrap, Foundation or Semantic UI can be used for styling.
 
 
 
