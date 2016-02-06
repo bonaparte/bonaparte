@@ -9,13 +9,24 @@ The easiest way to get your hands dirty is to start with one of the three starte
 Each starter includes the all Bonaparte components and the Napoleon theme (Napoleon Build).
 Just select your favorite framework and open `index.html` in your browser!
 
-## Include Bonaparte into your project
+## Use Bonaparte in your project
 
 1. Download one of the Bonaparte builds:
  * [Pure Build](http://github.com/bonaparte/starter-vanilla)<br>Includes all Bonaparte Components without any design.
  * [Napoleon Build](http://github.com/bonaparte/starter-react)<br>Includes all Bonaparte Components and the Napoleon theme
 1. Copy the `dist/` folder into your project.
 2. Include the following into the `<head>` of your project: 
+```
+<link ref='path/to/dist/bonaparte.css'>
+<script src='path/to/dist/bonaparte.js'>
+```
+
+## Use a single Bonaparte component in your project
+Each component can be used separately.
+
+1. Download any of the Bonaparte components
+1. Copy the `dist/` folder into your project.
+2. Include the following into the `<head>` of your project:  
 ```
 <link ref='path/to/dist/bonaparte.css'>
 <script src='path/to/dist/bonaparte.js'>
