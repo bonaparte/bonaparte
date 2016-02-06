@@ -15,6 +15,7 @@
    * [<bonaparte-scroll>](components/bonaparte-scroll.md)
    * [<bonaparte-sidebar>](components/bonaparte-sidebar.md)
    * [<bonaparte-toolbar>](components/bonaparte-toolbar.md)
+* [Credits & License](credits-license.md)
 * [Themes](themes/index.md)
    * [Napoleon](themes/napoleon.md)
 * Advanced
