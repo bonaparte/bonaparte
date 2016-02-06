@@ -1,7 +1,11 @@
 # Bonaparte 
 
-Bonaparte is a modular UX framework designed to work with standard UI frameworks. I can be used with all modern JavaScript Libraries like React, Angular and jQuery as well as with commonly used front end frameworks like Bootstrap, Foundation or Semantic UI.
+Bonaparte is a modular UX framework designed to work with standard UI frameworks. 
+It provides a set of commonly used structural components that help designers and developers to create better user experiences.
 
+Components are written in plain JavaScript and work nicely with JavaScript frameworks like React, Angular or just jQuery. WebComponents allow functionality to live in HTML. This makes Bonaparte compatible with any framework in any programming language that outputs HTML.
+
+Bonaparte is Design agnostic. It's components provide structure but do not come with any design. In addition, no component uses the `class` attribute to create functionality. Therefore, the CSS classes of any Frontend Framework can be used to add styling.
 
 This build uses a custom theme inspired by Semantic UI which has been developed for editorial tools at Dow Jones & Co.
 
