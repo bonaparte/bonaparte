@@ -1,5 +1,7 @@
 # Bonaparte 
 
+Bonaparte is a modular UX framework designed to work with standard UI frameworks. This build uses a custom theme inspired by Semantic UI which has been developed for editorial tools at Dow Jones & Co.
+
 Bonaparte is a modular UX front-end framework created at Dow Jones & Co.
 
 
