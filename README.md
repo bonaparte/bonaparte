@@ -3,9 +3,9 @@
 Bonaparte is a modular UX framework designed to work with standard UI frameworks. 
 It provides a set of commonly used structural components that help designers and developers to create better user experiences.
 
-Components are written in plain JavaScript and work nicely with JavaScript frameworks like React, Angular or just jQuery. WebComponents allow functionality to live in HTML. This makes Bonaparte compatible with any framework in any programming language that outputs HTML.
+Components are written in plain JavaScript and work nicely with JavaScript frameworks like [React](https://facebook.github.io/react/), [Angular](https://angularjs.org/) or just [jQuery](http://jquery.com). WebComponents allow functionality to live in HTML. This makes Bonaparte compatible with any framework in any programming language that outputs HTML.
 
-Bonaparte is Design agnostic. It's components provide structure but do not come with any design. In addition, no component uses the `class` attribute to create functionality. Therefore, the CSS classes of any front end framework like Bootstrap, Foundation or Semantic UI can be used for styling.
+Bonaparte is Design agnostic. It's components provide structure but do not come with any design. In addition, no component uses the `class` attribute to create functionality. Therefore, the CSS classes of any front end framework like [Bootstrap](http://getbootstrap.com/), [Foundation](http://foundation.zurb.com/) or [Semantic UI](http://semantic-ui.com/) can be used for styling.
 
 
 
