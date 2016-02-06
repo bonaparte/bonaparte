@@ -25,6 +25,3 @@ Bonaparte is Design agnostic. It's components provide structure but do not come 
 ####[Themes](themes/index.md)
 
 
----
-
-
