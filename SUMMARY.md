@@ -22,5 +22,5 @@
    * [Create Components](advanced/create_components.md)
        * [Bonaparte Core - API](advanced/api-core.md)
    * License
-* License
+* [License](LICENSE.md)
 
