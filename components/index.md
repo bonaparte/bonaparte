@@ -1,5 +1,7 @@
 # Components
 
+
+Components can be used together or by themselves and
 ## General
 
 
