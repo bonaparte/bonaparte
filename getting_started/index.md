@@ -13,8 +13,8 @@ Just select your favorite framework and open `index.html` in your browser!
 To include all Bonaparte Components:
 
 1. Download one of the Bonaparte builds:
- * [Pure Build](http://github.com/bonaparte/starter-vanilla)<br>*Includes all Bonaparte Components without any design.*
- * [Napoleon Build](http://github.com/bonaparte/starter-react)<br>*Includes all Bonaparte Components and the Napoleon theme*
+ * [Pure Build](http://github.com/bonaparte/build-pure)<br>*Includes all Bonaparte Components without any design.*
+ * [Napoleon Build](http://github.com/bonaparte/build-napoleon)<br>*Includes all Bonaparte Components and the Napoleon theme*
 1. Copy the `dist/` folder into your project.
 2. Include the following into the `<head>` of your project: 
 ```
