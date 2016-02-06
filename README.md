@@ -8,12 +8,12 @@ Components are written in plain JavaScript and work nicely with frameworks like 
 Bonaparte is Design agnostic. It's components provide structure but do not come with any design. No component uses the `class` attribute to create functionality. Therefore, the CSS classes of any front end framework like [Bootstrap](http://getbootstrap.com/), [Foundation](http://foundation.zurb.com/) or [Semantic UI](http://semantic-ui.com/) can be used for styling.
 
 
-#### Using Bonaparte in your HTML is as easy and descriptive
+#### Using Bonaparte is as easy as using HTML:
 ```
 <bonaparte-scroll>
     <div>
     
-        <!-- Content -->
+        <!-- Scrolling Content -->
     
     </div>
 </bonaparte-scroll>
