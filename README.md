@@ -24,13 +24,14 @@ Bonaparte is design agnostic. It's components provide structure but do not come 
 ####[Bonaparte Components](components/index.md)
 ####[Themes](themes/index.md)
 
-## Author
-[Philipp Adrian](http://github.com/greenish)
+## Credits
+Bonaparte was created by [Philipp Adrian](http://github.com/greenish) at Dow Jones & Co.
 
-## Contributors 
-[Peran Osborn](https://github.com/peranosborn)
-[Dov Friedman](https://github.com/dovfriedman)
-[Erin Sparling](https://github.com/everyplace)
+#### Contributors 
+* [Peran Osborn](https://github.com/peranosborn)
+* [Dov Friedman](https://github.com/dovfriedman)
+* [Erin Sparling](https://github.com/everyplace)
+
 
 ## License 
 [MIT](https://opensource.org/licenses/MIT)
