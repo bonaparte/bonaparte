@@ -1,7 +1,7 @@
 # Bonaparte 
 
 Bonaparte is a modular UX framework designed to work with standard UI frameworks.
-It provides a set of commonly used structural components that can be used together or by themselves.
+It provides a set of commonly used structural components that help designers and developers to create better user experiences.
 
 Components are written in plain JavaScript and work nicely with frameworks like [React](https://facebook.github.io/react/), [Angular](https://angularjs.org/) or just [jQuery](http://jquery.com). WebComponents allow functionality to live in HTML. This makes Bonaparte compatible with any framework or programming language that outputs HTML.
 
