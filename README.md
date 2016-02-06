@@ -18,9 +18,8 @@ Bonaparte is Design agnostic. It's components provide structure but do not come 
     </div>
 </bonaparte-scroll>
 ```
-## Get Started!
+## Learn more about!
 
-Learn more about:
 ####[How To Get Started](getting-started/index.md)
 ####[Bonaparte Components](components/index.md)
 ####[Themes](themes/index.md)
