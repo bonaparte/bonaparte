@@ -24,3 +24,6 @@ Bonaparte is design agnostic. It's components provide structure but do not come 
 #### [How To Get Started](getting-started/index.md)
 #### [Bonaparte Components](components/index.md)
 #### [Themes](themes/index.md)
+
+<br><br>
+> NOTE: *Alpha Release*<br>Bonaparte is under active development. 
