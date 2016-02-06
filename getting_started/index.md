@@ -15,7 +15,7 @@ To include all Bonaparte Components:
 1. Download/Clone one of the Bonaparte builds:
  * [Pure Build](http://github.com/bonaparte/build-pure)<br>*Includes all Bonaparte Components without any design.*
  * [Napoleon Build](http://github.com/bonaparte/build-napoleon)<br>*Includes all Bonaparte Components and the Napoleon theme*
-1. Copy the `dist/` folder into your project.
+1. Copy the complete `dist/` folder into your project.
 2. Include the following into the `<head>` of your project: 
 ```
 <link rel='stylesheet' type="text/css" href='path/to/dist/bonaparte.css'>
@@ -28,7 +28,7 @@ To include all Bonaparte Components:
 Each component can also be used separately:
 
 1. Download/Clone any of the Bonaparte components.
-1. Copy the `dist/` folder into your project.
+1. Copy the complete `dist/` folder into your project.
 2. Include the following into the `<head>` of your project:  
 ```
 <link rel='stylesheet' type="text/css" href='path/to/dist/bonaparte.css'>
