@@ -3,6 +3,7 @@
 
 
  
+It provides a set of loosely connected components that can be used together or by themselves.
 
 --- 
 
