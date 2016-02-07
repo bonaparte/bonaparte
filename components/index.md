@@ -1,6 +1,6 @@
 # Bonaparte Components
 
-Bonaparte provides a set of loosely connected components that can be used together or by themselves.
+Bonaparte provides a set of loosely connected components that can be used together or separately by themselves.
 
 
 
