@@ -5,3 +5,5 @@ window.addEventListener("onload", function(){
     console.log(summary);
     
 });
+
+document.querySelector("title").innerHTML("Bonaparte Documentation");
