@@ -45,8 +45,8 @@ __Returns:__ `true|false`
 
 ```javascript
 bp.attribute.matchName(
-  (String)      needle,
-  (String)      haystack
+  (String)      attributeName1,
+  (String)      attributeName2
 )
 
 ```
