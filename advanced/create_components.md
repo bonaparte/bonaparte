@@ -1,5 +1,12 @@
 # Create Bonaparte Components
 
+Bonaparte comes with all the necessary tools to make creating new Components simple.
+
+Requiring the `bonaparte` module provides all the necessary functions to create new _components_ from _modules_, as well a set of utility functions that can be used within _modules_.
+
+The core of Bonaparte is the `bonaparte` package. It prof 
+
+
 ## About
 This module is the core of the _Bonaparte UX Framework_. It provides an [API](#api) with all the tools needed to create Bonaparte Components.
 
