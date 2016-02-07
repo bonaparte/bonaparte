@@ -19,9 +19,9 @@ Bonaparte components have a modular structure.
 __Modules__ are simple JavaScript functions/classes that get instantiated for each tag-instance on the page:
 
 ```javascript
-  function MyModule(tag) {
-    // tag === this === current tag instance
-  }
+function MyModule(tag) {
+// tag === this === current tag instance
+}
 ```
 Each Bonaparte component is a combination of one or more __modules__:
 
