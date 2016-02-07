@@ -15,10 +15,10 @@ Some components define a number of `required` child tags. Required children must
 
 #### Standard Components
 
-  - [< button-bonaparte >](https://github.com/bonaparte/bonaparte-button)
-  - [< scroll-bonaparte >](https://github.com/bonaparte/bonaparte-scroll)
-  - [< sidebar-bonaparte >](https://github.com/bonaparte/bonaparte-sidebar)
-  - [< panel-bonaparte >](https://github.com/bonaparte/bonaparte-panel)
+  - [< scroll-dropdown >](https://github.com/bonaparte/bonaparte-dropdown)
+  - [< bonaparte-panel >](https://github.com/bonaparte/bonaparte-panel)
+  - [< bonaparte-scroll >](https://github.com/bonaparte/bonaparte-scroll)
+  - [< bonaparte-sidebar >](https://github.com/bonaparte/bonaparte-sidebar)
 
 
 #### Highlevel Components
