@@ -32,7 +32,7 @@ module.exports = bp.tag.create("tag-name", [
 ]);
 
 ```
-**Every time the tag is placed on the page, all its modules are instantiated.**
+**Every time the component is placed on the page, all its modules are instantiated.**
 
 Bonaparte components are modules themselves. It is possible to extend an existing Bonaparte component to add functionality:
 
