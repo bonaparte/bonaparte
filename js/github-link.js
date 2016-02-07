@@ -12,8 +12,6 @@ window.addEventListener("load", function(){
     
     summary.insertBefore( li, summary.firstChild );
     
-    console.log(firstElement);
-    
     
     
 });
