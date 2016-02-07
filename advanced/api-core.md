@@ -3,21 +3,24 @@
 ```javascript
   var bp = require("bonaparte");
 ```
+* [bp.attribute](#bpattribute)
+ -  [bp.attribute.get()](#bpattributeget)
+ -  [bp.attribute.matchName()](#bpattributematchname)
+ -  [bp.attribute.remove()](#bpattributeremove)
+ -  [bp.attribute.set()](#bpattributeset)
+* [bp.module](#bpmodule)
+ -  [bp.module.mixin()](#bpmodulemixin)
+* [bp.tag](#bptag)
+ -  [bp.tag.closest()](#bptagclosest)
+ -  [bp.tag.contains()](#bptagcontains)
+ -  [bp.tag.create()](#bptagcreate)
+ -  [bp.tag.DOMReady()](#bptagdomready)
+ -  [bp.tag.observe()](#bptagobserve)
+ -  [bp.tag.triggerEvent()](#bptagtriggerevent)
 
--  [bp.attribute.get()](#bpattributeget)
--  [bp.attribute.matchName()](#bpattributematchname)
--  [bp.attribute.remove()](#bpattributeremove)
--  [bp.attribute.set()](#bpattributeset)
--  [bp.module.mixin()](#bpmodulemixin)
--  [bp.tag.closest()](#bptagclosest)
--  [bp.tag.contains()](#bptagcontains)
--  [bp.tag.create()](#bptagcreate)
--  [bp.tag.DOMReady()](#bptagdomready)
--  [bp.tag.observe()](#bptagobserve)
--  [bp.tag.triggerEvent()](#bptagtriggerevent)
 
 
-### bp.attribute
+## bp.attribute
 
 Utility functions that should be used to handle attributes. <br>
 They automatically handle both `name` and `data-name` attributes in one go and normalize events across browsers.
@@ -77,7 +80,7 @@ bp.attribute.set(
 
 ---
 ---
-### bp.module
+## bp.module
 ---
 #### bp.module.mixin()
 Combines _modules_ into a new _module_ <br>
@@ -94,8 +97,7 @@ var module = bp.modules.mixin(
 > Modules are combinded to an `objct`. Read more about the objct library [here](https://github.com/greenish/js-objct)
 
 ---
----
-### bp.tag
+## bp.tag
 
 ---
 #### bp.tag.closest();
