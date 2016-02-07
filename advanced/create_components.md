@@ -96,17 +96,6 @@ In your `package.json` add the `bonaparte` core package as a dependencie and def
 
 ## Creating Components
 
-Require the API:
-```javascript
-var bp = require("bonaparte");
-```
-
-Create a custom component:
-```javascript
-module.exports = bp.tag.create("tag-name", function(){…});
-```
-
-## Structure/Modules
 
 Bonaparte has a modular structure and is therefore very easily extendable.
 Each Bonaparte component is a combination of __modules__.
@@ -119,9 +108,9 @@ __Modules__ are simple JavaScript functions/classes that get instantiated for ea
   }
 ```
 
-### Events
+#### Events
 
-Bonaparte-Tags emit the following custom events.
+Bonaparte components emit the following custom events.
 
 ```javascript
   "bonaparte.tag.created"
