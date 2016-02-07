@@ -44,7 +44,7 @@ It `requires` and initializes/registers everything the package/component needs t
 For a standard component that is:
 
 ```javascript
-require('./bonaparte.[css|less|sass|scss]');
+require('./bonaparte.css');
 require('./bonaparte.js').register();
 ```
 
