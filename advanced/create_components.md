@@ -94,7 +94,7 @@ In your `package.json` add the `bonaparte` core package as a dependencie and def
 
 
 
-## Create New Components
+## Creating Components
 
 Require the API:
 ```javascript
