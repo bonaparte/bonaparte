@@ -15,5 +15,6 @@
    * [Custom Build](advanced/custom_build.md)
    * [Create Your Own](advanced/create_components.md)
        * [Bonaparte Core - API](advanced/api-core.md)
+       * Bonaparte Packages
 * [Credits & License](credits-license.md)
 
