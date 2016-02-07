@@ -35,6 +35,11 @@ This provides the user with the option to choose which HTML tag semantically fit
 
 ## Component Interfaces
 
+
+
+
+
+
 There are two types of components:
 
 ## 1. Basic structural components
