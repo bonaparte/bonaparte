@@ -16,14 +16,13 @@ function MyModule(tag) {
 ## Module Structure
 Bonaparte components have a modular structure. 
 
-__Modules__ are simple JavaScript functions/classes that get instantiated for each tag-instance on the page. Every time the tag is placed on the page, all modules of the tag are executed:
-
+__Modules__ are simple JavaScript functions/classes:
 ```javascript
 function MyModule(tag) {
 // tag === this === current tag instance
 }
 ```
-Each Bonaparte component is a combination of one or more __modules__:
+Each Bonaparte component can be composed by one or more __modules__:
 
 ```javascript
 module.exports = bp.tag.create("tag-name", [
@@ -31,7 +30,9 @@ module.exports = bp.tag.create("tag-name", [
     AnotherModule, 
     function(){...}
 ]);
+
 ```
+**Every time the tag is placed on the page, all its modules are instantiated.**
 
 Bonaparte components are modules themselves. It is possible to extend an existing Bonaparte component to add functionality:
 
