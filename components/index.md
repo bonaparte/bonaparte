@@ -81,9 +81,13 @@ document.getElementById('myBonaparteComponent').bonaparte.changeAttribute();
 There are two types of components:
 
 #### 1. Basic structural components
-Basic Components provide simple structure and minimal functionality to be as versatile as possible.
-
-
+Basic Components provide simple structure and minimal functionality to be as versatile as possible:
+  - [< bonaparte-dropdown >](https://github.com/bonaparte/bonaparte-dropdown)
+  - [< bonaparte-panel >](https://github.com/bonaparte/bonaparte-panel)
+  - [< bonaparte-scroll  >](https://github.com/bonaparte/bonaparte-scroll)
+  - [< bonaparte-sidebar  >](https://github.com/bonaparte/bonaparte-sidebar)
 
 #### 2. Opinionated high level components
 High level components are more opinionated in their functionality and are build for a certain use case.
+  - [< bonaparte-button >](https://github.com/bonaparte/bonaparte-button)
+  - [< bonaparte-toolbar  >](https://github.com/bonaparte/bonaparte-toolbar)
