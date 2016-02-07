@@ -36,7 +36,7 @@ All Bonaparte components follow two core principles:
 ### 1. Components are design agnostic
 This 
 
-### 2. Functionality is purely defined by attributes on the tag
+### 2. Functionality is purely defined by custom attributes.
 
 
 
