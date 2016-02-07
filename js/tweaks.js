@@ -14,4 +14,5 @@ function replaceHomeLink(){
     summary.insertBefore( li, summary.firstChild )
 }
 
-window.addEventListener("load", );
+window.addEventListener("load", replaceHomeLink);
+document.body.addEventListener("click", replaceHomeLink);
