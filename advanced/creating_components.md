@@ -66,12 +66,12 @@ Bonaparte components emit the following custom life-cycle events.
 Listen to them like you do to native events:
 ```javascript
 function module(tag) {
-    tag.addEventListener("bonaparte.tag.created", handler);
+    tag.addEventListener("bonaparte.tag.attached", handler);
 }
 ```
 
 ### Trigger
-On Bonaparte-Tags Custom events can easily be triggered by calling
+Custom events can easily be triggered by calling
 ```javascript
 function module(tag) {
     tag.bonaparte.triggerEvent("name", data)
