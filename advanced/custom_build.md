@@ -40,7 +40,7 @@ $ npm run build
 
 ## Build Bonaparte within your project
 
-To build Bonaparte as part of your own project, add the Bonaparte packages you need to your `package.json`. Then just *require* the `bonaparte.build.js` file for each of them.
+To build Bonaparte as part of your own project, add the Bonaparte packages to your `package.json`. Then *require* the `bonaparte.build.js` file for each of them.
 
 *Include a complete build:*
 ```javascript
