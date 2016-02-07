@@ -49,8 +49,6 @@ module.exports = bp.tag.create("tag-name", [
 
 > Bonaparte uses the [Objct](http://github.com/greenish/objct) library to create this modularity.
 
-
-
 #### Events
 
 Bonaparte components emit the following custom events.
