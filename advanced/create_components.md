@@ -50,8 +50,9 @@ require('./bonaparte.js').register();
 
 And when building a theme:
 ```javascript
-require('./bonaparte.[css|less|sass|scss]');
+require('./bonaparte.css');
 ```
+
 
 
 
