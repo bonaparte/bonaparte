@@ -3,6 +3,31 @@
 Bonaparte provides a set of loosely connected components that can be used together or separately by themselves.
 
 
+## Bonaparte Components
+Bonaparte Components are library and design agnostic UX components. They are placed in HTML in form of custom tags. 
+Each components functionality can be customized through attributes.
+
+Some components define a number of `required` child tags. Required children must be the first children. After the required child elements, there can be arbitrary additional content.
+
+> Note: (Design Agnostic) No component uses the `class` attribute in any way. You can use your favorite frontend frameworks classes for styling.
+
+> Note: Required children can be any type of tag. (i.e. the < sidebar-bonaparte >'s first child can be a `<div>` or more semantically correct an `<aside>` tag.
+
+#### Standard Components
+
+  - [< button-bonaparte >](https://github.com/bonaparte/bonaparte-button)
+  - [< scroll-bonaparte >](https://github.com/bonaparte/bonaparte-scroll)
+  - [< sidebar-bonaparte >](https://github.com/bonaparte/bonaparte-sidebar)
+  - [< panel-bonaparte >](https://github.com/bonaparte/bonaparte-panel)
+
+
+#### Highlevel Components
+Highlevel components enforce a certain level of design hierarchy by implementing some restrictions.
+For the best result, use as many highlevel components in your design as possible.
+
+  - [< toolbar-bonaparte >](https://github.com/bonaparte/bonaparte-toolbar)
+
+
 
 Bonaparte Components follow three main principles:
 
