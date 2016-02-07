@@ -1,6 +1,9 @@
 ## About
 This module is the core of the _Bonaparte UX Framework_. It provides an [API](#api) with all the tools needed to create Bonaparte Components.
 
+
+Requiring the `bonaparte` module provides all the necessary functions to create new _tags_ from modules, as well a set of utility functions that can be used within _modules_.
+
 ## Basic Use
 
 Require the API:
