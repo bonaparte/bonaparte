@@ -52,7 +52,7 @@ require('bonaparte-build-napoleon/bonaparte.build');
 require('bonaparte-scroll/bonaparte.build');
 require('bonaparte-dropdown/bonaparte.build');
 ```
-*Or themes:*
+*Or a theme:*
 ```javascript
 require('bonaparte-theme-napoleon/bonaparte.build');
 ```
