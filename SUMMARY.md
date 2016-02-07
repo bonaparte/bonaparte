@@ -1,4 +1,3 @@
-* [Bonaparte on Github](http://www.github.com/bonaparte)
 # Summary
 
 * [About](README.md)
