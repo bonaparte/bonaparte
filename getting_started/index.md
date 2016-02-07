@@ -9,7 +9,7 @@ The easiest way to get your hands dirty is to start with one of the three starte
 Each starter includes all Bonaparte components and the Napoleon theme ([Napoleon Build](http://github.com/bonaparte/build-napoleon)).
 
 1. Download/Clone the starter for your favorite framework
-2. Open `index.html` in a browser.
+2. Open `index.html` in a browser. 
 
 ## Use Bonaparte in your project
 To include all Bonaparte Components:
