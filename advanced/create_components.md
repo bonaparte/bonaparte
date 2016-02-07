@@ -111,7 +111,7 @@ module.exports = bp.tag.create("tag-name", function(){…});
 Bonaparte has a modular structure and is therefore very easily extendable.
 Each Bonaparte component is a combination of __modules__.
 
-__Modules__ are simple JavaScript functions/classes that get instanciated for each component-instance on the page:
+__Modules__ are simple JavaScript functions/classes that get instantiated for each tag-instance on the page:
 
 ```javascript
   function module(tag) {
