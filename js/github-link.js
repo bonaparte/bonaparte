@@ -12,8 +12,6 @@ window.addEventListener("load", function(){
     
     summary.insertBefore( li, summary.firstChild );
     
-    
-    
 });
 
 document.querySelector("title").innerHTML = "Bonaparte Documentation";
