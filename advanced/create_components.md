@@ -12,7 +12,7 @@ There are three types of Bonaparte packages:
 * **Themes**<br>*Define CSS only. Themes don't export any JavaScript*
 * **Builds**<br>*Combine multiple components and themes into a bundle*
 
-In addition to `package.json` and `webpack.config.js`, Bonaparte uses three files to define a package:
+A minimal Bonaparte component package includes five files:
 
 ```javascript
 package
@@ -35,8 +35,8 @@ module.exports = bp.tag.create('my-component', function(){
 ```
 
 ##### bonaparte.css
-When creating a component or theme, all styles are defined or `@imported` into a bonaparte.css.<br>
-**You can use any preprocessor you like and rename the file accordingly (i.e. bonaparte.less)**
+When creating a component or theme, all styles are defined or `@imported` into bonaparte.css.<br>
+**You can use any preprocessor you like and rename this file accordingly (i.e. bonaparte.less)**
 
 ```css
 @import 'my-styles.css'
@@ -53,11 +53,19 @@ require('./bonaparte.css');
 require('./bonaparte.js').register();
 ```
 
-And when building a theme:
+When building a theme it's just the css:
 ```javascript
 require('./bonaparte.css');
 ```
 
+And for a Build it's a number of bonaparte components and themes:
+
+```javascript
+require('bonaparte-dropdown');
+require('bonaparte-scroll');
+
+require('bonaparte-theme-napoleon');
+```
 
 
 
