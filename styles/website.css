@@ -13,6 +13,8 @@ ul.summary > .chapter > span {
 
 ul.summary > li  a.custom-link {
     margin-top:7px;
+    text-indent:100000px;
+    overflow:hidden;
 }
 
 ul.summary > li  a.my-custom-link {
