@@ -5,5 +5,10 @@
         "hide-published-with",
         "edit-link"
     ],
-    "pluginsConfig": {}
+    "pluginsConfig": {
+        "edit-link": {
+            "base": "http://github.com/greenish/bonaparte/",
+            "label": "Edit This Page"
+        }
+    }
 }
