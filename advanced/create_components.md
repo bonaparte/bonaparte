@@ -5,7 +5,7 @@ Bonaparte comes with all the necessary tools to make creating new components sim
 At the core of Bonaparte is the `bonaparte` package. It provides an API with all the necessary functions to create new components and packages.<br> See API documentation here: [4.2.1 Bonaparte Core – API](advanced/api-core.md)
 
 
-## A Bonaparte package
+## Bonaparte packages
 
 There are three types of Bonaparte packages: 
 * **Components**<br>*Define a single Bonaparte component.*
