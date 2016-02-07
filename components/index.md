@@ -35,15 +35,53 @@ This provides the user with the option to choose which HTML tag semantically fit
 
 ## Component Interfaces
 
+Each Component has three interfaces it can define:
+
+#### Required child Elements
+Components can require one or more (*n*) child elements. 
+These components will use the first *n* children to provide functionality.
+Every child element after the *n-th* is not affected and can be anything the user wishes.
+In some cases the required children must be marked by a custom attribute specified in the documentation. In these cases the component will not use the first *n* children but the marked ones.
+```
+<bonaparte-scroll>
+    <1st-child: scrollable content >
+</bonaparte-scroll>
+```
 
 
+#### Custom attributes
+All customization of a components functionality is done through custom attributes.<br>
+Custom attributes are defined with and without `data-` prefix. 
+```
+<bonaparte-scroll
+    scrollbar = visible|hidden|hover|native
+>
+</bonaparte-scroll>
+```
 
+#### Custom events
+Components can emit custom events to notify other parts of the page about their state. <br>
+Bonaparte Events are named with the pattern: `bonaparte.tag-name.event`<br>
+Listen to events on the component or ancestor elements: 
+```
+document.getElementById('myBonaparteComponent').addEventListener('bonaparte.scroll.scrolling', handler);
+```
 
+#### Component APIs
+Some components provide an API to help modify its attributes.<br>
+**Component APIs do not add any functionality to the component.** <br>
+They are simple convenience methods to change the components attributes. 
+The Component API can be accessed on the component itself under the `bonaparte` namespace: 
+```
+document.getElementById('myBonaparteComponent').bonaparte.changeAttribute();
+```
+
+## Component Types
 
 There are two types of components:
 
-## 1. Basic structural components
+#### 1. Basic structural components
 Basic Components provide simple structure and minimal functionality to be as versatile as possible.
 
-## 2. Opinionated high level components
+#### 2. Opinionated high level components
 High level components are more opinionated in their functionality and are build for a certain use case.
