@@ -13,7 +13,7 @@ function MyModule(tag) {
 
 ```
 
-## Structure
+## Module Structure
 Bonaparte components have a modular structure. 
 
 __Modules__ are simple JavaScript functions/classes that get instantiated for each tag-instance on the page:
@@ -43,6 +43,8 @@ module.exports = bp.tag.create("tag-name", [
     MyModule
 ]);
 ```
+
+**Modules** are instantiated in the order they of the array they we're passed in.
 
 
 
