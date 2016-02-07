@@ -1,26 +1,33 @@
 # Creating Components
 
+To create a new component simply require the Bonaparte core package and use the `bp.tag.create` method to create a new component:
+
+```javascript
+var bp = require("bonaparte");
+
+module.exports = bp.tag.create("tag-name", MyModule);
+
+function MyModule(tag) {
+    // magic
+}
+
+```
+
+## Structure
+
+
 Bonaparte has a modular structure and is therefore very easily extendable.
 Each Bonaparte component is a combination of __modules__.
 
 __Modules__ are simple JavaScript functions/classes that get instantiated for each tag-instance on the page:
 
 ```javascript
-  function module(tag) {
+  function MyModule(tag) {
     // tag === this === current tag instance
   }
 ```
 
-
-Require the API:
-```javascript
-var bp = require("bonaparte");
-```
-
-Create a custom component:
-```javascript
-module.exports = bp.tag.create("tag-name", function(){…});
-```
+## New Component
 
 
 
