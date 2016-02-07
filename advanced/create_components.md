@@ -2,16 +2,24 @@
 
 Bonaparte comes with all the necessary tools to make creating new components simple.
 
-Requiring the `bonaparte` module provides all the necessary functions to create new _components_ from _modules_, as well a set of utility functions that can be used within _modules_.
-
-The core of Bonaparte is the `bonaparte` package. It prof 
+At the core of Bonaparte is the `bonaparte` package. It provides an API with all the necessary functions to create new components.
 
 
-## About
-This module is the core of the _Bonaparte UX Framework_. It provides an [API](#api) with all the tools needed to create Bonaparte Components.
+## A Bonaparte package
+
+In addition to the `package.json` and `webpack.config.js`, Bonaparte uses three files to define a package:
+
+```
+package
+ |--bonaparte.js
+ |--bonaparte.[css|less|scss|sass]
+ |--bonaparte.build.js
+ |--package.json
+ |--webpack.config.js
+```
 
 
-Requiring the `bonaparte` module provides all the necessary functions to create new _tags_ from modules, as well a set of utility functions that can be used within _modules_.
+
 
 ## Basic Use
 
