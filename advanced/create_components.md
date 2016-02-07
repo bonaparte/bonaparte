@@ -107,6 +107,19 @@ __Modules__ are simple JavaScript functions/classes that get instantiated for ea
   }
 ```
 
+
+Require the API:
+```javascript
+var bp = require("bonaparte");
+```
+
+Create a custom component:
+```javascript
+module.exports = bp.tag.create("tag-name", function(){…});
+```
+
+
+
 #### Events
 
 Bonaparte components emit the following custom events.
