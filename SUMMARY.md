@@ -9,7 +9,6 @@
    * [Angular Starter](getting_started/angular_starter.md)
 * [Components](components/index.md)
    * [<bonaparte-button>](components/bonaparte-button.md)
-   * [<bonaparte-draggable>](components/bonaparte-draggable.md)
    * [<bonaparte-dropdown>](components/bonaparte-dropdown.md)
    * [<bonaparte-panel>](components/bonaparte-panel.md)
    * [<bonaparte-scroll>](components/bonaparte-scroll.md)
