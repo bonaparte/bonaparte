@@ -34,7 +34,7 @@ module.exports = bp.tag.create("tag-name", [
 ```
 **Every time the component is placed on the page, all its modules are instantiated.**
 
-Bonaparte components are modules themselves. It is possible to extend an existing Bonaparte component to add functionality:
+Bonaparte components are modules themselves. Therefore it is possible to extend an existing Bonaparte component to add functionality:
 
 ```javascript
 var bonarparteSidebar = require('bonaparte-sidebar/bonaparte.js');
@@ -45,7 +45,9 @@ module.exports = bp.tag.create("tag-name", [
 ]);
 ```
 
-**Modules** are instantiated in the order they of the array they we're passed in.
+**Modules** are instantiated in the order they were passed to `bp.tag.create`.
+
+> Bonaparte uses the [Objct](http://github.com/greenish/objct) library to create this modularity.
 
 
 
