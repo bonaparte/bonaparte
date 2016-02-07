@@ -1,7 +1,7 @@
 # Bonaparte Core - API
 
 ```javascript
-  var bp = require("bonaparte");
+  var bp = require('bonaparte');
 ```
 --- 
 
