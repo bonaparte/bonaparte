@@ -1,4 +1,8 @@
 {
-    "title":"Bonaparte",
-    "description" : "UX Front End Framework"
+    "title": "Bonaparte",
+    "description": "UX Front End Framework",
+    "plugins": [
+        "anchors"
+    ],
+    "pluginsConfig": {}
 }
