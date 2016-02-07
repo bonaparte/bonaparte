@@ -3,7 +3,7 @@ window.addEventListener("load", function(){
 
     var li = document.createElement('li');
     var link = document.createElement('a');
-    link.innerHTML = "Bonaparte on Github";
+    link.innerHTML = "Visit Bonaparte on Github";
     link.setAttribute('class', 'my-custom-link');
     link.setAttribute('href', 'http://github.com/bonaparte');
     link.setAttribute('target', '_blank');
