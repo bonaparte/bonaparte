@@ -96,7 +96,6 @@ In your `package.json` add the `bonaparte` core package as a dependencie and def
 
 ## Creating Components
 
-
 Bonaparte has a modular structure and is therefore very easily extendable.
 Each Bonaparte component is a combination of __modules__.
 
