@@ -28,7 +28,7 @@ Bonaparte is design agnostic. It's components provide structure but do not come 
 ## Feedback
 
 Bonaparte is under active development. 
-We know it's not perfect but we're constantly trying to improve  we appreciate any feedback and bug reports.
+We know it's not perfect but we're constantly working to improve and appreciate any feedback and bug reports.
 
 We are collecting general feedback and feature requests for bonaparte here:<br>
 http://github.com/bonaparte/bonaparte.io/issues
