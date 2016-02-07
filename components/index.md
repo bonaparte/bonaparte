@@ -27,7 +27,7 @@ Some components provide APIs to help modify their attributes. APIs do *not* prov
 
 Through this, Bonaparte components are defined and configured in HTML. It is now up to the user to choose how to generate the HTML. This can be done in any programming language and works nicely with standard JavaScript frameworks like React and Angular.
 
-#### 3. Required child elements are not required to be of a certain type.
+#### 3. Required child elements are not expected to be of a certain type.
 > Bonaparte Components can require a number of direct children in order to provide structure. These child elements can be any type of HTML tag (div, article, aside, bonaparte-..., etc.).  
 
 This provides the user with the option to choose which HTML tag semantically fits best for their application. It also allows for tighter nesting which reduces elements on the page.
