@@ -53,7 +53,7 @@ module.exports = bp.tag.create("tag-name", [
 
 ## Events
 
-Bonaparte components emit the following custom life-cycle events.
+By default, Bonaparte components emit the following custom life-cycle events.
 
 ```javascript
   "bonaparte.tag.created"
