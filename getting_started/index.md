@@ -6,7 +6,7 @@ The easiest way to get your hands dirty is to start with one of the three starte
 * [Starter React](http://github.com/bonaparte/starter-react)<br>*Creates a basic page using Bonaparte components and the React framework.*
 * [Starter Angular](http://github.com/bonaparte/starter-angular)<br>*Creates a basic page using Bonaparte components and the Angular framework.*
 
-Each starter includes the all Bonaparte components and the Napoleon theme (Napoleon Build).
+Each starter includes all Bonaparte components and the Napoleon theme (Napoleon Build).
 Just select your favorite framework and open `index.html` in your browser!
 
 ## Use Bonaparte in your project
