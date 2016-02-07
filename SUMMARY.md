@@ -13,7 +13,7 @@
    * [Napoleon](themes/napoleon.md)
 * Advanced
    * [Custom Build](advanced/custom_build.md)
-   * [Create Components](advanced/create_components.md)
+   * [Create Your Own](advanced/create_components.md)
        * [Bonaparte Core - API](advanced/api-core.md)
 * [Credits & License](credits-license.md)
 
