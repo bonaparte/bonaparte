@@ -80,7 +80,7 @@ document.getElementById('myBonaparteComponent').bonaparte.changeAttribute();
 
 There are two types of components:
 
-#### 1. Basic structural components
+#### 1. Basic components
 Basic Components provide simple structure and minimal functionality to be as versatile as possible:
   - [< bonaparte-dropdown >](https://github.com/bonaparte/bonaparte-dropdown)
   - [< bonaparte-panel >](https://github.com/bonaparte/bonaparte-panel)
