@@ -7,6 +7,11 @@ At the core of Bonaparte is the `bonaparte` package. It provides an API with all
 
 ## A Bonaparte package
 
+There are three types of Bonaparte packages: 
+* **Components**<br>*Define a single Bonaparte component.*
+* **Themes**<br>*Define CSS only. Themes don't export any JavaScript*
+* **Build**<br>*Combine multiple components and themes into a bundle*
+
 In addition to `package.json` and `webpack.config.js`, Bonaparte uses three files to define a package:
 
 ```javascript
