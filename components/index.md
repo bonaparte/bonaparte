@@ -11,6 +11,8 @@ Components are written in vanilla JavaScript and are placed in HTML in form of c
     </div>
 </bonaparte-scroll>
 ```
+
+## Core Principles
 All Bonaparte components follow three core principles:
 
 #### 1. Components are design agnostic
