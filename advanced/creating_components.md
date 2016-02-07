@@ -12,7 +12,7 @@ function MyModule(tag) {
 }
 
 ```
->Full documentation: [bp.tag.create()](http://www.bonaparte.io/advanced/api-core.html#bptagcreate)
+>[Full API documentation](http://www.bonaparte.io/advanced/api-core.html#bptagcreate)
 
 ## Module Structure
 Bonaparte components have a modular structure. 
