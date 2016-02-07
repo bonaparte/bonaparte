@@ -1,6 +1,6 @@
+[Bonaparte on Github](http://github.com/bonaparte)
 # Summary
 
-* [Github](http://github.com/bonaparte)
 * [About](README.md)
 * [Getting Started](getting_started/index.md)
 * [Components](components/index.md)
