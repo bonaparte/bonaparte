@@ -6,6 +6,4 @@ document.addEventListener("onload", function(){
     
 });
 
-console.log(document.querySelector("title"))
-
-//.innerHTML("Bonaparte Documentation");
+document.querySelector("title").innerHTML = "Bonaparte Documentation";
