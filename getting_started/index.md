@@ -7,7 +7,9 @@ The easiest way to get your hands dirty is to start with one of the three starte
 * [Starter Angular](http://github.com/bonaparte/starter-angular)<br>*Creates a basic page using Bonaparte components and the Angular framework.*
 
 Each starter includes all Bonaparte components and the Napoleon theme ([Napoleon Build](http://github.com/bonaparte/build-napoleon)).
-Just select your favorite framework and open `index.html` in your browser!
+
+1. Download/Clone the starter for your favorite framework
+2. Open `index.html` in a browser.
 
 ## Use Bonaparte in your project
 To include all Bonaparte Components:
