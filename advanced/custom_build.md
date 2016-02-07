@@ -6,7 +6,7 @@ Bonaparte is build with [Webpack](http://webpack.github.io/). It's easy to save 
 
 Every Bonaparte component, theme or build has a `bonaparte.build.js` file in it's root. These files are used to compose Bonaparte.
 
-*bonaparte-build-napoleon/bonaparte.build.js*
+*bonaparte-build-napoleon/bonaparte.build.js:*
 ```javascript
 // Components
 require('bonaparte-panel/bonaparte.build');
