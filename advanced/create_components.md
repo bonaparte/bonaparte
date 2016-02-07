@@ -1,6 +1,6 @@
 # Create Bonaparte Components
 
-Bonaparte comes with all the necessary tools to make creating new Components simple.
+Bonaparte comes with all the necessary tools to make creating new components simple.
 
 Requiring the `bonaparte` module provides all the necessary functions to create new _components_ from _modules_, as well a set of utility functions that can be used within _modules_.
 
