@@ -16,11 +16,11 @@ In addition to `package.json` and `webpack.config.js`, Bonaparte uses three file
 
 ```javascript
 package
- |--bonaparte.js                        // situational
- |--bonaparte.[css|less|scss|sass]      // situational
- |--bonaparte.build.js                  // required
- |--package.json                        // required
- |--webpack.config.js                   // required
+ |--bonaparte.js                    // required for components
+ |--bonaparte.[css|less|scss|sass]  // required for themes and components
+ |--bonaparte.build.js              // required for all
+ |--package.json                    // required for all
+ |--webpack.config.js               // required for all
 ```
 
 
