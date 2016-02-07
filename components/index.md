@@ -1,11 +1,5 @@
 # Bonaparte Components
-
 Bonaparte provides a set of loosely connected UX components that can be used together or separately. They are placed in HTML in form of custom tags. 
-
-
-
-## Bonaparte Components
-Bonaparte Components are library and design agnostic UX components. They are placed in HTML in form of custom tags. 
 
 All Bonaparte components follow three core principles:
 
@@ -24,6 +18,9 @@ Through this, Bonaparte components are defined and configured in HTML. It is now
 ### 3. Components can require child elements, but do not require them to be of a certain type.
 > 
 
+This provides the user with the option to choose which HTML tag semantically fits best for their application. It also allows for tighter nesting which reduces elements on the page.
+
+---
 
 - Components create structure but are otherwise design agnostic.
 - Components are _pure_. Functionality is controlled by custom attributes only.
