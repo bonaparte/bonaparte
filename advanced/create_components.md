@@ -1,6 +1,6 @@
-# Create Bonaparte Components
+# Create Your Own
 
-Bonaparte comes with all the necessary tools to make creating new components simple.
+Bonaparte comes with all the necessary tools to create new components.
 
 At the core of Bonaparte is the `bonaparte` package. It provides an API with all the necessary functions to create new components and packages.<br> See API documentation here: [4.2.1 Bonaparte Core – API](advanced/api-core.md)
 
@@ -94,7 +94,7 @@ In your `package.json` add the `bonaparte` core package as a dependencie and def
 
 
 
-## Basic Use
+## Create New Components
 
 Require the API:
 ```javascript
