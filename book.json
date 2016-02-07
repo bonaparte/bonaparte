@@ -16,7 +16,7 @@
         },
         "scripts": {
             "files": [
-                "./github-link.js"
+                "github-link.js"
             ]
         }
     }
