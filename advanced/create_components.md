@@ -2,7 +2,9 @@
 
 Bonaparte comes with all the necessary tools to create new components.
 
-At the core of Bonaparte is the `bonaparte` package. It provides an API with all the necessary functions to create new components and packages.<br> See API documentation here: [4.2.1 Bonaparte Core – API](advanced/api-core.md)
+At the core of Bonaparte is the `bonaparte` package. It provides an API with all the necessary functions to create new components and packages.
+
+
 
 
 
