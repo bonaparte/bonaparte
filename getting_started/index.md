@@ -28,6 +28,13 @@ To include all Bonaparte Components:
 Each component can also be used separately:
 
 1. Download/Clone any of the Bonaparte components.
+  - [< bonaparte-button >](https://github.com/bonaparte/bonaparte-button)
+  - [< bonaparte-draggable >](https://github.com/bonaparte/bonaparte-draggable)
+  - [< bonaparte-dropdown >](https://github.com/bonaparte/bonaparte-dropdown)
+  - [< bonaparte-panel >](https://github.com/bonaparte/bonaparte-panel)
+  - [< bonaparte-scroll  >](https://github.com/bonaparte/bonaparte-scroll)
+  - [< bonaparte-sidebar  >](https://github.com/bonaparte/bonaparte-sidebar)
+  - [< bonaparte-toolbar  >](https://github.com/bonaparte/bonaparte-toolbar)
 1. Copy the complete `dist/` folder into your project.
 2. Include the following into the `<head>` of your project:  
 ```
