@@ -7,16 +7,20 @@ At the core of Bonaparte is the `bonaparte` package. It provides an API with all
 
 ## A Bonaparte package
 
-In addition to the `package.json` and `webpack.config.js`, Bonaparte uses three files to define a package:
+In addition to `package.json` and `webpack.config.js`, Bonaparte uses three files to define a package:
 
-```
+```javascript
 package
- |--bonaparte.js
- |--bonaparte.[css|less|scss|sass]
- |--bonaparte.build.js
- |--package.json
- |--webpack.config.js
+ |--bonaparte.js                        // situational
+ |--bonaparte.[css|less|scss|sass]      // situational
+ |--bonaparte.build.js                  // required
+ |--package.json                        // required
+ |--webpack.config.js                   // required
 ```
+
+
+#### bonaparte.js
+`bonaparte.js`
 
 
 
