@@ -2,7 +2,15 @@
 Bonaparte provides a set of loosely connected UX components that can be used together or separately. 
 
 Components are placed in HTML in form of custom tags (WebComponents):
-
+```
+<bonaparte-scroll>
+    <div>
+    
+        <!-- Scrolling Content -->
+    
+    </div>
+</bonaparte-scroll>
+```
 All Bonaparte components follow three core principles:
 
 #### 1. Components are design agnostic
