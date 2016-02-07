@@ -1,5 +1,5 @@
 (function(){
-    var summary = document.querySelectorAll("ul.summary");
+    var summary = document.querySelector("ul.summary");
     
     
     console.log(summary);
