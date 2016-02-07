@@ -15,7 +15,7 @@ function MyModule(tag) {
 >[Full API documentation](http://www.bonaparte.io/advanced/api-core.html#bptagcreate)
 
 ## Module Structure
-Bonaparte components have a modular structure. 
+Bonaparte components consist. 
 
 __Modules__ are simple JavaScript functions/classes:
 ```javascript
