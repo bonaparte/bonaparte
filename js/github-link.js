@@ -1,4 +1,4 @@
-document.addEventListener("onload", function(){
+document.addEventListener("load", function(){
     var summary = document.querySelector("ul.summary");
     
     
