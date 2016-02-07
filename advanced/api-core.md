@@ -1,5 +1,9 @@
 # Bonaparte Core - API
 
+```javascript
+  var bp = require("bonaparte");
+```
+
 -  [bp.attribute.get()](#bpattributeget)
 -  [bp.attribute.matchName()](#bpattributematchname)
 -  [bp.attribute.remove()](#bpattributeremove)
@@ -12,13 +16,6 @@
 -  [bp.tag.observe()](#bptagobserve)
 -  [bp.tag.triggerEvent()](#bptagtriggerevent)
 
-
-Requiring the `bonaparte` module provides all the necessary functions to create new _tags_ from modules, as well a set of utility functions that can be used within _modules_.
-
-```javascript
-  var bp = require("bonaparte"); // this also works in the module repository itself
-```
----
 
 ### bp.attribute
 
