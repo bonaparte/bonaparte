@@ -50,9 +50,9 @@ module.exports = bp.tag.create("tag-name", [
 
 > Bonaparte uses the [Objct](http://github.com/greenish/objct) library to create this modularity.
 
-#### Events
+## Events
 
-Bonaparte components emit the following custom events.
+Bonaparte components emit the following custom life-cycle events.
 
 ```javascript
   "bonaparte.tag.created"
@@ -62,15 +62,20 @@ Bonaparte components emit the following custom events.
   "bonaparte.tag.attributeUpdated" // Value updated (might not have changed)
 ```
 
-##### Listen
+### Listen
 Listen to them like you do to native events:
 ```javascript
-document.getElementById("bonaparte-tag").addEventListener("bonaparte.tag.created", handler);
+function module(tag) {
+    tag.addEventListener("bonaparte.tag.created", handler);
+}
 ```
 
-##### Trigger
+### Trigger
 On Bonaparte-Tags Custom events can easily be triggered by calling
 ```javascript
+function module(tag) {
+    tag.bonaparte.triggerEvent("name", data)
+}
 document.getElementById("bonaparte-tag").bonaparte.triggerEvent("name", data)
 ```
 
