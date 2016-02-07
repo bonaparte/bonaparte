@@ -3,7 +3,8 @@
     "description": "UX Front End Framework",
     "plugins": [
         "edit-link",
-        "github"
+        "github",
+        "addcssjs"
     ],
     "pluginsConfig": {
         "edit-link": {
