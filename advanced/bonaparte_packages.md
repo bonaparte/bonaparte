@@ -5,6 +5,8 @@ There are three types of Bonaparte packages:
 * **Themes**<br>*Define CSS only. Themes don't export any JavaScript*
 * **Builds**<br>*Combine multiple components and themes into a bundle*
 
+
+## Files
 A minimal Bonaparte component package includes five files:
 
 ```javascript
