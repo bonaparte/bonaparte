@@ -10,3 +10,7 @@ ul.summary > .chapter > a,
 ul.summary > .chapter > span {
     font-weight:bold;
 }
+
+ul.summary > .custom-link {
+    display:none;
+}
