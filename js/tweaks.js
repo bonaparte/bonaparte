@@ -11,7 +11,7 @@ function replaceHomeLink(){
     link.setAttribute('target', '_blank'); 
     
     li.appendChild(link);
-    summary.insertBefore( li, summary.firstChild )
+    summary.insertBefore( li, summary.firstChild );
 }
 
 window.addEventListener("load", replaceHomeLink);
