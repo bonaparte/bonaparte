@@ -3,6 +3,8 @@
 ```javascript
   var bp = require("bonaparte");
 ```
+---
+
 * [bp.attribute](#bpattribute)
  -  [get()](#bpattributeget)
  -  [matchName()](#bpattributematchname)
@@ -18,7 +20,7 @@
  -  [observe()](#bptagobserve)
  -  [triggerEvent()](#bptagtriggerevent)
 
-
+---
 
 ## bp.attribute
 
