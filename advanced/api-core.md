@@ -79,9 +79,8 @@ bp.attribute.set(
 
 
 ---
----
 ## bp.module
----
+
 #### bp.module.mixin()
 Combines _modules_ into a new _module_ <br>
 __Returns__ a _module_.
@@ -99,7 +98,6 @@ var module = bp.modules.mixin(
 ---
 ## bp.tag
 
----
 #### bp.tag.closest();
 Traverses up the element tree to find the first element that matches the given selector.
 __Returns:__ `Element|undefined`
