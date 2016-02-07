@@ -11,7 +11,7 @@ ul.summary > .chapter > span {
     font-weight:bold;
 }
 
-ul.summary > li  a.my-custom-link {
+ul.summary > li  a.custom-link {
     display:none !important;
 }
 
