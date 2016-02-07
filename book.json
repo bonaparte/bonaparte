@@ -4,7 +4,6 @@
     "plugins": [
         "edit-link",
         "github",
-        "scripts"
     ],
     "pluginsConfig": {
         "edit-link": {
@@ -13,11 +12,6 @@
         },
         "github": {
             "url": "http://github.com/bonaparte/"
-        },
-        "scripts": {
-            "files": [
-                "github-link.js"
-            ]
         }
     }
 }
