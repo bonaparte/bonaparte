@@ -5,6 +5,6 @@ Bonaparte Components don't come with any design by default. Themes can be used t
 >A theme is purely for visual styling and does not provide functionality. It's optional and not required for Bonaparte Components to work.
 
 
-### Currently available Themes
+### Currently available Themes:
 
 - [Napoleon](themes/napoleon.md)
