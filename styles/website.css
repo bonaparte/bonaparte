@@ -12,7 +12,7 @@ ul.summary > .chapter > span {
 }
 
 ul.summary > li  a.custom-link {
-    display:none !important;
+    margin-top:7px;
 }
 
 ul.summary > li  a.my-custom-link {
