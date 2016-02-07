@@ -2,7 +2,7 @@
 
 Bonaparte comes with all the necessary tools to make creating new components simple.
 
-At the core of Bonaparte is the `bonaparte` package. It provides an API with all the necessary functions to create new components and packages.<br> Learn more about the API here: [4.2.1 Bonaparte Core – API](advanced/api-core.md)
+At the core of Bonaparte is the `bonaparte` package. It provides an API with all the necessary functions to create new components and packages.<br> See API documentation here: [4.2.1 Bonaparte Core – API](advanced/api-core.md)
 
 
 ## A Bonaparte package
@@ -68,11 +68,29 @@ require('bonaparte-theme-napoleon');
 ```
 
 ##### webpack.config.js
+The Bonaparte core package `bonaparte` provides a webpack.config for standard bonaparte components and themes:
+```
+module.exports = require('bonaparte/webpack.config');
+```
 
+##### package.json
+In your `package.json` add the `bonaparte` core package as a dependencie and define `bonaparte.build.js` as your `main` entry point.
 
+``` 
+{
+    "name" : "bonaparte-[my-component]",
+    
+    "main" : "bonaparte.build.js",
 
-
-
+    "dependencies" : {
+        "bonaparte" : "x.x.x",
+ 
+        ...
+    }
+ 
+    ...
+}
+````
 
 ## Basic Use
 
