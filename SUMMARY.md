@@ -14,8 +14,8 @@
 * Advanced
    * [Custom Build](advanced/custom_build.md)
    * [Development / Contribute](advanced/create_components.md)
-       * Creating Components
        * [Bonaparte Packages](advanced/bonaparte_packages.md)
+       * Creating Components
        * [Bonaparte Core - API](advanced/api-core.md)
 * [Credits & License](credits-license.md)
 
