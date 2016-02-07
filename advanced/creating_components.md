@@ -33,7 +33,7 @@ module.exports = bp.tag.create("tag-name", [
 ]);
 ```
 
-Bonaparte components are modules themselves. So its possible to extend an existing Bonaparte component to add functionality:
+Bonaparte components are modules themselves. It is possible to extend an existing Bonaparte component to add functionality:
 
 ```javascript
 var bonarparteSidebar = require('bonaparte-sidebar/bonaparte.js');
@@ -43,6 +43,7 @@ module.exports = bp.tag.create("tag-name", [
     MyModule
 ]);
 ```
+
 
 
 #### Events
