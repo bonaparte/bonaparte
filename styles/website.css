@@ -12,5 +12,5 @@ ul.summary > .chapter > span {
 }
 
 ul.summary > li  a.custom-link {
-    display:none;
+    display:none !important;
 }
