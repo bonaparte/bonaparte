@@ -1,7 +1,7 @@
 document.querySelector("title").innerHTML = "Bonaparte Documentation";
 
 
-
+/*
 window.addEventListener("load", function(){
     document.body.addEventListener("click", replaceHomeLink);
     replaceHomeLink();
@@ -21,3 +21,4 @@ function replaceHomeLink(){
     li.appendChild(link);
     summary.insertBefore( li, summary.firstChild );
 }
+*/
