@@ -12,7 +12,7 @@ function MyModule(tag) {
 }
 
 ```
->[Full API documentation](advanced/api-core.html#bptagcreate)
+>[Full API documentation](api-core.html#bptagcreate)
 
 ## Module Structure
 Bonaparte components consist of *modules*. 
