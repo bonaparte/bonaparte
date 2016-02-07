@@ -2,7 +2,8 @@
     "title": "Bonaparte",
     "description": "UX Front End Framework",
     "plugins": [
-        "hide-published-with"
+        "hide-published-with",
+        "editlink"
     ],
     "pluginsConfig": {}
 }
