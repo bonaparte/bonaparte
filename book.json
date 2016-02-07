@@ -15,7 +15,7 @@
             "url": "http://github.com/bonaparte/"
         },
         "addcssjs": {
-            "js": ["js/github-link.js"]
+            "js": ["js/tweaks.js"]
         }
     }
 }
