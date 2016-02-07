@@ -177,7 +177,7 @@ bp.tag.observe(
 ```
 ---
 #### bp.tag.triggerEvent();
-Triggers a event on the given HTMLElement
+Triggers a event on the given HTMLElement<br>
 __Returns:__ `undefined`
 
 ```javascript
