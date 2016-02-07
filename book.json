@@ -2,14 +2,7 @@
     "title": "Bonaparte",
     "description": "UX Front End Framework",
     "plugins": [
-        "hide-published-with",
-        "editlink"
+        "hide-published-with"
     ],
-    "pluginsConfig": {
-        "editlink": {
-            "base": "http://github.com/greenish/bonaparte",
-            "label": "Edit This Page",
-            "multilingual": "false"
-        }
-    }
+    "pluginsConfig": {}
 }
