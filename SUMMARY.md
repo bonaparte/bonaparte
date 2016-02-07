@@ -2,7 +2,6 @@
 
 * [About](README.md)
 * [Getting Started](getting_started/index.md)
-   * [Angular Starter](getting_started/angular_starter.md)
 * [Components](components/index.md)
    * [<bonaparte-button>](components/bonaparte-button.md)
    * [<bonaparte-dropdown>](components/bonaparte-dropdown.md)
