@@ -3,7 +3,7 @@
 ```javascript
   var bp = require("bonaparte");
 ```
----
+--- 
 
 * [bp.attribute](#bpattribute)
  -  [get()](#bpattributeget)
