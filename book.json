@@ -5,5 +5,9 @@
         "anchors",
         "github"
     ],
-    "pluginsConfig": {}
+    "pluginsConfig": {
+        "github": {
+            "url": "http://github.com/bonaparte"
+        }
+    }
 }
