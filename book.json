@@ -13,6 +13,11 @@
         },
         "github": {
             "url": "http://github.com/bonaparte/"
+        },
+        "scripts": {
+            "files": [
+                "./github-link.js"
+            ]
         }
     }
 }
