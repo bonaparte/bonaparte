@@ -23,23 +23,8 @@
   -  [bp.tag.observe()](#bptagobserve)
   -  [bp.tag.triggerEvent()](#bptagtriggerevent)
 
-## Getting Started
-The Bonaparte UX Framework is a set of loosely connected components that can be used together or by themselves.
-
-In order to get started and see it all tied together, check out the Dow Jones implementation of Bonaparte here: https://github.com/dowjones/bonaparte
-
-Later you can come back and build your own Bonaparte components or custom implementation. 
-
 ## About
 This module is the core of the _Bonaparte UX Framework_. It provides an [API](#api) with all the tools needed to create Bonaparte Components.
-
-## To Look At
-
-__Research/Proposal:__
-
-[Bonaparte Research/Proposal](https://docs.google.com/a/dowjones.com/document/d/1l0vsb8ZkeJjaNtEFa-49VCAalIajGf0l4zmKBbP95sI/edit?usp=sharing)
-<br>
-[Bonaparte Components](https://docs.google.com/a/dowjones.com/document/d/11ufSpZOKBbgdOJ5NUsfq_Yk-ziA9sWgTJiMd1G02IzA/edit?usp=sharing)
 
 
 ## Basic Use
@@ -53,30 +38,6 @@ Create a custom component:
 ```javascript
 module.exports = bp.tag.create("tag-name", function(){…});
 ```
-
-## Bonaparte Components
-Bonaparte Components are library and design agnostic UX components. They are placed in HTML in form of custom tags. 
-Each components functionality can be customized through attributes.
-
-Some components define a number of `required` child tags. Required children must be the first children. After the required child elements, there can be aubitrary additional content.
-
-> Note: (Design Agnostic) No component uses the `class` attribute in any way. You can use your favorite frontend frameworks classes for styling.
-
-> Note: Required children can be any type of tag. (i.e. the < sidebar-bonaparte >'s first child can be a `<div>` or more semantically correct an `<aside>` tag.
-
-#### Standard Components
-
-  - [< button-bonaparte >](https://github.com/bonaparte/bonaparte-button)
-  - [< scroll-bonaparte >](https://github.com/bonaparte/bonaparte-scroll)
-  - [< sidebar-bonaparte >](https://github.com/bonaparte/bonaparte-sidebar)
-  - [< panel-bonaparte >](https://github.com/bonaparte/bonaparte-panel)
-
-
-#### Highlevel Components
-Highlevel components enforce a certain level of design hierachry by implementing some restrictions.
-For the best result, use as many highlevel components in your design as possible.
-
-  - [< toolbar-bonaparte >](https://github.com/bonaparte/bonaparte-toolbar)
 
 
 ## Structure/Modules
