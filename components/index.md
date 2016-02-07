@@ -91,3 +91,7 @@ Basic Components provide simple structure and minimal functionality to be as ver
 High level components are more opinionated in their functionality and are build for a certain use case.
   - [< bonaparte-button >](https://github.com/bonaparte/bonaparte-button)
   - [< bonaparte-toolbar  >](https://github.com/bonaparte/bonaparte-toolbar)
+ 
+
+## Build Components
+It's easy to build Bonaparte component: 4.1
