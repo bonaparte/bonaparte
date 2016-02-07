@@ -31,7 +31,7 @@ For the best result, use as many highlevel components in your design as possible
 
 
 
-All Bonaparte components follow two of core principles:
+All Bonaparte components follow two core principles:
 
 ## 1. Components are design agnostic
 This 
