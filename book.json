@@ -4,7 +4,7 @@
     "plugins": [
         "edit-link",
         "github",
-        "scripts"
+        "-scripts"
     ],
     "pluginsConfig": {
         "edit-link": {
