@@ -39,7 +39,6 @@ Create a custom component:
 module.exports = bp.tag.create("tag-name", function(){…});
 ```
 
-
 ## Structure/Modules
 
 Bonaparte has a modular structure and is therefore very easily extendable.
