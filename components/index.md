@@ -25,11 +25,16 @@ Some components define a number of `required` child tags. Required children must
 Highlevel components enforce a certain level of design hierarchy by implementing some restrictions.
 For the best result, use as many highlevel components in your design as possible.
 
-  - [< toolbar-bonaparte >](https://github.com/bonaparte/bonaparte-toolbar)
+  - [< bonaparte-button >](https://github.com/bonaparte/bonaparte-button)
+  - [< bonaparte-toolbar >](https://github.com/bonaparte/bonaparte-toolbar)
 
 
 
-Bonaparte components follow a set of core principles:
+All Bonaparte components follow a set of core principles:
+
+## 1. Components are design agnostic
+This 
+
 
 - Components create structure but are otherwise design agnostic.
 - Components are _pure_. Functionality is controlled by custom attributes only.
@@ -38,8 +43,8 @@ Bonaparte components follow a set of core principles:
 
 There are two types of components:
 
- 1. ## Basic structural components
+## 1. Basic structural components
 Basic Components provide simple structure and minimal functionality to be as versatile as possible.
 
- 1. ## Opinionated high level components
+## 2. Opinionated high level components
 High level components are more opinionated in their functionality and are build for a certain use case.
