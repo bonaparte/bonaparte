@@ -35,7 +35,7 @@ module.exports = bp.tag.create("tag-name", [
 ```
 **Every time the component is placed on the page, all its modules are instantiated.**
 
-Bonaparte components are modules themselves. Therefore it is possible to extend an existing Bonaparte component to add functionality:
+Bonaparte components are *modules* themselves. Therefore it is possible to extend an existing Bonaparte component to add functionality:
 
 ```javascript
 var bonarparteSidebar = require('bonaparte-sidebar/bonaparte.js');
