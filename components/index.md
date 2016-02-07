@@ -29,16 +29,16 @@ For the best result, use as many highlevel components in your design as possible
 
 
 
-Bonaparte Components follow three main principles:
+Bonaparte components follow a set of core principles:
 
 - Components create structure but are otherwise design agnostic.
 - Components are _pure_. Functionality is controlled by custom attributes only.
 - No use of the `class` attribute to create functionality.
 
 
-There are currently two types of components:
+There are two types of components:
 
-## 1. Basic structural components
+ 1. ## Basic structural components
 Basic Components provide simple structure and minimal functionality to be as versatile as possible.
 
 ## 2. Opinionated high level components
