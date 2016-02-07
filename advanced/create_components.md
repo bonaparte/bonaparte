@@ -19,7 +19,7 @@ package
 ```
 
 
-#### bonaparte.js
+##### bonaparte.js
 `bonaparte.js` is required when creating a component.<br>
 It exports the results of `bp.tag.create()`:
 
@@ -29,7 +29,7 @@ module.exports = bp.tag.create('my-component', function(){
 })
 ```
 
-#### bonaparte.css
+##### bonaparte.css
 When creating a component or theme, all styles are defined or `@imported` into a bonaparte.css.<br>
 **You can use any preprocessor you like and rename the file accordingly (i.e. bonaparte.less)**
 
@@ -37,7 +37,7 @@ When creating a component or theme, all styles are defined or `@imported` into a
 @import 'my-styles.css'
 ```
 
-#### bonaparte.build.js
+##### bonaparte.build.js
 **`bonaparte.build.js` is the `main` file of the package** and the entry point of the build.<br>
 It `requires` and initializes/registers everything the package/component needs to work on the page.
 
