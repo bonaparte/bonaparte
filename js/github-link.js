@@ -3,7 +3,7 @@ window.addEventListener("load", function(){
     
     var firstElement = summary.firstChild;
     
-    console.log(summary);
+    console.log(firstElement);
     
 });
 
