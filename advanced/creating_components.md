@@ -15,15 +15,15 @@ function MyModule(tag) {
 >[Full API documentation](http://www.bonaparte.io/advanced/api-core.html#bptagcreate)
 
 ## Module Structure
-Bonaparte components consist of **modules**. 
+Bonaparte components consist of *modules*. 
 
-__Modules__ are simple JavaScript functions/classes:
+_Modules_ are simple JavaScript functions/classes:
 ```javascript
 function MyModule(tag) {
 // tag === this === current tag instance
 }
 ```
-Each Bonaparte component can be composed by one or more __modules__:
+Each Bonaparte component can be composed by one or more _modules_:
 
 ```javascript
 module.exports = bp.tag.create("tag-name", [
@@ -46,7 +46,7 @@ module.exports = bp.tag.create("tag-name", [
 ]);
 ```
 
-**Modules** are instantiated in the order they were passed to `bp.tag.create`.
+*Modules* are instantiated in the order they were passed to `bp.tag.create`.
 
 
 > Bonaparte uses the [Objct](http://github.com/greenish/objct) library to create this modularity.
