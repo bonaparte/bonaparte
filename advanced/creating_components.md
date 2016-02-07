@@ -82,4 +82,4 @@ Or through the [API](#api) events can be triggered on any element:
 ```javascript
 bp.tag.triggerEvent(tag, "name", data);
 ```
->[Full API documentation](http://www.bonaparte.io/advanced/api-core.html#bptagtriggerevent)
+>[Full API documentation](advanced/api-core.html#bptagtriggerevent)
