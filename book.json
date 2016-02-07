@@ -2,7 +2,8 @@
     "title": "Bonaparte",
     "description": "UX Front End Framework",
     "plugins": [
-        "anchors"
+        "anchors",
+        "github"
     ],
     "pluginsConfig": {}
 }
