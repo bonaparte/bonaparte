@@ -71,7 +71,7 @@ function module(tag) {
 }
 ```
 
-### Trigger
+### Trigger Custom
 Custom events can easily be triggered by calling
 ```javascript
 function module(tag) {
