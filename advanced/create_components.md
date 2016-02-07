@@ -24,7 +24,7 @@ package
 ```
 
 
-##### bonaparte.js
+#### bonaparte.js
 `bonaparte.js` is required when creating a component.<br>
 It exports the results of `bp.tag.create()`:
 
@@ -34,7 +34,7 @@ module.exports = bp.tag.create('my-component', function(){
 })
 ```
 
-##### bonaparte.css
+#### bonaparte.css
 When creating a component or theme, all styles are defined or `@imported` into bonaparte.css.<br>
 **You can use any preprocessor you like and rename this file accordingly (i.e. bonaparte.less)**
 
@@ -42,7 +42,7 @@ When creating a component or theme, all styles are defined or `@imported` into b
 @import 'my-styles.css'
 ```
 
-##### bonaparte.build.js
+#### bonaparte.build.js
 **`bonaparte.build.js` is the `main` file of the package** and the entry point of the build.<br>
 It `requires` and initializes/registers everything the package/component needs to work on the page.
 
@@ -67,13 +67,13 @@ require('bonaparte-scroll');
 require('bonaparte-theme-napoleon');
 ```
 
-##### webpack.config.js
+#### webpack.config.js
 The Bonaparte core package `bonaparte` provides a webpack.config for standard bonaparte components and themes:
 ```
 module.exports = require('bonaparte/webpack.config');
 ```
 
-##### package.json
+#### package.json
 In your `package.json` add the `bonaparte` core package as a dependencie and define `bonaparte.build.js` as your `main` entry point.
 
 ``` 
