@@ -1,4 +1,4 @@
-* [Bonaparte on Github](http://github.com/bonaparte)
+* [Bonaparte on Github](http://www.github.com/bonaparte)
 # Summary
 
 * [About](README.md)
