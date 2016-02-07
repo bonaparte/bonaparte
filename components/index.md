@@ -6,39 +6,24 @@ Bonaparte provides a set of loosely connected UX components that can be used tog
 
 ## Bonaparte Components
 Bonaparte Components are library and design agnostic UX components. They are placed in HTML in form of custom tags. 
-Each components functionality can be customized through attributes.
 
-Some components define a number of `required` child tags. Required children must be the first children. After the required child elements, there can be arbitrary additional content.
-
-> Note: (Design Agnostic) No component uses the `class` attribute in any way. You can use your favorite frontend frameworks classes for styling.
-
-> Note: Required children can be any type of tag. (i.e. the < sidebar-bonaparte >'s first child can be a `<div>` or more semantically correct an `<aside>` tag.
-
-#### Standard Components
-
-  - [< scroll-dropdown >](https://github.com/bonaparte/bonaparte-dropdown)
-  - [< bonaparte-panel >](https://github.com/bonaparte/bonaparte-panel)
-  - [< bonaparte-scroll >](https://github.com/bonaparte/bonaparte-scroll)
-  - [< bonaparte-sidebar >](https://github.com/bonaparte/bonaparte-sidebar)
-
-
-#### Highlevel Components
-Highlevel components enforce a certain level of design hierarchy by implementing some restrictions.
-For the best result, use as many highlevel components in your design as possible.
-
-  - [< bonaparte-button >](https://github.com/bonaparte/bonaparte-button)
-  - [< bonaparte-toolbar >](https://github.com/bonaparte/bonaparte-toolbar)
-
-
-
-All Bonaparte components follow two core principles:
+All Bonaparte components follow three core principles:
 
 ### 1. Components are design agnostic
+> Placing a Bonaparte component on a page provides structure and functionality – not design.<br>
+**No Bonaparte component uses or requires CSS classes to provide functionality.**
 
+This allows Bonaparte components to be used in any website with any set of CSS. It's also compatible with existing UI frameworks like Bootstrap, Foundation and Semantic UI.
 
 ### 2. Functionality is purely defined by custom attributes.
+> All customization of functionality on a Bonaparte component is through its attributes.
+Some components provide APIs to help modify their attributes. APIs do *not* provide additional functionality.
+
+Through this, Bonaparte components are defined and configured in HTML. It is now up to the user to choose how to generate the HTML. This can be done in any programming language and works nicely with standard JavaScript frameworks like React and Angular.
 
 ### 3. Components can require child elements, but do not require them to be of a certain type.
+> 
+
 
 - Components create structure but are otherwise design agnostic.
 - Components are _pure_. Functionality is controlled by custom attributes only.
