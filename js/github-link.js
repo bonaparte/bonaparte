@@ -1,4 +1,4 @@
-window.addEventListener("ready", function(){
+window.addEventListener("onload", function(){
     var summary = document.querySelector("ul.summary");
     
     
