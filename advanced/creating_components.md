@@ -14,10 +14,7 @@ function MyModule(tag) {
 ```
 
 ## Structure
-
-
-Bonaparte has a modular structure and is therefore very easily extendable.
-Each Bonaparte component is a combination of __modules__.
+Bonaparte components have a modular structure. 
 
 __Modules__ are simple JavaScript functions/classes that get instantiated for each tag-instance on the page:
 
@@ -26,9 +23,26 @@ __Modules__ are simple JavaScript functions/classes that get instantiated for ea
     // tag === this === current tag instance
   }
 ```
+Each Bonaparte component is a combination of one or more __modules__:
 
-## New Component
+```javascript
+module.exports = bp.tag.create("tag-name", [
+    MyModule, 
+    AnotherModule, 
+    function(){...}
+]);
+```
 
+Bonaparte components are modules themselves. So its possible to extend an existing Bonaparte component to add functionality:
+
+```javascript
+var bonarparteSidebar = require('bonaparte-sidebar/bonaparte.js');
+
+module.exports = bp.tag.create("tag-name", [
+    bonaparteSidebar,
+    MyModule
+]);
+```
 
 
 #### Events
