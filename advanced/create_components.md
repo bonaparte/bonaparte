@@ -1,4 +1,4 @@
-# Development
+# Development / Contribute
 
 Bonaparte comes with all the necessary tools to create new components.
 
