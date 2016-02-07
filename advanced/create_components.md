@@ -20,7 +20,31 @@ package
 
 
 #### bonaparte.js
-`bonaparte.js`
+`bonaparte.js` is required when creating a component.<br>
+It exports the results of `bp.tag.create()`:
+
+```
+module.exports = bp.tag.create('my-component', function(){
+    // magic
+})
+```
+
+#### bonaparte.[css|less|scss|sass]
+Your free to use any CSS preprocessor you like. When creating a component or theme, all styles are defined or `@imported` into a bonaparte style-file which whatever file extension your css preprocessor needs.
+
+```
+@import 'my-styles.css'
+```
+
+#### bonaparte.build.js
+**`bonaparte.build.js` is the `main` file of the package.**<br>
+It `require` both bonaparte files and registers the component.
+
+
+```
+require('./bonaparte.[css|less|sass|scss]');
+require('./bonaparte.js').register();
+```
 
 
 
