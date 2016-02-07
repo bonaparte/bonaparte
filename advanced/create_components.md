@@ -42,7 +42,7 @@ Bonaparte-Tags emit the following custom events.
 ```
 
 ##### Listen
-Listen to them like you do with native events:
+Listen to them like you do to native events:
 ```javascript
 document.getElementById("bonaparte-tag").addEventListener("bonaparte.tag.created", handler);
 ```
