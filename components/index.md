@@ -41,5 +41,5 @@ There are two types of components:
  1. ## Basic structural components
 Basic Components provide simple structure and minimal functionality to be as versatile as possible.
 
-## 2. Opinionated high level components
+ 1. ## Opinionated high level components
 High level components are more opinionated in their functionality and are build for a certain use case.
