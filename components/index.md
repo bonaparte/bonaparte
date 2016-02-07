@@ -93,5 +93,4 @@ High level components are more opinionated in their functionality and are build 
   - [< bonaparte-toolbar  >](https://github.com/bonaparte/bonaparte-toolbar)
  
 
-## Build Components
-It's easy to build Bonaparte component: 4.1
+> Creating Bonaparte Components is easy: [4.2 Create Components](advanced/create-components.md)
