@@ -1,7 +1,6 @@
 # Summary
 
 * [About](README.md)
-   * [Background](about/background.md)
 * [Getting Started](getting_started/index.md)
    * [Starter Build](getting_started/starter_build.md)
    * [Vanilla Starter](getting_started/vanilla_starter.md)
