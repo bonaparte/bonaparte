@@ -1,7 +1,7 @@
 # Bonaparte Components
 Bonaparte provides a set of loosely connected UX components that can be used together or separately. 
 
-Components are written in vanilla JavaScript and are placed in HTML in form of custom tags (WebComponents):
+Components are written in vanilla JavaScript and are placed in HTML as web-components:
 ```
 <bonaparte-scroll>
     <div>
