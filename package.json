@@ -1,0 +1,39 @@
+{
+  "name": "bonaparte-starter-build",
+  "version": "0.0.1",
+
+  "dependencies" : {
+    "bonaparte" : "git+https://bonaparte-read:1437a4a436df422163cb58030e6fc8ab570c11e1@github.com/bonaparte/core.git#gh-pages",
+    "bonaparte-panel" :"git+https://bonaparte-read:1437a4a436df422163cb58030e6fc8ab570c11e1@github.com/bonaparte/bonaparte-panel.git#gh-pages",
+    "bonaparte-scroll" :"git+https://bonaparte-read:1437a4a436df422163cb58030e6fc8ab570c11e1@github.com/bonaparte/bonaparte-scroll.git#gh-pages",
+    "bonaparte-button" :"git+https://bonaparte-read:1437a4a436df422163cb58030e6fc8ab570c11e1@github.com/bonaparte/bonaparte-button.git#gh-pages",
+    "bonaparte-sidebar" :"git+https://bonaparte-read:1437a4a436df422163cb58030e6fc8ab570c11e1@github.com/bonaparte/bonaparte-sidebar.git#gh-pages",
+    "bonaparte-toolbar" :"git+https://bonaparte-read:1437a4a436df422163cb58030e6fc8ab570c11e1@github.com/bonaparte/bonaparte-toolbar.git#gh-pages",
+    "bonaparte-draggable" :"git+https://bonaparte-read:1437a4a436df422163cb58030e6fc8ab570c11e1@github.com/bonaparte/bonaparte-draggable.git#gh-pages",
+    "bonaparte-dropdown" :"git+https://bonaparte-read:1437a4a436df422163cb58030e6fc8ab570c11e1@github.com/bonaparte/bonaparte-dropdown.git#gh-pages"
+  },
+
+  "main":"bonaparte.build.js",
+
+  "devDependencies": {
+    "webpack" : "^1.11.0",
+    "css-loader" : "^0.16.0",
+    "less-loader" : "^2.2.0",
+    "less" : "^2.3.1",
+    "sass-loader" : "^2.0.1",
+    "node-sass" : "^3.3.2",
+    "extract-text-webpack-plugin" : "0.8.2",
+    "autoprefixer-loader" : "^2.0.0",
+    "file-loader" : "^0.8.4"
+ },
+
+  "scripts": {
+    "build" : "webpack --optimize-dedupe",
+    "prod" : "webpack -p --optimize-dedupe",
+    "watch" : "webpack --progress --colors --watch --optimize-dedupe"
+  },
+
+  "engines": {
+    "node": ">=0.12.x"
+  }
+}

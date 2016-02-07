@@ -1,0 +1,554 @@
+bonaparte-panel {
+  display: none;
+  position: absolute;
+  border: 0;
+  overflow: hidden;
+  z-index: 60;
+  -webkit-transition: -webkit-transform 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
+          transition: transform 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
+}
+bonaparte-panel[data-open="true"],
+bonaparte-panel[open="true"] {
+  z-index: 70;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+}
+bonaparte-panel:not([data-position]):not([position]),
+bonaparte-panel[data-position~="left"],
+bonaparte-panel[position~="left"] {
+  display: block;
+  height: 100%;
+  top: 0px;
+  border: 0;
+  width: 10rem;
+  right: 100%;
+  left: auto;
+}
+bonaparte-panel:not([data-position]):not([position])[data-open="true"],
+bonaparte-panel[data-position~="left"][data-open="true"],
+bonaparte-panel[position~="left"][data-open="true"],
+bonaparte-panel:not([data-position]):not([position])[open="true"],
+bonaparte-panel[data-position~="left"][open="true"],
+bonaparte-panel[position~="left"][open="true"] {
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+bonaparte-panel[data-position~="right"],
+bonaparte-panel[position~="right"] {
+  display: block;
+  height: 100%;
+  top: 0px;
+  width: 10rem;
+  left: 100%;
+  right: auto;
+}
+bonaparte-panel[data-position~="right"][data-open="true"],
+bonaparte-panel[position~="right"][data-open="true"],
+bonaparte-panel[data-position~="right"][open="true"],
+bonaparte-panel[position~="right"][open="true"] {
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+bonaparte-panel[data-position~="top"],
+bonaparte-panel[position~="top"] {
+  display: block;
+  width: 100%;
+  left: 0px;
+  height: 10rem;
+  bottom: 100%;
+  top: auto;
+}
+bonaparte-panel[data-position~="top"][data-open="true"],
+bonaparte-panel[position~="top"][data-open="true"],
+bonaparte-panel[data-position~="top"][open="true"],
+bonaparte-panel[position~="top"][open="true"] {
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+}
+bonaparte-panel[data-position~="bottom"],
+bonaparte-panel[position~="bottom"] {
+  display: block;
+  width: 100%;
+  bottom: auto;
+  left: 0px;
+  height: 10rem;
+  top: 100%;
+}
+bonaparte-panel[data-position~="bottom"][data-open="true"],
+bonaparte-panel[position~="bottom"][data-open="true"],
+bonaparte-panel[data-position~="bottom"][open="true"],
+bonaparte-panel[position~="bottom"][open="true"] {
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+}
+/*///////////////////////////////////////////////////////////////////////////*/
+bonaparte-scroll {
+  /* 
+    Inspired by: nanoScrollerJS
+    https://github.com/jamesflorentino/nanoScrollerJS
+  */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: block;
+  min-height: 50px;
+  /* PREVENT REDRAW BUG IN CHROME (but not Safari!)*/
+}
+bonaparte-scroll > :nth-child(1) {
+  position: absolute;
+  overflow: scroll;
+  overflow-x: hidden;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 0px;
+}
+bonaparte-scroll > :nth-child(1):focus {
+  outline: thin dotted;
+}
+@supports (-webkit-appearance: none) {
+  bonaparte-scroll > :nth-child(1) {
+    -webkit-transform: translateZ(0);
+  }
+}
+bonaparte-scroll > .scrollbar {
+  background: rgba(0, 0, 0, 0.25);
+  position: absolute;
+  width: 10px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: .01;
+  z-index: 0;
+  -webkit-transition: .2s;
+          transition: .2s;
+  border-radius: 5px;
+}
+bonaparte-scroll > .scrollbar > :first-child {
+  background: #444;
+  background: rgba(0, 0, 0, 0.5);
+  position: relative;
+  margin: 0 1px;
+  border-radius: 3px;
+}
+bonaparte-scroll > :nth-child(1)::-webkit-scrollbar {
+  display: none;
+}
+bonaparte-scroll[scrollbar~="native"] > :nth-child(1)::-webkit-scrollbar {
+  display: block;
+}
+bonaparte-scroll:hover > .scrollbar,
+bonaparte-scroll[scrollbar~="hover"]:hover > .scrollbar,
+bonaparte-scroll[data-scrollbar~="hover"]:hover > .scrollbar,
+bonaparte-scroll:focus > .scrollbar,
+bonaparte-scroll[scrollbar~="hover"]:focus > .scrollbar,
+bonaparte-scroll[data-scrollbar~="hover"]:focus > .scrollbar {
+  opacity: 0.99;
+}
+bonaparte-scroll[scrollbar~="hidden"] > .scrollbar,
+bonaparte-scroll[data-scrollbar~="hidden"] > .scrollbar {
+  opacity: 0;
+}
+bonaparte-scroll[scrollbar~="visible"] > .scrollbar,
+bonaparte-scroll[data-scrollbar~="visible"] > .scrollbar {
+  opacity: 0.99;
+}
+/*///////////////////////////////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////////////////////////////*/
+bonaparte-sidebar {
+  /*DEFINITION*/
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 !important;
+  /*SIDEBAR POSITION*/
+  /*SIDEBAR STATE*/
+}
+bonaparte-sidebar > :nth-child(1) {
+  position: relative;
+  z-index: 50;
+  height: auto;
+  width: auto;
+  -webkit-transition: min-width 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98), min-height 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
+          transition: min-width 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98), min-height 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
+}
+bonaparte-sidebar > :nth-child(2) {
+  position: relative;
+  z-index: 0;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 auto;
+      -ms-flex: 1 auto;
+          flex: 1 auto;
+  height: auto;
+  width: auto;
+}
+bonaparte-sidebar:not([data-position]):not([position]),
+bonaparte-sidebar[data-position="left"],
+bonaparte-sidebar[position="left"] {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+bonaparte-sidebar[data-position="right"],
+bonaparte-sidebar[position="right"] {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: row-reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+bonaparte-sidebar[data-position="top"],
+bonaparte-sidebar[position="top"] {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+bonaparte-sidebar[data-position="bottom"],
+bonaparte-sidebar[position="bottom"] {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: column-reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+}
+bonaparte-sidebar:not([data-position]):not([position]) > :nth-child(1),
+bonaparte-sidebar[data-position="left"] > :nth-child(1),
+bonaparte-sidebar[position="left"] > :nth-child(1),
+bonaparte-sidebar[data-position="right"] > :nth-child(1),
+bonaparte-sidebar[position="right"] > :nth-child(1) {
+  max-width: 0px;
+  min-width: 300px;
+}
+bonaparte-sidebar:not([data-position]):not([position])[data-open="false"] > :nth-child(1),
+bonaparte-sidebar[data-position="left"][data-open="false"] > :nth-child(1),
+bonaparte-sidebar[position="left"][data-open="false"] > :nth-child(1),
+bonaparte-sidebar[data-position="right"][data-open="false"] > :nth-child(1),
+bonaparte-sidebar[position="right"][data-open="false"] > :nth-child(1),
+bonaparte-sidebar:not([data-position]):not([position])[open="false"] > :nth-child(1),
+bonaparte-sidebar[data-position="left"][open="false"] > :nth-child(1),
+bonaparte-sidebar[position="left"][open="false"] > :nth-child(1),
+bonaparte-sidebar[data-position="right"][open="false"] > :nth-child(1),
+bonaparte-sidebar[position="right"][open="false"] > :nth-child(1) {
+  min-width: 0rem !important;
+}
+bonaparte-sidebar[data-position="top"] > :nth-child(1),
+bonaparte-sidebar[position="top"] > :nth-child(1),
+bonaparte-sidebar[data-position="bottom"] > :nth-child(1),
+bonaparte-sidebar[position="bottom"] > :nth-child(1) {
+  max-height: 0px;
+  min-height: 300px;
+}
+bonaparte-sidebar[data-position="top"][data-open="false"] > :nth-child(1),
+bonaparte-sidebar[position="top"][data-open="false"] > :nth-child(1),
+bonaparte-sidebar[data-position="bottom"][data-open="false"] > :nth-child(1),
+bonaparte-sidebar[position="bottom"][data-open="false"] > :nth-child(1),
+bonaparte-sidebar[data-position="top"][open="false"] > :nth-child(1),
+bonaparte-sidebar[position="top"][open="false"] > :nth-child(1),
+bonaparte-sidebar[data-position="bottom"][open="false"] > :nth-child(1),
+bonaparte-sidebar[position="bottom"][open="false"] > :nth-child(1) {
+  min-height: 0rem !important;
+}
+/*///////////////////////////////////////////////////////////////////////////*/
+bonaparte-sidebar {
+  /*DEFINITION*/
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 !important;
+  /*SIDEBAR POSITION*/
+  /*SIDEBAR STATE*/
+}
+bonaparte-sidebar > :nth-child(1) {
+  position: relative;
+  z-index: 50;
+  height: auto;
+  width: auto;
+  -webkit-transition: min-width 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98), min-height 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
+          transition: min-width 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98), min-height 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
+}
+bonaparte-sidebar > :nth-child(2) {
+  position: relative;
+  z-index: 0;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 auto;
+      -ms-flex: 1 auto;
+          flex: 1 auto;
+  height: auto;
+  width: auto;
+}
+bonaparte-sidebar:not([data-position]):not([position]),
+bonaparte-sidebar[data-position="left"],
+bonaparte-sidebar[position="left"] {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+bonaparte-sidebar[data-position="right"],
+bonaparte-sidebar[position="right"] {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: row-reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+bonaparte-sidebar[data-position="top"],
+bonaparte-sidebar[position="top"] {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+bonaparte-sidebar[data-position="bottom"],
+bonaparte-sidebar[position="bottom"] {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: column-reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+}
+bonaparte-sidebar:not([data-position]):not([position]) > :nth-child(1),
+bonaparte-sidebar[data-position="left"] > :nth-child(1),
+bonaparte-sidebar[position="left"] > :nth-child(1),
+bonaparte-sidebar[data-position="right"] > :nth-child(1),
+bonaparte-sidebar[position="right"] > :nth-child(1) {
+  max-width: 0px;
+  min-width: 300px;
+}
+bonaparte-sidebar:not([data-position]):not([position])[data-open="false"] > :nth-child(1),
+bonaparte-sidebar[data-position="left"][data-open="false"] > :nth-child(1),
+bonaparte-sidebar[position="left"][data-open="false"] > :nth-child(1),
+bonaparte-sidebar[data-position="right"][data-open="false"] > :nth-child(1),
+bonaparte-sidebar[position="right"][data-open="false"] > :nth-child(1),
+bonaparte-sidebar:not([data-position]):not([position])[open="false"] > :nth-child(1),
+bonaparte-sidebar[data-position="left"][open="false"] > :nth-child(1),
+bonaparte-sidebar[position="left"][open="false"] > :nth-child(1),
+bonaparte-sidebar[data-position="right"][open="false"] > :nth-child(1),
+bonaparte-sidebar[position="right"][open="false"] > :nth-child(1) {
+  min-width: 0rem !important;
+}
+bonaparte-sidebar[data-position="top"] > :nth-child(1),
+bonaparte-sidebar[position="top"] > :nth-child(1),
+bonaparte-sidebar[data-position="bottom"] > :nth-child(1),
+bonaparte-sidebar[position="bottom"] > :nth-child(1) {
+  max-height: 0px;
+  min-height: 300px;
+}
+bonaparte-sidebar[data-position="top"][data-open="false"] > :nth-child(1),
+bonaparte-sidebar[position="top"][data-open="false"] > :nth-child(1),
+bonaparte-sidebar[data-position="bottom"][data-open="false"] > :nth-child(1),
+bonaparte-sidebar[position="bottom"][data-open="false"] > :nth-child(1),
+bonaparte-sidebar[data-position="top"][open="false"] > :nth-child(1),
+bonaparte-sidebar[position="top"][open="false"] > :nth-child(1),
+bonaparte-sidebar[data-position="bottom"][open="false"] > :nth-child(1),
+bonaparte-sidebar[position="bottom"][open="false"] > :nth-child(1) {
+  min-height: 0rem !important;
+}
+/*///////////////////////////////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////////////////////////////*/
+bonaparte-toolbar {
+  /*DEFINITION*/
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 !important;
+  /*SIDEBAR POSITION*/
+  /*SIDEBAR STATE*/
+}
+bonaparte-toolbar > :nth-child(1) {
+  position: relative;
+  z-index: 50;
+  height: auto;
+  width: auto;
+  -webkit-transition: min-width 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98), min-height 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
+          transition: min-width 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98), min-height 500ms cubic-bezier(0.12, 0.38, 0.4, 0.98);
+}
+bonaparte-toolbar > :nth-child(2) {
+  position: relative;
+  z-index: 0;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 auto;
+      -ms-flex: 1 auto;
+          flex: 1 auto;
+  height: auto;
+  width: auto;
+}
+bonaparte-toolbar:not([data-position]):not([position]),
+bonaparte-toolbar[data-position="left"],
+bonaparte-toolbar[position="left"] {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+bonaparte-toolbar[data-position="right"],
+bonaparte-toolbar[position="right"] {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: row-reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+bonaparte-toolbar[data-position="top"],
+bonaparte-toolbar[position="top"] {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+bonaparte-toolbar[data-position="bottom"],
+bonaparte-toolbar[position="bottom"] {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: column-reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+}
+bonaparte-toolbar:not([data-position]):not([position]) > :nth-child(1),
+bonaparte-toolbar[data-position="left"] > :nth-child(1),
+bonaparte-toolbar[position="left"] > :nth-child(1),
+bonaparte-toolbar[data-position="right"] > :nth-child(1),
+bonaparte-toolbar[position="right"] > :nth-child(1) {
+  max-width: 0px;
+  min-width: 300px;
+}
+bonaparte-toolbar:not([data-position]):not([position])[data-open="false"] > :nth-child(1),
+bonaparte-toolbar[data-position="left"][data-open="false"] > :nth-child(1),
+bonaparte-toolbar[position="left"][data-open="false"] > :nth-child(1),
+bonaparte-toolbar[data-position="right"][data-open="false"] > :nth-child(1),
+bonaparte-toolbar[position="right"][data-open="false"] > :nth-child(1),
+bonaparte-toolbar:not([data-position]):not([position])[open="false"] > :nth-child(1),
+bonaparte-toolbar[data-position="left"][open="false"] > :nth-child(1),
+bonaparte-toolbar[position="left"][open="false"] > :nth-child(1),
+bonaparte-toolbar[data-position="right"][open="false"] > :nth-child(1),
+bonaparte-toolbar[position="right"][open="false"] > :nth-child(1) {
+  min-width: 0rem !important;
+}
+bonaparte-toolbar[data-position="top"] > :nth-child(1),
+bonaparte-toolbar[position="top"] > :nth-child(1),
+bonaparte-toolbar[data-position="bottom"] > :nth-child(1),
+bonaparte-toolbar[position="bottom"] > :nth-child(1) {
+  max-height: 0px;
+  min-height: 300px;
+}
+bonaparte-toolbar[data-position="top"][data-open="false"] > :nth-child(1),
+bonaparte-toolbar[position="top"][data-open="false"] > :nth-child(1),
+bonaparte-toolbar[data-position="bottom"][data-open="false"] > :nth-child(1),
+bonaparte-toolbar[position="bottom"][data-open="false"] > :nth-child(1),
+bonaparte-toolbar[data-position="top"][open="false"] > :nth-child(1),
+bonaparte-toolbar[position="top"][open="false"] > :nth-child(1),
+bonaparte-toolbar[data-position="bottom"][open="false"] > :nth-child(1),
+bonaparte-toolbar[position="bottom"][open="false"] > :nth-child(1) {
+  min-height: 0rem !important;
+}
+bonaparte-toolbar:not([data-position]):not([position]) > :nth-child(1),
+bonaparte-toolbar[data-position="left"] > :nth-child(1),
+bonaparte-toolbar[position="left"] > :nth-child(1),
+bonaparte-toolbar[data-position="right"] > :nth-child(1),
+bonaparte-toolbar[position="right"] > :nth-child(1) {
+  min-width: 0rem;
+}
+bonaparte-toolbar:not([data-position]):not([position])[data-open="true"] > :nth-child(1),
+bonaparte-toolbar[data-position="left"][data-open="true"] > :nth-child(1),
+bonaparte-toolbar[position="left"][data-open="true"] > :nth-child(1),
+bonaparte-toolbar[data-position="right"][data-open="true"] > :nth-child(1),
+bonaparte-toolbar[position="right"][data-open="true"] > :nth-child(1),
+bonaparte-toolbar:not([data-position]):not([position])[open="true"] > :nth-child(1),
+bonaparte-toolbar[data-position="left"][open="true"] > :nth-child(1),
+bonaparte-toolbar[position="left"][open="true"] > :nth-child(1),
+bonaparte-toolbar[data-position="right"][open="true"] > :nth-child(1),
+bonaparte-toolbar[position="right"][open="true"] > :nth-child(1) {
+  min-width: 10rem;
+}
+bonaparte-toolbar[data-position="top"] > :nth-child(1),
+bonaparte-toolbar[position="top"] > :nth-child(1),
+bonaparte-toolbar[data-position="bottom"] > :nth-child(1),
+bonaparte-toolbar[position="bottom"] > :nth-child(1) {
+  min-height: 0rem;
+}
+bonaparte-toolbar[data-position="top"] > :nth-child(1) *,
+bonaparte-toolbar[position="top"] > :nth-child(1) *,
+bonaparte-toolbar[data-position="bottom"] > :nth-child(1) *,
+bonaparte-toolbar[position="bottom"] > :nth-child(1) * {
+  white-space: nowrap;
+}
+bonaparte-toolbar[data-position="top"][data-open="true"] > :nth-child(1),
+bonaparte-toolbar[position="top"][data-open="true"] > :nth-child(1),
+bonaparte-toolbar[data-position="bottom"][data-open="true"] > :nth-child(1),
+bonaparte-toolbar[position="bottom"][data-open="true"] > :nth-child(1),
+bonaparte-toolbar[data-position="top"][open="true"] > :nth-child(1),
+bonaparte-toolbar[position="top"][open="true"] > :nth-child(1),
+bonaparte-toolbar[data-position="bottom"][open="true"] > :nth-child(1),
+bonaparte-toolbar[position="bottom"][open="true"] > :nth-child(1) {
+  min-height: 10rem;
+}
+/*///////////////////////////////////////////////////////////////////////////*/
+bonaparte-dropdown {
+  /*DEFINITION*/
+  position: relative;
+  display: inline-block;
+}
+bonaparte-dropdown > :first-child {
+  display: none;
+  position: absolute;
+  z-index: 99;
+}
+bonaparte-dropdown[data-open="true"] > :first-child,
+bonaparte-dropdown[open="true"] > :first-child {
+  display: block;
+}
+bonaparte-dropdown:not([position]) > :first-child,
+bonaparte-dropdown[position=""] > :first-child,
+bonaparte-dropdown[position*="bottom"] > :first-child {
+  top: 100%;
+  bottom: auto;
+}
+bonaparte-dropdown[position*="top"] > :first-child {
+  top: auto;
+  bottom: 100%;
+}
+bonaparte-dropdown[position*="left"] > :first-child {
+  right: 100%;
+  left: auto;
+}
+bonaparte-dropdown[position*="right"] > :first-child {
+  right: auto;
+  left: 100%;
+}
+bonaparte-dropdown[position^="right"][position$="bottom"] > :first-child,
+bonaparte-dropdown[position^="left"][position$="bottom"] > :first-child {
+  top: auto;
+  bottom: 0;
+}
+bonaparte-dropdown[position^="right"][position$="top"] > :first-child,
+bonaparte-dropdown[position^="left"][position$="top"] > :first-child {
+  top: 0;
+  bottom: auto;
+}
+bonaparte-dropdown[position^="top"][position$="right"] > :first-child,
+bonaparte-dropdown[position^="bottom"][position$="right"] > :first-child {
+  right: 0;
+  left: auto;
+}
+bonaparte-dropdown[position^="top"][position$="left"] > :first-child,
+bonaparte-dropdown[position^="bottom"][position$="left"] > :first-child {
+  right: auto;
+  left: 0;
+}
+/*///////////////////////////////////////////////////////////////////////////*/
