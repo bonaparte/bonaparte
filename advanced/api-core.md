@@ -4,19 +4,19 @@
   var bp = require("bonaparte");
 ```
 * [bp.attribute](#bpattribute)
- -  [bp.attribute.get()](#bpattributeget)
- -  [bp.attribute.matchName()](#bpattributematchname)
- -  [bp.attribute.remove()](#bpattributeremove)
- -  [bp.attribute.set()](#bpattributeset)
+ -  [get()](#bpattributeget)
+ -  [matchName()](#bpattributematchname)
+ -  [remove()](#bpattributeremove)
+ -  [set()](#bpattributeset)
 * [bp.module](#bpmodule)
- -  [bp.module.mixin()](#bpmodulemixin)
+ -  [mixin()](#bpmodulemixin)
 * [bp.tag](#bptag)
- -  [bp.tag.closest()](#bptagclosest)
- -  [bp.tag.contains()](#bptagcontains)
- -  [bp.tag.create()](#bptagcreate)
- -  [bp.tag.DOMReady()](#bptagdomready)
- -  [bp.tag.observe()](#bptagobserve)
- -  [bp.tag.triggerEvent()](#bptagtriggerevent)
+ -  [closest()](#bptagclosest)
+ -  [contains()](#bptagcontains)
+ -  [create()](#bptagcreate)
+ -  [DOMReady()](#bptagdomready)
+ -  [observe()](#bptagobserve)
+ -  [triggerEvent()](#bptagtriggerevent)
 
 
 
