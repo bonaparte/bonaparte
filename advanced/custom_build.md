@@ -49,13 +49,11 @@ require('bonaparte-build-napoleon/bonaparte.build');
 
 *Single components:*
 ```javascript
-// Components
 require('bonaparte-scroll/bonaparte.build');
 require('bonaparte-dropdown/bonaparte.build');
 ```
 *Or themes:*
 ```javascript
-// Themes
 require('bonaparte-theme-napoleon/bonaparte.build');
 ```
 
