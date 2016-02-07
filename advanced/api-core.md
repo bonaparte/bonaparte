@@ -1,38 +1,23 @@
-# Bonaparte UX Framework – Core
+# Bonaparte Core - API
 
-- [Getting Started](#getting-started)
-- [About](#about)
-- [To Look At](#to-look-at)
-- [Basic Use](#basic-use)
-- [Bonaparte Components](#bonaparte-components)
-  - [Standard Components](#standard-components)
-  - [Highlevel Components](#highlevel-components)
-- [Structure/Modules](#structuremodules)
-  - [Events](#events)
-- [Create New Components](#create-new-components)
-- [API](#api)
-  -  [bp.attribute.get()](#bpattributeget)
-  -  [bp.attribute.matchName()](#bpattributematchname)
-  -  [bp.attribute.remove()](#bpattributeremove)
-  -  [bp.attribute.set()](#bpattributeset)
-  -  [bp.module.mixin()](#bpmodulemixin)
-  -  [bp.tag.closest()](#bptagclosest)
-  -  [bp.tag.contains()](#bptagcontains)
-  -  [bp.tag.create()](#bptagcreate)
-  -  [bp.tag.DOMReady()](#bptagdomready)
-  -  [bp.tag.observe()](#bptagobserve)
-  -  [bp.tag.triggerEvent()](#bptagtriggerevent)
+-  [bp.attribute.get()](#bpattributeget)
+-  [bp.attribute.matchName()](#bpattributematchname)
+-  [bp.attribute.remove()](#bpattributeremove)
+-  [bp.attribute.set()](#bpattributeset)
+-  [bp.module.mixin()](#bpmodulemixin)
+-  [bp.tag.closest()](#bptagclosest)
+-  [bp.tag.contains()](#bptagcontains)
+-  [bp.tag.create()](#bptagcreate)
+-  [bp.tag.DOMReady()](#bptagdomready)
+-  [bp.tag.observe()](#bptagobserve)
+-  [bp.tag.triggerEvent()](#bptagtriggerevent)
 
 
-
-
-## API
 Requiring the `bonaparte` module provides all the necessary functions to create new _tags_ from modules, as well a set of utility functions that can be used within _modules_.
 
 ```javascript
   var bp = require("bonaparte"); // this also works in the module repository itself
 ```
----
 ---
 
 ### bp.attribute
