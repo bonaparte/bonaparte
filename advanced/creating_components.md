@@ -76,7 +76,6 @@ On Bonaparte-Tags Custom events can easily be triggered by calling
 function module(tag) {
     tag.bonaparte.triggerEvent("name", data)
 }
-document.getElementById("bonaparte-tag").bonaparte.triggerEvent("name", data)
 ```
 
 Or through the [API](#api) events can be triggered on any element: 
