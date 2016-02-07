@@ -3,7 +3,8 @@
     "description": "UX Front End Framework",
     "plugins": [
         "hide-published-with",
-        "edit-link"
+        "edit-link",
+        "github"
     ],
     "pluginsConfig": {
         "edit-link": {
