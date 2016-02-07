@@ -47,6 +47,7 @@ module.exports = bp.tag.create("tag-name", [
 
 **Modules** are instantiated in the order they were passed to `bp.tag.create`.
 
+
 > Bonaparte uses the [Objct](http://github.com/greenish/objct) library to create this modularity.
 
 #### Events
