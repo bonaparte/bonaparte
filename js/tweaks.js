@@ -6,7 +6,7 @@ window.addEventListener("load", function(){
     var link = document.createElement('a'); 
    
     link.innerHTML = "Visit Bonaparte on Github"; 
-    link.setAttribute('class', 'my-custom-link'); 
+    link.setAttribute('class', 'my-custom-link');
     link.setAttribute('href', 'http://github.com/bonaparte'); 
     link.setAttribute('target', '_blank'); 
     
