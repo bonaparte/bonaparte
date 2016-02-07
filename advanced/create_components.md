@@ -90,7 +90,9 @@ In your `package.json` add the `bonaparte` core package as a dependencie and def
  
     ...
 }
-````
+```
+
+
 
 ## Basic Use
 
