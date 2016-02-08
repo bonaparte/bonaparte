@@ -7,7 +7,7 @@
     "mousetrap" : "^1.5.3"
   },
 
-  "main":"bonaparte.js",
+  "main":"bonaparte.build.js",
 
   "devDependencies": {
     "webpack" : "^1.11.0",

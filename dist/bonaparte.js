@@ -1650,7 +1650,7 @@
 	// https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent#Polyfill
 
 	try {
-	  new CustomEvent("test");
+	  new window.CustomEvent("test");
 	} catch(e) {
 	 var CustomEvent = function(event, params) {
 	      var evt;
@@ -1668,6 +1668,7 @@
 	  CustomEvent.prototype = window.Event.prototype;
 	  window.CustomEvent = CustomEvent; // expose definition to window
 	}
+
 
 /***/ },
 /* 14 */
