@@ -1,6 +1,6 @@
 {
     "title": "Bonaparte",
-    "description": "UX Front End Framework",
+    "description": "UX Front-End Framework",
     "plugins": [
         "edit-link",
         "github",
