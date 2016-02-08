@@ -37,4 +37,4 @@ And pull requests are welcome as well of course ;)
 
 ##### Built a new component? Add it to the documentation and submit a pull request!
 
-Learn more on how to create a new Bonaparte component here: [4.2 Development / Contribute](advanced/contribute.md)
+Learn more on how to create a new Bonaparte component here: [4.2 Development / Contribute](advanced/contribute.html)
