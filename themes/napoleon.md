@@ -8,6 +8,8 @@ At Dow Jones, editorial tools are in constant development. These web based tools
 
 In addition to Bonaparte, Napoleon was created.
 
+While Bonaparte provides the structural elements, Napoleon provides the styling necessary to implement editorial tools for Dow Jones.
+
 
 Bonaparte was created to help developers in a large international company like Dow Jones to create consistent user experiences.
 
