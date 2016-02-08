@@ -92,4 +92,4 @@ High level components are more opinionated in their functionality and are build 
  
 
 ## Creating Components
-Creating Bonaparte Components is easy!<br>Learn more: [4.2 Create Components](advanced/create-components.md)
+Creating Bonaparte Components is easy!<br>Learn more: [4.2 Development / Contribute](advanced/contribute.html)
