@@ -15,5 +15,3 @@ At the core of Bonaparte is the `bonaparte` package which provides all the neces
 #### [Bonaparte Core API](themes/index.md)
 
 
-
-
