@@ -1,7 +1,8 @@
-require("bonaparte-panel/bonaparte.build");
-require("bonaparte-scroll/bonaparte.build");
-require("bonaparte-button/bonaparte.build");
-require("bonaparte-sidebar/bonaparte.build");
-require("bonaparte-toolbar/bonaparte.build");
-require("bonaparte-draggable/bonaparte.build");
-require("bonaparte-dropdown/bonaparte.build");
+// Components
+require("bonaparte-panel");
+require("bonaparte-scroll");
+require("bonaparte-button");
+require("bonaparte-sidebar");
+require("bonaparte-toolbar");
+require("bonaparte-draggable");
+require("bonaparte-dropdown");
