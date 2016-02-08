@@ -15,7 +15,7 @@ At the core of Bonaparte is the `bonaparte` package which provides all the neces
 #### [Bonaparte Core API](themes/index.md)
 
 
-# Contribution
+# Contribute
 
 Bonaparte is under active development. 
 We know it's not perfect but we're constantly working to improve and appreciate any feedback and bug reports.
