@@ -25,4 +25,4 @@ http://github.com/bonaparte/bonaparte.io/issues
 
 And Pull Requests are welcome as well of course ;)
 
-**Created a new component? Submit a Pull Request and have it added to this Documentation!**
+#####Created a new component? Submit a Pull Request and have it added to this Documentation!
