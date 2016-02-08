@@ -2,13 +2,13 @@
 {
   "name": "bonaparte-dropdown",
   "version": "0.0.1",
-  
+
   "dependencies" : {
     "bonaparte" : "git+https://bonaparte-read:1437a4a436df422163cb58030e6fc8ab570c11e1@github.com/bonaparte/core.git#gh-pages",
     "mousetrap" : "^1.5.3"
   },
-  
-  "main":"bonaparte.js",
+
+  "main":"bonaparte.build.js",
 
   "devDependencies": {
     "webpack" : "^1.11.0",
