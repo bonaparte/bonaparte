@@ -4,7 +4,7 @@ var bp = require("bonaparte");
 // Public
 
 module.exports = bp.tag.create("toolbar", [
-  require("bonaparte-sidebar"),
+  require("bonaparte-sidebar/bonaparte.js"),
   toolbar
 ]);
 
@@ -29,7 +29,7 @@ function toolbar(tag){
     }
 
     for(var i = 0; i< buttons.length; i++){
-      require("bonaparte-button").initialize(buttons[i]);
+      require("bonaparte-button/bonaparte.js").initialize(buttons[i]);
     }
 
 
