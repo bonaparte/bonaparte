@@ -81,11 +81,11 @@
 
 	  if(bp.attribute.get(tag, "scrollbar") === "native") return;
 
-	  setupScroller();
+	  bp.tag.DOMReady(setupScroller);
 
 	///////////////////////////////////////////////////////////////////////////////
-	// Public 
-	 
+	// Public
+
 	  this.bonaparte.update = update;
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -93,7 +93,7 @@
 
 	  if(bp.attribute.get(tag, "resize") !== "false")
 	    window.addEventListener("resize", update);
-	  
+
 	  content.addEventListener("scroll", updatePosition);
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -115,7 +115,7 @@
 	        scrollbar.style.opacity = "";
 	        scrollBarVisible = true;
 	      }
-	    } 
+	    }
 
 	    // SLIDER SIZE / POSITION
 	    updatePosition();
@@ -144,7 +144,7 @@
 	    scrollBarWidth = scrollBarWidth || getScrollBarWidth();
 	    content.style.marginRight = -scrollBarWidth+"px";
 	    content.style.paddingRight = scrollBarWidth+"px";
-	  
+
 	    slider = document.createElement("div")
 	    slider.setAttribute("class", "slider");
 
@@ -159,19 +159,19 @@
 	  }
 
 	///////////////////////////////////////////////////////////////////////////////
-	// x: current Value, 
-	// cMin: current range min, 
-	// cMax: current range max, 
-	// tMin: target range min, 
-	// tMax: target range max, 
+	// x: current Value,
+	// cMin: current range min,
+	// cMax: current range max,
+	// tMin: target range min,
+	// tMax: target range max,
 	// easingFunction: easingFunction (string)
 
 	  function map(x, cMin, cMax, tMin, tMax, easingFunction) {
-	    easingFunction = typeof easing === "object" && easing[easingFunction] !== undefined ? 
-	      easing[easingFunction] : 
+	    easingFunction = typeof easing === "object" && easing[easingFunction] !== undefined ?
+	      easing[easingFunction] :
 	      function (t, b, c, d) { return b+c*(t/=d) };
 	    if(x===0) return tMin;
-	    return easingFunction(x-cMin, tMin, tMax-tMin, cMax-cMin);  
+	    return easingFunction(x-cMin, tMin, tMax-tMin, cMax-cMin);
 	  }
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -188,6 +188,7 @@
 	  document.documentElement.style.overflow = overflow;
 	  return width;
 	}
+
 
 /***/ },
 /* 4 */
@@ -224,7 +225,6 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var objct = __webpack_require__(6);
-	// var easing = require("./easing");
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
@@ -698,8 +698,8 @@
 	  else if(modulesType !== "array")
 	    throw "Bonaparte - createTag: Unexpected "+modulesType+". Expected Function or Array."
 
-
 	  nativeBaseElement = nativeBaseElement || window.HTMLElement || window.Element;
+
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
 	  
@@ -717,13 +717,14 @@
 	///////////////////////////////////////////////////////////////////////////////
 
 	  function register(){ 
+
 	    if(typeof document.registerElement === "undefined") { // If IE8 make tag stylable but otherwise do nothing.
-	      document.createElement(name+"-bonaparte");
-	      return;
+	      document.createElement("bonaparte-"+name);
+	      return definition;
 	    }
-	    registeredTags[name+"-bonaparte"] = registeredTags[name+"-bonaparte"] !== undefined ?
-	      registeredTags[name+"-bonaparte"]:
-	      document.registerElement(name+"-bonaparte", {
+	    registeredTags[name] = registeredTags[name] !== undefined ?
+	      registeredTags[name]:
+	      document.registerElement("bonaparte-"+name, {
 	        prototype : Object.create( nativeBaseElement.prototype , {
 	          createdCallback : { value: createdCallback },
 	          attachedCallback : { value: attachedCallback },
@@ -1498,7 +1499,7 @@
 	// https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent#Polyfill
 
 	try {
-	  new CustomEvent("test");
+	  new window.CustomEvent("test");
 	} catch(e) {
 	 var CustomEvent = function(event, params) {
 	      var evt;
@@ -1516,6 +1517,7 @@
 	  CustomEvent.prototype = window.Event.prototype;
 	  window.CustomEvent = CustomEvent; // expose definition to window
 	}
+
 
 /***/ },
 /* 14 */
