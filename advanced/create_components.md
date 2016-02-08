@@ -23,6 +23,6 @@ We know it's not perfect but we're constantly working to improve and appreciate 
 We are collecting general feedback and feature requests for Bonaparte here:<br>
 http://github.com/bonaparte/bonaparte.io/issues
 
-And Pull Requests are welcome as well of course ;)
+And pull requests are welcome as well of course ;)
 
-##### Created a new component? Submit a Pull Request and have it added to this Documentation!
+##### Created a new component? Submit a pull request and have it added to this documentation!
