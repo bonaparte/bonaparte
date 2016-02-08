@@ -1,4 +1,4 @@
-# Development / Contribute
+# Development
 
 Contributing to Bonaparte and creating new Bonaparte components is simple.
 
@@ -14,4 +14,6 @@ At the core of Bonaparte is the `bonaparte` package which provides all the neces
 #### [Creating Components](components/index.md)
 #### [Bonaparte Core API](themes/index.md)
 
+
+# Contribution
 
