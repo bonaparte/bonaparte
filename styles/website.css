@@ -15,10 +15,11 @@ ul.summary > li  a.custom-link {
     display:none !important;
 }
 
-ul.summary > li  a.my-custom-link {
+ul.summary > li .divider:first-child {
     margin-top:7px;
 }
 
 ul.summary > li  a.gitbook-link {
     margin-bottom:7px;
 }
+
