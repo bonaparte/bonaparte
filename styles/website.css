@@ -15,10 +15,6 @@ ul.summary > li  a.custom-link {
     display:none !important;
 }
 
-ul.summary > li .divider:first-child {
-    display:none !important;
-}
-
 ul.summary > li  a.gitbook-link {
     margin-bottom:7px;
 }
