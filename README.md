@@ -7,7 +7,7 @@ Components are written in plain JavaScript and work nicely with frameworks like 
 
 Bonaparte is design agnostic. It's components provide structure but do not come with any design. No component uses the `class` attribute to create functionality. Therefore CSS classes of any front end framework like [Bootstrap](http://getbootstrap.com/), [Foundation](http://foundation.zurb.com/) or [Semantic UI](http://semantic-ui.com/) can be used for styling.
 
-Works in all modern browsers and IE>=10.
+Compatible with all modern browsers and IE10 up.
 
 #### Using Bonaparte is as easy as using HTML:
 ```
