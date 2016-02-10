@@ -1,5 +1,5 @@
+var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var ExtractCSS = new ExtractTextPlugin("bonaparte.css");
 
 module.exports =  {
     entry: './bonaparte.build.js',
@@ -11,15 +11,15 @@ module.exports =  {
         loaders: [
             {
                 test: /\.css$/i,
-                loader: ExtractCSS.extract("css-loader!autoprefixer-loader")
+                loader: ExtractTextPlugin.extract("css-loader!postcss-loader")
             },
             {
                 test: /\.less$/i,
-                loader: ExtractCSS.extract("css-loader!autoprefixer-loader!less-loader")
+                loader: ExtractTextPlugin.extract("css-loader!postcss-loader!less-loader")
             },
             {
                 test: /\.scss$/i,
-                loader: ExtractCSS.extract("css-loader!autoprefixer-loader!sass-loader")
+                loader: ExtractTextPlugin.extract("css-loader!postcss-loader!sass-loader")
             },
             {
                 test: /\.(woff|woff2|eot|ttf)$/i,
@@ -31,7 +31,14 @@ module.exports =  {
             }
         ]
     },
+		postcss: function(){
+			return [
+				require('autoprefixer'),
+				require('postcss-discard-duplicates')
+			];
+		},
     plugins: [
-       ExtractCSS,
+       new ExtractTextPlugin("bonaparte.css"),
+			 new webpack.optimize.DedupePlugin()
     ]
 };

@@ -9,14 +9,16 @@
   },
   "main": "./src/index.js",
   "peerDependencies": {
-    "webpack": "*",
-    "css-loader": "*",
-    "less-loader": "*",
-    "less": "*",
-    "sass-loader": "*",
-    "node-sass": "*",
-    "extract-text-webpack-plugin": "*",
-    "autoprefixer-loader": "*",
-    "file-loader": "*"
+		"autoprefixer": "^6.3.2",
+    "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
+    "less": "^2.6.0",
+    "less-loader": "^2.2.2",
+    "node-sass": "^3.4.2",
+    "postcss-discard-duplicates": "^2.0.1",
+    "postcss-loader": "^0.8.0",
+    "sass-loader": "^3.1.2",
+    "webpack": "^1.12.13"
   }
 }
