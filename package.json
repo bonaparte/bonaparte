@@ -1,34 +1,22 @@
 {
   "name": "bonaparte",
   "version": "0.0.1",
-  
-  "dependencies" : {
-    "objct": "^2.0.6",
-    "document-register-element" : "^0.4.5",
-    "mutation-observer":"^1.0.2",
-    "custom-event-polyfill" : "^0.2.1"
+  "dependencies": {
+    "custom-event-polyfill": "^0.2.2",
+    "document-register-element": "^0.4.5",
+    "mutation-observer": "^1.0.2",
+    "objct": "^2.0.6"
   },
-  
-  "main":"./src/index.js",
-  
-  "devDependencies": {},
-
-  "peerDependencies" : {
-    "webpack" : "^1.11.0",
-    "css-loader" : "^0.16.0",
-    "less-loader" : "^2.2.0",
-    "less" : "^2.3.1",
-    "sass-loader" : "^2.0.1",
-    "node-sass" : "^3.3.2",
-    "extract-text-webpack-plugin" : "0.8.2",
-    "autoprefixer-loader" : "^2.0.0",
-    "file-loader" : "^0.8.4"
-  },
-
-  "scripts": {
-  },
-
-  "engines": {
-    "node": ">=0.12.x"
+  "main": "./src/index.js",
+  "peerDependencies": {
+    "webpack": "*",
+    "css-loader": "*",
+    "less-loader": "*",
+    "less": "*",
+    "sass-loader": "*",
+    "node-sass": "*",
+    "extract-text-webpack-plugin": "*",
+    "autoprefixer-loader": "*",
+    "file-loader": "*"
   }
 }
