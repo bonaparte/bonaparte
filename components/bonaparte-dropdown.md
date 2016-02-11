@@ -1,7 +1,5 @@
 # < bonaparte-dropdown >
-The Dropdown is a temporary UI element that places itself consisting of to two areas, a content area and a handler. When the user interacts with the handler the content area is show. The position of the content area is relative to the bonaparte-dropdown tag, this can be set by using a position attribute on the tag.
-
-> Note: Block Elements within a `<p>` tag may break the flow of the HTML.
+The cropdown component is a temporary UI element that appears along one edge of the `<bonaparte-dropdown>` tag when _open_.
 
 [Example](https://dowjones.github.io/bonaparte/examples/dropdown.html)
 
@@ -9,6 +7,8 @@ The Dropdown is a temporary UI element that places itself consisting of to two a
 ```html
 <bonaparte-dropdown
   position
+  open
+  action
   handler
 >
   <1st-child> <!-- dropdown content -->
