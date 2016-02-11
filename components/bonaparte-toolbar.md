@@ -8,9 +8,7 @@ As a highlevel component Toolbars also implements restrictions on buttons. Butto
   position
   open
 >
-
     <1st-child> <!-- sidebar -->
-  
         <nth-child> <!-- button group -->
   
     </1st-child>
