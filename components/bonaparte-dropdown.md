@@ -13,7 +13,6 @@ Note: if placed inside a < p > then block elements (ie div) may break the flow o
 >
   <1st-child> <!-- dropdown content -->
  
-
 </bonaparte-dropdown>
 ```
 
