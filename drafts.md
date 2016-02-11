@@ -1,5 +1,5 @@
 * [Starter Angular](http://github.com/bonaparte/starter-angular)<br>*Creates a basic page using Bonaparte components and the Angular framework.*
-* 
+
 ---
 
 # Background
