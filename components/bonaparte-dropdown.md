@@ -5,7 +5,7 @@ Note: if placed inside a < p > then block elements (ie div) may break the flow o
 
 [Example](https://dowjones.github.io/bonaparte/examples/dropdown.html)
 
-
+### Structure
 ```html
 <bonaparte-dropdown
   position=[top|bottom][left|right] ?
