@@ -6,7 +6,6 @@ With this mechanic most UI behaviour can be implemented without writing any java
 ### Structure 
 
 ```html
-
 <bonaparte-button
   action
   active-class
