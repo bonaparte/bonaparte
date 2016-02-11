@@ -1,6 +1,6 @@
 # < bonaparte-sidebar >
 The Sidebar is a UI element consisting of to two areas, a sidebar and a content area. As opposed to the panel, the sidebar does not overlay over the content but pushes it. There can be multiple sidebars open at the same time and they can be nested.
-(Have a look at the `<toolbar-bonaparte>` highlevel component if you plan to only have buttons in the sidebar)
+> If you plan to only have buttons in the sidebar have a look at the `<toolbar-bonaparte>` highlevel component.
 
 
 ### Structure
