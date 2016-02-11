@@ -1,7 +1,7 @@
 # < bonaparte-toolbar >
-A Toolbar is a specialized sidebar which contains button groups. The toolbar inherits all the functionality from [`<bonaparte-sidebar>`](bonaparte-sidebar.html). 
+The toolbar component is a specialized [bonaparte-sidebar](bonaparte-sidebar.html) which contains button groups. 
 
-In addition child elements of the sidebar are handled as button groups and spread evenly from left to right or top to bottom.
+The toolbar inherits all the functionality from [`<bonaparte-sidebar>`](bonaparte-sidebar.html). In addition child elements of the sidebar are handled as button groups and spread evenly from left to right or top to bottom.
 
 ## Structure
 ```html
