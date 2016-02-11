@@ -17,7 +17,7 @@ The baseline grid is defined as `1rem`. Napoleon defines `1rem` as `12px` by def
 
 #### Namespaced
 
-By default Napoleon doesn't apply any styles to any HTML elements.
+Napoleon doesn't apply any styles to any HTML elements by default.
 
 Resets and styling of base tags (`<p>`, `small`, `<h1>–<h6>`) are applied for elements within a `.napoleon` wrapper, or elements that have the `.ui` class.
 
