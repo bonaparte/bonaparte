@@ -3,7 +3,7 @@ Bonaparte buttons are a powerfull tool to define interface behaviour. <br>A butt
 With this mechanic most UI behaviour can be implemented without writing any javascript.
 
 
-### Structure 
+## Structure 
 
 ```html
 <bonaparte-button
