@@ -16,7 +16,7 @@ With this mechanic most UI behaviour can be implemented without writing any java
 >
 </bonaparte-button>
 ```
-##### Attributes
+### Attributes
 Name | Values | Default | Description 
 :--------- | :--- | :------ | :----------
 __action__ | _Event_ |  | HTMLEvent that triggers the button.
