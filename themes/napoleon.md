@@ -6,6 +6,9 @@ Like common front end frameworks Napoleon provides a set of CSS classes to style
 
 In addition to the traditional HTML elements, Napoleon also defines styles and classes for Bonaparte components.
 
+## Example
+
+[Kitchen Sink](http://bonaparte.github.io/theme-napoleon/examples/kitchen-sink.html)
 
 ## Main Features
 
@@ -23,6 +26,3 @@ Resets and styling of base tags (`<p>`, `small`, `<h1>–<h6>`) are applied for 
 
 Through this, Napoleon doesn't interfere with other CSS on a page.
 
-## Example
-
-[Kitchen Sink](http://bonaparte.github.io/theme-napoleon/examples/kitchen-sink.html)
