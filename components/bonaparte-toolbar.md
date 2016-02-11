@@ -1,7 +1,7 @@
 # < bonaparte-toolbar >
-The toolbar component is a specialized [bonaparte-sidebar](bonaparte-sidebar.html) which contains button groups. 
+The toolbar component is a specialized [bonaparte sidebar](bonaparte-sidebar.html) which contains button groups. 
 
-The toolbar inherits all the functionality from [`<bonaparte-sidebar>`](bonaparte-sidebar.html). In addition child elements of the sidebar are handled as button groups and spread evenly from left to right or top to bottom.
+The toolbar inherits all the functionality from [`<bonaparte-sidebar>`](bonaparte-sidebar.html). In addition child elements of the _sidebar_ are handled as _ button groups_ and spread evenly from left to right or top to bottom.
 
 ## Structure
 ```html
@@ -10,7 +10,7 @@ The toolbar inherits all the functionality from [`<bonaparte-sidebar>`](bonapart
   open
 >
     <1st-child> <!-- sidebar -->
-        <nth-child> <!-- button group -->
+        <nth-child> <!-- group -->
     </1st-child>
     
     <2nd-child> <!-- content -->
