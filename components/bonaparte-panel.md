@@ -21,7 +21,7 @@ __position__ | `left`<br>`top`<br>`right`<br>`bottom` | `left` | Defines the pos
 __open__ | `false` | `false` | Panel is not visible and moves out of its parent element.
  | `true` | | Panel is visible and moves into its parent element
 
-##### Events
+#### Events
 Name | Target | Bubbles | Description 
 :--------- | :--- | :------ | :------
 __bonaparte.panel.open__ | `<bonaparte-panel>` | yes | Triggers when a panel opens.
