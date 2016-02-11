@@ -22,7 +22,7 @@ On activation, the button syncs all the _target-attributes_ with the attibutes o
 >
 </bonaparte-button>
 ```
-### Attributes
+#### Attributes
 Name | Values | Default | Description 
 :--------- | :--- | :------ | :----------
 __action__ | _Event_ |  | HTMLEvent that triggers the button.
