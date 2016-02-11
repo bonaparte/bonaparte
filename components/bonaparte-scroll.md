@@ -1,5 +1,5 @@
 # < bonaparte-scroll >
-The scroll component can be used to very easily implement scrolling in a container.
+The scroll component is used to implement scrolling in a container.
 
 ## Structure
 ```html
