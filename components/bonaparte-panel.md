@@ -1,6 +1,9 @@
 # < bonaparte-panel >
 A panel is a temporary UI element that slides in from one side. It automatically attaches itself to its next positioned parent element. There can only be one panel open at a time and opening another panel or clicking outside of it will close the current panel.
 (For a permanent sidebar, use the `<sidebar-bonaparte>` tag)
+
+### Structure
+
 ```html
 <!-- parent element must not be position:static -->
 <bonaparte-panel 
