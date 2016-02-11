@@ -6,32 +6,23 @@ Like common front end frameworks Napoleon provides a set of CSS classes to style
 
 In addition to the traditional HTML elements, Napoleon also defines styles and classes for Bonaparte components.
 
+## Example
 
-## Features
+[Kitchen Sink](http://bonaparte.github.io/theme-napoleon/examples/kitchen-sink.html)
 
-#### Namespaced
+## Main Features
 
-Napoleon styles can be applied to single elements or areas.
-
-Napoleon is namespaced by the `.napoleon` CSS class. No styles are applied to basic HTML tags outside elements with the `.napoleon` class.
-
-However, 
-
-
-#### Baseline Grid
+### Baseline Grid
 
 **All elements styled with Napoleon fall on a baseline grid.** This allows developers to mix and match Napoleon elements and still receive a clean user interface.
 
-**The baseline grid is defined as `1rem`** 
+**The baseline grid is defined as `1rem`**. Napoleon defines `1rem` as `12px` by default.
 
-Napoleon defines `1rem` as `12px` by default (font-size on `<html`).
+### Namespaced
 
+By default Napoleon doesn't apply any styles to html elements.
 
-
-
-
-
-It's created as a supplement the Bonaparte components by adding many valuable..
+Resets and styling of base tags (`<p>`, `small`, `<h1>–<h6>`, etc) are only applied for elements within a `.napoleon` wrapper, or elements that have the `.ui` class.
 
 
 
