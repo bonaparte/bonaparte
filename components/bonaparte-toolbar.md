@@ -12,7 +12,7 @@ As a highlevel component Toolbars also implements restrictions on buttons. Butto
         <nth-child> <!-- button group -->
   
     </1st-child>
-  
+
     <2nd-child> <!-- content --> 
 
 </bonaparte-toolbar>
