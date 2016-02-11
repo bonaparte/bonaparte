@@ -5,13 +5,17 @@ As a highlevel component Toolbars also implements restrictions on buttons. Butto
 ### Structure
 ```html
 <bonaparte-toolbar
-  extends:sidebar
+  position
+  open
 >
 
-  <1st-child sidebar>
-    <nth-child button-group>
-
-  <2nd-child content /> 
+  <1st-child> <!-- sidebar -->
+  
+    <nth-child> <!-- button group -->
+  
+  </1st-child>
+  
+  <2nd-child> <!-- content --> 
 
 </bonaparte-toolbar>
 ```
