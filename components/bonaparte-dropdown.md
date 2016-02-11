@@ -1,7 +1,7 @@
 # < bonaparte-dropdown >
-The Dropdown is a UI element consisting of to two areas, a content area and a handler. When the user interacts with the handler the content area is show. The position of the content area is relative to the bonaparte-dropdown tag, this can be set by using a position attribute on the tag.
+The Dropdown is a temporary UI element that places itself consisting of to two areas, a content area and a handler. When the user interacts with the handler the content area is show. The position of the content area is relative to the bonaparte-dropdown tag, this can be set by using a position attribute on the tag.
 
-Note: if placed inside a < p > then block elements (ie div) may break the flow of the HTML
+> Note: Block Elements within a `<p>` tag may break the flow of the HTML.
 
 [Example](https://dowjones.github.io/bonaparte/examples/dropdown.html)
 
