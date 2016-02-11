@@ -4,7 +4,7 @@ A panel is a temporary UI element that slides in from one side. It automatically
 
 ### Structure
 ```html
-<!-- parent element must not be position:static -->
+<!-- Aligns to parent element. Parent must not be position:static -->
 <bonaparte-panel 
   position 
   open
