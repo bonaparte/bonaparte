@@ -18,7 +18,7 @@ The toolbar inherits all the functionality from [`<bonaparte-sidebar>`](bonapart
 </bonaparte-toolbar>
 ```
 
-##### Child elements
+#### Child elements
 Index | Name |  Required | Description 
 :--------- | :--- | :------ | :-----
 __1__ | sidebar | yes | Will be place according to the _sidebar_ attribute.
