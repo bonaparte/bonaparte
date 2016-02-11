@@ -14,7 +14,7 @@ In addition to the traditional HTML elements, Napoleon also defines styles and c
 
 #### Baseline Grid
 
-All elements styled with Napoleon fall on a baseline grid. This allows Napoleon elements to be mixed and matched while still resulting in a clean user interface.
+All elements and text styled with Napoleon fall on a baseline grid. This allows Napoleon elements to be mixed and matched while still resulting in a clean user interface.
 
 The baseline grid is defined as `1rem`. Napoleon defines `1rem` as `12px` by default.
 
