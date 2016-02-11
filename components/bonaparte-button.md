@@ -7,7 +7,6 @@ A button defines _target-attributes_ which it updates on the _target_ element wh
 On activation, the button syncs all the _target-attributes_ with the attibutes on the _target_ elements. When all _target-attributes_ match all attributes on the _target_ elements, the *active-class* is set.
 
 
-
 ## Structure 
 
 ```html
