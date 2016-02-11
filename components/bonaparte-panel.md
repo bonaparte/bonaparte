@@ -3,7 +3,6 @@ A panel is a temporary UI element that slides in from one side. It automatically
 (For a permanent sidebar, use the `<sidebar-bonaparte>` tag)
 
 ### Structure
-
 ```html
 <!-- parent element must not be position:static -->
 <bonaparte-panel 
