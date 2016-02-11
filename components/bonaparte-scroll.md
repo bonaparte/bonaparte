@@ -12,7 +12,7 @@ The scroll component is used to implement scrolling in a container.
 </bonaparte-scroll>
 ```
 
-##### Attributes
+#### Attributes
 Name | Values | Default | Description 
 :--------- | :--- | :------ | :---------
 __scrollbar__  |  `hover`  | `hover` | Scrollbar is only visible if the user hover over the scrollable area. 
