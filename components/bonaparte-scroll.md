@@ -7,7 +7,6 @@ The scroll component can be used to very easily implement scrolling in a contain
 <bonaparte-scroll
   scrollbar
 >
-
   <1st-child content />
 
 </bonaparte-scroll>
