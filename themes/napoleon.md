@@ -8,7 +8,7 @@ In addition to the traditional HTML elements, Napoleon also defines styles and c
 
 ## Examples
 * [Kitchen Sink](http://bonaparte.github.io/theme-napoleon/examples/kitchen-sink.html)
-* [Starter App](http://bonaparte.github.io/theme-napoleon/examples/kitchen-sink.html)
+* [Starter App](http://bonaparte.github.io/starter-vanilla/
 
 ## Main Features
 
