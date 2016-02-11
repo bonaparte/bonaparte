@@ -9,13 +9,13 @@ In addition to the traditional HTML elements, Napoleon also defines styles and c
 
 ## Main Features
 
-### Baseline Grid
+#### Baseline Grid
 
 **All elements styled with Napoleon fall on a baseline grid.** This allows developers to mix and match Napoleon elements and still receive a clean user interface.
 
 **The baseline grid is defined as `1rem`**. Napoleon defines `1rem` as `12px` by default.
 
-### Namespaced
+#### Namespaced
 
 By default Napoleon doesn't apply any styles to any HTML elements.
 
