@@ -1,5 +1,6 @@
 # < bonaparte-panel >
-A panel is a temporary UI element that slides in from one side and overlays the content. It automatically attaches itself to its next positioned parent element. There can only be one panel open at a time. Clicking outside of an open panel or opening an second panel will close the open panel.
+A panel is a temporary UI element that slides in from one side and overlays the content. 
+There can only be one panel open at a time. Clicking outside of a panel or opening an second panel will close the currently open panel.
 
 > For an permanent sidebar that doesn't overlay the content use the [`<sidebar-bonaparte>`](bonaparte-sidebar.html)
 
