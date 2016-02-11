@@ -23,7 +23,6 @@ Resets and styling of base tags (`<p>`, `small`, `<h1>–<h6>`) are applied for 
 
 Through this, Napoleon doesn't interfere with other CSS on a page.
 
-
 ## Example
 
 [Kitchen Sink](http://bonaparte.github.io/theme-napoleon/examples/kitchen-sink.html)
