@@ -9,6 +9,7 @@
    * [<bonaparte-scroll>](components/bonaparte-scroll.md)
    * [<bonaparte-sidebar>](components/bonaparte-sidebar.md)
    * [<bonaparte-toolbar>](components/bonaparte-toolbar.md)
+   * <bonaparte-draggable>
 * [Themes](themes/index.md)
    * [Napoleon](themes/napoleon.md)
 * Advanced
