@@ -2,6 +2,9 @@
 Bonaparte buttons are a powerfull tool to define interface behaviour. <br>A button defines a target-state which it invokes on a target-element when its action is triggered.<br> A button defines one or more target elements on the page. On those target-elements it affects the specified target-attributes and syncs their values with the correlating attribute on the target. The active state is automatically set when all target-attributes match the attributes on all target-elements. <br>
 With this mechanic most UI behaviour can be implemented without writing any javascript.
 
+
+### Structure 
+
 ```html
 
 <bonaparte-button
