@@ -1,8 +1,6 @@
 # < bonaparte-dropdown >
 The cropdown component is a temporary UI element that appears along one edge of the `<bonaparte-dropdown>` tag when _open_.
 
-[Example](https://dowjones.github.io/bonaparte/examples/dropdown.html)
-
 ## Structure
 ```html
 <bonaparte-dropdown
