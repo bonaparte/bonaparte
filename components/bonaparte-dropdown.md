@@ -11,9 +11,8 @@ Note: if placed inside a < p > then block elements (ie div) may break the flow o
   position
   handler
 >
-  <1st-child content />
-
-  <2nd-child handler /> 
+  <1st-child> <!-- dropdown content -->
+ 
 
 </bonaparte-dropdown>
 ```
