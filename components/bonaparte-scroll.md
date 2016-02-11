@@ -3,7 +3,7 @@ The scroll component can be used to very easily implement scrolling in a contain
 
 ### Structure
 ```html
-<!-- Aligns to parent element. Parent must not be position:static. -->
+<!-- Position relative to parent element. Parent must not be position:static. -->
 <bonaparte-scroll
   scrollbar
 >
