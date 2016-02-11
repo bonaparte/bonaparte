@@ -3,7 +3,7 @@
 The easiest way to get your hands dirty is to start with one of the starter kits:
 
 * [Starter Vanilla](http://github.com/bonaparte/starter-vanilla) ([Preview](http://bonaparte.github.io/starter-vanilla/))<br>*Creates a basic page using Bonaparte components without any framework.*
-* [Starter React](http://github.com/bonaparte/starter-react) ([Preview](http://bonaparte.github.io/starter-vanilla/))<br>*Creates a basic page using Bonaparte components and the React framework.*
+* [Starter React](http://github.com/bonaparte/starter-react) ([Preview](http://bonaparte.github.io/starter-react/))<br>*Creates a basic page using Bonaparte components and the React framework.*
 
 Each starter includes all Bonaparte components and the Napoleon theme ([Napoleon Build](http://github.com/bonaparte/build-napoleon)).
 
