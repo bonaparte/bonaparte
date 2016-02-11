@@ -8,8 +8,8 @@ Note: if placed inside a < p > then block elements (ie div) may break the flow o
 ### Structure
 ```html
 <bonaparte-dropdown
-  position=[top|bottom][left|right] ?
-  handler=[querySelector] ?
+  position
+  handler
 >
   <1st-child content />
 
