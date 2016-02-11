@@ -18,6 +18,8 @@ All elements and text styled with Napoleon align on a baseline grid. This allows
 
 The baseline grid is defined as `1rem`. Napoleon defines `1rem` as `12px` by default.
 
+> Toggle the grid in the top left corner in the [kitchen sink](http://bonaparte.github.io/theme-napoleon/examples/kitchen-sink.html).
+
 #### Namespaced
 
 Napoleon doesn't apply any styles to any HTML elements by default.
