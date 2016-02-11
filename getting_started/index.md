@@ -1,10 +1,9 @@
 # Getting Started
 
-The easiest way to get your hands dirty is to start with one of the three starter kits:
+The easiest way to get your hands dirty is to start with one of the starter kits:
 
 * [Starter Vanilla](http://github.com/bonaparte/starter-vanilla)<br>*Creates a basic page using Bonaparte components without any framework.*
 * [Starter React](http://github.com/bonaparte/starter-react)<br>*Creates a basic page using Bonaparte components and the React framework.*
-* [Starter Angular](http://github.com/bonaparte/starter-angular)<br>*Creates a basic page using Bonaparte components and the Angular framework.*
 
 Each starter includes all Bonaparte components and the Napoleon theme ([Napoleon Build](http://github.com/bonaparte/build-napoleon)).
 
