@@ -14,7 +14,7 @@ There can only be one panel open at a time. Clicking outside of a panel or openi
 </bonaparte-panel>
 ```
 
-##### Attributes
+#### Attributes
 Name | Values | Default | Description 
 :--------- | :--- | :------ | :----------
 __position__ | `left`<br>`top`<br>`right`<br>`bottom` | `left` | Defines the position and direction of the panel within its parent element.
