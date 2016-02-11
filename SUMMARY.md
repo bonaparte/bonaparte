@@ -1,6 +1,7 @@
 # Summary
 
 * [About](README.md)
+    * [Github Organization](http://github.com/bonaparte) 
 * [Getting Started](getting_started/index.md)
 * [Components](components/index.md)
    * [<bonaparte-button>](components/bonaparte-button.md)
