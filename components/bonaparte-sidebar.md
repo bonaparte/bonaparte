@@ -9,9 +9,8 @@ The Sidebar is a UI element consisting of to two areas, a sidebar and a content 
   position
   open
 >
-
-  <1st-child sidebar />
-  <2nd-child content /> 
+  <1st-child "sidebar" >
+  <2nd-child "content" > 
   
 </bonaparte-sidebar>
 ```
