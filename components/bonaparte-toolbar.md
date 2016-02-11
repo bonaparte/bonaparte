@@ -9,13 +9,13 @@ As a highlevel component Toolbars also implements restrictions on buttons. Butto
   open
 >
 
-  <1st-child> <!-- sidebar -->
+    <1st-child> <!-- sidebar -->
   
-    <nth-child> <!-- button group -->
+        <nth-child> <!-- button group -->
   
-  </1st-child>
+    </1st-child>
   
-  <2nd-child> <!-- content --> 
+    <2nd-child> <!-- content --> 
 
 </bonaparte-toolbar>
 ```
