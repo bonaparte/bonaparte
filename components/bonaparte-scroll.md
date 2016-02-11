@@ -21,7 +21,7 @@ __scrollbar__  |  `hover`  | `hover` | Scrollbar is only visible if the user hov
  | `native` | | The native scrollbar will not be replaced and is visible.
 
 
-##### Child elements
+#### Child elements
 Index | Name |  Required | Description 
 :--------- | :--- | :------ | :-----
 __1__ | content | yes | Content that will be scrolled.
