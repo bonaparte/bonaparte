@@ -20,9 +20,11 @@ In addition to the traditional HTML elements, Napoleon also defines styles and c
 
 ### Namespaced
 
-By default Napoleon doesn't apply any styles to html elements.
+By default Napoleon doesn't apply any styles to any HTML elements.
 
-Resets and styling of base tags (`<p>`, `small`, `<h1>–<h6>`, etc) are only applied for elements within a `.napoleon` wrapper, or elements that have the `.ui` class.
+Resets and styling of base tags (`<p>`, `small`, `<h1>–<h6>`) are applied for elements within a `.napoleon` wrapper, or elements that have the `.ui` class.
+
+
 
 
 
