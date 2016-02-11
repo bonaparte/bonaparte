@@ -3,7 +3,7 @@ A Toolbar is a specialized sidebar which contains button groups. The toolbar inh
 
 In addition child elements of the sidebar are handled as button groups and spread evenly from left to right or top to bottom.
 
-### Structure
+## Structure
 ```html
 <bonaparte-toolbar
   position
