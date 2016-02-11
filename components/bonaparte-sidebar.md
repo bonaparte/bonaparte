@@ -3,7 +3,7 @@ The Sidebar is a UI element consisting of to two areas, a sidebar and a content 
 > If you plan to only have buttons in the sidebar have a look at [`<toolbar-bonaparte>`](bonaparte-toolbar.html) instead.
 
 
-### Structure
+## Structure
 ```html
 <bonaparte-sidebar
   position
