@@ -7,4 +7,4 @@ Bonaparte Components don't come with any design by default. Themes can be used t
 
 ### Currently available Themes:
 
-- [Napoleon](themes/napoleon.html)
+- [Napoleon](napoleon.html)
