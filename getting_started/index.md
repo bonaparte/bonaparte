@@ -24,7 +24,7 @@ To include all Bonaparte Components:
 ```
 
 > Creating your own custom build to include only a subset of components is simple as well!<br>
-Learn more: [4.1 Custom Build](advanced/custom-build.md)
+Learn more: [4.1 Custom Build](/advanced/custom_build.html)
 
 ## Use a single Bonaparte component in your project
 Each component can also be used separately:
