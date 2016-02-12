@@ -22,7 +22,7 @@ Compatible with all modern browsers and IE10 up.
 
 ## Learn more about:
 
-#### [How To Get Started](getting-started/index.html)
+#### [How To Get Started](getting_started/index.html)
 #### [Bonaparte Components](components/index.html)
 #### [Themes](themes/index.html)
 
