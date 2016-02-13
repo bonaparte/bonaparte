@@ -1,6 +1,16 @@
 {
   "name": "bonaparte",
   "version": "0.0.1",
+	"homepage" : "http://bonaparte.io",
+	"description" : "UX Front End Framework",
+	"author": {
+		"name" : "Philipp Adrian",
+		"email" : "hello@philippadrian.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/bonaparte/core.git"
+	},
   "dependencies": {
     "custom-event-polyfill": "^0.2.2",
     "document-register-element": "^0.4.5",
@@ -20,5 +30,16 @@
     "postcss-loader": "^0.8.0",
     "sass-loader": "^3.1.2",
     "webpack": "^1.12.13"
-  }
+  },
+	"keywords": [
+    "bonaparte",
+		"ux",
+		"ui",
+		"library",
+		"framework",
+		"webcomponents",
+		"component",
+		"front-end"
+  ],
+  "license": "ISC"
 }
