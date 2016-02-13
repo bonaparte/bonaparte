@@ -49,7 +49,6 @@ CSS Selector defining the elements this button affects
 ___[attribute]:___ An attribute on the target element.<br>
 Defines an attribute value this button will set on the target element when it is triggered by the action.
 
-
 #### `toggle`
 Allows the button to restore the targets state when clicked a second time.<br>
 _Default: `false`_<br> 
