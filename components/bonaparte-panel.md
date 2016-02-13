@@ -30,12 +30,12 @@ Defines the position of the panel relative to it's parent container.<br>
 ## Events
 
 #### `bonaparte.panel.open`
-Triggers when a panel opens.
+Triggers when the panel opens.
 
 - _Source `<bonaparte-panel>`_<br>
 - _Bubbles __Yes___
 
 #### `bonaparte.panel.close`
-Triggers when a panel closes.<br>
+Triggers when the panel closes.<br>
 - _Source `<bonaparte-panel>`_<br>
 - _Bubbles __Yes___
