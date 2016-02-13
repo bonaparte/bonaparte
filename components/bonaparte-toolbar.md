@@ -17,7 +17,7 @@ The toolbar inherits all the functionality from [`<bonaparte-sidebar>`](bonapart
 
 </bonaparte-toolbar>
 ```
-
+---
 
 #### `<1st-child>` Toolbar
 Place on one side of the _content_ according to the `sidebar` attribute.
