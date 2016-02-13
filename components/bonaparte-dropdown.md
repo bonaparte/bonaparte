@@ -20,7 +20,6 @@ Container which is placed along one edge of `<bonaprate-dropdown>` and is only v
 
 ## Attributes
 
-
 #### `action`
 HTMLEvent that _opens_ the dropdown. (sets `open=true`)<br>
 _Default: `click`_
