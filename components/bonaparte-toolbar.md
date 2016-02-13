@@ -43,14 +43,14 @@ Defines the position of the toolbar relative to the _content_ area.<br>
 
 ## Events
 
-#### `bonaparte.sidebar.open`
-Triggers when the sidebar opens.
+#### `bonaparte.toolbar.open`
+Triggers when the toolbar opens.
 
 - _Source `<bonaparte-sidebar>`_<br>
 - _Bubbles __Yes___
 
-#### `bonaparte.sidebar.close`
-Triggers when the sidebar closes.<br>
+#### `bonaparte.toolbar.close`
+Triggers when the toolbar closes.<br>
 - _Source `<bonaparte-sidebar>`_<br>
 - _Bubbles __Yes___
 
