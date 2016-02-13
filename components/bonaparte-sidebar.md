@@ -39,15 +39,15 @@ Defines the position of the sidebar relative to the _content_ area.<br>
 
 ## Events
 
-#### `bonaparte.panel.open`
-Triggers when a panel opens.
+#### `bonaparte.sidebar.open`
+Triggers when the sidebar opens.
 
-- _Source `<bonaparte-panel>`_<br>
+- _Source `<bonaparte-sidebar>`_<br>
 - _Bubbles __Yes___
 
-#### `bonaparte.panel.close`
-Triggers when a panel closes.<br>
-- _Source `<bonaparte-panel>`_<br>
+#### `bonaparte.sidebar.close`
+Triggers when the sidebar closes.<br>
+- _Source `<bonaparte-sidebar>`_<br>
 - _Bubbles __Yes___
 
 
