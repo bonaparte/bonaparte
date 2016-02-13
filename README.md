@@ -1,5 +1,7 @@
 # < bonaparte-button >
 
+[![npm version](https://badge.fury.io/js/bonaparte-button.svg)](http://badge.fury.io/js/bonaparte-button)
+
 The button component is a tool to manipulate attributes on HTML elements. 
 
 A button defines _target-attributes_ which it updates on the _target_ element when its action is triggered.
