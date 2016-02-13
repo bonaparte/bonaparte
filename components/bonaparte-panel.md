@@ -39,8 +39,3 @@ Triggers when a panel opens.
 Triggers when a panel closes.<br>
 - _Source: `<bonaparte-panel>`_<br>
 - _Bubbles: Yes_
-
-Name | Target | Bubbles | Description 
-:--------- | :--- | :------ | :------
-__bonaparte.panel.open__ | `<bonaparte-panel>` | yes | Triggers when a panel opens.
-__bonaparte.panel.close__ | `<bonaparte-panel>` | yes | Triggers when a panel closes.
