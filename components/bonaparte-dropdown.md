@@ -22,10 +22,18 @@ Container which is placed along one edge of `<bonaprate-dropdown>` and is only v
 
 
 #### `action`
-Defines if the action-event bubbels up the DOM<br>
-_Default: `true`_<br>
-_Values: `true` `false`_<br>
+HTMLEvent that _opens_ the dropdown. (sets `open=true`)<br>
+_Default: `click`_
 
+
+#### `handler`
+CSS Selector to specify which element within `<bonaparte-dropdown>` will trigger the action.<br>
+_Default: By default the whole `<bonaparte-dropdown>` tag is the handler_
+
+#### `open`
+Defines if the _dropdown content_ is visible or not.<br>
+_Values: `false` `true`_<br>
+_Default: `false`_
 
 
 Name | Values | Default | Description 
