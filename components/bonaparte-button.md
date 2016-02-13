@@ -34,7 +34,7 @@ _Default: `active`_
 
 #### `bubbles`
 Defines if the action-event bubbels up the DOM<br>
-_Default: `true`_
+_Default: `true`_<br>
 _Values: `true` `false`_<br>
 
 #### `shortcut`
