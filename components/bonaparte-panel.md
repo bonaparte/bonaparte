@@ -31,7 +31,8 @@ _Values: `top` `right` `bottom` `left`_
 
 #### `bonaparte.panel.open`
 Triggers when a panel opens.
-_Source: `<bonaparte-panel>`_<b
+_Source: `<bonaparte-panel>`_<br>
+_Bubbles: Yes_
 
 #### `bonaparte.panel.close`
 Triggers when a panel closes.<br>
