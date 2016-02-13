@@ -1,0 +1,21 @@
+{
+    "title": "Bonaparte",
+    "description": "UX Front-End Framework",
+    "plugins": [
+        "edit-link",
+        "github",
+        "addcssjs"
+    ],
+    "pluginsConfig": {
+        "edit-link": {
+            "base": "https://github.com/greenish/bonaparte/blob/gh-pages/",
+            "label": "Edit This Page"
+        },
+        "github": {
+            "url": "http://github.com/bonaparte/"
+        },
+        "addcssjs": {
+            "js": ["js/tweaks.js"]
+        }
+    }
+}

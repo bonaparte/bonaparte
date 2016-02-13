@@ -1,0 +1,21 @@
+/* CSS for website */
+.book .book-summary ul.summary li span {
+    cursor: default;
+    opacity: 1;
+    filter: alpha(opacity=100);
+    font-style:italic;
+}
+
+ul.summary > .chapter > a,
+ul.summary > .chapter > span {
+    font-weight:bold;
+}
+
+ul.summary > li  a.custom-link {
+    display:none !important;
+}
+
+ul.summary > li  a.gitbook-link {
+    margin-bottom:7px;
+}
+

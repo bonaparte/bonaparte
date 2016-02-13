@@ -1,19 +1,21 @@
 {
-  "name": "bonaparte",
+  "name": "bonaparte-io",
   
   "version": "0.0.1",
   
   "author": {
     "name" : "Philipp Adrian",
     "email" : "philipp.adrian@dowjones.com",
+    "company" : "Dow Jones & Co.",
+    "website" : "http://www.bonaparte.io"
   },
 
-  "description": "UX Framework",
+  "description": "UX Frontend Framework",
   
   "license" :"MIT",
 
   "repository": {
     "type": "git",
-    "url": "https://github.com/greenish/bonaparte.git"
+    "url": "https://github.com/bonaparte/bonaparte.io.git"
   }
 }
