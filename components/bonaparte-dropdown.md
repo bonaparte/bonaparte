@@ -32,8 +32,14 @@ _Default: By default the whole `<bonaparte-dropdown>` tag is the handler_
 
 #### `open`
 Defines if the _dropdown content_ is visible or not.<br>
-_Values: `false` `true`_<br>
-_Default: `false`_
+_Default: `false`_<br>
+_Values: `false` `true`_
+
+
+#### `position`
+Defines the position of the _dropdown content_ relative to `<bonaparte-dropedown>`. The first value defines the side the content appears on. The second value defines the edge the content aligns to.<br>
+_Default: `bottom left`_<br>
+_Values: `top` `right` `bottom` `left` `top right` `top left` `right top` `right bottom` `bottom left` `bottom right` `left top` `left bottom`
 
 
 Name | Values | Default | Description 
