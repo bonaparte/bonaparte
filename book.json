@@ -8,7 +8,7 @@
     ],
     "pluginsConfig": {
         "edit-link": {
-            "base": "https://github.com/bonaparte/bonaparte.io/blob/gh-pages/",
+            "base": "https://github.com/bonaparte/bonaparte.io/tree/master/",
             "label": "Edit This Page"
         },
         "github": {
