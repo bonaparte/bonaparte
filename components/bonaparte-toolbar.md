@@ -22,6 +22,9 @@ The toolbar inherits all the functionality from [`<bonaparte-sidebar>`](bonapart
 #### `<1st-child>` Sidebar
 Place on one side of the _content_ according to the `sidebar` attribute.
 
+#### `<1st-child> <nth-child>` Group
+Place on one side of the _content_ according to the `sidebar` attribute.
+
 #### `<2nd-child>` Content
 Holds the main content. The sidebar is placed around this element.
 
