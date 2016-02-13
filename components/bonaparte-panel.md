@@ -18,8 +18,8 @@ There can only be one panel open at a time. Clicking outside of a panel or openi
 
 #### `open`
 Defines if the panel is visible or not.<br>
-- _Default: `false`_<br>
-- _Values: `false` `true`_
+- _Default `false`_<br>
+- _Values `false` `true`_
 
 
 #### `position`
