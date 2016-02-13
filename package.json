@@ -1,24 +1,35 @@
 {
   "name": "bonaparte-draggable",
   "version": "0.0.1",
+	"description" : "Bonaparte Component",
+	"homepage":"http://bonaparte.io",
+	"author": {
+		"name" : "Philipp Adrian",
+		"email" : "hello@philippadrian.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/bonaparte/bonaparte-draggable.git"
+	},
 
   "dependencies" : {
-    "bonaparte" : "git+https://bonaparte-read:1437a4a436df422163cb58030e6fc8ab570c11e1@github.com/bonaparte/core.git#gh-pages",
-    "mousetrap" : "^1.5.3"
+    "bonaparte" : "^0.0.2"
   },
 
   "main":"bonaparte.build.js",
 
   "devDependencies": {
-    "webpack" : "^1.11.0",
-    "css-loader" : "^0.16.0",
-    "less-loader" : "^2.2.0",
-    "less" : "^2.3.1",
-    "sass-loader" : "^2.0.1",
-    "node-sass" : "^3.3.2",
-    "extract-text-webpack-plugin" : "0.8.2",
-    "autoprefixer-loader" : "^2.0.0",
-    "file-loader" : "^0.8.4"
+		"autoprefixer": "^6.3.2",
+    "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
+    "less": "^2.6.0",
+    "less-loader": "^2.2.2",
+    "node-sass": "^3.4.2",
+    "postcss-discard-duplicates": "^2.0.1",
+    "postcss-loader": "^0.8.0",
+    "sass-loader": "^3.1.2",
+    "webpack": "^1.12.13"
   },
 
   "scripts": {
@@ -26,8 +37,16 @@
     "build-prod" : "webpack -p",
     "watch" : "webpack --progress --colors --watch"
   },
-
-  "engines": {
-    "node": ">=0.12.x"
-  }
+	"keywords": [
+    "bonaparte",
+		"bonaparte-component",
+		"ux",
+		"ui",
+		"library",
+		"framework",
+		"webcomponents",
+		"component",
+		"front-end"
+  ],
+  "license": "ISC"
 }
