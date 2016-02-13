@@ -24,7 +24,6 @@ On activation, the button syncs all the _target-attributes_ with the attibutes o
 ```
 ## Attributes
 
-
 #### `action`
 HTMLEvent that triggers the button<br>
 _Default: `click`_
