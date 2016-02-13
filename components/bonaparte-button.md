@@ -39,7 +39,7 @@ Defines if the action-event bubbels up the DOM<br>
 
 #### `shortcut`
 Keyboard shortcut to trigger this button.<br>
-_Values: `k` `command+shift+k` `command+k enter`, See: [Mousetrap](https://craig.is/killing/mice)_
+- _Values: `k` `command+shift+k` `command+k enter`, See: [Mousetrap](https://craig.is/killing/mice)_
 
 #### `target`
 CSS Selector defining the elements this button affects
