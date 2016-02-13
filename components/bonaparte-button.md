@@ -45,7 +45,8 @@ _Values: `k` `command+shift+k` `command+k enter`, See: [Mousetrap](https://craig
 CSS Selector defining the elements this button affects
 
 #### `target-[attribute]`
-___[attribute]:___ An attribute on the target element.<br>
+___[attribute]:___ An attribute on the target element.
+
 Defines an attribute value this button will set on the target element when it is triggered by the action.
 
 #### `toggle`
