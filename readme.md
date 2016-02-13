@@ -1,15 +1,5 @@
 # Bonaparte Build
 
-[![npm version](https://badge.fury.io/js/bonaparte-build.svg)](http://badge.fury.io/js/bonaparte-build)
-
-- [About](#about)
-- [Basic Use](#basic-use)
-- [Examples](#examples)
-- [Included Bonaparte Components](#included-bonaparte-components)
-- [Development](#development)
-
-## About
-
 This is a pure [Bonaparte](https://github.com/bonaparte) build without any theme.
 
 Learn more: [bonaparte.io](http://www.bonaparte.io/getting_started/index.html)
