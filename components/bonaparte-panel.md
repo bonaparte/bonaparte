@@ -30,7 +30,7 @@ _Values: `top` `right` `bottom` `left`_
 ## Events
 
 #### `bonaparte.panel.open`
-Triggers when a panel opens.
+Triggers when a panel opens.<br>
 _Source: `<bonaparte-panel>`_<br>
 _Bubbles: Yes_
 
