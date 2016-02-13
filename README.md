@@ -1,4 +1,7 @@
 # < bonaparte-sidebar >
+
+[![npm version](https://badge.fury.io/js/bonaparte-sidebar.svg)](http://badge.fury.io/js/bonaparte-sidebar)
+
 The sidebar component divides the space into two areas: _sidebar_ and _content_. The *sidebar* can be positioned on either side of the *content*. 
 As opposed to the panel, the sidebar does not overlay the content but pushes it. There can be multiple sidebars open at the same time and they can be nested.
 
