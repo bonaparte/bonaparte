@@ -1,23 +1,59 @@
 # < bonaparte-toolbar >
-A Toolbar is a specialized sidebar which contains button groups. The toolbar inherits all the functionality from [`<bonaparte-sidebar>`](#-bonaparte-sidebar-). In addition child elements of the sidebar are handled as button groups and spread evenly from left to right or top to bottom.
-As a highlevel component Toolbars also implements restrictions on buttons. Buttons within a toolbar can only _target_ child elements of the `<bonaparte-toolbar>` tag. They can not _target_ parent elements of the toolbar.
 
+[![npm version](https://badge.fury.io/js/bonaparte-toolbar.svg)](http://badge.fury.io/js/bonaparte-toolbar)
+
+The toolbar component is a specialized [bonaparte sidebar](bonaparte-sidebar.html) which contains button groups. 
+
+The toolbar inherits all the functionality from [`<bonaparte-sidebar>`](bonaparte-sidebar.html). In addition child elements of the _sidebar_ are handled as _ button groups_ and spread evenly from left to right / top to bottom.
+
+## Structure
 ```html
 <bonaparte-toolbar
-  extends:sidebar
+  open
+  position
 >
-
-  <1st-child sidebar>
-    <nth-child button-group>
-
-  <2nd-child content /> 
+    <1st-child> <!-- toolbar -->
+        <nth-child> <!-- group -->
+    </1st-child>
+    
+    <2nd-child> <!-- content -->
 
 </bonaparte-toolbar>
 ```
+---
 
-##### Child elements
-Index | Name |  Required | Description 
-:--------- | :--- | :------ | :-----
-__1__ | sidebar | yes | Will be place according to the _sidebar_ attribute.
-__1.x__ | button-group | (yes) | All direct children of the _sidebar_ are handled as button groups and spread evenly within the sidebar.
-__2__ | content | yes | Holds the main content. The sidebar is placed around this element.
+#### `<1st-child>` Toolbar
+Place on one side of the _content_ according to the `sidebar` attribute.
+
+#### `<1st-child> <nth-child>` Group
+Each child of the toolbar is considered a button group. Groups are spread out evenly long the toolbar.
+
+#### `<2nd-child>` Content
+Holds the main content. The toolbar is placed around this element.
+
+## Attributes
+
+#### `open`
+Defines if the toolbar is open/visible.<br>
+- _Default `true`_<br>
+- _Values `false` `true`_
+
+
+#### `position`
+Defines the position of the toolbar relative to the _content_ area.<br>
+- _Default `left`_<br>
+- _Values `top` `right` `bottom` `left`_
+
+## Events
+
+#### `bonaparte.toolbar.open`
+Triggers when the toolbar opens.
+
+- _Source `<bonaparte-toolbar>`_<br>
+- _Bubbles __Yes___
+
+#### `bonaparte.toolbar.close`
+Triggers when the toolbar closes.<br>
+- _Source `<bonaparte-toolbar>`_<br>
+- _Bubbles __Yes___
+
