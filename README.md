@@ -1,4 +1,7 @@
 # < bonaparte-toolbar >
+
+[![npm version](https://badge.fury.io/js/bonaparte-toolbar.svg)](http://badge.fury.io/js/bonaparte-toolbar)
+
 The toolbar component is a specialized [bonaparte sidebar](bonaparte-sidebar.html) which contains button groups. 
 
 The toolbar inherits all the functionality from [`<bonaparte-sidebar>`](bonaparte-sidebar.html). In addition child elements of the _sidebar_ are handled as _ button groups_ and spread evenly from left to right / top to bottom.
