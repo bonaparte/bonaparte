@@ -11,7 +11,7 @@ The scroll component is used to implement scrolling in a container.
 
 </bonaparte-scroll>
 ```
-
+---
 
 #### `<1st-child>` Scrolling content
 Content that will be scrolled.
