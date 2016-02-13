@@ -4,38 +4,5 @@ var bp = require("bonaparte");
 // Public
 
 module.exports = bp.tag.create("toolbar", [
-  require("bonaparte-sidebar/bonaparte.js"),
-  toolbar
+  require("bonaparte-sidebar/bonaparte.js")
 ]);
-
-///////////////////////////////////////////////////////////////////////////////
-function toolbar(tag){
-
-  // bp.tag.DOMReady(initializeButtons);
-
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-
-  function initializeButtons(){
-    var groups = tag.firstElementChild.children;
-    var buttons=[];
-    for(var i=0; i<  groups.length; i++) {
-      for(var k=0; k<groups[i].children.length; k++) {
-
-        if(groups[i].children[k].nodeName.toUpperCase() !== "BONAPARTE-BUTTON")
-          buttons.push(groups[i].children[k]);
-      }
-
-    }
-
-    for(var i = 0; i< buttons.length; i++){
-      require("bonaparte-button/bonaparte.js").initialize(buttons[i]);
-    }
-
-
-  }
-///////////////////////////////////////////////////////////////////////////////
-
-}
-
-///////////////////////////////////////////////////////////////////////////////
