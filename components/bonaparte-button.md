@@ -35,18 +35,28 @@ _Default: `active`_
 
 #### `bubbles`
 Defines if the action-event bubbels up the DOM<br>
-_Values: `true` `false`_<br>
 _Default: `true`_
-
-#### `bubbles`
-Defines if the action-event bubbels up the DOM<br>
 _Values: `true` `false`_<br>
-_Default: `true`_
 
 #### `shortcut`
 Keyboard shortcut to trigger this button.<br>
-_Values: `command+shift+k` `command+k enter`, See: [Mousetrap](https://craig.is/killing/mice)_<br>
-_Default: `true`_
+_Values: `k` `command+shift+k` `command+k enter`, See: [Mousetrap](https://craig.is/killing/mice)_
+
+#### `target`
+CSS Selector defining the elements this button affects
+
+#### `target-[attribute]`
+___[attribute]:___ An attribute on the target element.<br>
+Defines an attribute value this button will set on the target element when it is triggered by the action.
+
+
+#### `toggle`
+Allows the button to restore the targets state when clicked a second time.<br>
+_Default: `false`_<br> 
+_Values:<br> 
+`false`: Clicking the button again will set the button state again.<br>
+`true`: Clicking the button again will revert the elements state.<br> 
+`attribute, attribute`: Comma separated list of attributes that should toggle_ 
 
 
 Name | Values | Default | Description 
