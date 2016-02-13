@@ -21,7 +21,7 @@ Container which is placed along one edge of `<bonaprate-dropdown>` and is only v
 ## Attributes
 
 
-#### `bubbles`
+#### `action`
 Defines if the action-event bubbels up the DOM<br>
 _Default: `true`_<br>
 _Values: `true` `false`_<br>
