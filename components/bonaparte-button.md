@@ -22,7 +22,33 @@ On activation, the button syncs all the _target-attributes_ with the attibutes o
 >
 </bonaparte-button>
 ```
-#### Attributes
+## Attributes
+
+
+#### `action`
+HTMLEvent that triggers the button<br>
+_Default: `click`_
+
+#### `active-class`
+Class to be added when all _target-attributes_ match the attributes on the target.<br>
+_Default: `active`_
+
+#### `bubbles`
+Defines if the action-event bubbels up the DOM<br>
+_Values: `true` `false`_<br>
+_Default: `true`_
+
+#### `bubbles`
+Defines if the action-event bubbels up the DOM<br>
+_Values: `true` `false`_<br>
+_Default: `true`_
+
+#### `bubbles`
+Keyboard shortcut to trigger this button.<br>
+_Values: `true` `false`_<br>
+_Default: `true`_
+
+
 Name | Values | Default | Description 
 :--------- | :--- | :------ | :----------
 __action__ | _Event_ |  | HTMLEvent that triggers the button.
