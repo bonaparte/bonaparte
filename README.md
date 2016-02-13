@@ -1,4 +1,7 @@
 # < bonaparte-scroll >
+
+[![npm version](https://badge.fury.io/js/bonaparte-scroll.svg)](http://badge.fury.io/js/bonaparte-scroll)
+
 The scroll component is used to implement scrolling in a container.
 
 ## Structure
