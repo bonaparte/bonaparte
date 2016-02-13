@@ -2,7 +2,7 @@
   "name": "bonaparte",
   "version": "0.0.2",
 	"homepage" : "http://bonaparte.io",
-	"description" : "UX Front End Framework",
+	"description" : "UX Front-End Framework Core",
 	"author": {
 		"name" : "Philipp Adrian",
 		"email" : "hello@philippadrian.com"
