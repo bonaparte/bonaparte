@@ -18,7 +18,14 @@ As opposed to the panel, the sidebar does not overlay the content but pushes it.
 </bonaparte-sidebar>
 ```
 
-#### Attributes
+#### `<1st-child>` Sidebar
+Place on one side of the _content_ according to the `sidebar` attribute.
+
+#### `<2nd-child>` Content
+Holds the main content. The sidebar is placed around this element.
+
+
+## Attributes
 Name | Values | Default | Description 
 :--------- | :--- | :------ | :---------
 __position__  |   `left`<br>`top`<br>`right`<br>`bottom` | `left` | Defines the position of the sidebar relative to its content area.
