@@ -12,14 +12,13 @@
 	},
 
   "dependencies" : {
-		"bonaparte": "^0.0.1",
+		"bonaparte": "^0.0.2",
     "bonaparte-button": "^0.0.1",
     "bonaparte-draggable": "^0.0.1",
     "bonaparte-dropdown": "^0.0.1",
     "bonaparte-panel": "^0.0.1",
     "bonaparte-scroll": "^0.0.1",
     "bonaparte-sidebar": "^0.0.1",
-    "bonaparte-theme-napoleon": "^0.0.1",
     "bonaparte-toolbar": "^0.0.1"
   },
 
