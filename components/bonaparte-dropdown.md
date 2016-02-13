@@ -5,9 +5,9 @@ The cropdown component is a temporary UI element that appears along one edge of 
 ```html
 <bonaparte-dropdown
   action
-  position
-  open
   handler
+  open
+  position
 >
   <1st-child> <!-- dropdown content -->
  
@@ -19,6 +19,13 @@ Container which is placed along one edge of `<bonaprate-dropdown>` and is only v
 
 
 ## Attributes
+
+
+#### `bubbles`
+Defines if the action-event bubbels up the DOM<br>
+_Default: `true`_<br>
+_Values: `true` `false`_<br>
+
 
 
 Name | Values | Default | Description 
