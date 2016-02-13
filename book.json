@@ -8,7 +8,7 @@
     ],
     "pluginsConfig": {
         "edit-link": {
-            "base": "https://github.com/greenish/bonaparte/blob/gh-pages/",
+            "base": "https://github.com/bonaparte/bonaparte.io/blob/gh-pages/",
             "label": "Edit This Page"
         },
         "github": {
