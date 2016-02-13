@@ -24,7 +24,7 @@ bonaparte-scroll > :nth-child(1) {
 bonaparte-scroll > :nth-child(1):focus {
   outline: thin dotted;
 }
-@supports (-webkit-appearance: none) {
+@supports (-webkit-appearance:none) {
   bonaparte-scroll > :nth-child(1) {
     -webkit-transform: translateZ(0);
   }
@@ -39,7 +39,7 @@ bonaparte-scroll > .scrollbar {
   opacity: .01;
   z-index: 0;
   -webkit-transition: .2s;
-          transition: .2s;
+  transition: .2s;
   border-radius: 5px;
 }
 bonaparte-scroll > .scrollbar > :first-child {
