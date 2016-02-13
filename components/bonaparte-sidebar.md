@@ -24,6 +24,32 @@ Place on one side of the _content_ according to the `sidebar` attribute.
 #### `<2nd-child>` Content
 Holds the main content. The sidebar is placed around this element.
 
+## Attributes
+
+#### `open`
+Defines if the panel is visible or not.<br>
+- _Default `false`_<br>
+- _Values `false` `true`_
+
+
+#### `position`
+Defines the position of the sidebar relative to the _content_ area.<br>
+- _Default `left`_<br>
+- _Values `top` `right` `bottom` `left`_
+
+## Events
+
+#### `bonaparte.panel.open`
+Triggers when a panel opens.
+
+- _Source `<bonaparte-panel>`_<br>
+- _Bubbles __Yes___
+
+#### `bonaparte.panel.close`
+Triggers when a panel closes.<br>
+- _Source `<bonaparte-panel>`_<br>
+- _Bubbles __Yes___
+
 
 ## Attributes
 Name | Values | Default | Description 
