@@ -22,8 +22,8 @@ Content that will be scrolled.
 #### `scrollbar`
 Allows the button to restore the targets state when clicked a second time.
 
-- _Default: `hover`_
-- _Values:_ 
+- _Default `hover`_
+- _Values_ 
   - _`hover`: Scroll bar is only visible if the user hover over the scrollable area._
   - _`visible`: Scroll bar is always visible._ 
   - _`hidden`: Scroll bar is never visible._ 
