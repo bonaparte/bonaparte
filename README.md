@@ -1,27 +1,33 @@
 # < bonaparte-scroll >
-The scroll component can be used to very easily implement scrolling in a container.
 
+[![npm version](https://badge.fury.io/js/bonaparte-scroll.svg)](http://badge.fury.io/js/bonaparte-scroll)
+
+The scroll component is used to implement scrolling in a container.
+
+## Structure
 ```html
-<!-- parent element must not be position:static -->
+<!-- Position relative to parent element. Parent must not be position:static. -->
 <bonaparte-scroll
   scrollbar
 >
-
-  <1st-child content />
+  <1st-child> <!-- scrolling content -->
 
 </bonaparte-scroll>
 ```
+---
 
-##### Attributes
-Name | Values | Default | Description 
-:--------- | :--- | :------ | :---------
-__scrollbar__  |  `hover`  | `hover` | Scrollbar is only visible if the user hover over the scrollable area. 
- | `visible`  | | Scrollbar is always visible.
- | `hidden` | | Scrollbar is never visible
- | `native` | | The native scrollbar will not be replaced and is visible.
+#### `<1st-child>` Scrolling content
+Content that will be scrolled.
 
 
-##### Child elements
-Index | Name |  Required | Description 
-:--------- | :--- | :------ | :-----
-__1__ | content | yes | Content that will be scrolled.
+## Attributes
+
+#### `scrollbar`
+Allows the button to restore the targets state when clicked a second time.
+
+- _Default `hover`_
+- _Values_ 
+  - _`hover`: Scroll bar is only visible if the user hover over the scrollable area._
+  - _`visible`: Scroll bar is always visible._ 
+  - _`hidden`: Scroll bar is never visible._ 
+  - _`native`: The native scroll bar will not be replaced and is visible._ 
