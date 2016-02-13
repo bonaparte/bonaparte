@@ -7,21 +7,36 @@ There can only be one panel open at a time. Clicking outside of a panel or openi
 ## Structure
 ```html
 <!-- Position relative to parent element. Parent must not be position:static. -->
-<bonaparte-panel 
+<bonaparte-panel
+  open 
   position 
-  open
 >
 </bonaparte-panel>
 ```
 
 ## Attributes
-Name | Values | Default | Description 
-:--------- | :--- | :------ | :----------
-__position__ | `left`<br>`top`<br>`right`<br>`bottom` | `left` | Defines the position and direction of the panel within its parent element.
-__open__ | `false` | `false` | Panel is not visible and moves out of its parent element.
- | `true` | | Panel is visible and moves into its parent element
+
+#### `open`
+Defines if the panel is visible or not.<br>
+_Default: `false`_<br>
+_Values: `false` `true`_
+
+
+#### `position`
+Defines the position of the panel relative to it's parent container.<br>
+_Default: `left`_<br>
+_Values: `top` `right` `bottom` `left`_
 
 ## Events
+
+#### `bonaparte.panel.open`
+Triggers when a panel opens.
+
+#### `bonaparte.panel.close`
+Triggers when a panel closes.<br>
+_Source: `<bonaparte-panel>`_<br>
+_Bubbles: Yes_
+
 Name | Target | Bubbles | Description 
 :--------- | :--- | :------ | :------
 __bonaparte.panel.open__ | `<bonaparte-panel>` | yes | Triggers when a panel opens.
