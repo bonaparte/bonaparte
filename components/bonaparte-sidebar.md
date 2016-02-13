@@ -18,6 +18,8 @@ As opposed to the panel, the sidebar does not overlay the content but pushes it.
 </bonaparte-sidebar>
 ```
 
+---
+
 #### `<1st-child>` Sidebar
 Place on one side of the _content_ according to the `sidebar` attribute.
 
