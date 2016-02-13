@@ -27,8 +27,8 @@ Holds the main content. The sidebar is placed around this element.
 ## Attributes
 
 #### `open`
-Defines if the panel is visible or not.<br>
-- _Default `false`_<br>
+Defines if the sidebar is collapsed or not<br>
+- _Default `true`_<br>
 - _Values `false` `true`_
 
 
