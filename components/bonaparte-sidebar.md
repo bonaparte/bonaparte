@@ -27,7 +27,7 @@ Holds the main content. The sidebar is placed around this element.
 ## Attributes
 
 #### `open`
-Defines if the sidebar is visible.<br>
+Defines if the sidebar is open&visible.<br>
 - _Default `true`_<br>
 - _Values `false` `true`_
 
