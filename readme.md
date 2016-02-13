@@ -1,4 +1,6 @@
-# Dow Jones Bonaparte Build
+# Bonaparte Build
+
+[![npm version](https://badge.fury.io/js/bonaparte-build.svg)](http://badge.fury.io/js/bonaparte-build)
 
 - [About](#about)
 - [Basic Use](#basic-use)
@@ -8,7 +10,9 @@
 
 ## About
 
-This is a pure [Bonaparte](https://github.com/bonaparte/bonaparte) build without any theme.
+This is a pure [Bonaparte](https://github.com/bonaparte) build without any theme.
+
+Learn more: [bonaparte.io](http://bonaparte.io)
 
 
 ## Basic Use
