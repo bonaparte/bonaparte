@@ -9,7 +9,7 @@ The toolbar inherits all the functionality from [`<bonaparte-sidebar>`](bonapart
   open
   position
 >
-    <1st-child> <!-- sidebar -->
+    <1st-child> <!-- toolbar -->
         <nth-child> <!-- group -->
     </1st-child>
     
@@ -19,25 +19,25 @@ The toolbar inherits all the functionality from [`<bonaparte-sidebar>`](bonapart
 ```
 
 
-#### `<1st-child>` Sidebar
+#### `<1st-child>` Toolbar
 Place on one side of the _content_ according to the `sidebar` attribute.
 
 #### `<1st-child> <nth-child>` Group
-Place on one side of the _content_ according to the `sidebar` attribute.
+Each child of the toolbar is considered a button group. Groups are spread out evenly long the toolbar.
 
 #### `<2nd-child>` Content
-Holds the main content. The sidebar is placed around this element.
+Holds the main content. The toolbar is placed around this element.
 
 ## Attributes
 
 #### `open`
-Defines if the sidebar is open/visible.<br>
+Defines if the toolbar is open/visible.<br>
 - _Default `true`_<br>
 - _Values `false` `true`_
 
 
 #### `position`
-Defines the position of the sidebar relative to the _content_ area.<br>
+Defines the position of the toolbar relative to the _content_ area.<br>
 - _Default `left`_<br>
 - _Values `top` `right` `bottom` `left`_
 
