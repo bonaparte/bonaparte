@@ -24,18 +24,18 @@ Defines if the panel is visible or not.<br>
 
 #### `position`
 Defines the position of the panel relative to it's parent container.<br>
-- _Default: `left`_<br>
-- _Values: `top` `right` `bottom` `left`_
+- _Default `left`_<br>
+- _Values `top` `right` `bottom` `left`_
 
 ## Events
 
 #### `bonaparte.panel.open`
 Triggers when a panel opens.
 
-- _Source: `<bonaparte-panel>`_<br>
-- _Bubbles: Yes_
+- _Source `<bonaparte-panel>`_<br>
+- _Bubbles Yes_
 
 #### `bonaparte.panel.close`
 Triggers when a panel closes.<br>
-- _Source: `<bonaparte-panel>`_<br>
-- _Bubbles: Yes_
+- _Source `<bonaparte-panel>`_<br>
+- _Bubbles __Yes___
