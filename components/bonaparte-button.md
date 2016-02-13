@@ -59,6 +59,9 @@ _Values:<br>
 `attribute, attribute`: Comma separated list of attributes that should toggle_ 
 
 
+#### `trigger`
+HTMLEvent that will be triggered on the _target-element_
+
 Name | Values | Default | Description 
 :--------- | :--- | :------ | :----------
 __action__ | _Event_ |  | HTMLEvent that triggers the button.
