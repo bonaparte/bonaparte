@@ -1,5 +1,7 @@
 # Bonaparte Core - API
 
+[![npm version](https://badge.fury.io/js/bonaparte.svg)](http://badge.fury.io/js/bonaparte)
+
 ```javascript
   var bp = require('bonaparte');
 ```
