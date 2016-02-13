@@ -13,12 +13,12 @@ On activation, the button syncs all the _target-attributes_ with the attibutes o
 <bonaparte-button
   action
   active-class
+  bubbles
+  shortcut
   target
   target-[attribute]
   toggle
   trigger
-  bubbles
-  shortcut
 >
 </bonaparte-button>
 ```
