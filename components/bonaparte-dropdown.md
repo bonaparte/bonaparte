@@ -4,9 +4,9 @@ The cropdown component is a temporary UI element that appears along one edge of 
 ## Structure
 ```html
 <bonaparte-dropdown
+  action
   position
   open
-  action
   handler
 >
   <1st-child> <!-- dropdown content -->
