@@ -18,26 +18,27 @@ There can only be one panel open at a time. Clicking outside of a panel or openi
 
 #### `open`
 Defines if the panel is visible or not.<br>
-_Default: `false`_<br>
-_Values: `false` `true`_
+- _Default: `false`_<br>
+- _Values: `false` `true`_
 
 
 #### `position`
 Defines the position of the panel relative to it's parent container.<br>
-_Default: `left`_<br>
-_Values: `top` `right` `bottom` `left`_
+- _Default: `left`_<br>
+- _Values: `top` `right` `bottom` `left`_
 
 ## Events
 
 #### `bonaparte.panel.open`
-Triggers when a panel opens.<br>
-_Source: `<bonaparte-panel>`_<br>
-_Bubbles: Yes_
+Triggers when a panel opens.
+
+- _Source: `<bonaparte-panel>`_<br>
+- _Bubbles: Yes_
 
 #### `bonaparte.panel.close`
 Triggers when a panel closes.<br>
-_Source: `<bonaparte-panel>`_<br>
-_Bubbles: Yes_
+- _Source: `<bonaparte-panel>`_<br>
+- _Bubbles: Yes_
 
 Name | Target | Bubbles | Description 
 :--------- | :--- | :------ | :------
