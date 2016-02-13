@@ -27,7 +27,7 @@ Holds the main content. The sidebar is placed around this element.
 ## Attributes
 
 #### `open`
-Defines if the sidebar is collapsed or not<br>
+Defines if the sidebar is visible or collapsed.<br>
 - _Default `true`_<br>
 - _Values `false` `true`_
 
