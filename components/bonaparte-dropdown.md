@@ -40,10 +40,3 @@ _Values: `false` `true`_
 Defines the position of the _dropdown content_ relative to `<bonaparte-dropedown>`. The first value defines the side the content appears on. The second value defines the edge the content aligns to.<br>
 _Default: `bottom left`_<br>
 _Values: `top` `right` `bottom` `left` `top right` `top left` `right top` `right bottom` `bottom left` `bottom right` `left top` `left bottom`_
-
-
-Name | Values | Default | Description 
-:--------- | :--- | :------ | :----------
-__position__ | `top` `top left` ` top right` <br /> `right` `right top` right `bottom` <br />`bottom` `bottom left`  `bottom right`<br />`left` `left top` `left bottom`  <br />  | `left bottom` | Defines the position of the content within the toolbar. The first value indicates the which side the content will appear, the second value the the anchor edge. If the anchor edge is not specified then top or left is applyed. 
-__handler__ | querySelector |  | CSS Selector defining the elements 
-__action__  | HTML event type | click | HTMLEvent that triggers the content
