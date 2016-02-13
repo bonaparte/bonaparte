@@ -43,9 +43,9 @@ Defines if the action-event bubbels up the DOM<br>
 _Values: `true` `false`_<br>
 _Default: `true`_
 
-#### `bubbles`
+#### `shortcut`
 Keyboard shortcut to trigger this button.<br>
-_Values: `true` `false`_<br>
+_Values: `command+shift+k` `command+k enter`, See: [Mousetrap](https://craig.is/killing/mice)_<br>
 _Default: `true`_
 
 
