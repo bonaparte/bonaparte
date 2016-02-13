@@ -1,39 +1,59 @@
 {
-  "name": "bonaparte-build-pure",
+  "name": "bonaparte-build",
   "version": "0.0.1",
+	"description" : "Bonaparte Build",
+	"author": {
+		"name" : "Philipp Adrian",
+		"email" : "hello@philippadrian.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/bonaparte/bonaparte-build.git"
+	},
 
   "dependencies" : {
-    "bonaparte" : "git+https://bonaparte-read:1437a4a436df422163cb58030e6fc8ab570c11e1@github.com/bonaparte/core.git#gh-pages",
-    "bonaparte-panel" :"git+https://bonaparte-read:1437a4a436df422163cb58030e6fc8ab570c11e1@github.com/bonaparte/bonaparte-panel.git#gh-pages",
-    "bonaparte-scroll" :"git+https://bonaparte-read:1437a4a436df422163cb58030e6fc8ab570c11e1@github.com/bonaparte/bonaparte-scroll.git#gh-pages",
-    "bonaparte-button" :"git+https://bonaparte-read:1437a4a436df422163cb58030e6fc8ab570c11e1@github.com/bonaparte/bonaparte-button.git#gh-pages",
-    "bonaparte-sidebar" :"git+https://bonaparte-read:1437a4a436df422163cb58030e6fc8ab570c11e1@github.com/bonaparte/bonaparte-sidebar.git#gh-pages",
-    "bonaparte-toolbar" :"git+https://bonaparte-read:1437a4a436df422163cb58030e6fc8ab570c11e1@github.com/bonaparte/bonaparte-toolbar.git#gh-pages",
-    "bonaparte-draggable" :"git+https://bonaparte-read:1437a4a436df422163cb58030e6fc8ab570c11e1@github.com/bonaparte/bonaparte-draggable.git#gh-pages",
-    "bonaparte-dropdown" :"git+https://bonaparte-read:1437a4a436df422163cb58030e6fc8ab570c11e1@github.com/bonaparte/bonaparte-dropdown.git#gh-pages"
+		"bonaparte": "^0.0.1",
+    "bonaparte-button": "^0.0.1",
+    "bonaparte-draggable": "^0.0.1",
+    "bonaparte-dropdown": "^0.0.1",
+    "bonaparte-panel": "^0.0.1",
+    "bonaparte-scroll": "^0.0.1",
+    "bonaparte-sidebar": "^0.0.1",
+    "bonaparte-theme-napoleon": "^0.0.1",
+    "bonaparte-toolbar": "^0.0.1"
   },
 
   "main":"bonaparte.build.js",
 
   "devDependencies": {
-    "webpack" : "^1.11.0",
-    "css-loader" : "^0.16.0",
-    "less-loader" : "^2.2.0",
-    "less" : "^2.3.1",
-    "sass-loader" : "^2.0.1",
-    "node-sass" : "^3.3.2",
-    "extract-text-webpack-plugin" : "0.8.2",
-    "autoprefixer-loader" : "^2.0.0",
-    "file-loader" : "^0.8.4"
- },
-
-  "scripts": {
-    "build" : "webpack --optimize-dedupe",
-    "prod" : "webpack -p --optimize-dedupe",
-    "watch" : "webpack --progress --colors --watch --optimize-dedupe"
+		"autoprefixer": "^6.3.2",
+    "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
+    "less": "^2.6.0",
+    "less-loader": "^2.2.2",
+    "node-sass": "^3.4.2",
+    "postcss-discard-duplicates": "^2.0.1",
+    "postcss-loader": "^0.8.0",
+    "sass-loader": "^3.1.2",
+    "webpack": "^1.12.13"
   },
 
-  "engines": {
-    "node": ">=0.12.x"
-  }
+  "scripts": {
+    "build" : "webpack",
+    "build-prod" : "webpack -p",
+    "watch" : "webpack --progress --colors --watch"
+  },
+	"keywords": [
+    "bonaparte",
+		"bonaparte-build",
+		"ux",
+		"ui",
+		"library",
+		"framework",
+		"webcomponents",
+		"component",
+		"front-end"
+  ],
+  "license": "ISC"
 }
