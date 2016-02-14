@@ -2,9 +2,15 @@
 
 [![npm version](https://badge.fury.io/js/bonaparte-toolbar.svg)](http://badge.fury.io/js/bonaparte-toolbar)
 
-The toolbar component is a specialized [bonaparte sidebar](bonaparte-sidebar.html) which contains button groups. 
+The toolbar component is a specialized [bonaparte sidebar](bonaparte-sidebar.html) which contains button groups.
 
 The toolbar inherits all the functionality from [`<bonaparte-sidebar>`](bonaparte-sidebar.html). In addition child elements of the _sidebar_ are handled as _ button groups_ and spread evenly from left to right / top to bottom.
+
+
+#### Examples
+
+- [Starter](http://bonaparte.github.io/starter-vanilla)
+
 
 ## Structure
 ```html
@@ -15,7 +21,7 @@ The toolbar inherits all the functionality from [`<bonaparte-sidebar>`](bonapart
     <1st-child> <!-- toolbar -->
         <nth-child> <!-- group -->
     </1st-child>
-    
+
     <2nd-child> <!-- content -->
 
 </bonaparte-toolbar>
@@ -56,4 +62,3 @@ Triggers when the toolbar opens.
 Triggers when the toolbar closes.<br>
 - _Source `<bonaparte-toolbar>`_<br>
 - _Bubbles __Yes___
-
