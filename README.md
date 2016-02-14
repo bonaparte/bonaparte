@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/bonaparte-dropdown.svg)](http://badge.fury.io/js/bonaparte-dropdown)
 
-The cropdown component is a temporary UI element that appears along one edge of the `<bonaparte-dropdown>` tag when _open_.
+The dropdown component is a temporary UI element that appears along one edge of the `<bonaparte-dropdown>` tag when _open_.
 
 #### Examples
 
