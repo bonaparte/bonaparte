@@ -1,4 +1,29 @@
-    <style type="text/css">
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Dropdown Examples : Bonaparte</title>
+  <link href="http://bonaparte.github.io/build-napoleon/dist/bonaparte.css" rel="stylesheet"></head>
+  <body class="napoleon">
+    <bonaparte-toolbar id="toolbar" position="top" open="false">
+      <aside class="dark">
+        <div>
+          <div class="ui block" style="color:white"><a href="http://bonaparte.io">Bonaparte</a> : Dropdown Examples</div>
+        </div>
+        <div class="buttons">
+          <a href="http://github.com/bonaparte/bonaparte-dropdown" class="ui labeled button transparent"><i class="github icon"></i> Github</a>
+        </div>
+
+      </aside>
+      <bonaparte-scroll scrollbar="visible" resize="true">
+        <div>
+
+<!---------------------------------------------------------------------------->
+
+			    <style type="text/css">
 
       pre {
         background-color: #fff;
@@ -89,16 +114,16 @@
                             <i class="local-offer icon"></i>
                             Menu button
                           </bonaparte-button>
-                                 
+
                         </div>
-                                        
+
                         <bonaparte-button class="ui button marginless">
                           Example
                          <i class="more-vert icon right"></i>
                        </bonaparte-button>
                       </bonaparte-dropdown>
                  <!-- ######################################################################## -->
-        
+
                   </div>
               <h4 class="ui dividing header">Attributes</h4>
 
@@ -110,13 +135,13 @@
                          <bonaparte-button
                             class="ui button small"
                             action="click" target="bonaparte-dropdown#interactiveExample, .code_position"
-                            toggle="true" target-position="">Default 
+                            toggle="true" target-position="">Default
                           </bonaparte-button>
                          <br />
                           <bonaparte-button
                             class="ui button small"
                             action="click" target="bonaparte-dropdown#interactiveExample, .code_position"
-                            target-position="top">Top 
+                            target-position="top">Top
                           </bonaparte-button>
                           <bonaparte-button
                             class="ui button small"
@@ -148,7 +173,7 @@
                          <bonaparte-button
                             class="ui button small"
                             action="click" target="bonaparte-dropdown#interactiveExample, .code_position"
-                            toggle="true" target-position="bottom">Bottom 
+                            toggle="true" target-position="bottom">Bottom
                           </bonaparte-button>
                           <bonaparte-button
                             class="ui button small"
@@ -185,22 +210,22 @@
                          <bonaparte-button
                             class="ui button small"
                             action="click" target="bonaparte-dropdown#interactiveExample, .code_action"
-                            toggle="true" target-action="">Default 
+                            toggle="true" target-action="">Default
                           </bonaparte-button>
                          <bonaparte-button
                             class="ui button small"
                             action="click" target="bonaparte-dropdown#interactiveExample, .code_action"
-                            toggle="true" target-action="mouseover">mouseover 
+                            toggle="true" target-action="mouseover">mouseover
                           </bonaparte-button>
                          <bonaparte-button
                             class="ui button small"
                             action="click" target="bonaparte-dropdown#interactiveExample, .code_action"
-                            toggle="true" target-action="mouseenter">mouseenter 
+                            toggle="true" target-action="mouseenter">mouseenter
                           </bonaparte-button>
                     <!--      <bonaparte-button
                             class="ui button small"
                             action="click" target="bonaparte-dropdown#interactiveExample, .code_action"
-                            toggle="true" target-action="mouseenter, mouseout">mouseenter, mouseout 
+                            toggle="true" target-action="mouseenter, mouseout">mouseenter, mouseout
                           </bonaparte-button> -->
                        </p>
                          <h5 class="ui dividing header">Handler</h5>
@@ -209,7 +234,7 @@
                          <bonaparte-button
                             class="ui button small"
                             action="click" target="bonaparte-dropdown#interactiveExample, .code_handler"
-                            toggle="true" target-handler="">Default 
+                            toggle="true" target-handler="">Default
                           </bonaparte-button>
                           <bonaparte-button
                             class="ui button small"
@@ -237,7 +262,7 @@
     &lt;/bonaparte-button&gt;
   &lt;/bonaparte-dropdown&gt;
 </code></pre>
-         
+
 
 
                     <h4 class="ui dividing header">Dropdowns as Menus</h4>
@@ -267,7 +292,7 @@
                                         File four
                                       </bonaparte-button>
                                     </div>
-                                    
+
                                   <bonaparte-button class="ui button monochrome marginless">
                                    <i class="navigate-next icon right"></i>
                                     Open Recent
@@ -280,9 +305,9 @@
                           <bonaparte-button class="ui button labeled monochrome marginless">
                             Exit
                             <i class="cancel icon right"></i>
-                          </bonaparte-button>                                
+                          </bonaparte-button>
                         </div>
-                        
+
                         <bonaparte-button class="ui button marginless">
                           Menu 1
                          <i class="arrow-drop-down icon right"></i>
@@ -292,14 +317,11 @@
                       </bonaparte-button><bonaparte-button class="ui button labeled marginless">
                         Item 3
                       </bonaparte-button><bonaparte-dropdown class="menuExample" position="top right">
-                        
+
                           <bonaparte-dropdown class="menuExample" position="right" handler="input" action="focus">
                             <div class="imageList">
                               <div class="ui divided items">
                                 <div class="link item">
-                                  <div class="ui tiny image">
-                                    <img src="images/wireframe/image.png">
-                                  </div>
                                   <div class="content">
                                     <a class="header">Content Header</a>
                                     <div class="description">
@@ -308,9 +330,6 @@
                                   </div>
                                 </div>
                                 <div class="link item">
-                                  <div class="ui tiny image">
-                                    <img src="images/wireframe/image.png">
-                                  </div>
                                   <div class="content">
                                     <a class="header">Content Header</a>
                                     <div class="description">
@@ -319,9 +338,6 @@
                                   </div>
                                 </div>
                                 <div class="link item">
-                                  <div class="ui tiny image">
-                                    <img src="images/wireframe/image.png">
-                                  </div>
                                   <div class="content">
                                     <a class="header">Content Header</a>
                                     <div class="description">
@@ -340,7 +356,7 @@
                               </div>
                             </div>
                           </bonaparte-dropdown>
-                       
+
                         <bonaparte-button class="ui button marginless">
                           Menu 4
                          <i class="arrow-drop-up icon right"></i>
@@ -458,4 +474,14 @@
               </div>
             </div>
           </div>
-       
+
+<!---------------------------------------------------------------------------->
+
+
+        </div>
+      </bonaparte-scroll>
+    </bonaparte-toolbar>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+  <script src="http://bonaparte.github.io/build-napoleon/dist/bonaparte.js"></script></body>
+</html>
