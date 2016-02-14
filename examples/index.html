@@ -1,5 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Scroll Example : Bonaparte</title>
+  <link href="http://bonaparte.github.io/build-napoleon/dist/bonaparte.css" rel="stylesheet"></head>
+  <body class="napoleon" style="background-color:#f0f0f0">
+    <bonaparte-toolbar id="toolbar" position="top" open="false">
+      <aside class="dark">
+				<div>
+          <div class="ui block" style="color:white"><a href="http://bonaparte.io">Bonaparte</a> : Scroll Example</div>
+        </div>
+        <div class="buttons">
+          <a href="http://github.com/bonaparte/bonaparte-scroll" class="ui labeled button transparent"><i class="github icon"></i> Github</a>
+        </div>
+      </aside>
+      <bonaparte-scroll scrollbar="visible" resize="true">
+        <div>
 
-    <style>  
+<!---------------------------------------------------------------------------->
+
+
+    <style>
       .example {
         width: 100%;
         height: 20rem;
@@ -28,7 +52,7 @@
                 <div class="main demo ui container">
                   <div class="ui active tab" data-tab="elements">
                     <h4 class="ui dividing header">About</h4>
-                      <p>The scroll component can be used to very easily implement scrolling in a container.</br><em>Note: currently only supports horizontal scrolling</em></p>
+                      <p>The scroll component is used to implement scrolling in a container.</p><p><small>Note: Currently only supports vertical scrolling.</small></p>
                     <h4 class="ui dividing header">Example</h4>
                     <div class="example">
                       <!-- ######################################################################## -->
@@ -49,7 +73,6 @@
                     <div class="ui two column stackable grid">
                       <div class="column">
                         <h5 class="ui dividing header">Scrollbar</h5>
-                         <p class="small"><em>Optional</em> - <code>[string]</code> - Default <code>hover</code>, sets the scrollbar visibility.</p>
                          <p>
                           <bonaparte-button class="ui button small" action="click" target="bonaparte-scroll#example, .code_scrollbar" toggle="true" target-scrollbar="">Default </bonaparte-button>
                           <br/>
@@ -81,4 +104,12 @@
               </div>
             </div>
           </div>
-       
+<!---------------------------------------------------------------------------->
+
+        </div>
+      </bonaparte-scroll>
+    </bonaparte-toolbar>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+  <script src="http://bonaparte.github.io/build-napoleon/dist/bonaparte.js"></script></body>
+</html>
