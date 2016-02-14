@@ -2,14 +2,19 @@
 
 [![npm version](https://badge.fury.io/js/bonaparte-button.svg)](http://badge.fury.io/js/bonaparte-button)
 
-The button component is a tool to manipulate attributes on HTML elements. 
+The button component is a tool to manipulate attributes on HTML elements.
 
 A button defines _target-attributes_ which it updates on the _target_ element when its action is triggered.
 
 On activation, the button syncs all the _target-attributes_ with the attibutes on the _target_ elements. When all _target-attributes_ match all attributes on the _target_ elements, the *active-class* is set.
 
+#### Examples
 
-## Structure 
+- [Dropdown Example Page](http://bonaparte.github.io/bonaparte-dropdown/examples/index.html)<br>_Although the example page for `bonaparte-dropdown`, all the functionality on the page is achieved through `bonaparte-button` – There is no custom JavaScript on the page._
+- [Starter](http://bonaparte.github.io/starter-vanilla)
+
+
+## Structure
 
 ```html
 <bonaparte-button
@@ -53,14 +58,11 @@ Defines an attribute value this button will set on the target element when it is
 
 #### `toggle`
 Allows the button to restore the targets state when clicked a second time.
-- _Default `false`_ 
-- _Values_ 
+- _Default `false`_
+- _Values_
   - _`false`: Clicking the button again will set the button state again._
-  - _`true`: Clicking the button again will revert the elements state._ 
-  - _`attribute, attribute`: Comma separated list of attributes that should toggle_ 
+  - _`true`: Clicking the button again will revert the elements state._
+  - _`attribute, attribute`: Comma separated list of attributes that should toggle_
 
 #### `trigger`
 HTMLEvent that will be triggered on the _target-element_
-
-
-
