@@ -1,0 +1,23 @@
+
+/*///////////////////////////////////////////////////////////////////////////*/
+
+bonaparte-collapsible {
+
+  .bonaparte-collapsible();
+
+}
+
+/*///////////////////////////////////////////////////////////////////////////*/
+
+.bonaparte-collapsible(
+  @overrides:{.variables(){}},
+){
+
+  @overrides();
+  .variables();
+
+    &[data-open="false"],
+    &[open="false"] {
+      	height : 0;
+    }
+}   
