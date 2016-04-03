@@ -40,7 +40,7 @@ Components can require one or more (*n*) child elements.
 These components will use the first *n* children to provide functionality.
 Every child element after the *n-th* is not affected and can be anything the user wishes.
 In some cases the required children must be marked by a custom attribute specified in the documentation. In these cases the component will not use the first *n* children but the marked ones.
-```
+```html
 <bonaparte-scroll>
     <1st-child: scrollable content >
 </bonaparte-scroll>
@@ -50,7 +50,7 @@ In some cases the required children must be marked by a custom attribute specifi
 #### Custom attributes
 All customization of a components functionality is done through custom attributes.<br>
 Custom attributes are defined with and without `data-` prefix. 
-```
+```html
 <bonaparte-scroll
     scrollbar = visible|hidden|hover|native
 >
@@ -61,7 +61,7 @@ Custom attributes are defined with and without `data-` prefix.
 Components can emit custom events to notify other parts of the page about their state. <br>
 Bonaparte Events are named with the pattern: `bonaparte.tag-name.event`<br>
 Listen to events on the component or ancestor elements: 
-```
+```javascript
 document.getElementById('myBonaparteComponent').addEventListener('bonaparte.scroll.scrolling', handler);
 ```
 
@@ -80,15 +80,15 @@ There are two types of components:
 
 #### 1. Basic components
 Basic Components provide simple structure and minimal functionality to be as versatile as possible:
-  - [< bonaparte-dropdown >](https://github.com/bonaparte/bonaparte-dropdown)
-  - [< bonaparte-panel >](https://github.com/bonaparte/bonaparte-panel)
-  - [< bonaparte-scroll  >](https://github.com/bonaparte/bonaparte-scroll)
-  - [< bonaparte-sidebar  >](https://github.com/bonaparte/bonaparte-sidebar)
+  - [< bonaparte-dropdown >](packages/bonaparte-dropdown/README.md)
+  - [< bonaparte-panel >](packages/bonaparte-panel/README.md)
+  - [< bonaparte-scroll  >](packages/bonaparte-scroll/README.md)
+  - [< bonaparte-sidebar  >](packages/bonaparte-sidebar/README.md)
 
 #### 2. Opinionated high level components
 High level components are more opinionated in their functionality and are build for a certain use case.
-  - [< bonaparte-button >](https://github.com/bonaparte/bonaparte-button)
-  - [< bonaparte-toolbar  >](https://github.com/bonaparte/bonaparte-toolbar)
+  - [< bonaparte-button >](packages/bonaparte-button/README.md)
+  - [< bonaparte-toolbar  >](packages/bonaparte-toolbar/README.md)
  
 
 ## Creating Components
