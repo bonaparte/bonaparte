@@ -1,6 +1,6 @@
 {
   "name": "bonaparte-build",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Bonaparte Build",
   "author": {
     "name": "Philipp Adrian",
@@ -11,7 +11,7 @@
     "url": "https://github.com/bonaparte/bonaparte-build.git"
   },
   "dependencies": {
-    "bonaparte": "^0.0.2",
+    "bonaparte": "^0.0.5",
     "bonaparte-button": "^0.0.4",
     "bonaparte-draggable": "^0.0.4",
     "bonaparte-dropdown": "^0.0.4",
