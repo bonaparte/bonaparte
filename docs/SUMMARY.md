@@ -3,7 +3,7 @@
 * [About](README.md)
 * [Getting Started](docs/getting_started/index.md)
 * [Components](docs/components/index.md)
-   * [<bonaparte-button>](docs/components/bonaparte-button.md)
+   * [<bonaparte-button>](packages/bonaparte-button/index.md)
    * [<bonaparte-dropdown>](docs/components/bonaparte-dropdown.md)
    * [<bonaparte-panel>](docs/components/bonaparte-panel.md)
    * [<bonaparte-scroll>](docs/components/bonaparte-scroll.md)
