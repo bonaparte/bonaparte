@@ -19,3 +19,10 @@ ul.summary > li  a.gitbook-link {
     margin-bottom:7px;
 }
 
+#edit-link {
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+#edit-link:before, .fa-edit:before, .fa-pencil-square-o:before {
+  font-family:'fontawesome';
+}
