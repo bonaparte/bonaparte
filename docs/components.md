@@ -81,14 +81,14 @@ There are two types of components:
 #### 1. Basic components
 Basic Components provide simple structure and minimal functionality to be as versatile as possible:
   - [< bonaparte-dropdown >](../packages/bonaparte-dropdown/README.md)
-  - [< bonaparte-panel >](/packages/bonaparte-panel/README.md)
-  - [< bonaparte-scroll  >](packages/bonaparte-scroll/README.md)
-  - [< bonaparte-sidebar  >](packages/bonaparte-sidebar/README.md)
+  - [< bonaparte-panel >](../packages/bonaparte-panel/README.md)
+  - [< bonaparte-scroll  >](../packages/bonaparte-scroll/README.md)
+  - [< bonaparte-sidebar  >](../packages/bonaparte-sidebar/README.md)
 
 #### 2. Opinionated high level components
 High level components are more opinionated in their functionality and are build for a certain use case.
-  - [< bonaparte-button >](packages/bonaparte-button/README.md)
-  - [< bonaparte-toolbar  >](packages/bonaparte-toolbar/README.md)
+  - [< bonaparte-button >](../packages/bonaparte-button/README.md)
+  - [< bonaparte-toolbar  >](../packages/bonaparte-toolbar/README.md)
  
 
 ## Creating Components
