@@ -10,9 +10,9 @@ At the core of Bonaparte is the `bonaparte` package which provides all the neces
 
 ## Learn more about:
 
-#### [Bonaparte Packages](/docs/advanced/bonaparte_packages.html)
-#### [Creating Components](/docs/advanced/creating_components.html)
-#### [Bonaparte Core API](/docs/advanced/core_api.html)
+#### [Bonaparte Packages](docs/advanced/bonaparte_packages.md)
+#### [Creating Components](docs/advanced/creating_components.md)
+#### [Bonaparte Core API](docs/advanced/core_api.md)
 
 
 # Contribute
