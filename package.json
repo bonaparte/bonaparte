@@ -6,7 +6,9 @@
     "docs-install": "./node_modules/.bin/gitbook install",
     "docs-serve": "./node_modules/.bin/gitbook serve",
     "docs-build": "./node_modules/.bin/gitbook build",
-		"lerna-updated" : "./node_modules/.bin/lerna updated"
+		"lerna-updated" : "./node_modules/.bin/lerna updated",
+		"lerna-bootstrap" : "./node_modules/.bin/lerna bootstrap",
+		"lerna-publish" : "./node_modules/.bin/lerna publish"		
   },
   "author": {
     "name": "Philipp Adrian",
