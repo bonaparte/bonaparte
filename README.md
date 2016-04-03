@@ -17,7 +17,7 @@ Compatible with all modern browsers and IE10 up.
         <!-- Scrolling Content -->
 
     </div>
-</bonaparte-scroll>
+</bonaparte-scroll> 
 ```
 
 ## Learn more about:
