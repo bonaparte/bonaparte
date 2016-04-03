@@ -19,7 +19,8 @@
     "bonaparte-panel": "^0.0.1",
     "bonaparte-scroll": "^0.0.1",
     "bonaparte-sidebar": "^0.0.1",
-    "bonaparte-toolbar": "^0.0.1"
+    "bonaparte-toolbar": "^0.0.1",
+    "bonaparte-collapsible": "^0.0.1"
   },
 
   "main":"bonaparte.build.js",

@@ -6,3 +6,4 @@ require("bonaparte-sidebar");
 require("bonaparte-toolbar");
 require("bonaparte-draggable");
 require("bonaparte-dropdown");
+require("bonaparte-collapsible");
