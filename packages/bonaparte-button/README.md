@@ -10,7 +10,7 @@ On activation, the button syncs all the _target-attributes_ with the attibutes o
 
 #### Examples
 
-- [Dropdown Example Page](http://bonaparte.github.io/bonaparte-dropdown/examples/index.html)<br>_Although it's the example page for `bonaparte-dropdown`, all the functionality on the page is achieved through `bonaparte-button` – There is no custom JavaScript on the page._
+- [Dropdown Example Page](http://bonaparte.github.io/bonaparte/packages/bonaparte-dropdown/examples/index.html)<br>_Although it's the example page for `bonaparte-dropdown`, all the functionality on the page is achieved through `bonaparte-button` – There is no custom JavaScript on the page._
 - [Starter](http://bonaparte.github.io/starter-vanilla)
 
 
