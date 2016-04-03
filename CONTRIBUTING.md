@@ -10,14 +10,14 @@ At the core of Bonaparte is the `bonaparte` package which provides all the neces
 
 ## Learn more about:
 
-#### [Bonaparte Packages](advanced/bonaparte_packages.html)
-#### [Creating Components](advanced/creating_components.html)
-#### [Bonaparte Core API](advanced/core_api.html)
+#### [Bonaparte Packages](/docs/advanced/bonaparte_packages.html)
+#### [Creating Components](/docs/advanced/creating_components.html)
+#### [Bonaparte Core API](/docs/advanced/core_api.html)
 
 
 # Contribute
 
-Bonaparte is under active development. 
+Bonaparte is under active development.
 We know it's not perfect but we're constantly working to improve and appreciate any feedback and bug reports.
 
 We are collecting general feedback and feature requests for Bonaparte here:<br>

@@ -2,10 +2,17 @@
     "title": "Bonaparte",
     "description": "UX Front-End Framework",
     "plugins": [
-        "edit-link",
+				"edit-link",
         "github",
         "addcssjs"
     ],
+		"structure" : {
+			"summary" : "docs/SUMMARY.md"
+		},
+		"styles" : {
+      "website": "docs/styles/website.css"
+		},
+		"gitbook" : "2.4.3",
     "pluginsConfig": {
         "edit-link": {
             "base": "https://github.com/bonaparte/bonaparte.io/tree/master/",
@@ -15,7 +22,7 @@
             "url": "http://github.com/bonaparte/"
         },
         "addcssjs": {
-            "js": ["js/tweaks.js"]
+					"js": ["docs/js/tweaks.js"]
         }
     }
 }

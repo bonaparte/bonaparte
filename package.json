@@ -1,21 +1,25 @@
 {
   "name": "bonaparte-io",
-  
   "version": "0.0.1",
-  
+	"scripts" : {
+		"postinstall" : "./node_modules/.bin/gitbook install",
+		"gitbook-install" : "./node_modules/.bin/gitbook install",
+		"gitbook-serve" : "./node_modules/.bin/gitbook serve",
+		"gitbook-build" : "./node_modules/.bin/gitbook build"
+	},
   "author": {
-    "name" : "Philipp Adrian",
-    "email" : "philipp.adrian@dowjones.com",
-    "company" : "Dow Jones & Co.",
-    "website" : "http://www.bonaparte.io"
+    "name": "Philipp Adrian",
+    "email": "philipp.adrian@dowjones.com",
+    "company": "Dow Jones & Co.",
+    "website": "http://www.bonaparte.io"
   },
-
   "description": "UX Frontend Framework",
-  
-  "license" :"MIT",
-
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/bonaparte/bonaparte.io.git"
+  },
+  "devDependencies": {
+    "gitbook-cli": "^2.1.2"
   }
 }
