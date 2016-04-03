@@ -32,7 +32,7 @@ Bonaparte is under active development.
 We know it's not perfect but we're constantly working to improve and appreciate any feedback and bug reports.
 
 We are collecting general feedback and feature requests for Bonaparte here:<br>
-http://github.com/bonaparte/bonaparte.io/issues
+http://github.com/bonaparte/bonaparte/issues
 
 And pull requests are welcome as well of course ;)
 
