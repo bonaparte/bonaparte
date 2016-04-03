@@ -15,6 +15,7 @@ Learn more: [bonaparte.io](http://www.bonaparte.io/getting_started/index.html)
   - [< bonaparte-toolbar >](https://github.com/bonaparte/bonaparte-toolbar)
   - [< bonaparte-draggable >](https://github.com/bonaparte/bonaparte-draggable)
   - [< bonaparte-dropdown >](https://github.com/bonaparte/bonaparte-dropdown)
+  - [< bonaparte-collapsible >](https://github.com/bonaparte/bonaparte-collapsible)
 
 ## Development / Rebuild
 
