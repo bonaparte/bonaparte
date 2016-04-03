@@ -1,0 +1,67 @@
+@import "~bonaparte-sidebar/bonaparte.less";
+
+/*///////////////////////////////////////////////////////////////////////////*/
+
+bonaparte-toolbar {
+  
+  .bonaparte-toolbar();
+
+}
+
+/*///////////////////////////////////////////////////////////////////////////*/
+
+.bonaparte-toolbar(
+  @overrides:{.variables(){}},
+  @icon-size : 4rem,
+  @default-open : 10rem,
+  @default-closed : 0rem
+){
+
+  @overrides();
+  .variables();
+
+  .bonaparte-sidebar(@overrides);   
+
+   
+  &:not([data-position]):not([position]),
+  &[data-position="left"],
+  &[position="left"],
+  &[data-position="right"],
+  &[position="right"] {
+
+    > :nth-child(1) {
+       min-width:@default-closed;
+    }
+
+    &[data-open="true"],
+    &[open="true"] {
+      
+      > :nth-child(1){
+        min-width:@default-open;
+      }
+    }   
+  }
+  
+  &[data-position="top"],
+  &[position="top"],
+  &[data-position="bottom"],
+  &[position="bottom"] {
+
+    > :nth-child(1) {
+       min-height:@default-closed;
+    }
+
+    > :nth-child(1) * {
+      white-space:nowrap;
+    }
+
+    &[data-open="true"],
+    &[open="true"] {
+      > :nth-child(1){
+        min-height:@default-open;
+      }
+    }   
+  } 
+
+  
+}
