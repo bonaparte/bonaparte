@@ -80,8 +80,8 @@ There are two types of components:
 
 #### 1. Basic components
 Basic Components provide simple structure and minimal functionality to be as versatile as possible:
-  - [< bonaparte-dropdown >](packages/bonaparte-dropdown/README.md)
-  - [< bonaparte-panel >](packages/bonaparte-panel/README.md)
+  - [< bonaparte-dropdown >](../packages/bonaparte-dropdown/README.md)
+  - [< bonaparte-panel >](/packages/bonaparte-panel/README.md)
   - [< bonaparte-scroll  >](packages/bonaparte-scroll/README.md)
   - [< bonaparte-sidebar  >](packages/bonaparte-sidebar/README.md)
 
