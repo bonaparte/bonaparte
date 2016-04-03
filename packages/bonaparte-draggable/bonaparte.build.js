@@ -1,0 +1,1 @@
+require("./bonaparte.js").register();
