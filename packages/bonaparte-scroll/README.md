@@ -8,7 +8,7 @@ The scroll component is used to implement scrolling in a container.
 
 #### Examples
 
-- [Example Page](http://bonaparte.github.io/bonaparte-scroll/examples/index.html)
+- [Example Page](http://bonaparte.github.io/bonaparte/packages/bonaparte-scroll/examples/index.html)
 - [Starter](http://bonaparte.github.io/starter-vanilla)
 
 

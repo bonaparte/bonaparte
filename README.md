@@ -7,10 +7,10 @@ Components are written in plain JavaScript and work nicely with frameworks like 
 
 Bonaparte is design agnostic. It's components provide structure but do not come with any design. No component uses the `class` attribute to create functionality. Therefore CSS classes of any front end framework like [Bootstrap](http://getbootstrap.com/), [Foundation](http://foundation.zurb.com/) or [Semantic UI](http://semantic-ui.com/) can be used for styling.
 
-Compatible with all modern browsers and IE10 up.
+Compatible with all modern browsers and IE10 up. 
 
 #### Using Bonaparte is as easy as using HTML:
-```
+```html
 <bonaparte-scroll>
     <div>
 
@@ -32,10 +32,10 @@ Bonaparte is under active development.
 We know it's not perfect but we're constantly working to improve and appreciate any feedback and bug reports.
 
 We are collecting general feedback and feature requests for Bonaparte here:<br>
-http://github.com/bonaparte/bonaparte.io/issues
+http://github.com/bonaparte/bonaparte/issues
 
 And pull requests are welcome as well of course ;)
 
 ##### Built a new component? Add it to the documentation and submit a pull request!
 
-Learn more on how to create a new Bonaparte component here: [4.2 Development / Contribute](advanced/contribute.html)
+Learn more on how to create a new Bonaparte component here: [4.2 Development / Contribute](CONTRIBUTING.html)
