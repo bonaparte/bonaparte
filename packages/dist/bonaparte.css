@@ -1,0 +1,53 @@
+bonaparte-dropdown {
+  /*DEFINITION*/
+  position: relative;
+  display: inline-block;
+}
+bonaparte-dropdown > :first-child {
+  display: none;
+  position: absolute;
+  z-index: 99;
+}
+bonaparte-dropdown[data-open="true"] > :first-child,
+bonaparte-dropdown[open="true"] > :first-child {
+  display: block;
+}
+bonaparte-dropdown:not([position]) > :first-child,
+bonaparte-dropdown[position=""] > :first-child,
+bonaparte-dropdown[position*="bottom"] > :first-child {
+  top: 100%;
+  bottom: auto;
+}
+bonaparte-dropdown[position*="top"] > :first-child {
+  top: auto;
+  bottom: 100%;
+}
+bonaparte-dropdown[position*="left"] > :first-child {
+  right: 100%;
+  left: auto;
+}
+bonaparte-dropdown[position*="right"] > :first-child {
+  right: auto;
+  left: 100%;
+}
+bonaparte-dropdown[position^="right"][position$="bottom"] > :first-child,
+bonaparte-dropdown[position^="left"][position$="bottom"] > :first-child {
+  top: auto;
+  bottom: 0;
+}
+bonaparte-dropdown[position^="right"][position$="top"] > :first-child,
+bonaparte-dropdown[position^="left"][position$="top"] > :first-child {
+  top: 0;
+  bottom: auto;
+}
+bonaparte-dropdown[position^="top"][position$="right"] > :first-child,
+bonaparte-dropdown[position^="bottom"][position$="right"] > :first-child {
+  right: 0;
+  left: auto;
+}
+bonaparte-dropdown[position^="top"][position$="left"] > :first-child,
+bonaparte-dropdown[position^="bottom"][position$="left"] > :first-child {
+  right: auto;
+  left: 0;
+}
+/*///////////////////////////////////////////////////////////////////////////*/
