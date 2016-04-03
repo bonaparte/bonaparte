@@ -10,7 +10,7 @@ Bonaparte is design agnostic. It's components provide structure but do not come 
 Compatible with all modern browsers and IE10 up.
 
 #### Using Bonaparte is as easy as using HTML:
-```
+```html
 <bonaparte-scroll>
     <div>
 
