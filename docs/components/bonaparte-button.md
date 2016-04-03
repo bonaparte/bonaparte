@@ -1,1 +1,0 @@
-{% include "git+https://github.com/bonaparte/bonaparte-button.git/README.md#gh-pages" %}
