@@ -1,25 +1,21 @@
-
 {
   "name": "bonaparte-collapsible",
-  "version": "0.0.1",
-  "description" : "Bonaparte Component",
-  "homepage":"http://bonaparte.io",
+  "version": "0.0.4",
+  "description": "Bonaparte Component",
+  "homepage": "http://bonaparte.io",
   "author": {
-    "name" : "Philipp Adrian",
-    "email" : "hello@philippadrian.com"
+    "name": "Philipp Adrian",
+    "email": "hello@philippadrian.com"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/bonaparte/bonaparte-collapsible.git"
   },
-
-  "dependencies" : {
-    "bonaparte" : "^0.0.2",
-    "mousetrap" : "^1.5.3"
+  "dependencies": {
+    "bonaparte": "^0.0.2",
+    "mousetrap": "^1.5.3"
   },
-
-  "main":"bonaparte.build.js",
-
+  "main": "bonaparte.build.js",
   "devDependencies": {
     "autoprefixer": "^6.3.2",
     "css-loader": "^0.23.1",
@@ -33,11 +29,10 @@
     "sass-loader": "^3.1.2",
     "webpack": "^1.12.13"
   },
-
   "scripts": {
-    "build" : "webpack",
-    "build-prod" : "webpack -p",
-    "watch" : "webpack --progress --colors --watch"
+    "build": "webpack",
+    "build-prod": "webpack -p",
+    "watch": "webpack --progress --colors --watch"
   },
   "keywords": [
     "bonaparte",

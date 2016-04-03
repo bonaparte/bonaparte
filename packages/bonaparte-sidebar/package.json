@@ -1,25 +1,22 @@
 {
   "name": "bonaparte-sidebar",
-  "version": "0.0.1",
-	"description" : "Bonaparte Component",
-	"homepage":"http://bonaparte.io",
-	"author": {
-		"name" : "Philipp Adrian",
-		"email" : "hello@philippadrian.com"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/bonaparte/bonaparte-sidebar.git"
-	},
-
-  "dependencies" : {
-    "bonaparte" : "^0.0.2"
+  "version": "0.0.4",
+  "description": "Bonaparte Component",
+  "homepage": "http://bonaparte.io",
+  "author": {
+    "name": "Philipp Adrian",
+    "email": "hello@philippadrian.com"
   },
-
-  "main":"bonaparte.build.js",
-
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bonaparte/bonaparte-sidebar.git"
+  },
+  "dependencies": {
+    "bonaparte": "^0.0.2"
+  },
+  "main": "bonaparte.build.js",
   "devDependencies": {
-		"autoprefixer": "^6.3.2",
+    "autoprefixer": "^6.3.2",
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
@@ -31,22 +28,21 @@
     "sass-loader": "^3.1.2",
     "webpack": "^1.12.13"
   },
-
   "scripts": {
-    "build" : "webpack",
-    "build-prod" : "webpack -p",
-    "watch" : "webpack --progress --colors --watch"
+    "build": "webpack",
+    "build-prod": "webpack -p",
+    "watch": "webpack --progress --colors --watch"
   },
-	"keywords": [
+  "keywords": [
     "bonaparte",
-		"bonaparte-component",
-		"ux",
-		"ui",
-		"library",
-		"framework",
-		"webcomponents",
-		"component",
-		"front-end"
+    "bonaparte-component",
+    "ux",
+    "ui",
+    "library",
+    "framework",
+    "webcomponents",
+    "component",
+    "front-end"
   ],
   "license": "ISC"
 }

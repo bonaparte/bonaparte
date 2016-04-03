@@ -1,16 +1,16 @@
 {
   "name": "bonaparte",
-  "version": "0.0.3",
-	"homepage" : "http://bonaparte.io",
-	"description" : "UX Front-End Framework Core",
-	"author": {
-		"name" : "Philipp Adrian",
-		"email" : "hello@philippadrian.com"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/bonaparte/core.git"
-	},
+  "version": "0.0.4",
+  "homepage": "http://bonaparte.io",
+  "description": "UX Front-End Framework Core",
+  "author": {
+    "name": "Philipp Adrian",
+    "email": "hello@philippadrian.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bonaparte/core.git"
+  },
   "dependencies": {
     "custom-event-polyfill": "^0.2.2",
     "document-register-element": "^0.4.5",
@@ -19,7 +19,7 @@
   },
   "main": "./src/index.js",
   "peerDependencies": {
-		"autoprefixer": "^6.3.2",
+    "autoprefixer": "^6.3.2",
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
@@ -31,15 +31,15 @@
     "sass-loader": "^3.1.2",
     "webpack": "^1.12.13"
   },
-	"keywords": [
+  "keywords": [
     "bonaparte",
-		"ux",
-		"ui",
-		"library",
-		"framework",
-		"webcomponents",
-		"component",
-		"front-end"
+    "ux",
+    "ui",
+    "library",
+    "framework",
+    "webcomponents",
+    "component",
+    "front-end"
   ],
   "license": "ISC"
 }
