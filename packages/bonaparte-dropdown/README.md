@@ -6,7 +6,7 @@ The dropdown component is a temporary UI element that appears along one edge of 
 
 #### Examples
 
-- [Example Page](http://bonaparte.github.io/bonaparte-dropdown/examples/index.html)
+- [Example Page](http://bonaparte.github.io/bonaparte/packages/bonaparte-dropdown/examples/index.html)
 
 ## Structure
 ```html
