@@ -14,7 +14,6 @@ At the core of Bonaparte is the `bonaparte` package which provides all the neces
 #### [Creating Components](docs/advanced/creating_components.md)
 #### [Bonaparte Core API](docs/advanced/core_api.md)
 
-
 # Contribute
 
 Bonaparte is under active development.

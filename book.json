@@ -1,28 +1,28 @@
 {
-    "title": "Bonaparte",
-    "description": "UX Front-End Framework",
-    "plugins": [
-				"edit-link",
-        "github",
-        "addcssjs"
-    ],
-		"structure" : {
-			"summary" : "docs/SUMMARY.md"
-		},
-		"styles" : {
-      "website": "docs/styles/website.css"
-		},
-		"gitbook" : "2.4.3",
-    "pluginsConfig": {
-        "edit-link": {
-            "base": "https://github.com/bonaparte/bonaparte.io/tree/master/",
-            "label": "Edit This Page"
-        },
-        "github": {
-            "url": "http://github.com/bonaparte/"
-        },
-        "addcssjs": {
-					"js": ["docs/js/tweaks.js"]
-        }
+  "title": "Bonaparte",
+  "description": "UX Front-End Framework",
+  "plugins": [
+		"edit-link",
+    "github",
+    "addcssjs"
+  ],
+	"structure" : {
+		"summary" : "docs/SUMMARY.md"
+	},
+	"styles" : {
+    "website": "docs/styles/website.css"
+	},
+	"gitbook" : "2.4.3",
+  "pluginsConfig": {
+    "edit-link": {
+      "base": "https://github.com/bonaparte/bonaparte.io/tree/master/",
+      "label": "Edit This Page"
+    },
+    "github": {
+      "url": "http://github.com/bonaparte/"
+    },
+    "addcssjs": {
+			"js": ["docs/js/tweaks.js"]
     }
+  }
 }

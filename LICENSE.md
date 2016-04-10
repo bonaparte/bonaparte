@@ -1,7 +1,6 @@
 # Credits
 Bonaparte was created at [Dow Jones & Co](http://github.com/dowjones).
 
-
 ### Author
 [Philipp Adrian](http://github.com/greenish)
 
@@ -15,7 +14,7 @@ Bonaparte was created at [Dow Jones & Co](http://github.com/dowjones).
 [MIT](https://opensource.org/licenses/MIT)
 
 Copyright (c) 2016 Dow Jones & Co <br>
-Copyright (c) 2016 Philipp Adrian 
+Copyright (c) 2016 Philipp Adrian
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
