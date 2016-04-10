@@ -1,5 +1,5 @@
 {
-  "name": "bonaparte-build",
+  "name": "bonaparte",
   "version": "0.0.6",
   "scripts": {
 		"build": "webpack",
@@ -26,7 +26,7 @@
     "url": "https://github.com/bonaparte/bonaparte.io.git"
   },
 	"dependencies": {
-		"bonaparte" : "file:./packages/bonaparte",
+		"bonaparte-core" : "file:./packages/bonaparte-core",
 		"bonaparte-button" : "file:./packages/bonaparte-button",
 		"bonaparte-collapsible" : "file:./packages/bonaparte-collapsible",
 		"bonaparte-draggable" : "file:./packages/bonaparte-draggable",

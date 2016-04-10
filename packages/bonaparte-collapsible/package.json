@@ -12,7 +12,7 @@
     "url": "https://github.com/bonaparte/bonaparte-collapsible.git"
   },
   "dependencies": {
-    "bonaparte": "^0.0.2",
+    "bonaparte-core": "^0.0.5",
     "mousetrap": "^1.5.3"
   },
   "main": "bonaparte.build.js",

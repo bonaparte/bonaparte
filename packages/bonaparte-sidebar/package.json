@@ -12,7 +12,7 @@
     "url": "https://github.com/bonaparte/bonaparte-sidebar.git"
   },
   "dependencies": {
-    "bonaparte": "^0.0.2"
+    "bonaparte-core": "^0.0.5"
   },
   "main": "bonaparte.build.js",
   "devDependencies": {

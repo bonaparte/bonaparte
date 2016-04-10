@@ -1,4 +1,4 @@
-var bp = require("bonaparte");
+var bp = require("bonaparte-core");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
@@ -16,7 +16,7 @@ function draggable(tag) {
     handler,
     target,
     dropZones;
-  
+
   initialise();
 
   function update () {
@@ -84,7 +84,7 @@ function draggable(tag) {
 
 
 ///////////////////////////////////////////////////////////////////////////////
-  
+
   function mousedown(e) {
     var dragElem = findDraggableEl(e);
     if (handler) {
@@ -129,7 +129,7 @@ function draggable(tag) {
 
   function dragover(e){
    e.preventDefault();
-  }  
+  }
 
   function dragleave(e){
     var elem = findDraggableEl(e),

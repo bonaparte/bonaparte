@@ -1,7 +1,7 @@
-var bp = require("bonaparte");
+var bp = require("bonaparte-core");
 
 ///////////////////////////////////////////////////////////////////////////////
-// Public 
+// Public
 
 module.exports = toggleMixin;
 

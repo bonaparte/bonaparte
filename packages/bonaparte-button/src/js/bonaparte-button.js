@@ -1,4 +1,4 @@
-var bp = require("bonaparte");
+var bp = require("bonaparte-core");
 var mousetrap = require("mousetrap");
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -22,7 +22,7 @@ function button(tag){
 
 ///////////////////////////////////////////////////////////////////////////////
 
-  tag.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);  
+  tag.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -65,8 +65,8 @@ function button(tag){
 
   function triggerEvents(){
     var trigger = bp.attribute.get(tag, "trigger");
-   
-    if(trigger === undefined) return; 
+
+    if(trigger === undefined) return;
     for(var i = 0; i < targets.length; i++){
       target = targets[i];
       bp.tag.triggerEvent(target, trigger)
@@ -100,7 +100,7 @@ function button(tag){
     // for each target
     for(var i =0; i< targets.length; i++){
       target = targets[i];
-      
+
       // check attributes
       for(var name in attributes) {
         targetValue = bp.attribute.get(target, name);
@@ -119,10 +119,10 @@ function button(tag){
           active=false;
 
         if(active !== false) active = true;
-      }     
- 
-    } 
-    
+      }
+
+    }
+
     var activeClass = bp.attribute.get(tag, "active-class") || "active";
     if(activeClass==="") return;
 
@@ -142,24 +142,24 @@ function button(tag){
 
       // toggle attributes
       // for(var k=0; k<toggles.length; k++) {
-      //   targetValue = bp.attribute.get(target, toggles[k]) === "true" ? 
+      //   targetValue = bp.attribute.get(target, toggles[k]) === "true" ?
       //     "false":"true";
-      //   bp.attribute.set(target, toggles[k], targetValue); 
+      //   bp.attribute.set(target, toggles[k], targetValue);
       // }
-      
+
       // sync attributes
       for(var name in attributes) {
-        targetValue = active === true && (toggle === true || toggles.indexOf(name) >=0)? 
+        targetValue = active === true && (toggle === true || toggles.indexOf(name) >=0)?
           target.bonaparte.values[name]  : attributes[name];
 
-        if(targetValue !== undefined) 
-          bp.attribute.set(target, name, targetValue); 
-        else 
+        if(targetValue !== undefined)
+          bp.attribute.set(target, name, targetValue);
+        else
           bp.attribute.remove(target, name);
       }
     }
   }
-  
+
 ///////////////////////////////////////////////////////////////////////////////
 
   function setShortcut(){
@@ -225,7 +225,7 @@ function button(tag){
     var context = potentialToolbar && bp.tag.contains(potentialToolbar.firstElementChild, tag)?
       potentialToolbar : document;
 
-     
+
     var newTargets = context.querySelectorAll(selector);
     if(context !== document && context.matches(selector)) {
       newTargets=Array.prototype.slice.call(newTargets);

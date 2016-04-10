@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 
-var bp = require("bonaparte");
+var bp = require("bonaparte-core");
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
@@ -14,7 +14,7 @@ function sidebar(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   tag.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
-  
+
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -29,9 +29,9 @@ function sidebar(tag){
     var size = bp.attribute.get(tag, "size");
     var sidebar = bp.attribute.get(tag, "position");
     var style = sidebar === "left" || sidebar==="right" ? "min-width" : "min-height";
-    if(size === undefined) 
+    if(size === undefined)
       tag.firstElementChild.style[style] = "";
-    else 
+    else
       tag.firstElementChild.style[style] = size;
   }
 
