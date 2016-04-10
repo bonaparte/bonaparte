@@ -16,7 +16,7 @@ function panel(tag){
   var locked = false;
 
 ///////////////////////////////////////////////////////////////////////////////
-// Public 
+// Public
 
   tag.bonaparte.open = open;
   tag.bonaparte.close = close;
@@ -26,7 +26,8 @@ function panel(tag){
 
   window.addEventListener("click", clickHandler);
   window.addEventListener("bonaparte.internal.closePanels", closePanels);
-  tag.addEventListener("bonaparte.tag.attributeUpdated", attributeChangedCallback);
+	tag.addEventListener("bonaparte.tag.attributeUpdated", attributeUdatedCallback);
+	tag.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -39,8 +40,7 @@ function panel(tag){
 
 ///////////////////////////////////////////////////////////////////////////////
 
-  function attributeChangedCallback(data){
-    // console.log(data, data.detail.name,  data.detail.newValue);
+  function attributeUdatedCallback(data){
     if(bp.attribute.matchName(/open/, data.detail.name)){
       if(data.detail.newValue == "true") {
         lock();
@@ -48,10 +48,16 @@ function panel(tag){
         tag.bonaparte.triggerEvent("bonaparte.internal.closePanels", null, true);
         tag.bonaparte.triggerEvent("bonaparte.panel.open", null, true);
       }
-      else { 
+    };
+  }
+///////////////////////////////////////////////////////////////////////////////
+
+  function attributeChangedCallback(data){
+    if(bp.attribute.matchName(/open/, data.detail.name)){
+			if(data.detail.newValue != "true") {
         tag.bonaparte.triggerEvent("bonaparte.panel.close", null, true);
-      }
-    };    
+			}
+    };
   }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -69,7 +75,7 @@ function panel(tag){
 
 ///////////////////////////////////////////////////////////////////////////////
 
-  function open(e) {    
+  function open(e) {
     bp.attribute.set(tag, "open", "true");
   }
 ///////////////////////////////////////////////////////////////////////////////
