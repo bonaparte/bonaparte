@@ -1,6 +1,6 @@
 {
   "name": "bonaparte-toolbar",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "Bonaparte Component",
   "homepage": "http://bonaparte.io",
   "author": {
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "bonaparte": "^0.0.2",
-    "bonaparte-sidebar": "^0.0.4"
+    "bonaparte-sidebar": "^0.0.6"
   },
   "main": "bonaparte.build.js",
   "devDependencies": {
