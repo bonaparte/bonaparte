@@ -1,6 +1,11 @@
 /*///////////////////////////////////////////////////////////////////////////*/
 bonaparte-collapsible[data-open="false"],
 bonaparte-collapsible[open="false"] {
-  height: 0;
+  height: 0 !important;
+  overflow: hidden;
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
 }
 /*///////////////////////////////////////////////////////////////////////////*/
