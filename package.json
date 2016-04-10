@@ -1,6 +1,6 @@
 {
   "name": "bonaparte",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "scripts": {
 		"build": "webpack",
     "build-prod": "webpack -p",
@@ -11,7 +11,8 @@
     "docs-build": "./node_modules/.bin/gitbook build",
 		"lerna-updated" : "./node_modules/.bin/lerna updated",
 		"lerna-bootstrap" : "./node_modules/.bin/lerna bootstrap",
-		"lerna-publish" : "./node_modules/.bin/lerna publish"
+		"lerna-publish" : "./node_modules/.bin/lerna publish",
+		"publish" : "npm publish && npm run lerna-publish"
   },
   "author": {
     "name": "Philipp Adrian",
