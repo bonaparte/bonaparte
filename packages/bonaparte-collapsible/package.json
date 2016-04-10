@@ -1,6 +1,6 @@
 {
   "name": "bonaparte-collapsible",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Bonaparte Component",
   "homepage": "http://bonaparte.io",
   "author": {
@@ -12,7 +12,7 @@
     "url": "https://github.com/bonaparte/bonaparte-collapsible.git"
   },
   "dependencies": {
-    "bonaparte-core": "^0.0.5",
+    "bonaparte-core": "^0.0.7",
     "mousetrap": "^1.5.3"
   },
   "main": "bonaparte.build.js",
