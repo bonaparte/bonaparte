@@ -1,0 +1,53 @@
+{
+  "name": "bonaparte",
+  "scripts": {
+    "build": "webpack",
+    "build-prod": "webpack -p",
+    "watch": "webpack --progress --colors --watch",
+    "postinstall": "./node_modules/.bin/gitbook install",
+    "docs-install": "./node_modules/.bin/gitbook install",
+    "docs-serve": "./node_modules/.bin/gitbook serve",
+    "docs-build": "./node_modules/.bin/gitbook build",
+    "lerna-updated": "./node_modules/.bin/lerna updated",
+    "lerna-bootstrap": "./node_modules/.bin/lerna bootstrap",
+    "lerna-publish": "rsync -r --exclude '.git/' --exclude 'node_modules' ./ ./packages/bonaparte && FORCE_VERSION=bonaparte ./node_modules/.bin/lerna publish"
+  },
+  "author": {
+    "name": "Philipp Adrian",
+    "email": "philipp.adrian@dowjones.com",
+    "company": "Dow Jones & Co.",
+    "website": "http://www.bonaparte.io"
+  },
+  "description": "UX Front-End Framework",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bonaparte/bonaparte.git"
+  },
+  "dependencies": {
+    "bonaparte-button": "x.x.x",
+    "bonaparte-collapsible": "x.x.x",
+    "bonaparte-draggable": "x.x.x",
+    "bonaparte-dropdown": "x.x.x",
+    "bonaparte-panel": "x.x.x",
+    "bonaparte-sidebar": "x.x.x",
+    "bonaparte-toolbar": "x.x.x",
+    "bonaparte-scroll": "x.x.x"
+  },
+  "devDependencies": {
+    "gitbook-cli": "^2.1.2",
+    "lerna": "^1.1.2",
+    "autoprefixer": "^6.3.2",
+    "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
+    "less": "^2.6.0",
+    "less-loader": "^2.2.2",
+    "node-sass": "^3.4.2",
+    "postcss-discard-duplicates": "^2.0.1",
+    "postcss-loader": "^0.8.0",
+    "sass-loader": "^3.1.2",
+    "webpack": "^1.12.13"
+  },
+  "version": "0.0.16"
+}
