@@ -3,14 +3,7 @@
   "scripts": {
     "build": "webpack",
     "build-prod": "webpack -p",
-    "watch": "webpack --progress --colors --watch",
-    "postinstall": "./node_modules/.bin/gitbook install",
-    "docs-install": "./node_modules/.bin/gitbook install",
-    "docs-serve": "./node_modules/.bin/gitbook serve",
-    "docs-build": "./node_modules/.bin/gitbook build",
-    "lerna-updated": "./node_modules/.bin/lerna updated",
-    "lerna-bootstrap": "./node_modules/.bin/lerna bootstrap",
-    "lerna-publish": "chmod +x ./bin/publish.sh && ./bin/publish.sh"
+    "watch": "webpack --progress --colors --watch"
   },
   "author": {
     "name": "Philipp Adrian",
@@ -47,5 +40,5 @@
     "sass-loader": "^3.1.2",
     "webpack": "^1.12.13"
   },
-  "version": "0.0.20"
+  "version": "0.0.21"
 }
