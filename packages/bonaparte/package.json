@@ -1,5 +1,6 @@
 {
   "name": "bonaparte",
+  "version": "0.0.21",
   "scripts": {
     "build": "webpack",
     "build-prod": "webpack -p",
@@ -39,6 +40,5 @@
     "postcss-loader": "^0.8.0",
     "sass-loader": "^3.1.2",
     "webpack": "^1.12.13"
-  },
-  "version": "0.0.21"
+  }
 }
