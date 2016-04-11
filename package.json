@@ -1,16 +1,16 @@
 {
   "name": "bonaparte",
   "scripts": {
-		"build": "webpack",
+    "build": "webpack",
     "build-prod": "webpack -p",
     "watch": "webpack --progress --colors --watch",
     "postinstall": "./node_modules/.bin/gitbook install",
     "docs-install": "./node_modules/.bin/gitbook install",
     "docs-serve": "./node_modules/.bin/gitbook serve",
     "docs-build": "./node_modules/.bin/gitbook build",
-		"lerna-updated" : "./node_modules/.bin/lerna updated",
-		"lerna-bootstrap" : "./node_modules/.bin/lerna bootstrap",
-		"lerna-publish" : "rsync -r --exclude '.git/' --exclude 'node_modules' ./ ./packages/bonaparte && FORCE_VERSION=bonaparte ./node_modules/.bin/lerna publish"
+    "lerna-updated": "./node_modules/.bin/lerna updated",
+    "lerna-bootstrap": "./node_modules/.bin/lerna bootstrap",
+    "lerna-publish": "chmod +x ./publish.sh && ./publish.sh"
   },
   "author": {
     "name": "Philipp Adrian",
@@ -24,20 +24,20 @@
     "type": "git",
     "url": "https://github.com/bonaparte/bonaparte.git"
   },
-	"dependencies": {
-		"bonaparte-button" : "^x.x.x",
-		"bonaparte-collapsible" : "^x.x.x",
-		"bonaparte-draggable" : "^x.x.x",
-		"bonaparte-dropdown" : "^x.x.x",
-		"bonaparte-panel" : "^x.x.x",
-		"bonaparte-sidebar" : "^x.x.x",
-		"bonaparte-toolbar" : "^x.x.x",
-		"bonaparte-scroll" : "^x.x.x"
-	},
+  "dependencies": {
+    "bonaparte-button": "^0.x.x",
+    "bonaparte-collapsible": "^0.x.x",
+    "bonaparte-draggable": "^0.x.x",
+    "bonaparte-dropdown": "^0.x.x",
+    "bonaparte-panel": "^0.x.x",
+    "bonaparte-sidebar": "^0.x.x",
+    "bonaparte-toolbar": "^0.x.x",
+    "bonaparte-scroll": "^0.x.x"
+  },
   "devDependencies": {
     "gitbook-cli": "^2.1.2",
     "lerna": "^1.1.2",
-		"autoprefixer": "^6.3.2",
+    "autoprefixer": "^6.3.2",
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
@@ -48,5 +48,6 @@
     "postcss-loader": "^0.8.0",
     "sass-loader": "^3.1.2",
     "webpack": "^1.12.13"
-  }
+  },
+  "version": "0.0.19"
 }

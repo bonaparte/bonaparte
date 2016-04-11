@@ -1,6 +1,6 @@
 {
   "name": "bonaparte-panel",
-  "version": "0.0.7",
+  "version": "0.0.20",
   "description": "Bonaparte Component",
   "homepage": "http://bonaparte.io",
   "author": {
@@ -9,10 +9,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bonaparte/bonaparte-panel.git"
+    "url": "https://github.com/bonaparte/bonaparte.git"
   },
   "dependencies": {
-    "bonaparte-core": "^0.0.7",
+    "bonaparte-core": "^0.0.20",
     "mousetrap": "^1.5.3"
   },
   "main": "bonaparte.build.js",

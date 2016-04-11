@@ -10,7 +10,7 @@
     "docs-build": "./node_modules/.bin/gitbook build",
     "lerna-updated": "./node_modules/.bin/lerna updated",
     "lerna-bootstrap": "./node_modules/.bin/lerna bootstrap",
-    "lerna-publish": "chmod +x ./publish.sh && ./publish.sh"
+    "lerna-publish": "chmod +x ./bin/publish.sh && ./bin/publish.sh"
   },
   "author": {
     "name": "Philipp Adrian",
@@ -25,18 +25,16 @@
     "url": "https://github.com/bonaparte/bonaparte.git"
   },
   "dependencies": {
-    "bonaparte-button": "^0.x.x",
-    "bonaparte-collapsible": "^0.x.x",
-    "bonaparte-draggable": "^0.x.x",
-    "bonaparte-dropdown": "^0.x.x",
-    "bonaparte-panel": "^0.x.x",
-    "bonaparte-sidebar": "^0.x.x",
-    "bonaparte-toolbar": "^0.x.x",
-    "bonaparte-scroll": "^0.x.x"
+    "bonaparte-button": "^0.0.20",
+    "bonaparte-collapsible": "^0.0.20",
+    "bonaparte-draggable": "^0.0.20",
+    "bonaparte-dropdown": "^0.0.20",
+    "bonaparte-panel": "^0.0.20",
+    "bonaparte-sidebar": "^0.0.20",
+    "bonaparte-toolbar": "^0.0.20",
+    "bonaparte-scroll": "^0.0.20"
   },
   "devDependencies": {
-    "gitbook-cli": "^2.1.2",
-    "lerna": "^1.1.2",
     "autoprefixer": "^6.3.2",
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
@@ -49,5 +47,5 @@
     "sass-loader": "^3.1.2",
     "webpack": "^1.12.13"
   },
-  "version": "0.0.19"
+  "version": "0.0.20"
 }
