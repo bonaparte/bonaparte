@@ -25,14 +25,14 @@
     "url": "https://github.com/bonaparte/bonaparte.git"
   },
   "dependencies": {
-    "bonaparte-button": "file:./packages/bonaparte-button",
-    "bonaparte-collapsible": "file:./packages/bonaparte-collapsible",
-    "bonaparte-draggable": "file:./packages/bonaparte-draggable",
-    "bonaparte-dropdown": "file:./packages/bonaparte-dropdown",
-    "bonaparte-panel": "file:./packages/bonaparte-panel",
-    "bonaparte-sidebar": "file:./packages/bonaparte-sidebar",
-    "bonaparte-toolbar": "file:./packages/bonaparte-toolbar",
-    "bonaparte-scroll": "file:./packages/bonaparte-scroll"
+    "bonaparte-button": "x.x.x",
+    "bonaparte-collapsible": "x.x.x",
+    "bonaparte-draggable": "x.x.x",
+    "bonaparte-dropdown": "x.x.x",
+    "bonaparte-panel": "x.x.x",
+    "bonaparte-sidebar": "x.x.x",
+    "bonaparte-toolbar": "x.x.x",
+    "bonaparte-scroll": "x.x.x"
   },
   "devDependencies": {
     "gitbook-cli": "^2.1.2",
@@ -49,5 +49,5 @@
     "sass-loader": "^3.1.2",
     "webpack": "^1.12.13"
   },
-  "version": "0.0.12"
+  "version": "0.0.13"
 }
