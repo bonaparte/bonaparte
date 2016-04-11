@@ -25,14 +25,14 @@
     "url": "https://github.com/bonaparte/bonaparte.git"
   },
 	"dependencies": {
-		"bonaparte-button" : "x.x.x",
-		"bonaparte-collapsible" : "x.x.x",
-		"bonaparte-draggable" : "x.x.x",
-		"bonaparte-dropdown" : "x.x.x",
-		"bonaparte-panel" : "x.x.x",
-		"bonaparte-sidebar" : "x.x.x",
-		"bonaparte-toolbar" : "x.x.x",
-		"bonaparte-scroll" : "x.x.x"
+		"bonaparte-button" : "^x.x.x",
+		"bonaparte-collapsible" : "^x.x.x",
+		"bonaparte-draggable" : "^x.x.x",
+		"bonaparte-dropdown" : "^x.x.x",
+		"bonaparte-panel" : "^x.x.x",
+		"bonaparte-sidebar" : "^x.x.x",
+		"bonaparte-toolbar" : "^x.x.x",
+		"bonaparte-scroll" : "^x.x.x"
 	},
   "devDependencies": {
     "gitbook-cli": "^2.1.2",
