@@ -68,14 +68,14 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	// Components
-	__webpack_require__(16);
-	__webpack_require__(33);
+	__webpack_require__(9);
+	__webpack_require__(27);
 	__webpack_require__(42);
-	__webpack_require__(51);
-	__webpack_require__(60);
-	__webpack_require__(69);
-	__webpack_require__(77);
-	__webpack_require__(86);
+	__webpack_require__(58);
+	__webpack_require__(73);
+	__webpack_require__(99);
+	__webpack_require__(112);
+	__webpack_require__(127);
 
 
 /***/ },
@@ -87,16 +87,15 @@
 /* 6 */,
 /* 7 */,
 /* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */
-[206, 17, 31],
-/* 17 */
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(10);
+
+/***/ },
+/* 10 */
+[141, 11, 25],
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -106,20 +105,20 @@
 	 * require("bonaparte").mixin.create()
 	 */
 
-	module.exports = __webpack_require__(18);
+	module.exports = __webpack_require__(12);
 
 /***/ },
-/* 18 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var bp = __webpack_require__(19);
-	var mousetrap = __webpack_require__(29);
+	var bp = __webpack_require__(13);
+	var mousetrap = __webpack_require__(23);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
 
 	module.exports = bp.tag.create("panel", [
-	  __webpack_require__(30),
+	  __webpack_require__(24),
 	  panel
 	]);
 
@@ -168,7 +167,9 @@
 
 	  function attributeChangedCallback(data){
 	    if(bp.attribute.matchName(/open/, data.detail.name)){
+				if(data.detail.newValue != "true") {
 	        tag.bonaparte.triggerEvent("bonaparte.panel.close", null, true);
+				}
 	    };
 	  }
 
@@ -202,11 +203,11 @@
 
 
 /***/ },
-/* 19 */
-[207, 20],
-/* 20 */
-[208, 23],
-/* 21 */
+/* 13 */
+[142, 14, 20, 21, 22],
+/* 14 */
+[143, 15, 17],
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/*! 
@@ -467,10 +468,10 @@
 
 	////////////////////////////////////////////////////////////////////////////////
 	})( false? {} : module);
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(22)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)(module)))
 
 /***/ },
-/* 22 */
+/* 16 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -486,53 +487,13 @@
 
 
 /***/ },
-/* 23 */
-[209, 20, 24, 25],
-/* 24 */
-[210, 19],
-/* 25 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var objct = __webpack_require__(21);
-
-	var registeredMixins = {};
-
-	///////////////////////////////////////////////////////////////////////////////
-	// Public
-
-	module.exports = mixins;
-
-	///////////////////////////////////////////////////////////////////////////////
-	function mixins(tag){
-
-	  registeredMixins[tag.tagName] = registeredMixins[tag.tagName] || [];
-	  new objct.extend(tag, registeredMixins[tag.tagName]);
-
-	///////////////////////////////////////////////////////////////////////////////
-	// Public
-
-	  tag.bonaparte.mixin = mixin;
-
-	///////////////////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////////////////
-
-	  function mixin(mixin){
-	    if( typeof mixin !== "function" ) throw "Unexpected type of "+(typeof mixin)+"! Expected function.";
-
-	    // Save mixin
-	    registeredMixins[tag.tagName].push(mixin);
-
-	    // apply mixin to current tag.
-	    new objct.extend(tag, mixin);
-
-	  }
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	}
-
-/***/ },
-/* 26 */
+/* 17 */
+[144, 15, 14, 18, 19],
+/* 18 */
+[145, 13],
+/* 19 */
+[146, 15],
+/* 20 */
 /***/ function(module, exports) {
 
 	var MutationObserver = window.MutationObserver
@@ -1123,14 +1084,14 @@
 
 
 /***/ },
-/* 27 */
+/* 21 */
 /***/ function(module, exports) {
 
 	/*! (C) WebReflection Mit Style License */
 	(function(e,t,n,r){"use strict";function rt(e,t){for(var n=0,r=e.length;n<r;n++)dt(e[n],t)}function it(e){for(var t=0,n=e.length,r;t<n;t++)r=e[t],nt(r,b[ot(r)])}function st(e){return function(t){j(t)&&(dt(t,e),rt(t.querySelectorAll(w),e))}}function ot(e){var t=e.getAttribute("is"),n=e.nodeName.toUpperCase(),r=S.call(y,t?v+t.toUpperCase():d+n);return t&&-1<r&&!ut(n,t)?-1:r}function ut(e,t){return-1<w.indexOf(e+'[is="'+t+'"]')}function at(e){var t=e.currentTarget,n=e.attrChange,r=e.prevValue,i=e.newValue;Q&&t.attributeChangedCallback&&e.attrName!=="style"&&t.attributeChangedCallback(e.attrName,n===e[a]?null:r,n===e[l]?null:i)}function ft(e){var t=st(e);return function(e){X.push(t,e.target)}}function lt(e){K&&(K=!1,e.currentTarget.removeEventListener(h,lt)),rt((e.target||t).querySelectorAll(w),e.detail===o?o:s),B&&pt()}function ct(e,t){var n=this;q.call(n,e,t),G.call(n,{target:n})}function ht(e,t){D(e,t),et?et.observe(e,z):(J&&(e.setAttribute=ct,e[i]=Z(e),e.addEventListener(p,G)),e.addEventListener(c,at)),e.createdCallback&&Q&&(e.created=!0,e.createdCallback(),e.created=!1)}function pt(){for(var e,t=0,n=F.length;t<n;t++)e=F[t],E.contains(e)||(F.splice(t,1),dt(e,o))}function dt(e,t){var n,r=ot(e);-1<r&&(tt(e,b[r]),r=0,t===s&&!e[s]?(e[o]=!1,e[s]=!0,r=1,B&&S.call(F,e)<0&&F.push(e)):t===o&&!e[o]&&(e[s]=!1,e[o]=!0,r=1),r&&(n=e[t+"Callback"])&&n.call(e))}if(r in t)return;var i="__"+r+(Math.random()*1e5>>0),s="attached",o="detached",u="extends",a="ADDITION",f="MODIFICATION",l="REMOVAL",c="DOMAttrModified",h="DOMContentLoaded",p="DOMSubtreeModified",d="<",v="=",m=/^[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+$/,g=["ANNOTATION-XML","COLOR-PROFILE","FONT-FACE","FONT-FACE-SRC","FONT-FACE-URI","FONT-FACE-FORMAT","FONT-FACE-NAME","MISSING-GLYPH"],y=[],b=[],w="",E=t.documentElement,S=y.indexOf||function(e){for(var t=this.length;t--&&this[t]!==e;);return t},x=n.prototype,T=x.hasOwnProperty,N=x.isPrototypeOf,C=n.defineProperty,k=n.getOwnPropertyDescriptor,L=n.getOwnPropertyNames,A=n.getPrototypeOf,O=n.setPrototypeOf,M=!!n.__proto__,_=n.create||function vt(e){return e?(vt.prototype=e,new vt):this},D=O||(M?function(e,t){return e.__proto__=t,e}:L&&k?function(){function e(e,t){for(var n,r=L(t),i=0,s=r.length;i<s;i++)n=r[i],T.call(e,n)||C(e,n,k(t,n))}return function(t,n){do e(t,n);while((n=A(n))&&!N.call(n,t));return t}}():function(e,t){for(var n in t)e[n]=t[n];return e}),P=e.MutationObserver||e.WebKitMutationObserver,H=(e.HTMLElement||e.Element||e.Node).prototype,B=!N.call(H,E),j=B?function(e){return e.nodeType===1}:function(e){return N.call(H,e)},F=B&&[],I=H.cloneNode,q=H.setAttribute,R=H.removeAttribute,U=t.createElement,z=P&&{attributes:!0,characterData:!0,attributeOldValue:!0},W=P||function(e){J=!1,E.removeEventListener(c,W)},X,V=e.requestAnimationFrame||e.webkitRequestAnimationFrame||e.mozRequestAnimationFrame||e.msRequestAnimationFrame||function(e){setTimeout(e,10)},$=!1,J=!0,K=!0,Q=!0,G,Y,Z,et,tt,nt;O||M?(tt=function(e,t){N.call(t,e)||ht(e,t)},nt=ht):(tt=function(e,t){e[i]||(e[i]=n(!0),ht(e,t))},nt=tt),B?(J=!1,function(){var e=k(H,"addEventListener"),t=e.value,n=function(e){var t=new CustomEvent(c,{bubbles:!0});t.attrName=e,t.prevValue=this.getAttribute(e),t.newValue=null,t[l]=t.attrChange=2,R.call(this,e),this.dispatchEvent(t)},r=function(e,t){var n=this.hasAttribute(e),r=n&&this.getAttribute(e),i=new CustomEvent(c,{bubbles:!0});q.call(this,e,t),i.attrName=e,i.prevValue=n?r:null,i.newValue=t,n?i[f]=i.attrChange=1:i[a]=i.attrChange=0,this.dispatchEvent(i)},s=function(e){var t=e.currentTarget,n=t[i],r=e.propertyName,s;n.hasOwnProperty(r)&&(n=n[r],s=new CustomEvent(c,{bubbles:!0}),s.attrName=n.name,s.prevValue=n.value||null,s.newValue=n.value=t[r]||null,s.prevValue==null?s[a]=s.attrChange=0:s[f]=s.attrChange=1,t.dispatchEvent(s))};e.value=function(e,o,u){e===c&&this.attributeChangedCallback&&this.setAttribute!==r&&(this[i]={className:{name:"class",value:this.className}},this.setAttribute=r,this.removeAttribute=n,t.call(this,"propertychange",s)),t.call(this,e,o,u)},C(H,"addEventListener",e)}()):P||(E.addEventListener(c,W),E.setAttribute(i,1),E.removeAttribute(i),J&&(G=function(e){var t=this,n,r,s;if(t===e.target){n=t[i],t[i]=r=Z(t);for(s in r){if(!(s in n))return Y(0,t,s,n[s],r[s],a);if(r[s]!==n[s])return Y(1,t,s,n[s],r[s],f)}for(s in n)if(!(s in r))return Y(2,t,s,n[s],r[s],l)}},Y=function(e,t,n,r,i,s){var o={attrChange:e,currentTarget:t,attrName:n,prevValue:r,newValue:i};o[s]=e,at(o)},Z=function(e){for(var t,n,r={},i=e.attributes,s=0,o=i.length;s<o;s++)t=i[s],n=t.name,n!=="setAttribute"&&(r[n]=t.value);return r})),t[r]=function(n,r){p=n.toUpperCase(),$||($=!0,P?(et=function(e,t){function n(e,t){for(var n=0,r=e.length;n<r;t(e[n++]));}return new P(function(r){for(var i,s,o=0,u=r.length;o<u;o++)i=r[o],i.type==="childList"?(n(i.addedNodes,e),n(i.removedNodes,t)):(s=i.target,Q&&s.attributeChangedCallback&&i.attributeName!=="style"&&s.attributeChangedCallback(i.attributeName,i.oldValue,s.getAttribute(i.attributeName)))})}(st(s),st(o)),et.observe(t,{childList:!0,subtree:!0})):(X=[],V(function E(){while(X.length)X.shift().call(null,X.shift());V(E)}),t.addEventListener("DOMNodeInserted",ft(s)),t.addEventListener("DOMNodeRemoved",ft(o))),t.addEventListener(h,lt),t.addEventListener("readystatechange",lt),t.createElement=function(e,n){var r=U.apply(t,arguments),i=""+e,s=S.call(y,(n?v:d)+(n||i).toUpperCase()),o=-1<s;return n&&(r.setAttribute("is",n=n.toLowerCase()),o&&(o=ut(i.toUpperCase(),n))),Q=!t.createElement.innerHTMLHelper,o&&nt(r,b[s]),r},H.cloneNode=function(e){var t=I.call(this,!!e),n=ot(t);return-1<n&&nt(t,b[n]),e&&it(t.querySelectorAll(w)),t});if(-2<S.call(y,v+p)+S.call(y,d+p))throw new Error("A "+n+" type is already registered");if(!m.test(p)||-1<S.call(g,p))throw new Error("The type "+n+" is invalid");var i=function(){return f?t.createElement(l,p):t.createElement(l)},a=r||x,f=T.call(a,u),l=f?r[u].toUpperCase():p,c=y.push((f?v:d)+p)-1,p;return w=w.concat(w.length?",":"",f?l+'[is="'+n.toLowerCase()+'"]':l),i.prototype=b[c]=T.call(a,"prototype")?a.prototype:_(H),rt(t.querySelectorAll(w),s),i}})(window,document,Object,"registerElement");
 
 /***/ },
-/* 28 */
+/* 22 */
 /***/ function(module, exports) {
 
 	// Polyfill for creating CustomEvents on IE9/10/11
@@ -1161,7 +1122,7 @@
 
 
 /***/ },
-/* 29 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*global define:false */
@@ -2188,13 +2149,13 @@
 
 
 /***/ },
-/* 30 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var bp = __webpack_require__(19);
+	var bp = __webpack_require__(13);
 
 	///////////////////////////////////////////////////////////////////////////////
-	// Public 
+	// Public
 
 	module.exports = toggleMixin;
 
@@ -2215,16 +2176,22 @@
 
 
 /***/ },
-/* 31 */
+/* 25 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 32 */,
-/* 33 */
-[206, 34, 41],
-/* 34 */
+/* 26 */,
+/* 27 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(28);
+
+/***/ },
+/* 28 */
+[141, 29, 40],
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -2234,13 +2201,13 @@
 	 * require("bonaparte").mixin.create()
 	 */
 
-	module.exports = __webpack_require__(35);
+	module.exports = __webpack_require__(30);
 
 /***/ },
-/* 35 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var bp = __webpack_require__(36);
+	var bp = __webpack_require__(31);
 
 	var scrollBarWidth = false;
 
@@ -2366,21 +2333,36 @@
 
 
 /***/ },
+/* 31 */
+[142, 32, 37, 38, 39],
+/* 32 */
+[143, 33, 34],
+/* 33 */
+15,
+/* 34 */
+[144, 33, 32, 35, 36],
+/* 35 */
+[145, 31],
 /* 36 */
-[207, 37],
+[146, 33],
 /* 37 */
-[208, 38],
+20,
 /* 38 */
-[209, 37, 39, 40],
+21,
 /* 39 */
-[210, 36],
+22,
 /* 40 */
 25,
-/* 41 */
-31,
+/* 41 */,
 /* 42 */
-[206, 43, 50],
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(43);
+
+/***/ },
 /* 43 */
+[141, 44, 56],
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -2390,14 +2372,14 @@
 	 * require("bonaparte").mixin.create()
 	 */
 
-	module.exports = __webpack_require__(44);
+	module.exports = __webpack_require__(45);
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var bp = __webpack_require__(45);
-	var mousetrap = __webpack_require__(29);
+	var bp = __webpack_require__(46);
+	var mousetrap = __webpack_require__(55);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
@@ -2420,7 +2402,7 @@
 
 	///////////////////////////////////////////////////////////////////////////////
 
-	  tag.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);  
+	  tag.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
 
 	///////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////
@@ -2463,8 +2445,8 @@
 
 	  function triggerEvents(){
 	    var trigger = bp.attribute.get(tag, "trigger");
-	   
-	    if(trigger === undefined) return; 
+
+	    if(trigger === undefined) return;
 	    for(var i = 0; i < targets.length; i++){
 	      target = targets[i];
 	      bp.tag.triggerEvent(target, trigger)
@@ -2498,7 +2480,7 @@
 	    // for each target
 	    for(var i =0; i< targets.length; i++){
 	      target = targets[i];
-	      
+
 	      // check attributes
 	      for(var name in attributes) {
 	        targetValue = bp.attribute.get(target, name);
@@ -2517,10 +2499,10 @@
 	          active=false;
 
 	        if(active !== false) active = true;
-	      }     
-	 
-	    } 
-	    
+	      }
+
+	    }
+
 	    var activeClass = bp.attribute.get(tag, "active-class") || "active";
 	    if(activeClass==="") return;
 
@@ -2540,24 +2522,24 @@
 
 	      // toggle attributes
 	      // for(var k=0; k<toggles.length; k++) {
-	      //   targetValue = bp.attribute.get(target, toggles[k]) === "true" ? 
+	      //   targetValue = bp.attribute.get(target, toggles[k]) === "true" ?
 	      //     "false":"true";
-	      //   bp.attribute.set(target, toggles[k], targetValue); 
+	      //   bp.attribute.set(target, toggles[k], targetValue);
 	      // }
-	      
+
 	      // sync attributes
 	      for(var name in attributes) {
-	        targetValue = active === true && (toggle === true || toggles.indexOf(name) >=0)? 
+	        targetValue = active === true && (toggle === true || toggles.indexOf(name) >=0)?
 	          target.bonaparte.values[name]  : attributes[name];
 
-	        if(targetValue !== undefined) 
-	          bp.attribute.set(target, name, targetValue); 
-	        else 
+	        if(targetValue !== undefined)
+	          bp.attribute.set(target, name, targetValue);
+	        else
 	          bp.attribute.remove(target, name);
 	      }
 	    }
 	  }
-	  
+
 	///////////////////////////////////////////////////////////////////////////////
 
 	  function setShortcut(){
@@ -2623,7 +2605,7 @@
 	    var context = potentialToolbar && bp.tag.contains(potentialToolbar.firstElementChild, tag)?
 	      potentialToolbar : document;
 
-	     
+
 	    var newTargets = context.querySelectorAll(selector);
 	    if(context !== document && context.matches(selector)) {
 	      newTargets=Array.prototype.slice.call(newTargets);
@@ -2672,94 +2654,73 @@
 
 	 ///////////////////////////////////////////////////////////////////////////////
 
+
 /***/ },
-/* 45 */
-[207, 46],
 /* 46 */
-[208, 47],
+[142, 47, 52, 53, 54],
 /* 47 */
-[209, 46, 48, 49],
+[143, 48, 49],
 /* 48 */
-[210, 45],
+15,
 /* 49 */
-25,
+[144, 48, 47, 50, 51],
 /* 50 */
-31,
+[145, 46],
 /* 51 */
-[206, 52, 59],
+[146, 48],
 /* 52 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-	 * This file should export the result of 
-	 * require("bonaparte").tag.create()
-	 * or
-	 * require("bonaparte").mixin.create()
-	 */
-
-	module.exports = __webpack_require__(53);
-
-/***/ },
+20,
 /* 53 */
+21,
+/* 54 */
+22,
+/* 55 */
+23,
+/* 56 */
+25,
+/* 57 */,
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
-	///////////////////////////////////////////////////////////////////////////////
-
-	var bp = __webpack_require__(54);
-
-	///////////////////////////////////////////////////////////////////////////////
-	// Public
-
-	module.exports = bp.tag.create("sidebar", sidebar);
-
-	///////////////////////////////////////////////////////////////////////////////
-	function sidebar(tag){
-	  updateSize();
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	  tag.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
-	  
-	///////////////////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////////////////
-
-	  function attributeChangedCallback(data){
-	    if(bp.attribute.matchName(/size/, data.detail.name)) updateSize();
-	  }
-
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	  function updateSize(data){
-	    var size = bp.attribute.get(tag, "size");
-	    var sidebar = bp.attribute.get(tag, "position");
-	    var style = sidebar === "left" || sidebar==="right" ? "min-width" : "min-height";
-	    if(size === undefined) 
-	      tag.firstElementChild.style[style] = "";
-	    else 
-	      tag.firstElementChild.style[style] = size;
-	  }
-
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
+	module.exports = __webpack_require__(59);
 
 /***/ },
-/* 54 */
-[207, 55],
-/* 55 */
-[208, 56],
-/* 56 */
-[209, 55, 57, 58],
-/* 57 */
-[210, 54],
-/* 58 */
-25,
 /* 59 */
-31,
+[141, 60, 71],
 /* 60 */
-[206, 61, 68],
+[147, 61],
 /* 61 */
+[148, 62],
+/* 62 */
+[142, 63, 68, 69, 70],
+/* 63 */
+[143, 64, 65],
+/* 64 */
+15,
+/* 65 */
+[144, 64, 63, 66, 67],
+/* 66 */
+[145, 62],
+/* 67 */
+[146, 64],
+/* 68 */
+20,
+/* 69 */
+21,
+/* 70 */
+22,
+/* 71 */
+25,
+/* 72 */,
+/* 73 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(74);
+
+/***/ },
+/* 74 */
+[141, 75, 97],
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -2769,43 +2730,80 @@
 	 * require("bonaparte").mixin.create()
 	 */
 
-	module.exports = __webpack_require__(62);
+	module.exports = __webpack_require__(76);
 
 
 /***/ },
-/* 62 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var bp = __webpack_require__(63);
+	var bp = __webpack_require__(77);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
 
 	module.exports = bp.tag.create("toolbar", [
-	  __webpack_require__(52)
+	  __webpack_require__(86)
 	]);
 
 
 /***/ },
-/* 63 */
-[207, 64],
-/* 64 */
-[208, 65],
-/* 65 */
-[209, 64, 66, 67],
-/* 66 */
-[210, 63],
-/* 67 */
+/* 77 */
+[142, 78, 83, 84, 85],
+/* 78 */
+[143, 79, 80],
+/* 79 */
+15,
+/* 80 */
+[144, 79, 78, 81, 82],
+/* 81 */
+[145, 77],
+/* 82 */
+[146, 79],
+/* 83 */
+20,
+/* 84 */
+21,
+/* 85 */
+22,
+/* 86 */
+[147, 87],
+/* 87 */
+[148, 88],
+/* 88 */
+[142, 89, 94, 95, 96],
+/* 89 */
+[143, 90, 91],
+/* 90 */
+15,
+/* 91 */
+[144, 90, 89, 92, 93],
+/* 92 */
+[145, 88],
+/* 93 */
+[146, 90],
+/* 94 */
+20,
+/* 95 */
+21,
+/* 96 */
+22,
+/* 97 */
 25,
-/* 68 */
-31,
-/* 69 */
+/* 98 */,
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(70).register();
+	module.exports = __webpack_require__(100);
 
 /***/ },
-/* 70 */
+/* 100 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(101).register();
+
+/***/ },
+/* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -2815,13 +2813,13 @@
 	 * require("bonaparte").mixin.create()
 	 */
 
-	module.exports = __webpack_require__(71);
+	module.exports = __webpack_require__(102);
 
 /***/ },
-/* 71 */
+/* 102 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var bp = __webpack_require__(72);
+	var bp = __webpack_require__(103);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
@@ -2839,7 +2837,7 @@
 	    handler,
 	    target,
 	    dropZones;
-	  
+
 	  initialise();
 
 	  function update () {
@@ -2907,7 +2905,7 @@
 
 
 	///////////////////////////////////////////////////////////////////////////////
-	  
+
 	  function mousedown(e) {
 	    var dragElem = findDraggableEl(e);
 	    if (handler) {
@@ -2952,7 +2950,7 @@
 
 	  function dragover(e){
 	   e.preventDefault();
-	  }  
+	  }
 
 	  function dragleave(e){
 	    var elem = findDraggableEl(e),
@@ -3022,20 +3020,35 @@
 
 	///////////////////////////////////////////////////////////////////////////////
 
+
 /***/ },
-/* 72 */
-[207, 73],
-/* 73 */
-[208, 74],
-/* 74 */
-[209, 73, 75, 76],
-/* 75 */
-[210, 72],
-/* 76 */
-25,
-/* 77 */
-[206, 78, 85],
-/* 78 */
+/* 103 */
+[142, 104, 109, 110, 111],
+/* 104 */
+[143, 105, 106],
+/* 105 */
+15,
+/* 106 */
+[144, 105, 104, 107, 108],
+/* 107 */
+[145, 103],
+/* 108 */
+[146, 105],
+/* 109 */
+20,
+/* 110 */
+21,
+/* 111 */
+22,
+/* 112 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(113);
+
+/***/ },
+/* 113 */
+[141, 114, 125],
+/* 114 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -3045,13 +3058,13 @@
 	 * require("bonaparte").mixin.create()
 	 */
 
-	module.exports = __webpack_require__(79);
+	module.exports = __webpack_require__(115);
 
 /***/ },
-/* 79 */
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var bp = __webpack_require__(80);
+	var bp = __webpack_require__(116);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
@@ -3063,16 +3076,16 @@
 
 	  tag.addEventListener("bonaparte.tag.attributeChanged", update);
 	  bp.tag.DOMReady(initialise);
-	  
+
 
 	  function update (data) {
 	    var handler = '',
 	        listener = []
-	    
+
 	    if (data.detail.name === "action") {
 	      handler = getHandler();
 	      listener = (data.detail.previousValue || "click").split(',');
-	    } else if (data.detail.name === "handler") { 
+	    } else if (data.detail.name === "handler") {
 	      handler = getHandler(data.detail.previousValue || false);
 	      listener = (bp.attribute.get(tag, "action") || "click").split(',');
 	    }
@@ -3083,7 +3096,7 @@
 
 	    initialise();
 	  }
-	  
+
 	  function initialise () {
 	  	var handler = getHandler(),
 	      listener = (bp.attribute.get(tag, "action") || "click").split(',');
@@ -3093,14 +3106,14 @@
 	  }
 
 	  function getHandler(handlerSelector) {
-	     
+
 	    if (typeof handlerSelector === 'undefined') {
 	      handlerSelector = bp.attribute.get(tag, "handler") || false;
 	    }
 	    var handler = tag.children[1];
 	    if (handlerSelector) {
 	      handler = tag.children[1].querySelector(handlerSelector) || handler;
-	    } 
+	    }
 
 	    return handler;
 	  }
@@ -3126,7 +3139,7 @@
 	      attribute = "open",
 	    	newValue = bp.attribute.get(tag, attribute) === "true" ? "false" : "true",
 	      activeClass = bp.attribute.get(handler, "active-class") || "active";
-	    
+
 	    bp.attribute.set(tag, attribute, newValue);
 	    handler.classList.toggle(activeClass);
 
@@ -3143,25 +3156,41 @@
 
 	///////////////////////////////////////////////////////////////////////////////
 
+
 /***/ },
-/* 80 */
-[207, 81],
-/* 81 */
-[208, 82],
-/* 82 */
-[209, 81, 83, 84],
-/* 83 */
-[210, 80],
-/* 84 */
+/* 116 */
+[142, 117, 122, 123, 124],
+/* 117 */
+[143, 118, 119],
+/* 118 */
+15,
+/* 119 */
+[144, 118, 117, 120, 121],
+/* 120 */
+[145, 116],
+/* 121 */
+[146, 118],
+/* 122 */
+20,
+/* 123 */
+21,
+/* 124 */
+22,
+/* 125 */
 25,
-/* 85 */
-31,
-/* 86 */
-[206, 87, 93],
-/* 87 */
+/* 126 */,
+/* 127 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var bp = __webpack_require__(88);
+	module.exports = __webpack_require__(128);
+
+/***/ },
+/* 128 */
+[141, 129, 139],
+/* 129 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var bp = __webpack_require__(130);
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
 
@@ -3174,139 +3203,36 @@
 
 
 /***/ },
-/* 88 */
-[207, 89],
-/* 89 */
-[208, 90],
-/* 90 */
-[209, 89, 91, 92],
-/* 91 */
-[210, 88],
-/* 92 */
+/* 130 */
+[142, 131, 136, 137, 138],
+/* 131 */
+[143, 132, 133],
+/* 132 */
+15,
+/* 133 */
+[144, 132, 131, 134, 135],
+/* 134 */
+[145, 130],
+/* 135 */
+[146, 132],
+/* 136 */
+20,
+/* 137 */
+21,
+/* 138 */
+22,
+/* 139 */
 25,
-/* 93 */
-31,
-/* 94 */,
-/* 95 */,
-/* 96 */,
-/* 97 */,
-/* 98 */,
-/* 99 */,
-/* 100 */,
-/* 101 */,
-/* 102 */,
-/* 103 */,
-/* 104 */,
-/* 105 */,
-/* 106 */,
-/* 107 */,
-/* 108 */,
-/* 109 */,
-/* 110 */,
-/* 111 */,
-/* 112 */,
-/* 113 */,
-/* 114 */,
-/* 115 */,
-/* 116 */,
-/* 117 */,
-/* 118 */,
-/* 119 */,
-/* 120 */,
-/* 121 */,
-/* 122 */,
-/* 123 */,
-/* 124 */,
-/* 125 */,
-/* 126 */,
-/* 127 */,
-/* 128 */,
-/* 129 */,
-/* 130 */,
-/* 131 */,
-/* 132 */,
-/* 133 */,
-/* 134 */,
-/* 135 */,
-/* 136 */,
-/* 137 */,
-/* 138 */,
-/* 139 */,
 /* 140 */,
-/* 141 */,
-/* 142 */,
-/* 143 */,
-/* 144 */,
-/* 145 */,
-/* 146 */,
-/* 147 */,
-/* 148 */,
-/* 149 */,
-/* 150 */,
-/* 151 */,
-/* 152 */,
-/* 153 */,
-/* 154 */,
-/* 155 */,
-/* 156 */,
-/* 157 */,
-/* 158 */,
-/* 159 */,
-/* 160 */,
-/* 161 */,
-/* 162 */,
-/* 163 */,
-/* 164 */,
-/* 165 */,
-/* 166 */,
-/* 167 */,
-/* 168 */,
-/* 169 */,
-/* 170 */,
-/* 171 */,
-/* 172 */,
-/* 173 */,
-/* 174 */,
-/* 175 */,
-/* 176 */,
-/* 177 */,
-/* 178 */,
-/* 179 */,
-/* 180 */,
-/* 181 */,
-/* 182 */,
-/* 183 */,
-/* 184 */,
-/* 185 */,
-/* 186 */,
-/* 187 */,
-/* 188 */,
-/* 189 */,
-/* 190 */,
-/* 191 */,
-/* 192 */,
-/* 193 */,
-/* 194 */,
-/* 195 */,
-/* 196 */,
-/* 197 */,
-/* 198 */,
-/* 199 */,
-/* 200 */,
-/* 201 */,
-/* 202 */,
-/* 203 */,
-/* 204 */,
-/* 205 */,
-/* 206 */
+/* 141 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__) {
 
 	__webpack_require__(__webpack_module_template_argument_0__).register();
 	__webpack_require__(__webpack_module_template_argument_1__);
 
 /***/ },
-/* 207 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
+/* 142 */
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__) {
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public 
@@ -3319,10 +3245,10 @@
 	if(typeof document.addEventListener === "function") { // no polyfills for IE8 -> silently fail.
 	  
 	  if(!("MutationObserver" in document)) {
-	    MutationObserver = __webpack_require__(26);
+	    MutationObserver = __webpack_require__(__webpack_module_template_argument_1__);
 	  };
-	  __webpack_require__(27);
-	  __webpack_require__(28);
+	  __webpack_require__(__webpack_module_template_argument_2__);
+	  __webpack_require__(__webpack_module_template_argument_3__);
 
 
 	  if (Element && !Element.prototype.matches) {
@@ -3335,17 +3261,17 @@
 
 
 /***/ },
-/* 208 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
+/* 143 */
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__) {
 
-	var objct = __webpack_require__(21);
+	var objct = __webpack_require__(__webpack_module_template_argument_0__);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
 
 	module.exports = {
 	  tag : {
-	    create : __webpack_require__(__webpack_module_template_argument_0__),
+	    create : __webpack_require__(__webpack_module_template_argument_1__),
 	    contains : nodeContains,
 	    observe : observe,
 	    triggerEvent : triggerEvent,
@@ -3506,11 +3432,11 @@
 	///////////////////////////////////////////////////////////////////////////////
 
 /***/ },
-/* 209 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__) {
+/* 144 */
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__) {
 
-	var objct = __webpack_require__(21);
-	var bp = __webpack_require__(__webpack_module_template_argument_0__);
+	var objct = __webpack_require__(__webpack_module_template_argument_0__);
+	var bp = __webpack_require__(__webpack_module_template_argument_1__);
 
 	///////////////////////////////////////////////////////////////////////////////
 
@@ -3601,9 +3527,9 @@
 
 	  function apply(element) {
 	    var modules = [
-	      __webpack_require__(__webpack_module_template_argument_1__),
+	      __webpack_require__(__webpack_module_template_argument_2__),
 	      definition, 
-	      __webpack_require__(__webpack_module_template_argument_2__)
+	      __webpack_require__(__webpack_module_template_argument_3__)
 	    ];
 
 	    // Create bonaparte namespace
@@ -3652,7 +3578,7 @@
 
 
 /***/ },
-/* 210 */
+/* 145 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
 
 	var bp = __webpack_require__(__webpack_module_template_argument_0__);
@@ -3681,6 +3607,107 @@
 
 
 	}
+
+/***/ },
+/* 146 */
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
+
+	var objct = __webpack_require__(__webpack_module_template_argument_0__);
+
+	var registeredMixins = {};
+
+	///////////////////////////////////////////////////////////////////////////////
+	// Public
+
+	module.exports = mixins;
+
+	///////////////////////////////////////////////////////////////////////////////
+	function mixins(tag){
+
+	  registeredMixins[tag.tagName] = registeredMixins[tag.tagName] || [];
+	  new objct.extend(tag, registeredMixins[tag.tagName]);
+
+	///////////////////////////////////////////////////////////////////////////////
+	// Public
+
+	  tag.bonaparte.mixin = mixin;
+
+	///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+
+	  function mixin(mixin){
+	    if( typeof mixin !== "function" ) throw "Unexpected type of "+(typeof mixin)+"! Expected function.";
+
+	    // Save mixin
+	    registeredMixins[tag.tagName].push(mixin);
+
+	    // apply mixin to current tag.
+	    new objct.extend(tag, mixin);
+
+	  }
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	}
+
+/***/ },
+/* 147 */
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
+
+	/*
+	 * This file should export the result of 
+	 * require("bonaparte").tag.create()
+	 * or
+	 * require("bonaparte").mixin.create()
+	 */
+
+	module.exports = __webpack_require__(__webpack_module_template_argument_0__);
+
+/***/ },
+/* 148 */
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	var bp = __webpack_require__(__webpack_module_template_argument_0__);
+
+	///////////////////////////////////////////////////////////////////////////////
+	// Public
+
+	module.exports = bp.tag.create("sidebar", sidebar);
+
+	///////////////////////////////////////////////////////////////////////////////
+	function sidebar(tag){
+	  updateSize();
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	  tag.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
+
+	///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+
+	  function attributeChangedCallback(data){
+	    if(bp.attribute.matchName(/size/, data.detail.name)) updateSize();
+	  }
+
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	  function updateSize(data){
+	    var size = bp.attribute.get(tag, "size");
+	    var sidebar = bp.attribute.get(tag, "position");
+	    var style = sidebar === "left" || sidebar==="right" ? "min-width" : "min-height";
+	    if(size === undefined)
+	      tag.firstElementChild.style[style] = "";
+	    else
+	      tag.firstElementChild.style[style] = size;
+	  }
+
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+
 
 /***/ }
 /******/ ])));

@@ -45,12 +45,12 @@
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(178);
+	module.exports = __webpack_require__(59);
 
 
 /***/ },
 
-/***/ 22:
+/***/ 16:
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -67,15 +67,15 @@
 
 /***/ },
 
-/***/ 178:
+/***/ 59:
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(179).register();
-	__webpack_require__(190);
+	__webpack_require__(60).register();
+	__webpack_require__(71);
 
 /***/ },
 
-/***/ 179:
+/***/ 60:
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -85,16 +85,16 @@
 	 * require("bonaparte").mixin.create()
 	 */
 
-	module.exports = __webpack_require__(180);
+	module.exports = __webpack_require__(61);
 
 /***/ },
 
-/***/ 180:
+/***/ 61:
 /***/ function(module, exports, __webpack_require__) {
 
 	///////////////////////////////////////////////////////////////////////////////
 
-	var bp = __webpack_require__(181);
+	var bp = __webpack_require__(62);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
@@ -108,7 +108,7 @@
 	///////////////////////////////////////////////////////////////////////////////
 
 	  tag.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
-	  
+
 	///////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////
 
@@ -123,9 +123,9 @@
 	    var size = bp.attribute.get(tag, "size");
 	    var sidebar = bp.attribute.get(tag, "position");
 	    var style = sidebar === "left" || sidebar==="right" ? "min-width" : "min-height";
-	    if(size === undefined) 
+	    if(size === undefined)
 	      tag.firstElementChild.style[style] = "";
-	    else 
+	    else
 	      tag.firstElementChild.style[style] = size;
 	  }
 
@@ -133,15 +133,16 @@
 
 	///////////////////////////////////////////////////////////////////////////////
 
+
 /***/ },
 
-/***/ 181:
+/***/ 62:
 /***/ function(module, exports, __webpack_require__) {
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public 
 
-	module.exports = __webpack_require__(182);
+	module.exports = __webpack_require__(63);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Polyfills
@@ -149,10 +150,10 @@
 	if(typeof document.addEventListener === "function") { // no polyfills for IE8 -> silently fail.
 	  
 	  if(!("MutationObserver" in document)) {
-	    MutationObserver = __webpack_require__(187);
+	    MutationObserver = __webpack_require__(68);
 	  };
-	  __webpack_require__(188);
-	  __webpack_require__(189);
+	  __webpack_require__(69);
+	  __webpack_require__(70);
 
 
 	  if (Element && !Element.prototype.matches) {
@@ -166,17 +167,17 @@
 
 /***/ },
 
-/***/ 182:
+/***/ 63:
 /***/ function(module, exports, __webpack_require__) {
 
-	var objct = __webpack_require__(183);
+	var objct = __webpack_require__(64);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
 
 	module.exports = {
 	  tag : {
-	    create : __webpack_require__(184),
+	    create : __webpack_require__(65),
 	    contains : nodeContains,
 	    observe : observe,
 	    triggerEvent : triggerEvent,
@@ -338,7 +339,7 @@
 
 /***/ },
 
-/***/ 183:
+/***/ 64:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/*! 
@@ -599,15 +600,15 @@
 
 	////////////////////////////////////////////////////////////////////////////////
 	})( false? {} : module);
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(22)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)(module)))
 
 /***/ },
 
-/***/ 184:
+/***/ 65:
 /***/ function(module, exports, __webpack_require__) {
 
-	var objct = __webpack_require__(183);
-	var bp = __webpack_require__(182);
+	var objct = __webpack_require__(64);
+	var bp = __webpack_require__(63);
 
 	///////////////////////////////////////////////////////////////////////////////
 
@@ -698,9 +699,9 @@
 
 	  function apply(element) {
 	    var modules = [
-	      __webpack_require__(185),
+	      __webpack_require__(66),
 	      definition, 
-	      __webpack_require__(186)
+	      __webpack_require__(67)
 	    ];
 
 	    // Create bonaparte namespace
@@ -750,10 +751,10 @@
 
 /***/ },
 
-/***/ 185:
+/***/ 66:
 /***/ function(module, exports, __webpack_require__) {
 
-	var bp = __webpack_require__(181);
+	var bp = __webpack_require__(62);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
@@ -782,10 +783,10 @@
 
 /***/ },
 
-/***/ 186:
+/***/ 67:
 /***/ function(module, exports, __webpack_require__) {
 
-	var objct = __webpack_require__(183);
+	var objct = __webpack_require__(64);
 
 	var registeredMixins = {};
 
@@ -825,7 +826,7 @@
 
 /***/ },
 
-/***/ 187:
+/***/ 68:
 /***/ function(module, exports) {
 
 	var MutationObserver = window.MutationObserver
@@ -1417,7 +1418,7 @@
 
 /***/ },
 
-/***/ 188:
+/***/ 69:
 /***/ function(module, exports) {
 
 	/*! (C) WebReflection Mit Style License */
@@ -1425,7 +1426,7 @@
 
 /***/ },
 
-/***/ 189:
+/***/ 70:
 /***/ function(module, exports) {
 
 	// Polyfill for creating CustomEvents on IE9/10/11
@@ -1457,7 +1458,7 @@
 
 /***/ },
 
-/***/ 190:
+/***/ 71:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

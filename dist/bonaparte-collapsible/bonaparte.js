@@ -45,12 +45,12 @@
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(109);
+	module.exports = __webpack_require__(128);
 
 
 /***/ },
 
-/***/ 22:
+/***/ 16:
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -67,18 +67,18 @@
 
 /***/ },
 
-/***/ 109:
+/***/ 128:
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(110).register();
-	__webpack_require__(120);
+	__webpack_require__(129).register();
+	__webpack_require__(139);
 
 /***/ },
 
-/***/ 110:
+/***/ 129:
 /***/ function(module, exports, __webpack_require__) {
 
-	var bp = __webpack_require__(111);
+	var bp = __webpack_require__(130);
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
 
@@ -92,13 +92,13 @@
 
 /***/ },
 
-/***/ 111:
+/***/ 130:
 /***/ function(module, exports, __webpack_require__) {
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public 
 
-	module.exports = __webpack_require__(112);
+	module.exports = __webpack_require__(131);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Polyfills
@@ -106,10 +106,10 @@
 	if(typeof document.addEventListener === "function") { // no polyfills for IE8 -> silently fail.
 	  
 	  if(!("MutationObserver" in document)) {
-	    MutationObserver = __webpack_require__(117);
+	    MutationObserver = __webpack_require__(136);
 	  };
-	  __webpack_require__(118);
-	  __webpack_require__(119);
+	  __webpack_require__(137);
+	  __webpack_require__(138);
 
 
 	  if (Element && !Element.prototype.matches) {
@@ -123,17 +123,17 @@
 
 /***/ },
 
-/***/ 112:
+/***/ 131:
 /***/ function(module, exports, __webpack_require__) {
 
-	var objct = __webpack_require__(113);
+	var objct = __webpack_require__(132);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
 
 	module.exports = {
 	  tag : {
-	    create : __webpack_require__(114),
+	    create : __webpack_require__(133),
 	    contains : nodeContains,
 	    observe : observe,
 	    triggerEvent : triggerEvent,
@@ -295,7 +295,7 @@
 
 /***/ },
 
-/***/ 113:
+/***/ 132:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/*! 
@@ -556,15 +556,15 @@
 
 	////////////////////////////////////////////////////////////////////////////////
 	})( false? {} : module);
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(22)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)(module)))
 
 /***/ },
 
-/***/ 114:
+/***/ 133:
 /***/ function(module, exports, __webpack_require__) {
 
-	var objct = __webpack_require__(113);
-	var bp = __webpack_require__(112);
+	var objct = __webpack_require__(132);
+	var bp = __webpack_require__(131);
 
 	///////////////////////////////////////////////////////////////////////////////
 
@@ -655,9 +655,9 @@
 
 	  function apply(element) {
 	    var modules = [
-	      __webpack_require__(115),
+	      __webpack_require__(134),
 	      definition, 
-	      __webpack_require__(116)
+	      __webpack_require__(135)
 	    ];
 
 	    // Create bonaparte namespace
@@ -707,10 +707,10 @@
 
 /***/ },
 
-/***/ 115:
+/***/ 134:
 /***/ function(module, exports, __webpack_require__) {
 
-	var bp = __webpack_require__(111);
+	var bp = __webpack_require__(130);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
@@ -739,10 +739,10 @@
 
 /***/ },
 
-/***/ 116:
+/***/ 135:
 /***/ function(module, exports, __webpack_require__) {
 
-	var objct = __webpack_require__(113);
+	var objct = __webpack_require__(132);
 
 	var registeredMixins = {};
 
@@ -782,7 +782,7 @@
 
 /***/ },
 
-/***/ 117:
+/***/ 136:
 /***/ function(module, exports) {
 
 	var MutationObserver = window.MutationObserver
@@ -1374,7 +1374,7 @@
 
 /***/ },
 
-/***/ 118:
+/***/ 137:
 /***/ function(module, exports) {
 
 	/*! (C) WebReflection Mit Style License */
@@ -1382,7 +1382,7 @@
 
 /***/ },
 
-/***/ 119:
+/***/ 138:
 /***/ function(module, exports) {
 
 	// Polyfill for creating CustomEvents on IE9/10/11
@@ -1414,7 +1414,7 @@
 
 /***/ },
 
-/***/ 120:
+/***/ 139:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

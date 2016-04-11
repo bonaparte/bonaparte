@@ -68,12 +68,73 @@
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(192);
+	module.exports = __webpack_require__(74);
 
 
 /***/ },
 
-/***/ 21:
+/***/ 16:
+/***/ function(module, exports) {
+
+	module.exports = function(module) {
+		if(!module.webpackPolyfill) {
+			module.deprecate = function() {};
+			module.paths = [];
+			// module.parent = undefined by default
+			module.children = [];
+			module.webpackPolyfill = 1;
+		}
+		return module;
+	}
+
+
+/***/ },
+
+/***/ 74:
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(75).register();
+	__webpack_require__(97);
+
+/***/ },
+
+/***/ 75:
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+	 * This file should export the result of
+	 * require("bonaparte").tag.create()
+	 * or
+	 * require("bonaparte").mixin.create()
+	 */
+
+	module.exports = __webpack_require__(76);
+
+
+/***/ },
+
+/***/ 76:
+/***/ function(module, exports, __webpack_require__) {
+
+	var bp = __webpack_require__(77);
+
+	///////////////////////////////////////////////////////////////////////////////
+	// Public
+
+	module.exports = bp.tag.create("toolbar", [
+	  __webpack_require__(86)
+	]);
+
+
+/***/ },
+
+/***/ 77:
+[149, 78, 83, 84, 85],
+
+/***/ 78:
+[150, 79, 80],
+
+/***/ 79:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/*! 
@@ -334,28 +395,20 @@
 
 	////////////////////////////////////////////////////////////////////////////////
 	})( false? {} : module);
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(22)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)(module)))
 
 /***/ },
 
-/***/ 22:
-/***/ function(module, exports) {
+/***/ 80:
+[151, 79, 78, 81, 82],
 
-	module.exports = function(module) {
-		if(!module.webpackPolyfill) {
-			module.deprecate = function() {};
-			module.paths = [];
-			// module.parent = undefined by default
-			module.children = [];
-			module.webpackPolyfill = 1;
-		}
-		return module;
-	}
+/***/ 81:
+[152, 77],
 
+/***/ 82:
+[153, 79],
 
-/***/ },
-
-/***/ 26:
+/***/ 83:
 /***/ function(module, exports) {
 
 	var MutationObserver = window.MutationObserver
@@ -947,7 +1000,7 @@
 
 /***/ },
 
-/***/ 27:
+/***/ 84:
 /***/ function(module, exports) {
 
 	/*! (C) WebReflection Mit Style License */
@@ -955,7 +1008,7 @@
 
 /***/ },
 
-/***/ 28:
+/***/ 85:
 /***/ function(module, exports) {
 
 	// Polyfill for creating CustomEvents on IE9/10/11
@@ -987,7 +1040,7 @@
 
 /***/ },
 
-/***/ 52:
+/***/ 86:
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -997,16 +1050,16 @@
 	 * require("bonaparte").mixin.create()
 	 */
 
-	module.exports = __webpack_require__(53);
+	module.exports = __webpack_require__(87);
 
 /***/ },
 
-/***/ 53:
+/***/ 87:
 /***/ function(module, exports, __webpack_require__) {
 
 	///////////////////////////////////////////////////////////////////////////////
 
-	var bp = __webpack_require__(54);
+	var bp = __webpack_require__(88);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
@@ -1020,7 +1073,7 @@
 	///////////////////////////////////////////////////////////////////////////////
 
 	  tag.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
-	  
+
 	///////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////
 
@@ -1035,9 +1088,9 @@
 	    var size = bp.attribute.get(tag, "size");
 	    var sidebar = bp.attribute.get(tag, "position");
 	    var style = sidebar === "left" || sidebar==="right" ? "min-width" : "min-height";
-	    if(size === undefined) 
+	    if(size === undefined)
 	      tag.firstElementChild.style[style] = "";
-	    else 
+	    else
 	      tag.firstElementChild.style[style] = size;
 	  }
 
@@ -1045,96 +1098,44 @@
 
 	///////////////////////////////////////////////////////////////////////////////
 
-/***/ },
-
-/***/ 54:
-[211, 55, 26, 27, 28],
-
-/***/ 55:
-[212, 21, 56],
-
-/***/ 56:
-[213, 21, 55, 57, 58],
-
-/***/ 57:
-[214, 54],
-
-/***/ 58:
-[215, 21],
-
-/***/ 192:
-/***/ function(module, exports, __webpack_require__) {
-
-	__webpack_require__(193).register();
-	__webpack_require__(204);
 
 /***/ },
 
-/***/ 193:
-/***/ function(module, exports, __webpack_require__) {
+/***/ 88:
+[149, 89, 94, 95, 96],
 
-	/*
-	 * This file should export the result of
-	 * require("bonaparte").tag.create()
-	 * or
-	 * require("bonaparte").mixin.create()
-	 */
+/***/ 89:
+[150, 90, 91],
 
-	module.exports = __webpack_require__(194);
+/***/ 90:
+79,
 
+/***/ 91:
+[151, 90, 89, 92, 93],
 
-/***/ },
+/***/ 92:
+[152, 88],
 
-/***/ 194:
-/***/ function(module, exports, __webpack_require__) {
+/***/ 93:
+[153, 90],
 
-	var bp = __webpack_require__(195);
+/***/ 94:
+83,
 
-	///////////////////////////////////////////////////////////////////////////////
-	// Public
+/***/ 95:
+84,
 
-	module.exports = bp.tag.create("toolbar", [
-	  __webpack_require__(52)
-	]);
+/***/ 96:
+85,
 
-
-/***/ },
-
-/***/ 195:
-[211, 196, 201, 202, 203],
-
-/***/ 196:
-[212, 197, 198],
-
-/***/ 197:
-21,
-
-/***/ 198:
-[213, 197, 196, 199, 200],
-
-/***/ 199:
-[214, 195],
-
-/***/ 200:
-[215, 197],
-
-/***/ 201:
-26,
-
-/***/ 202:
-27,
-
-/***/ 203:
-28,
-
-/***/ 204:
+/***/ 97:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
 
-/***/ 211:
+/***/ 149:
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__) {
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -1165,7 +1166,7 @@
 
 /***/ },
 
-/***/ 212:
+/***/ 150:
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__) {
 
 	var objct = __webpack_require__(__webpack_module_template_argument_0__);
@@ -1337,7 +1338,7 @@
 
 /***/ },
 
-/***/ 213:
+/***/ 151:
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__) {
 
 	var objct = __webpack_require__(__webpack_module_template_argument_0__);
@@ -1484,7 +1485,7 @@
 
 /***/ },
 
-/***/ 214:
+/***/ 152:
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
 
 	var bp = __webpack_require__(__webpack_module_template_argument_0__);
@@ -1516,7 +1517,7 @@
 
 /***/ },
 
-/***/ 215:
+/***/ 153:
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
 
 	var objct = __webpack_require__(__webpack_module_template_argument_0__);

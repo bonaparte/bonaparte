@@ -45,12 +45,12 @@
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(122);
+	module.exports = __webpack_require__(100);
 
 
 /***/ },
 
-/***/ 22:
+/***/ 16:
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -67,14 +67,14 @@
 
 /***/ },
 
-/***/ 122:
+/***/ 100:
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(123).register();
+	__webpack_require__(101).register();
 
 /***/ },
 
-/***/ 123:
+/***/ 101:
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -84,14 +84,14 @@
 	 * require("bonaparte").mixin.create()
 	 */
 
-	module.exports = __webpack_require__(124);
+	module.exports = __webpack_require__(102);
 
 /***/ },
 
-/***/ 124:
+/***/ 102:
 /***/ function(module, exports, __webpack_require__) {
 
-	var bp = __webpack_require__(125);
+	var bp = __webpack_require__(103);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
@@ -109,7 +109,7 @@
 	    handler,
 	    target,
 	    dropZones;
-	  
+
 	  initialise();
 
 	  function update () {
@@ -177,7 +177,7 @@
 
 
 	///////////////////////////////////////////////////////////////////////////////
-	  
+
 	  function mousedown(e) {
 	    var dragElem = findDraggableEl(e);
 	    if (handler) {
@@ -222,7 +222,7 @@
 
 	  function dragover(e){
 	   e.preventDefault();
-	  }  
+	  }
 
 	  function dragleave(e){
 	    var elem = findDraggableEl(e),
@@ -292,15 +292,16 @@
 
 	///////////////////////////////////////////////////////////////////////////////
 
+
 /***/ },
 
-/***/ 125:
+/***/ 103:
 /***/ function(module, exports, __webpack_require__) {
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public 
 
-	module.exports = __webpack_require__(126);
+	module.exports = __webpack_require__(104);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Polyfills
@@ -308,10 +309,10 @@
 	if(typeof document.addEventListener === "function") { // no polyfills for IE8 -> silently fail.
 	  
 	  if(!("MutationObserver" in document)) {
-	    MutationObserver = __webpack_require__(131);
+	    MutationObserver = __webpack_require__(109);
 	  };
-	  __webpack_require__(132);
-	  __webpack_require__(133);
+	  __webpack_require__(110);
+	  __webpack_require__(111);
 
 
 	  if (Element && !Element.prototype.matches) {
@@ -325,17 +326,17 @@
 
 /***/ },
 
-/***/ 126:
+/***/ 104:
 /***/ function(module, exports, __webpack_require__) {
 
-	var objct = __webpack_require__(127);
+	var objct = __webpack_require__(105);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
 
 	module.exports = {
 	  tag : {
-	    create : __webpack_require__(128),
+	    create : __webpack_require__(106),
 	    contains : nodeContains,
 	    observe : observe,
 	    triggerEvent : triggerEvent,
@@ -497,7 +498,7 @@
 
 /***/ },
 
-/***/ 127:
+/***/ 105:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/*! 
@@ -758,15 +759,15 @@
 
 	////////////////////////////////////////////////////////////////////////////////
 	})( false? {} : module);
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(22)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)(module)))
 
 /***/ },
 
-/***/ 128:
+/***/ 106:
 /***/ function(module, exports, __webpack_require__) {
 
-	var objct = __webpack_require__(127);
-	var bp = __webpack_require__(126);
+	var objct = __webpack_require__(105);
+	var bp = __webpack_require__(104);
 
 	///////////////////////////////////////////////////////////////////////////////
 
@@ -857,9 +858,9 @@
 
 	  function apply(element) {
 	    var modules = [
-	      __webpack_require__(129),
+	      __webpack_require__(107),
 	      definition, 
-	      __webpack_require__(130)
+	      __webpack_require__(108)
 	    ];
 
 	    // Create bonaparte namespace
@@ -909,10 +910,10 @@
 
 /***/ },
 
-/***/ 129:
+/***/ 107:
 /***/ function(module, exports, __webpack_require__) {
 
-	var bp = __webpack_require__(125);
+	var bp = __webpack_require__(103);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
@@ -941,10 +942,10 @@
 
 /***/ },
 
-/***/ 130:
+/***/ 108:
 /***/ function(module, exports, __webpack_require__) {
 
-	var objct = __webpack_require__(127);
+	var objct = __webpack_require__(105);
 
 	var registeredMixins = {};
 
@@ -984,7 +985,7 @@
 
 /***/ },
 
-/***/ 131:
+/***/ 109:
 /***/ function(module, exports) {
 
 	var MutationObserver = window.MutationObserver
@@ -1576,7 +1577,7 @@
 
 /***/ },
 
-/***/ 132:
+/***/ 110:
 /***/ function(module, exports) {
 
 	/*! (C) WebReflection Mit Style License */
@@ -1584,7 +1585,7 @@
 
 /***/ },
 
-/***/ 133:
+/***/ 111:
 /***/ function(module, exports) {
 
 	// Polyfill for creating CustomEvents on IE9/10/11

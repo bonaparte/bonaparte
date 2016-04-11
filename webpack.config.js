@@ -3,7 +3,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports =  {
   entry: {
-		"bonaparte" : './bonaparte.build.js',
+		"bonaparte" : './packages/bonaparte/bonaparte.build.js',
 		"bonaparte-button" : [ "./packages/bonaparte-button/bonaparte.build.js" ],
 		"bonaparte-collapsible" : [ "./packages/bonaparte-collapsible/bonaparte.build.js" ],
 		"bonaparte-draggable" : [ "./packages/bonaparte-draggable/bonaparte.build.js" ],

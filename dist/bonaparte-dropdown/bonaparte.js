@@ -45,12 +45,12 @@
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(134);
+	module.exports = __webpack_require__(113);
 
 
 /***/ },
 
-/***/ 22:
+/***/ 16:
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -67,15 +67,15 @@
 
 /***/ },
 
-/***/ 134:
+/***/ 113:
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(135).register();
-	__webpack_require__(146);
+	__webpack_require__(114).register();
+	__webpack_require__(125);
 
 /***/ },
 
-/***/ 135:
+/***/ 114:
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -85,14 +85,14 @@
 	 * require("bonaparte").mixin.create()
 	 */
 
-	module.exports = __webpack_require__(136);
+	module.exports = __webpack_require__(115);
 
 /***/ },
 
-/***/ 136:
+/***/ 115:
 /***/ function(module, exports, __webpack_require__) {
 
-	var bp = __webpack_require__(137);
+	var bp = __webpack_require__(116);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
@@ -104,16 +104,16 @@
 
 	  tag.addEventListener("bonaparte.tag.attributeChanged", update);
 	  bp.tag.DOMReady(initialise);
-	  
+
 
 	  function update (data) {
 	    var handler = '',
 	        listener = []
-	    
+
 	    if (data.detail.name === "action") {
 	      handler = getHandler();
 	      listener = (data.detail.previousValue || "click").split(',');
-	    } else if (data.detail.name === "handler") { 
+	    } else if (data.detail.name === "handler") {
 	      handler = getHandler(data.detail.previousValue || false);
 	      listener = (bp.attribute.get(tag, "action") || "click").split(',');
 	    }
@@ -124,7 +124,7 @@
 
 	    initialise();
 	  }
-	  
+
 	  function initialise () {
 	  	var handler = getHandler(),
 	      listener = (bp.attribute.get(tag, "action") || "click").split(',');
@@ -134,14 +134,14 @@
 	  }
 
 	  function getHandler(handlerSelector) {
-	     
+
 	    if (typeof handlerSelector === 'undefined') {
 	      handlerSelector = bp.attribute.get(tag, "handler") || false;
 	    }
 	    var handler = tag.children[1];
 	    if (handlerSelector) {
 	      handler = tag.children[1].querySelector(handlerSelector) || handler;
-	    } 
+	    }
 
 	    return handler;
 	  }
@@ -167,7 +167,7 @@
 	      attribute = "open",
 	    	newValue = bp.attribute.get(tag, attribute) === "true" ? "false" : "true",
 	      activeClass = bp.attribute.get(handler, "active-class") || "active";
-	    
+
 	    bp.attribute.set(tag, attribute, newValue);
 	    handler.classList.toggle(activeClass);
 
@@ -184,15 +184,16 @@
 
 	///////////////////////////////////////////////////////////////////////////////
 
+
 /***/ },
 
-/***/ 137:
+/***/ 116:
 /***/ function(module, exports, __webpack_require__) {
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public 
 
-	module.exports = __webpack_require__(138);
+	module.exports = __webpack_require__(117);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Polyfills
@@ -200,10 +201,10 @@
 	if(typeof document.addEventListener === "function") { // no polyfills for IE8 -> silently fail.
 	  
 	  if(!("MutationObserver" in document)) {
-	    MutationObserver = __webpack_require__(143);
+	    MutationObserver = __webpack_require__(122);
 	  };
-	  __webpack_require__(144);
-	  __webpack_require__(145);
+	  __webpack_require__(123);
+	  __webpack_require__(124);
 
 
 	  if (Element && !Element.prototype.matches) {
@@ -217,17 +218,17 @@
 
 /***/ },
 
-/***/ 138:
+/***/ 117:
 /***/ function(module, exports, __webpack_require__) {
 
-	var objct = __webpack_require__(139);
+	var objct = __webpack_require__(118);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
 
 	module.exports = {
 	  tag : {
-	    create : __webpack_require__(140),
+	    create : __webpack_require__(119),
 	    contains : nodeContains,
 	    observe : observe,
 	    triggerEvent : triggerEvent,
@@ -389,7 +390,7 @@
 
 /***/ },
 
-/***/ 139:
+/***/ 118:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/*! 
@@ -650,15 +651,15 @@
 
 	////////////////////////////////////////////////////////////////////////////////
 	})( false? {} : module);
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(22)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)(module)))
 
 /***/ },
 
-/***/ 140:
+/***/ 119:
 /***/ function(module, exports, __webpack_require__) {
 
-	var objct = __webpack_require__(139);
-	var bp = __webpack_require__(138);
+	var objct = __webpack_require__(118);
+	var bp = __webpack_require__(117);
 
 	///////////////////////////////////////////////////////////////////////////////
 
@@ -749,9 +750,9 @@
 
 	  function apply(element) {
 	    var modules = [
-	      __webpack_require__(141),
+	      __webpack_require__(120),
 	      definition, 
-	      __webpack_require__(142)
+	      __webpack_require__(121)
 	    ];
 
 	    // Create bonaparte namespace
@@ -801,10 +802,10 @@
 
 /***/ },
 
-/***/ 141:
+/***/ 120:
 /***/ function(module, exports, __webpack_require__) {
 
-	var bp = __webpack_require__(137);
+	var bp = __webpack_require__(116);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
@@ -833,10 +834,10 @@
 
 /***/ },
 
-/***/ 142:
+/***/ 121:
 /***/ function(module, exports, __webpack_require__) {
 
-	var objct = __webpack_require__(139);
+	var objct = __webpack_require__(118);
 
 	var registeredMixins = {};
 
@@ -876,7 +877,7 @@
 
 /***/ },
 
-/***/ 143:
+/***/ 122:
 /***/ function(module, exports) {
 
 	var MutationObserver = window.MutationObserver
@@ -1468,7 +1469,7 @@
 
 /***/ },
 
-/***/ 144:
+/***/ 123:
 /***/ function(module, exports) {
 
 	/*! (C) WebReflection Mit Style License */
@@ -1476,7 +1477,7 @@
 
 /***/ },
 
-/***/ 145:
+/***/ 124:
 /***/ function(module, exports) {
 
 	// Polyfill for creating CustomEvents on IE9/10/11
@@ -1508,7 +1509,7 @@
 
 /***/ },
 
-/***/ 146:
+/***/ 125:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
