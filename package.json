@@ -11,7 +11,7 @@
     "docs-build": "./node_modules/.bin/gitbook build",
 		"lerna-updated" : "./node_modules/.bin/lerna updated",
 		"lerna-bootstrap" : "./node_modules/.bin/lerna bootstrap",
-		"lerna-publish" : "./node_modules/.bin/lerna publish"
+		"lerna-publish" : "rsync -r --exclude '.git/' --exclude 'node_modules' ./ ./packages/bonaparte && ./node_modules/.bin/lerna publish"
   },
   "author": {
     "name": "Philipp Adrian",
@@ -20,7 +20,7 @@
     "website": "http://www.bonaparte.io"
   },
   "description": "UX Front-End Framework",
-  "license": "MIT",
+  "license": "ISC",
   "repository": {
     "type": "git",
     "url": "https://github.com/bonaparte/bonaparte.git"
