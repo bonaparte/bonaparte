@@ -1,6 +1,5 @@
 {
   "name": "bonaparte",
-  "version": "0.0.11",
   "scripts": {
     "build": "webpack",
     "build-prod": "webpack -p",
@@ -11,7 +10,7 @@
     "docs-build": "./node_modules/.bin/gitbook build",
     "lerna-updated": "./node_modules/.bin/lerna updated",
     "lerna-bootstrap": "./node_modules/.bin/lerna bootstrap",
-    "lerna-publish": "rsync -r --exclude '.git/' --exclude 'node_modules' ./ ./packages/bonaparte && FORCE_VERSION=bonaparte ./node_modules/.bin/lerna publish && rm -r ./packages/bonaparte"
+    "lerna-publish": "rsync -r --exclude '.git/' --exclude 'node_modules' ./ ./packages/bonaparte && FORCE_VERSION=bonaparte ./node_modules/.bin/lerna publish"
   },
   "author": {
     "name": "Philipp Adrian",
@@ -49,5 +48,6 @@
     "postcss-loader": "^0.8.0",
     "sass-loader": "^3.1.2",
     "webpack": "^1.12.13"
-  }
+  },
+  "version": "0.0.12"
 }
