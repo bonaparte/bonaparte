@@ -49,5 +49,5 @@
     "sass-loader": "^3.1.2",
     "webpack": "^1.12.13"
   },
-  "version": "0.0.13"
+  "version": "0.0.14"
 }
