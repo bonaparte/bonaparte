@@ -1,6 +1,5 @@
 {
   "name": "bonaparte",
-  "version": "0.0.9",
   "scripts": {
 		"build": "webpack",
     "build-prod": "webpack -p",
@@ -11,7 +10,7 @@
     "docs-build": "./node_modules/.bin/gitbook build",
 		"lerna-updated" : "./node_modules/.bin/lerna updated",
 		"lerna-bootstrap" : "./node_modules/.bin/lerna bootstrap",
-		"lerna-publish" : "rsync -r --exclude '.git/' --exclude 'node_modules' ./ ./packages/bonaparte && ./node_modules/.bin/lerna publish && rm -r ./packages/bonaparte"
+		"lerna-publish" : "rsync -r --exclude '.git/' --exclude 'node_modules' ./ ./packages/bonaparte && FORCE_VERSION=bonaparte ./node_modules/.bin/lerna publish"
   },
   "author": {
     "name": "Philipp Adrian",
@@ -26,14 +25,14 @@
     "url": "https://github.com/bonaparte/bonaparte.git"
   },
 	"dependencies": {
-		"bonaparte-button" : "file:./packages/bonaparte-button",
-		"bonaparte-collapsible" : "file:./packages/bonaparte-collapsible",
-		"bonaparte-draggable" : "file:./packages/bonaparte-draggable",
-		"bonaparte-dropdown" : "file:./packages/bonaparte-dropdown",
-		"bonaparte-panel" : "file:./packages/bonaparte-panel",
-		"bonaparte-sidebar" : "file:./packages/bonaparte-sidebar",
-		"bonaparte-toolbar" : "file:./packages/bonaparte-toolbar",
-		"bonaparte-scroll" : "file:./packages/bonaparte-scroll"
+		"bonaparte-button" : "x.x.x",
+		"bonaparte-collapsible" : "x.x.x",
+		"bonaparte-draggable" : "x.x.x",
+		"bonaparte-dropdown" : "x.x.x",
+		"bonaparte-panel" : "x.x.x",
+		"bonaparte-sidebar" : "x.x.x",
+		"bonaparte-toolbar" : "x.x.x",
+		"bonaparte-scroll" : "x.x.x"
 	},
   "devDependencies": {
     "gitbook-cli": "^2.1.2",
