@@ -16,5 +16,5 @@
    * [Development / Contribute](CONTRIBUTING.md)
        * [Bonaparte Packages](docs/advanced/bonaparte_packages.md)
        * [Creating Components](docs/advanced/creating_components.md)
-       * [Bonaparte Core API](docs/advanced/core_api.md)
+       * [Bonaparte Core API](packages/bonaparte-core/README.md)
 * [Credits & License](LICENSE.md)
