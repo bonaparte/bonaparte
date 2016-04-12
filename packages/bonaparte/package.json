@@ -6,6 +6,7 @@
     "build-prod": "webpack -p",
     "watch": "webpack --progress --colors --watch"
   },
+	"main" : "./bonaparte.build.js",
   "author": {
     "name": "Philipp Adrian",
     "email": "philipp.adrian@dowjones.com",
