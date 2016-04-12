@@ -5,7 +5,7 @@ The easiest way to get your hands dirty is to start with one of the starter kits
 * [Starter Vanilla](http://github.com/bonaparte/starter-vanilla) ([Preview](http://bonaparte.github.io/starter-vanilla/))<br>*Creates a basic page using Bonaparte components without any framework.*
 * [Starter React](http://github.com/bonaparte/starter-react) ([Preview](http://bonaparte.github.io/starter-react/))<br>*Creates a basic page using Bonaparte components and the React framework.*
 
-Each starter includes all Bonaparte components and the Napoleon theme ([Napoleon Build](http://github.com/bonaparte/build-napoleon)).
+Each starter includes all Bonaparte components and the Napoleon theme ([Napoleon Build](http://github.com/bonaparte/napoleon-bonaparte)).
 
 1. Download/Clone the starter for your favorite framework
 2. Open `index.html` in a browser. 
@@ -15,7 +15,7 @@ To include all Bonaparte Components:
 
 1. Download/Clone one of the Bonaparte builds:
  * [Pure Build](http://github.com/bonaparte/build-pure)<br>*Includes all Bonaparte Components without any design.*
- * [Napoleon Build](http://github.com/bonaparte/build-napoleon)<br>*Includes all Bonaparte Components and the Napoleon theme*
+ * [Napoleon Build](http://github.com/bonaparte/napoleon-bonaparte)<br>*Includes all Bonaparte Components and the Napoleon theme*
 1. Copy the complete `dist/` folder into your project.
 2. Include the following into the `<head>` of your project: 
 ```

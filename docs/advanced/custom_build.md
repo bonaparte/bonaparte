@@ -6,7 +6,7 @@ Bonaparte is build with [Webpack](http://webpack.github.io/). It's easy to save 
 
 Every Bonaparte component, theme or build has a `bonaparte.build.js` file in it's root. These files are used to compose Bonaparte.
 
-*bonaparte-build-napoleon/bonaparte.build.js:*
+*napoleon-bonaparte/bonaparte.build.js:*
 ```javascript
 // Components
 require('bonaparte-panel');
@@ -24,7 +24,7 @@ require('napoleon-ui');
 
 ## Rebuild Bonaparte
 
-The easiest way to create a custom build is by starting off one of the existing builds ([build-pure](http://github.com/bonaparte/build-pure) or [build-napoleon](http://github.com/bonaparte/build-napoleon)).
+The easiest way to create a custom build is by starting off one of the existing builds ([build-pure](http://github.com/bonaparte/build-pure) or [napoleon-bonaparte](http://github.com/bonaparte/napoleon-bonaparte)).
 
 1. Download/Clone the build that includes all the components you need.
 2. Install the package:
@@ -44,7 +44,7 @@ To build Bonaparte as part of your own project, add the Bonaparte packages to yo
 
 *Include a complete build:*
 ```javascript
-require('bonaparte-build-napoleon');
+require('napoleon-bonaparte');
 ```
 
 *Single components:*
