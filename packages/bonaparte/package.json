@@ -1,12 +1,12 @@
 {
   "name": "bonaparte",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "scripts": {
     "build": "webpack",
     "build-prod": "webpack -p",
     "watch": "webpack --progress --colors --watch"
   },
-	"main" : "./bonaparte.build.js",
+  "main": "./bonaparte.build.js",
   "author": {
     "name": "Philipp Adrian",
     "email": "philipp.adrian@dowjones.com",
