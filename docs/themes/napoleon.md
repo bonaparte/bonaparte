@@ -1,1 +1,1 @@
-{% include "git+https://github.com/bonaparte/theme-napoleon.git/README.md#gh-pages" %}
+{% include "git+https://github.com/bonaparte/napoleon-ui.git/README.md#gh-pages" %}

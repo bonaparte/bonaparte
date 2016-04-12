@@ -1,6 +1,6 @@
 # Bonaparte packages
 
-There are three types of Bonaparte packages: 
+There are three types of Bonaparte packages:
 * **Components**<br>*Define a single Bonaparte component.*
 * **Themes**<br>*Define CSS only. Themes don't export any JavaScript*
 * **Builds**<br>*Combine multiple components and themes into a bundle*
@@ -59,7 +59,7 @@ And for a Build it's a number of bonaparte components and themes:
 require('bonaparte-dropdown');
 require('bonaparte-scroll');
 
-require('bonaparte-theme-napoleon');
+require('napoleon-ui');
 ```
 
 #### webpack.config.js
@@ -71,19 +71,18 @@ module.exports = require('bonaparte/webpack.config');
 #### package.json
 In your `package.json` add the `bonaparte` core package as a dependencie and define `bonaparte.build.js` as your `main` entry point.
 
-``` 
+```
 {
     "name" : "bonaparte-[my-component]",
-    
+
     "main" : "bonaparte.build.js",
 
     "dependencies" : {
         "bonaparte" : "x.x.x",
- 
+
         ...
     }
- 
+
     ...
 }
 ```
-

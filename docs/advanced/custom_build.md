@@ -9,16 +9,16 @@ Every Bonaparte component, theme or build has a `bonaparte.build.js` file in it'
 *bonaparte-build-napoleon/bonaparte.build.js:*
 ```javascript
 // Components
-require('bonaparte-panel/bonaparte.build');
-require('bonaparte-scroll/bonaparte.build');
-require('bonaparte-button/bonaparte.build');
-require('bonaparte-sidebar/bonaparte.build');
-require('bonaparte-toolbar/bonaparte.build');
-require('bonaparte-draggable/bonaparte.build');
-require('bonaparte-dropdown/bonaparte.build');
+require('bonaparte-panel');
+require('bonaparte-scroll');
+require('bonaparte-button');
+require('bonaparte-sidebar');
+require('bonaparte-toolbar');
+require('bonaparte-draggable');
+require('bonaparte-dropdown');
 
 // Themes
-require('bonaparte-theme-napoleon/bonaparte.build');
+require('napoleon-ui');
 
 ```
 
@@ -44,17 +44,17 @@ To build Bonaparte as part of your own project, add the Bonaparte packages to yo
 
 *Include a complete build:*
 ```javascript
-require('bonaparte-build-napoleon/bonaparte.build');
+require('bonaparte-build-napoleon');
 ```
 
 *Single components:*
 ```javascript
-require('bonaparte-scroll/bonaparte.build');
-require('bonaparte-dropdown/bonaparte.build');
+require('bonaparte-scroll');
+require('bonaparte-dropdown');
 ```
 *Or a theme:*
 ```javascript
-require('bonaparte-theme-napoleon/bonaparte.build');
+require('napoleon-ui');
 ```
 
 > Note: Make sure to include themes after components.
