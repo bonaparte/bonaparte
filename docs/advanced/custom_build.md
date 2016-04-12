@@ -9,7 +9,7 @@ Every Bonaparte component, theme or build has a `bonaparte.build.js` file in it'
 *napoleon-bonaparte/bonaparte.build.js:*
 ```javascript
 // Components
-require('bonaparte-panel');
+require('bonaparte-panel'); 
 require('bonaparte-scroll');
 require('bonaparte-button');
 require('bonaparte-sidebar');
