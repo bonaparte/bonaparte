@@ -1,6 +1,6 @@
 {
   "name": "bonaparte-scroll",
-  "version": "0.0.20",
+  "version": "0.0.23",
   "description": "Bonaparte Component",
   "homepage": "http://bonaparte.io",
   "author": {
@@ -12,7 +12,7 @@
     "url": "https://github.com/bonaparte/bonaparte.git"
   },
   "dependencies": {
-    "bonaparte-core": "^0.0.20"
+    "bonaparte-core": "^0.0.23"
   },
   "main": "bonaparte.build.js",
   "devDependencies": {
