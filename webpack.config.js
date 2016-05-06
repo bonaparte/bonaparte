@@ -28,10 +28,6 @@ module.exports =  {
         loader: ExtractTextPlugin.extract("css-loader!postcss-loader!less-loader")
       },
       {
-        test: /\.scss$/i,
-        loader: ExtractTextPlugin.extract("css-loader!postcss-loader!sass-loader")
-      },
-      {
         test: /\.(woff|woff2|eot|ttf)$/i,
         loader: "file-loader?name=fonts/[name]-[hash].[ext]"
       },
