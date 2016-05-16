@@ -6,7 +6,7 @@ var bp = require("./api");
 var registeredTags = {};
 
 ///////////////////////////////////////////////////////////////////////////////
-// Public 
+// Public
 
 module.exports = createTag;
 
@@ -15,8 +15,8 @@ module.exports = createTag;
 
 function createTag(name, modules, nativeBaseElement){
   var modulesType = (objct.isArray(modules) && "array") || typeof modules;
- 
-  if(modulesType === "function") 
+
+  if(modulesType === "function")
     modules = [modules];
   else if(modulesType !== "array")
     throw "Bonaparte - createTag: Unexpected "+modulesType+". Expected Function or Array."
@@ -25,7 +25,7 @@ function createTag(name, modules, nativeBaseElement){
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
-  
+
   function tagFactory(){};
   tagFactory.register = register;
   tagFactory.initialize = initialize;
@@ -39,7 +39,7 @@ function createTag(name, modules, nativeBaseElement){
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-  function register(){ 
+  function register(){
 
     if(typeof document.registerElement === "undefined") { // If IE8 make tag stylable but otherwise do nothing.
       document.createElement("bonaparte-"+name);
@@ -51,8 +51,7 @@ function createTag(name, modules, nativeBaseElement){
         prototype : Object.create( nativeBaseElement.prototype , {
           createdCallback : { value: createdCallback },
           attachedCallback : { value: attachedCallback },
-          detachedCallback : { value: detachedCallback },
-          attributeChangedCallback : { value: attributeChangedCallback }
+          detachedCallback : { value: detachedCallback }
         })
       });
 
@@ -63,26 +62,20 @@ function createTag(name, modules, nativeBaseElement){
 
   function mixin(mixin){
     objct.extend(definition, mixin);
-   
     return definition;
   }
 
 ///////////////////////////////////////////////////////////////////////////////
 
   function initialize(element){
-    
-    apply(element);  
-    bp.tag.observe(element); 
-    
+    apply(element);
     return definition;
   }
 
 ///////////////////////////////////////////////////////////////////////////////
 
   function createdCallback() {
-
     apply(this);
-    this.bonaparte.registered = true;
     this.bonaparte.triggerEvent("bonaparte.tag.created", null);
   }
 
@@ -91,7 +84,7 @@ function createTag(name, modules, nativeBaseElement){
   function apply(element) {
     var modules = [
       require("./events"),
-      definition, 
+      definition,
       require("./mixins")
     ];
 
@@ -109,32 +102,13 @@ function createTag(name, modules, nativeBaseElement){
 ///////////////////////////////////////////////////////////////////////////////
 
 function attachedCallback() {
-
   this.bonaparte.triggerEvent("bonaparte.tag.attached", null);
-
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 
 function detachedCallback() {
-  
   this.bonaparte.triggerEvent("bonaparte.tag.detached", null);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-
-function attributeChangedCallback(name, old, value) {
-  
-  data = {
-    name : name,
-    previousValue : old,
-    newValue : value
-  };
-
-  this.bonaparte.triggerEvent("bonaparte.tag.attributeChanged", data);
-  this.bonaparte.triggerEvent("bonaparte.tag.attributeUpdated", data);
-
-}
-
-///////////////////////////////////////////////////////////////////////////////
-

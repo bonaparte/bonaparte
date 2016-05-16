@@ -33,7 +33,6 @@ function panel(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function clickHandler(e){
-    // console.log("globalClick", e.target);
     if(e.target === tag || bp.tag.contains(tag, e.target)) return;
     closePanels();
   }
@@ -42,22 +41,22 @@ function panel(tag){
 
   function attributeUdatedCallback(data){
     if(bp.attribute.matchName(/open/, data.detail.name)){
-      if(data.detail.newValue == "true") {
-        lock();
-
-        tag.bonaparte.triggerEvent("bonaparte.internal.closePanels", null, true);
-        tag.bonaparte.triggerEvent("bonaparte.panel.open", null, true);
-      }
-    };
+      if(data.detail.newValue === "true") lock();
+    }
   }
 ///////////////////////////////////////////////////////////////////////////////
 
   function attributeChangedCallback(data){
     if(bp.attribute.matchName(/open/, data.detail.name)){
-			if(data.detail.newValue != "true") {
+			if(data.detail.newValue !== "true") {
         tag.bonaparte.triggerEvent("bonaparte.panel.close", null, true);
 			}
-    };
+      else {
+        lock();
+        tag.bonaparte.triggerEvent("bonaparte.internal.closePanels", null, true);
+        tag.bonaparte.triggerEvent("bonaparte.panel.open", null, true);
+      }
+    }
   }
 
 ///////////////////////////////////////////////////////////////////////////////

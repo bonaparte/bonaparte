@@ -10,7 +10,7 @@ module.exports = {
     observe : observe,
     triggerEvent : triggerEvent,
     closest : getClosest,
-    DOMReady : DOMReady    
+    DOMReady : DOMReady
   },
   attribute : {
     get : getAttribute,
@@ -29,39 +29,43 @@ var observedElements = [];
 
 function observe(element){
   if(observedElements.indexOf(element)>=0) return;
-  if(typeof element.bonaparte === "object" && element.bonaparte.registered) return;
 
   element.bonaparte = element.bonaparte || {};
   element.bonaparte.observer = new MutationObserver(mutationHandler);
 
   element.bonaparte.observer.observe(element, {
     attributes:true,
-    attributeOldValue:true
+    attributeOldValue:true,
+    childList:true
   });
   observedElements.push(element);
-
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 
 function mutationHandler(mutations){
-  var attribute, data, tag;
-  
-  for(var i=0; i<mutations.length; i++) {
-    attribute = mutations[i].attributeName;
-    tag = mutations[i].target;
-    if(typeof tag.attributes[attribute] === "undefined") continue;
+  for(var i=0; i<mutations.length; i++) switch(mutations[i].type) {
+    case "attributes":
+      var attribute = mutations[i].attributeName;
+      var tag = mutations[i].target;
 
-    data = {
-      name : attribute,
-      previousValue : mutations[i].oldValue,
-      newValue : tag.attributes[attribute].value
-    };
+      var data = {
+        name : attribute,
+        oldValue : mutations[i].oldValue,
+        newValue : tag.attributes[attribute] ? tag.attributes[attribute].value : null
+      };
 
-    triggerEvent(tag, "bonaparte.tag.attributeChanged", data);
-    triggerEvent(tag, "bonaparte.tag.attributeUpdated", data);
+      if(data.oldValue !== data.newValue)
+        triggerEvent(tag, "bonaparte.tag.attributeChanged", data);
+      triggerEvent(tag, "bonaparte.tag.attributeUpdated", data);
+    break;
+    case "childList":
+      triggerEvent(mutations[i].target, "bonaparte.tag.childrenChanged", {
+        added : mutations[i].addedNodes,
+        removed : mutations[i].removedNodes
+      });
+    break;
   }
- 
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -74,7 +78,7 @@ function mixin() {
 
 function DOMReady(handler){
   if(document.readyState === "complete") handler();
-  else window.addEventListener("load", handler); 
+  else window.addEventListener("load", handler);
 }
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -91,15 +95,15 @@ function triggerEvent(tag, event, data, bubbles, cancelable){
 
 
 function nodeContains(parent, child) {
-  while((child=child.parentNode)&&child!==parent); 
-  return !!child; 
+  while((child=child.parentNode)&&child!==parent);
+  return !!child;
 };
 
 ///////////////////////////////////////////////////////////////////////////////
 
 function getClosest(tag, name){
-  while((tag=tag.parentNode)&&tag.nodeName.toUpperCase()!==name.toUpperCase()); 
-  return tag ? tag:false; 
+  while((tag=tag.parentNode)&&tag.nodeName.toUpperCase()!==name.toUpperCase());
+  return tag ? tag:false;
 
 }
 
@@ -107,7 +111,7 @@ function getClosest(tag, name){
 
 function getAttribute(tag, name){
   var attribute = tag.attributes[name] || tag.attributes["data-"+name];
-  return attribute ? attribute.value : undefined; 
+  return attribute ? attribute.value : undefined;
 }
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -118,7 +122,7 @@ function matchAttribute(patterns, name){
   for(var i=0; i<patterns.length; i++) {
     pattern = patterns[i];
     dataPattern = new RegExp("data-"+pattern.source);
-    if(pattern.test(name) ||  dataPattern.test(name)) 
+    if(pattern.test(name) ||  dataPattern.test(name))
       return true;
   }
   return false;
@@ -131,15 +135,6 @@ function setAttribute(tag, name, value) {
   var oldValue = getAttribute(tag, name);
 
   tag.setAttribute(name, value);
-
-  if(oldValue === value && typeof tag.bonaparte === "object" && typeof tag.bonaparte.triggerEvent === "function") {
-    tag.bonaparte.triggerEvent("bonaparte.tag.attributeUpdated",{
-      name:name,
-      previousValue : oldValue,
-      newValue: value
-    });
-  }  
-
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -147,20 +142,10 @@ function setAttribute(tag, name, value) {
 function removeAttribute(tag, name) {
   if(typeof tag.attributes[name] !== "object") return;
 
-  var data = {
-    name : name,
-    previousValue : tag.attributes[name].value,
-    newValue : null
-  }
   // remove attribute
   tag.removeAttribute(name);
   tag.removeAttribute("data-"+name);
 
-  // trigger Mutation event if not "native" bonaparte element
-  if(typeof tag.bonaparte !== "object" || !tag.bonaparte.registered) {
-    triggerEvent(tag, "bonaparte.tag.attributeChanged", data);
-    triggerEvent(tag, "bonaparte.tag.attributeUpdated", data);
-  }
 }
 
 ///////////////////////////////////////////////////////////////////////////////
