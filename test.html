@@ -34,15 +34,15 @@
 
 
       document.getElementById("panel").addEventListener("bonaparte.tag.attributeChanged", function(e){
-        console.log("attributeChanged", e.detail);
+        console.log("attributeChanged", e.detail.name, e.detail.oldValue, e.detail.newValue);
       });
 
       document.getElementById("panel").addEventListener("bonaparte.tag.attributeUpdated", function(e){
-        console.log("attributeUpdated", e.detail);
+        console.log("attributeUpdated", e.detail.name, e.detail.oldValue, e.detail.newValue);
       });
 
       document.getElementById("panel").addEventListener("bonaparte.tag.childrenChanged", function(e){
-        console.log("childrenChanged", e.detail);
+        console.log("childrenChanged", e.detail.name, e.detail.oldValue, e.detail.newValue);
       });
 
 
