@@ -45,155 +45,18 @@
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(113);
+	module.exports = __webpack_require__(74);
 
 
 /***/ },
 
-/***/ 16:
-/***/ function(module, exports) {
-
-	module.exports = function(module) {
-		if(!module.webpackPolyfill) {
-			module.deprecate = function() {};
-			module.paths = [];
-			// module.parent = undefined by default
-			module.children = [];
-			module.webpackPolyfill = 1;
-		}
-		return module;
-	}
-
-
-/***/ },
-
-/***/ 113:
-/***/ function(module, exports, __webpack_require__) {
-
-	__webpack_require__(114).register();
-	__webpack_require__(125);
-
-/***/ },
-
-/***/ 114:
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-	 * This file should export the result of 
-	 * require("bonaparte").tag.create()
-	 * or
-	 * require("bonaparte").mixin.create()
-	 */
-
-	module.exports = __webpack_require__(115);
-
-/***/ },
-
-/***/ 115:
-/***/ function(module, exports, __webpack_require__) {
-
-	var bp = __webpack_require__(116);
-
-	///////////////////////////////////////////////////////////////////////////////
-	// Public
-
-	module.exports = bp.tag.create("dropdown", dropdown);
-
-	///////////////////////////////////////////////////////////////////////////////
-	function dropdown(tag) {
-
-	  tag.addEventListener("bonaparte.tag.attributeChanged", update);
-	  bp.tag.DOMReady(initialise);
-
-
-	  function update (data) {
-	    var handler = '',
-	        listener = []
-
-	    if (data.detail.name === "action") {
-	      handler = getHandler();
-	      listener = (data.detail.previousValue || "click").split(',');
-	    } else if (data.detail.name === "handler") {
-	      handler = getHandler(data.detail.previousValue || false);
-	      listener = (bp.attribute.get(tag, "action") || "click").split(',');
-	    }
-
-	    for (var i = 0; i < listener.length; i++) {
-	      handler.removeEventListener(listener[i].trim(), handleClick);
-	    }
-
-	    initialise();
-	  }
-
-	  function initialise () {
-	  	var handler = getHandler(),
-	      listener = (bp.attribute.get(tag, "action") || "click").split(',');
-	    for (var i = 0; i < listener.length; i++) {
-	      handler.addEventListener(listener[i].trim(), handleClick);
-	    };
-	  }
-
-	  function getHandler(handlerSelector) {
-
-	    if (typeof handlerSelector === 'undefined') {
-	      handlerSelector = bp.attribute.get(tag, "handler") || false;
-	    }
-	    var handler = tag.children[1];
-	    if (handlerSelector) {
-	      handler = tag.children[1].querySelector(handlerSelector) || handler;
-	    }
-
-	    return handler;
-	  }
-
-	  function handleClick(e) {
-
-	    toggleActive();
-	  }
-
-	  function closePanel(e) {
-
-	   if(e.target === tag || bp.tag.contains(tag, e.target)) return;
-
-	    var handler = getHandler();
-	    bp.attribute.set(tag, "open", false);
-	    handler.classList.remove(bp.attribute.get(handler, "active-class") || "active");
-	    window.removeEventListener("click", closePanel);
-	  }
-
-	  function toggleActive() {
-
-	    var handler = getHandler(),
-	      attribute = "open",
-	    	newValue = bp.attribute.get(tag, attribute) === "true" ? "false" : "true",
-	      activeClass = bp.attribute.get(handler, "active-class") || "active";
-
-	    bp.attribute.set(tag, attribute, newValue);
-	    handler.classList.toggle(activeClass);
-
-	    if (newValue === "true") {
-	      window.addEventListener("click", closePanel);
-	    } else {
-	      window.removeEventListener("click", closePanel);
-	    }
-
-	  }
-
-	///////////////////////////////////////////////////////////////////////////////
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
-
-
-/***/ },
-
-/***/ 116:
+/***/ 14:
 /***/ function(module, exports, __webpack_require__) {
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public 
 
-	module.exports = __webpack_require__(117);
+	module.exports = __webpack_require__(15);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Polyfills
@@ -201,10 +64,10 @@
 	if(typeof document.addEventListener === "function") { // no polyfills for IE8 -> silently fail.
 	  
 	  if(!("MutationObserver" in document)) {
-	    MutationObserver = __webpack_require__(122);
+	    MutationObserver = __webpack_require__(21);
 	  };
-	  __webpack_require__(123);
-	  __webpack_require__(124);
+	  __webpack_require__(22);
+	  __webpack_require__(23);
 
 
 	  if (Element && !Element.prototype.matches) {
@@ -218,22 +81,22 @@
 
 /***/ },
 
-/***/ 117:
+/***/ 15:
 /***/ function(module, exports, __webpack_require__) {
 
-	var objct = __webpack_require__(118);
+	var objct = __webpack_require__(16);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
 
 	module.exports = {
 	  tag : {
-	    create : __webpack_require__(119),
+	    create : __webpack_require__(18),
 	    contains : nodeContains,
 	    observe : observe,
 	    triggerEvent : triggerEvent,
 	    closest : getClosest,
-	    DOMReady : DOMReady    
+	    DOMReady : DOMReady
 	  },
 	  attribute : {
 	    get : getAttribute,
@@ -252,39 +115,43 @@
 
 	function observe(element){
 	  if(observedElements.indexOf(element)>=0) return;
-	  if(typeof element.bonaparte === "object" && element.bonaparte.registered) return;
 
 	  element.bonaparte = element.bonaparte || {};
 	  element.bonaparte.observer = new MutationObserver(mutationHandler);
 
 	  element.bonaparte.observer.observe(element, {
 	    attributes:true,
-	    attributeOldValue:true
+	    attributeOldValue:true,
+	    childList:true
 	  });
 	  observedElements.push(element);
-
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
 
 	function mutationHandler(mutations){
-	  var attribute, data, tag;
-	  
-	  for(var i=0; i<mutations.length; i++) {
-	    attribute = mutations[i].attributeName;
-	    tag = mutations[i].target;
-	    if(typeof tag.attributes[attribute] === "undefined") continue;
+	  for(var i=0; i<mutations.length; i++) switch(mutations[i].type) {
+	    case "attributes":
+	      var attribute = mutations[i].attributeName;
+	      var tag = mutations[i].target;
 
-	    data = {
-	      name : attribute,
-	      previousValue : mutations[i].oldValue,
-	      newValue : tag.attributes[attribute].value
-	    };
+	      var data = {
+	        name : attribute,
+	        oldValue : mutations[i].oldValue,
+	        newValue : tag.attributes[attribute] ? tag.attributes[attribute].value : null
+	      };
 
-	    triggerEvent(tag, "bonaparte.tag.attributeChanged", data);
-	    triggerEvent(tag, "bonaparte.tag.attributeUpdated", data);
+	      if(data.oldValue !== data.newValue)
+	        triggerEvent(tag, "bonaparte.tag.attributeChanged", data);
+	      triggerEvent(tag, "bonaparte.tag.attributeUpdated", data);
+	    break;
+	    case "childList":
+	      triggerEvent(mutations[i].target, "bonaparte.tag.childrenChanged", {
+	        added : mutations[i].addedNodes,
+	        removed : mutations[i].removedNodes
+	      });
+	    break;
 	  }
-	 
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -297,7 +164,7 @@
 
 	function DOMReady(handler){
 	  if(document.readyState === "complete") handler();
-	  else window.addEventListener("load", handler); 
+	  else window.addEventListener("load", handler);
 	}
 	///////////////////////////////////////////////////////////////////////////////
 
@@ -314,15 +181,15 @@
 
 
 	function nodeContains(parent, child) {
-	  while((child=child.parentNode)&&child!==parent); 
-	  return !!child; 
+	  while((child=child.parentNode)&&child!==parent);
+	  return !!child;
 	};
 
 	///////////////////////////////////////////////////////////////////////////////
 
 	function getClosest(tag, name){
-	  while((tag=tag.parentNode)&&tag.nodeName.toUpperCase()!==name.toUpperCase()); 
-	  return tag ? tag:false; 
+	  while((tag=tag.parentNode)&&tag.nodeName.toUpperCase()!==name.toUpperCase());
+	  return tag ? tag:false;
 
 	}
 
@@ -330,7 +197,7 @@
 
 	function getAttribute(tag, name){
 	  var attribute = tag.attributes[name] || tag.attributes["data-"+name];
-	  return attribute ? attribute.value : undefined; 
+	  return attribute ? attribute.value : undefined;
 	}
 	///////////////////////////////////////////////////////////////////////////////
 
@@ -341,7 +208,7 @@
 	  for(var i=0; i<patterns.length; i++) {
 	    pattern = patterns[i];
 	    dataPattern = new RegExp("data-"+pattern.source);
-	    if(pattern.test(name) ||  dataPattern.test(name)) 
+	    if(pattern.test(name) ||  dataPattern.test(name))
 	      return true;
 	  }
 	  return false;
@@ -354,15 +221,6 @@
 	  var oldValue = getAttribute(tag, name);
 
 	  tag.setAttribute(name, value);
-
-	  if(oldValue === value && typeof tag.bonaparte === "object" && typeof tag.bonaparte.triggerEvent === "function") {
-	    tag.bonaparte.triggerEvent("bonaparte.tag.attributeUpdated",{
-	      name:name,
-	      previousValue : oldValue,
-	      newValue: value
-	    });
-	  }  
-
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -370,27 +228,18 @@
 	function removeAttribute(tag, name) {
 	  if(typeof tag.attributes[name] !== "object") return;
 
-	  var data = {
-	    name : name,
-	    previousValue : tag.attributes[name].value,
-	    newValue : null
-	  }
 	  // remove attribute
 	  tag.removeAttribute(name);
 	  tag.removeAttribute("data-"+name);
 
-	  // trigger Mutation event if not "native" bonaparte element
-	  if(typeof tag.bonaparte !== "object" || !tag.bonaparte.registered) {
-	    triggerEvent(tag, "bonaparte.tag.attributeChanged", data);
-	    triggerEvent(tag, "bonaparte.tag.attributeUpdated", data);
-	  }
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
 
+
 /***/ },
 
-/***/ 118:
+/***/ 16:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/*! 
@@ -651,22 +500,39 @@
 
 	////////////////////////////////////////////////////////////////////////////////
 	})( false? {} : module);
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17)(module)))
 
 /***/ },
 
-/***/ 119:
+/***/ 17:
+/***/ function(module, exports) {
+
+	module.exports = function(module) {
+		if(!module.webpackPolyfill) {
+			module.deprecate = function() {};
+			module.paths = [];
+			// module.parent = undefined by default
+			module.children = [];
+			module.webpackPolyfill = 1;
+		}
+		return module;
+	}
+
+
+/***/ },
+
+/***/ 18:
 /***/ function(module, exports, __webpack_require__) {
 
-	var objct = __webpack_require__(118);
-	var bp = __webpack_require__(117);
+	var objct = __webpack_require__(16);
+	var bp = __webpack_require__(15);
 
 	///////////////////////////////////////////////////////////////////////////////
 
 	var registeredTags = {};
 
 	///////////////////////////////////////////////////////////////////////////////
-	// Public 
+	// Public
 
 	module.exports = createTag;
 
@@ -675,8 +541,8 @@
 
 	function createTag(name, modules, nativeBaseElement){
 	  var modulesType = (objct.isArray(modules) && "array") || typeof modules;
-	 
-	  if(modulesType === "function") 
+
+	  if(modulesType === "function")
 	    modules = [modules];
 	  else if(modulesType !== "array")
 	    throw "Bonaparte - createTag: Unexpected "+modulesType+". Expected Function or Array."
@@ -685,7 +551,7 @@
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
-	  
+
 	  function tagFactory(){};
 	  tagFactory.register = register;
 	  tagFactory.initialize = initialize;
@@ -699,7 +565,7 @@
 	///////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////
 
-	  function register(){ 
+	  function register(){
 
 	    if(typeof document.registerElement === "undefined") { // If IE8 make tag stylable but otherwise do nothing.
 	      document.createElement("bonaparte-"+name);
@@ -711,8 +577,7 @@
 	        prototype : Object.create( nativeBaseElement.prototype , {
 	          createdCallback : { value: createdCallback },
 	          attachedCallback : { value: attachedCallback },
-	          detachedCallback : { value: detachedCallback },
-	          attributeChangedCallback : { value: attributeChangedCallback }
+	          detachedCallback : { value: detachedCallback }
 	        })
 	      });
 
@@ -723,26 +588,20 @@
 
 	  function mixin(mixin){
 	    objct.extend(definition, mixin);
-	   
 	    return definition;
 	  }
 
 	///////////////////////////////////////////////////////////////////////////////
 
 	  function initialize(element){
-	    
-	    apply(element);  
-	    bp.tag.observe(element); 
-	    
+	    apply(element);
 	    return definition;
 	  }
 
 	///////////////////////////////////////////////////////////////////////////////
 
 	  function createdCallback() {
-
 	    apply(this);
-	    this.bonaparte.registered = true;
 	    this.bonaparte.triggerEvent("bonaparte.tag.created", null);
 	  }
 
@@ -750,9 +609,9 @@
 
 	  function apply(element) {
 	    var modules = [
-	      __webpack_require__(120),
-	      definition, 
-	      __webpack_require__(121)
+	      __webpack_require__(19),
+	      definition,
+	      __webpack_require__(20)
 	    ];
 
 	    // Create bonaparte namespace
@@ -769,43 +628,24 @@
 	///////////////////////////////////////////////////////////////////////////////
 
 	function attachedCallback() {
-
 	  this.bonaparte.triggerEvent("bonaparte.tag.attached", null);
-
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
 
 	function detachedCallback() {
-	  
 	  this.bonaparte.triggerEvent("bonaparte.tag.detached", null);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
 
-	function attributeChangedCallback(name, old, value) {
-	  
-	  data = {
-	    name : name,
-	    previousValue : old,
-	    newValue : value
-	  };
-
-	  this.bonaparte.triggerEvent("bonaparte.tag.attributeChanged", data);
-	  this.bonaparte.triggerEvent("bonaparte.tag.attributeUpdated", data);
-
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
-
-
 
 /***/ },
 
-/***/ 120:
+/***/ 19:
 /***/ function(module, exports, __webpack_require__) {
 
-	var bp = __webpack_require__(116);
+	var bp = __webpack_require__(14);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
@@ -814,10 +654,10 @@
 
 	///////////////////////////////////////////////////////////////////////////////
 	function events(tag){
+	  bp.tag.observe(tag);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
-
 	  tag.bonaparte.triggerEvent = triggerEvent;
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -829,15 +669,15 @@
 
 	///////////////////////////////////////////////////////////////////////////////
 
-
 	}
+
 
 /***/ },
 
-/***/ 121:
+/***/ 20:
 /***/ function(module, exports, __webpack_require__) {
 
-	var objct = __webpack_require__(118);
+	var objct = __webpack_require__(16);
 
 	var registeredMixins = {};
 
@@ -877,7 +717,7 @@
 
 /***/ },
 
-/***/ 122:
+/***/ 21:
 /***/ function(module, exports) {
 
 	var MutationObserver = window.MutationObserver
@@ -1469,7 +1309,7 @@
 
 /***/ },
 
-/***/ 123:
+/***/ 22:
 /***/ function(module, exports) {
 
 	/*! (C) WebReflection Mit Style License */
@@ -1477,7 +1317,7 @@
 
 /***/ },
 
-/***/ 124:
+/***/ 23:
 /***/ function(module, exports) {
 
 	// Polyfill for creating CustomEvents on IE9/10/11
@@ -1509,7 +1349,134 @@
 
 /***/ },
 
-/***/ 125:
+/***/ 74:
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(75).register();
+	__webpack_require__(78);
+
+/***/ },
+
+/***/ 75:
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+	 * This file should export the result of 
+	 * require("bonaparte").tag.create()
+	 * or
+	 * require("bonaparte").mixin.create()
+	 */
+
+	module.exports = __webpack_require__(76);
+
+/***/ },
+
+/***/ 76:
+/***/ function(module, exports, __webpack_require__) {
+
+	var bp = __webpack_require__(77);
+
+	///////////////////////////////////////////////////////////////////////////////
+	// Public
+
+	module.exports = bp.tag.create("dropdown", dropdown);
+
+	///////////////////////////////////////////////////////////////////////////////
+	function dropdown(tag) {
+
+	  tag.addEventListener("bonaparte.tag.attributeChanged", update);
+	  bp.tag.DOMReady(initialise);
+
+
+	  function update (data) {
+	    var handler = '',
+	        listener = []
+
+	    if (data.detail.name === "action") {
+	      handler = getHandler();
+	      listener = (data.detail.previousValue || "click").split(',');
+	    } else if (data.detail.name === "handler") {
+	      handler = getHandler(data.detail.previousValue || false);
+	      listener = (bp.attribute.get(tag, "action") || "click").split(',');
+	    }
+
+	    for (var i = 0; i < listener.length; i++) {
+	      handler.removeEventListener(listener[i].trim(), handleClick);
+	    }
+
+	    initialise();
+	  }
+
+	  function initialise () {
+	  	var handler = getHandler(),
+	      listener = (bp.attribute.get(tag, "action") || "click").split(',');
+	    for (var i = 0; i < listener.length; i++) {
+	      handler.addEventListener(listener[i].trim(), handleClick);
+	    };
+	  }
+
+	  function getHandler(handlerSelector) {
+
+	    if (typeof handlerSelector === 'undefined') {
+	      handlerSelector = bp.attribute.get(tag, "handler") || false;
+	    }
+	    var handler = tag.children[1];
+	    if (handlerSelector) {
+	      handler = tag.children[1].querySelector(handlerSelector) || handler;
+	    }
+
+	    return handler;
+	  }
+
+	  function handleClick(e) {
+
+	    toggleActive();
+	  }
+
+	  function closePanel(e) {
+
+	   if(e.target === tag || bp.tag.contains(tag, e.target)) return;
+
+	    var handler = getHandler();
+	    bp.attribute.set(tag, "open", false);
+	    handler.classList.remove(bp.attribute.get(handler, "active-class") || "active");
+	    window.removeEventListener("click", closePanel);
+	  }
+
+	  function toggleActive() {
+
+	    var handler = getHandler(),
+	      attribute = "open",
+	    	newValue = bp.attribute.get(tag, attribute) === "true" ? "false" : "true",
+	      activeClass = bp.attribute.get(handler, "active-class") || "active";
+
+	    bp.attribute.set(tag, attribute, newValue);
+	    handler.classList.toggle(activeClass);
+
+	    if (newValue === "true") {
+	      window.addEventListener("click", closePanel);
+	    } else {
+	      window.removeEventListener("click", closePanel);
+	    }
+
+	  }
+
+	///////////////////////////////////////////////////////////////////////////////
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+
+
+/***/ },
+
+/***/ 77:
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(14);
+
+/***/ },
+
+/***/ 78:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
