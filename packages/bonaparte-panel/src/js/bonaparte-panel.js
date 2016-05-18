@@ -34,8 +34,9 @@ function panel(tag){
 
   function clickHandler(e){
     if(e.target === tag || bp.tag.contains(tag, e.target)) return;
-    closePanels();
+    setTimeout(closePanels, 0); // Wait a tick for other click events to be executed in IE.
   }
+
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -80,8 +81,9 @@ function panel(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function lock(){
+    if(locked) return;
     locked=true;
-    setTimeout(function(){ locked=false; },0);
+    setTimeout(function(){ locked=false; }, 100); // Wait for IE Events to be done before unlocking.
   }
 }
 
