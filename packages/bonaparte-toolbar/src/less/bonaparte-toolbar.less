@@ -3,7 +3,7 @@
 /*///////////////////////////////////////////////////////////////////////////*/
 
 bonaparte-toolbar {
-  
+
   .bonaparte-toolbar();
 
 }
@@ -14,15 +14,15 @@ bonaparte-toolbar {
   @overrides:{.variables(){}},
   @icon-size : 4rem,
   @default-open : 10rem,
-  @default-closed : 0rem
+  @default-closed : 4rem
 ){
 
   @overrides();
   .variables();
 
-  .bonaparte-sidebar(@overrides);   
+  .bonaparte-sidebar(@overrides);
 
-   
+
   &:not([data-position]):not([position]),
   &[data-position="left"],
   &[position="left"],
@@ -35,13 +35,13 @@ bonaparte-toolbar {
 
     &[data-open="true"],
     &[open="true"] {
-      
+
       > :nth-child(1){
         min-width:@default-open;
       }
-    }   
+    }
   }
-  
+
   &[data-position="top"],
   &[position="top"],
   &[data-position="bottom"],
@@ -60,8 +60,8 @@ bonaparte-toolbar {
       > :nth-child(1){
         min-height:@default-open;
       }
-    }   
-  } 
+    }
+  }
 
-  
+
 }
