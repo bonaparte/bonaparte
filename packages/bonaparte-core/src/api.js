@@ -84,9 +84,9 @@ function DOMReady(handler){
 
 function triggerEvent(tag, event, data, bubbles, cancelable){
     var newEvent = new CustomEvent(event, {
-        bubbles: bubbles || false,
-        cancelable: cancelable || false,
-        detail: data
+      bubbles: bubbles || false,
+      cancelable: cancelable || false,
+      detail: data
     });
     tag.dispatchEvent(newEvent);
 }

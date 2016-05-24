@@ -18,10 +18,42 @@
 
   </head>
   <body style="position:absolute; width:100%; height:100%; background-color:#f0f0f0; overflow:hidden;" class="napoleon">
-
-    <bonaparte-button target="#panel" action="click" target-open="true">click</bonaparte-button>
-    <bonaparte-panel id="panel" position="right"><h1>panel</h1></bonaparte-panel>
-
+    <bonaparte-toolbar>
+      <aside>
+        <div>
+          <bonaparte-button target="#panel" action="click" target-open="true">
+            <p>test</p>
+            <p>test</p>
+            <p><span>test</span><span>test</span></p>
+            <p>test</p>
+            <p>test</p>
+            <p>test</p>
+            <p>test</p>
+            <p>test</p>
+          </bonaparte-button>
+        </div>
+      </aside>
+      <div>
+        <bonaparte-panel id="panel" position="right">
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+        </bonaparte-panel>
+      </div>
+    </bonaparte-toolbar>
 
     <script>
       document.getElementById("panel").addEventListener("bonaparte.panel.close", function(e){

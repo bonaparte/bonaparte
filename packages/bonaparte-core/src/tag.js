@@ -13,7 +13,7 @@ module.exports = createTag;
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-function createTag(name, modules, nativeBaseElement){
+function createTag(name, modules, children, nativeBaseElement){
   var modulesType = (objct.isArray(modules) && "array") || typeof modules;
 
   if(modulesType === "function")
@@ -22,6 +22,8 @@ function createTag(name, modules, nativeBaseElement){
     throw "Bonaparte - createTag: Unexpected "+modulesType+". Expected Function or Array."
 
   nativeBaseElement = nativeBaseElement || window.HTMLElement || window.Element;
+
+  var childrenModule = require("./children")(name, children);
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
@@ -85,11 +87,13 @@ function createTag(name, modules, nativeBaseElement){
     var modules = [
       require("./events"),
       definition,
-      require("./mixins")
+      require("./mixins"),
+      childrenModule
     ];
 
     // Create bonaparte namespace
     element.bonaparte = element.bonaparte || {};
+    element.bonaparte.children = children;
 
     // Create and mixin tag instance
     objct.extend(element, modules)(element);

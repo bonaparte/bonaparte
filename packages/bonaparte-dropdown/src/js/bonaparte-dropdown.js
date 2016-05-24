@@ -3,7 +3,10 @@ var bp = require("bonaparte-core");
 ///////////////////////////////////////////////////////////////////////////////
 // Public
 
-module.exports = bp.tag.create("dropdown", dropdown);
+module.exports = bp.tag.create("dropdown", dropdown, {
+  0 : "dropdown",
+  "1n+0": "noop"
+});
 
 ///////////////////////////////////////////////////////////////////////////////
 function dropdown(tag) {

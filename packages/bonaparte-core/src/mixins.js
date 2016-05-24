@@ -22,7 +22,7 @@ function mixins(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function mixin(mixin){
-    if( typeof mixin !== "function" ) throw "Unexpected type of "+(typeof mixin)+"! Expected function.";
+    if( typeof mixin !== "function" ) throw "Bonaparte – Mixin: Unexpected type of "+(typeof mixin)+"! Expected function.";
 
     // Save mixin
     registeredMixins[tag.tagName].push(mixin);
