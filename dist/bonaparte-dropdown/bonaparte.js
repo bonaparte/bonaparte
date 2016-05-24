@@ -45,7 +45,7 @@
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(74);
+	module.exports = __webpack_require__(75);
 
 
 /***/ },
@@ -64,10 +64,10 @@
 	if(typeof document.addEventListener === "function") { // no polyfills for IE8 -> silently fail.
 	  
 	  if(!("MutationObserver" in document)) {
-	    MutationObserver = __webpack_require__(21);
+	    MutationObserver = __webpack_require__(22);
 	  };
-	  __webpack_require__(22);
 	  __webpack_require__(23);
+	  __webpack_require__(24);
 
 
 	  if (Element && !Element.prototype.matches) {
@@ -134,6 +134,7 @@
 	    case "attributes":
 	      var attribute = mutations[i].attributeName;
 	      var tag = mutations[i].target;
+
 	      var data = {
 	        name : attribute,
 	        oldValue : mutations[i].oldValue,
@@ -169,9 +170,9 @@
 
 	function triggerEvent(tag, event, data, bubbles, cancelable){
 	    var newEvent = new CustomEvent(event, {
-	        bubbles: bubbles || false,
-	        cancelable: cancelable || false,
-	        detail: data
+	      bubbles: bubbles || false,
+	      cancelable: cancelable || false,
+	      detail: data
 	    });
 	    tag.dispatchEvent(newEvent);
 	}
@@ -538,7 +539,7 @@
 	///////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////
 
-	function createTag(name, modules, nativeBaseElement){
+	function createTag(name, modules, children, nativeBaseElement){
 	  var modulesType = (objct.isArray(modules) && "array") || typeof modules;
 
 	  if(modulesType === "function")
@@ -547,6 +548,8 @@
 	    throw "Bonaparte - createTag: Unexpected "+modulesType+". Expected Function or Array."
 
 	  nativeBaseElement = nativeBaseElement || window.HTMLElement || window.Element;
+
+	  var childrenModule = __webpack_require__(19)(name, children);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
@@ -608,13 +611,15 @@
 
 	  function apply(element) {
 	    var modules = [
-	      __webpack_require__(19),
+	      __webpack_require__(20),
 	      definition,
-	      __webpack_require__(20)
+	      __webpack_require__(21),
+	      childrenModule
 	    ];
 
 	    // Create bonaparte namespace
 	    element.bonaparte = element.bonaparte || {};
+	    element.bonaparte.children = children;
 
 	    // Create and mixin tag instance
 	    objct.extend(element, modules)(element);
@@ -644,7 +649,147 @@
 /***/ 19:
 /***/ function(module, exports, __webpack_require__) {
 
-	var bp = __webpack_require__(14);
+	var bp = __webpack_require__(15);
+	var objct = __webpack_require__(16);
+
+	///////////////////////////////////////////////////////////////////////////////
+	// Public
+
+	module.exports = children;
+	module.exports.normalizeChildren = normalizeChildren;
+	module.exports.mapChildren = mapChildren;
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	function children(tagName, children){
+	  children = normalizeChildren({
+	    role : "root",
+	    children : children || {}
+	  });
+	  console.log(children);
+
+	  // var error = map.indexOf(null);
+	  // if(error >= 0) throw "Bonaparte - "+tagName+": Role of child "+error+" is not defined.";
+
+
+	  return function(tag) {
+	    bp.tag.DOMReady(function(){checkChildren(tag, children)});
+
+	///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+
+	    function checkChildren(element, child, path){
+	      path = path || tag.tagName;
+	      var length = element.children.length;
+
+	      bp.tag.observe(element);
+	      element.addEventListener("bonaparte.tag.childrenChanged", function(){checkChildren(element, child)})
+
+	      var map = mapChildren(child, length);
+
+	      for(var i=0; i<length; i++) {
+	        if(!child.children[map[i]]) break;
+	        element.children[i].setAttribute("bonaparte-role", child.children[map[i]].role);
+	        if(typeof child.children[map[i]].children === "object") {
+	          path = child.role === "root" ?
+	            path+"."+child.children[map[i]].role+"["+i+"]":
+	            path+"/"+element.tagName+"."+child.children[map[i]].role+"["+i+"]";
+
+	          checkChildren(element.children[i], child.children[map[i]], path);
+	        }
+	      }
+	      console.log(child);
+	      if(child.minChildren > length) console.warn("Bonaparte - "+path+": Needs a minimum of "+child.minChildren+" children! "+length+" provided.");
+	      if(child.maxChildren < length) console.warn("Bonapartem - "+path+": Can take a maximum of "+child.maxChildren+" children! "+length+" provided.");
+
+	    }
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	  }
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+
+	function normalizeChildren(node) {
+	  var child = {
+	    role : node.role || node,
+	    children : {},
+	    formulas : [],
+	    indexes : [],
+	    minChildren : node.minChildren,
+	    maxChildren : node.maxChildren
+	  };
+	  if(!node.children) return child;
+
+	  // Normalize children to object
+	  if(objct.isArray(node.children))
+	    for(var i=0; i<node.children.length; i++) {
+	      child.children[i]= node.children[i];
+	    }
+	  else child.children = node.children;
+
+	  // extract formulas and indexes
+	  var minIndex = 0;
+	  var maxIndex = 0;
+	  var keys = Object.keys(child.children);
+
+	  if(keys.length === 0) return child;
+	  for(var k=0; k<keys.length; k++) {
+	    if(isNaN(keys[k]*1)) {
+	      child.formulas.push(keys[k]);
+	    }
+	    else {
+	      maxIndex= Math.max(maxIndex, keys[k]);
+	      minIndex= Math.min(minIndex, keys[k]);
+	      child.indexes.push(keys[k]);
+	    }
+	    child.children[keys[k]]=normalizeChildren(child.children[keys[k]]);
+	  }
+	  var minChildren = maxIndex-minIndex;
+	  
+	  // Set minChildren and maxChildren
+	  if(minChildren > child.minChildren || !child.minChildren)
+	    child.minChildren = minChildren;
+
+	  if(child.formulas.length === 0) {
+	    if(child.maxChildren < child.minChildren || !child.maxChildren)
+	      child.maxChildren = child.minChildren;
+	  }
+	  return child;
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	function mapChildren(child, length){
+	  var children = child.children;
+	  var map = Array.apply(null, Array(length)).map(function(){return null});
+	  var formula, index;
+
+	  for(var k=0; k<child.formulas.length; k++) {
+	    formula = child.formulas[k].split("n+");
+	    for(var i=0; i<length; i++) {
+	      index = parseInt(formula[0])*i+parseInt(formula[1]);
+	      if(index >= length) break;
+	      map[index] = child.formulas[k];
+	    }
+	  }
+	  for(var k=0; k<child.indexes.length; k++) {
+	    index = parseFloat(child.indexes[k]);
+	    index = index < 0 ? index+length : index;
+	    map[index] = child.indexes[k];
+	  }
+	  return map;
+	}
+
+
+/***/ },
+
+/***/ 20:
+/***/ function(module, exports, __webpack_require__) {
+
+	var bp = __webpack_require__(15);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
@@ -673,7 +818,7 @@
 
 /***/ },
 
-/***/ 20:
+/***/ 21:
 /***/ function(module, exports, __webpack_require__) {
 
 	var objct = __webpack_require__(16);
@@ -700,7 +845,7 @@
 	///////////////////////////////////////////////////////////////////////////////
 
 	  function mixin(mixin){
-	    if( typeof mixin !== "function" ) throw "Unexpected type of "+(typeof mixin)+"! Expected function.";
+	    if( typeof mixin !== "function" ) throw "Bonaparte – Mixin: Unexpected type of "+(typeof mixin)+"! Expected function.";
 
 	    // Save mixin
 	    registeredMixins[tag.tagName].push(mixin);
@@ -714,9 +859,10 @@
 
 	}
 
+
 /***/ },
 
-/***/ 21:
+/***/ 22:
 /***/ function(module, exports) {
 
 	var MutationObserver = window.MutationObserver
@@ -1308,7 +1454,7 @@
 
 /***/ },
 
-/***/ 22:
+/***/ 23:
 /***/ function(module, exports) {
 
 	/*! (C) WebReflection Mit Style License */
@@ -1316,7 +1462,7 @@
 
 /***/ },
 
-/***/ 23:
+/***/ 24:
 /***/ function(module, exports) {
 
 	// Polyfill for creating CustomEvents on IE9/10/11
@@ -1348,15 +1494,15 @@
 
 /***/ },
 
-/***/ 74:
+/***/ 75:
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(75).register();
-	__webpack_require__(78);
+	__webpack_require__(76).register();
+	__webpack_require__(79);
 
 /***/ },
 
-/***/ 75:
+/***/ 76:
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -1366,14 +1512,14 @@
 	 * require("bonaparte").mixin.create()
 	 */
 
-	module.exports = __webpack_require__(76);
+	module.exports = __webpack_require__(77);
 
 /***/ },
 
-/***/ 76:
+/***/ 77:
 /***/ function(module, exports, __webpack_require__) {
 
-	var bp = __webpack_require__(77);
+	var bp = __webpack_require__(78);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
@@ -1468,14 +1614,14 @@
 
 /***/ },
 
-/***/ 77:
+/***/ 78:
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(14);
 
 /***/ },
 
-/***/ 78:
+/***/ 79:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
