@@ -96,7 +96,7 @@ function createTag(name, modules, children, nativeBaseElement){
     element.bonaparte.children = children;
 
     // Create and mixin tag instance
-    objct.extend(element, modules)(element);
+    objct.extend(element, modules)(element, name);
   }
 
 ///////////////////////////////////////////////////////////////////////////////

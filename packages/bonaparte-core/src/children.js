@@ -21,7 +21,7 @@ function children(tagName, children){
   // if(error >= 0) throw "Bonaparte - "+tagName+": Role of child "+error+" is not defined.";
 
 
-  return function(tag) {
+  return function(tag, name) {
     bp.tag.DOMReady(function(){checkChildren(tag, children)});
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -38,7 +38,7 @@ function children(tagName, children){
 
       for(var i=0; i<length; i++) {
         if(!child.children[map[i]]) break;
-        element.children[i].setAttribute("bonaparte-role", child.children[map[i]].role);
+        element.children[i].setAttribute("bonaparte-"+name+"-role", child.children[map[i]].role);
         if(typeof child.children[map[i]].children === "object") {
           path = child.role === "root" ?
             path+"."+child.children[map[i]].role+"["+i+"]":
@@ -97,7 +97,7 @@ function normalizeChildren(node) {
     child.children[keys[k]]=normalizeChildren(child.children[keys[k]]);
   }
   var minChildren = maxIndex-minIndex;
-  
+
   // Set minChildren and maxChildren
   if(minChildren > child.minChildren || !child.minChildren)
     child.minChildren = minChildren;
