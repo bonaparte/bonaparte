@@ -15,7 +15,6 @@ function children(tagName, children){
     role : "root",
     children : children || {}
   });
-  console.log(children);
 
   // var error = map.indexOf(null);
   // if(error >= 0) throw "Bonaparte - "+tagName+": Role of child "+error+" is not defined.";
@@ -47,10 +46,9 @@ function children(tagName, children){
           checkChildren(element.children[i], child.children[map[i]], path);
         }
       }
-      console.log(child);
-      if(child.minChildren > length) console.warn("Bonaparte - "+path+": Needs a minimum of "+child.minChildren+" children! "+length+" provided.");
-      if(child.maxChildren < length) console.warn("Bonapartem - "+path+": Can take a maximum of "+child.maxChildren+" children! "+length+" provided.");
 
+      if(child.minChildren > length) console.warn("Bonaparte - "+path+": Needs a minimum of "+child.minChildren+" children! "+length+" provided.");
+      if(child.maxChildren < length) console.warn("Bonaparte - "+path+": Can take a maximum of "+child.maxChildren+" children! "+length+" provided.");
     }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -90,7 +88,7 @@ function normalizeChildren(node) {
       child.formulas.push(keys[k]);
     }
     else {
-      maxIndex= Math.max(maxIndex, keys[k]);
+      maxIndex= Math.max(maxIndex, parseFloat(keys[k])+1);
       minIndex= Math.min(minIndex, keys[k]);
       child.indexes.push(keys[k]);
     }
