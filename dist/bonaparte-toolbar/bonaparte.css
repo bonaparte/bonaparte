@@ -203,7 +203,7 @@ bonaparte-toolbar[data-position="left"] > :nth-child(1),
 bonaparte-toolbar[position="left"] > :nth-child(1),
 bonaparte-toolbar[data-position="right"] > :nth-child(1),
 bonaparte-toolbar[position="right"] > :nth-child(1) {
-  min-width: 0rem;
+  min-width: 4rem;
 }
 bonaparte-toolbar:not([data-position]):not([position])[data-open="true"] > :nth-child(1),
 bonaparte-toolbar[data-position="left"][data-open="true"] > :nth-child(1),
@@ -221,7 +221,7 @@ bonaparte-toolbar[data-position="top"] > :nth-child(1),
 bonaparte-toolbar[position="top"] > :nth-child(1),
 bonaparte-toolbar[data-position="bottom"] > :nth-child(1),
 bonaparte-toolbar[position="bottom"] > :nth-child(1) {
-  min-height: 0rem;
+  min-height: 4rem;
 }
 bonaparte-toolbar[data-position="top"] > :nth-child(1) *,
 bonaparte-toolbar[position="top"] > :nth-child(1) *,

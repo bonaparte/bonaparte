@@ -750,7 +750,7 @@
 	    element.bonaparte.children = children;
 
 	    // Create and mixin tag instance
-	    objct.extend(element, modules)(element);
+	    objct.extend(element, modules)(element, name);
 	  }
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -793,13 +793,12 @@
 	    role : "root",
 	    children : children || {}
 	  });
-	  console.log(children);
 
 	  // var error = map.indexOf(null);
 	  // if(error >= 0) throw "Bonaparte - "+tagName+": Role of child "+error+" is not defined.";
 
 
-	  return function(tag) {
+	  return function(tag, name) {
 	    bp.tag.DOMReady(function(){checkChildren(tag, children)});
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -816,7 +815,7 @@
 
 	      for(var i=0; i<length; i++) {
 	        if(!child.children[map[i]]) break;
-	        element.children[i].setAttribute("bonaparte-role", child.children[map[i]].role);
+	        element.children[i].setAttribute("bonaparte-"+name+"-role", child.children[map[i]].role);
 	        if(typeof child.children[map[i]].children === "object") {
 	          path = child.role === "root" ?
 	            path+"."+child.children[map[i]].role+"["+i+"]":
@@ -825,10 +824,9 @@
 	          checkChildren(element.children[i], child.children[map[i]], path);
 	        }
 	      }
-	      console.log(child);
-	      if(child.minChildren > length) console.warn("Bonaparte - "+path+": Needs a minimum of "+child.minChildren+" children! "+length+" provided.");
-	      if(child.maxChildren < length) console.warn("Bonapartem - "+path+": Can take a maximum of "+child.maxChildren+" children! "+length+" provided.");
 
+	      if(child.minChildren > length) console.warn("Bonaparte - "+path+": Needs a minimum of "+child.minChildren+" children! "+length+" provided.");
+	      if(child.maxChildren < length) console.warn("Bonaparte - "+path+": Can take a maximum of "+child.maxChildren+" children! "+length+" provided.");
 	    }
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -868,14 +866,14 @@
 	      child.formulas.push(keys[k]);
 	    }
 	    else {
-	      maxIndex= Math.max(maxIndex, keys[k]);
+	      maxIndex= Math.max(maxIndex, parseFloat(keys[k])+1);
 	      minIndex= Math.min(minIndex, keys[k]);
 	      child.indexes.push(keys[k]);
 	    }
 	    child.children[keys[k]]=normalizeChildren(child.children[keys[k]]);
 	  }
 	  var minChildren = maxIndex-minIndex;
-	  
+
 	  // Set minChildren and maxChildren
 	  if(minChildren > child.minChildren || !child.minChildren)
 	    child.minChildren = minChildren;
@@ -2707,7 +2705,7 @@
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
 
-	module.exports = bp.tag.create("scroll", scroll);
+	module.exports = bp.tag.create("scroll", scroll, ["content"]);
 
 	///////////////////////////////////////////////////////////////////////////////
 	function scroll(tag){
@@ -2861,9 +2859,7 @@
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
 
-	module.exports = bp.tag.create("button", button, {
-	  "1n+0" : "test"
-	}, HTMLButtonElement);
+	module.exports = bp.tag.create("button", button, {}, HTMLButtonElement);
 
 	///////////////////////////////////////////////////////////////////////////////
 	function button(tag){
@@ -3153,7 +3149,51 @@
 /* 46 */
 [89, 47],
 /* 47 */
-[90, 48],
+/***/ function(module, exports, __webpack_require__) {
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	var bp = __webpack_require__(48);
+
+	///////////////////////////////////////////////////////////////////////////////
+	// Public
+
+	module.exports = bp.tag.create("sidebar", sidebar, [ "sidebar", "content" ]);
+
+	///////////////////////////////////////////////////////////////////////////////
+	function sidebar(tag){
+	  updateSize();
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	  tag.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
+
+	///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+
+	  function attributeChangedCallback(data){
+	    if(bp.attribute.matchName(/size/, data.detail.name)) updateSize();
+	  }
+
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	  function updateSize(data){
+	    var size = bp.attribute.get(tag, "size");
+	    var sidebar = bp.attribute.get(tag, "position");
+	    var style = sidebar === "left" || sidebar==="right" ? "min-width" : "min-height";
+	    if(size === undefined)
+	      tag.firstElementChild.style[style] = "";
+	    else
+	      tag.firstElementChild.style[style] = size;
+	  }
+
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+
+
+/***/ },
 /* 48 */
 13,
 /* 49 */
@@ -3189,14 +3229,10 @@
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
 
-	module.exports = bp.tag.create("toolbar", [
-	  __webpack_require__(56)
-	], {
+	module.exports = bp.tag.create("toolbar", [ __webpack_require__(56) ], {
 	  0 : {
 	    role :"toolbar",
-	    children: {
-	      "1n+0" : "button-group"
-	    }
+	    children: { "1n+0" : "button-group" }
 	  },
 	  1 : "content"
 	});
@@ -3208,7 +3244,51 @@
 /* 56 */
 [89, 57],
 /* 57 */
-[90, 58],
+/***/ function(module, exports, __webpack_require__) {
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	var bp = __webpack_require__(58);
+
+	///////////////////////////////////////////////////////////////////////////////
+	// Public
+
+	module.exports = bp.tag.create("sidebar", sidebar);
+
+	///////////////////////////////////////////////////////////////////////////////
+	function sidebar(tag){
+	  updateSize();
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	  tag.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
+
+	///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+
+	  function attributeChangedCallback(data){
+	    if(bp.attribute.matchName(/size/, data.detail.name)) updateSize();
+	  }
+
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	  function updateSize(data){
+	    var size = bp.attribute.get(tag, "size");
+	    var sidebar = bp.attribute.get(tag, "position");
+	    var style = sidebar === "left" || sidebar==="right" ? "min-width" : "min-height";
+	    if(size === undefined)
+	      tag.firstElementChild.style[style] = "";
+	    else
+	      tag.firstElementChild.style[style] = size;
+	  }
+
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+
+
+/***/ },
 /* 58 */
 [88, 59, 64, 65, 66],
 /* 59 */
@@ -3879,7 +3959,10 @@
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
 
-	module.exports = bp.tag.create("dropdown", dropdown);
+	module.exports = bp.tag.create("dropdown", dropdown, {
+	  0 : "dropdown",
+	  "1n+0": "noop"
+	});
 
 	///////////////////////////////////////////////////////////////////////////////
 	function dropdown(tag) {
@@ -4050,52 +4133,6 @@
 	 */
 
 	module.exports = __webpack_require__(__webpack_module_template_argument_0__);
-
-/***/ },
-/* 90 */
-/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	var bp = __webpack_require__(__webpack_module_template_argument_0__);
-
-	///////////////////////////////////////////////////////////////////////////////
-	// Public
-
-	module.exports = bp.tag.create("sidebar", sidebar);
-
-	///////////////////////////////////////////////////////////////////////////////
-	function sidebar(tag){
-	  updateSize();
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	  tag.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
-
-	///////////////////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////////////////
-
-	  function attributeChangedCallback(data){
-	    if(bp.attribute.matchName(/size/, data.detail.name)) updateSize();
-	  }
-
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	  function updateSize(data){
-	    var size = bp.attribute.get(tag, "size");
-	    var sidebar = bp.attribute.get(tag, "position");
-	    var style = sidebar === "left" || sidebar==="right" ? "min-width" : "min-height";
-	    if(size === undefined)
-	      tag.firstElementChild.style[style] = "";
-	    else
-	      tag.firstElementChild.style[style] = size;
-	  }
-
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
-
 
 /***/ }
 /******/ ])));

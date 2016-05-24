@@ -85,7 +85,7 @@
 /* 12 */,
 /* 13 */,
 /* 14 */
-[91, 15, 22, 23, 24],
+[90, 15, 22, 23, 24],
 /* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -624,7 +624,7 @@
 	    element.bonaparte.children = children;
 
 	    // Create and mixin tag instance
-	    objct.extend(element, modules)(element);
+	    objct.extend(element, modules)(element, name);
 	  }
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -667,13 +667,12 @@
 	    role : "root",
 	    children : children || {}
 	  });
-	  console.log(children);
 
 	  // var error = map.indexOf(null);
 	  // if(error >= 0) throw "Bonaparte - "+tagName+": Role of child "+error+" is not defined.";
 
 
-	  return function(tag) {
+	  return function(tag, name) {
 	    bp.tag.DOMReady(function(){checkChildren(tag, children)});
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -690,7 +689,7 @@
 
 	      for(var i=0; i<length; i++) {
 	        if(!child.children[map[i]]) break;
-	        element.children[i].setAttribute("bonaparte-role", child.children[map[i]].role);
+	        element.children[i].setAttribute("bonaparte-"+name+"-role", child.children[map[i]].role);
 	        if(typeof child.children[map[i]].children === "object") {
 	          path = child.role === "root" ?
 	            path+"."+child.children[map[i]].role+"["+i+"]":
@@ -699,10 +698,9 @@
 	          checkChildren(element.children[i], child.children[map[i]], path);
 	        }
 	      }
-	      console.log(child);
-	      if(child.minChildren > length) console.warn("Bonaparte - "+path+": Needs a minimum of "+child.minChildren+" children! "+length+" provided.");
-	      if(child.maxChildren < length) console.warn("Bonapartem - "+path+": Can take a maximum of "+child.maxChildren+" children! "+length+" provided.");
 
+	      if(child.minChildren > length) console.warn("Bonaparte - "+path+": Needs a minimum of "+child.minChildren+" children! "+length+" provided.");
+	      if(child.maxChildren < length) console.warn("Bonaparte - "+path+": Can take a maximum of "+child.maxChildren+" children! "+length+" provided.");
 	    }
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -742,14 +740,14 @@
 	      child.formulas.push(keys[k]);
 	    }
 	    else {
-	      maxIndex= Math.max(maxIndex, keys[k]);
+	      maxIndex= Math.max(maxIndex, parseFloat(keys[k])+1);
 	      minIndex= Math.min(minIndex, keys[k]);
 	      child.indexes.push(keys[k]);
 	    }
 	    child.children[keys[k]]=normalizeChildren(child.children[keys[k]]);
 	  }
 	  var minChildren = maxIndex-minIndex;
-	  
+
 	  // Set minChildren and maxChildren
 	  if(minChildren > child.minChildren || !child.minChildren)
 	    child.minChildren = minChildren;
@@ -1545,14 +1543,10 @@
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
 
-	module.exports = bp.tag.create("toolbar", [
-	  __webpack_require__(56)
-	], {
+	module.exports = bp.tag.create("toolbar", [ __webpack_require__(56) ], {
 	  0 : {
 	    role :"toolbar",
-	    children: {
-	      "1n+0" : "button-group"
-	    }
+	    children: { "1n+0" : "button-group" }
 	  },
 	  1 : "content"
 	});
@@ -1625,7 +1619,7 @@
 
 /***/ },
 /* 58 */
-[91, 59, 64, 65, 66],
+[90, 59, 64, 65, 66],
 /* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -2057,8 +2051,7 @@
 /* 87 */,
 /* 88 */,
 /* 89 */,
-/* 90 */,
-/* 91 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__) {
 
 	///////////////////////////////////////////////////////////////////////////////
