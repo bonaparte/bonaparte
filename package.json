@@ -1,10 +1,9 @@
 {
-  "name": "bonaparte",
+  "name": "bonaparte-library",
   "scripts": {
-    "build": "npm install && webpack",
-    "watch" : "webpack --watch",
-    "build-prod": "npm install && webpack -p",
-    "postinstall": "./node_modules/.bin/gitbook install",
+    "build": "find ./node_modules -name 'bonaparte*' -type d | xargs rm -r && npm install && webpack --progress",
+    "build-prod": "find ./node_modules -name 'bonaparte*' -type d | xargs rm -r && npm install && webpack -p --progress",
+    "_postinstall": "./node_modules/.bin/gitbook install",
     "docs-install": "./node_modules/.bin/gitbook install",
     "docs-serve": "./node_modules/.bin/gitbook serve",
     "docs-build": "./node_modules/.bin/gitbook build",

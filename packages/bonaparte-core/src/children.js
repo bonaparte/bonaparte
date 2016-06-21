@@ -27,23 +27,27 @@ function children(tagName, children){
 ///////////////////////////////////////////////////////////////////////////////
 
     function checkChildren(element, child, path){
-      path = path || tag.tagName;
-      var length = element.children.length;
 
+      path = path || "<"+tag.tagName+">";
+      var length = element.children.length;
       bp.tag.observe(element);
       element.addEventListener("bonaparte.tag.childrenChanged", function(){checkChildren(element, child)})
 
       var map = mapChildren(child, length);
 
-      for(var i=0; i<length; i++) {
-        if(!child.children[map[i]]) break;
-        element.children[i].setAttribute("bonaparte-"+name+"-role", child.children[map[i]].role);
-        if(typeof child.children[map[i]].children === "object") {
-          path = child.role === "root" ?
-            path+"."+child.children[map[i]].role+"["+i+"]":
-            path+"/"+element.tagName+"."+child.children[map[i]].role+"["+i+"]";
 
-          checkChildren(element.children[i], child.children[map[i]], path);
+      for(var i=0; i<length; i++) {
+
+        if(!child.children[map[i]]) break;
+        console.log('setAttribute', path, map[i], child.children[map[i]].role);
+
+        // element.children[i].getAttribute("bonaparte-"+name+"-role");
+        element.children[i].setAttribute("bonaparte-"+name+"-role", child.children[map[i]].role);
+
+        if(typeof child.children[map[i]].children === "object") {
+          var nextPath = path+"<"+element.children[i].tagName+" index='"+i+"' selector='"+map[i]+"' role='"+child.children[map[i]].role+"'>";
+
+          checkChildren(element.children[i], child.children[map[i]], nextPath);
         }
       }
 
