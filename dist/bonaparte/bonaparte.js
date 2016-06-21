@@ -73,9 +73,9 @@
 	__webpack_require__(36);
 	__webpack_require__(44);
 	__webpack_require__(51);
-	__webpack_require__(69);
-	__webpack_require__(74);
-	__webpack_require__(81);
+	__webpack_require__(70);
+	__webpack_require__(75);
+	__webpack_require__(82);
 
 
 /***/ },
@@ -94,7 +94,7 @@
 
 /***/ },
 /* 10 */
-[87, 11, 27],
+[88, 11, 27],
 /* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -211,164 +211,9 @@
 
 /***/ },
 /* 14 */
-[88, 15, 22, 23, 24],
+[89, 15, 22, 23, 24],
 /* 15 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var objct = __webpack_require__(16);
-
-	///////////////////////////////////////////////////////////////////////////////
-	// Public
-
-	module.exports = {
-	  tag : {
-	    create : __webpack_require__(18),
-	    contains : nodeContains,
-	    observe : observe,
-	    triggerEvent : triggerEvent,
-	    closest : getClosest,
-	    DOMReady : DOMReady
-	  },
-	  attribute : {
-	    get : getAttribute,
-	    set : setAttribute,
-	    remove : removeAttribute,
-	    matchName : matchAttribute
-	  },
-	  mixin : {
-	    create : mixin
-	  }
-	};
-
-	///////////////////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////////////////
-	var observedElements = [];
-
-	function observe(element){
-	  if(observedElements.indexOf(element)>=0) return;
-
-	  element.bonaparte = element.bonaparte || {};
-	  element.bonaparte.observer = new MutationObserver(mutationHandler);
-
-	  element.bonaparte.observer.observe(element, {
-	    attributes:true,
-	    attributeOldValue:true,
-	    childList:true
-	  });
-	  observedElements.push(element);
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	function mutationHandler(mutations){
-	  for(var i=0; i<mutations.length; i++) switch(mutations[i].type) {
-	    case "attributes":
-	      var attribute = mutations[i].attributeName;
-	      var tag = mutations[i].target;
-
-	      var data = {
-	        name : attribute,
-	        oldValue : mutations[i].oldValue,
-	        newValue : tag.attributes[attribute] ? tag.attributes[attribute].value : null
-	      };
-
-	      if(data.oldValue !== data.newValue)
-	        triggerEvent(tag, "bonaparte.tag.attributeChanged", data);
-	      triggerEvent(tag, "bonaparte.tag.attributeUpdated", data);
-	    break;
-	    case "childList":
-	      triggerEvent(mutations[i].target, "bonaparte.tag.childrenChanged", {
-	        added : mutations[i].addedNodes,
-	        removed : mutations[i].removedNodes
-	      });
-	    break;
-	  }
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	function mixin() {
-	  return objct(arguments);
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	function DOMReady(handler){
-	  if(document.readyState === "complete") handler();
-	  else window.addEventListener("load", handler);
-	}
-	///////////////////////////////////////////////////////////////////////////////
-
-	function triggerEvent(tag, event, data, bubbles, cancelable){
-	    var newEvent = new CustomEvent(event, {
-	      bubbles: bubbles || false,
-	      cancelable: cancelable || false,
-	      detail: data
-	    });
-	    tag.dispatchEvent(newEvent);
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
-
-
-	function nodeContains(parent, child) {
-	  while((child=child.parentNode)&&child!==parent);
-	  return !!child;
-	};
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	function getClosest(tag, name){
-	  while((tag=tag.parentNode)&&tag.nodeName.toUpperCase()!==name.toUpperCase());
-	  return tag ? tag:false;
-
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	function getAttribute(tag, name){
-	  var attribute = tag.attributes[name] || tag.attributes["data-"+name];
-	  return attribute ? attribute.value : undefined;
-	}
-	///////////////////////////////////////////////////////////////////////////////
-
-	function matchAttribute(patterns, name){
-	  var pattern, dataPattern;
-	  if(!objct.isArray(patterns)) patterns = [patterns];
-
-	  for(var i=0; i<patterns.length; i++) {
-	    pattern = patterns[i];
-	    dataPattern = new RegExp("data-"+pattern.source);
-	    if(pattern.test(name) ||  dataPattern.test(name))
-	      return true;
-	  }
-	  return false;
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	function setAttribute(tag, name, value) {
-	  name = tag.hasAttribute("data-"+name) ? "data-"+name : name;
-	  var oldValue = getAttribute(tag, name);
-
-	  tag.setAttribute(name, value);
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	function removeAttribute(tag, name) {
-	  if(typeof tag.attributes[name] !== "object") return;
-
-	  // remove attribute
-	  tag.removeAttribute(name);
-	  tag.removeAttribute("data-"+name);
-
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
-
-
-/***/ },
+[90, 16, 18],
 /* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -650,129 +495,7 @@
 
 /***/ },
 /* 18 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var objct = __webpack_require__(16);
-	var bp = __webpack_require__(15);
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	var registeredTags = {};
-
-	///////////////////////////////////////////////////////////////////////////////
-	// Public
-
-	module.exports = createTag;
-
-	///////////////////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////////////////
-
-	function createTag(name, modules, children, nativeBaseElement){
-	  var modulesType = (objct.isArray(modules) && "array") || typeof modules;
-
-	  if(modulesType === "function")
-	    modules = [modules];
-	  else if(modulesType !== "array")
-	    throw "Bonaparte - createTag: Unexpected "+modulesType+". Expected Function or Array."
-
-	  nativeBaseElement = nativeBaseElement || window.HTMLElement || window.Element;
-
-	  var childrenModule = __webpack_require__(19)(name, children);
-
-	///////////////////////////////////////////////////////////////////////////////
-	// Public
-
-	  function tagFactory(){};
-	  tagFactory.register = register;
-	  tagFactory.initialize = initialize;
-	  tagFactory.mixin = mixin;
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	  var definition = objct(modules, tagFactory);
-	  return definition;
-
-	///////////////////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////////////////
-
-	  function register(){
-
-	    if(typeof document.registerElement === "undefined") { // If IE8 make tag stylable but otherwise do nothing.
-	      document.createElement("bonaparte-"+name);
-	      return definition;
-	    }
-	    registeredTags[name] = registeredTags[name] !== undefined ?
-	      registeredTags[name]:
-	      document.registerElement("bonaparte-"+name, {
-	        prototype : Object.create( nativeBaseElement.prototype , {
-	          createdCallback : { value: createdCallback },
-	          attachedCallback : { value: attachedCallback },
-	          detachedCallback : { value: detachedCallback }
-	        })
-	      });
-
-	    return definition;
-	  }
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	  function mixin(mixin){
-	    objct.extend(definition, mixin);
-	    return definition;
-	  }
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	  function initialize(element){
-	    apply(element);
-	    return definition;
-	  }
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	  function createdCallback() {
-	    apply(this);
-	    this.bonaparte.triggerEvent("bonaparte.tag.created", null);
-	  }
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	  function apply(element) {
-	    var modules = [
-	      __webpack_require__(20),
-	      definition,
-	      __webpack_require__(21),
-	      childrenModule
-	    ];
-
-	    // Create bonaparte namespace
-	    element.bonaparte = element.bonaparte || {};
-	    element.bonaparte.children = children;
-
-	    // Create and mixin tag instance
-	    objct.extend(element, modules)(element, name);
-	  }
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	function attachedCallback() {
-	  this.bonaparte.triggerEvent("bonaparte.tag.attached", null);
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	function detachedCallback() {
-	  this.bonaparte.triggerEvent("bonaparte.tag.detached", null);
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
-
-
-/***/ },
+[91, 16, 15, 19, 20, 21],
 /* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -805,23 +528,27 @@
 	///////////////////////////////////////////////////////////////////////////////
 
 	    function checkChildren(element, child, path){
-	      path = path || tag.tagName;
-	      var length = element.children.length;
 
+	      path = path || "<"+tag.tagName+">";
+	      var length = element.children.length;
 	      bp.tag.observe(element);
 	      element.addEventListener("bonaparte.tag.childrenChanged", function(){checkChildren(element, child)})
 
 	      var map = mapChildren(child, length);
 
-	      for(var i=0; i<length; i++) {
-	        if(!child.children[map[i]]) break;
-	        element.children[i].setAttribute("bonaparte-"+name+"-role", child.children[map[i]].role);
-	        if(typeof child.children[map[i]].children === "object") {
-	          path = child.role === "root" ?
-	            path+"."+child.children[map[i]].role+"["+i+"]":
-	            path+"/"+element.tagName+"."+child.children[map[i]].role+"["+i+"]";
 
-	          checkChildren(element.children[i], child.children[map[i]], path);
+	      for(var i=0; i<length; i++) {
+
+	        if(!child.children[map[i]]) break;
+	        // console.log('setAttribute', path, map[i], child.children[map[i]].role);
+
+	        // element.children[i].getAttribute("bonaparte-"+name+"-role");
+	        element.children[i].setAttribute("bonaparte-"+name+"-role", child.children[map[i]].role);
+
+	        if(typeof child.children[map[i]].children === "object") {
+	          var nextPath = path+"<"+element.children[i].tagName+" index='"+i+"' selector='"+map[i]+"' role='"+child.children[map[i]].role+"'>";
+
+	          checkChildren(element.children[i], child.children[map[i]], nextPath);
 	        }
 	      }
 
@@ -911,79 +638,9 @@
 
 /***/ },
 /* 20 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var bp = __webpack_require__(15);
-
-	///////////////////////////////////////////////////////////////////////////////
-	// Public
-
-	module.exports = events;
-
-	///////////////////////////////////////////////////////////////////////////////
-	function events(tag){
-	  bp.tag.observe(tag);
-
-	///////////////////////////////////////////////////////////////////////////////
-	// Public
-	  tag.bonaparte.triggerEvent = triggerEvent;
-
-	///////////////////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////////////////
-
-	  function triggerEvent(event, data, bubbles, cancelable){
-	    bp.tag.triggerEvent(tag, event, data, bubbles, cancelable);
-	  }
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	}
-
-
-/***/ },
+[92, 15],
 /* 21 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var objct = __webpack_require__(16);
-
-	var registeredMixins = {};
-
-	///////////////////////////////////////////////////////////////////////////////
-	// Public
-
-	module.exports = mixins;
-
-	///////////////////////////////////////////////////////////////////////////////
-	function mixins(tag){
-
-	  registeredMixins[tag.tagName] = registeredMixins[tag.tagName] || [];
-	  new objct.extend(tag, registeredMixins[tag.tagName]);
-
-	///////////////////////////////////////////////////////////////////////////////
-	// Public
-
-	  tag.bonaparte.mixin = mixin;
-
-	///////////////////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////////////////
-
-	  function mixin(mixin){
-	    if( typeof mixin !== "function" ) throw "Bonaparte – Mixin: Unexpected type of "+(typeof mixin)+"! Expected function.";
-
-	    // Save mixin
-	    registeredMixins[tag.tagName].push(mixin);
-
-	    // apply mixin to current tag.
-	    new objct.extend(tag, mixin);
-
-	  }
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	}
-
-
-/***/ },
+[93, 16],
 /* 22 */
 /***/ function(module, exports) {
 
@@ -1579,7 +1236,7 @@
 /***/ function(module, exports) {
 
 	/*! (C) WebReflection Mit Style License */
-	(function(e,t,n,r){"use strict";function rt(e,t){for(var n=0,r=e.length;n<r;n++)vt(e[n],t)}function it(e){for(var t=0,n=e.length,r;t<n;t++)r=e[t],nt(r,b[ot(r)])}function st(e){return function(t){j(t)&&(vt(t,e),rt(t.querySelectorAll(w),e))}}function ot(e){var t=e.getAttribute("is"),n=e.nodeName.toUpperCase(),r=S.call(y,t?v+t.toUpperCase():d+n);return t&&-1<r&&!ut(n,t)?-1:r}function ut(e,t){return-1<w.indexOf(e+'[is="'+t+'"]')}function at(e){var t=e.currentTarget,n=e.attrChange,r=e.attrName,i=e.target;Q&&(!i||i===t)&&t.attributeChangedCallback&&r!=="style"&&e.prevValue!==e.newValue&&t.attributeChangedCallback(r,n===e[a]?null:e.prevValue,n===e[l]?null:e.newValue)}function ft(e){var t=st(e);return function(e){X.push(t,e.target)}}function lt(e){K&&(K=!1,e.currentTarget.removeEventListener(h,lt)),rt((e.target||t).querySelectorAll(w),e.detail===o?o:s),B&&pt()}function ct(e,t){var n=this;q.call(n,e,t),G.call(n,{target:n})}function ht(e,t){D(e,t),et?et.observe(e,z):(J&&(e.setAttribute=ct,e[i]=Z(e),e.addEventListener(p,G)),e.addEventListener(c,at)),e.createdCallback&&Q&&(e.created=!0,e.createdCallback(),e.created=!1)}function pt(){for(var e,t=0,n=F.length;t<n;t++)e=F[t],E.contains(e)||(n--,F.splice(t--,1),vt(e,o))}function dt(e){throw new Error("A "+e+" type is already registered")}function vt(e,t){var n,r=ot(e);-1<r&&(tt(e,b[r]),r=0,t===s&&!e[s]?(e[o]=!1,e[s]=!0,r=1,B&&S.call(F,e)<0&&F.push(e)):t===o&&!e[o]&&(e[s]=!1,e[o]=!0,r=1),r&&(n=e[t+"Callback"])&&n.call(e))}if(r in t)return;var i="__"+r+(Math.random()*1e5>>0),s="attached",o="detached",u="extends",a="ADDITION",f="MODIFICATION",l="REMOVAL",c="DOMAttrModified",h="DOMContentLoaded",p="DOMSubtreeModified",d="<",v="=",m=/^[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+$/,g=["ANNOTATION-XML","COLOR-PROFILE","FONT-FACE","FONT-FACE-SRC","FONT-FACE-URI","FONT-FACE-FORMAT","FONT-FACE-NAME","MISSING-GLYPH"],y=[],b=[],w="",E=t.documentElement,S=y.indexOf||function(e){for(var t=this.length;t--&&this[t]!==e;);return t},x=n.prototype,T=x.hasOwnProperty,N=x.isPrototypeOf,C=n.defineProperty,k=n.getOwnPropertyDescriptor,L=n.getOwnPropertyNames,A=n.getPrototypeOf,O=n.setPrototypeOf,M=!!n.__proto__,_=n.create||function mt(e){return e?(mt.prototype=e,new mt):this},D=O||(M?function(e,t){return e.__proto__=t,e}:L&&k?function(){function e(e,t){for(var n,r=L(t),i=0,s=r.length;i<s;i++)n=r[i],T.call(e,n)||C(e,n,k(t,n))}return function(t,n){do e(t,n);while((n=A(n))&&!N.call(n,t));return t}}():function(e,t){for(var n in t)e[n]=t[n];return e}),P=e.MutationObserver||e.WebKitMutationObserver,H=(e.HTMLElement||e.Element||e.Node).prototype,B=!N.call(H,E),j=B?function(e){return e.nodeType===1}:function(e){return N.call(H,e)},F=B&&[],I=H.cloneNode,q=H.setAttribute,R=H.removeAttribute,U=t.createElement,z=P&&{attributes:!0,characterData:!0,attributeOldValue:!0},W=P||function(e){J=!1,E.removeEventListener(c,W)},X,V=e.requestAnimationFrame||e.webkitRequestAnimationFrame||e.mozRequestAnimationFrame||e.msRequestAnimationFrame||function(e){setTimeout(e,10)},$=!1,J=!0,K=!0,Q=!0,G,Y,Z,et,tt,nt;O||M?(tt=function(e,t){N.call(t,e)||ht(e,t)},nt=ht):(tt=function(e,t){e[i]||(e[i]=n(!0),ht(e,t))},nt=tt),B?(J=!1,function(){var e=k(H,"addEventListener"),t=e.value,n=function(e){var t=new CustomEvent(c,{bubbles:!0});t.attrName=e,t.prevValue=this.getAttribute(e),t.newValue=null,t[l]=t.attrChange=2,R.call(this,e),this.dispatchEvent(t)},r=function(e,t){var n=this.hasAttribute(e),r=n&&this.getAttribute(e),i=new CustomEvent(c,{bubbles:!0});q.call(this,e,t),i.attrName=e,i.prevValue=n?r:null,i.newValue=t,n?i[f]=i.attrChange=1:i[a]=i.attrChange=0,this.dispatchEvent(i)},s=function(e){var t=e.currentTarget,n=t[i],r=e.propertyName,s;n.hasOwnProperty(r)&&(n=n[r],s=new CustomEvent(c,{bubbles:!0}),s.attrName=n.name,s.prevValue=n.value||null,s.newValue=n.value=t[r]||null,s.prevValue==null?s[a]=s.attrChange=0:s[f]=s.attrChange=1,t.dispatchEvent(s))};e.value=function(e,o,u){e===c&&this.attributeChangedCallback&&this.setAttribute!==r&&(this[i]={className:{name:"class",value:this.className}},this.setAttribute=r,this.removeAttribute=n,t.call(this,"propertychange",s)),t.call(this,e,o,u)},C(H,"addEventListener",e)}()):P||(E.addEventListener(c,W),E.setAttribute(i,1),E.removeAttribute(i),J&&(G=function(e){var t=this,n,r,s;if(t===e.target){n=t[i],t[i]=r=Z(t);for(s in r){if(!(s in n))return Y(0,t,s,n[s],r[s],a);if(r[s]!==n[s])return Y(1,t,s,n[s],r[s],f)}for(s in n)if(!(s in r))return Y(2,t,s,n[s],r[s],l)}},Y=function(e,t,n,r,i,s){var o={attrChange:e,currentTarget:t,attrName:n,prevValue:r,newValue:i};o[s]=e,at(o)},Z=function(e){for(var t,n,r={},i=e.attributes,s=0,o=i.length;s<o;s++)t=i[s],n=t.name,n!=="setAttribute"&&(r[n]=t.value);return r})),t[r]=function(n,r){c=n.toUpperCase(),$||($=!0,P?(et=function(e,t){function n(e,t){for(var n=0,r=e.length;n<r;t(e[n++]));}return new P(function(r){for(var i,s,o,u=0,a=r.length;u<a;u++)i=r[u],i.type==="childList"?(n(i.addedNodes,e),n(i.removedNodes,t)):(s=i.target,Q&&s.attributeChangedCallback&&i.attributeName!=="style"&&(o=s.getAttribute(i.attributeName),o!==i.oldValue&&s.attributeChangedCallback(i.attributeName,i.oldValue,o)))})}(st(s),st(o)),et.observe(t,{childList:!0,subtree:!0})):(X=[],V(function E(){while(X.length)X.shift().call(null,X.shift());V(E)}),t.addEventListener("DOMNodeInserted",ft(s)),t.addEventListener("DOMNodeRemoved",ft(o))),t.addEventListener(h,lt),t.addEventListener("readystatechange",lt),t.createElement=function(e,n){var r=U.apply(t,arguments),i=""+e,s=S.call(y,(n?v:d)+(n||i).toUpperCase()),o=-1<s;return n&&(r.setAttribute("is",n=n.toLowerCase()),o&&(o=ut(i.toUpperCase(),n))),Q=!t.createElement.innerHTMLHelper,o&&nt(r,b[s]),r},H.cloneNode=function(e){var t=I.call(this,!!e),n=ot(t);return-1<n&&nt(t,b[n]),e&&it(t.querySelectorAll(w)),t}),-2<S.call(y,v+c)+S.call(y,d+c)&&dt(n);if(!m.test(c)||-1<S.call(g,c))throw new Error("The type "+n+" is invalid");var i=function(){return f?t.createElement(l,c):t.createElement(l)},a=r||x,f=T.call(a,u),l=f?r[u].toUpperCase():c,c,p;return f&&-1<S.call(y,d+l)&&dt(l),p=y.push((f?v:d)+c)-1,w=w.concat(w.length?",":"",f?l+'[is="'+n.toLowerCase()+'"]':l),i.prototype=b[p]=T.call(a,"prototype")?a.prototype:_(H),rt(t.querySelectorAll(w),s),i}})(window,document,Object,"registerElement");
+	(function(e,t,n,r){"use strict";function rt(e,t){for(var n=0,r=e.length;n<r;n++)dt(e[n],t)}function it(e){for(var t=0,n=e.length,r;t<n;t++)r=e[t],nt(r,b[ot(r)])}function st(e){return function(t){j(t)&&(dt(t,e),rt(t.querySelectorAll(w),e))}}function ot(e){var t=e.getAttribute("is"),n=e.nodeName.toUpperCase(),r=S.call(y,t?v+t.toUpperCase():d+n);return t&&-1<r&&!ut(n,t)?-1:r}function ut(e,t){return-1<w.indexOf(e+'[is="'+t+'"]')}function at(e){var t=e.currentTarget,n=e.attrChange,r=e.prevValue,i=e.newValue;Q&&t.attributeChangedCallback&&e.attrName!=="style"&&t.attributeChangedCallback(e.attrName,n===e[a]?null:r,n===e[l]?null:i)}function ft(e){var t=st(e);return function(e){X.push(t,e.target)}}function lt(e){K&&(K=!1,e.currentTarget.removeEventListener(h,lt)),rt((e.target||t).querySelectorAll(w),e.detail===o?o:s),B&&pt()}function ct(e,t){var n=this;q.call(n,e,t),G.call(n,{target:n})}function ht(e,t){D(e,t),et?et.observe(e,z):(J&&(e.setAttribute=ct,e[i]=Z(e),e.addEventListener(p,G)),e.addEventListener(c,at)),e.createdCallback&&Q&&(e.created=!0,e.createdCallback(),e.created=!1)}function pt(){for(var e,t=0,n=F.length;t<n;t++)e=F[t],E.contains(e)||(F.splice(t,1),dt(e,o))}function dt(e,t){var n,r=ot(e);-1<r&&(tt(e,b[r]),r=0,t===s&&!e[s]?(e[o]=!1,e[s]=!0,r=1,B&&S.call(F,e)<0&&F.push(e)):t===o&&!e[o]&&(e[s]=!1,e[o]=!0,r=1),r&&(n=e[t+"Callback"])&&n.call(e))}if(r in t)return;var i="__"+r+(Math.random()*1e5>>0),s="attached",o="detached",u="extends",a="ADDITION",f="MODIFICATION",l="REMOVAL",c="DOMAttrModified",h="DOMContentLoaded",p="DOMSubtreeModified",d="<",v="=",m=/^[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+$/,g=["ANNOTATION-XML","COLOR-PROFILE","FONT-FACE","FONT-FACE-SRC","FONT-FACE-URI","FONT-FACE-FORMAT","FONT-FACE-NAME","MISSING-GLYPH"],y=[],b=[],w="",E=t.documentElement,S=y.indexOf||function(e){for(var t=this.length;t--&&this[t]!==e;);return t},x=n.prototype,T=x.hasOwnProperty,N=x.isPrototypeOf,C=n.defineProperty,k=n.getOwnPropertyDescriptor,L=n.getOwnPropertyNames,A=n.getPrototypeOf,O=n.setPrototypeOf,M=!!n.__proto__,_=n.create||function vt(e){return e?(vt.prototype=e,new vt):this},D=O||(M?function(e,t){return e.__proto__=t,e}:L&&k?function(){function e(e,t){for(var n,r=L(t),i=0,s=r.length;i<s;i++)n=r[i],T.call(e,n)||C(e,n,k(t,n))}return function(t,n){do e(t,n);while((n=A(n))&&!N.call(n,t));return t}}():function(e,t){for(var n in t)e[n]=t[n];return e}),P=e.MutationObserver||e.WebKitMutationObserver,H=(e.HTMLElement||e.Element||e.Node).prototype,B=!N.call(H,E),j=B?function(e){return e.nodeType===1}:function(e){return N.call(H,e)},F=B&&[],I=H.cloneNode,q=H.setAttribute,R=H.removeAttribute,U=t.createElement,z=P&&{attributes:!0,characterData:!0,attributeOldValue:!0},W=P||function(e){J=!1,E.removeEventListener(c,W)},X,V=e.requestAnimationFrame||e.webkitRequestAnimationFrame||e.mozRequestAnimationFrame||e.msRequestAnimationFrame||function(e){setTimeout(e,10)},$=!1,J=!0,K=!0,Q=!0,G,Y,Z,et,tt,nt;O||M?(tt=function(e,t){N.call(t,e)||ht(e,t)},nt=ht):(tt=function(e,t){e[i]||(e[i]=n(!0),ht(e,t))},nt=tt),B?(J=!1,function(){var e=k(H,"addEventListener"),t=e.value,n=function(e){var t=new CustomEvent(c,{bubbles:!0});t.attrName=e,t.prevValue=this.getAttribute(e),t.newValue=null,t[l]=t.attrChange=2,R.call(this,e),this.dispatchEvent(t)},r=function(e,t){var n=this.hasAttribute(e),r=n&&this.getAttribute(e),i=new CustomEvent(c,{bubbles:!0});q.call(this,e,t),i.attrName=e,i.prevValue=n?r:null,i.newValue=t,n?i[f]=i.attrChange=1:i[a]=i.attrChange=0,this.dispatchEvent(i)},s=function(e){var t=e.currentTarget,n=t[i],r=e.propertyName,s;n.hasOwnProperty(r)&&(n=n[r],s=new CustomEvent(c,{bubbles:!0}),s.attrName=n.name,s.prevValue=n.value||null,s.newValue=n.value=t[r]||null,s.prevValue==null?s[a]=s.attrChange=0:s[f]=s.attrChange=1,t.dispatchEvent(s))};e.value=function(e,o,u){e===c&&this.attributeChangedCallback&&this.setAttribute!==r&&(this[i]={className:{name:"class",value:this.className}},this.setAttribute=r,this.removeAttribute=n,t.call(this,"propertychange",s)),t.call(this,e,o,u)},C(H,"addEventListener",e)}()):P||(E.addEventListener(c,W),E.setAttribute(i,1),E.removeAttribute(i),J&&(G=function(e){var t=this,n,r,s;if(t===e.target){n=t[i],t[i]=r=Z(t);for(s in r){if(!(s in n))return Y(0,t,s,n[s],r[s],a);if(r[s]!==n[s])return Y(1,t,s,n[s],r[s],f)}for(s in n)if(!(s in r))return Y(2,t,s,n[s],r[s],l)}},Y=function(e,t,n,r,i,s){var o={attrChange:e,currentTarget:t,attrName:n,prevValue:r,newValue:i};o[s]=e,at(o)},Z=function(e){for(var t,n,r={},i=e.attributes,s=0,o=i.length;s<o;s++)t=i[s],n=t.name,n!=="setAttribute"&&(r[n]=t.value);return r})),t[r]=function(n,r){p=n.toUpperCase(),$||($=!0,P?(et=function(e,t){function n(e,t){for(var n=0,r=e.length;n<r;t(e[n++]));}return new P(function(r){for(var i,s,o=0,u=r.length;o<u;o++)i=r[o],i.type==="childList"?(n(i.addedNodes,e),n(i.removedNodes,t)):(s=i.target,Q&&s.attributeChangedCallback&&i.attributeName!=="style"&&s.attributeChangedCallback(i.attributeName,i.oldValue,s.getAttribute(i.attributeName)))})}(st(s),st(o)),et.observe(t,{childList:!0,subtree:!0})):(X=[],V(function E(){while(X.length)X.shift().call(null,X.shift());V(E)}),t.addEventListener("DOMNodeInserted",ft(s)),t.addEventListener("DOMNodeRemoved",ft(o))),t.addEventListener(h,lt),t.addEventListener("readystatechange",lt),t.createElement=function(e,n){var r=U.apply(t,arguments),i=""+e,s=S.call(y,(n?v:d)+(n||i).toUpperCase()),o=-1<s;return n&&(r.setAttribute("is",n=n.toLowerCase()),o&&(o=ut(i.toUpperCase(),n))),Q=!t.createElement.innerHTMLHelper,o&&nt(r,b[s]),r},H.cloneNode=function(e){var t=I.call(this,!!e),n=ot(t);return-1<n&&nt(t,b[n]),e&&it(t.querySelectorAll(w)),t});if(-2<S.call(y,v+p)+S.call(y,d+p))throw new Error("A "+n+" type is already registered");if(!m.test(p)||-1<S.call(g,p))throw new Error("The type "+n+" is invalid");var i=function(){return f?t.createElement(l,p):t.createElement(l)},a=r||x,f=T.call(a,u),l=f?r[u].toUpperCase():p,c=y.push((f?v:d)+p)-1,p;return w=w.concat(w.length?",":"",f?l+'[is="'+n.toLowerCase()+'"]':l),i.prototype=b[c]=T.call(a,"prototype")?a.prototype:_(H),rt(t.querySelectorAll(w),s),i}})(window,document,Object,"registerElement");
 
 /***/ },
 /* 24 */
@@ -2681,7 +2338,7 @@
 
 /***/ },
 /* 30 */
-[87, 31, 34],
+[88, 31, 34],
 /* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -2836,7 +2493,7 @@
 
 /***/ },
 /* 37 */
-[87, 38, 42],
+[88, 38, 42],
 /* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -3145,55 +2802,11 @@
 
 /***/ },
 /* 45 */
-[87, 46, 49],
+[88, 46, 49],
 /* 46 */
-[89, 47],
+[94, 47],
 /* 47 */
-/***/ function(module, exports, __webpack_require__) {
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	var bp = __webpack_require__(48);
-
-	///////////////////////////////////////////////////////////////////////////////
-	// Public
-
-	module.exports = bp.tag.create("sidebar", sidebar, [ "sidebar", "content" ]);
-
-	///////////////////////////////////////////////////////////////////////////////
-	function sidebar(tag){
-	  updateSize();
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	  tag.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
-
-	///////////////////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////////////////
-
-	  function attributeChangedCallback(data){
-	    if(bp.attribute.matchName(/size/, data.detail.name)) updateSize();
-	  }
-
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	  function updateSize(data){
-	    var size = bp.attribute.get(tag, "size");
-	    var sidebar = bp.attribute.get(tag, "position");
-	    var style = sidebar === "left" || sidebar==="right" ? "min-width" : "min-height";
-	    if(size === undefined)
-	      tag.firstElementChild.style[style] = "";
-	    else
-	      tag.firstElementChild.style[style] = size;
-	  }
-
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
-
-
-/***/ },
+[95, 48],
 /* 48 */
 13,
 /* 49 */
@@ -3206,7 +2819,7 @@
 
 /***/ },
 /* 52 */
-[87, 53, 67],
+[88, 53, 68],
 /* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -3229,7 +2842,7 @@
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
 
-	module.exports = bp.tag.create("toolbar", [ __webpack_require__(56) ], {
+	module.exports = bp.tag.create("toolbar", __webpack_require__(56), {
 	  0 : {
 	    role :"toolbar",
 	    children: { "1n+0" : "button-group" }
@@ -3242,474 +2855,184 @@
 /* 55 */
 13,
 /* 56 */
-[89, 57],
+[94, 57],
 /* 57 */
-/***/ function(module, exports, __webpack_require__) {
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	var bp = __webpack_require__(58);
-
-	///////////////////////////////////////////////////////////////////////////////
-	// Public
-
-	module.exports = bp.tag.create("sidebar", sidebar);
-
-	///////////////////////////////////////////////////////////////////////////////
-	function sidebar(tag){
-	  updateSize();
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	  tag.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
-
-	///////////////////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////////////////
-
-	  function attributeChangedCallback(data){
-	    if(bp.attribute.matchName(/size/, data.detail.name)) updateSize();
-	  }
-
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	  function updateSize(data){
-	    var size = bp.attribute.get(tag, "size");
-	    var sidebar = bp.attribute.get(tag, "position");
-	    var style = sidebar === "left" || sidebar==="right" ? "min-width" : "min-height";
-	    if(size === undefined)
-	      tag.firstElementChild.style[style] = "";
-	    else
-	      tag.firstElementChild.style[style] = size;
-	  }
-
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
-
-
-/***/ },
+[95, 58],
 /* 58 */
-[88, 59, 64, 65, 66],
+[89, 59, 65, 66, 67],
 /* 59 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var objct = __webpack_require__(60);
-
-	///////////////////////////////////////////////////////////////////////////////
-	// Public
-
-	module.exports = {
-	  tag : {
-	    create : __webpack_require__(61),
-	    contains : nodeContains,
-	    observe : observe,
-	    triggerEvent : triggerEvent,
-	    closest : getClosest,
-	    DOMReady : DOMReady    
-	  },
-	  attribute : {
-	    get : getAttribute,
-	    set : setAttribute,
-	    remove : removeAttribute,
-	    matchName : matchAttribute
-	  },
-	  mixin : {
-	    create : mixin
-	  }
-	};
-
-	///////////////////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////////////////
-	var observedElements = [];
-
-	function observe(element){
-	  if(observedElements.indexOf(element)>=0) return;
-	  if(typeof element.bonaparte === "object" && element.bonaparte.registered) return;
-
-	  element.bonaparte = element.bonaparte || {};
-	  element.bonaparte.observer = new MutationObserver(mutationHandler);
-
-	  element.bonaparte.observer.observe(element, {
-	    attributes:true,
-	    attributeOldValue:true
-	  });
-	  observedElements.push(element);
-
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	function mutationHandler(mutations){
-	  var attribute, data, tag;
-	  
-	  for(var i=0; i<mutations.length; i++) {
-	    attribute = mutations[i].attributeName;
-	    tag = mutations[i].target;
-	    if(typeof tag.attributes[attribute] === "undefined") continue;
-
-	    data = {
-	      name : attribute,
-	      previousValue : mutations[i].oldValue,
-	      newValue : tag.attributes[attribute].value
-	    };
-
-	    triggerEvent(tag, "bonaparte.tag.attributeChanged", data);
-	    triggerEvent(tag, "bonaparte.tag.attributeUpdated", data);
-	  }
-	 
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	function mixin() {
-	  return objct(arguments);
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	function DOMReady(handler){
-	  if(document.readyState === "complete") handler();
-	  else window.addEventListener("load", handler); 
-	}
-	///////////////////////////////////////////////////////////////////////////////
-
-	function triggerEvent(tag, event, data, bubbles, cancelable){
-	    var newEvent = new CustomEvent(event, {
-	        bubbles: bubbles || false,
-	        cancelable: cancelable || false,
-	        detail: data
-	    });
-	    tag.dispatchEvent(newEvent);
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
-
-
-	function nodeContains(parent, child) {
-	  while((child=child.parentNode)&&child!==parent); 
-	  return !!child; 
-	};
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	function getClosest(tag, name){
-	  while((tag=tag.parentNode)&&tag.nodeName.toUpperCase()!==name.toUpperCase()); 
-	  return tag ? tag:false; 
-
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	function getAttribute(tag, name){
-	  var attribute = tag.attributes[name] || tag.attributes["data-"+name];
-	  return attribute ? attribute.value : undefined; 
-	}
-	///////////////////////////////////////////////////////////////////////////////
-
-	function matchAttribute(patterns, name){
-	  var pattern, dataPattern;
-	  if(!objct.isArray(patterns)) patterns = [patterns];
-
-	  for(var i=0; i<patterns.length; i++) {
-	    pattern = patterns[i];
-	    dataPattern = new RegExp("data-"+pattern.source);
-	    if(pattern.test(name) ||  dataPattern.test(name)) 
-	      return true;
-	  }
-	  return false;
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	function setAttribute(tag, name, value) {
-	  name = tag.hasAttribute("data-"+name) ? "data-"+name : name;
-	  var oldValue = getAttribute(tag, name);
-
-	  tag.setAttribute(name, value);
-
-	  if(oldValue === value && typeof tag.bonaparte === "object" && typeof tag.bonaparte.triggerEvent === "function") {
-	    tag.bonaparte.triggerEvent("bonaparte.tag.attributeUpdated",{
-	      name:name,
-	      previousValue : oldValue,
-	      newValue: value
-	    });
-	  }  
-
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	function removeAttribute(tag, name) {
-	  if(typeof tag.attributes[name] !== "object") return;
-
-	  var data = {
-	    name : name,
-	    previousValue : tag.attributes[name].value,
-	    newValue : null
-	  }
-	  // remove attribute
-	  tag.removeAttribute(name);
-	  tag.removeAttribute("data-"+name);
-
-	  // trigger Mutation event if not "native" bonaparte element
-	  if(typeof tag.bonaparte !== "object" || !tag.bonaparte.registered) {
-	    triggerEvent(tag, "bonaparte.tag.attributeChanged", data);
-	    triggerEvent(tag, "bonaparte.tag.attributeUpdated", data);
-	  }
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
-
-/***/ },
+[90, 60, 61],
 /* 60 */
 16,
 /* 61 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var objct = __webpack_require__(60);
-	var bp = __webpack_require__(59);
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	var registeredTags = {};
-
-	///////////////////////////////////////////////////////////////////////////////
-	// Public 
-
-	module.exports = createTag;
-
-	///////////////////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////////////////
-
-	function createTag(name, modules, nativeBaseElement){
-	  var modulesType = (objct.isArray(modules) && "array") || typeof modules;
-	 
-	  if(modulesType === "function") 
-	    modules = [modules];
-	  else if(modulesType !== "array")
-	    throw "Bonaparte - createTag: Unexpected "+modulesType+". Expected Function or Array."
-
-	  nativeBaseElement = nativeBaseElement || window.HTMLElement || window.Element;
-
-	///////////////////////////////////////////////////////////////////////////////
-	// Public
-	  
-	  function tagFactory(){};
-	  tagFactory.register = register;
-	  tagFactory.initialize = initialize;
-	  tagFactory.mixin = mixin;
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	  var definition = objct(modules, tagFactory);
-	  return definition;
-
-	///////////////////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////////////////
-
-	  function register(){ 
-
-	    if(typeof document.registerElement === "undefined") { // If IE8 make tag stylable but otherwise do nothing.
-	      document.createElement("bonaparte-"+name);
-	      return definition;
-	    }
-	    registeredTags[name] = registeredTags[name] !== undefined ?
-	      registeredTags[name]:
-	      document.registerElement("bonaparte-"+name, {
-	        prototype : Object.create( nativeBaseElement.prototype , {
-	          createdCallback : { value: createdCallback },
-	          attachedCallback : { value: attachedCallback },
-	          detachedCallback : { value: detachedCallback },
-	          attributeChangedCallback : { value: attributeChangedCallback }
-	        })
-	      });
-
-	    return definition;
-	  }
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	  function mixin(mixin){
-	    objct.extend(definition, mixin);
-	   
-	    return definition;
-	  }
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	  function initialize(element){
-	    
-	    apply(element);  
-	    bp.tag.observe(element); 
-	    
-	    return definition;
-	  }
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	  function createdCallback() {
-
-	    apply(this);
-	    this.bonaparte.registered = true;
-	    this.bonaparte.triggerEvent("bonaparte.tag.created", null);
-	  }
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	  function apply(element) {
-	    var modules = [
-	      __webpack_require__(62),
-	      definition, 
-	      __webpack_require__(63)
-	    ];
-
-	    // Create bonaparte namespace
-	    element.bonaparte = element.bonaparte || {};
-
-	    // Create and mixin tag instance
-	    objct.extend(element, modules)(element);
-	  }
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	function attachedCallback() {
-
-	  this.bonaparte.triggerEvent("bonaparte.tag.attached", null);
-
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	function detachedCallback() {
-	  
-	  this.bonaparte.triggerEvent("bonaparte.tag.detached", null);
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	function attributeChangedCallback(name, old, value) {
-	  
-	  data = {
-	    name : name,
-	    previousValue : old,
-	    newValue : value
-	  };
-
-	  this.bonaparte.triggerEvent("bonaparte.tag.attributeChanged", data);
-	  this.bonaparte.triggerEvent("bonaparte.tag.attributeUpdated", data);
-
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
-
-
-
-/***/ },
+[91, 60, 59, 62, 63, 64],
 /* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var bp = __webpack_require__(58);
+	var bp = __webpack_require__(59);
+	var objct = __webpack_require__(60);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
 
-	module.exports = events;
+	module.exports = children;
+	module.exports.normalizeChildren = normalizeChildren;
+	module.exports.mapChildren = mapChildren;
 
 	///////////////////////////////////////////////////////////////////////////////
-	function events(tag){
+
+	function children(tagName, children){
+	  children = normalizeChildren({
+	    role : "root",
+	    children : children || {}
+	  });
+
+	  // var error = map.indexOf(null);
+	  // if(error >= 0) throw "Bonaparte - "+tagName+": Role of child "+error+" is not defined.";
+
+
+	  return function(tag, name) {
+	    bp.tag.DOMReady(function(){checkChildren(tag, children)});
 
 	///////////////////////////////////////////////////////////////////////////////
-	// Public
-
-	  tag.bonaparte.triggerEvent = triggerEvent;
-
-	///////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////
 
-	  function triggerEvent(event, data, bubbles, cancelable){
-	    bp.tag.triggerEvent(tag, event, data, bubbles, cancelable);
+	    function checkChildren(element, child, path){
+
+	      path = path || "<"+tag.tagName+">";
+	      var length = element.children.length;
+	      bp.tag.observe(element);
+	      element.addEventListener("bonaparte.tag.childrenChanged", function(){checkChildren(element, child)})
+
+	      var map = mapChildren(child, length);
+
+
+	      for(var i=0; i<length; i++) {
+
+	        if(!child.children[map[i]]) break;
+	        console.log('setAttribute', path, map[i], child.children[map[i]].role);
+
+	        // element.children[i].getAttribute("bonaparte-"+name+"-role");
+	        element.children[i].setAttribute("bonaparte-"+name+"-role", child.children[map[i]].role);
+
+	        if(typeof child.children[map[i]].children === "object") {
+	          var nextPath = path+"<"+element.children[i].tagName+" index='"+i+"' selector='"+map[i]+"' role='"+child.children[map[i]].role+"'>";
+
+	          checkChildren(element.children[i], child.children[map[i]], nextPath);
+	        }
+	      }
+
+	      if(child.minChildren > length) console.warn("Bonaparte - "+path+": Needs a minimum of "+child.minChildren+" children! "+length+" provided.");
+	      if(child.maxChildren < length) console.warn("Bonaparte - "+path+": Can take a maximum of "+child.maxChildren+" children! "+length+" provided.");
+	    }
+
+	///////////////////////////////////////////////////////////////////////////////
+
 	  }
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+
+	function normalizeChildren(node) {
+	  var child = {
+	    role : node.role || node,
+	    children : {},
+	    formulas : [],
+	    indexes : [],
+	    minChildren : node.minChildren,
+	    maxChildren : node.maxChildren
+	  };
+	  if(!node.children) return child;
+
+	  // Normalize children to object
+	  if(objct.isArray(node.children))
+	    for(var i=0; i<node.children.length; i++) {
+	      child.children[i]= node.children[i];
+	    }
+	  else child.children = node.children;
+
+	  // extract formulas and indexes
+	  var minIndex = 0;
+	  var maxIndex = 0;
+	  var keys = Object.keys(child.children);
+
+	  if(keys.length === 0) return child;
+	  for(var k=0; k<keys.length; k++) {
+	    if(isNaN(keys[k]*1)) {
+	      child.formulas.push(keys[k]);
+	    }
+	    else {
+	      maxIndex= Math.max(maxIndex, parseFloat(keys[k])+1);
+	      minIndex= Math.min(minIndex, keys[k]);
+	      child.indexes.push(keys[k]);
+	    }
+	    child.children[keys[k]]=normalizeChildren(child.children[keys[k]]);
+	  }
+	  var minChildren = maxIndex-minIndex;
+
+	  // Set minChildren and maxChildren
+	  if(minChildren > child.minChildren || !child.minChildren)
+	    child.minChildren = minChildren;
+
+	  if(child.formulas.length === 0) {
+	    if(child.maxChildren < child.minChildren || !child.maxChildren)
+	      child.maxChildren = child.minChildren;
+	  }
+	  return child;
+	}
 
 	///////////////////////////////////////////////////////////////////////////////
 
+	function mapChildren(child, length){
+	  var children = child.children;
+	  var map = Array.apply(null, Array(length)).map(function(){return null});
+	  var formula, index;
 
+	  for(var k=0; k<child.formulas.length; k++) {
+	    formula = child.formulas[k].split("n+");
+	    for(var i=0; i<length; i++) {
+	      index = parseInt(formula[0])*i+parseInt(formula[1]);
+	      if(index >= length) break;
+	      map[index] = child.formulas[k];
+	    }
+	  }
+	  for(var k=0; k<child.indexes.length; k++) {
+	    index = parseFloat(child.indexes[k]);
+	    index = index < 0 ? index+length : index;
+	    map[index] = child.indexes[k];
+	  }
+	  return map;
 	}
+
 
 /***/ },
 /* 63 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var objct = __webpack_require__(60);
-
-	var registeredMixins = {};
-
-	///////////////////////////////////////////////////////////////////////////////
-	// Public
-
-	module.exports = mixins;
-
-	///////////////////////////////////////////////////////////////////////////////
-	function mixins(tag){
-
-	  registeredMixins[tag.tagName] = registeredMixins[tag.tagName] || [];
-	  new objct.extend(tag, registeredMixins[tag.tagName]);
-
-	///////////////////////////////////////////////////////////////////////////////
-	// Public
-
-	  tag.bonaparte.mixin = mixin;
-
-	///////////////////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////////////////
-
-	  function mixin(mixin){
-	    if( typeof mixin !== "function" ) throw "Unexpected type of "+(typeof mixin)+"! Expected function.";
-
-	    // Save mixin
-	    registeredMixins[tag.tagName].push(mixin);
-
-	    // apply mixin to current tag.
-	    new objct.extend(tag, mixin);
-
-	  }
-
-	///////////////////////////////////////////////////////////////////////////////
-
-	}
-
-/***/ },
+[92, 59],
 /* 64 */
-22,
+[93, 60],
 /* 65 */
-/***/ function(module, exports) {
-
-	/*! (C) WebReflection Mit Style License */
-	(function(e,t,n,r){"use strict";function rt(e,t){for(var n=0,r=e.length;n<r;n++)dt(e[n],t)}function it(e){for(var t=0,n=e.length,r;t<n;t++)r=e[t],nt(r,b[ot(r)])}function st(e){return function(t){j(t)&&(dt(t,e),rt(t.querySelectorAll(w),e))}}function ot(e){var t=e.getAttribute("is"),n=e.nodeName.toUpperCase(),r=S.call(y,t?v+t.toUpperCase():d+n);return t&&-1<r&&!ut(n,t)?-1:r}function ut(e,t){return-1<w.indexOf(e+'[is="'+t+'"]')}function at(e){var t=e.currentTarget,n=e.attrChange,r=e.prevValue,i=e.newValue;Q&&t.attributeChangedCallback&&e.attrName!=="style"&&t.attributeChangedCallback(e.attrName,n===e[a]?null:r,n===e[l]?null:i)}function ft(e){var t=st(e);return function(e){X.push(t,e.target)}}function lt(e){K&&(K=!1,e.currentTarget.removeEventListener(h,lt)),rt((e.target||t).querySelectorAll(w),e.detail===o?o:s),B&&pt()}function ct(e,t){var n=this;q.call(n,e,t),G.call(n,{target:n})}function ht(e,t){D(e,t),et?et.observe(e,z):(J&&(e.setAttribute=ct,e[i]=Z(e),e.addEventListener(p,G)),e.addEventListener(c,at)),e.createdCallback&&Q&&(e.created=!0,e.createdCallback(),e.created=!1)}function pt(){for(var e,t=0,n=F.length;t<n;t++)e=F[t],E.contains(e)||(F.splice(t,1),dt(e,o))}function dt(e,t){var n,r=ot(e);-1<r&&(tt(e,b[r]),r=0,t===s&&!e[s]?(e[o]=!1,e[s]=!0,r=1,B&&S.call(F,e)<0&&F.push(e)):t===o&&!e[o]&&(e[s]=!1,e[o]=!0,r=1),r&&(n=e[t+"Callback"])&&n.call(e))}if(r in t)return;var i="__"+r+(Math.random()*1e5>>0),s="attached",o="detached",u="extends",a="ADDITION",f="MODIFICATION",l="REMOVAL",c="DOMAttrModified",h="DOMContentLoaded",p="DOMSubtreeModified",d="<",v="=",m=/^[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+$/,g=["ANNOTATION-XML","COLOR-PROFILE","FONT-FACE","FONT-FACE-SRC","FONT-FACE-URI","FONT-FACE-FORMAT","FONT-FACE-NAME","MISSING-GLYPH"],y=[],b=[],w="",E=t.documentElement,S=y.indexOf||function(e){for(var t=this.length;t--&&this[t]!==e;);return t},x=n.prototype,T=x.hasOwnProperty,N=x.isPrototypeOf,C=n.defineProperty,k=n.getOwnPropertyDescriptor,L=n.getOwnPropertyNames,A=n.getPrototypeOf,O=n.setPrototypeOf,M=!!n.__proto__,_=n.create||function vt(e){return e?(vt.prototype=e,new vt):this},D=O||(M?function(e,t){return e.__proto__=t,e}:L&&k?function(){function e(e,t){for(var n,r=L(t),i=0,s=r.length;i<s;i++)n=r[i],T.call(e,n)||C(e,n,k(t,n))}return function(t,n){do e(t,n);while((n=A(n))&&!N.call(n,t));return t}}():function(e,t){for(var n in t)e[n]=t[n];return e}),P=e.MutationObserver||e.WebKitMutationObserver,H=(e.HTMLElement||e.Element||e.Node).prototype,B=!N.call(H,E),j=B?function(e){return e.nodeType===1}:function(e){return N.call(H,e)},F=B&&[],I=H.cloneNode,q=H.setAttribute,R=H.removeAttribute,U=t.createElement,z=P&&{attributes:!0,characterData:!0,attributeOldValue:!0},W=P||function(e){J=!1,E.removeEventListener(c,W)},X,V=e.requestAnimationFrame||e.webkitRequestAnimationFrame||e.mozRequestAnimationFrame||e.msRequestAnimationFrame||function(e){setTimeout(e,10)},$=!1,J=!0,K=!0,Q=!0,G,Y,Z,et,tt,nt;O||M?(tt=function(e,t){N.call(t,e)||ht(e,t)},nt=ht):(tt=function(e,t){e[i]||(e[i]=n(!0),ht(e,t))},nt=tt),B?(J=!1,function(){var e=k(H,"addEventListener"),t=e.value,n=function(e){var t=new CustomEvent(c,{bubbles:!0});t.attrName=e,t.prevValue=this.getAttribute(e),t.newValue=null,t[l]=t.attrChange=2,R.call(this,e),this.dispatchEvent(t)},r=function(e,t){var n=this.hasAttribute(e),r=n&&this.getAttribute(e),i=new CustomEvent(c,{bubbles:!0});q.call(this,e,t),i.attrName=e,i.prevValue=n?r:null,i.newValue=t,n?i[f]=i.attrChange=1:i[a]=i.attrChange=0,this.dispatchEvent(i)},s=function(e){var t=e.currentTarget,n=t[i],r=e.propertyName,s;n.hasOwnProperty(r)&&(n=n[r],s=new CustomEvent(c,{bubbles:!0}),s.attrName=n.name,s.prevValue=n.value||null,s.newValue=n.value=t[r]||null,s.prevValue==null?s[a]=s.attrChange=0:s[f]=s.attrChange=1,t.dispatchEvent(s))};e.value=function(e,o,u){e===c&&this.attributeChangedCallback&&this.setAttribute!==r&&(this[i]={className:{name:"class",value:this.className}},this.setAttribute=r,this.removeAttribute=n,t.call(this,"propertychange",s)),t.call(this,e,o,u)},C(H,"addEventListener",e)}()):P||(E.addEventListener(c,W),E.setAttribute(i,1),E.removeAttribute(i),J&&(G=function(e){var t=this,n,r,s;if(t===e.target){n=t[i],t[i]=r=Z(t);for(s in r){if(!(s in n))return Y(0,t,s,n[s],r[s],a);if(r[s]!==n[s])return Y(1,t,s,n[s],r[s],f)}for(s in n)if(!(s in r))return Y(2,t,s,n[s],r[s],l)}},Y=function(e,t,n,r,i,s){var o={attrChange:e,currentTarget:t,attrName:n,prevValue:r,newValue:i};o[s]=e,at(o)},Z=function(e){for(var t,n,r={},i=e.attributes,s=0,o=i.length;s<o;s++)t=i[s],n=t.name,n!=="setAttribute"&&(r[n]=t.value);return r})),t[r]=function(n,r){p=n.toUpperCase(),$||($=!0,P?(et=function(e,t){function n(e,t){for(var n=0,r=e.length;n<r;t(e[n++]));}return new P(function(r){for(var i,s,o=0,u=r.length;o<u;o++)i=r[o],i.type==="childList"?(n(i.addedNodes,e),n(i.removedNodes,t)):(s=i.target,Q&&s.attributeChangedCallback&&i.attributeName!=="style"&&s.attributeChangedCallback(i.attributeName,i.oldValue,s.getAttribute(i.attributeName)))})}(st(s),st(o)),et.observe(t,{childList:!0,subtree:!0})):(X=[],V(function E(){while(X.length)X.shift().call(null,X.shift());V(E)}),t.addEventListener("DOMNodeInserted",ft(s)),t.addEventListener("DOMNodeRemoved",ft(o))),t.addEventListener(h,lt),t.addEventListener("readystatechange",lt),t.createElement=function(e,n){var r=U.apply(t,arguments),i=""+e,s=S.call(y,(n?v:d)+(n||i).toUpperCase()),o=-1<s;return n&&(r.setAttribute("is",n=n.toLowerCase()),o&&(o=ut(i.toUpperCase(),n))),Q=!t.createElement.innerHTMLHelper,o&&nt(r,b[s]),r},H.cloneNode=function(e){var t=I.call(this,!!e),n=ot(t);return-1<n&&nt(t,b[n]),e&&it(t.querySelectorAll(w)),t});if(-2<S.call(y,v+p)+S.call(y,d+p))throw new Error("A "+n+" type is already registered");if(!m.test(p)||-1<S.call(g,p))throw new Error("The type "+n+" is invalid");var i=function(){return f?t.createElement(l,p):t.createElement(l)},a=r||x,f=T.call(a,u),l=f?r[u].toUpperCase():p,c=y.push((f?v:d)+p)-1,p;return w=w.concat(w.length?",":"",f?l+'[is="'+n.toLowerCase()+'"]':l),i.prototype=b[c]=T.call(a,"prototype")?a.prototype:_(H),rt(t.querySelectorAll(w),s),i}})(window,document,Object,"registerElement");
-
-/***/ },
+22,
 /* 66 */
-24,
+23,
 /* 67 */
+24,
+/* 68 */
 27,
-/* 68 */,
-/* 69 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(70);
-
-/***/ },
+/* 69 */,
 /* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(71).register();
+	module.exports = __webpack_require__(71);
 
 /***/ },
 /* 71 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(72).register();
+
+/***/ },
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -3719,13 +3042,13 @@
 	 * require("bonaparte").mixin.create()
 	 */
 
-	module.exports = __webpack_require__(72);
+	module.exports = __webpack_require__(73);
 
 /***/ },
-/* 72 */
+/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var bp = __webpack_require__(73);
+	var bp = __webpack_require__(74);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
@@ -3928,17 +3251,17 @@
 
 
 /***/ },
-/* 73 */
-13,
 /* 74 */
+13,
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(75);
+	module.exports = __webpack_require__(76);
 
 /***/ },
-/* 75 */
-[87, 76, 79],
 /* 76 */
+[88, 77, 80],
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -3948,13 +3271,13 @@
 	 * require("bonaparte").mixin.create()
 	 */
 
-	module.exports = __webpack_require__(77);
+	module.exports = __webpack_require__(78);
 
 /***/ },
-/* 77 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var bp = __webpack_require__(78);
+	var bp = __webpack_require__(79);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
@@ -4051,23 +3374,23 @@
 
 
 /***/ },
-/* 78 */
-13,
 /* 79 */
+13,
+/* 80 */
 27,
-/* 80 */,
-/* 81 */
+/* 81 */,
+/* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(82);
+	module.exports = __webpack_require__(83);
 
 /***/ },
-/* 82 */
-[87, 83, 85],
 /* 83 */
+[88, 84, 86],
+/* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var bp = __webpack_require__(84);
+	var bp = __webpack_require__(85);
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
 
@@ -4080,19 +3403,19 @@
 
 
 /***/ },
-/* 84 */
-13,
 /* 85 */
+13,
+/* 86 */
 27,
-/* 86 */,
-/* 87 */
+/* 87 */,
+/* 88 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__) {
 
 	__webpack_require__(__webpack_module_template_argument_0__).register();
 	__webpack_require__(__webpack_module_template_argument_1__);
 
 /***/ },
-/* 88 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__) {
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -4122,7 +3445,362 @@
 
 
 /***/ },
-/* 89 */
+/* 90 */
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__) {
+
+	var objct = __webpack_require__(__webpack_module_template_argument_0__);
+
+	///////////////////////////////////////////////////////////////////////////////
+	// Public
+
+	module.exports = {
+	  tag : {
+	    create : __webpack_require__(__webpack_module_template_argument_1__),
+	    contains : nodeContains,
+	    observe : observe,
+	    triggerEvent : triggerEvent,
+	    closest : getClosest,
+	    DOMReady : DOMReady
+	  },
+	  attribute : {
+	    get : getAttribute,
+	    set : setAttribute,
+	    remove : removeAttribute,
+	    matchName : matchAttribute
+	  },
+	  mixin : {
+	    create : mixin
+	  }
+	};
+
+	///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+	var observedElements = [];
+
+	function observe(element){
+	  if(observedElements.indexOf(element)>=0) return;
+
+	  element.bonaparte = element.bonaparte || {};
+	  element.bonaparte.observer = new MutationObserver(mutationHandler);
+
+	  element.bonaparte.observer.observe(element, {
+	    attributes:true,
+	    attributeOldValue:true,
+	    childList:true
+	  });
+	  observedElements.push(element);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	function mutationHandler(mutations){
+	  for(var i=0; i<mutations.length; i++) switch(mutations[i].type) {
+	    case "attributes":
+	      var attribute = mutations[i].attributeName;
+	      var tag = mutations[i].target;
+
+	      var data = {
+	        name : attribute,
+	        oldValue : mutations[i].oldValue,
+	        newValue : tag.attributes[attribute] ? tag.attributes[attribute].value : null
+	      };
+
+	      if(data.oldValue !== data.newValue)
+	        triggerEvent(tag, "bonaparte.tag.attributeChanged", data);
+	      triggerEvent(tag, "bonaparte.tag.attributeUpdated", data);
+	    break;
+	    case "childList":
+	      triggerEvent(mutations[i].target, "bonaparte.tag.childrenChanged", {
+	        added : mutations[i].addedNodes,
+	        removed : mutations[i].removedNodes
+	      });
+	    break;
+	  }
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	function mixin() {
+	  return objct(arguments);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	function DOMReady(handler){
+	  if(document.readyState === "complete") handler();
+	  else window.addEventListener("load", handler);
+	}
+	///////////////////////////////////////////////////////////////////////////////
+
+	function triggerEvent(tag, event, data, bubbles, cancelable){
+	    var newEvent = new CustomEvent(event, {
+	      bubbles: bubbles || false,
+	      cancelable: cancelable || false,
+	      detail: data
+	    });
+	    tag.dispatchEvent(newEvent);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+
+
+	function nodeContains(parent, child) {
+	  while((child=child.parentNode)&&child!==parent);
+	  return !!child;
+	};
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	function getClosest(tag, name){
+	  while((tag=tag.parentNode)&&tag.nodeName.toUpperCase()!==name.toUpperCase());
+	  return tag ? tag:false;
+
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	function getAttribute(tag, name){
+	  var attribute = tag.attributes[name] || tag.attributes["data-"+name];
+	  return attribute ? attribute.value : undefined;
+	}
+	///////////////////////////////////////////////////////////////////////////////
+
+	function matchAttribute(patterns, name){
+	  var pattern, dataPattern;
+	  if(!objct.isArray(patterns)) patterns = [patterns];
+
+	  for(var i=0; i<patterns.length; i++) {
+	    pattern = patterns[i];
+	    dataPattern = new RegExp("data-"+pattern.source);
+	    if(pattern.test(name) ||  dataPattern.test(name))
+	      return true;
+	  }
+	  return false;
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	function setAttribute(tag, name, value) {
+	  name = tag.hasAttribute("data-"+name) ? "data-"+name : name;
+	  var oldValue = getAttribute(tag, name);
+
+	  tag.setAttribute(name, value);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	function removeAttribute(tag, name) {
+	  if(typeof tag.attributes[name] !== "object") return;
+
+	  // remove attribute
+	  tag.removeAttribute(name);
+	  tag.removeAttribute("data-"+name);
+
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+
+
+/***/ },
+/* 91 */
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__, __webpack_module_template_argument_4__) {
+
+	var objct = __webpack_require__(__webpack_module_template_argument_0__);
+	var bp = __webpack_require__(__webpack_module_template_argument_1__);
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	var registeredTags = {};
+
+	///////////////////////////////////////////////////////////////////////////////
+	// Public
+
+	module.exports = createTag;
+
+	///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+
+	function createTag(name, modules, children, nativeBaseElement){
+	  var modulesType = (objct.isArray(modules) && "array") || typeof modules;
+
+	  if(modulesType === "function")
+	    modules = [modules];
+	  else if(modulesType !== "array")
+	    throw "Bonaparte - createTag: Unexpected "+modulesType+". Expected Function or Array."
+
+	  nativeBaseElement = nativeBaseElement || window.HTMLElement || window.Element;
+
+	  var childrenModule = __webpack_require__(__webpack_module_template_argument_2__)(name, children);
+
+	///////////////////////////////////////////////////////////////////////////////
+	// Public
+
+	  function tagFactory(){};
+	  tagFactory.register = register;
+	  tagFactory.initialize = initialize;
+	  tagFactory.mixin = mixin;
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	  var definition = objct(modules, tagFactory);
+	  return definition;
+
+	///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+
+	  function register(){
+
+	    if(typeof document.registerElement === "undefined") { // If IE8 make tag stylable but otherwise do nothing.
+	      document.createElement("bonaparte-"+name);
+	      return definition;
+	    }
+	    registeredTags[name] = registeredTags[name] !== undefined ?
+	      registeredTags[name]:
+	      document.registerElement("bonaparte-"+name, {
+	        prototype : Object.create( nativeBaseElement.prototype , {
+	          createdCallback : { value: createdCallback },
+	          attachedCallback : { value: attachedCallback },
+	          detachedCallback : { value: detachedCallback }
+	        })
+	      });
+
+	    return definition;
+	  }
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	  function mixin(mixin){
+	    objct.extend(definition, mixin);
+	    return definition;
+	  }
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	  function initialize(element){
+	    apply(element);
+	    return definition;
+	  }
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	  function createdCallback() {
+	    apply(this);
+	    this.bonaparte.triggerEvent("bonaparte.tag.created", null);
+	  }
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	  function apply(element) {
+	    var modules = [
+	      __webpack_require__(__webpack_module_template_argument_3__),
+	      definition,
+	      __webpack_require__(__webpack_module_template_argument_4__),
+	      childrenModule
+	    ];
+
+	    // Create bonaparte namespace
+	    element.bonaparte = element.bonaparte || {};
+	    element.bonaparte.children = children;
+
+	    // Create and mixin tag instance
+	    objct.extend(element, modules)(element, name);
+	  }
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	function attachedCallback() {
+	  this.bonaparte.triggerEvent("bonaparte.tag.attached", null);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	function detachedCallback() {
+	  this.bonaparte.triggerEvent("bonaparte.tag.detached", null);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+
+
+/***/ },
+/* 92 */
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
+
+	var bp = __webpack_require__(__webpack_module_template_argument_0__);
+
+	///////////////////////////////////////////////////////////////////////////////
+	// Public
+
+	module.exports = events;
+
+	///////////////////////////////////////////////////////////////////////////////
+	function events(tag){
+	  bp.tag.observe(tag);
+
+	///////////////////////////////////////////////////////////////////////////////
+	// Public
+	  tag.bonaparte.triggerEvent = triggerEvent;
+
+	///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+
+	  function triggerEvent(event, data, bubbles, cancelable){
+	    bp.tag.triggerEvent(tag, event, data, bubbles, cancelable);
+	  }
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	}
+
+
+/***/ },
+/* 93 */
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
+
+	var objct = __webpack_require__(__webpack_module_template_argument_0__);
+
+	var registeredMixins = {};
+
+	///////////////////////////////////////////////////////////////////////////////
+	// Public
+
+	module.exports = mixins;
+
+	///////////////////////////////////////////////////////////////////////////////
+	function mixins(tag){
+
+	  registeredMixins[tag.tagName] = registeredMixins[tag.tagName] || [];
+	  new objct.extend(tag, registeredMixins[tag.tagName]);
+
+	///////////////////////////////////////////////////////////////////////////////
+	// Public
+
+	  tag.bonaparte.mixin = mixin;
+
+	///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+
+	  function mixin(mixin){
+	    if( typeof mixin !== "function" ) throw "Bonaparte – Mixin: Unexpected type of "+(typeof mixin)+"! Expected function.";
+
+	    // Save mixin
+	    registeredMixins[tag.tagName].push(mixin);
+
+	    // apply mixin to current tag.
+	    new objct.extend(tag, mixin);
+
+	  }
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	}
+
+
+/***/ },
+/* 94 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
 
 	/*
@@ -4133,6 +3811,54 @@
 	 */
 
 	module.exports = __webpack_require__(__webpack_module_template_argument_0__);
+
+/***/ },
+/* 95 */
+/***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	var bp = __webpack_require__(__webpack_module_template_argument_0__);
+
+	///////////////////////////////////////////////////////////////////////////////
+	// Public
+
+	module.exports = bp.tag.create("sidebar", sidebar, [ "sidebar", "content" ]);
+
+	///////////////////////////////////////////////////////////////////////////////
+	function sidebar(tag){
+	  bp.tag.DOMReady(updateSize);
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	  tag.addEventListener("bonaparte.tag.attributeChanged", attributeChangedCallback);
+
+	///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+
+	  function attributeChangedCallback(data){
+	    if(bp.attribute.matchName(/size/, data.detail.name)) updateSize();
+	  }
+
+
+	///////////////////////////////////////////////////////////////////////////////
+
+	  function updateSize(data){
+	    // console.log('update2');
+	    // if(!tag.firstElementChild) return;
+	    var size = bp.attribute.get(tag, "size");
+	    var sidebar = bp.attribute.get(tag, "position");
+	    var style = sidebar === "left" || sidebar==="right" ? "min-width" : "min-height";
+	    if(size === undefined)
+	      tag.firstElementChild.style[style] = "";
+	    else
+	      tag.firstElementChild.style[style] = size;
+	  }
+
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+
 
 /***/ }
 /******/ ])));

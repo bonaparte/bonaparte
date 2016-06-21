@@ -2,7 +2,6 @@ bonaparte-sidebar {
   /*DEFINITION*/
   position: relative;
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   padding: 0 !important;
@@ -21,7 +20,6 @@ bonaparte-sidebar > :nth-child(2) {
   position: relative;
   z-index: 0;
   -webkit-box-flex: 1;
-  -webkit-flex: 1 auto;
       -ms-flex: 1 auto;
           flex: 1 auto;
   height: auto;
@@ -32,7 +30,6 @@ bonaparte-sidebar[data-position="left"],
 bonaparte-sidebar[position="left"] {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
       -ms-flex-direction: row;
           flex-direction: row;
 }
@@ -40,7 +37,6 @@ bonaparte-sidebar[data-position="right"],
 bonaparte-sidebar[position="right"] {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;
-  -webkit-flex-direction: row-reverse;
       -ms-flex-direction: row-reverse;
           flex-direction: row-reverse;
 }
@@ -48,7 +44,6 @@ bonaparte-sidebar[data-position="top"],
 bonaparte-sidebar[position="top"] {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
 }
@@ -56,7 +51,6 @@ bonaparte-sidebar[data-position="bottom"],
 bonaparte-sidebar[position="bottom"] {
   -webkit-box-orient: vertical;
   -webkit-box-direction: reverse;
-  -webkit-flex-direction: column-reverse;
       -ms-flex-direction: column-reverse;
           flex-direction: column-reverse;
 }
