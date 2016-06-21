@@ -673,10 +673,6 @@
 	    children : children || {}
 	  });
 
-	  // var error = map.indexOf(null);
-	  // if(error >= 0) throw "Bonaparte - "+tagName+": Role of child "+error+" is not defined.";
-
-
 	  return function(tag, name) {
 	    bp.tag.DOMReady(function(){checkChildren(tag, children)});
 

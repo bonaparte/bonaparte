@@ -391,10 +391,6 @@
 	    children : children || {}
 	  });
 
-	  // var error = map.indexOf(null);
-	  // if(error >= 0) throw "Bonaparte - "+tagName+": Role of child "+error+" is not defined.";
-
-
 	  return function(tag, name) {
 	    bp.tag.DOMReady(function(){checkChildren(tag, children)});
 
@@ -1329,7 +1325,7 @@
 	      for(var i=0; i<length; i++) {
 
 	        if(!child.children[map[i]]) break;
-	        console.log('setAttribute', path, map[i], child.children[map[i]].role);
+	        // console.log('setAttribute', path, map[i], child.children[map[i]].role);
 
 	        // element.children[i].getAttribute("bonaparte-"+name+"-role");
 	        element.children[i].setAttribute("bonaparte-"+name+"-role", child.children[map[i]].role);

@@ -517,10 +517,6 @@
 	    children : children || {}
 	  });
 
-	  // var error = map.indexOf(null);
-	  // if(error >= 0) throw "Bonaparte - "+tagName+": Role of child "+error+" is not defined.";
-
-
 	  return function(tag, name) {
 	    bp.tag.DOMReady(function(){checkChildren(tag, children)});
 
@@ -2362,29 +2358,36 @@
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
 
-	module.exports = bp.tag.create("scroll", scroll, ["content"]);
+	module.exports = bp.tag.create("scroll", scroll, ["content", "scrollbar (generated)"]);
 
 	///////////////////////////////////////////////////////////////////////////////
 	function scroll(tag){
-	  var content =  tag.firstElementChild;
-	  var slider, scrollbar, scrollBarVisible;
+	  var content, slider, scrollbar, scrollBarVisible;
 
 	  if(bp.attribute.get(tag, "scrollbar") === "native") return;
 
-	  bp.tag.DOMReady(setupScroller);
+	  ///////////////////////////////////////////////////////////////////////////////
+	  // Initialize
+	  bp.tag.DOMReady(function(){
+	    content = tag.firstElementChild;
+
+	    setupScroller();
+
+	    ///////////////////////////////////////////////////////////////////////////////
+	    // Eventlisteners
+
+	    if(bp.attribute.get(tag, "resize") !== "false")
+	      window.addEventListener("resize", update);
+
+	    content.addEventListener("scroll", updatePosition);
+
+	  });
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
 
 	  this.bonaparte.update = update;
 
-	///////////////////////////////////////////////////////////////////////////////
-	// Eventlisteners
-
-	  if(bp.attribute.get(tag, "resize") !== "false")
-	    window.addEventListener("resize", update);
-
-	  content.addEventListener("scroll", updatePosition);
 
 	///////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////
@@ -2910,7 +2913,7 @@
 	      for(var i=0; i<length; i++) {
 
 	        if(!child.children[map[i]]) break;
-	        console.log('setAttribute', path, map[i], child.children[map[i]].role);
+	        // console.log('setAttribute', path, map[i], child.children[map[i]].role);
 
 	        // element.children[i].getAttribute("bonaparte-"+name+"-role");
 	        element.children[i].setAttribute("bonaparte-"+name+"-role", child.children[map[i]].role);
