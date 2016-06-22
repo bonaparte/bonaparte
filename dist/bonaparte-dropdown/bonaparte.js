@@ -45,18 +45,158 @@
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(76);
+	module.exports = __webpack_require__(110);
 
 
 /***/ },
 
-/***/ 14:
+/***/ 16:
+/***/ function(module, exports) {
+
+	module.exports = function(module) {
+		if(!module.webpackPolyfill) {
+			module.deprecate = function() {};
+			module.paths = [];
+			// module.parent = undefined by default
+			module.children = [];
+			module.webpackPolyfill = 1;
+		}
+		return module;
+	}
+
+
+/***/ },
+
+/***/ 110:
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(111).register();
+	__webpack_require__(123);
+
+/***/ },
+
+/***/ 111:
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+	 * This file should export the result of 
+	 * require("bonaparte").tag.create()
+	 * or
+	 * require("bonaparte").mixin.create()
+	 */
+
+	module.exports = __webpack_require__(112);
+
+/***/ },
+
+/***/ 112:
+/***/ function(module, exports, __webpack_require__) {
+
+	var bp = __webpack_require__(113);
+
+	///////////////////////////////////////////////////////////////////////////////
+	// Public
+
+	module.exports = bp.tag.create("dropdown", dropdown, {
+	  0 : "dropdown",
+	  "1n+0": "noop"
+	});
+
+	///////////////////////////////////////////////////////////////////////////////
+	function dropdown(tag) {
+
+	  tag.addEventListener("bonaparte.tag.attributeChanged", update);
+	  bp.tag.DOMReady(initialise);
+
+
+	  function update (data) {
+	    var handler = '',
+	        listener = []
+
+	    if (data.detail.name === "action") {
+	      handler = getHandler();
+	      listener = (data.detail.previousValue || "click").split(',');
+	    } else if (data.detail.name === "handler") {
+	      handler = getHandler(data.detail.previousValue || false);
+	      listener = (bp.attribute.get(tag, "action") || "click").split(',');
+	    }
+
+	    for (var i = 0; i < listener.length; i++) {
+	      handler.removeEventListener(listener[i].trim(), handleClick);
+	    }
+
+	    initialise();
+	  }
+
+	  function initialise () {
+	  	var handler = getHandler(),
+	      listener = (bp.attribute.get(tag, "action") || "click").split(',');
+	    for (var i = 0; i < listener.length; i++) {
+	      handler.addEventListener(listener[i].trim(), handleClick);
+	    };
+	  }
+
+	  function getHandler(handlerSelector) {
+
+	    if (typeof handlerSelector === 'undefined') {
+	      handlerSelector = bp.attribute.get(tag, "handler") || false;
+	    }
+	    var handler = tag.children[1];
+	    if (handlerSelector) {
+	      handler = tag.children[1].querySelector(handlerSelector) || handler;
+	    }
+
+	    return handler;
+	  }
+
+	  function handleClick(e) {
+
+	    toggleActive();
+	  }
+
+	  function closePanel(e) {
+
+	   if(e.target === tag || bp.tag.contains(tag, e.target)) return;
+
+	    var handler = getHandler();
+	    bp.attribute.set(tag, "open", false);
+	    handler.classList.remove(bp.attribute.get(handler, "active-class") || "active");
+	    window.removeEventListener("click", closePanel);
+	  }
+
+	  function toggleActive() {
+
+	    var handler = getHandler(),
+	      attribute = "open",
+	    	newValue = bp.attribute.get(tag, attribute) === "true" ? "false" : "true",
+	      activeClass = bp.attribute.get(handler, "active-class") || "active";
+
+	    bp.attribute.set(tag, attribute, newValue);
+	    handler.classList.toggle(activeClass);
+
+	    if (newValue === "true") {
+	      window.addEventListener("click", closePanel);
+	    } else {
+	      window.removeEventListener("click", closePanel);
+	    }
+
+	  }
+
+	///////////////////////////////////////////////////////////////////////////////
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+
+
+/***/ },
+
+/***/ 113:
 /***/ function(module, exports, __webpack_require__) {
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public 
 
-	module.exports = __webpack_require__(15);
+	module.exports = __webpack_require__(114);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Polyfills
@@ -64,10 +204,10 @@
 	if(typeof document.addEventListener === "function") { // no polyfills for IE8 -> silently fail.
 	  
 	  if(!("MutationObserver" in document)) {
-	    MutationObserver = __webpack_require__(22);
+	    MutationObserver = __webpack_require__(120);
 	  };
-	  __webpack_require__(23);
-	  __webpack_require__(24);
+	  __webpack_require__(121);
+	  __webpack_require__(122);
 
 
 	  if (Element && !Element.prototype.matches) {
@@ -81,17 +221,17 @@
 
 /***/ },
 
-/***/ 15:
+/***/ 114:
 /***/ function(module, exports, __webpack_require__) {
 
-	var objct = __webpack_require__(16);
+	var objct = __webpack_require__(115);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
 
 	module.exports = {
 	  tag : {
-	    create : __webpack_require__(18),
+	    create : __webpack_require__(116),
 	    contains : nodeContains,
 	    observe : observe,
 	    triggerEvent : triggerEvent,
@@ -239,7 +379,7 @@
 
 /***/ },
 
-/***/ 16:
+/***/ 115:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/*! 
@@ -500,32 +640,15 @@
 
 	////////////////////////////////////////////////////////////////////////////////
 	})( false? {} : module);
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)(module)))
 
 /***/ },
 
-/***/ 17:
-/***/ function(module, exports) {
-
-	module.exports = function(module) {
-		if(!module.webpackPolyfill) {
-			module.deprecate = function() {};
-			module.paths = [];
-			// module.parent = undefined by default
-			module.children = [];
-			module.webpackPolyfill = 1;
-		}
-		return module;
-	}
-
-
-/***/ },
-
-/***/ 18:
+/***/ 116:
 /***/ function(module, exports, __webpack_require__) {
 
-	var objct = __webpack_require__(16);
-	var bp = __webpack_require__(15);
+	var objct = __webpack_require__(115);
+	var bp = __webpack_require__(114);
 
 	///////////////////////////////////////////////////////////////////////////////
 
@@ -549,7 +672,7 @@
 
 	  nativeBaseElement = nativeBaseElement || window.HTMLElement || window.Element;
 
-	  var childrenModule = __webpack_require__(19)(name, children);
+	  var childrenModule = __webpack_require__(117)(name, children);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
@@ -611,9 +734,9 @@
 
 	  function apply(element) {
 	    var modules = [
-	      __webpack_require__(20),
+	      __webpack_require__(118),
 	      definition,
-	      __webpack_require__(21),
+	      __webpack_require__(119),
 	      childrenModule
 	    ];
 
@@ -646,11 +769,11 @@
 
 /***/ },
 
-/***/ 19:
+/***/ 117:
 /***/ function(module, exports, __webpack_require__) {
 
-	var bp = __webpack_require__(15);
-	var objct = __webpack_require__(16);
+	var bp = __webpack_require__(114);
+	var objct = __webpack_require__(115);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
@@ -666,6 +789,10 @@
 	    role : "root",
 	    children : children || {}
 	  });
+
+	  // var error = map.indexOf(null);
+	  // if(error >= 0) throw "Bonaparte - "+tagName+": Role of child "+error+" is not defined.";
+
 
 	  return function(tag, name) {
 	    bp.tag.DOMReady(function(){checkChildren(tag, children)});
@@ -686,7 +813,7 @@
 	      for(var i=0; i<length; i++) {
 
 	        if(!child.children[map[i]]) break;
-	        // console.log('setAttribute', path, map[i], child.children[map[i]].role);
+	        console.log('setAttribute', path, map[i], child.children[map[i]].role);
 
 	        // element.children[i].getAttribute("bonaparte-"+name+"-role");
 	        element.children[i].setAttribute("bonaparte-"+name+"-role", child.children[map[i]].role);
@@ -784,10 +911,10 @@
 
 /***/ },
 
-/***/ 20:
+/***/ 118:
 /***/ function(module, exports, __webpack_require__) {
 
-	var bp = __webpack_require__(15);
+	var bp = __webpack_require__(114);
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Public
@@ -816,10 +943,10 @@
 
 /***/ },
 
-/***/ 21:
+/***/ 119:
 /***/ function(module, exports, __webpack_require__) {
 
-	var objct = __webpack_require__(16);
+	var objct = __webpack_require__(115);
 
 	var registeredMixins = {};
 
@@ -860,7 +987,7 @@
 
 /***/ },
 
-/***/ 22:
+/***/ 120:
 /***/ function(module, exports) {
 
 	var MutationObserver = window.MutationObserver
@@ -1452,7 +1579,7 @@
 
 /***/ },
 
-/***/ 23:
+/***/ 121:
 /***/ function(module, exports) {
 
 	/*! (C) WebReflection Mit Style License */
@@ -1460,7 +1587,7 @@
 
 /***/ },
 
-/***/ 24:
+/***/ 122:
 /***/ function(module, exports) {
 
 	// Polyfill for creating CustomEvents on IE9/10/11
@@ -1492,137 +1619,7 @@
 
 /***/ },
 
-/***/ 76:
-/***/ function(module, exports, __webpack_require__) {
-
-	__webpack_require__(77).register();
-	__webpack_require__(80);
-
-/***/ },
-
-/***/ 77:
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-	 * This file should export the result of 
-	 * require("bonaparte").tag.create()
-	 * or
-	 * require("bonaparte").mixin.create()
-	 */
-
-	module.exports = __webpack_require__(78);
-
-/***/ },
-
-/***/ 78:
-/***/ function(module, exports, __webpack_require__) {
-
-	var bp = __webpack_require__(79);
-
-	///////////////////////////////////////////////////////////////////////////////
-	// Public
-
-	module.exports = bp.tag.create("dropdown", dropdown, {
-	  0 : "dropdown",
-	  "1n+0": "noop"
-	});
-
-	///////////////////////////////////////////////////////////////////////////////
-	function dropdown(tag) {
-
-	  tag.addEventListener("bonaparte.tag.attributeChanged", update);
-	  bp.tag.DOMReady(initialise);
-
-
-	  function update (data) {
-	    var handler = '',
-	        listener = []
-
-	    if (data.detail.name === "action") {
-	      handler = getHandler();
-	      listener = (data.detail.previousValue || "click").split(',');
-	    } else if (data.detail.name === "handler") {
-	      handler = getHandler(data.detail.previousValue || false);
-	      listener = (bp.attribute.get(tag, "action") || "click").split(',');
-	    }
-
-	    for (var i = 0; i < listener.length; i++) {
-	      handler.removeEventListener(listener[i].trim(), handleClick);
-	    }
-
-	    initialise();
-	  }
-
-	  function initialise () {
-	  	var handler = getHandler(),
-	      listener = (bp.attribute.get(tag, "action") || "click").split(',');
-	    for (var i = 0; i < listener.length; i++) {
-	      handler.addEventListener(listener[i].trim(), handleClick);
-	    };
-	  }
-
-	  function getHandler(handlerSelector) {
-
-	    if (typeof handlerSelector === 'undefined') {
-	      handlerSelector = bp.attribute.get(tag, "handler") || false;
-	    }
-	    var handler = tag.children[1];
-	    if (handlerSelector) {
-	      handler = tag.children[1].querySelector(handlerSelector) || handler;
-	    }
-
-	    return handler;
-	  }
-
-	  function handleClick(e) {
-
-	    toggleActive();
-	  }
-
-	  function closePanel(e) {
-
-	   if(e.target === tag || bp.tag.contains(tag, e.target)) return;
-
-	    var handler = getHandler();
-	    bp.attribute.set(tag, "open", false);
-	    handler.classList.remove(bp.attribute.get(handler, "active-class") || "active");
-	    window.removeEventListener("click", closePanel);
-	  }
-
-	  function toggleActive() {
-
-	    var handler = getHandler(),
-	      attribute = "open",
-	    	newValue = bp.attribute.get(tag, attribute) === "true" ? "false" : "true",
-	      activeClass = bp.attribute.get(handler, "active-class") || "active";
-
-	    bp.attribute.set(tag, attribute, newValue);
-	    handler.classList.toggle(activeClass);
-
-	    if (newValue === "true") {
-	      window.addEventListener("click", closePanel);
-	    } else {
-	      window.removeEventListener("click", closePanel);
-	    }
-
-	  }
-
-	///////////////////////////////////////////////////////////////////////////////
-	}
-
-	///////////////////////////////////////////////////////////////////////////////
-
-
-/***/ },
-
-/***/ 79:
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(14);
-
-/***/ },
-
-/***/ 80:
+/***/ 123:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

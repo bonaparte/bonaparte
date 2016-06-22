@@ -1,7 +1,7 @@
 {
   "name": "bonaparte-library",
   "scripts": {
-    "build": "find ./node_modules -name 'bonaparte*' -type d | xargs rm -r && npm install && webpack --progress",
+    "build": "npm install && npm update && webpack --progress",
     "build-prod": "find ./node_modules -name 'bonaparte*' -type d | xargs rm -r && npm install && webpack -p --progress",
     "_postinstall": "./node_modules/.bin/gitbook install",
     "docs-install": "./node_modules/.bin/gitbook install",

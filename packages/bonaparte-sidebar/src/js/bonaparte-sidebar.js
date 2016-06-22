@@ -26,6 +26,7 @@ function sidebar(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function updateSize(data){
+    // if(!tag.firstElementChild) return;
     var size = bp.attribute.get(tag, "size");
     var sidebar = bp.attribute.get(tag, "position");
     var style = sidebar === "left" || sidebar==="right" ? "min-width" : "min-height";
