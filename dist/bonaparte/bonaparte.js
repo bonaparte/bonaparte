@@ -2869,7 +2869,6 @@
 	///////////////////////////////////////////////////////////////////////////////
 
 	  function updateSize(data){
-	    // console.log('update2');
 	    // if(!tag.firstElementChild) return;
 	    var size = bp.attribute.get(tag, "size");
 	    var sidebar = bp.attribute.get(tag, "position");
