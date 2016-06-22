@@ -1,6 +1,6 @@
 {
   "name": "bonaparte-dropdown",
-  "version": "0.0.24",
+  "version": "0.0.29",
   "description": "Bonaparte Component",
   "homepage": "http://bonaparte.io",
   "author": {
@@ -12,7 +12,7 @@
     "url": "https://github.com/bonaparte/bonaparte.git"
   },
   "dependencies": {
-    "bonaparte-core": "^0.0.28"
+    "bonaparte-core": "^0.0.29"
   },
   "main": "bonaparte.build.js",
   "devDependencies": {

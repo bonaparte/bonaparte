@@ -1,6 +1,6 @@
 {
   "name": "bonaparte",
-  "version": "0.0.28",
+  "version": "0.0.29",
   "scripts": {
     "build": "webpack",
     "build-prod": "webpack -p",
@@ -20,14 +20,14 @@
     "url": "https://github.com/bonaparte/bonaparte.git"
   },
   "dependencies": {
-    "bonaparte-button": "^0.0.24",
-    "bonaparte-collapsible": "^0.0.23",
-    "bonaparte-draggable": "^0.0.23",
-    "bonaparte-dropdown": "^0.0.24",
-    "bonaparte-panel": "^0.0.24",
-    "bonaparte-sidebar": "^0.0.28",
-    "bonaparte-toolbar": "^0.0.24",
-    "bonaparte-scroll": "^0.0.26"
+    "bonaparte-button": "^0.0.29",
+    "bonaparte-collapsible": "^0.0.29",
+    "bonaparte-draggable": "^0.0.29",
+    "bonaparte-dropdown": "^0.0.29",
+    "bonaparte-panel": "^0.0.29",
+    "bonaparte-sidebar": "^0.0.29",
+    "bonaparte-toolbar": "^0.0.29",
+    "bonaparte-scroll": "^0.0.29"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.2",
