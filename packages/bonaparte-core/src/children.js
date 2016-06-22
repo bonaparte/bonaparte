@@ -26,8 +26,8 @@ function children(tagName, children){
 
       path = path || "<"+tag.tagName+">";
       var length = element.children.length;
-      bp.tag.observe(element);
-      element.addEventListener("bonaparte.tag.childrenChanged", function(){checkChildren(element, child)})
+      // bp.tag.observe(element);
+      // element.addEventListener("bonaparte.tag.childrenChanged", function(){checkChildren(element, child)})
 
       var map = mapChildren(child, length);
 
