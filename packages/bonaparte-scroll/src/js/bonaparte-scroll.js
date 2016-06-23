@@ -15,20 +15,11 @@ function scroll(tag){
 
   ///////////////////////////////////////////////////////////////////////////////
   // Initialize
-  bp.tag.DOMReady(function(){
-    content = tag.firstElementChild;
+  bp.tag.DOMReady(setContent);
+  tag.addEventListener("bonaparte.tag.childrenChanged", setContent);
 
-    setupScroller();
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // Eventlisteners
-
-    if(bp.attribute.get(tag, "resize") !== "false")
-      window.addEventListener("resize", update);
-
-    content.addEventListener("scroll", updatePosition);
-
-  });
+  if(bp.attribute.get(tag, "resize") !== "false")
+    window.addEventListener("resize", update);
 
 ///////////////////////////////////////////////////////////////////////////////
 // Public
@@ -39,7 +30,20 @@ function scroll(tag){
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
+  function setContent(){
+    if(content === tag.firstElementChild) return;
+    content = tag.firstElementChild;
+    if(!content) return;
+    content.addEventListener("scroll", updatePosition);
+    if(tag.children.length === 1) setupScroller();
+    update();
+  }
+
+///////////////////////////////////////////////////////////////////////////////
+
   function update(){
+    if(!content) return;
+
     var containerHeight = tag.offsetHeight;
     var scrollHeight = content.scrollHeight;
 
@@ -91,8 +95,6 @@ function scroll(tag){
     scrollbar = document.createElement("div")
     scrollbar.setAttribute("class", "scrollbar");
     scrollbar.appendChild(slider);
-
-    update();
 
     tag.appendChild(scrollbar);
 
