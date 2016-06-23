@@ -1,6 +1,6 @@
 {
   "name": "bonaparte",
-  "version": "0.0.29",
+  "version": "0.0.30",
   "scripts": {
     "build": "webpack",
     "build-prod": "webpack -p",
@@ -27,7 +27,7 @@
     "bonaparte-panel": "^0.0.29",
     "bonaparte-sidebar": "^0.0.29",
     "bonaparte-toolbar": "^0.0.29",
-    "bonaparte-scroll": "^0.0.29"
+    "bonaparte-scroll": "^0.0.30"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.2",
