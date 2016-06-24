@@ -42,7 +42,7 @@ function scroll(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function update(){
-    if(!content) return;
+    if(!content || !scrollbar) return;
 
     var containerHeight = tag.offsetHeight;
     var scrollHeight = content.scrollHeight;

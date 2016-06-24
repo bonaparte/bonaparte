@@ -26,14 +26,11 @@ function sidebar(tag){
 ///////////////////////////////////////////////////////////////////////////////
 
   function updateSize(data){
-    // if(!tag.firstElementChild) return;
+    if(!tag.firstElementChild) return;
     var size = bp.attribute.get(tag, "size");
     var sidebar = bp.attribute.get(tag, "position");
     var style = sidebar === "left" || sidebar==="right" ? "min-width" : "min-height";
-    if(size === undefined)
-      tag.firstElementChild.style[style] = "";
-    else
-      tag.firstElementChild.style[style] = size;
+    tag.firstElementChild.style[style] = size || "";
   }
 
 }
