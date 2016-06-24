@@ -221,9 +221,9 @@ function button(tag){
     var selector = bp.attribute.get(tag, "target");
 
     // only restrict button in toolbar sidebars.
-    var potentialToolbar = bp.tag.closest(tag, "toolbar-bonaparte");
-    var context = potentialToolbar && bp.tag.contains(potentialToolbar.firstElementChild, tag)?
-      potentialToolbar : document;
+    // var potentialToolbar = bp.tag.closest(tag, "toolbar-bonaparte");
+    // var context = potentialToolbar && bp.tag.contains(potentialToolbar.firstElementChild, tag)?
+    //   potentialToolbar : document;
 
     var context = document;
 
