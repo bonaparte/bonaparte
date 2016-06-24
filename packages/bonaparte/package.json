@@ -1,6 +1,6 @@
 {
   "name": "bonaparte",
-  "version": "0.0.32",
+  "version": "0.0.33",
   "scripts": {
     "build": "webpack",
     "build-prod": "webpack -p",
@@ -20,7 +20,7 @@
     "url": "https://github.com/bonaparte/bonaparte.git"
   },
   "dependencies": {
-    "bonaparte-button": "^0.0.29",
+    "bonaparte-button": "^0.0.33",
     "bonaparte-collapsible": "^0.0.29",
     "bonaparte-draggable": "^0.0.29",
     "bonaparte-dropdown": "^0.0.29",
