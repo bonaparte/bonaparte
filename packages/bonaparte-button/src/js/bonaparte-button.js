@@ -225,6 +225,7 @@ function button(tag){
     var context = potentialToolbar && bp.tag.contains(potentialToolbar.firstElementChild, tag)?
       potentialToolbar : document;
 
+    var context = document;
 
     var newTargets = context.querySelectorAll(selector);
     if(context !== document && context.matches(selector)) {
