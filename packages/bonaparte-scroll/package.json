@@ -12,7 +12,7 @@
     "url": "https://github.com/bonaparte/bonaparte.git"
   },
   "dependencies": {
-    "bonaparte-core": ">=0.0.29",
+    "bonaparte-core": ">=0.0.29"
   },
   "main": "bonaparte.build.js",
   "devDependencies": {
