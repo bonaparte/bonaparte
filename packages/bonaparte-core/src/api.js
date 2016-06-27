@@ -77,7 +77,7 @@ function mixin() {
 ///////////////////////////////////////////////////////////////////////////////
 
 function DOMReady(handler){
-  if(document.readyState === "complete") handler();
+  if(document.readyState === "complete") setTimeout(handler, 0);
   else window.addEventListener("load", handler);
 }
 ///////////////////////////////////////////////////////////////////////////////
